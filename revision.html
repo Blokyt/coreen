@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국어 — Révision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <div class="kr-title">한국어</div>
+      <div class="fr-subtitle">Kaja, Hanguk! A1</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Navigation</div>
+      <button class="nav-item active" onclick="showPage('home')">
+        <span class="icon">⌂</span><span>Accueil</span>
+      </button>
+      <button class="nav-item" onclick="showPage('hangeul')">
+        <span class="icon">가</span><span>Hangeul</span>
+      </button>
+      <button class="nav-item" onclick="showPage('vocab')">
+        <span class="icon">📚</span><span>Vocabulaire</span>
+      </button>
+      <button class="nav-item" onclick="showPage('expressions')">
+        <span class="icon">💬</span><span>Expressions</span>
+      </button>
+      <button class="nav-item" onclick="showPage('grammar')">
+        <span class="icon">✍</span><span>Grammaire</span>
+      </button>
+      <button class="nav-item" onclick="showPage('verbes')">
+        <span class="icon">📝</span><span>Verbes</span>
+      </button>
+      <button class="nav-item" onclick="showPage('culture')">
+        <span class="icon">🌸</span><span>Culture</span>
+      </button>
+    </div>
+    <div class="sidebar-bottom">
+      Kaja, Hanguk!<br>Belin Éducation — A1
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <div class="page-header">
+        <div class="eyebrow">Tableau de bord</div>
+        <h1>Bienvenue dans ton<br><span>espace de révision</span></h1>
+        <p>Tout le contenu du manuel <em>Kaja, Hanguk!</em> A1 — vocabulaire, grammaire, Hangeul et culture — organisé pour réviser efficacement.</p>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="num">400+</div>
+          <div class="lbl">mots de vocabulaire</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">22</div>
+          <div class="lbl">points de grammaire</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">15</div>
+          <div class="lbl">fiches culture</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">40</div>
+          <div class="lbl">caractères Hangeul</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="dash-card c-gold" onclick="showPage('hangeul')">
+          <div class="dc-icon">가</div>
+          <div class="dc-kr">한글</div>
+          <div class="dc-fr">L'alphabet coréen</div>
+          <div class="dc-count">40 caractères</div>
+        </div>
+        <div class="dash-card c-red" onclick="startQuiz('all')">
+          <div class="dc-icon">🃏</div>
+          <div class="dc-kr">퀴즈</div>
+          <div class="dc-fr">Flashcards de révision</div>
+          <div class="dc-count">Tous les mots</div>
+        </div>
+        <div class="dash-card c-green" onclick="showPage('vocab')">
+          <div class="dc-icon">📖</div>
+          <div class="dc-kr">어휘</div>
+          <div class="dc-fr">Vocabulaire par thème</div>
+          <div class="dc-count">27 catégories</div>
+        </div>
+        <div class="dash-card c-blue" onclick="showPage('grammar')">
+          <div class="dc-icon">✍</div>
+          <div class="dc-kr">문법</div>
+          <div class="dc-fr">Points de grammaire</div>
+          <div class="dc-count">Chapitres 1 à 6</div>
+        </div>
+        <div class="dash-card c-purple" onclick="showPage('expressions')">
+          <div class="dc-icon">💬</div>
+          <div class="dc-kr">표현</div>
+          <div class="dc-fr">Expressions essentielles</div>
+          <div class="dc-count">Poli & informel</div>
+        </div>
+        <div class="dash-card c-red" onclick="showPage('verbes')">
+          <div class="dc-icon">📝</div>
+          <div class="dc-kr">동사</div>
+          <div class="dc-fr">Conjugaison des verbes</div>
+          <div class="dc-count">32 verbes</div>
+        </div>
+        <div class="dash-card c-gold" onclick="startQuiz('all','fr')">
+          <div class="dc-icon">🇫🇷</div>
+          <div class="dc-kr">퀴즈</div>
+          <div class="dc-fr">Quiz FR → KR</div>
+          <div class="dc-count">Mode inversé</div>
+        </div>
+        <div class="dash-card c-purple" onclick="showPage('culture')">
+          <div class="dc-icon">🌸</div>
+          <div class="dc-kr">문화</div>
+          <div class="dc-fr">Culture coréenne</div>
+          <div class="dc-count">15 fiches</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HANGEUL -->
+    <div id="page-hangeul" class="page">
+      <div class="page-header">
+        <div class="eyebrow">Alphabet</div>
+        <h1><span>한글</span> — Le Hangeul</h1>
+        <p>Créé en 1443 par le roi Sejong le Grand, le Hangeul est l'un des systèmes d'écriture les plus logiques au monde. Les lettres s'assemblent en blocs syllabiques.</p>
+      </div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchHangeulTab('consonnes')">Consonnes de base</div>
+        <div class="tab" onclick="switchHangeulTab('doubles')">Consonnes doubles</div>
+        <div class="tab" onclick="switchHangeulTab('voyelles')">Voyelles de base</div>
+        <div class="tab" onclick="switchHangeulTab('composees')">Voyelles composées</div>
+        <div class="tab" onclick="switchHangeulTab('batchim')">Batchim (받침)</div>
+        <div class="tab" onclick="switchHangeulTab('astuces')">Astuces & Syllabes</div>
+      </div>
+      <div id="hg-consonnes" class="hangeul-section">
+        <div class="hangeul-grid" id="consonnes-grid"></div>
+      </div>
+      <div id="hg-doubles" class="hangeul-section" style="display:none">
+        <p style="color:var(--text2);font-size:13px;margin-bottom:16px">Les consonnes doubles (tensed) se prononcent avec plus de tension et d'énergie. Même lettre doublée.</p>
+        <div class="hangeul-grid" id="doubles-grid"></div>
+      </div>
+      <div id="hg-voyelles" class="hangeul-section" style="display:none">
+        <p style="color:var(--text2);font-size:13px;margin-bottom:16px">10 voyelles de base. Les voyelles verticales (ㅏ,ㅑ,ㅓ,ㅕ,ㅣ) se placent à droite de la consonne. Les horizontales (ㅗ,ㅛ,ㅜ,ㅠ,ㅡ) se placent en dessous.</p>
+        <div class="hangeul-grid" id="voyelles-grid"></div>
+      </div>
+      <div id="hg-composees" class="hangeul-section" style="display:none">
+        <p style="color:var(--text2);font-size:13px;margin-bottom:16px">11 voyelles composées formées par combinaison de voyelles de base.</p>
+        <div class="hangeul-grid" id="composees-grid"></div>
+      </div>
+      <div id="hg-batchim" class="hangeul-section" style="display:none">
+        <p style="color:var(--text2);font-size:13px;margin-bottom:16px">La <strong style="color:var(--gold)">consonne finale (받침)</strong> se place en bas de la syllabe. Toutes les consonnes peuvent être en position finale, mais il n'existe que <strong style="color:var(--gold)">7 sons finaux</strong>.</p>
+        <table class="batchim-table">
+          <thead><tr><th>Son final</th><th>Consonnes possibles</th><th>Exemples</th></tr></thead>
+          <tbody id="batchim-tbody"></tbody>
+        </table>
+      </div>
+      <div id="hg-astuces" class="hangeul-section" style="display:none">
+        <div class="section-title">Mnémotechniques pour retenir les consonnes</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:28px" id="mnemo-grid"></div>
+        <div class="section-title">Comment construire une syllabe ?</div>
+        <div class="grammar-note" style="margin-bottom:16px;line-height:1.8">
+          <strong style="color:var(--gold)">Règle fondamentale :</strong> En coréen, les lettres ne s'écrivent PAS les unes à la suite comme en français. Elles se regroupent en <strong>blocs syllabiques</strong>.<br><br>
+          <strong>Structure :</strong> Consonne + Voyelle (+ Consonne finale optionnelle)<br><br>
+          <strong style="color:var(--gold)">Voyelle verticale</strong> (ㅏ,ㅑ,ㅓ,ㅕ,ㅣ) → consonne à <strong>gauche</strong>, voyelle à <strong>droite</strong><br>
+          Exemple : ㄴ + ㅏ = <span class="kr" style="font-size:20px;color:var(--cream)">나</span> (na)<br><br>
+          <strong style="color:var(--gold)">Voyelle horizontale</strong> (ㅗ,ㅛ,ㅜ,ㅠ,ㅡ) → consonne en <strong>haut</strong>, voyelle en <strong>bas</strong><br>
+          Exemple : ㅁ + ㅜ = <span class="kr" style="font-size:20px;color:var(--cream)">무</span> (mu)<br><br>
+          <strong style="color:var(--gold)">Avec batchim</strong> (consonne finale) → s'ajoute en <strong>dessous</strong><br>
+          Exemple : ㅎ + ㅏ + ㄴ = <span class="kr" style="font-size:20px;color:var(--cream)">한</span> (han)<br><br>
+          <strong style="color:var(--gold)">ㅇ muet :</strong> Si la syllabe commence par une voyelle, on met ㅇ en position de consonne initiale (il est muet).<br>
+          Exemple : ㅇ + ㅏ = <span class="kr" style="font-size:20px;color:var(--cream)">아</span> (a)
+        </div>
+      </div>
+    </div>
+
+    <!-- VOCAB -->
+    <div id="page-vocab" class="page">
+      <div class="page-header">
+        <div class="eyebrow">Vocabulaire</div>
+        <h1>어휘 — <span>Par thème</span></h1>
+      </div>
+      <input type="text" class="search-bar" placeholder="Rechercher un mot en français ou en coréen..." oninput="filterVocab(this.value)">
+      <div class="vocab-controls">
+        <button class="cat-btn active" onclick="setCat('all')">Tout</button>
+        <button class="cat-btn" onclick="startQuiz('all','kr')">🃏 Quiz KR→FR</button>
+        <button class="cat-btn" onclick="startQuiz('all','fr')">🇫🇷 Quiz FR→KR</button>
+        <button class="cat-btn" onclick="startQuiz('school','kr')">🏫 Quiz école</button>
+        <button class="cat-btn" onclick="startQuiz('food','kr')">🍱 Quiz nourriture</button>
+      </div>
+      <div class="vocab-controls" id="cat-buttons" style="margin-top:-12px"></div>
+      <div class="vocab-grid" id="vocab-grid"></div>
+      <div class="empty" id="vocab-empty" style="display:none">
+        <div class="e-icon">🔍</div>
+        <p>Aucun résultat trouvé.</p>
+      </div>
+    </div>
+
+    <!-- EXPRESSIONS -->
+    <div id="page-expressions" class="page">
+      <div class="page-header">
+        <div class="eyebrow">Expressions</div>
+        <h1>표현 — <span>Essentielles</span></h1>
+        <p>Les expressions de base du manuel, avec leur forme polie (요) et informelle.</p>
+      </div>
+      <div class="expr-grid" id="expr-grid"></div>
+    </div>
+
+    <!-- GRAMMAR -->
+    <div id="page-grammar" class="page">
+      <div class="page-header">
+        <div class="eyebrow">Grammaire</div>
+        <h1>문법 — <span>Règles</span></h1>
+        <p>Cliquer sur une règle pour l'ouvrir et voir les explications et exemples.</p>
+      </div>
+      <div class="tabs" id="grammar-tabs">
+        <div class="tab active" onclick="filterGrammar(0)">Tous</div>
+        <div class="tab" onclick="filterGrammar(1)">Chapitre 1</div>
+        <div class="tab" onclick="filterGrammar(2)">Chapitre 2</div>
+        <div class="tab" onclick="filterGrammar(3)">Chapitre 3</div>
+        <div class="tab" onclick="filterGrammar(4)">Chapitre 4</div>
+        <div class="tab" onclick="filterGrammar(5)">Chapitre 5</div>
+        <div class="tab" onclick="filterGrammar(6)">Chapitre 6</div>
+      </div>
+      <div class="grammar-list" id="grammar-list"></div>
+    </div>
+
+    <!-- VERBES -->
+    <div id="page-verbes" class="page">
+      <div class="page-header">
+        <div class="eyebrow">Conjugaison</div>
+        <h1>동사 — <span>Les verbes</span></h1>
+        <p>Tous les verbes du programme avec leur conjugaison au présent (poli et informel) et au passé. Clique sur un verbe pour voir ses formes.</p>
+      </div>
+      <input type="text" class="search-bar" placeholder="Rechercher un verbe..." oninput="filterVerbes(this.value)">
+      <div class="grammar-note" style="margin-bottom:20px">
+        <strong>Rappel conjugaison :</strong> Supprimer 다 du radical. Dernière voyelle ㅏ/ㅗ → 아요 (poli). Autres → 어요 (poli). 하다 → 해요. Pour le passé : 았어요 / 었어요 / 했어요.
+      </div>
+      <div id="verbes-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px"></div>
+    </div>
+
+    <!-- CULTURE -->
+    <div id="page-culture" class="page">
+      <div class="page-header">
+        <div class="eyebrow">Culture</div>
+        <h1>문화 — <span>Corée</span></h1>
+      </div>
+      <div class="culture-grid" id="culture-grid"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- QUIZ OVERLAY -->
+<div class="quiz-overlay" id="quiz-overlay">
+  <div class="quiz-progress" id="quiz-progress-bar">
+    <div class="progress-bar"><div class="progress-fill" id="qpfill"></div></div>
+    <div class="quiz-counter" id="qcounter">0 / 0</div>
+    <button class="btn-ghost" style="padding:6px 14px;font-size:12px" onclick="closeQuiz()">✕</button>
+  </div>
+  <div id="quiz-complete" class="quiz-complete" style="display:none">
+    <h2>완료! 🎉</h2>
+    <p id="quiz-result-text"></p>
+    <button class="btn-primary" onclick="restartQuiz()">Recommencer</button>
+    &nbsp;
+    <button class="btn-ghost" onclick="closeQuiz()">Fermer</button>
+  </div>
+  <div id="quiz-card-area">
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-inner">
+        <div class="flashcard-front">
+          <div class="fc-front-kr" id="fc-kr">—</div>
+          <div class="fc-front-hint">Cliquer pour retourner</div>
+        </div>
+        <div class="flashcard-back">
+          <div class="fc-back-fr" id="fc-fr">—</div>
+          <div class="fc-back-rom" id="fc-rom">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="quiz-actions">
+      <button class="quiz-btn bad" onclick="nextCard(0)">😕 Difficile</button>
+      <button class="quiz-btn ok" onclick="nextCard(1)">🤔 À revoir</button>
+      <button class="quiz-btn good" onclick="nextCard(2)">✓ Connu</button>
+    </div>
+    <div class="quiz-tip"><span id="quiz-mode-label">Mode : KR → FR</span> · Retourner la carte d'abord, puis évaluer</div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

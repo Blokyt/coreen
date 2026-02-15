@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(py -3 -c:*)",
+      "Bash(py:*)",
+      "Bash(/c/miniconda/python:*)"
+    ]
+  }
+}
