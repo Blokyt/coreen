@@ -448,6 +448,11 @@ body::before {
 .quiz-btn.good:hover { background: rgba(90,158,122,0.25); }
 .quiz-btn.close-btn { background: var(--card); color: var(--text2); flex: 0 0 auto; padding: 14px 20px; }
 .quiz-tip { font-size: 12px; color: var(--text2); margin-top: 14px; text-align: center; }
+.quiz-tip-mobile { display: none; }
+@media (max-width: 768px) {
+  .quiz-tip-desktop { display: none; }
+  .quiz-tip-mobile { display: inline; }
+}
 .quiz-complete {
   text-align: center; animation: fadeIn 0.4s;
 }
@@ -535,15 +540,183 @@ body::before {
 .batchim-table .ph { font-family: 'Noto Sans KR', sans-serif; font-size: 18px; color: var(--gold); }
 .batchim-table .letters { font-family: 'Noto Sans KR', sans-serif; color: var(--cream); }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .sidebar { width: 60px; }
-  .sidebar-logo, .nav-label, .nav-item span, .sidebar-bottom { display: none; }
-  .nav-item { justify-content: center; padding: 12px; }
-  .nav-item .icon { width: auto; font-size: 20px; }
-  .main { margin-left: 60px; }
-  .page { padding: 24px 20px; }
+/* ══ RESPONSIVE — TABLET ══ */
+@media (max-width: 1024px) {
   .dash-grid { grid-template-columns: repeat(2, 1fr); }
-  .culture-grid, .expr-grid { grid-template-columns: 1fr; }
-  .month-grid { grid-template-columns: repeat(4, 1fr); }
+  .page { padding: 32px 28px; }
+  .page-header h1 { font-size: 36px; }
+  .stat-box .num { font-size: 28px; }
+  .culture-grid { grid-template-columns: 1fr; }
+}
+
+/* ══ RESPONSIVE — MOBILE ══ */
+@media (max-width: 768px) {
+  /* --- Hide sidebar, show bottom nav --- */
+  .sidebar {
+    position: fixed; top: auto; bottom: 0; left: 0; right: 0;
+    width: 100%; height: calc(64px + env(safe-area-inset-bottom, 0px)); min-height: auto;
+    flex-direction: row;
+    border-right: none; border-top: 1px solid var(--border);
+    z-index: 200;
+    background: rgba(20,16,8,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .sidebar-logo, .nav-label, .sidebar-bottom { display: none; }
+  .nav-section {
+    display: flex; flex-direction: row;
+    width: 100%; padding: 0;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+  .nav-item {
+    flex-direction: column; gap: 2px;
+    padding: 6px 4px; justify-content: center;
+    align-items: center; border-left: none;
+    font-size: 10px; min-width: 0; flex: 1;
+  }
+  .sidebar { overflow: visible; }
+  .nav-item span { display: block; font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60px; text-align: center; }
+  .nav-item .icon { width: auto; font-size: 20px; }
+  .nav-item.active { border-left-color: transparent; background: rgba(201,153,74,0.12); border-radius: 8px; }
+
+  /* --- Main area --- */
+  .main { margin-left: 0; padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .page { padding: 20px 16px; }
+
+  /* --- Typography --- */
+  .page-header h1 { font-size: 28px; }
+  .page-header .eyebrow { font-size: 10px; letter-spacing: 2px; }
+  .page-header p { font-size: 13px; }
+  .section-title { font-size: 18px; }
+
+  /* --- Stats row --- */
+  .stats-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .stat-box { padding: 14px 16px; }
+  .stat-box .num { font-size: 26px; }
+  .stat-box .lbl { font-size: 10px; }
+
+  /* --- Dashboard grid --- */
+  .dash-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dash-card { padding: 20px 16px; }
+  .dash-card .dc-icon { font-size: 24px; margin-bottom: 10px; }
+  .dash-card .dc-kr { font-size: 16px; }
+  .dash-card .dc-fr { font-size: 12px; }
+  .dash-card .dc-count { margin-top: 12px; font-size: 10px; }
+
+  /* --- Tabs: horizontal scroll --- */
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { white-space: nowrap; flex-shrink: 0; padding: 7px 14px; font-size: 12px; }
+
+  /* --- Vocab --- */
+  .vocab-controls {
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .vocab-controls::-webkit-scrollbar { display: none; }
+  .cat-btn { padding: 6px 12px; font-size: 11px; flex-shrink: 0; }
+  .vocab-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vocab-card { padding: 12px 14px; }
+  .vocab-card .vc-kr { font-size: 17px; }
+  .vocab-card .vc-fr { font-size: 12px; }
+  .vocab-card .vc-tag { font-size: 9px; }
+  .search-bar { padding: 10px 14px; font-size: 13px; }
+
+  /* --- Hangeul --- */
+  #mnemo-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; gap: 8px !important; }
+  .hangeul-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 6px; }
+  .hangeul-cell { padding: 12px 8px; }
+  .hangeul-cell .hg-letter { font-size: 26px; }
+  .hangeul-cell .hg-rom { font-size: 11px; }
+  .hangeul-cell .hg-fr { font-size: 10px; }
+
+  /* --- Grammar --- */
+  .grammar-header { padding: 14px 16px; gap: 8px; }
+  .grammar-title { font-size: 15px; }
+  .grammar-chap { font-size: 9px; }
+  .grammar-body { padding: 0 16px 16px; }
+  .rules-table { font-size: 12px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .rules-table th, .rules-table td { padding: 6px 8px; white-space: nowrap; }
+  .batchim-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .batchim-table th, .batchim-table td { padding: 8px 10px; }
+
+  /* --- Expressions --- */
+  .expr-grid { grid-template-columns: 1fr; gap: 8px; }
+  .expr-card { padding: 14px 16px; }
+  .expr-card .ec-poli { font-size: 15px; }
+  .expr-card .ec-inf { font-size: 13px; }
+
+  /* --- Culture --- */
+  .culture-grid { grid-template-columns: 1fr; gap: 10px; }
+  .culture-card { padding: 18px 16px; }
+  .culture-card .cc-title { font-size: 17px; }
+  .culture-card .cc-body { font-size: 12px; }
+  .cc-tag { padding: 2px 8px; }
+  .cc-tag-kr { font-size: 12px; }
+  .cc-tag-fr { font-size: 10px; }
+
+  /* --- Verbes --- */
+  #verbes-grid { grid-template-columns: 1fr !important; }
+
+  /* --- Month --- */
+  .month-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+
+  /* --- Flashcard Quiz --- */
+  .quiz-overlay { padding: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .quiz-progress { width: 100%; max-width: 100%; margin-bottom: 20px; }
+  .flashcard { width: 100%; max-width: 100%; height: 260px; }
+  .flashcard-front, .flashcard-back { padding: 28px 20px; border-radius: 10px; }
+  .fc-front-kr { font-size: 36px; }
+  .fc-front-hint { font-size: 12px; margin-top: 12px; }
+  .fc-back-fr { font-size: 24px; margin-bottom: 8px; }
+  .fc-back-rom { font-size: 12px; }
+  .quiz-actions { width: 100%; max-width: 100%; gap: 8px; margin-top: 16px; }
+  .quiz-btn { padding: 12px 8px; font-size: 13px; }
+  .quiz-tip { font-size: 11px; margin-top: 10px; }
+  .quiz-complete h2 { font-size: 32px; }
+  .quiz-complete p { font-size: 13px; }
+
+  /* --- Grammar note --- */
+  .grammar-note { font-size: 11px; padding: 8px 10px; }
+  .example-box { padding: 8px 12px; }
+  .example-box .ex-kr { font-size: 14px; }
+  .example-box .ex-rom { font-size: 10px; }
+  .example-box .ex-fr { font-size: 11px; }
+
+  /* --- Buttons --- */
+  .btn-primary { padding: 10px 20px; font-size: 13px; }
+  .btn-ghost { padding: 8px 16px; font-size: 12px; }
+}
+
+/* ══ RESPONSIVE — SMALL MOBILE ══ */
+@media (max-width: 400px) {
+  .page { padding: 16px 12px; }
+  .page-header h1 { font-size: 24px; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-box .num { font-size: 22px; }
+  .dash-grid { grid-template-columns: 1fr; gap: 8px; }
+  .vocab-grid { grid-template-columns: 1fr; }
+  .hangeul-grid { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }
+  .hangeul-cell .hg-letter { font-size: 22px; }
+  .flashcard { height: 220px; }
+  .fc-front-kr { font-size: 28px; }
+  .fc-back-fr { font-size: 20px; }
+  .quiz-btn { padding: 10px 6px; font-size: 12px; }
+  .nav-item span { font-size: 8px; max-width: 48px; }
 }

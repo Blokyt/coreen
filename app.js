@@ -545,6 +545,7 @@ function showPage(id) {
   document.querySelectorAll('.nav-item').forEach(n => {
     if (n.getAttribute('onclick')?.includes("'"+id+"'")) n.classList.add('active');
   });
+  window.scrollTo(0, 0);
   if (id === 'vocab') renderVocab('all', '');
   if (id === 'grammar') renderGrammar(0);
   if (id === 'culture') renderCulture();
@@ -929,3 +930,29 @@ document.addEventListener('keydown', e => {
   if (e.code === 'ArrowRight') nextCard(2);
   if (e.code === 'Escape') closeQuiz();
 });
+
+// Touch swipe for quiz flashcards
+(function() {
+  let touchStartX = 0, touchStartY = 0;
+  const overlay = document.getElementById('quiz-overlay');
+  overlay.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+  overlay.addEventListener('touchend', e => {
+    if (!overlay.classList.contains('active')) return;
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    const absDx = Math.abs(dx), absDy = Math.abs(dy);
+    if (absDx < 50 && absDy < 50) return; // too short
+    if (absDy > absDx) {
+      // vertical swipe — swipe up = flip
+      if (dy < -50) flipCard();
+      else if (dy > 50 && quizFlipped) nextCard(1); // swipe down = à revoir
+    } else {
+      if (!quizFlipped) return;
+      if (dx < -50) nextCard(0); // swipe left = difficile
+      if (dx > 50) nextCard(2);  // swipe right = connu
+    }
+  }, { passive: true });
+})();
