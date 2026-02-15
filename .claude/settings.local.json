@@ -9,7 +9,11 @@
       "Bash(python:*)",
       "Bash(py -3 -c:*)",
       "Bash(py:*)",
-      "Bash(/c/miniconda/python:*)"
+      "Bash(/c/miniconda/python:*)",
+      "Bash(wc:*)",
+      "Bash(du -sh:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)"
     ]
   }
 }
