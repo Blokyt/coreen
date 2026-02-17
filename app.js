@@ -956,3 +956,12 @@ document.addEventListener('keydown', e => {
     }
   }, { passive: true });
 })();
+
+// Splash screen dismiss
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    if (splash) splash.classList.add('hidden');
+    setTimeout(() => { if (splash) splash.remove(); }, 600);
+  }, 1200);
+});

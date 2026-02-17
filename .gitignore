@@ -1,0 +1,7 @@
+# Capacitor / Android build artifacts
+android/
+node_modules/
+*.apk
+
+# www/ is auto-synced from root sources by rebuild-apk.py
+www/

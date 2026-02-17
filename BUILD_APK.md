@@ -190,7 +190,7 @@ npm install @capacitor/core
 npm install -D @capacitor/cli
 
 # Initialiser la config Capacitor
-npx cap init "Korean Revision" "com.bloki.koreanrevision" --web-dir www
+npx cap init "Blokaja" "com.bloki.blokaja" --web-dir www
 
 # Ajouter la plateforme Android
 npm install @capacitor/android

@@ -13,7 +13,14 @@
       "Bash(wc:*)",
       "Bash(du -sh:*)",
       "Bash(npm:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(# Find ANDROID_HOME and JAVA_HOME echo \"\"=== Android SDK ===\"\"; ls \"\"C:/Users/bloki/AppData/Local/Android/Sdk/\"\" ; echo \"\"=== Java/JDK ===\"\"; ls \"\"C:/Program Files/Android/Android Studio/jbr/bin/java.exe\"\" || ls \"\"C:/Program Files/Android/Android Studio/jre/bin/java.exe\"\" || echo \"\"Checking other paths...\"\"; find \"\"/c/Program Files\"\" -name \"\"java.exe\"\" -path \"\"*/jbr/*\"\")",
+      "Bash(curl:*)",
+      "Bash(echo:*)",
+      "Bash(java --version:*)",
+      "Bash(export JAVA_HOME=\"/c/Program Files/Android/Android Studio/jbr\")",
+      "Bash(export:*)",
+      "Bash(JAVA_HOME=\"/c/Program Files/Android/Android Studio/jbr\" ANDROID_HOME=\"$LOCALAPPDATA/Android/Sdk\" ./gradlew.bat:*)"
     ]
   }
 }
