@@ -453,9 +453,24 @@ const DATA = {
                {kr:"6월 (유월)",fr:"juin — exception !"},
                {kr:"10월 (시월)",fr:"octobre — exception !"}]},
     {id:"heure",titre:"L'heure : 시 / 분 / 반",ch:6,
-     explain:"HEURE = nombre coréen natif + 시. MINUTE = nombre sino-coréen + 분. 반 = demi (30 min).",
-     exemples:[{kr:"두 시",fr:"2h"},{kr:"두 시 사십오 분",fr:"2h45"},
-               {kr:"아홉 시 반",fr:"9h30"},{kr:"몇 시예요?",fr:"Quelle heure est-il ?"}]},
+     explain:"HEURE = nombre coréen natif + 시. MINUTE = nombre sino-coréen + 분. 반 = demi (30 min). Pour demander l'heure : 몇 시예요?",
+     regles:[
+       {ctx:"Les heures (natifs)",forme:"하나→한 / 둘→두 / 셋→세 / 넷→네 avant 시",ex_kr:"한 시 / 두 시 / 세 시 / 네 시",ex_fr:"1h / 2h / 3h / 4h"},
+       {ctx:"5h à 12h",forme:"다섯~열두 + 시",ex_kr:"다섯 시 / 열 시 / 열두 시",ex_fr:"5h / 10h / 12h"},
+       {ctx:"Les minutes (sino-coréens)",forme:"nombre sino + 분",ex_kr:"오 분 / 십 분 / 삼십 분",ex_fr:"5 min / 10 min / 30 min"},
+       {ctx:"Demi-heure",forme:"반 (= 30 min)",ex_kr:"두 시 반",ex_fr:"2h30"},
+       {ctx:"AM / PM",forme:"오전 / 오후 + heure",ex_kr:"오전 아홉 시 / 오후 세 시",ex_fr:"9h du matin / 15h"},
+     ],
+     exemples:[
+       {kr:"몇 시예요?",rom:"Myeot siyeyo?",fr:"Quelle heure est-il ?"},
+       {kr:"한 시예요.",rom:"Han siyeyo.",fr:"Il est 1h."},
+       {kr:"두 시 반이에요.",rom:"Du si banieyo.",fr:"Il est 2h30."},
+       {kr:"세 시 오 분이에요.",rom:"Se si o bunieyo.",fr:"Il est 3h05."},
+       {kr:"열두 시 사십오 분이에요.",rom:"Yeoldu si sasibo bunieyo.",fr:"Il est 12h45."},
+       {kr:"오전 아홉 시에 학교에 가요.",rom:"Ojeon ahop sie hakgyoe gayo.",fr:"Je vais à l'école à 9h du matin."},
+       {kr:"오후 여섯 시에 집에 와요.",rom:"Ohoo yeoseot sie jibe wayo.",fr:"Je rentre chez moi à 18h."},
+     ],
+     note:"⚠️ Les heures utilisent les nombres CORÉENS NATIFS (한, 두, 세...) mais les minutes utilisent les nombres SINO-CORÉENS (일, 이, 삼...)."},
     {id:"de_a_temps",titre:"De... à... (temps) : 부터 ~ 까지",ch:6,
      explain:"부터 = à partir de / 까지 = jusqu'à. Pour les durées temporelles. (Lieux : 에서~까지)",
      exemples:[{kr:"8시부터 9시까지",fr:"de 8h à 9h"},
@@ -536,6 +551,128 @@ const DATA = {
 };
 
 // ═══════════════════════════════════════════════════
+// PHRASES CLÉS
+// ═══════════════════════════════════════════════════
+const PHRASES = [
+  // ── Chapitre 1 — Se présenter ──
+  {ch:1, cat:"Se présenter", kr:"나는 알리스야.", rom:"Naneun Alliséuya.", fr:"Je m'appelle Alice. (informel)"},
+  {ch:1, cat:"Se présenter", kr:"저는 알리스예요.", rom:"Jeoneun Alliséu yeyo.", fr:"Je m'appelle Alice. (poli)"},
+  {ch:1, cat:"Se présenter", kr:"저는 프랑스 사람이에요.", rom:"Jeoneun Peurangseu saramieyo.", fr:"Je suis français(e)."},
+  {ch:1, cat:"Se présenter", kr:"저는 학생이에요.", rom:"Jeoneun haksaengieyo.", fr:"Je suis élève."},
+  {ch:1, cat:"Se présenter", kr:"만나서 반가워요.", rom:"Mannaseo bangawoyo.", fr:"Ravi(e) de te rencontrer."},
+  {ch:1, cat:"Identifier", kr:"이것은 뭐야?", rom:"Igeoseun mwoya?", fr:"Qu'est-ce que c'est ?"},
+  {ch:1, cat:"Identifier", kr:"이것은 공책이야.", rom:"Igeoseun gongchaegiya.", fr:"C'est un cahier."},
+  {ch:1, cat:"Identifier", kr:"나영이 아니야.", rom:"Nayeongi aniya.", fr:"Ce n'est pas Nayoung."},
+  {ch:1, cat:"Identifier", kr:"이것은 내 거야.", rom:"Igeoseun nae geoya.", fr:"C'est le mien."},
+
+  // ── Chapitre 2 — La classe / l'école ──
+  {ch:2, cat:"Il y a / localisation", kr:"가방에 책이 있어요.", rom:"Gabange chaegi isseoyo.", fr:"Il y a un livre dans le sac."},
+  {ch:2, cat:"Il y a / localisation", kr:"수영장이 없어요.", rom:"Suyeongjang i eopseoyo.", fr:"Il n'y a pas de piscine."},
+  {ch:2, cat:"Il y a / localisation", kr:"책상 위에 가방이 있어.", rom:"Chaeksang wie gabangi isseo.", fr:"Le sac est sur le bureau."},
+  {ch:2, cat:"Il y a / localisation", kr:"학교에 있어요.", rom:"Hakgyoe isseoyo.", fr:"Je suis à l'école."},
+  {ch:2, cat:"Énumérer", kr:"책하고 공책이 있어.", rom:"Chaekhago gongchaegi isseo.", fr:"Il y a un livre et un cahier."},
+  {ch:2, cat:"Énumérer", kr:"나도 학생이에요.", rom:"Nado haksaengieyo.", fr:"Moi aussi, je suis élève."},
+  {ch:2, cat:"Questions", kr:"이름이 뭐예요?", rom:"Ireumi mwoyeyo?", fr:"Comment tu t'appelles ?"},
+  {ch:2, cat:"Questions", kr:"몇 학년이에요?", rom:"Myeot hagnyeonieyo?", fr:"Tu es en quelle année ?"},
+
+  // ── Chapitre 3 — Les activités ──
+  {ch:3, cat:"Dire ce qu'on fait", kr:"저는 음악을 들어요.", rom:"Jeoneun eumageul deureoyo.", fr:"J'écoute de la musique."},
+  {ch:3, cat:"Dire ce qu'on fait", kr:"학교에서 공부해요.", rom:"Hakgyoeseo gongbuhaeyo.", fr:"J'étudie à l'école."},
+  {ch:3, cat:"Dire ce qu'on fait", kr:"식당에서 저녁을 먹어요.", rom:"Sikdangeseo jeonyeogeul meogeoyo.", fr:"Je dîne au restaurant."},
+  {ch:3, cat:"Dire ce qu'on fait", kr:"카페에서 음악을 들어.", rom:"Kapeeseo eumageul deureo.", fr:"J'écoute de la musique au café."},
+  {ch:3, cat:"Nier", kr:"책을 안 읽어요.", rom:"Chaegeul an ilgeoyo.", fr:"Je ne lis pas de livre."},
+  {ch:3, cat:"Nier", kr:"쇼핑 안 해요.", rom:"Syoping an haeyo.", fr:"Je ne fais pas de shopping."},
+  {ch:3, cat:"Le temps", kr:"월요일에 축구해요.", rom:"Woryoile chukguhaeyo.", fr:"Je joue au foot le lundi."},
+  {ch:3, cat:"Le temps", kr:"아침에 샤워해요.", rom:"Achime syawohaeyo.", fr:"Je me douche le matin."},
+  {ch:3, cat:"Le temps", kr:"9시에 일어나요.", rom:"Ahop sie ireonayo.", fr:"Je me lève à 9h."},
+
+  // ── Chapitre 4 — La ville / se repérer ──
+  {ch:4, cat:"Localiser", kr:"서점 앞에 있어요.", rom:"Seojeom ape isseoyo.", fr:"C'est devant la librairie."},
+  {ch:4, cat:"Localiser", kr:"카페 옆에 있어요.", rom:"Kape yeope isseoyo.", fr:"C'est à côté du café."},
+  {ch:4, cat:"Localiser", kr:"편의점이 빵집 앞에 있어요.", rom:"Pyeonuijemi ppangjip ape isseoyo.", fr:"La supérette est devant la boulangerie."},
+  {ch:4, cat:"Se déplacer", kr:"서점에 가요.", rom:"Seojeome gayo.", fr:"Je vais à la librairie."},
+  {ch:4, cat:"Se déplacer", kr:"버스로 가요.", rom:"Beoseuro gayo.", fr:"J'y vais en bus."},
+  {ch:4, cat:"Se déplacer", kr:"걸어서 가요.", rom:"Georeoseo gayo.", fr:"J'y vais à pied."},
+  {ch:4, cat:"Se déplacer", kr:"지하철로 가요.", rom:"Jihacheollo gayo.", fr:"J'y vais en métro."},
+  {ch:4, cat:"Possession", kr:"이 책은 누구 거야?", rom:"I chaegeun nugu geoya?", fr:"À qui est ce livre ?"},
+  {ch:4, cat:"Possession", kr:"이것은 내 거야.", rom:"Igeoseun nae geoya.", fr:"C'est le mien."},
+
+  // ── Chapitre 5 — Nourriture / goûts ──
+  {ch:5, cat:"Goûts et désirs", kr:"뭐 먹고 싶어?", rom:"Mwo meokgo sipeo?", fr:"Qu'est-ce que tu veux manger ?"},
+  {ch:5, cat:"Goûts et désirs", kr:"비빔밥 먹고 싶어요.", rom:"Bibimbap meokgo sipeoyo.", fr:"Je veux manger du bibimbap."},
+  {ch:5, cat:"Goûts et désirs", kr:"한국에 가고 싶어요.", rom:"Hanguge gago sipeoyo.", fr:"Je veux aller en Corée."},
+  {ch:5, cat:"Commander", kr:"이거 주세요.", rom:"Igeo juseyo.", fr:"Donnez-moi ça, s'il vous plaît."},
+  {ch:5, cat:"Commander", kr:"얼마예요?", rom:"Eolmayeyo?", fr:"Combien ça coûte ?"},
+  {ch:5, cat:"Composition", kr:"이게 뭐로 만들어요?", rom:"Ige mworo mandeuleoyo?", fr:"De quoi c'est fait ?"},
+  {ch:5, cat:"Composition", kr:"쌀로 만들어요.", rom:"Ssallo mandeuleoyo.", fr:"C'est fait de riz."},
+  {ch:5, cat:"Apprécier", kr:"맛있어요!", rom:"Masisseoyo!", fr:"C'est délicieux !"},
+  {ch:5, cat:"Apprécier", kr:"맛없어요.", rom:"Madeopseoyo.", fr:"Ce n'est pas bon."},
+
+  // ── Chapitre 6 — Le passé / la date / l'heure ──
+  {ch:6, cat:"Passé", kr:"어제 뭐 했어요?", rom:"Eoje mwo haesseoyo?", fr:"Qu'est-ce que tu as fait hier ?"},
+  {ch:6, cat:"Passé", kr:"친구를 만났어요.", rom:"Chingureul manasseoyo.", fr:"J'ai rencontré un ami."},
+  {ch:6, cat:"Passé", kr:"비빔밥을 먹었어요.", rom:"Bibimbabeul meogeotseoyo.", fr:"J'ai mangé du bibimbap."},
+  {ch:6, cat:"Passé", kr:"서울을 구경했어요.", rom:"Seoureul gugyeonghesseoyo.", fr:"J'ai visité Séoul."},
+  {ch:6, cat:"Date", kr:"오늘은 몇 월 며칠이에요?", rom:"Oneureun myeot wol myeochirieyo?", fr:"On est le combien aujourd'hui ?"},
+  {ch:6, cat:"Date", kr:"오늘은 10월 6일이에요.", rom:"Oneureun siworwol yuge irieyo.", fr:"Aujourd'hui c'est le 6 octobre."},
+  {ch:6, cat:"Heure", kr:"몇 시예요?", rom:"Myeot siyeyo?", fr:"Quelle heure est-il ?"},
+  {ch:6, cat:"Heure", kr:"두 시 반이에요.", rom:"Du si banieyo.", fr:"Il est 2h30."},
+  {ch:6, cat:"Durée", kr:"9시부터 6시까지 학교에 있어요.", rom:"Ahop sibuteo yeoseot sigaji hakgyoe isseoyo.", fr:"Je suis à l'école de 9h à 18h."},
+];
+
+function renderPhrases(ch) {
+  const items = ch === 0 ? PHRASES : PHRASES.filter(p => p.ch === ch);
+  const list = document.getElementById('phrases-list');
+
+  if (ch === 0) {
+    // Grouper par chapitre
+    const byChap = {};
+    items.forEach(p => {
+      if (!byChap[p.ch]) byChap[p.ch] = [];
+      byChap[p.ch].push(p);
+    });
+    list.innerHTML = Object.keys(byChap).map(c => `
+      <div class="phrases-chap">
+        <div class="section-title" style="margin-bottom:12px">
+          <span>Chapitre ${c}</span>
+          <span class="tag">${byChap[c].length} phrases</span>
+        </div>
+        ${byChap[c].map(p => phraseCard(p, true)).join('')}
+      </div>`).join('');
+  } else {
+    // Grouper par catégorie dans le chapitre
+    const byCat = {};
+    items.forEach(p => {
+      if (!byCat[p.cat]) byCat[p.cat] = [];
+      byCat[p.cat].push(p);
+    });
+    list.innerHTML = Object.keys(byCat).map(cat => `
+      <div class="phrases-cat">
+        <div class="phrases-cat-label">${cat}</div>
+        ${byCat[cat].map(p => phraseCard(p, false)).join('')}
+      </div>`).join('');
+  }
+}
+
+function phraseCard(p, showChap) {
+  return `<div class="phrase-card">
+    ${showChap ? '' : ''}
+    <div class="phrase-kr">${p.kr}</div>
+    <div class="phrase-rom">${p.rom}</div>
+    <div class="phrase-fr">${p.fr}</div>
+  </div>`;
+}
+
+function filterPhrases(ch) {
+  renderPhrases(ch);
+  const tabs = document.querySelectorAll('#phrases-tabs .tab');
+  tabs.forEach((t, i) => t.classList.toggle('active', i === ch));
+  if (tabs[ch]) tabs[ch].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  const main = document.querySelector('.main');
+  if (main) main.scrollTop = 0;
+}
+
+// ═══════════════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════════════
 function showPage(id) {
@@ -546,12 +683,15 @@ function showPage(id) {
     if (n.getAttribute('onclick')?.includes("'"+id+"'")) n.classList.add('active');
   });
   window.scrollTo(0, 0);
+  const mainEl = document.querySelector('.main');
+  if (mainEl) mainEl.scrollTop = 0;
   if (id === 'vocab') renderVocab('all', '');
-  if (id === 'grammar') renderGrammar(0);
+  if (id === 'grammar') { if (window.filterGrammar) window.filterGrammar(0); else renderGrammar(0); }
   if (id === 'culture') renderCulture();
   if (id === 'expressions') renderExpressions();
   if (id === 'hangeul') renderHangeul();
   if (id === 'verbes') renderVerbes('');
+  if (id === 'phrases') filterPhrases(0);
 }
 
 // ═══════════════════════════════════════════════════
@@ -641,11 +781,6 @@ const CAT_ICONS = {
 };
 
 function renderVocab(cat, search) {
-  // Build category buttons
-  const cbContainer = document.getElementById('cat-buttons');
-  cbContainer.innerHTML = Object.keys(DATA.vocab).map(c =>
-    `<button class="cat-btn${currentCat===c?' active':''}" onclick="setCat('${c}')">${CAT_ICONS[c]||''} ${c}</button>`
-  ).join('');
 
   let items = [];
   if (cat === 'all') {
@@ -681,13 +816,40 @@ function renderVocab(cat, search) {
 
 function setCat(cat) {
   currentCat = cat;
-  document.querySelectorAll('.vocab-controls .cat-btn, #cat-buttons .cat-btn').forEach(b => b.classList.remove('active'));
   renderVocab(cat, currentSearch);
-  // Reactivate the right button
-  document.querySelectorAll('#cat-buttons .cat-btn').forEach(b => {
-    if (b.textContent.trim().includes(cat) || (cat==='all' && b.textContent==='Tout')) b.classList.add('active');
+  // Update "Tout" button
+  const allBtn = document.getElementById('vocab-all-btn');
+  const themeBtn = document.getElementById('vocab-theme-btn');
+  if (allBtn) allBtn.classList.toggle('active', cat === 'all');
+  if (themeBtn) {
+    if (cat === 'all') {
+      themeBtn.textContent = '📂 Thème ▾';
+      themeBtn.classList.remove('active');
+    } else {
+      themeBtn.textContent = (CAT_ICONS[cat]||'📂') + ' ' + cat.split('/')[0].trim() + ' ▾';
+      themeBtn.classList.add('active');
+    }
+  }
+  // Update tiles in drawer
+  document.querySelectorAll('.theme-tile').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === cat);
   });
-  if (cat === 'all') document.querySelector('.vocab-controls .cat-btn').classList.add('active');
+}
+
+function openThemeDrawer() {
+  const grid = document.getElementById('theme-drawer-grid');
+  grid.innerHTML = Object.keys(DATA.vocab).map(c => `
+    <div class="theme-tile${currentCat===c?' active':''}" data-cat="${c}" onclick="setCat('${c}');closeThemeDrawer()">
+      <span class="tt-icon">${CAT_ICONS[c]||'📖'}</span>
+      <span class="tt-label">${c}</span>
+    </div>`).join('');
+  document.getElementById('theme-drawer').classList.add('open');
+  document.getElementById('theme-drawer-overlay').style.display = 'block';
+}
+
+function closeThemeDrawer() {
+  document.getElementById('theme-drawer').classList.remove('open');
+  document.getElementById('theme-drawer-overlay').style.display = 'none';
 }
 
 function filterVocab(q) {
@@ -917,9 +1079,6 @@ function shuffle(arr) { for (let i=arr.length-1;i>0;i--){ const j=Math.floor(Mat
 // INIT
 // ═══════════════════════════════════════════════════
 renderHangeul();
-document.getElementById('cat-buttons').innerHTML = Object.keys(DATA.vocab).map(c =>
-  `<button class="cat-btn" onclick="setCat('${c}')">${CAT_ICONS[c]||''} ${c}</button>`
-).join('');
 
 // Keyboard shortcuts
 document.addEventListener('keydown', e => {
@@ -965,3 +1124,134 @@ window.addEventListener('load', () => {
     setTimeout(() => { if (splash) splash.remove(); }, 600);
   }, 1200);
 });
+
+// ═══════════════════════════════════════════════════
+// SWIPE — Hangeul (gauche/droite pour changer de catégorie)
+// ═══════════════════════════════════════════════════
+(function() {
+  const HANGEUL_TABS = ['consonnes', 'doubles', 'voyelles', 'composees', 'batchim', 'astuces'];
+  let hgCurrentIndex = 0;
+  let hgTouchStartX = 0, hgTouchStartY = 0;
+
+  function goToHangeulTab(index) {
+    if (index < 0 || index >= HANGEUL_TABS.length) return;
+    hgCurrentIndex = index;
+    const tab = HANGEUL_TABS[index];
+    document.querySelectorAll('.hangeul-section').forEach(s => s.style.display = 'none');
+    document.getElementById('hg-' + tab).style.display = 'block';
+    const tabs = document.querySelectorAll('#page-hangeul .tab');
+    tabs.forEach((t, i) => t.classList.toggle('active', i === index));
+    // Scroll active tab into view in the tabs bar
+    if (tabs[index]) tabs[index].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    // Reset scroll position of main
+    const main = document.querySelector('.main');
+    if (main) main.scrollTop = 0;
+  }
+
+  // Override switchHangeulTab to track current index for swipe
+  window.switchHangeulTab = function(tab) {
+    const idx = HANGEUL_TABS.indexOf(tab);
+    if (idx !== -1) goToHangeulTab(idx);
+  };
+
+  const main = document.querySelector('.main');
+  if (main) {
+    main.addEventListener('touchstart', e => {
+      hgTouchStartX = e.changedTouches[0].screenX;
+      hgTouchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    main.addEventListener('touchend', e => {
+      if (!document.getElementById('page-hangeul').classList.contains('active')) return;
+      const dx = e.changedTouches[0].screenX - hgTouchStartX;
+      const dy = e.changedTouches[0].screenY - hgTouchStartY;
+      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.8) return;
+      if (dx < 0) goToHangeulTab(hgCurrentIndex + 1);
+      else goToHangeulTab(hgCurrentIndex - 1);
+    }, { passive: true });
+  }
+})();
+
+// ═══════════════════════════════════════════════════
+// SWIPE — Grammaire (gauche/droite pour changer de chapitre)
+// ═══════════════════════════════════════════════════
+(function() {
+  const GRAMMAR_CHAPTERS = [0, 1, 2, 3, 4, 5, 6];
+  let grCurrentIndex = 0;
+  let grTouchStartX = 0, grTouchStartY = 0;
+
+  function goToGrammarTab(index) {
+    if (index < 0 || index >= GRAMMAR_CHAPTERS.length) return;
+    grCurrentIndex = index;
+    renderGrammar(GRAMMAR_CHAPTERS[index]);
+    const tabs = document.querySelectorAll('#grammar-tabs .tab');
+    tabs.forEach((t, i) => t.classList.toggle('active', i === index));
+    if (tabs[index]) tabs[index].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    const main = document.querySelector('.main');
+    if (main) main.scrollTop = 0;
+  }
+
+  // Override filterGrammar (called by onclick) to track index for swipe
+  window.filterGrammar = function(ch) {
+    const idx = GRAMMAR_CHAPTERS.indexOf(ch);
+    if (idx !== -1) goToGrammarTab(idx);
+    else renderGrammar(ch);
+  };
+
+  const main = document.querySelector('.main');
+  if (main) {
+    main.addEventListener('touchstart', e => {
+      grTouchStartX = e.changedTouches[0].screenX;
+      grTouchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    main.addEventListener('touchend', e => {
+      if (!document.getElementById('page-grammar').classList.contains('active')) return;
+      const dx = e.changedTouches[0].screenX - grTouchStartX;
+      const dy = e.changedTouches[0].screenY - grTouchStartY;
+      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.8) return;
+      if (dx < 0) goToGrammarTab(grCurrentIndex + 1);
+      else goToGrammarTab(grCurrentIndex - 1);
+    }, { passive: true });
+  }
+})();
+
+// ═══════════════════════════════════════════════════
+// SWIPE — Phrases clés (gauche/droite pour changer de chapitre)
+// ═══════════════════════════════════════════════════
+(function() {
+  const CHAPTERS = [0, 1, 2, 3, 4, 5, 6];
+  let phCurrentIndex = 0;
+  let phTouchStartX = 0, phTouchStartY = 0;
+
+  function goToPhrasesTab(index) {
+    if (index < 0 || index >= CHAPTERS.length) return;
+    phCurrentIndex = index;
+    filterPhrases(CHAPTERS[index]);
+  }
+
+  const main = document.querySelector('.main');
+  if (main) {
+    main.addEventListener('touchstart', e => {
+      phTouchStartX = e.changedTouches[0].screenX;
+      phTouchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    main.addEventListener('touchend', e => {
+      if (!document.getElementById('page-phrases').classList.contains('active')) return;
+      const dx = e.changedTouches[0].screenX - phTouchStartX;
+      const dy = e.changedTouches[0].screenY - phTouchStartY;
+      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.8) return;
+      if (dx < 0) goToPhrasesTab(phCurrentIndex + 1);
+      else goToPhrasesTab(phCurrentIndex - 1);
+    }, { passive: true });
+  }
+
+  // Sync filterPhrases tab clicks to track index
+  const origFilter = window.filterPhrases;
+  window.filterPhrases = function(ch) {
+    const idx = CHAPTERS.indexOf(ch);
+    if (idx !== -1) phCurrentIndex = idx;
+    origFilter(ch);
+  };
+})();

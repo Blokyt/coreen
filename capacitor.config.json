@@ -1,5 +1,8 @@
 {
   "appId": "com.blokaja.coreen",
   "appName": "Blokaja",
-  "webDir": "www"
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#0A0806"
+  }
 }
