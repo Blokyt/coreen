@@ -5,3 +5,8 @@ node_modules/
 
 # www/ is auto-synced from root sources by rebuild-apk.py
 www/
+
+# Extraction pipeline (generated, heavy)
+pdf_chunks/
+extraction_data/
+*.pdf

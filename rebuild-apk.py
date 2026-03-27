@@ -93,11 +93,9 @@ def sync_web_assets(project_root, web_dir):
     # Common web files to copy (src_name -> dst_name)
     web_files = [
         ('index.html', 'index.html'),
-        ('revision.html', 'index.html'),  # revision.html is the main HTML at root
         ('styles.css', 'styles.css'),
+        ('data.js', 'data.js'),
         ('app.js', 'app.js'),
-        ('main.js', 'main.js'),
-        ('script.js', 'script.js'),
     ]
     copied = []
     seen_dst = set()

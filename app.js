@@ -1,1257 +1,3100 @@
 // ═══════════════════════════════════════════════════
-// DATA (extrait du manuel Kaja, Hanguk! A1)
+// BLOKAJA v2 — App de revision coreen A1
 // ═══════════════════════════════════════════════════
-const DATA = {
-  consonnes: [
-    {l:'ㄱ',r:'g/k',s:'g (gare)'},
-    {l:'ㄴ',r:'n',s:'n (nuit)'},
-    {l:'ㄷ',r:'d/t',s:'d (dame)'},
-    {l:'ㄹ',r:'r/l',s:'r intermédiaire'},
-    {l:'ㅁ',r:'m',s:'m (maman)'},
-    {l:'ㅂ',r:'b/p',s:'b (beau)'},
-    {l:'ㅅ',r:'s/ch',s:'s (salut)'},
-    {l:'ㅇ',r:'ø/ng',s:'muette / ng final'},
-    {l:'ㅈ',r:'dj',s:'dj (djinn)'},
-    {l:'ㅊ',r:'tch',s:'tch (Tchad)'},
-    {l:'ㅋ',r:'k',s:'k (camion)'},
-    {l:'ㅌ',r:'t',s:'t (table)'},
-    {l:'ㅍ',r:'p',s:'p (Paris)'},
-    {l:'ㅎ',r:'h',s:'h aspiré'},
-  ],
-  doubles: [
-    {l:'ㄲ',r:'kk',s:'k tendu'},
-    {l:'ㄸ',r:'tt',s:'t tendu'},
-    {l:'ㅃ',r:'pp',s:'p tendu'},
-    {l:'ㅆ',r:'ss',s:'s tendu'},
-    {l:'ㅉ',r:'jj',s:'tch tendu'},
-  ],
-  voyelles: [
-    {l:'ㅏ',r:'a'},{l:'ㅑ',r:'ya'},{l:'ㅓ',r:'eo'},{l:'ㅕ',r:'yeo'},
-    {l:'ㅗ',r:'o'},{l:'ㅛ',r:'yo'},{l:'ㅜ',r:'ou'},{l:'ㅠ',r:'you'},
-    {l:'ㅡ',r:'eu'},{l:'ㅣ',r:'i'},
-  ],
-  composees: [
-    {l:'ㅐ',r:'e',c:'ㅏ+ㅣ'},{l:'ㅒ',r:'ye',c:'ㅑ+ㅣ'},
-    {l:'ㅔ',r:'e',c:'ㅓ+ㅣ'},{l:'ㅖ',r:'ye',c:'ㅕ+ㅣ'},
-    {l:'ㅘ',r:'wa',c:'ㅗ+ㅏ'},{l:'ㅙ',r:'wé',c:'ㅗ+ㅐ'},
-    {l:'ㅚ',r:'wé/ué',c:'ㅗ+ㅣ'},{l:'ㅝ',r:'weo',c:'ㅜ+ㅓ'},
-    {l:'ㅞ',r:'wé',c:'ㅜ+ㅔ'},{l:'ㅟ',r:'oui',c:'ㅜ+ㅣ'},
-    {l:'ㅢ',r:'eui/i',c:'ㅡ+ㅣ'},
-  ],
-  batchim: [
-    {ph:'k',lets:'ㄱ ㄲ ㅋ',ex:[{kr:'책',fr:'livre'},{kr:'밖',fr:'extérieur'}]},
-    {ph:'n',lets:'ㄴ',ex:[{kr:'손',fr:'main'}]},
-    {ph:'t',lets:'ㄷ ㅅ ㅆ ㅈ ㅊ ㅌ ㅎ',ex:[{kr:'옷',fr:'vêtement'},{kr:'꽃',fr:'fleur'},{kr:'밑',fr:'en dessous'}]},
-    {ph:'l',lets:'ㄹ',ex:[{kr:'달',fr:'lune'}]},
-    {ph:'m',lets:'ㅁ',ex:[{kr:'밤',fr:'nuit / châtaigne'}]},
-    {ph:'p',lets:'ㅂ ㅍ',ex:[{kr:'밥',fr:'riz cuit'},{kr:'잎',fr:'feuille'}]},
-    {ph:'ng',lets:'ㅇ',ex:[{kr:'강',fr:'fleuve'}]},
-  ],
-  expressions: [
-    {fr:"Bonjour.",note:"Le '?' est normal ! En coréen c'est littéralement 'Vous portez-vous bien ?' (안녕 = paix/bien-être). Mais s'utilise comme simple 'bonjour'.",poli:"안녕하세요?",inf:"안녕?",rp:"annyeonghaseyo",ri:"annyeong"},
-    {fr:"Enchanté(e).",poli:"만나서 반가워요.",inf:"만나서 반가워.",rp:"mannaseo bangawoyo",ri:"mannaseo bangawo"},
-    {fr:"Comment allez-vous ?",poli:"어떻게 지내세요?",inf:"어떻게 지내?",rp:"eotteoke jinaeseyo",ri:"eotteoke jinae"},
-    {fr:"Je vais bien.",poli:"잘 지내요.",inf:"잘 지내.",rp:"jal jinaeyo",ri:"jal jinae"},
-    {fr:"Merci.",poli:"감사합니다.",inf:"고마워.",rp:"gamsahamnida",ri:"gomawo"},
-    {fr:"De rien.",poli:"아니에요.",inf:"아니야.",rp:"anieyo",ri:"aniya"},
-    {fr:"Oui.",poli:"네.",inf:"응.",rp:"ne",ri:"eung"},
-    {fr:"Non.",poli:"아니요.",inf:"아니.",rp:"aniyo",ri:"ani"},
-    {fr:"Bon appétit.",poli:"맛있게 드세요.",inf:"맛있게 먹어.",rp:"masitge deuseyo",ri:"masitge meogeo"},
-    {fr:"C'est délicieux.",poli:"맛있어요.",inf:"맛있어.",rp:"masisseoyo",ri:"masisseo"},
-    {fr:"Je suis désolé(e).",poli:"죄송합니다.",inf:"미안해.",rp:"joesonghamnida",ri:"mianhae"},
-    {fr:"Ce n'est pas grave.",poli:"괜찮아요.",inf:"괜찮아.",rp:"gwaenchanayo",ri:"gwaenchana"},
-    {fr:"Au revoir. (on reste, l'autre part)",note:"L'autre 'va', donc on lui dit 'd'aller en paix' (가다 = aller).",poli:"안녕히 가세요.",inf:"안녕!",rp:"annyeonghi gaseyo",ri:"annyeong"},
-    {fr:"Au revoir. (on part, l'autre reste)",note:"L'autre 'reste', donc on lui dit de 'rester en paix' (계시다 = rester).",poli:"안녕히 계세요.",inf:"안녕!",rp:"annyeonghi gyeseyo",ri:"annyeong"},
-    {fr:"Je ne comprends pas.",poli:"모르겠어요.",inf:"모르겠어.",rp:"moreugeseoyo",ri:"moreugesseo"},
-    {fr:"Répétez, s'il vous plaît.",poli:"다시 말해 주세요.",inf:"다시 말해줘.",rp:"dasi malhae juseyo",ri:"dasi malhaejwo"},
-    {fr:"Où est... ?",poli:"...이/가 어디에 있어요?",inf:"...이/가 어디에 있어?",rp:"...i/ga eodie isseoyo",ri:"...i/ga eodie isseo"},
-    {fr:"Je veux manger...",poli:"...을/를 먹고 싶어요.",inf:"...을/를 먹고 싶어.",rp:"...eul/reul meokgo sipeoyo",ri:"...eul/reul meokgo sipeo"},
-    {fr:"Comment on y va ?",poli:"어떻게 가요?",inf:"어떻게 가?",rp:"eotteoke gayo",ri:"eotteoke ga"},
-    {fr:"À qui est ... ?",poli:"...이/가 누구 거예요?",inf:"...이/가 누구 거야?",rp:"...i/ga nugu geoyeyo",ri:"...i/ga nugu geoya"},
-  ],
-  vocab: {
-    "Sac / École":[
-      {kr:"가방",fr:"sac",rom:"gabang"},
-      {kr:"책",fr:"livre",rom:"chaek"},
-      {kr:"공책",fr:"cahier",rom:"gongchaek"},
-      {kr:"필통",fr:"trousse",rom:"piltong"},
-      {kr:"연필",fr:"crayon",rom:"yeonpil"},
-      {kr:"볼펜",fr:"stylo",rom:"bolpen"},
-      {kr:"지우개",fr:"gomme",rom:"jiugae"},
-      {kr:"계산기",fr:"calculatrice",rom:"gyesangi"},
-      {kr:"자",fr:"règle",rom:"ja"},
-      {kr:"풀",fr:"colle",rom:"pul"},
-      {kr:"안경",fr:"lunettes",rom:"angyeong"},
-      {kr:"지갑",fr:"portefeuille",rom:"jigap"},
-      {kr:"열쇠",fr:"clé",rom:"yeolsoe"},
-      {kr:"휴대폰",fr:"téléphone portable",rom:"hyudaepon"},
-      {kr:"노트북",fr:"ordinateur portable",rom:"noteubuk"},
-    ],
-    "Classe / Lycée":[
-      {kr:"칠판",fr:"tableau noir",rom:"chilpan"},
-      {kr:"화이트보드",fr:"tableau blanc",rom:"hwaiteubodeu"},
-      {kr:"칠판 지우개",fr:"efface de tableau",rom:"chilpan jiugae"},
-      {kr:"게시판",fr:"panneau d'affichage",rom:"gesipan"},
-      {kr:"사물함",fr:"casier",rom:"samulham"},
-      {kr:"쓰레기통",fr:"poubelle",rom:"sseuregitong"},
-      {kr:"체육관",fr:"gymnase",rom:"cheyukgwan"},
-      {kr:"보건실",fr:"infirmerie",rom:"bogeonsil"},
-      {kr:"매점",fr:"supérette (lycée)",rom:"maejeom"},
-      {kr:"학생 식당",fr:"cantine",rom:"haksaeng sikdang"},
-      {kr:"도서관",fr:"bibliothèque",rom:"doseogwan"},
-      {kr:"운동장",fr:"terrain sportif",rom:"undongjang"},
-      {kr:"수영장",fr:"piscine",rom:"suyeongjang"},
-      {kr:"컴퓨터실",fr:"salle informatique",rom:"keompyuteosil"},
-      {kr:"음악실",fr:"salle de musique",rom:"eumaksil"},
-      {kr:"미술실",fr:"salle d'arts plastiques",rom:"misulsil"},
-    ],
-    "Chambre / Maison":[
-      {kr:"방",fr:"chambre",rom:"bang"},
-      {kr:"침대",fr:"lit",rom:"chimdae"},
-      {kr:"책상",fr:"bureau (meuble)",rom:"chaeksang"},
-      {kr:"의자",fr:"chaise",rom:"uija"},
-      {kr:"옷장",fr:"armoire",rom:"otjang"},
-      {kr:"창문",fr:"fenêtre",rom:"changmun"},
-      {kr:"커튼",fr:"rideau",rom:"keoteun"},
-      {kr:"스탠드",fr:"lampe de bureau",rom:"seutaendeu"},
-      {kr:"포스터",fr:"affiche / poster",rom:"poseuteo"},
-      {kr:"게임기",fr:"console de jeux vidéo",rom:"geimgi"},
-      {kr:"거실",fr:"salon",rom:"geosil"},
-      {kr:"주방",fr:"cuisine",rom:"jubang"},
-      {kr:"화장실",fr:"toilettes",rom:"hwajangsil"},
-      {kr:"아파트",fr:"appartement",rom:"apateu"},
-      {kr:"실내화",fr:"chaussons d'intérieur",rom:"sillaehwa"},
-    ],
-    "Nourriture":[
-      {kr:"밥",fr:"riz cuit",rom:"bap"},{kr:"쌀",fr:"riz cru",rom:"ssal"},
-      {kr:"면",fr:"nouilles",rom:"myeon"},{kr:"고기",fr:"viande",rom:"gogi"},
-      {kr:"닭고기",fr:"poulet",rom:"dakgogi"},{kr:"계란",fr:"œuf",rom:"gyeran"},
-      {kr:"배추",fr:"chou chinois",rom:"baechu"},{kr:"고추",fr:"piment",rom:"gochu"},
-      {kr:"간장",fr:"sauce soja",rom:"ganjang"},{kr:"참기름",fr:"huile de sésame",rom:"chamgireum"},
-      {kr:"고추장",fr:"pâte de piment",rom:"gochujang"},{kr:"두부",fr:"tofu",rom:"dubu"},
-      {kr:"김치",fr:"kimchi",rom:"gimchi"},{kr:"빵",fr:"pain",rom:"ppang"},
-      {kr:"사과",fr:"pomme",rom:"sagwa"},{kr:"바나나",fr:"banane",rom:"banana"},
-      {kr:"딸기",fr:"fraise",rom:"ttalgi"},{kr:"당근",fr:"carotte",rom:"danggeun"},
-      {kr:"감자",fr:"pomme de terre",rom:"gamja"},{kr:"마늘",fr:"ail",rom:"maneul"},
-      {kr:"양파",fr:"oignon",rom:"yangpa"},{kr:"버섯",fr:"champignon",rom:"beoseot"},
-    ],
-    "Plats coréens":[
-      {kr:"비빔밥",fr:"bibimbap",rom:"bibimbap"},
-      {kr:"김밥",fr:"kimbap",rom:"gimbap"},
-      {kr:"냉면",fr:"nouilles froides",rom:"naengmyeon"},
-      {kr:"떡볶이",fr:"tteokbokki",rom:"tteokbokki"},
-      {kr:"순두부찌개",fr:"ragoût de tofu soyeux",rom:"sundubu jjigae"},
-      {kr:"불고기",fr:"bulgogi",rom:"bulgogi"},
-      {kr:"김치볶음밥",fr:"riz sauté au kimchi",rom:"gimchi bokkeum bap"},
-      {kr:"공기밥",fr:"bol de riz individuel",rom:"gonggibap"},
-      {kr:"약과",fr:"yakgwa (biscuit au miel)",rom:"yakgwa"},
-      {kr:"빙수",fr:"bingsu (glace pilée)",rom:"bingsu"},
-      {kr:"단팥빵",fr:"danpatbang (brioche haricots)",rom:"danpatbang"},
-    ],
-    "Boissons & Saveurs":[
-      {kr:"물",fr:"eau",rom:"mul"},{kr:"차",fr:"thé",rom:"cha"},
-      {kr:"커피",fr:"café",rom:"keopi"},{kr:"주스",fr:"jus",rom:"juseu"},
-      {kr:"콜라",fr:"cola",rom:"kolla"},
-      {kr:"달다",fr:"sucré(e)",rom:"dalda"},{kr:"맵다",fr:"piquant(e)",rom:"maepda"},
-      {kr:"짜다",fr:"salé(e)",rom:"jjada"},{kr:"시다",fr:"acide",rom:"sida"},
-      {kr:"쓰다",fr:"amer / amère",rom:"sseuda"},
-    ],
-    "Activités":[
-      {kr:"운동하다",fr:"faire du sport",rom:"undonghada"},
-      {kr:"공부하다",fr:"étudier",rom:"gongbuhada"},
-      {kr:"요리하다",fr:"cuisiner",rom:"yorihada"},
-      {kr:"쇼핑하다",fr:"faire du shopping",rom:"syopinghada"},
-      {kr:"수영하다",fr:"nager",rom:"suyeonghada"},
-      {kr:"노래하다",fr:"chanter",rom:"noraehada"},
-      {kr:"축구하다",fr:"jouer au football",rom:"chukguhada"},
-      {kr:"농구하다",fr:"jouer au basket",rom:"nongguhada"},
-      {kr:"춤을 추다",fr:"danser",rom:"chumeul chuda"},
-      {kr:"책을 읽다",fr:"lire un livre",rom:"chaegul ikda"},
-      {kr:"영화를 보다",fr:"regarder un film",rom:"yeonghwareul boda"},
-      {kr:"드라마를 보다",fr:"regarder une série",rom:"deuramareul boda"},
-      {kr:"음악을 듣다",fr:"écouter de la musique",rom:"eumagul deutda",note:"irrégulier: 듣→들"},
-      {kr:"친구를 만나다",fr:"voir ses ami(e)s",rom:"chingureul mannada"},
-      {kr:"숙제하다",fr:"faire ses devoirs",rom:"sukjehada"},
-    ],
-    "Vie quotidienne":[
-      {kr:"일어나다",fr:"se lever",rom:"ireonada"},
-      {kr:"샤워하다",fr:"se doucher",rom:"syawohada"},
-      {kr:"아침을 먹다",fr:"prendre le petit-déjeuner",rom:"achimeul meokda"},
-      {kr:"수업을 듣다",fr:"suivre les cours",rom:"suebeul deutda"},
-      {kr:"점심을 먹다",fr:"déjeuner",rom:"jeomsimeul meokda"},
-      {kr:"저녁을 먹다",fr:"dîner",rom:"jeonyeogeul meokda"},
-      {kr:"자다",fr:"dormir / se coucher",rom:"jada"},
-    ],
-    "Moments / Temps":[
-      {kr:"오늘",fr:"aujourd'hui",rom:"oneul"},
-      {kr:"지금",fr:"maintenant",rom:"jigeum"},
-      {kr:"어제",fr:"hier",rom:"eoje"},
-      {kr:"아침",fr:"le matin",rom:"achim"},
-      {kr:"점심",fr:"le midi",rom:"jeomsim"},
-      {kr:"오후",fr:"l'après-midi",rom:"ohu"},
-      {kr:"저녁",fr:"le soir",rom:"jeonyeok"},
-      {kr:"밤",fr:"la nuit",rom:"bam"},
-      {kr:"주말",fr:"le week-end",rom:"jumal"},
-      {kr:"지난 주말",fr:"le week-end dernier",rom:"jinan jumal"},
-    ],
-    "Jours de la semaine":[
-      {kr:"월요일",fr:"lundi",rom:"woryoil"},{kr:"화요일",fr:"mardi",rom:"hwaryoil"},
-      {kr:"수요일",fr:"mercredi",rom:"suryoil"},{kr:"목요일",fr:"jeudi",rom:"mogyoil"},
-      {kr:"금요일",fr:"vendredi",rom:"geumyoil"},{kr:"토요일",fr:"samedi",rom:"toyoil"},
-      {kr:"일요일",fr:"dimanche",rom:"iryoil"},
-    ],
-    "Sports":[
-      {kr:"태권도",fr:"taekwondo",rom:"taegwondo"},
-      {kr:"축구",fr:"football",rom:"chukgu"},
-      {kr:"농구",fr:"basket",rom:"nonggu"},
-      {kr:"수영",fr:"natation",rom:"suyeong"},
-      {kr:"테니스",fr:"tennis",rom:"teniseu"},
-      {kr:"배드민턴",fr:"badminton",rom:"baedeumiton"},
-      {kr:"스키",fr:"ski",rom:"seuki"},
-      {kr:"스노우보드",fr:"snowboard",rom:"seunobodeu"},
-      {kr:"탁구",fr:"tennis de table",rom:"takgu"},
-      {kr:"유도",fr:"judo",rom:"yudo"},
-      {kr:"골프",fr:"golf",rom:"golpeu"},
-      {kr:"배구",fr:"volley-ball",rom:"baegu"},
-      {kr:"야구",fr:"baseball",rom:"yagu"},
-      {kr:"조깅",fr:"jogging",rom:"joging"},
-      {kr:"스케이트",fr:"patinage",rom:"seukeiteu"},
-    ],
-    "Famille":[
-      {kr:"할머니",fr:"grand-mère",rom:"halmeoni"},
-      {kr:"할아버지",fr:"grand-père",rom:"harabeoji"},
-      {kr:"어머니",fr:"mère (formel)",rom:"eomeoni"},
-      {kr:"아버지",fr:"père (formel)",rom:"abeoji"},
-      {kr:"엄마",fr:"maman",rom:"eomma"},
-      {kr:"아빠",fr:"papa",rom:"appa"},
-      {kr:"오빠",fr:"grand frère (pour une fille)",rom:"oppa"},
-      {kr:"형",fr:"grand frère (pour un garçon)",rom:"hyeong"},
-      {kr:"언니",fr:"grande sœur (pour une fille)",rom:"eonni"},
-      {kr:"누나",fr:"grande sœur (pour un garçon)",rom:"nuna"},
-      {kr:"남동생",fr:"petit frère",rom:"namdongsaeng"},
-      {kr:"여동생",fr:"petite sœur",rom:"yeodongsaeng"},
-      {kr:"아들",fr:"fils",rom:"adeul"},
-      {kr:"딸",fr:"fille (enfant)",rom:"ttal"},
-      {kr:"사촌",fr:"cousin(e)",rom:"sachon"},
-    ],
-    "Pays & Nationalités":[
-      {kr:"한국",fr:"Corée du Sud",rom:"hanguk"},{kr:"프랑스",fr:"France",rom:"peurangseu"},
-      {kr:"일본",fr:"Japon",rom:"ilbon"},{kr:"중국",fr:"Chine",rom:"jungguk"},
-      {kr:"미국",fr:"États-Unis",rom:"miguk"},{kr:"독일",fr:"Allemagne",rom:"dogil"},
-      {kr:"영국",fr:"Royaume-Uni",rom:"yeongguk"},{kr:"스페인",fr:"Espagne",rom:"seupein"},
-      {kr:"이탈리아",fr:"Italie",rom:"itallia"},{kr:"인도",fr:"Inde",rom:"indo"},
-      {kr:"브라질",fr:"Brésil",rom:"beurajil"},{kr:"베트남",fr:"Vietnam",rom:"beteunam"},
-      {kr:"태국",fr:"Thaïlande",rom:"taeguk"},{kr:"캐나다",fr:"Canada",rom:"kaenada"},
-      {kr:"모로코",fr:"Maroc",rom:"moroko"},{kr:"알제리",fr:"Algérie",rom:"aljeri"},
-      {kr:"세네갈",fr:"Sénégal",rom:"senegal"},{kr:"호주",fr:"Australie",rom:"hoju"},
-      {kr:"사람",fr:"personne (→ nationalité)",rom:"saram",note:"pays + 사람 = nationalité"},
-    ],
-    "Quartier & Lieux":[
-      {kr:"카페",fr:"café",rom:"kape"},{kr:"약국",fr:"pharmacie",rom:"yakguk"},
-      {kr:"서점",fr:"librairie",rom:"seojeom"},{kr:"백화점",fr:"grand magasin",rom:"baekhwajeom"},
-      {kr:"빵집",fr:"boulangerie",rom:"ppangjip"},{kr:"꽃집",fr:"fleuriste",rom:"kkotjip"},
-      {kr:"영화관",fr:"cinéma",rom:"yeonghwagwan"},{kr:"노래방",fr:"noraebang",rom:"noraebang"},
-      {kr:"PC방",fr:"PC bang",rom:"PC bang"},{kr:"식당",fr:"restaurant",rom:"sikdang"},
-      {kr:"공원",fr:"parc",rom:"gongwon"},{kr:"미술관",fr:"musée",rom:"misulgwan"},
-      {kr:"슈퍼마켓",fr:"supermarché",rom:"syupeomaket"},
-      {kr:"경찰서",fr:"commissariat",rom:"gyeongchalseo"},
-      {kr:"우체국",fr:"poste",rom:"ucheguk"},{kr:"은행",fr:"banque",rom:"eunhaeng"},
-    ],
-    "Transports":[
-      {kr:"지하철",fr:"métro",rom:"jihacheol"},{kr:"버스",fr:"bus",rom:"beoseu"},
-      {kr:"기차",fr:"train",rom:"gicha"},{kr:"자동차",fr:"voiture",rom:"jadongcha"},
-      {kr:"자전거",fr:"vélo",rom:"jajeongeo"},{kr:"택시",fr:"taxi",rom:"taeksi"},
-      {kr:"비행기",fr:"avion",rom:"bihaenggi"},{kr:"오토바이",fr:"moto",rom:"otobai"},
-      {kr:"킥보드",fr:"trottinette",rom:"kikbodeu"},{kr:"배",fr:"bateau",rom:"bae"},
-      {kr:"편의점",fr:"supérette 24h/24",rom:"pyeonuijeom"},
-    ],
-    "Pièces & Maison":[
-      {kr:"거실",fr:"salon",rom:"geosil"},{kr:"부엌",fr:"cuisine",rom:"bueok"},
-      {kr:"침실",fr:"chambre à coucher",rom:"chimsil"},{kr:"화장실",fr:"toilettes",rom:"hwajangsil"},
-      {kr:"욕실",fr:"salle de bain",rom:"yoksil"},{kr:"정원",fr:"jardin",rom:"jeongwon"},
-      {kr:"현관",fr:"entrée",rom:"hyeongwan"},{kr:"베란다",fr:"balcon / véranda",rom:"beranda"},
-      {kr:"서재",fr:"bureau (pièce)",rom:"seojae"},{kr:"차고",fr:"garage",rom:"chago"},
-    ],
-    "Position & Direction":[
-      {kr:"앞",fr:"devant",rom:"ap"},{kr:"뒤",fr:"derrière",rom:"dwi"},
-      {kr:"옆",fr:"à côté (de)",rom:"yeop"},{kr:"위",fr:"sur / au-dessus",rom:"wi"},
-      {kr:"아래",fr:"sous / en-dessous",rom:"arae"},{kr:"안",fr:"intérieur",rom:"an"},
-      {kr:"밖",fr:"extérieur",rom:"bak"},{kr:"오른쪽",fr:"à droite",rom:"oreunjok"},
-      {kr:"왼쪽",fr:"à gauche",rom:"oenjok"},
-    ],
-    "Émotions":[
-      {kr:"행복하다",fr:"être heureux",rom:"haengbokhada"},
-      {kr:"슬프다",fr:"être triste",rom:"seulpeuda"},
-      {kr:"화가 나다",fr:"être en colère",rom:"hwaga nada"},
-    ],
-    "Couleurs":[
-      {kr:"빨간색",fr:"rouge",rom:"ppalgansaek"},
-      {kr:"주황색",fr:"orange",rom:"juhwangsaek"},
-      {kr:"노란색",fr:"jaune",rom:"noransaek"},
-      {kr:"초록색",fr:"vert",rom:"choroksaek"},
-      {kr:"파란색",fr:"bleu",rom:"paransaek"},
-      {kr:"보라색",fr:"violet",rom:"borasaek"},
-      {kr:"분홍색",fr:"rose",rom:"bunhongsaek"},
-      {kr:"하얀색",fr:"blanc",rom:"hayansaek"},
-      {kr:"검은색",fr:"noir",rom:"geomeunsaek"},
-      {kr:"갈색",fr:"marron",rom:"galsaek"},
-      {kr:"회색",fr:"gris",rom:"hoesaek"},
-    ],
-    "Saisons":[
-      {kr:"봄",fr:"printemps",rom:"bom"},
-      {kr:"여름",fr:"été",rom:"yeoreum"},
-      {kr:"가을",fr:"automne",rom:"gaeul"},
-      {kr:"겨울",fr:"hiver",rom:"gyeoul"},
-    ],
-    "Pronoms & Connecteurs":[
-      {kr:"나",fr:"je, moi (informel)",rom:"na",note:"나는 = moi (thème)"},
-      {kr:"저",fr:"je, moi (poli)",rom:"jeo",note:"저는 = moi (poli)"},
-      {kr:"너",fr:"tu, toi (informel)",rom:"neo"},
-      {kr:"우리",fr:"nous / mon (famille)",rom:"uri",note:"우리 엄마 = ma maman"},
-      {kr:"여러분",fr:"vous (pluriel, poli)",rom:"yeoreobun"},
-      {kr:"그리고",fr:"et (entre phrases)",rom:"geurigo"},
-      {kr:"그래서",fr:"donc",rom:"geuraeseo"},
-      {kr:"하지만",fr:"mais",rom:"hajiman"},
-      {kr:"그런데",fr:"mais, or",rom:"geureonde"},
-      {kr:"도",fr:"aussi (particule)",rom:"do",note:"나도 = moi aussi"},
-    ],
-    "Nombres sino-coréens":[
-      {kr:"일",fr:"1",rom:"il"},{kr:"이",fr:"2",rom:"i"},
-      {kr:"삼",fr:"3",rom:"sam"},{kr:"사",fr:"4",rom:"sa"},
-      {kr:"오",fr:"5",rom:"o"},{kr:"육",fr:"6",rom:"yuk"},
-      {kr:"칠",fr:"7",rom:"chil"},{kr:"팔",fr:"8",rom:"pal"},
-      {kr:"구",fr:"9",rom:"gu"},{kr:"십",fr:"10",rom:"sip"},
-      {kr:"백",fr:"100",rom:"baek"},{kr:"천",fr:"1 000",rom:"cheon"},
-      {kr:"만",fr:"10 000",rom:"man"},
-    ],
-    "Nombres coréens natifs":[
-      {kr:"하나 (한)",fr:"1",rom:"hana (han)",note:"한 devant classificateur"},
-      {kr:"둘 (두)",fr:"2",rom:"dul (du)",note:"두 devant classificateur"},
-      {kr:"셋 (세)",fr:"3",rom:"set (se)",note:"세 devant classificateur"},
-      {kr:"넷 (네)",fr:"4",rom:"net (ne)",note:"네 devant classificateur"},
-      {kr:"다섯",fr:"5",rom:"daseot"},{kr:"여섯",fr:"6",rom:"yeoseot"},
-      {kr:"일곱",fr:"7",rom:"ilgop"},{kr:"여덟",fr:"8",rom:"yeodeol"},
-      {kr:"아홉",fr:"9",rom:"ahop"},{kr:"열",fr:"10",rom:"yeol"},
-      {kr:"스물 (스무)",fr:"20",rom:"seumul (semu)"},
-    ],
-  },
-  grammar: [
-    {id:"particule_topic",titre:"Particule thématique 은/는",ch:1,
-     explain:"Se place après le sujet/thème de la phrase.",
-     regles:[{ctx:"après voyelle",forme:"는",ex_kr:"나는 알리스야.",ex_fr:"Je suis Alice."},
-             {ctx:"après consonne",forme:"은",ex_kr:"나영은 한국 사람이야.",ex_fr:"Nayoung est coréenne."}]},
-    {id:"copule_informel",titre:"Verbe être informel — ~야 / ~이야",ch:1,
-     explain:"Registre informel (amis, personnes plus jeunes). Équivaut à 'c'est / je suis'. En coréen le verbe être s'accorde avec la lettre finale du mot qui le précède.",
-     regles:[{ctx:"après voyelle",forme:"야",ex_kr:"알리스야.",ex_rom:"Alliséuya.",ex_fr:"Je m'appelle Alice."},
-             {ctx:"après consonne",forme:"이야",ex_kr:"나영이야.",ex_rom:"Nayeongi ya.",ex_fr:"Je m'appelle Nayoung."}]},
-    {id:"copule_poli",titre:"Verbe être poli — ~예요 / ~이에요",ch:1,
-     explain:"Registre poli (avec les adultes, les inconnus, les professeurs). Même logique : dépend de la consonne/voyelle finale.",
-     regles:[{ctx:"après voyelle",forme:"예요",ex_kr:"알리스예요.",ex_rom:"Alliséu yeyo.",ex_fr:"Je suis Alice."},
-             {ctx:"après consonne",forme:"이에요",ex_kr:"나영이에요.",ex_rom:"Nayeong ieyo.",ex_fr:"Je suis Nayoung."}]},
-    {id:"negation_copule",titre:"Négation du verbe être — ~가/이 아니야",ch:1,
-     explain:"Pour dire 'ce n'est pas...' au registre informel. La particule 가 (après voyelle) ou 이 (après consonne) précède 아니야.",
-     regles:[{ctx:"après voyelle",forme:"가 아니야",ex_kr:"언니가 아니야.",ex_rom:"Eonni ga aniya.",ex_fr:"Ce n'est pas ma grande sœur."},
-             {ctx:"après consonne",forme:"이 아니야",ex_kr:"남동생이 아니야.",ex_rom:"Namdongsaeng i aniya.",ex_fr:"Ce n'est pas mon petit frère."}]},
-    {id:"il_y_a",titre:"있다 / 없다 (il y a / il n'y a pas)",ch:2,
-     explain:"있다 = exister, avoir. 없다 = ne pas avoir. Au poli, ajouter 요 à la fin : 있어요 / 없어요.",
-     exemples:[{kr:"가방에 책하고 공책이 있어.",fr:"Dans le sac, il y a un livre et un cahier."},
-               {kr:"학교에 있어요.",fr:"Je suis à l'école."},
-               {kr:"수영장이 없어요.",fr:"Il n'y a pas de piscine."}]},
-    {id:"particule_ga",titre:"Particule sujet 가/이",ch:2,
-     explain:"Marque le sujet grammatical. 가 après voyelle, 이 après consonne. Attention: différent de la particule thématique 은/는.",
-     regles:[{ctx:"après voyelle",forme:"가",ex_kr:"열쇠가 있어.",ex_fr:"Il y a des clés."},
-             {ctx:"après consonne",forme:"이",ex_kr:"책이 있어.",ex_fr:"Il y a un livre."}]},
-    {id:"hago",titre:"하고 (et — entre noms)",ch:2,
-     explain:"Conjonction entre noms. Différent de 그리고 (et — entre phrases).",
-     exemples:[{kr:"책하고 공책이 있어.",fr:"Il y a un livre et un cahier."},
-               {kr:"방에 책상하고 의자가 있어.",fr:"Dans la chambre, il y a un bureau et une chaise."}]},
-    {id:"present",titre:"Le présent : terminaisons -아요/-어요",ch:3,
-     explain:"1) Supprimer 다 de l'infinitif. 2) Si la dernière voyelle du radical est ㅏ ou ㅗ → ajouter 아요. Sinon → 어요. Les verbes en 하다 → 해요.",
-     regles:[{ctx:"ㅏ ou ㅗ finale",forme:"-아요",ex_kr:"가다 → 가요",ex_fr:"aller → je vais"},
-             {ctx:"autres voyelles",forme:"-어요",ex_kr:"먹다 → 먹어요",ex_fr:"manger → je mange"},
-             {ctx:"verbes en 하다",forme:"→ 해요",ex_kr:"운동하다 → 운동해요",ex_fr:"faire du sport"}]},
-    {id:"particule_COD",titre:"Particule COD 을/를",ch:3,
-     explain:"Marque l'objet direct. 를 après voyelle, 을 après consonne. Souvent omise à l'oral.",
-     regles:[{ctx:"après voyelle",forme:"를",ex_kr:"영화를 봐.",ex_fr:"Je regarde un film."},
-             {ctx:"après consonne",forme:"을",ex_kr:"수업을 들어.",ex_fr:"Je suis les cours."}]},
-    {id:"particule_lieu_eseo",titre:"에서 : lieu + verbe d'action",ch:3,
-     explain:"에서 = 'dans/à' + action. À ne pas confondre avec 에 qui s'utilise avec les verbes d'état.",
-     exemples:[{kr:"학교에서 공부해요.",fr:"J'étudie à l'école."},
-               {kr:"식당에서 저녁을 먹어.",fr:"Je dîne au restaurant."},
-               {kr:"카페에서 음악을 들어.",fr:"J'écoute de la musique au café."}]},
-    {id:"negation_an",titre:"La négation : 안 + verbe",ch:3,
-     explain:"안 se place directement devant le verbe. Pour les verbes NOM+하다, 안 se met devant 하다.",
-     exemples:[{kr:"책을 안 읽어요.",fr:"Je ne lis pas de livre."},
-               {kr:"쇼핑 안 해요.",fr:"Je ne fais pas de shopping."},
-               {kr:"친구를 안 만나.",fr:"Je ne vois pas mes amis."}]},
-    {id:"particule_temps",titre:"Particule de temps 에",ch:3,
-     explain:"Se place après un mot de temps (jour, heure, saison) pour dire 'le/à'.",
-     exemples:[{kr:"월요일에 축구해요.",fr:"Je joue au football le lundi."},
-               {kr:"아침에 샤워해요.",fr:"Je me douche le matin."},
-               {kr:"9시에 일어나요.",fr:"Je me lève à 9h."}]},
-    {id:"demonstratifs",titre:"Adjectifs démonstratifs — 이 / 그 / 저",ch:4,
-     explain:"3 degrés de distance. 이 = proche du locuteur (ci). 그 = loin du locuteur, proche de l'interlocuteur (là). 저 = loin des deux (là-bas). Devant un nom, utilisés seuls ils deviennent 이것/그것/저것.",
-     table:[
-       {det:"이",usage:"proche de moi",ex_kr:"이 가방",ex_rom:"i gabang",ex_fr:"ce sac-ci"},
-       {det:"그",usage:"proche de toi",ex_kr:"그 가방",ex_rom:"geu gabang",ex_fr:"ce sac-là"},
-       {det:"저",usage:"loin des deux",ex_kr:"저 가방",ex_rom:"jeo gabang",ex_fr:"ce sac là-bas"},
-       {det:"이것",usage:"pronom seul (ci)",ex_kr:"이것은 뭐야?",ex_rom:"igeoseun mwoya?",ex_fr:"Qu'est-ce que c'est ?"},
-       {det:"그것",usage:"pronom seul (là)",ex_kr:"그것은 내 거야.",ex_rom:"geugeoseun nae geoya.",ex_fr:"C'est le mien."},
-       {det:"저것",usage:"pronom seul (là-bas)",ex_kr:"저것은 학교야.",ex_rom:"jeogeoseun hakgyoya.",ex_fr:"Là-bas c'est l'école."},
-     ],
-     note:"Pas de genre (pas de masculin/féminin) et pas de pluriel en coréen."},
-    {id:"position",titre:"La position : 앞 / 뒤 / 옆 / 위 / 아래...",ch:4,
-     explain:"Les mots de position se placent après le nom de référence, suivi de la particule 에 (lieu) ou 에서 (action dans ce lieu).",
-     table:[
-       {det:"앞",usage:"devant",ex_kr:"서점 앞에 있어.",ex_rom:"seojeom ape isseo.",ex_fr:"C'est devant la librairie."},
-       {det:"뒤",usage:"derrière",ex_kr:"학교 뒤에 있어.",ex_rom:"hakgyo dwie isseo.",ex_fr:"C'est derrière l'école."},
-       {det:"옆",usage:"à côté (de)",ex_kr:"카페 옆에 있어.",ex_rom:"kape yeope isseo.",ex_fr:"C'est à côté du café."},
-       {det:"위",usage:"sur / au-dessus",ex_kr:"책상 위에 있어.",ex_rom:"chaeksang wie isseo.",ex_fr:"C'est sur le bureau."},
-       {det:"아래",usage:"sous / en-dessous",ex_kr:"침대 아래에 있어.",ex_rom:"chimde araee isseo.",ex_fr:"C'est sous le lit."},
-       {det:"안",usage:"à l'intérieur",ex_kr:"가방 안에 있어.",ex_rom:"gabang ane isseo.",ex_fr:"C'est dans le sac."},
-       {det:"밖",usage:"à l'extérieur",ex_kr:"집 밖에 있어.",ex_rom:"jip bake isseo.",ex_fr:"C'est à l'extérieur de la maison."},
-       {det:"왼쪽",usage:"à gauche",ex_kr:"왼쪽에 가.",ex_rom:"oenjjoge ga.",ex_fr:"Va à gauche."},
-       {det:"오른쪽",usage:"à droite",ex_kr:"오른쪽에 가.",ex_rom:"oreunjjoge ga.",ex_fr:"Va à droite."},
-     ]},
-    {id:"deplacement_e",titre:"Particule 에 + verbe de déplacement",ch:4,
-     explain:"La particule 에 marque la destination ou l'emplacement. Avec les verbes de mouvement (가다, 오다) = direction. Avec 있다/없다 = existence.",
-     exemples:[{kr:"서점에 가요.",rom:"seojeome gayo.",fr:"Je vais à la librairie."},
-               {kr:"학교에 와.",rom:"hakgyoe wa.",fr:"Viens à l'école."},
-               {kr:"편의점이 빵집 앞에 있어요.",rom:"pyeonuijemi ppangjip ape isseoyo.",fr:"La supérette est devant la boulangerie."}],
-     note:"⚠️ 에 (direction/lieu d'état) ≠ 에서 (lieu d'action). '학교에 있어' (être à l'école) vs '학교에서 공부해' (étudier à l'école)."},
-    {id:"transport_ro",titre:"Moyen de transport — (으)로",ch:4,
-     explain:"Pour dire 'en bus', 'à vélo', etc. La particule 로 s'attache au moyen de transport. Règle : consonne finale + 으로 / voyelle finale + 로 / ㄹ finale + 로.",
-     regles:[{ctx:"après consonne (sauf ㄹ)",forme:"으로",ex_kr:"버스로 가요.",ex_rom:"beoseuro gayo.",ex_fr:"J'y vais en bus."},
-             {ctx:"après voyelle ou ㄹ",forme:"로",ex_kr:"지하철로 가요.",ex_rom:"jihacheolro gayo.",ex_fr:"J'y vais en métro."},
-             {ctx:"à pied",forme:"걸어서",ex_kr:"걸어서 가요.",ex_rom:"georeoseo gayo.",ex_fr:"J'y vais à pied."}],
-     note:"(으)로 sert aussi à dire 'vers' une direction : 왼쪽으로 가 = Va vers la gauche."},
-    {id:"possession_ui",titre:"La possession — 의",ch:4,
-     explain:"La particule 의 (prononcée 에) se place entre le possesseur et l'objet possédé, comme 'de' en français. Dans le langage courant, 의 est souvent omis.",
-     exemples:[{kr:"언니 거야. / 내 언니 거야.",rom:"eonni geoya. / nae eonni geoya.",fr:"C'est à ma sœur. (거 = la chose de)"},
-               {kr:"저 컴퓨터 누구 거야?",rom:"jeo keompyuteo nugu geoya?",fr:"À qui est cet ordinateur ?"},
-               {kr:"이 책은 우리 선생님 거예요.",rom:"i chaegeun uri seonsaengnim geoyeyo.",fr:"Ce livre est à notre professeur."}],
-     note:"거 = contraction de 것 (chose, truc). Nugu = qui. 내 = mon/ma. 우리 = notre (utilisé aussi pour 'mon/ma' en coréen)."},
-    {id:"vouloir",titre:"Vouloir : -고 싶다",ch:5,
-     explain:"Pour exprimer un désir. Structure : VERBE (radical) + 고 싶어요 (poli) / 고 싶어 (informel).",
-     exemples:[{kr:"뭐 먹고 싶어?",fr:"Qu'est-ce que tu veux manger ?"},
-               {kr:"비빔밥 먹고 싶어.",fr:"Je veux manger du bibimbap."},
-               {kr:"한국에 가고 싶어요.",fr:"Je veux aller en Corée."}]},
-    {id:"fait_de",titre:"Être fait de : ~(으)로 만들어요",ch:5,
-     explain:"Pour dire de quoi quelque chose est fait. 로 après voyelle, 으로 après consonne.",
-     exemples:[{kr:"이/가 뭐로 만들어요?",fr:"De quoi c'est fait ?"},
-               {kr:"쌀로 만들어요.",fr:"C'est fait de riz."},
-               {kr:"고기로 만들어요.",fr:"C'est fait de viande."}]},
-    {id:"passe",titre:"Le passé : -았어요 / -었어요",ch:6,
-     explain:"Supprimer 다. Si dernière voyelle du radical = ㅏ ou ㅗ → -았어요. Sinon → -었어요. Verbes en 하다 → -했어요.",
-     regles:[{ctx:"ㅏ ou ㅗ finale",forme:"-았어요",ex_kr:"가다 → 갔어요",ex_fr:"aller → je suis allé(e)"},
-             {ctx:"autres voyelles",forme:"-었어요",ex_kr:"먹다 → 먹었어요",ex_fr:"manger → j'ai mangé"},
-             {ctx:"하다",forme:"→ -했어요",ex_kr:"쇼핑하다 → 쇼핑했어요",ex_fr:"faire du shopping → j'ai fait"}]},
-    {id:"date",titre:"La date : 월 / 일",ch:6,
-     explain:"MOIS = nombre sino-coréen + 월. JOUR = nombre sino-coréen + 일. Exceptions : 6월 = 유월, 10월 = 시월.",
-     exemples:[{kr:"오늘은 10월 6일이에요.",fr:"Aujourd'hui c'est le 6 octobre."},
-               {kr:"1월 1일",fr:"le 1er janvier"},
-               {kr:"6월 (유월)",fr:"juin — exception !"},
-               {kr:"10월 (시월)",fr:"octobre — exception !"}]},
-    {id:"heure",titre:"L'heure : 시 / 분 / 반",ch:6,
-     explain:"HEURE = nombre coréen natif + 시. MINUTE = nombre sino-coréen + 분. 반 = demi (30 min). Pour demander l'heure : 몇 시예요?",
-     regles:[
-       {ctx:"Les heures (natifs)",forme:"하나→한 / 둘→두 / 셋→세 / 넷→네 avant 시",ex_kr:"한 시 / 두 시 / 세 시 / 네 시",ex_fr:"1h / 2h / 3h / 4h"},
-       {ctx:"5h à 12h",forme:"다섯~열두 + 시",ex_kr:"다섯 시 / 열 시 / 열두 시",ex_fr:"5h / 10h / 12h"},
-       {ctx:"Les minutes (sino-coréens)",forme:"nombre sino + 분",ex_kr:"오 분 / 십 분 / 삼십 분",ex_fr:"5 min / 10 min / 30 min"},
-       {ctx:"Demi-heure",forme:"반 (= 30 min)",ex_kr:"두 시 반",ex_fr:"2h30"},
-       {ctx:"AM / PM",forme:"오전 / 오후 + heure",ex_kr:"오전 아홉 시 / 오후 세 시",ex_fr:"9h du matin / 15h"},
-     ],
-     exemples:[
-       {kr:"몇 시예요?",rom:"Myeot siyeyo?",fr:"Quelle heure est-il ?"},
-       {kr:"한 시예요.",rom:"Han siyeyo.",fr:"Il est 1h."},
-       {kr:"두 시 반이에요.",rom:"Du si banieyo.",fr:"Il est 2h30."},
-       {kr:"세 시 오 분이에요.",rom:"Se si o bunieyo.",fr:"Il est 3h05."},
-       {kr:"열두 시 사십오 분이에요.",rom:"Yeoldu si sasibo bunieyo.",fr:"Il est 12h45."},
-       {kr:"오전 아홉 시에 학교에 가요.",rom:"Ojeon ahop sie hakgyoe gayo.",fr:"Je vais à l'école à 9h du matin."},
-       {kr:"오후 여섯 시에 집에 와요.",rom:"Ohoo yeoseot sie jibe wayo.",fr:"Je rentre chez moi à 18h."},
-     ],
-     note:"⚠️ Les heures utilisent les nombres CORÉENS NATIFS (한, 두, 세...) mais les minutes utilisent les nombres SINO-CORÉENS (일, 이, 삼...)."},
-    {id:"de_a_temps",titre:"De... à... (temps) : 부터 ~ 까지",ch:6,
-     explain:"부터 = à partir de / 까지 = jusqu'à. Pour les durées temporelles. (Lieux : 에서~까지)",
-     exemples:[{kr:"8시부터 9시까지",fr:"de 8h à 9h"},
-               {kr:"1월부터 12월까지",fr:"de janvier à décembre"},
-               {kr:"아침 9시부터 저녁 8시까지 서울을 구경했어요.",fr:"De 9h à 20h, j'ai visité Séoul."}]},
-    {id:"particule_do",titre:"La particule 도 (aussi)",ch:2,
-     explain:"도 remplace les particules 은/는, 이/가 et 을/를 pour dire 'aussi'. Elle s'ajoute directement après le nom.",
-     exemples:[{kr:"나도 한국 사람이야.",fr:"Moi aussi, je suis coréen(ne)."},
-               {kr:"저도 학생이에요.",fr:"Moi aussi, je suis élève."},
-               {kr:"언니도 있어.",fr:"Il y a aussi ma grande sœur."}],
-     note:"도 remplace les autres particules : 나는 → 나도, 책이 → 책도, 영화를 → 영화도."},
-    {id:"liaison",titre:"Les liaisons (연음법칙)",ch:1,
-     explain:"Quand une syllabe se termine par une consonne (받침) et que la syllabe suivante commence par ㅇ, la consonne finale 'glisse' sur la syllabe suivante et se prononce.",
-     exemples:[{kr:"한국어",fr:"[한구거] coréen (langue)"},
-               {kr:"음악을",fr:"[으마글] la musique (COD)"},
-               {kr:"책이",fr:"[채기] le livre (sujet)"}],
-     note:"C'est la même logique que les liaisons en français ('les amis' → [lezami])."},
-    {id:"particule_lieu_e",titre:"Particule de lieu 에 (état / direction)",ch:2,
-     explain:"에 s'utilise avec les verbes d'état (있다/없다) pour indiquer où quelque chose se trouve, et avec les verbes de déplacement (가다/오다) pour la destination.",
-     exemples:[{kr:"가방에 책이 있어.",fr:"Il y a un livre dans le sac."},
-               {kr:"학교에 있어요.",fr:"Je suis à l'école."},
-               {kr:"서점에 가요.",fr:"Je vais à la librairie."}],
-     note:"에 = lieu d'état OU destination. 에서 = lieu d'action (voir la règle 에서)."},
-  ],
-  culture: [
-    {icon:"🔤",titre:"Le Hangeul (한글)",body:"Créé en 1443 par le roi Sejong le Grand (dynastie Joseon). Instauré officiellement en 1894. 40 lettres : 14 consonnes de base, 5 doubles, 10 voyelles de base, 11 voyelles composées. Le 9 octobre est la Journée du Hangeul.",mots:[["한글","Hangeul (alphabet)"],["훈민정음","Hunminjeongeum (le livre)"],["받침","consonne finale"],["한글날","Journée du Hangeul"]]},
-    {icon:"🏫",titre:"Le lycée en Corée (고등학교)",body:"9h-16h50, 7 cours de 50 min. Certains restent jusqu'à 22h pour l'étude autonome nocturne. Les élèves portent des chaussons d'intérieur et la supérette est très populaire. L'examen de bac est le plus important de la vie : les avions sont interdits pendant les épreuves d'oral !",mots:[["매점","supérette du lycée"],["수능","baccalauréat coréen"],["실내화","chaussons d'intérieur"],["고등학교","lycée"],["시간표","emploi du temps"]]},
-    {icon:"🎎",titre:"Les noms coréens",body:"Prénom composé de 2 syllabes. Nom de famille d'une syllabe (김, 이, 박...). En Corée : NOM DE FAMILLE d'abord + prénom. Pour interpeller un proche moins âgé dont le prénom se termine par une consonne : 아 / voyelle : 야.",mots:[["성","nom de famille"],["이름","prénom"],["아 / 야","interpellation amicale"]]},
-    {icon:"🎭",titre:"Le Hanbok (한복)",body:"Habit traditionnel coréen, aux couleurs vives, porté pour les grandes occasions. Robe+veste pour les femmes (치마, 저고리), pantalon+veste pour les hommes (바지, 저고리).",mots:[["한복","habit traditionnel"],["설날","Nouvel An lunaire"],["추석","fête des récoltes"],["돌","1er anniversaire"]]},
-    {icon:"🏮",titre:"설날 — Nouvel An lunaire",body:"1er jour du calendrier lunaire (jan–fév). Formule de vœu : 새해 복 많이 받으세요 ! (Bonne année !). 3 jours fériés. Le 2e matin : cérémonie aux ancêtres. Révérence rituelle aux aînés qui donnent des étrennes. Au menu : soupe de gâteaux de riz blanc.",mots:[["설날","Nouvel An lunaire"],["새해 복 많이 받으세요","Bonne année !"],["차례","cérémonie aux ancêtres"],["세배","révérence rituelle"],["세뱃돈","étrennes"],["떡국","soupe de riz"]]},
-    {icon:"🌾",titre:"추석 — Fête des récoltes",body:"15e jour du 8e mois lunaire (sept–oct). Les familles se réunissent et visitent les tombes des ancêtres. Au menu : gâteaux de riz cuits sur aiguilles de pin. La nuit : danse en cercle (classée UNESCO). Jeu traditionnel à 4 bâtons.",mots:[["추석","fête des récoltes"],["성묘","visite des tombes"],["송편","gâteaux de riz"],["강강술래","danse en cercle (UNESCO)"],["윷놀이","jeu des 4 bâtons"]]},
-    {icon:"🐯",titre:"Le Tigre (호랑이)",body:"Animal symbolique de la Corée, omniprésent dans les contes et peintures traditionnelles. Mascotte des JO de Séoul 1988. Proverbe : 호랑이도 제 말 하면 온다 = 'Quand on parle du loup...'",mots:[["호랑이","tigre"],["설화","conte traditionnel"]]},
-    {icon:"🌺",titre:"L'Hibiscus (무궁화)",body:"Fleur nationale coréenne. Mugunghwa signifie 'fleur immortelle'. Symbole du Parlement coréen. Représente la persévérance et la résilience du peuple coréen.",mots:[["무궁화","hibiscus (fleur nationale)"]]},
-    {icon:"🥋",titre:"Le Taekwondo (태권도)",body:"Art martial coréen basé sur les mains et les pieds (pas d'armes). Classé au patrimoine culturel. Épreuve olympique depuis Sydney 2000.",mots:[["태권도","taekwondo"],["무술","art martial"]]},
-    {icon:"🎤",titre:"Le Noraebang (노래방)",body:"'Chambre de la chanson' = karaoké privé en box entre amis. Environ 20€/h. Il existe aussi des 'coin noraebang' à 0,50€ la chanson dans des box minuscules. Très populaire après les cours ou le travail.",mots:[["노래방","chambre de karaoké"],["노래","chanson"],["방","chambre/pièce"]]},
-    {icon:"🖥️",titre:"Le PC bang (PC방)",body:"Salle d'ordinateurs ultra-confortable. Environ 1,50€/h, ouverte 24h/24. Grands écrans, tous les jeux, livraison de nourriture possible. Né dans les années 1990 avec StarCraft.",mots:[["PC방","salle de jeux vidéo"],["방","chambre/pièce"]]},
-    {icon:"📸",titre:"인생네컷 (Photos à 4 poses)",body:"Photomatons coréens avec accessoires et fonds variés. 4 à 6 photos pour environ 4€. Activité classique entre amis, souvenir incontournable. 인생 = vie / 네 = quatre / 컷 = photo.",mots:[["인생네컷","photos 4 poses"],["인생","vie"],["네","quatre"]]},
-    {icon:"🏙️",titre:"Quartiers de Séoul",body:"북촌 (Bukchon) : Corée traditionnelle, palais, maisons hanok. 홍대 (Hongdae) : musique, danse, jeunes artistes. 강남 (Gangnam) : affaires, K-pop. 청계천 : fleuve urbain aménagé. Grands marchés : Namdaemun, Dongdaemun, Gwangjang.",mots:[["북촌","Bukchon (quartier hanok)"],["홍대","Hongdae (quartier artiste)"],["강남","Gangnam"],["청계천","fleuve en ville"]]},
-    {icon:"🍱",titre:"Le repas coréen traditionnel",body:"Un repas coréen classique se compose de riz, d'une soupe et de plusieurs plats d'accompagnement servis simultanément (pas en ordre comme en France). Tous les plats sont sur la table en même temps.",mots:[["밥","riz cuit"],["국","soupe"],["반찬","plats d'accompagnement"],["식당","restaurant / cantine"]]},
-    {icon:"🎉",titre:"Fêtes nationales (국경일)",body:"삼일절 1 mars (Mouvement indépendance 1919). 어린이날 5 mai (Fête des enfants). 현충일 6 juin (Commémoration militaire). 광복절 15 août (Libération 1945). 개천절 3 oct (Fondation de la Corée). 한글날 9 oct (alphabet). 크리스마스 25 déc.",mots:[["국경일","fête nationale"],["삼일절","Mouvement indépendance"],["광복절","Libération"],["한글날","Journée Hangeul"],["어린이날","Fête des enfants"]]},
-    {icon:"✊",titre:"가위바위보 (Pierre-feuille-ciseaux)",body:"Le jeu classique existe aussi en Corée ! On dit '가위 바위 보 !' (ga-wi ba-wi bo) en montrant sa main. 가위 = ciseaux, 바위 = pierre, 보 = feuille (enveloppe). Les Coréens l'utilisent constamment pour trancher un choix. Les enfants y jouent dans la cour et les adultes aussi, très naturellement !",mots:[["가위","ciseaux"],["바위","pierre"],["보","feuille (enveloppe)"]]},
-    {icon:"🔢",titre:"Les classificateurs (수량 단위)",body:"En coréen, pour compter on utilise des 'classificateurs' entre le nombre et le nom (comme 'une feuille de papier' en français). Chaque type d'objet a son classificateur : 개 (objet quelconque), 그릇 (bol), 숟가락 (cuillère), 봉지 (sachet/paquet), 장 (feuille de papier), 명/사람 (personne), 마리 (animal), 권 (livre), 잔 (tasse/verre). Les nombres coréens natifs (하나→한, 둘→두, 셋→세, 넷→네) se contractent devant un classificateur.",mots:[["개","objet (général)"],["그릇","bol"],["명","personne"],["마리","animal"],["잔","tasse/verre"],["장","feuille"]]},
-  ],
-  verbes: [
-    {inf:"하다",fr:"faire",poli:"해요",inf_:"해",passe:"했어요",rom:"hada"},
-    {inf:"가다",fr:"aller",poli:"가요",inf_:"가",passe:"갔어요",rom:"gada"},
-    {inf:"오다",fr:"venir",poli:"와요",inf_:"와",passe:"왔어요",rom:"oda"},
-    {inf:"있다",fr:"être / avoir / exister",poli:"있어요",inf_:"있어",passe:"있었어요",rom:"itda"},
-    {inf:"없다",fr:"ne pas avoir",poli:"없어요",inf_:"없어",passe:"없었어요",rom:"eopda"},
-    {inf:"먹다",fr:"manger",poli:"먹어요",inf_:"먹어",passe:"먹었어요",rom:"meokda"},
-    {inf:"마시다",fr:"boire",poli:"마셔요",inf_:"마셔",passe:"마셨어요",rom:"masida"},
-    {inf:"보다",fr:"regarder / voir",poli:"봐요",inf_:"봐",passe:"봤어요",rom:"boda"},
-    {inf:"읽다",fr:"lire",poli:"읽어요",inf_:"읽어",passe:"읽었어요",rom:"ikda"},
-    {inf:"듣다",fr:"écouter",poli:"들어요",inf_:"들어",passe:"들었어요",rom:"deutda",note:"irrégulier: 듣→들"},
-    {inf:"자다",fr:"dormir",poli:"자요",inf_:"자",passe:"잤어요",rom:"jada"},
-    {inf:"공부하다",fr:"étudier",poli:"공부해요",inf_:"공부해",passe:"공부했어요",rom:"gongbuhada"},
-    {inf:"운동하다",fr:"faire du sport",poli:"운동해요",inf_:"운동해",passe:"운동했어요",rom:"undonghada"},
-    {inf:"쇼핑하다",fr:"faire du shopping",poli:"쇼핑해요",inf_:"쇼핑해",passe:"쇼핑했어요",rom:"syopinghada"},
-    {inf:"놀다",fr:"s'amuser / jouer",poli:"놀아요",inf_:"놀아",passe:"놀았어요",rom:"nolda"},
-    {inf:"추다",fr:"danser",poli:"춰요",inf_:"춰",passe:"췄어요",rom:"chuda"},
-    {inf:"노래하다",fr:"chanter",poli:"노래해요",inf_:"노래해",passe:"노래했어요",rom:"noraehada"},
-    {inf:"샤워하다",fr:"se doucher",poli:"샤워해요",inf_:"샤워해",passe:"샤워했어요",rom:"syawohada"},
-    {inf:"일어나다",fr:"se lever",poli:"일어나요",inf_:"일어나",passe:"일어났어요",rom:"ireonada"},
-    {inf:"축구하다",fr:"jouer au football",poli:"축구해요",inf_:"축구해",passe:"축구했어요",rom:"chukguhada"},
-    {inf:"수영하다",fr:"nager",poli:"수영해요",inf_:"수영해",passe:"수영했어요",rom:"suyeonghada"},
-    {inf:"타다",fr:"prendre (transport)",poli:"타요",inf_:"타",passe:"탔어요",rom:"tada"},
-    {inf:"만들다",fr:"fabriquer / préparer",poli:"만들어요",inf_:"만들어",passe:"만들었어요",rom:"mandeulda"},
-    {inf:"찍다",fr:"prendre en photo",poli:"찍어요",inf_:"찍어",passe:"찍었어요",rom:"jjikda"},
-    {inf:"사다",fr:"acheter",poli:"사요",inf_:"사",passe:"샀어요",rom:"sada"},
-    {inf:"쓰다",fr:"écrire / utiliser",poli:"써요",inf_:"써",passe:"썼어요",rom:"sseuda"},
-    {inf:"요리하다",fr:"cuisiner",poli:"요리해요",inf_:"요리해",passe:"요리했어요",rom:"yorihada"},
-    {inf:"여행하다",fr:"voyager",poli:"여행해요",inf_:"여행해",passe:"여행했어요",rom:"yeohaenghada"},
-    {inf:"좋아하다",fr:"aimer (apprécier)",poli:"좋아해요",inf_:"좋아해",passe:"좋아했어요",rom:"joahada"},
-    {inf:"싫어하다",fr:"détester",poli:"싫어해요",inf_:"싫어해",passe:"싫어했어요",rom:"sireohada"},
-    {inf:"숙제하다",fr:"faire ses devoirs",poli:"숙제해요",inf_:"숙제해",passe:"숙제했어요",rom:"sukjehada"},
-    {inf:"만나다",fr:"rencontrer / voir",poli:"만나요",inf_:"만나",passe:"만났어요",rom:"mannada"},
-  ],
-};
 
-// ═══════════════════════════════════════════════════
-// PHRASES CLÉS
-// ═══════════════════════════════════════════════════
-const PHRASES = [
-  // ── Chapitre 1 — Se présenter ──
-  {ch:1, cat:"Se présenter", kr:"나는 알리스야.", rom:"Naneun Alliséuya.", fr:"Je m'appelle Alice. (informel)"},
-  {ch:1, cat:"Se présenter", kr:"저는 알리스예요.", rom:"Jeoneun Alliséu yeyo.", fr:"Je m'appelle Alice. (poli)"},
-  {ch:1, cat:"Se présenter", kr:"저는 프랑스 사람이에요.", rom:"Jeoneun Peurangseu saramieyo.", fr:"Je suis français(e)."},
-  {ch:1, cat:"Se présenter", kr:"저는 학생이에요.", rom:"Jeoneun haksaengieyo.", fr:"Je suis élève."},
-  {ch:1, cat:"Se présenter", kr:"만나서 반가워요.", rom:"Mannaseo bangawoyo.", fr:"Ravi(e) de te rencontrer."},
-  {ch:1, cat:"Identifier", kr:"이것은 뭐야?", rom:"Igeoseun mwoya?", fr:"Qu'est-ce que c'est ?"},
-  {ch:1, cat:"Identifier", kr:"이것은 공책이야.", rom:"Igeoseun gongchaegiya.", fr:"C'est un cahier."},
-  {ch:1, cat:"Identifier", kr:"나영이 아니야.", rom:"Nayeongi aniya.", fr:"Ce n'est pas Nayoung."},
-  {ch:1, cat:"Identifier", kr:"이것은 내 거야.", rom:"Igeoseun nae geoya.", fr:"C'est le mien."},
+// ── 1. UTILS ──────────────────────────────────────
 
-  // ── Chapitre 2 — La classe / l'école ──
-  {ch:2, cat:"Il y a / localisation", kr:"가방에 책이 있어요.", rom:"Gabange chaegi isseoyo.", fr:"Il y a un livre dans le sac."},
-  {ch:2, cat:"Il y a / localisation", kr:"수영장이 없어요.", rom:"Suyeongjang i eopseoyo.", fr:"Il n'y a pas de piscine."},
-  {ch:2, cat:"Il y a / localisation", kr:"책상 위에 가방이 있어.", rom:"Chaeksang wie gabangi isseo.", fr:"Le sac est sur le bureau."},
-  {ch:2, cat:"Il y a / localisation", kr:"학교에 있어요.", rom:"Hakgyoe isseoyo.", fr:"Je suis à l'école."},
-  {ch:2, cat:"Énumérer", kr:"책하고 공책이 있어.", rom:"Chaekhago gongchaegi isseo.", fr:"Il y a un livre et un cahier."},
-  {ch:2, cat:"Énumérer", kr:"나도 학생이에요.", rom:"Nado haksaengieyo.", fr:"Moi aussi, je suis élève."},
-  {ch:2, cat:"Questions", kr:"이름이 뭐예요?", rom:"Ireumi mwoyeyo?", fr:"Comment tu t'appelles ?"},
-  {ch:2, cat:"Questions", kr:"몇 학년이에요?", rom:"Myeot hagnyeonieyo?", fr:"Tu es en quelle année ?"},
+// Raccourcis DOM
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const app = document.getElementById('app');
 
-  // ── Chapitre 3 — Les activités ──
-  {ch:3, cat:"Dire ce qu'on fait", kr:"저는 음악을 들어요.", rom:"Jeoneun eumageul deureoyo.", fr:"J'écoute de la musique."},
-  {ch:3, cat:"Dire ce qu'on fait", kr:"학교에서 공부해요.", rom:"Hakgyoeseo gongbuhaeyo.", fr:"J'étudie à l'école."},
-  {ch:3, cat:"Dire ce qu'on fait", kr:"식당에서 저녁을 먹어요.", rom:"Sikdangeseo jeonyeogeul meogeoyo.", fr:"Je dîne au restaurant."},
-  {ch:3, cat:"Dire ce qu'on fait", kr:"카페에서 음악을 들어.", rom:"Kapeeseo eumageul deureo.", fr:"J'écoute de la musique au café."},
-  {ch:3, cat:"Nier", kr:"책을 안 읽어요.", rom:"Chaegeul an ilgeoyo.", fr:"Je ne lis pas de livre."},
-  {ch:3, cat:"Nier", kr:"쇼핑 안 해요.", rom:"Syoping an haeyo.", fr:"Je ne fais pas de shopping."},
-  {ch:3, cat:"Le temps", kr:"월요일에 축구해요.", rom:"Woryoile chukguhaeyo.", fr:"Je joue au foot le lundi."},
-  {ch:3, cat:"Le temps", kr:"아침에 샤워해요.", rom:"Achime syawohaeyo.", fr:"Je me douche le matin."},
-  {ch:3, cat:"Le temps", kr:"9시에 일어나요.", rom:"Ahop sie ireonayo.", fr:"Je me lève à 9h."},
-
-  // ── Chapitre 4 — La ville / se repérer ──
-  {ch:4, cat:"Localiser", kr:"서점 앞에 있어요.", rom:"Seojeom ape isseoyo.", fr:"C'est devant la librairie."},
-  {ch:4, cat:"Localiser", kr:"카페 옆에 있어요.", rom:"Kape yeope isseoyo.", fr:"C'est à côté du café."},
-  {ch:4, cat:"Localiser", kr:"편의점이 빵집 앞에 있어요.", rom:"Pyeonuijemi ppangjip ape isseoyo.", fr:"La supérette est devant la boulangerie."},
-  {ch:4, cat:"Se déplacer", kr:"서점에 가요.", rom:"Seojeome gayo.", fr:"Je vais à la librairie."},
-  {ch:4, cat:"Se déplacer", kr:"버스로 가요.", rom:"Beoseuro gayo.", fr:"J'y vais en bus."},
-  {ch:4, cat:"Se déplacer", kr:"걸어서 가요.", rom:"Georeoseo gayo.", fr:"J'y vais à pied."},
-  {ch:4, cat:"Se déplacer", kr:"지하철로 가요.", rom:"Jihacheollo gayo.", fr:"J'y vais en métro."},
-  {ch:4, cat:"Possession", kr:"이 책은 누구 거야?", rom:"I chaegeun nugu geoya?", fr:"À qui est ce livre ?"},
-  {ch:4, cat:"Possession", kr:"이것은 내 거야.", rom:"Igeoseun nae geoya.", fr:"C'est le mien."},
-
-  // ── Chapitre 5 — Nourriture / goûts ──
-  {ch:5, cat:"Goûts et désirs", kr:"뭐 먹고 싶어?", rom:"Mwo meokgo sipeo?", fr:"Qu'est-ce que tu veux manger ?"},
-  {ch:5, cat:"Goûts et désirs", kr:"비빔밥 먹고 싶어요.", rom:"Bibimbap meokgo sipeoyo.", fr:"Je veux manger du bibimbap."},
-  {ch:5, cat:"Goûts et désirs", kr:"한국에 가고 싶어요.", rom:"Hanguge gago sipeoyo.", fr:"Je veux aller en Corée."},
-  {ch:5, cat:"Commander", kr:"이거 주세요.", rom:"Igeo juseyo.", fr:"Donnez-moi ça, s'il vous plaît."},
-  {ch:5, cat:"Commander", kr:"얼마예요?", rom:"Eolmayeyo?", fr:"Combien ça coûte ?"},
-  {ch:5, cat:"Composition", kr:"이게 뭐로 만들어요?", rom:"Ige mworo mandeuleoyo?", fr:"De quoi c'est fait ?"},
-  {ch:5, cat:"Composition", kr:"쌀로 만들어요.", rom:"Ssallo mandeuleoyo.", fr:"C'est fait de riz."},
-  {ch:5, cat:"Apprécier", kr:"맛있어요!", rom:"Masisseoyo!", fr:"C'est délicieux !"},
-  {ch:5, cat:"Apprécier", kr:"맛없어요.", rom:"Madeopseoyo.", fr:"Ce n'est pas bon."},
-
-  // ── Chapitre 6 — Le passé / la date / l'heure ──
-  {ch:6, cat:"Passé", kr:"어제 뭐 했어요?", rom:"Eoje mwo haesseoyo?", fr:"Qu'est-ce que tu as fait hier ?"},
-  {ch:6, cat:"Passé", kr:"친구를 만났어요.", rom:"Chingureul manasseoyo.", fr:"J'ai rencontré un ami."},
-  {ch:6, cat:"Passé", kr:"비빔밥을 먹었어요.", rom:"Bibimbabeul meogeotseoyo.", fr:"J'ai mangé du bibimbap."},
-  {ch:6, cat:"Passé", kr:"서울을 구경했어요.", rom:"Seoureul gugyeonghesseoyo.", fr:"J'ai visité Séoul."},
-  {ch:6, cat:"Date", kr:"오늘은 몇 월 며칠이에요?", rom:"Oneureun myeot wol myeochirieyo?", fr:"On est le combien aujourd'hui ?"},
-  {ch:6, cat:"Date", kr:"오늘은 10월 6일이에요.", rom:"Oneureun siworwol yuge irieyo.", fr:"Aujourd'hui c'est le 6 octobre."},
-  {ch:6, cat:"Heure", kr:"몇 시예요?", rom:"Myeot siyeyo?", fr:"Quelle heure est-il ?"},
-  {ch:6, cat:"Heure", kr:"두 시 반이에요.", rom:"Du si banieyo.", fr:"Il est 2h30."},
-  {ch:6, cat:"Durée", kr:"9시부터 6시까지 학교에 있어요.", rom:"Ahop sibuteo yeoseot sigaji hakgyoe isseoyo.", fr:"Je suis à l'école de 9h à 18h."},
-];
-
-function renderPhrases(ch) {
-  const items = ch === 0 ? PHRASES : PHRASES.filter(p => p.ch === ch);
-  const list = document.getElementById('phrases-list');
-
-  if (ch === 0) {
-    // Grouper par chapitre
-    const byChap = {};
-    items.forEach(p => {
-      if (!byChap[p.ch]) byChap[p.ch] = [];
-      byChap[p.ch].push(p);
-    });
-    list.innerHTML = Object.keys(byChap).map(c => `
-      <div class="phrases-chap">
-        <div class="section-title" style="margin-bottom:12px">
-          <span>Chapitre ${c}</span>
-          <span class="tag">${byChap[c].length} phrases</span>
-        </div>
-        ${byChap[c].map(p => phraseCard(p, true)).join('')}
-      </div>`).join('');
-  } else {
-    // Grouper par catégorie dans le chapitre
-    const byCat = {};
-    items.forEach(p => {
-      if (!byCat[p.cat]) byCat[p.cat] = [];
-      byCat[p.cat].push(p);
-    });
-    list.innerHTML = Object.keys(byCat).map(cat => `
-      <div class="phrases-cat">
-        <div class="phrases-cat-label">${cat}</div>
-        ${byCat[cat].map(p => phraseCard(p, false)).join('')}
-      </div>`).join('');
+// Melange Fisher-Yates (retourne une copie)
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
+  return a;
 }
 
-function phraseCard(p, showChap) {
-  return `<div class="phrase-card">
-    ${showChap ? '' : ''}
-    <div class="phrase-kr">${p.kr}</div>
-    <div class="phrase-rom">${p.rom}</div>
-    <div class="phrase-fr">${p.fr}</div>
+// Anti-rebond classique
+function debounce(fn, ms) {
+  let t;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+}
+
+// Supprime les accents pour la recherche
+function stripAccents(s) {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+// Date du jour au format YYYY-MM-DD
+function getToday() {
+  return new Date().toLocaleDateString('sv-SE');
+}
+
+// Echappe le HTML pour eviter les injections
+function escHtml(s) {
+  if (s == null) return '';
+  const d = document.createElement('div');
+  d.textContent = String(s);
+  return d.innerHTML;
+}
+
+// Synthese vocale coreenne (reutilisee partout)
+function speakKr(text) {
+  if (!text || !window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ko-KR';
+  u.rate = 0.8;
+  if (koVoice) u.voice = koVoice;
+  speechSynthesis.speak(u);
+}
+
+// Bouton audio HTML reutilisable
+function audioBtnHTML(text) {
+  if (!text) return '';
+  return `<button class="audio-btn" data-speak="${escHtml(text)}" aria-label="Ecouter" title="Ecouter">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+  </button>`;
+}
+
+// Confetti celebration
+function showConfetti() {
+  const container = document.createElement('div');
+  container.className = 'confetti-container';
+  document.body.appendChild(container);
+  const colors = ['#3D7A6E', '#C4935A', '#B54E3F', '#4E7EB5', '#7E5EAE', '#D4884A', '#5EA87A'];
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 1.5 + 's';
+    piece.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.width = (6 + Math.random() * 8) + 'px';
+    piece.style.height = (6 + Math.random() * 8) + 'px';
+    container.appendChild(piece);
+  }
+  setTimeout(() => container.remove(), 4000);
+}
+
+// Mascotte SVG (petit haetae/dokkaebi mignon)
+const MASCOT_SVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="52" r="32" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="2"/>
+  <circle cx="40" cy="46" r="4" fill="var(--text)"/>
+  <circle cx="60" cy="46" r="4" fill="var(--text)"/>
+  <circle cx="41.5" cy="44.5" r="1.5" fill="white"/>
+  <circle cx="61.5" cy="44.5" r="1.5" fill="white"/>
+  <path d="M42 58 Q50 66 58 58" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M34 34 Q38 24 44 32" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M66 34 Q62 24 56 32" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <circle cx="34" cy="54" r="4" fill="var(--accent)" opacity="0.3"/>
+  <circle cx="66" cy="54" r="4" fill="var(--accent)" opacity="0.3"/>
+</svg>`;
+
+const MASCOT_HAPPY_SVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="52" r="32" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="2"/>
+  <path d="M36 46 Q40 42 44 46" stroke="var(--text)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M56 46 Q60 42 64 46" stroke="var(--text)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M40 56 Q50 68 60 56" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M34 34 Q38 24 44 32" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M66 34 Q62 24 56 32" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <circle cx="34" cy="54" r="5" fill="var(--accent)" opacity="0.4"/>
+  <circle cx="66" cy="54" r="5" fill="var(--accent)" opacity="0.4"/>
+  <text x="50" y="90" text-anchor="middle" font-size="14" fill="var(--primary)">★</text>
+</svg>`;
+
+const MASCOT_SAD_SVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="52" r="32" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="2"/>
+  <circle cx="40" cy="46" r="4" fill="var(--text)"/>
+  <circle cx="60" cy="46" r="4" fill="var(--text)"/>
+  <circle cx="41.5" cy="44.5" r="1.5" fill="white"/>
+  <circle cx="61.5" cy="44.5" r="1.5" fill="white"/>
+  <path d="M42 62 Q50 56 58 62" stroke="var(--text2)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M34 34 Q38 24 44 32" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M66 34 Q62 24 56 32" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <circle cx="34" cy="54" r="4" fill="var(--accent)" opacity="0.3"/>
+  <circle cx="66" cy="54" r="4" fill="var(--accent)" opacity="0.3"/>
+</svg>`;
+
+// Empty state illustre reutilisable
+function emptyStateHTML(icon, title, desc, actionHTML) {
+  return `<div class="empty">
+    <div class="empty-illustration">${icon}</div>
+    <div class="empty-title">${escHtml(title)}</div>
+    <div class="empty-desc">${escHtml(desc)}</div>
+    ${actionHTML || ''}
   </div>`;
 }
 
-function filterPhrases(ch) {
-  renderPhrases(ch);
-  const tabs = document.querySelectorAll('#phrases-tabs .tab');
-  tabs.forEach((t, i) => t.classList.toggle('active', i === ch));
-  if (tabs[ch]) tabs[ch].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-  const main = document.querySelector('.main');
-  if (main) main.scrollTop = 0;
+// Notification temporaire en bas de l'ecran
+function toast(msg, duration = 2000) {
+  let el = $('.toast');
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'toast';
+    el.setAttribute('role', 'status');
+    el.setAttribute('aria-live', 'polite');
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), duration);
 }
 
-// ═══════════════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════════════
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => {
-    if (n.getAttribute('onclick')?.includes("'"+id+"'")) n.classList.add('active');
-  });
-  window.scrollTo(0, 0);
-  const mainEl = document.querySelector('.main');
-  if (mainEl) mainEl.scrollTop = 0;
-  if (id === 'vocab') renderVocab('all', '');
-  if (id === 'grammar') { if (window.filterGrammar) window.filterGrammar(0); else renderGrammar(0); }
-  if (id === 'culture') renderCulture();
-  if (id === 'expressions') renderExpressions();
-  if (id === 'hangeul') renderHangeul();
-  if (id === 'verbes') renderVerbes('');
-  if (id === 'phrases') filterPhrases(0);
-}
 
-// ═══════════════════════════════════════════════════
-// HANGEUL
-// ═══════════════════════════════════════════════════
-function renderHangeul() {
-  const cg = document.getElementById('consonnes-grid');
-  cg.innerHTML = DATA.consonnes.map(c => `
-    <div class="hangeul-cell">
-      <div class="hg-letter">${c.l}</div>
-      <div class="hg-rom">${c.r}</div>
-      <div class="hg-fr">${c.s}</div>
-    </div>`).join('');
+// ── 1b. SETTINGS ────────────────────────────────
 
-  document.getElementById('doubles-grid').innerHTML = DATA.doubles.map(c => `
-    <div class="hangeul-cell double">
-      <div class="hg-letter">${c.l}</div>
-      <div class="hg-rom">${c.r}</div>
-      <div class="hg-fr">${c.s}</div>
-    </div>`).join('');
-
-  document.getElementById('voyelles-grid').innerHTML = DATA.voyelles.map(v => `
-    <div class="hangeul-cell">
-      <div class="hg-letter">${v.l}</div>
-      <div class="hg-rom">${v.r}</div>
-    </div>`).join('');
-
-  document.getElementById('composees-grid').innerHTML = DATA.composees.map(v => `
-    <div class="hangeul-cell composee">
-      <div class="hg-letter">${v.l}</div>
-      <div class="hg-rom">${v.r}</div>
-      <div class="hg-fr">${v.c}</div>
-    </div>`).join('');
-
-  document.getElementById('batchim-tbody').innerHTML = DATA.batchim.map(b => `
-    <tr>
-      <td class="ph">[${b.ph}]</td>
-      <td class="letters">${b.lets}</td>
-      <td>${b.ex.map(e=>`<strong class="kr" style="color:var(--cream)">${e.kr}</strong> <span style="color:var(--text2);font-size:12px">${e.fr}</span>`).join(' · ')}</td>
-    </tr>`).join('');
-
-  // Mnémotechniques
-  const mnemos = [
-    {l:'ㄱ',r:'g/k',tip:'Ressemble à un angle / coin. Pense à un Coin de table.'},
-    {l:'ㄴ',r:'n',tip:'Ressemble à un L retourné. Pense à un Nez de profil.'},
-    {l:'ㄷ',r:'d/t',tip:'Comme un ㄴ avec un toit. Pense à une Door (porte).'},
-    {l:'ㄹ',r:'r/l',tip:'Ressemble à un 2 ou un escalier. R/L comme un escalier qui roule.'},
-    {l:'ㅁ',r:'m',tip:'Un carré = une bouche fermée. La bouche se ferme pour faire M.'},
-    {l:'ㅂ',r:'b/p',tip:'Ressemble à un seau (Bucket). Les deux pieds du B.'},
-    {l:'ㅅ',r:'s',tip:'Ressemble à un chapeau pointu / un arbre. S comme Sapin.'},
-    {l:'ㅇ',r:'ø/ng',tip:'Un cercle = zéro son (muet au début). Comme un anneau.'},
-    {l:'ㅈ',r:'dj',tip:'Ressemble à ㅅ avec un chapeau. Dj comme un DJ avec un chapeau.'},
-    {l:'ㅊ',r:'tch',tip:'Un ㅈ avec un trait en plus = souffle en plus (aspirée).'},
-    {l:'ㅋ',r:'k',tip:'Un ㄱ avec un trait = plus de souffle. K aspiré.'},
-    {l:'ㅌ',r:'t',tip:'Un ㄷ avec un trait = plus de souffle. T aspiré.'},
-    {l:'ㅍ',r:'p',tip:'Comme une porte à deux battants = P aspiré.'},
-    {l:'ㅎ',r:'h',tip:'Ressemble à un bonhomme avec un chapeau. H comme Hello !'},
-  ];
-  document.getElementById('mnemo-grid').innerHTML = mnemos.map(m => `
-    <div class="vocab-card" style="cursor:default">
-      <div class="vc-kr" style="font-size:36px;text-align:center">${m.l}</div>
-      <div class="vc-rom" style="text-align:center;font-size:13px;color:var(--gold)">[${m.r}]</div>
-      <div style="font-size:12px;color:var(--text2);margin-top:8px;line-height:1.5">${m.tip}</div>
-    </div>`).join('');
-}
-
-function switchHangeulTab(tab) {
-  document.querySelectorAll('.hangeul-section').forEach(s => s.style.display='none');
-  document.getElementById('hg-'+tab).style.display = 'block';
-  document.querySelectorAll('#page-hangeul .tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-// ═══════════════════════════════════════════════════
-// VOCAB
-// ═══════════════════════════════════════════════════
-let currentCat = 'all', currentSearch = '';
-const CAT_ICONS = {
-  "Sac / École":"🎒","Classe / Lycée":"🏫","Chambre / Maison":"🏠",
-  "Nourriture":"🥬","Plats coréens":"🍱","Boissons & Saveurs":"🍵",
-  "Activités":"🏃","Vie quotidienne":"⏰","Moments / Temps":"🕐",
-  "Jours de la semaine":"📅","Sports":"⚽","Famille":"👨‍👩‍👧",
-  "Pays & Nationalités":"🌍","Quartier & Lieux":"🏙️","Transports":"🚇",
-  "Pièces & Maison":"🏡","Position & Direction":"🧭","Émotions":"💝",
-  "Couleurs":"🎨","Saisons":"🌸","Pronoms & Connecteurs":"🗣️",
-  "Nombres sino-coréens":"🔢","Nombres coréens natifs":"🔢",
+const Settings = {
+  _cache: null,
+  _defaults: { hideRom: false, darkMode: null },
+  load() {
+    if (!this._cache) { let p; try { p = JSON.parse(localStorage.getItem('blokaja_settings') || '{}'); } catch(e) { p = {}; } this._cache = { ...this._defaults, ...p }; }
+    return this._cache;
+  },
+  save() { try { localStorage.setItem('blokaja_settings', JSON.stringify(this._cache)); } catch(e) {} },
+  get(key) { return this.load()[key]; },
+  set(key, val) { this.load()[key] = val; this.save(); },
+  toggle(key) { const v = !this.get(key); this.set(key, v); return v; }
 };
 
-function renderVocab(cat, search) {
+// Applique les settings au DOM
+function applySettings() {
+  document.body.classList.toggle('hide-rom', !!Settings.get('hideRom'));
+  // Dark mode
+  const dm = Settings.get('darkMode');
+  if (dm === true) document.documentElement.setAttribute('data-theme', 'dark');
+  else if (dm === false) document.documentElement.removeAttribute('data-theme');
+  else {
+    // null = auto (system)
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+}
 
-  let items = [];
-  if (cat === 'all') {
-    Object.entries(DATA.vocab).forEach(([catName, words]) => {
-      words.forEach(w => items.push({...w, cat: catName}));
+// ── 2. CONFIG ─────────────────────────────────────
+
+const CHAPTER_ICONS = [
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="8" x2="22" y2="8"/><line x1="16" y1="8" x2="16" y2="16"/><line x1="10" y1="16" x2="22" y2="16"/><circle cx="16" cy="24" r="4"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="9" r="4"/><path d="M8 28c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="16" height="18" rx="3"/><path d="M12 10V7a4 4 0 018 0v3"/><line x1="8" y1="18" x2="24" y2="18"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="16" r="12"/><path d="M16 8v8l5 5"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3C11 3 7 7 7 12c0 7 9 17 9 17s9-10 9-17c0-5-4-9-9-9z"/><circle cx="16" cy="12" r="3"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 16h20c0 6-4 10-10 10S6 22 6 16z"/><path d="M12 5c0 2 2 3 0 5"/><path d="M16 5c0 2 2 3 0 5"/><path d="M20 5c0 2 2 3 0 5"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="16" r="12"/><circle cx="12" cy="13" r="2" fill="currentColor" opacity="0.15"/><circle cx="19" cy="11" r="1.5" fill="currentColor" opacity="0.15"/><circle cx="16" cy="20" r="2.5" fill="currentColor" opacity="0.15"/></svg>'
+];
+
+const CFG = {
+  SRS_INTERVALS: [1, 3, 7, 14, 30, 60],
+  DAILY_GOAL: 10,
+  SEARCH_DEBOUNCE: 150,
+  SEARCH_MAX: 50,
+  QUIZ_DELAY: 800,
+  SWIPE_THRESHOLD: 80,
+  QUIZ_MODES: [
+    { id: 'flashcards', title: 'Flashcards', desc: 'Retourner et swiper', color: '--ch0', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 012 2v12"/></svg>' },
+    { id: 'qcm', title: 'QCM', desc: '4 choix', color: '--ch3', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>' },
+    { id: 'ecriture', title: 'Ecriture', desc: 'Taper la traduction', color: '--ch4', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>' },
+    { id: 'association', title: 'Association', desc: 'Relier les paires', color: '--ch5', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h8M8 12h8M8 18h8"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/><circle cx="20" cy="6" r="1"/><circle cx="20" cy="12" r="1"/><circle cx="20" cy="18" r="1"/></svg>' },
+    { id: 'dictee', title: 'Dictee', desc: 'Ecouter et ecrire', color: '--ch1', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>' },
+    { id: 'marathon', title: 'Marathon', desc: 'Sans fin', color: '--ch2', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' },
+    { id: 'conjugaison', title: 'Conjugaison', desc: 'Forme verbale', color: '--ch6', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>' },
+    { id: 'particules', title: 'Particules', desc: 'Trouver la particule', color: '--ch4', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7.5 7.5l3 3M13.5 13.5l3 3M7.5 16.5l3-3M13.5 10.5l3-3"/></svg>' }
+  ]
+};
+
+
+// ── 3. SRS ────────────────────────────────────────
+
+// Cle unique par item, prefixee par type pour eviter les collisions
+function srsKey(item, type) {
+  if (type === 'verb') return 'v:' + item.inf;
+  if (type === 'expr') return 'e:' + (item.poli || item.inf || item.fr);
+  if (type === 'adj') return 'a:' + item.kr;
+  if (type === 'adv') return 'w:' + item.kr;
+  if (type === 'nombre') return 'n:' + item.kr;
+  if (type === 'connecteur') return 'c:' + item.kr;
+  if (type === 'particule') return 'p:' + item.p;
+  if (type === 'hangeul') return 'h:' + item.l;
+  return vocabSrsKey(item);
+}
+
+// Homonymes : mots kr identiques avec des sens differents (ex: 쓰다 ecrire/amer)
+// Detectes au demarrage, disambigues par kr|ch
+const _srsCollisions = new Set();
+
+function vocabSrsKey(item) {
+  const kr = item.kr || item.inf || item.p || '';
+  if (_srsCollisions.has(kr) && item.ch !== undefined) return kr + '|' + item.ch;
+  return kr;
+}
+
+// Systeme de repetition espacee (SRS)
+const SRS = {
+  data: (() => { try { return JSON.parse(localStorage.getItem('blokaja_srs') || '{}'); } catch(e) { return {}; } })(),
+
+  // Persiste en localStorage (debounce 2s pour eviter les ecritures repetees)
+  _saveTimer: null,
+  save() {
+    if (this._saveTimer) clearTimeout(this._saveTimer);
+    this._saveTimer = setTimeout(() => {
+      try { localStorage.setItem('blokaja_srs', JSON.stringify(this.data)); } catch(e) {}
+      this._saveTimer = null;
+    }, 2000);
+  },
+  flush() {
+    if (this._saveTimer) {
+      clearTimeout(this._saveTimer);
+      this._saveTimer = null;
+      try { localStorage.setItem('blokaja_srs', JSON.stringify(this.data)); } catch(e) {}
+    }
+  },
+
+  // Retourne l'entree pour une cle (ou valeur par defaut)
+  get(key) { return this.data[key] || { level: 0, next: null, count: 0 }; },
+
+  // Met a jour le niveau SRS : quality 0=difficile, 1=a revoir, 2=connu
+  update(key, quality) {
+    if (!key) return;
+    const e = this.get(key);
+    e.level = quality + 1;
+    // Reset count on failure so intervals don't grow for struggling items
+    if (quality === 0) e.count = 0;
+    else e.count = (e.count || 0) + 1;
+    const idx = Math.min(e.level - 1 + Math.floor(e.count / 3), CFG.SRS_INTERVALS.length - 1);
+    const days = CFG.SRS_INTERVALS[idx];
+    e.next = Date.now() + days * 86400000;
+    e.lastSeen = Date.now();
+    this.data[key] = e;
+    this.save();
+    Progress.invalidateCache();
+  },
+
+  // Retourne le niveau (0-3)
+  getLevel(key) { return key ? (this.data[key]?.level || 0) : 0; },
+
+  // Classe CSS selon le niveau SRS
+  getLevelClass(key) { return ['srs-new', 'srs-hard', 'srs-review', 'srs-known'][this.getLevel(key)]; },
+
+  // Label texte selon le niveau SRS
+  getLevelLabel(key) { return ['Nouveau', 'Difficile', 'A revoir', 'Connu'][this.getLevel(key)]; },
+
+  // Items a revoir aujourd'hui (next <= maintenant) + difficiles
+  getDueItems() {
+    const now = Date.now();
+    const due = [];
+    for (const [key, entry] of Object.entries(this.data)) {
+      if (entry.level > 0 && entry.next && entry.next <= now) {
+        due.push({ key, ...entry });
+      }
+    }
+    return due;
+  },
+
+  // Items difficiles (level 1) pour revision prioritaire
+  getHardItems() {
+    return Object.entries(this.data).filter(([_, e]) => e.level === 1).map(([key, e]) => ({ key, ...e }));
+  },
+
+  // Remet tout a zero
+  reset() { this.data = {}; this.save(); }
+};
+
+// Helpers pour le filtrage SRS reutilisable
+const SRS_FILTER_LABELS = [
+  { val: null, label: 'Tous' },
+  { val: 0, label: 'Nouveaux' },
+  { val: 1, label: 'Difficiles' },
+  { val: 2, label: 'A revoir' },
+  { val: 3, label: 'Connus' }
+];
+
+function srsFilterPillsHTML(activeFilter) {
+  return `<div class="pills mb-12" style="padding:0">
+    ${SRS_FILTER_LABELS.map(s => `<button class="pill ${activeFilter === s.val ? 'active' : ''}" data-srsf="${s.val}">${s.label}</button>`).join('')}
+  </div>`;
+}
+
+function bindSrsFilterPills(container, onChange) {
+  container.querySelectorAll('[data-srsf]').forEach(b =>
+    b.addEventListener('click', () => onChange(b.dataset.srsf === 'null' ? null : +b.dataset.srsf))
+  );
+}
+
+
+// ── 4. PROGRESS ───────────────────────────────────
+
+// Suivi de progression : streak, objectif, historique
+const Progress = {
+  // Charge les donnees depuis localStorage (ou cree un objet vierge)
+  load() {
+    let d; try { d = JSON.parse(localStorage.getItem('blokaja_progress') || 'null'); } catch(e) { d = null; }
+    return d || { streak: 0, lastDay: null, todayCount: 0, todayDate: null, dailyGoal: CFG.DAILY_GOAL, history: [] };
+  },
+
+  // Sauvegarde en localStorage
+  save(d) { try { localStorage.setItem('blokaja_progress', JSON.stringify(d)); } catch(e) {} },
+
+  // Enregistre une activite (un item revise)
+  recordActivity() {
+    const d = this.load();
+    const today = getToday();
+    if (d.todayDate !== today) { d.todayDate = today; d.todayCount = 0; }
+    d.todayCount++;
+    if (d.lastDay !== today) {
+      const diff = d.lastDay ? Math.floor((new Date(today) - new Date(d.lastDay)) / 86400000) : 999;
+      if (diff === 1) {
+        d.streak = d.streak + 1;
+      } else if (diff === 2 && d.streak > 0) {
+        // Gel de streak : tolere 1 jour manque (max 1 fois par semaine)
+        const d2 = new Date(today); d2.setDate(d2.getDate() - ((d2.getDay() + 6) % 7));
+        const weekKey = 'freeze_' + d2.toLocaleDateString('sv-SE');
+        const freezes = d[weekKey] || 0;
+        if (freezes < 1) {
+          d[weekKey] = freezes + 1;
+          // streak survit mais on ne l'incremente pas
+        } else {
+          d.streak = 1;
+        }
+      } else {
+        d.streak = 1;
+      }
+      d.lastDay = today;
+      if (!d.history.includes(today)) d.history.push(today);
+      // Limiter l'historique a 365 jours
+      if (d.history.length > 365) d.history = d.history.slice(-365);
+    }
+    this.save(d);
+    setTimeout(checkBadgeUnlocks, 200);
+  },
+
+  // Objectif quotidien : done / total
+  getGoal() {
+    const d = this.load();
+    return { done: d.todayCount || 0, total: d.dailyGoal };
+  },
+
+  // Tous les items revisables (cache invalide par SRS.update)
+  _reviewCache: null,
+  invalidateCache() { this._reviewCache = null; },
+  allReviewable() {
+    if (this._reviewCache) return this._reviewCache;
+    const items = [];
+    const seen = new Set();
+    const add = (key, ch, type) => {
+      if (key && !seen.has(key)) { seen.add(key); items.push({ key, ch, type }); }
+    };
+    DATA.vocabulary.forEach(i => add(vocabSrsKey(i), i.ch, 'vocab'));
+    DATA.phrases.forEach(i => add(vocabSrsKey(i), i.ch, 'phrase'));
+    DATA.verbs.forEach(i => add('v:' + i.inf, i.ch, 'verb'));
+    DATA.expressions.forEach(i => add('e:' + (i.poli || i.inf || i.fr), i.ch, 'expr'));
+    DATA.adjectives.forEach(i => add('a:' + i.kr, i.ch, 'adj'));
+    DATA.adverbs.forEach(i => add('w:' + i.kr, 0, 'adv'));
+    DATA.numbers.forEach(i => add('n:' + i.kr, 0, 'nombre'));
+    DATA.connectors.forEach(i => add('c:' + i.kr, i.ch, 'connecteur'));
+    DATA.particles.forEach(i => add('p:' + i.p, i.ch, 'particule'));
+    DATA.hangeul.forEach(i => add('h:' + i.l, 0, 'hangeul'));
+    this._reviewCache = items;
+    return items;
+  },
+
+  // Pourcentage de maitrise d'un chapitre (niveau >= 2)
+  chapterPct(chId) {
+    const items = this.allReviewable().filter(x => x.ch === chId);
+    if (!items.length) return 0;
+    return Math.round(items.filter(x => SRS.getLevel(x.key) >= 2).length / items.length * 100);
+  },
+
+  // Nombre total d'items dans un chapitre
+  chapterCount(chId) {
+    return this.allReviewable().filter(x => x.ch === chId).length;
+  },
+
+  // Statistiques globales par niveau
+  getStats() {
+    const all = this.allReviewable();
+    const s = { nouveau: 0, difficile: 0, revoir: 0, connu: 0, total: all.length };
+    all.forEach(i => {
+      const l = SRS.getLevel(i.key);
+      if (l === 0) s.nouveau++;
+      else if (l === 1) s.difficile++;
+      else if (l === 2) s.revoir++;
+      else if (l === 3) s.connu++;
     });
-  } else {
-    (DATA.vocab[cat]||[]).forEach(w => items.push({...w, cat: cat}));
+    return s;
   }
-
-  if (search) {
-    const q = search.toLowerCase();
-    items = items.filter(i =>
-      i.kr.includes(search) ||
-      i.fr.toLowerCase().includes(q) ||
-      (i.rom||'').toLowerCase().includes(q)
-    );
-  }
-
-  const grid = document.getElementById('vocab-grid');
-  const empty = document.getElementById('vocab-empty');
-  if (!items.length) { grid.innerHTML=''; empty.style.display='block'; return; }
-  empty.style.display = 'none';
-  grid.innerHTML = items.map(i => `
-    <div class="vocab-card">
-      <div class="vc-kr">${i.kr}</div>
-      <div class="vc-rom">${i.rom||''}</div>
-      <div class="vc-fr">${i.fr}</div>
-      ${i.note ? `<div class="vc-note">${i.note}</div>` : ''}
-      <div class="vc-tag">${i.cat}</div>
-    </div>`).join('');
-}
-
-function setCat(cat) {
-  currentCat = cat;
-  renderVocab(cat, currentSearch);
-  // Update "Tout" button
-  const allBtn = document.getElementById('vocab-all-btn');
-  const themeBtn = document.getElementById('vocab-theme-btn');
-  if (allBtn) allBtn.classList.toggle('active', cat === 'all');
-  if (themeBtn) {
-    if (cat === 'all') {
-      themeBtn.textContent = '📂 Thème ▾';
-      themeBtn.classList.remove('active');
-    } else {
-      themeBtn.textContent = (CAT_ICONS[cat]||'📂') + ' ' + cat.split('/')[0].trim() + ' ▾';
-      themeBtn.classList.add('active');
-    }
-  }
-  // Update tiles in drawer
-  document.querySelectorAll('.theme-tile').forEach(t => {
-    t.classList.toggle('active', t.dataset.cat === cat);
-  });
-}
-
-function openThemeDrawer() {
-  const grid = document.getElementById('theme-drawer-grid');
-  grid.innerHTML = Object.keys(DATA.vocab).map(c => `
-    <div class="theme-tile${currentCat===c?' active':''}" data-cat="${c}" onclick="setCat('${c}');closeThemeDrawer()">
-      <span class="tt-icon">${CAT_ICONS[c]||'📖'}</span>
-      <span class="tt-label">${c}</span>
-    </div>`).join('');
-  document.getElementById('theme-drawer').classList.add('open');
-  document.getElementById('theme-drawer-overlay').style.display = 'block';
-}
-
-function closeThemeDrawer() {
-  document.getElementById('theme-drawer').classList.remove('open');
-  document.getElementById('theme-drawer-overlay').style.display = 'none';
-}
-
-function filterVocab(q) {
-  currentSearch = q;
-  renderVocab(currentCat, q);
-}
-
-// ═══════════════════════════════════════════════════
-// EXPRESSIONS
-// ═══════════════════════════════════════════════════
-function renderExpressions() {
-  document.getElementById('expr-grid').innerHTML = DATA.expressions.map(e => `
-    <div class="expr-card">
-      <div class="ec-fr">${e.fr}</div>
-      ${e.note ? `<div class="ec-note">${e.note}</div>` : ''}
-      <div class="ec-row">
-        <div class="ec-label-col">
-          <span class="ec-badge poli">Poli</span>
-        </div>
-        <div class="ec-content-col">
-          <div class="ec-poli">${e.poli}</div>
-          <div class="ec-rom">${e.rp||''}</div>
-        </div>
-      </div>
-      <div class="ec-row" style="margin-top:8px">
-        <div class="ec-label-col">
-          <span class="ec-badge inf">Informel</span>
-        </div>
-        <div class="ec-content-col">
-          <div class="ec-inf">${e.inf}</div>
-          <div class="ec-rom">${e.ri||''}</div>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-// ═══════════════════════════════════════════════════
-// GRAMMAR
-// ═══════════════════════════════════════════════════
-let grammarFilter = 0;
-function renderGrammar(ch) {
-  grammarFilter = ch;
-  document.querySelectorAll('#grammar-tabs .tab').forEach((t,i) => {
-    t.classList.toggle('active', i === ch);
-  });
-  const items = ch === 0 ? DATA.grammar : DATA.grammar.filter(g => g.ch === ch);
-  document.getElementById('grammar-list').innerHTML = items.map(g => `
-    <div class="grammar-item" id="gi-${g.id}">
-      <div class="grammar-header" onclick="toggleGrammar('${g.id}')">
-        <span class="grammar-chap">Chap. ${g.ch}</span>
-        <span class="grammar-title">${g.titre}</span>
-        <span class="grammar-arrow">›</span>
-      </div>
-      <div class="grammar-body">
-        <p class="grammar-explain">${g.explain}</p>
-        ${(g.regles||[]).length ? `
-          <table class="rules-table">
-            <thead><tr><th>Contexte</th><th>Forme</th><th>Coréen</th><th>Romanisation</th><th>Traduction</th></tr></thead>
-            <tbody>
-              ${g.regles.map(r => `<tr>
-                <td style="color:var(--text2);font-size:12px">${r.ctx}</td>
-                <td class="kr" style="color:var(--gold2);font-size:16px">${r.forme}</td>
-                <td class="kr" style="font-size:14px">${r.ex_kr}</td>
-                <td style="color:var(--text2);font-size:11px;font-style:italic">${r.ex_rom||''}</td>
-                <td style="color:var(--text2);font-size:12px;font-style:italic">${r.ex_fr}</td>
-              </tr>`).join('')}
-            </tbody>
-          </table>` : ''}
-        ${(g.table||[]).length > 0 ? `
-          <table class="rules-table">
-            <thead><tr><th>Déterminant</th><th>Usage</th><th>Coréen</th><th>Romanisation</th><th>Traduction</th></tr></thead>
-            <tbody>
-              ${g.table.map(r => `<tr>
-                <td class="kr" style="color:var(--gold2);font-size:18px">${r.det}</td>
-                <td style="color:var(--text2);font-size:12px">${r.usage}</td>
-                <td class="kr" style="font-size:13px">${r.ex_kr}</td>
-                <td style="color:var(--text2);font-size:11px;font-style:italic">${r.ex_rom||''}</td>
-                <td style="color:var(--text2);font-size:12px;font-style:italic">${r.ex_fr}</td>
-              </tr>`).join('')}
-            </tbody>
-          </table>` : ''}
-        ${(g.exemples||[]).map(e => `
-          <div class="example-box">
-            <div class="ex-kr">${e.kr}</div>
-            ${e.rom ? `<div class="ex-rom">${e.rom}</div>` : ''}
-            <div class="ex-fr">${e.fr}</div>
-          </div>`).join('')}
-        ${g.note ? `<div class="grammar-note">${g.note}</div>` : ''}
-      </div>
-    </div>`).join('');
-}
-
-function filterGrammar(ch) { renderGrammar(ch); }
-
-function toggleGrammar(id) {
-  const el = document.getElementById('gi-'+id);
-  el.classList.toggle('open');
-}
-
-// ═══════════════════════════════════════════════════
-// VERBES
-// ═══════════════════════════════════════════════════
-function renderVerbes(search) {
-  let items = DATA.verbes;
-  if (search) {
-    const q = search.toLowerCase();
-    items = items.filter(v =>
-      v.inf.includes(search) || v.fr.toLowerCase().includes(q) || (v.rom||'').toLowerCase().includes(q)
-    );
-  }
-  document.getElementById('verbes-grid').innerHTML = items.map(v => `
-    <div class="vocab-card" style="cursor:default">
-      <div class="vc-kr" style="font-size:22px;margin-bottom:4px">${v.inf}</div>
-      <div class="vc-rom">${v.rom||''}</div>
-      <div class="vc-fr" style="font-size:14px;font-weight:500;margin-bottom:10px">${v.fr}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px">
-        <div style="background:var(--ink2);padding:6px 8px;border-radius:4px">
-          <span style="color:var(--blue);font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Poli</span><br>
-          <span class="kr" style="color:var(--cream);font-size:15px">${v.poli}</span>
-        </div>
-        <div style="background:var(--ink2);padding:6px 8px;border-radius:4px">
-          <span style="color:var(--green);font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Informel</span><br>
-          <span class="kr" style="color:var(--cream);font-size:15px">${v.inf_}</span>
-        </div>
-        <div style="background:var(--ink2);padding:6px 8px;border-radius:4px;grid-column:span 2">
-          <span style="color:var(--purple);font-size:10px;text-transform:uppercase;letter-spacing:0.5px">Passé (poli)</span><br>
-          <span class="kr" style="color:var(--cream);font-size:15px">${v.passe}</span>
-        </div>
-      </div>
-      ${v.note ? `<div class="vc-note" style="margin-top:8px">${v.note}</div>` : ''}
-    </div>`).join('');
-}
-function filterVerbes(q) { renderVerbes(q); }
-
-// ═══════════════════════════════════════════════════
-// CULTURE
-// ═══════════════════════════════════════════════════
-function renderCulture() {
-  document.getElementById('culture-grid').innerHTML = DATA.culture.map(c => `
-    <div class="culture-card">
-      <div class="cc-icon">${c.icon}</div>
-      <div class="cc-title">${c.titre}</div>
-      <div class="cc-body">${c.body}</div>
-      <div class="cc-key">${c.mots.map(m=>`<span class="cc-tag"><span class="cc-tag-kr">${m[0]}</span><span class="cc-tag-fr">${m[1]}</span></span>`).join('')}</div>
-    </div>`).join('');
-}
-
-// ═══════════════════════════════════════════════════
-// QUIZ
-// ═══════════════════════════════════════════════════
-let quizDeck = [], quizIdx = 0, quizScores = [], quizFlipped = false;
-let quizMode = 'kr'; // 'kr' = KR→FR, 'fr' = FR→KR
-
-const QUIZ_SETS = {
-  all: () => { let a=[]; Object.values(DATA.vocab).forEach(v=>a.push(...v)); return a; },
-  school: () => [...(DATA.vocab["Sac / École"]||[]), ...(DATA.vocab["Classe / Lycée"]||[])],
-  food: () => [...(DATA.vocab["Nourriture"]||[]), ...(DATA.vocab["Plats coréens"]||[])],
 };
 
-function startQuiz(set, mode) {
-  quizMode = mode || 'kr';
-  let items = (QUIZ_SETS[set] ? QUIZ_SETS[set]() :
-    DATA.vocab[set] ? DATA.vocab[set] :
-    Object.values(DATA.vocab).flat()).filter(i => i.kr && i.fr);
-  quizDeck = shuffle([...items]).slice(0, Math.min(items.length, 30));
-  quizIdx = 0; quizScores = []; quizFlipped = false;
-  document.getElementById('quiz-complete').style.display = 'none';
-  document.getElementById('quiz-card-area').style.display = 'flex';
-  document.getElementById('quiz-card-area').style.flexDirection = 'column';
-  document.getElementById('quiz-card-area').style.alignItems = 'center';
-  document.getElementById('quiz-overlay').classList.add('active');
-  document.getElementById('quiz-mode-label').textContent = quizMode === 'kr' ? 'Mode : KR → FR' : 'Mode : FR → KR';
-  renderQuizCard();
+
+// ── 5. SEARCH ─────────────────────────────────────
+
+// Index inverse construit une seule fois
+let _searchIdx = null;
+
+// Construit l'index de recherche sur tous les types de donnees
+function buildSearchIndex() {
+  if (_searchIdx) return _searchIdx;
+  _searchIdx = [];
+  const n = s => stripAccents((s || '').toLowerCase());
+
+  DATA.vocabulary.forEach(i => _searchIdx.push({
+    type: 'vocab', item: i, terms: n(i.kr) + ' ' + n(i.fr) + ' ' + n(i.rom),
+    kr: i.kr, fr: i.fr, ch: i.ch
+  }));
+  DATA.phrases.forEach(i => _searchIdx.push({
+    type: 'phrase', item: i, terms: n(i.kr) + ' ' + n(i.fr) + ' ' + n(i.rom),
+    kr: i.kr, fr: i.fr, ch: i.ch
+  }));
+  DATA.grammar.forEach(i => _searchIdx.push({
+    type: 'grammaire', item: i, terms: n(i.title) + ' ' + n(i.expl),
+    kr: i.title, fr: i.expl || '', ch: i.ch
+  }));
+  DATA.expressions.forEach(i => _searchIdx.push({
+    type: 'expression', item: i, terms: n(i.fr) + ' ' + n(i.poli || '') + ' ' + n(i.inf || ''),
+    kr: i.poli || i.inf || '', fr: i.fr, ch: i.ch
+  }));
+  DATA.verbs.forEach(i => _searchIdx.push({
+    type: 'verbe', item: i, terms: n(i.inf) + ' ' + n(i.fr) + ' ' + n(i.poli || '') + ' ' + n(i.fam || ''),
+    kr: i.inf, fr: i.fr, ch: i.ch
+  }));
+  DATA.particles.forEach(i => _searchIdx.push({
+    type: 'particule', item: i, terms: n(i.p) + ' ' + n(i.name || '') + ' ' + n(i.fn || ''),
+    kr: i.p, fr: i.name || i.fn || '', ch: i.ch
+  }));
+  DATA.numbers.forEach(i => _searchIdx.push({
+    type: 'nombre', item: i, terms: n(i.kr) + ' ' + n(i.val || '') + ' ' + n(i.rom || ''),
+    kr: i.kr, fr: i.val + ' (' + (i.sys === 'sino-coréen' ? 'sino-coréen' : 'coréen natif') + ')', ch: 0
+  }));
+  DATA.connectors.forEach(i => _searchIdx.push({
+    type: 'connecteur', item: i, terms: n(i.kr) + ' ' + n(i.fr) + ' ' + n(i.usage || ''),
+    kr: i.kr, fr: i.fr, ch: i.ch
+  }));
+  DATA.adjectives.forEach(i => _searchIdx.push({
+    type: 'adjectif', item: i, terms: n(i.kr) + ' ' + n(i.fr) + ' ' + n(i.rom || ''),
+    kr: i.kr, fr: i.fr, ch: i.ch
+  }));
+  DATA.adverbs.forEach(i => _searchIdx.push({
+    type: 'adverbe', item: i, terms: n(i.kr) + ' ' + n(i.fr) + ' ' + n(i.rom || ''),
+    kr: i.kr, fr: i.fr, ch: i.ch || 0
+  }));
+
+  return _searchIdx;
 }
 
-function renderQuizCard() {
-  const card = quizDeck[quizIdx];
-  if (quizMode === 'kr') {
-    document.getElementById('fc-kr').textContent = card.kr;
-    document.getElementById('fc-fr').textContent = card.fr;
-    document.getElementById('fc-rom').textContent = card.rom || '';
+
+// ── 6. ROUTER ─────────────────────────────────────
+
+// Navigation par hash
+function navigate(hash) { window.location.hash = hash; }
+
+// Dispatch selon le hash — avec transition de page
+function route() {
+  const hash = location.hash.slice(1) || 'cours';
+  const p = hash.split('/');
+
+  // Mise a jour de l'onglet actif
+  $$('.tab').forEach(t => {
+    const isActive = t.dataset.tab === p[0];
+    t.classList.toggle('active', isActive);
+    t.setAttribute('aria-selected', isActive);
+  });
+
+  // Transition de page : fade out -> render -> fade in
+  const doRender = () => {
+    app.scrollTo(0, 0);
+    if (p[0] === 'cours' && p[1] !== undefined) renderChapter(+p[1], p[2] || (p[1] === '0' ? 'voyelles' : 'vocab'));
+    else if (p[0] === 'cours') renderCoursList();
+    else if (p[0] === 'recherche') renderSearch();
+    else if (p[0] === 'quiz' && p[1] === 'review') startReviewSession();
+    else if (p[0] === 'quiz' && p[1] === 'exam') startExamBlanc();
+    else if (p[0] === 'quiz' && p[1] === 'config') renderQuizConfig(p[2]);
+    else if (p[0] === 'quiz') renderQuizMenu();
+    else if (p[0] === 'progression') renderProgression();
+    else renderCoursList();
+    app.classList.remove('page-exit');
+  };
+
+  if (app.innerHTML && !window._firstRoute) {
+    app.classList.add('page-exit');
+    setTimeout(doRender, 180);
   } else {
-    document.getElementById('fc-kr').textContent = card.fr;
-    document.getElementById('fc-kr').style.fontFamily = "'DM Sans', sans-serif";
-    document.getElementById('fc-kr').style.fontSize = '32px';
-    document.getElementById('fc-fr').textContent = card.kr;
-    document.getElementById('fc-fr').style.fontFamily = "'Noto Sans KR', sans-serif";
-    document.getElementById('fc-rom').textContent = card.rom || '';
+    window._firstRoute = false;
+    doRender();
   }
-  document.getElementById('flashcard').classList.remove('flipped');
-  quizFlipped = false;
-  const pct = (quizIdx / quizDeck.length * 100).toFixed(0);
-  document.getElementById('qpfill').style.width = pct + '%';
-  document.getElementById('qcounter').textContent = `${quizIdx+1} / ${quizDeck.length}`;
+}
+window._firstRoute = true;
+
+window.addEventListener('hashchange', route);
+
+
+// ── 7. COMPONENTS ─────────────────────────────────
+
+// --- Bottom Sheet ---
+
+// Ouvre le bottom sheet avec du contenu HTML
+function openBottomSheet(html) {
+  $('#bottomSheetContent').innerHTML = html;
+  $('#bottomSheet').classList.add('visible');
+  $('#bottomSheetOverlay').classList.add('visible');
+  document.body.classList.add('sheet-open');
 }
 
-function flipCard() {
-  document.getElementById('flashcard').classList.toggle('flipped');
-  quizFlipped = true;
+// Ferme le bottom sheet
+function closeBottomSheet() {
+  _sheetCtx = null;
+  $('#bottomSheet').classList.remove('visible');
+  $('#bottomSheetOverlay').classList.remove('visible');
+  document.body.classList.remove('sheet-open');
 }
 
-function nextCard(score) {
-  quizScores.push(score);
-  quizIdx++;
-  if (quizIdx >= quizDeck.length) {
-    showQuizComplete(); return;
-  }
-  renderQuizCard();
-}
-
-function showQuizComplete() {
-  const good = quizScores.filter(s=>s===2).length;
-  const ok = quizScores.filter(s=>s===1).length;
-  const bad = quizScores.filter(s=>s===0).length;
-  document.getElementById('quiz-card-area').style.display = 'none';
-  document.getElementById('quiz-complete').style.display = 'block';
-  document.getElementById('qpfill').style.width = '100%';
-  document.getElementById('quiz-result-text').innerHTML =
-    `<strong style="color:var(--green)">${good} connus</strong> · <strong style="color:var(--gold)">${ok} à revoir</strong> · <strong style="color:var(--red2)">${bad} difficiles</strong><br><br>sur ${quizDeck.length} cartes`;
-}
-
-function restartQuiz() { quizIdx = 0; quizScores = []; quizDeck = shuffle(quizDeck); document.getElementById('quiz-complete').style.display='none'; document.getElementById('quiz-card-area').style.display='flex'; renderQuizCard(); }
-function closeQuiz() { document.getElementById('quiz-overlay').classList.remove('active'); }
-function shuffle(arr) { for (let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
-
-// ═══════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════
-renderHangeul();
-
-// Keyboard shortcuts
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('quiz-overlay').classList.contains('active')) return;
-  if (e.code === 'Space') { e.preventDefault(); flipCard(); }
-  if (e.code === 'ArrowLeft') nextCard(0);
-  if (e.code === 'ArrowDown') nextCard(1);
-  if (e.code === 'ArrowRight') nextCard(2);
-  if (e.code === 'Escape') closeQuiz();
-});
-
-// Touch swipe for quiz flashcards
-(function() {
-  let touchStartX = 0, touchStartY = 0;
-  const overlay = document.getElementById('quiz-overlay');
-  overlay.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-    touchStartY = e.changedTouches[0].screenY;
-  }, { passive: true });
-  overlay.addEventListener('touchend', e => {
-    if (!overlay.classList.contains('active')) return;
-    const dx = e.changedTouches[0].screenX - touchStartX;
-    const dy = e.changedTouches[0].screenY - touchStartY;
-    const absDx = Math.abs(dx), absDy = Math.abs(dy);
-    if (absDx < 50 && absDy < 50) return; // too short
-    if (absDy > absDx) {
-      // vertical swipe — swipe up = flip
-      if (dy < -50) flipCard();
-      else if (dy > 50 && quizFlipped) nextCard(1); // swipe down = à revoir
-    } else {
-      if (!quizFlipped) return;
-      if (dx < -50) nextCard(0); // swipe left = difficile
-      if (dx > 50) nextCard(2);  // swipe right = connu
+// Drag-to-dismiss sur le bottom sheet
+(function initBottomSheetDrag() {
+  const sheet = $('#bottomSheet');
+  let y0 = 0, yc = 0, drag = false;
+  sheet.addEventListener('touchstart', e => {
+    if (e.target.closest('.bottom-sheet-handle')) {
+      y0 = e.touches[0].clientY; drag = true;
+      sheet.style.transition = 'none';
     }
-  }, { passive: true });
+  });
+  sheet.addEventListener('touchmove', e => {
+    if (!drag) return;
+    yc = e.touches[0].clientY;
+    const dy = yc - y0;
+    if (dy > 0) sheet.style.transform = `translateY(${dy}px)`;
+  });
+  sheet.addEventListener('touchend', () => {
+    if (!drag) return;
+    drag = false;
+    sheet.style.transition = '';
+    sheet.style.transform = '';
+    if (yc - y0 > 100) closeBottomSheet();
+  });
 })();
 
-// Splash screen dismiss
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const splash = document.getElementById('splash');
-    if (splash) splash.classList.add('hidden');
-    setTimeout(() => { if (splash) splash.remove(); }, 600);
-  }, 1200);
+// Contexte de navigation pour le bottom sheet (liste + index courant)
+let _sheetCtx = null;
+
+// --- Detail Sheet ---
+
+// Ouvre un detail dans le bottom sheet selon le type
+function openDetailSheet(item, type, listCtx) {
+  _sheetCtx = listCtx || null;
+  let html = '<div class="detail-header">';
+
+  if (type === 'vocab') {
+    html += `<div class="detail-kr">${escHtml(item.kr)} ${audioBtnHTML(item.kr)}</div>`;
+    html += `<div class="detail-rom rom-text">${escHtml(item.rom || '')}</div>`;
+    html += `<div class="detail-fr">${escHtml(item.fr)}</div>`;
+    html += `<div class="detail-meta">
+      <span class="badge badge-vocab">${escHtml(item.theme || '')}</span>
+      <span class="badge ${SRS.getLevelClass(vocabSrsKey(item))}">${SRS.getLevelLabel(vocabSrsKey(item))}</span>
+    </div>`;
+    // Phrases d'exemple contenant ce mot
+    const examples = DATA.phrases.filter(p => p.kr && p.kr.includes(item.kr) && p.kr !== item.kr).slice(0, 3);
+    if (examples.length) {
+      html += '<div class="detail-section">';
+      html += '<div class="search-group-title" style="margin-bottom:6px">Exemples</div>';
+      examples.forEach(ex => {
+        html += `<div class="example-block">
+          <div style="font-size:14px;font-weight:600">${escHtml(ex.kr)}</div>
+          <div class="text-secondary" style="font-size:12px">${escHtml(ex.fr)}</div>
+        </div>`;
+      });
+      html += '</div>';
+    }
+    html += srsButtonsHTML(vocabSrsKey(item));
+
+  } else if (type === 'verb') {
+    html += `<div class="detail-kr">${escHtml(item.inf)} ${audioBtnHTML(item.inf)}</div>`;
+    html += `<div class="detail-rom rom-text">${escHtml(item.rom || '')}</div>`;
+    html += `<div class="detail-fr">${escHtml(item.fr)}</div>`;
+    html += '<div class="detail-section">';
+    if (item.poli) html += `<div class="flex items-center gap-8 mb-8"><span class="badge badge-vocab">Poli</span><span class="inline-kr">${escHtml(item.poli)}</span></div>`;
+    if (item.fam) html += `<div class="flex items-center gap-8 mb-8"><span class="badge badge-grammar">Informel</span><span class="inline-kr">${escHtml(item.fam)}</span></div>`;
+    if (item.passe) html += `<div class="flex items-center gap-8 mb-8"><span class="badge badge-phrase">Passe</span><span class="inline-kr">${escHtml(item.passe)}</span></div>`;
+    if (item.irreg) html += '<div style="color:var(--danger);font-size:13px;font-weight:600">Verbe irregulier</div>';
+    html += '</div>';
+    html += srsButtonsHTML('v:' + item.inf);
+
+  } else if (type === 'grammar') {
+    html += `<div style="font-size:18px;font-weight:700;margin-bottom:8px">${escHtml(item.title)}</div>`;
+    html += `<div style="font-size:14px;color:var(--text2);line-height:1.7;text-align:left">${escHtml(item.expl || '')}</div>`;
+
+  } else if (type === 'phrase') {
+    html += `<div class="detail-kr">${escHtml(item.kr)} ${audioBtnHTML(item.kr)}</div>`;
+    if (item.rom) html += `<div class="detail-rom rom-text">${escHtml(item.rom)}</div>`;
+    html += `<div class="detail-fr">${escHtml(item.fr)}</div>`;
+    html += srsButtonsHTML(vocabSrsKey(item));
+
+  } else if (type === 'expr') {
+    html += `<div class="detail-fr" style="font-size:16px;font-weight:600">${escHtml(item.fr)}</div>`;
+    html += '<div class="detail-section">';
+    if (item.poli) html += `<div class="flex items-center gap-8 mb-8"><span class="badge badge-vocab">Poli</span><span class="inline-kr">${escHtml(item.poli)}</span></div>`;
+    if (item.rp) html += `<div class="text-xs-italic" style="margin-top:-4px;margin-bottom:8px;margin-left:60px">${escHtml(item.rp)}</div>`;
+    if (item.inf) html += `<div class="flex items-center gap-8 mb-8"><span class="badge badge-grammar">Informel</span><span class="inline-kr">${escHtml(item.inf)}</span></div>`;
+    if (item.ri) html += `<div class="text-xs-italic" style="margin-top:-4px;margin-bottom:8px;margin-left:60px">${escHtml(item.ri)}</div>`;
+    html += '</div>';
+    html += srsButtonsHTML('e:' + (item.poli || item.inf || item.fr));
+
+  } else if (type === 'particle') {
+    html += `<div style="font-size:36px;font-weight:700;color:var(--primary)">${escHtml(item.p)}</div>`;
+    html += `<div style="font-size:16px;margin:4px 0">${escHtml(item.name || '')}</div>`;
+    html += `<div style="font-size:14px;color:var(--text2);line-height:1.7;text-align:left">${escHtml(item.fn || '')}</div>`;
+    if (item.rule) html += `<div class="chip mt-8">${escHtml(item.rule)}</div>`;
+
+  } else if (type === 'culture') {
+    let body = escHtml(item.body || '');
+    if (item.kw) item.kw.forEach(kw => {
+      const t = Array.isArray(kw) ? kw[0] : kw;
+      if (t) body = body.replace(new RegExp(escHtml(t), 'g'), `<strong style="color:var(--primary)">${escHtml(t)}</strong>`);
+    });
+    html = '<div style="padding:8px 0">';
+    html += `<div style="font-size:18px;font-weight:700;margin-bottom:12px">${escHtml(item.title)}</div>`;
+    html += `<div style="font-size:14px;color:var(--text2);line-height:1.7">${body}</div>`;
+    if (item.kw && item.kw.length) {
+      html += `<div class="chip-list mt-12">${item.kw.map(kw =>
+        `<span class="chip" style="background:var(--primary-light);color:var(--primary)">${escHtml(Array.isArray(kw) ? `${kw[0]} — ${kw[1]}` : kw)}</span>`
+      ).join('')}</div>`;
+    }
+    html += '</div>';
+    openBottomSheet(html);
+    return;
+
+  } else if (type === 'nombre') {
+    html += `<div class="detail-kr">${escHtml(item.kr)} ${audioBtnHTML(item.kr)}</div>`;
+    html += `<div class="detail-rom rom-text">${escHtml(item.rom || '')}</div>`;
+    html += `<div class="detail-fr">${escHtml(item.val)} (${item.sys === 'sino-coréen' ? 'sino-coreen' : 'coreen natif'})</div>`;
+    html += srsButtonsHTML('n:' + item.kr);
+
+  } else if (type === 'connecteur') {
+    html += `<div class="detail-kr">${escHtml(item.kr)} ${audioBtnHTML(item.kr)}</div>`;
+    html += `<div class="detail-rom rom-text">${escHtml(item.rom || '')}</div>`;
+    html += `<div class="detail-fr">${escHtml(item.fr)}</div>`;
+    if (item.usage) html += `<div style="font-size:13px;color:var(--text3);margin-top:8px">${escHtml(item.usage)}</div>`;
+    html += srsButtonsHTML('c:' + item.kr);
+
+  } else if (type === 'hangeul') {
+    html += `<div style="font-size:72px;font-weight:700">${escHtml(item.l)} ${audioBtnHTML(item.l)}</div>`;
+    html += `<div style="font-size:18px;color:var(--primary);margin:8px 0" class="rom-text">${escHtml(item.rom)}</div>`;
+    html += `<div style="font-size:14px;color:var(--text2);line-height:1.6">${escHtml(item.desc)}</div>`;
+
+  } else {
+    html += `<div class="detail-kr">${escHtml(item.kr || item.p || '')}</div>`;
+    html += `<div class="detail-fr">${escHtml(item.fr || '')}</div>`;
+  }
+
+  // Navigation prev/next si contexte de liste
+  if (_sheetCtx && _sheetCtx.items.length > 1) {
+    html += `<div class="sheet-nav">
+      <button class="sheet-nav-btn" id="sheetPrev" ${_sheetCtx.index <= 0 ? 'disabled' : ''}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Prec.
+      </button>
+      <span class="sheet-nav-count">${_sheetCtx.index + 1} / ${_sheetCtx.items.length}</span>
+      <button class="sheet-nav-btn" id="sheetNext" ${_sheetCtx.index >= _sheetCtx.items.length - 1 ? 'disabled' : ''}>
+        Suiv. <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+    </div>`;
+  }
+
+  html += '</div>';
+  openBottomSheet(html);
+  bindSRSButtons();
+
+  // Navigation prev/next
+  if (_sheetCtx) {
+    const prevBtn = document.getElementById('sheetPrev');
+    const nextBtn = document.getElementById('sheetNext');
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+      if (_sheetCtx && _sheetCtx.index > 0) {
+        _sheetCtx.index--;
+        openDetailSheet(_sheetCtx.items[_sheetCtx.index], _sheetCtx.type, _sheetCtx);
+      }
+    });
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      if (_sheetCtx && _sheetCtx.index < _sheetCtx.items.length - 1) {
+        _sheetCtx.index++;
+        openDetailSheet(_sheetCtx.items[_sheetCtx.index], _sheetCtx.type, _sheetCtx);
+      }
+    });
+  }
+}
+
+// Lie les boutons SRS dans le bottom sheet (event delegation unique)
+function bindSRSButtons() {
+  const content = $('#bottomSheetContent');
+  // On enleve le listener precedent en re-clonant (approche simple)
+  // Mais pour garder ca propre, on utilise un flag
+  content.addEventListener('click', function _srs(e) {
+    const btn = e.target.closest('[data-srs]');
+    if (btn) {
+      SRS.update(btn.dataset.key, +btn.dataset.srs);
+      Progress.recordActivity();
+      closeBottomSheet();
+      toast('Progression enregistree');
+      content.removeEventListener('click', _srs);
+    }
+  });
+}
+
+// Genere le HTML des boutons SRS
+function srsButtonsHTML(key) {
+  return `<div class="srs-buttons">
+    <button class="srs-btn srs-btn-hard" data-srs="0" data-key="${escHtml(key)}">Difficile</button>
+    <button class="srs-btn srs-btn-review" data-srs="1" data-key="${escHtml(key)}">A revoir</button>
+    <button class="srs-btn srs-btn-known" data-srs="2" data-key="${escHtml(key)}">Connu</button>
+  </div>`;
+}
+
+// --- Accordions ---
+
+// Genere une liste d'accordeons
+function accordionHTML(items, headerFn, bodyFn) {
+  return items.map((item, i) => `
+    <div class="card card-flush mb-8">
+      <div class="accordion-header" data-ai="${i}">
+        ${headerFn(item, i)}
+        <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="accordion-body" data-ab="${i}">
+        <div style="padding:0 16px 16px">
+          ${bodyFn(item, i)}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Delegue les clics sur .accordion-header dans un container
+function bindAccordions(container) {
+  container.addEventListener('click', e => {
+    const h = e.target.closest('.accordion-header');
+    if (!h) return;
+    const i = h.dataset.ai || h.dataset.pi;
+    h.classList.toggle('open');
+    const body = container.querySelector(`.accordion-body[data-ab="${i}"], .accordion-body[data-pbody="${i}"]`);
+    if (body) body.classList.toggle('open');
+  });
+}
+
+// --- Pills ---
+
+// Genere un groupe de pills selectables
+function pillsHTML(options, activeVal, dataAttr = 'data-val') {
+  return `<div class="pills" style="padding:0">${options.map(o =>
+    `<button class="pill ${String(o.val) === String(activeVal) ? 'active' : ''}" ${dataAttr}="${escHtml(o.val)}">${escHtml(o.label)}</button>`
+  ).join('')}</div>`;
+}
+
+// --- Badges ---
+
+// Genere un badge type + optionnel badge chapitre
+function badgeHTML(type, ch) {
+  const badgeMap = { vocab: 'badge-vocab', phrase: 'badge-phrase', grammaire: 'badge-grammar', grammar: 'badge-grammar', expression: 'badge-expr', expr: 'badge-expr', verbe: 'badge-verb', verb: 'badge-verb', culture: 'badge-culture', particule: 'badge-culture' };
+  return `<span class="badge ${badgeMap[type] || ''}">${escHtml(type.charAt(0).toUpperCase() + type.slice(1))}</span>` +
+    (ch !== undefined ? `<span class="badge badge-ch${ch}">Ch.${ch}</span>` : '');
+}
+
+// --- Header ---
+
+// Met a jour le titre et la fleche retour du header
+function setHeader(title, showBack) {
+  $('#headerTitle').textContent = title;
+  const back = $('#headerBack');
+  if (showBack) back.classList.add('visible');
+  else back.classList.remove('visible');
+}
+
+
+// ── 8. PAGES ──────────────────────────────────────
+
+// --- Liste des chapitres ---
+
+function renderCoursList() {
+  setHeader('Blokaja', false);
+  const d = Progress.load();
+  const goal = Progress.getGoal();
+  const dueCount = SRS.getDueItems().length;
+
+  app.innerHTML = `
+    <div class="section">
+      <div class="streak-card">
+        <div class="mascot">${(d.streak || 0) >= 3 ? MASCOT_HAPPY_SVG : MASCOT_SVG}</div>
+        <div style="flex:1">
+          <div class="streak-label" style="font-weight:600">${d.streak || 0} jour${(d.streak || 0) > 1 ? 's' : ''} de suite</div>
+          <div class="streak-label">${goal.done}/${goal.total} items aujourd'hui</div>
+          <div class="goal-bar"><div class="goal-bar-fill" style="width:${Math.min(100, goal.done / goal.total * 100)}%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    ${(() => {
+      let cta = '';
+      if (dueCount > 0) {
+        cta += `<div class="section">
+          <button class="btn btn-primary btn-block" data-nav="quiz/review" style="padding:16px;font-size:16px">
+            Reviser maintenant · ${dueCount} item${dueCount > 1 ? 's' : ''} a revoir
+          </button>
+        </div>`;
+      }
+      if (dueCount > 10) {
+        cta += `<div class="section" style="padding-top:0">
+          <div style="background:var(--accent-light);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--text2);border-left:3px solid var(--accent)">
+            Revise d'abord tes ${dueCount} items en attente avant de decouvrir de nouveaux mots.
+          </div>
+        </div>`;
+      } else {
+        cta += `<div class="section">
+          <button class="btn btn-block" id="discoverBtn" style="padding:16px;font-size:16px;background:var(--primary-light);color:var(--primary);font-weight:600">
+            Decouvrir 5 nouveaux mots
+          </button>
+        </div>`;
+      }
+      return cta;
+    })()}
+
+    <div class="section">
+      <div class="section-title">Chapitres</div>
+      ${DATA.chapters.map(ch => {
+        const pct = Progress.chapterPct(ch.id);
+        const count = Progress.chapterCount(ch.id);
+        return `
+          <div class="chapter-card" role="button" tabindex="0" data-nav="cours/${ch.id}" style="border-left-color:var(--ch${ch.id})">
+            <div class="chapter-icon" style="color:var(--ch${ch.id})">${CHAPTER_ICONS[ch.id] || ch.id}</div>
+            <div class="chapter-info">
+              <div class="chapter-title-kr">${escHtml(ch.title_kr)}</div>
+              <div class="chapter-title-fr">${escHtml(ch.title_fr)}</div>
+              <div class="chapter-progress"><div class="chapter-progress-fill" style="width:${pct}%;background:var(--ch${ch.id})"></div></div>
+              <div class="chapter-meta">${pct}% · ${count} items</div>
+            </div>
+          </div>`;
+      }).join('')}
+    </div>
+  `;
+
+  // Bouton decouvrir de nouveaux mots (lecon guidee)
+  const discBtn = $('#discoverBtn');
+  if (discBtn) {
+    discBtn.addEventListener('click', () => {
+      // Trouver le premier chapitre avec des mots non vus
+      const chWithNew = DATA.chapters.find(ch =>
+        DATA.vocabulary.some(v => v.ch === ch.id && v.fr && SRS.getLevel(vocabSrsKey(v)) === 0)
+      );
+      if (!chWithNew) { toast('Tous les mots ont ete vus !'); return; }
+      startLesson(chWithNew.id);
+    });
+  }
+
+  // Event delegation pour navigation
+  app.addEventListener('click', function _cl(e) {
+    const c = e.target.closest('[data-nav]');
+    if (c) { navigate('#' + c.dataset.nav); app.removeEventListener('click', _cl); }
+  });
+}
+
+// --- Page chapitre ---
+
+function renderChapter(chId, sub) {
+  const ch = DATA.chapters.find(c => c.id === chId);
+  if (!ch) return renderCoursList();
+
+  trackChapterVisit(chId);
+  setHeader(ch.title_fr, true);
+
+  const isH = chId === 0;
+  const tabs = isH
+    ? [
+        { id: 'voyelles', l: 'Voyelles' }, { id: 'consonnes', l: 'Consonnes' },
+        { id: 'doubles', l: 'Doubles' }, { id: 'composees', l: 'Composees' },
+        { id: 'batchim', l: 'Batchim' }, { id: 'nombres', l: 'Nombres' },
+        { id: 'vocab', l: 'Vocab' }, { id: 'grammaire', l: 'Grammaire' }, { id: 'culture', l: 'Culture' }
+      ]
+    : [
+        { id: 'vocab', l: 'Vocab' }, { id: 'grammaire', l: 'Grammaire' },
+        { id: 'verbes', l: 'Verbes' }, { id: 'particules', l: 'Particules' },
+        { id: 'nombres', l: 'Nombres' }, { id: 'connecteurs', l: 'Connecteurs' },
+        { id: 'phrases', l: 'Phrases' }, { id: 'expressions', l: 'Expressions' },
+        { id: 'culture', l: 'Culture' }
+      ];
+
+  if (!tabs.find(t => t.id === sub)) sub = tabs[0].id;
+
+  app.innerHTML = `
+    <div class="section">
+      <div class="text-secondary" style="margin-bottom:4px">Chapitre ${chId}</div>
+      <div style="font-size:20px;font-weight:700;margin-bottom:12px" lang="ko">${escHtml(ch.title_kr)}</div>
+      ${(() => {
+        const newCount = DATA.vocabulary.filter(v => v.ch === chId && v.fr && SRS.getLevel(vocabSrsKey(v)) === 0).length;
+        const globalDue = SRS.getDueItems().length;
+        return newCount > 0 && globalDue <= 10 ? `
+          <div class="lesson-banner" id="lessonBtn">
+            <div class="lesson-banner-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div style="flex:1">
+              <div style="font-size:14px;font-weight:600;color:var(--primary)">Lecon guidee</div>
+              <div class="text-secondary" style="font-size:12px">${newCount} mot${newCount > 1 ? 's' : ''} a decouvrir</div>
+            </div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>` : '';
+      })()}
+    </div>
+    <div class="pills" id="chTabs">
+      ${tabs.map(t => `<button class="pill ${t.id === sub ? 'active' : ''}" data-sub="${t.id}">${t.l}</button>`).join('')}
+    </div>
+    <div id="chContent" style="margin-top:12px"></div>
+  `;
+
+  renderSubContent(chId, sub);
+
+  // Bouton lecon guidee
+  const lessonBtn = $('#lessonBtn');
+  if (lessonBtn) lessonBtn.addEventListener('click', () => startLesson(chId));
+
+  $('#chTabs').addEventListener('click', e => {
+    const b = e.target.closest('.pill');
+    if (b) navigate(`#cours/${chId}/${b.dataset.sub}`);
+  });
+}
+
+// Dispatch vers le bon renderer de sous-page
+function renderSubContent(chId, sub) {
+  const c = $('#chContent');
+  if (!c) return;
+  const renderers = {
+    voyelles: () => renderHangeulGrid('vowel', c),
+    consonnes: () => renderHangeulGrid('consonant', c),
+    doubles: () => renderHangeulGrid('consonne_double', c),
+    composees: () => renderHangeulGrid('voyelle_composee', c),
+    batchim: () => renderBatchim(c),
+    vocab: () => renderVocab(chId, c),
+    grammaire: () => renderGrammar(chId, c),
+    verbes: () => renderVerbs(chId, c),
+    particules: () => renderParticles(chId, c),
+    nombres: () => renderNombres(chId, c),
+    connecteurs: () => renderConnecteurs(chId, c),
+    phrases: () => renderPhrases(chId, c),
+    expressions: () => renderExpressions(chId, c),
+    culture: () => renderCulture(chId, c)
+  };
+  (renderers[sub] || (() => { c.innerHTML = '<div class="empty"><div class="empty-title">Contenu introuvable</div></div>'; }))();
+}
+
+// --- Recherche ---
+
+function renderSearch() {
+  setHeader('Recherche', false);
+  buildSearchIndex();
+
+  app.innerHTML = `
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <input type="text" class="search-input" id="searchInput" placeholder="Coreen ou francais..." autocomplete="off">
+      </div>
+    </div>
+    <div id="searchResults" style="padding:0 4px"></div>
+  `;
+
+  const input = $('#searchInput');
+  const results = $('#searchResults');
+  const typeLabels = { vocab: 'Vocabulaire', phrase: 'Phrase', grammaire: 'Grammaire', expression: 'Expression', verbe: 'Verbe', particule: 'Particule' };
+  const typeBadge = { vocab: 'badge-vocab', phrase: 'badge-phrase', grammaire: 'badge-grammar', expression: 'badge-expr', verbe: 'badge-verb', particule: 'badge-culture' };
+
+  // Suggestions aleatoires quand le champ est vide
+  function showSuggestions() {
+    const picks = shuffle([...DATA.vocabulary]).slice(0, 6);
+    results.innerHTML = `
+      <div class="section mt-16">
+        <div class="search-group-title">Suggestions</div>
+        ${picks.map(v => `
+          <div class="card card-interactive mb-8" data-sgst="${escHtml(v.kr)}">
+            <div class="flex items-center gap-8 mb-4">
+              <span style="font-size:16px;font-weight:600;flex:1">${escHtml(v.kr)}</span>
+              <span class="badge badge-vocab">${escHtml(v.theme || '')}</span>
+            </div>
+            <div class="text-secondary">${escHtml(v.fr)}</div>
+          </div>
+        `).join('')}
+      </div>`;
+    results.addEventListener('click', function _sg(e) {
+      const card = e.target.closest('[data-sgst]');
+      if (!card) return;
+      results.removeEventListener('click', _sg);
+      const v = DATA.vocabulary.find(x => x.kr === card.dataset.sgst);
+      if (v) openDetailSheet(v, 'vocab');
+    });
+  }
+  showSuggestions();
+
+  // Recherche avec anti-rebond
+  let _searchClickHandler = null;
+  const doSearch = debounce(() => {
+    const q = stripAccents(input.value.toLowerCase().trim());
+    if (q.length < 1) {
+      showSuggestions();
+      return;
+    }
+
+    const res = _searchIdx.filter(r => r.terms.includes(q)).slice(0, CFG.SEARCH_MAX);
+    if (!res.length) {
+      results.innerHTML = emptyStateHTML(MASCOT_SAD_SVG, 'Aucun resultat', 'Essaie un autre mot en coreen ou en francais');
+      return;
+    }
+
+    // Grouper par type
+    const grp = {};
+    res.forEach(r => (grp[r.type] = grp[r.type] || []).push(r));
+
+    results.innerHTML = Object.entries(grp).map(([type, items]) => `
+      <div class="section mt-16">
+        <div class="search-group-title">${typeLabels[type] || type} (${items.length})</div>
+        ${items.map((r, i) => `
+          <div class="card card-interactive mb-8" data-st="${r.type}" data-si="${i}">
+            <div class="flex items-center gap-8 mb-4">
+              <span style="font-size:16px;font-weight:600;flex:1">${escHtml(r.kr)}</span>
+              <span class="badge ${typeBadge[type] || ''}">${typeLabels[type]}</span>
+              ${r.ch !== undefined ? `<span class="badge badge-ch${r.ch}">Ch.${r.ch}</span>` : ''}
+            </div>
+            <div class="text-secondary">${escHtml((r.fr || '').slice(0, 100))}</div>
+          </div>
+        `).join('')}
+      </div>
+    `).join('');
+
+    // Delegation pour ouvrir le detail (un seul handler)
+    if (_searchClickHandler) results.removeEventListener('click', _searchClickHandler);
+    _searchClickHandler = function(e) {
+      const card = e.target.closest('.card[data-st]');
+      if (!card) return;
+      const r = res.find(x => x.type === card.dataset.st && x.kr === card.querySelector('span')?.textContent);
+      if (!r) return;
+      openSearchResult(r);
+    };
+    results.addEventListener('click', _searchClickHandler);
+  }, CFG.SEARCH_DEBOUNCE);
+
+  input.addEventListener('input', doSearch);
+  setTimeout(() => input.focus(), 100);
+}
+
+// Ouvre le detail d'un resultat de recherche
+function openSearchResult(r) {
+  const typeMap = { vocab: 'vocab', verbe: 'verb', grammaire: 'grammar', phrase: 'phrase', expression: 'expr', particule: 'particle' };
+  openDetailSheet(r.item, typeMap[r.type] || r.type);
+}
+
+// --- Menu Quiz ---
+
+function renderQuizMenu() {
+  setHeader('Quiz', false);
+
+  const dueCount = SRS.getDueItems().length;
+
+  app.innerHTML = `
+    ${dueCount > 0 ? `<div class="section">
+      <div class="card card-interactive" role="button" tabindex="0" data-qm="review" style="border-left:4px solid var(--accent);background:var(--accent-light)">
+        <div class="text-title-sm">Revision du jour</div>
+        <div class="text-secondary">${dueCount} item${dueCount > 1 ? 's' : ''} a revoir</div>
+      </div>
+    </div>` : ''}
+    <div class="section">
+      <div class="card card-interactive" role="button" tabindex="0" data-qm="exam" style="border-left:4px solid var(--danger)">
+        <div class="text-title-sm">Examen blanc</div>
+        <div class="text-secondary">30 questions mixtes — vocab, conjugaison, particules</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Modes d'entraînement</div>
+      <div class="grid-2-lg">
+        ${CFG.QUIZ_MODES.map(m => `
+          <div class="card card-interactive" role="button" tabindex="0" data-qm="${m.id}" style="border-left:4px solid var(${m.color})">
+            <div style="font-size:28px;margin-bottom:8px">${m.icon}</div>
+            <div class="text-title-sm">${m.title}</div>
+            <div class="text-secondary">${m.desc}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  app.addEventListener('click', function _qm(e) {
+    const c = e.target.closest('[data-qm]');
+    if (!c) return;
+    app.removeEventListener('click', _qm);
+    const mode = c.dataset.qm;
+    if (mode === 'review') navigate('#quiz/review');
+    else if (mode === 'exam') navigate('#quiz/exam');
+    else navigate('#quiz/config/' + mode);
+  });
+}
+
+// --- Configuration Quiz ---
+
+function renderQuizConfig(mode) {
+  const modeObj = CFG.QUIZ_MODES.find(m => m.id === mode);
+  const title = modeObj ? modeObj.title : 'Quiz';
+  setHeader(title, true);
+
+  let selCh = -1, selCount = 20, selDir = 'kr2fr';
+
+  function render() {
+    const showDir = ['flashcards', 'qcm', 'ecriture', 'dictee'].includes(mode);
+
+    app.innerHTML = `
+      <div class="section">
+        <div style="font-size:18px;font-weight:700;margin-bottom:16px">${escHtml(title)}</div>
+
+        <div class="section-title">Chapitre</div>
+        <div class="pills mb-16" style="padding:0" id="cfgCh">
+          <button class="pill ${selCh === -1 ? 'active' : ''}" data-ch="-1">Tous</button>
+          ${DATA.chapters.map(c => `<button class="pill ${selCh === c.id ? 'active' : ''}" data-ch="${c.id}">Ch.${c.id}</button>`).join('')}
+        </div>
+
+        <div class="section-title">Nombre de cartes</div>
+        <div class="pills mb-16" style="padding:0" id="cfgN">
+          ${[10, 20, 30, 50].map(n => `<button class="pill ${selCount === n ? 'active' : ''}" data-n="${n}">${n}</button>`).join('')}
+        </div>
+
+        ${showDir ? `
+          <div class="section-title">Direction</div>
+          <div class="pills mb-16" style="padding:0" id="cfgDir">
+            <button class="pill ${selDir === 'kr2fr' ? 'active' : ''}" data-dir="kr2fr">KR -> FR</button>
+            <button class="pill ${selDir === 'fr2kr' ? 'active' : ''}" data-dir="fr2kr">FR -> KR</button>
+          </div>
+        ` : ''}
+
+        <button class="btn btn-primary btn-block mt-16" id="startBtn">Commencer</button>
+        <button class="btn btn-secondary btn-block mt-8" onclick="history.back()">Retour</button>
+      </div>
+    `;
+
+    // Liaison des pills
+    $('#cfgCh').addEventListener('click', e => {
+      const b = e.target.closest('.pill');
+      if (b) { selCh = +b.dataset.ch; render(); }
+    });
+    $('#cfgN').addEventListener('click', e => {
+      const b = e.target.closest('.pill');
+      if (b) { selCount = +b.dataset.n; render(); }
+    });
+    const dir = $('#cfgDir');
+    if (dir) dir.addEventListener('click', e => {
+      const b = e.target.closest('.pill');
+      if (b) { selDir = b.dataset.dir; render(); }
+    });
+    $('#startBtn').addEventListener('click', () => startQuiz(mode, selCh, selCount, selDir));
+  }
+  render();
+}
+
+// ── BADGES ────────────────────────────────────────
+const BADGE_SVG = {
+  sprout: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path stroke="#3D7A5E" d="M12 22V12"/><path stroke="#3D7A6E" d="M7 12c0-4 5-8 5-8s5 4 5 8"/><path stroke="#5EA87A" d="M5 17c3-3 7-3 7-3s4 0 7 3"/></svg>',
+  leaf: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3D7A5E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A12.4 12.4 0 0021 11c0-4-3-5-4-3z" fill="#D4E8D8"/><path d="M6 15l4-4"/></svg>',
+  tree: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D5E3E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-6"/><path d="M12 4L7 10h3l-2 4h8l-2-4h3L12 4z" fill="#D4E8D8"/></svg>',
+  star: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4935A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#F0E4D0"/></svg>',
+  trophy: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4935A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 01-2-2V5h4"/><path d="M18 9h2a2 2 0 002-2V5h-4"/><path d="M4 5h16v4a6 6 0 01-6 6h-4a6 6 0 01-6-6V5z" fill="#F0E4D0"/><path d="M12 15v3"/><path d="M8 21h8"/></svg>',
+  flame: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4 0-7-3-7-7 0-3 2-5 3-7 .5 2.5 2 3 3 1 1 4 4 5 4 6 0 4-3 7-3 7z" stroke="#B54E3F" fill="#F5DDD8"/><path d="M12 22c-1.5 0-3-1.2-3-3s1.5-3 2-4c.3 1.2 1 1.5 1.5.5.5 2 2.5 2.5 2.5 3.5s-1.5 3-3 3z" stroke="#D4884A" fill="#F0DDD0"/></svg>',
+  diamond: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3D7A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.7 10.3l8.6 10.4a1 1 0 001.4 0l8.6-10.4a1 1 0 00.1-1.1L18.4 4H5.6L2.6 9.2a1 1 0 00.1 1.1z" fill="#D4E8E2"/><path d="M5.6 4L9 10.3 12 4l3 6.3L18.4 4"/><path d="M2.7 10.3h18.6"/></svg>',
+  target: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4E7EB5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="#D8E4F0"/><circle cx="12" cy="12" r="6" fill="#A3C4E0"/><circle cx="12" cy="12" r="2" fill="#4E7EB5"/></svg>',
+  gamepad: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B54E6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="6" fill="#F0D4DE"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><circle cx="15" cy="11" r="0.8" fill="#B54E6B"/><circle cx="17" cy="13" r="0.8" fill="#B54E6B"/></svg>'
+};
+
+const BADGES = [
+  { id: 'first10', title: '10 premiers mots', desc: 'Apprendre 10 mots', icon: BADGE_SVG.sprout, check: () => Progress.getStats().total - Progress.getStats().nouveau >= 10 },
+  { id: 'first50', title: '50 mots appris', desc: '50 mots vus au moins une fois', icon: BADGE_SVG.leaf, check: () => Progress.getStats().total - Progress.getStats().nouveau >= 50 },
+  { id: 'first200', title: '200 mots appris', desc: '200 mots vus', icon: BADGE_SVG.tree, check: () => Progress.getStats().total - Progress.getStats().nouveau >= 200 },
+  { id: 'master50', title: '50 mots maitrisés', desc: '50 mots au niveau Connu', icon: BADGE_SVG.star, check: () => Progress.getStats().connu >= 50 },
+  { id: 'master200', title: '200 mots maitrisés', desc: '200 mots au niveau Connu', icon: BADGE_SVG.trophy, check: () => Progress.getStats().connu >= 200 },
+  { id: 'streak7', title: '7 jours de suite', desc: 'Streak de 7 jours', icon: BADGE_SVG.flame, check: () => Progress.load().streak >= 7 },
+  { id: 'streak30', title: '30 jours de suite', desc: 'Streak de 30 jours', icon: BADGE_SVG.diamond, check: () => Progress.load().streak >= 30 },
+  { id: 'chapter100', title: 'Chapitre parfait', desc: 'Un chapitre a 100%', icon: BADGE_SVG.target, check: () => DATA.chapters.some(ch => Progress.chapterPct(ch.id) === 100) },
+  { id: 'allquiz', title: 'Polyvalent', desc: 'Essayer 4 modes de quiz', icon: BADGE_SVG.gamepad, check: () => { try { return (JSON.parse(localStorage.getItem('blokaja_quizmodes') || '[]')).length >= 4; } catch(e) { return false; } } },
+  // Badges intermediaires
+  { id: 'first25', title: '25 mots vus', desc: '25 mots decouverts', icon: BADGE_SVG.sprout, check: () => Progress.getStats().total - Progress.getStats().nouveau >= 25 },
+  { id: 'first100', title: '100 mots vus', desc: '100 mots decouverts', icon: BADGE_SVG.leaf, check: () => Progress.getStats().total - Progress.getStats().nouveau >= 100 },
+  { id: 'first500', title: '500 mots vus', desc: '500 mots decouverts', icon: BADGE_SVG.diamond, check: () => Progress.getStats().total - Progress.getStats().nouveau >= 500 },
+  { id: 'master100', title: '100 mots maitrises', desc: '100 mots au niveau Connu', icon: BADGE_SVG.star, check: () => Progress.getStats().connu >= 100 },
+  { id: 'streak3', title: '3 jours de suite', desc: 'Streak de 3 jours', icon: BADGE_SVG.flame, check: () => Progress.load().streak >= 3 },
+  { id: 'streak14', title: '14 jours de suite', desc: 'Streak de 14 jours', icon: BADGE_SVG.flame, check: () => Progress.load().streak >= 14 },
+  { id: 'perfectQuiz', title: 'Score parfait', desc: '100% sur un quiz de 10+', icon: BADGE_SVG.target, check: () => { try { return JSON.parse(localStorage.getItem('blokaja_perfect') || 'false'); } catch(e) { return false; } } },
+  { id: 'lesson5', title: '5 lecons terminees', desc: 'Terminer 5 lecons guidees', icon: BADGE_SVG.star, check: () => { try { return JSON.parse(localStorage.getItem('blokaja_lessons') || '0') >= 5; } catch(e) { return false; } } },
+  { id: 'allchapters', title: 'Explorateur', desc: 'Visiter les 7 chapitres', icon: BADGE_SVG.gamepad, check: () => { try { return JSON.parse(localStorage.getItem('blokaja_chapters_visited') || '[]').length >= 7; } catch(e) { return false; } } },
+];
+
+function trackQuizMode(mode) {
+  try {
+    const modes = JSON.parse(localStorage.getItem('blokaja_quizmodes') || '[]');
+    if (!modes.includes(mode)) { modes.push(mode); localStorage.setItem('blokaja_quizmodes', JSON.stringify(modes)); }
+  } catch(e) {}
+}
+
+// Verifie si de nouveaux badges ont ete debloques
+function checkBadgeUnlocks() {
+  try {
+    const prev = JSON.parse(localStorage.getItem('blokaja_badges_unlocked') || '[]');
+    const newUnlocked = BADGES.filter(b => b.check() && !prev.includes(b.id));
+    if (newUnlocked.length > 0) {
+      const all = [...prev, ...newUnlocked.map(b => b.id)];
+      localStorage.setItem('blokaja_badges_unlocked', JSON.stringify(all));
+      showBadgeUnlock(newUnlocked[0]);
+    }
+  } catch(e) {}
+}
+
+// Affiche un toast de celebration pour un badge debloque
+function showBadgeUnlock(badge) {
+  let el = $('.badge-unlock-toast');
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'badge-unlock-toast';
+    document.body.appendChild(el);
+  }
+  el.innerHTML = `
+    <div class="badge-unlock-icon">${badge.icon}</div>
+    <div>
+      <div class="badge-unlock-title">Badge debloque !</div>
+      <div class="badge-unlock-name">${escHtml(badge.title)}</div>
+    </div>
+  `;
+  el.classList.add('visible');
+  if (navigator.vibrate) navigator.vibrate([50, 100, 50]);
+  setTimeout(() => el.classList.remove('visible'), 3500);
+}
+
+// Enregistre une visite de chapitre (pour badge Explorateur)
+function trackChapterVisit(chId) {
+  try {
+    const visited = JSON.parse(localStorage.getItem('blokaja_chapters_visited') || '[]');
+    if (!visited.includes(chId)) {
+      visited.push(chId);
+      localStorage.setItem('blokaja_chapters_visited', JSON.stringify(visited));
+    }
+  } catch(e) {}
+}
+
+function getBadgesHTML() {
+  return `<div class="badge-grid">${BADGES.map(b => {
+    const unlocked = b.check();
+    return `<div class="achievement-card ${unlocked ? '' : 'locked'}">
+      <div class="achievement-icon">${b.icon}</div>
+      <div class="achievement-title">${escHtml(b.title)}</div>
+      <div class="achievement-desc">${escHtml(b.desc)}</div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// --- Progression ---
+
+function renderProgression() {
+  setHeader('Progression', false);
+  const d = Progress.load();
+  const goal = Progress.getGoal();
+  const stats = Progress.getStats();
+
+  // Calendrier du mois en cours
+  const now = new Date();
+  const year = now.getFullYear(), month = now.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDow = new Date(year, month, 1).getDay();
+  const monthName = now.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+
+  const activeDays = new Set((d.history || []).filter(h => {
+    const dt = new Date(h);
+    return dt.getFullYear() === year && dt.getMonth() === month;
+  }).map(h => new Date(h).getDate()));
+
+  const dayLabels = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+  let cal = dayLabels.map(dl => `<div class="calendar-day-label">${dl}</div>`).join('');
+  for (let i = 0; i < firstDow; i++) cal += '<div></div>';
+  for (let dd = 1; dd <= daysInMonth; dd++) {
+    const isAct = activeDays.has(dd);
+    const isToday = dd === now.getDate();
+    cal += `<div class="calendar-day ${isAct ? 'active' : ''} ${isToday ? 'today' : ''}">${dd}</div>`;
+  }
+
+  app.innerHTML = `
+    <div class="section">
+      <div class="streak-card">
+        <div class="mascot">${(d.streak || 0) >= 3 ? MASCOT_HAPPY_SVG : MASCOT_SVG}</div>
+        <div style="flex:1">
+          <div class="streak-label" style="font-weight:600">${d.streak || 0} jour${(d.streak || 0) > 1 ? 's' : ''} de suite</div>
+          <div class="streak-label">${goal.done}/${goal.total} items aujourd'hui</div>
+          <div class="goal-bar"><div class="goal-bar-fill" style="width:${Math.min(100, goal.done / goal.total * 100)}%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section mt-16">
+      <div class="section-title">Par chapitre</div>
+      ${DATA.chapters.map(ch => {
+        const pct = Progress.chapterPct(ch.id);
+        return `
+          <div class="chapter-progress-row">
+            <div class="chapter-progress-label" style="color:var(--ch${ch.id})">Ch.${ch.id}</div>
+            <div class="chapter-progress-bar"><div class="chapter-progress-bar-fill" style="width:${pct}%;background:var(--ch${ch.id})"></div></div>
+            <div style="width:36px;text-align:right;font-size:13px;color:var(--text2)">${pct}%</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+
+    <div class="section mt-16">
+      <div class="section-title">Statistiques <span style="font-weight:400;color:var(--text3)">(${stats.total} items)</span></div>
+      <div class="grid-2">
+        <div class="card text-center"><div class="stat-value" style="color:var(--success)">${stats.connu}</div><div class="stat-label">Connus</div></div>
+        <div class="card text-center"><div class="stat-value" style="color:var(--accent)">${stats.revoir}</div><div class="stat-label">A revoir</div></div>
+        <div class="card text-center"><div class="stat-value" style="color:var(--danger)">${stats.difficile}</div><div class="stat-label">Difficiles</div></div>
+        <div class="card text-center"><div class="stat-value" style="color:var(--text3)">${stats.nouveau}</div><div class="stat-label">Nouveaux</div></div>
+      </div>
+    </div>
+
+    <div class="section mt-16">
+      <div class="section-title">${escHtml(monthName)}</div>
+      <div class="card">
+        <div class="calendar-grid">${cal}</div>
+      </div>
+    </div>
+
+    <div class="section mt-16">
+      <div class="section-title">Badges</div>
+      ${getBadgesHTML()}
+    </div>
+
+    <div class="section mt-16">
+      <div class="section-title">Sauvegarde</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-secondary flex-1" id="exportBtn">Exporter</button>
+        <button class="btn btn-secondary flex-1" id="importBtn">Importer</button>
+      </div>
+      <input type="file" id="importFile" accept=".json" style="display:none">
+    </div>
+
+    <div style="text-align:center;padding:32px 0">
+      <button class="btn btn-secondary" id="resetBtn" style="font-size:13px;color:var(--danger)">Reinitialiser la progression</button>
+    </div>
+  `;
+
+  // Export
+  $('#exportBtn').addEventListener('click', () => {
+    const data = {
+      version: 2,
+      date: new Date().toISOString(),
+      srs: SRS.data,
+      progress: Progress.load(),
+      settings: Settings.load()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `blokaja-backup-${getToday()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('Sauvegarde exportee');
+  });
+
+  // Import
+  const importFile = $('#importFile');
+  $('#importBtn').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (!data.srs || !data.progress) throw new Error('Format invalide');
+        if (!confirm('Cela remplacera ta progression actuelle. Continuer ?')) return;
+        SRS.data = data.srs;
+        SRS.save();
+        Progress.save(data.progress);
+        if (data.settings) {
+          Object.entries(data.settings).forEach(([k, v]) => Settings.set(k, v));
+          applySettings();
+        }
+        renderProgression();
+        toast('Sauvegarde restauree');
+      } catch (err) {
+        toast('Fichier invalide');
+      }
+    };
+    reader.readAsText(file);
+    importFile.value = '';
+  });
+
+  $('#resetBtn').addEventListener('click', () => {
+    if (confirm('Es-tu sur(e) de vouloir reinitialiser toute ta progression ?')) {
+      SRS.reset();
+      localStorage.removeItem('blokaja_progress');
+      renderProgression();
+      toast('Progression reinitialisee');
+    }
+  });
+}
+
+
+// ── 9. RENDERERS (sous-pages chapitre) ────────────
+
+// --- Nombres ---
+
+function renderNombres(chId, container) {
+  // Chapitre 0 = tous les nombres, sinon filtrer par chapitre (mais les nombres sont ch=0)
+  const nums = DATA.numbers;
+  if (!nums.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de nombres</div></div>'; return; }
+
+  const sinoKr = nums.filter(n => n.sys === 'sino-coréen');
+  const nativeKr = nums.filter(n => n.sys === 'coréen');
+  let activeSys = null;
+
+  function render() {
+    const filtered = activeSys ? nums.filter(n => n.sys === activeSys) : nums;
+    container.innerHTML = `
+      <div class="pills mb-12" style="padding:0">
+        <button class="pill ${!activeSys ? 'active' : ''}" data-nsys="">Tous (${nums.length})</button>
+        <button class="pill ${activeSys === 'sino-coréen' ? 'active' : ''}" data-nsys="sino-coréen">Sino-coreen (${sinoKr.length})</button>
+        <button class="pill ${activeSys === 'coréen' ? 'active' : ''}" data-nsys="coréen">Coreen natif (${nativeKr.length})</button>
+      </div>
+      <div class="vocab-grid">
+        ${filtered.map((n, _i) => `
+          <div class="vocab-card" role="button" tabindex="0" style="--i:${_i}" data-nk="${escHtml(n.kr)}">
+            <div class="vocab-srs ${SRS.getLevelClass('n:' + n.kr)}"></div>
+            <div class="vocab-kr" lang="ko">${escHtml(n.kr)}</div>
+            <div class="vocab-fr">${escHtml(n.val)}${n.rom ? ` <span class="rom-text" style="color:var(--text3);font-size:11px">${escHtml(n.rom)}</span>` : ''}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.querySelectorAll('[data-nsys]').forEach(b =>
+      b.addEventListener('click', () => { activeSys = b.dataset.nsys || null; render(); })
+    );
+    container.querySelectorAll('.vocab-card').forEach(card =>
+      card.addEventListener('click', () => {
+        const n = nums.find(x => x.kr === card.dataset.nk);
+        if (n) openDetailSheet(n, 'nombre', { items: filtered, index: filtered.indexOf(n), type: 'nombre' });
+      })
+    );
+  }
+  render();
+}
+
+// --- Connecteurs ---
+
+function renderConnecteurs(chId, container) {
+  const conns = DATA.connectors.filter(c => c.ch === chId || chId === 0);
+  if (!conns.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de connecteurs pour ce chapitre</div></div>'; return; }
+
+  let srsFilter = null;
+
+  function render() {
+    let filtered = srsFilter !== null ? conns.filter(c => SRS.getLevel('c:' + c.kr) === srsFilter) : conns;
+
+    container.innerHTML = `
+      ${srsFilterPillsHTML(srsFilter)}
+      <div class="section">
+        ${filtered.map(c => `
+          <div class="card card-interactive mb-8" role="button" tabindex="0" data-ck="${escHtml(c.kr)}">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:18px;font-weight:700">${escHtml(c.kr)}</div>
+                <div style="font-size:14px;color:var(--text2)">${escHtml(c.fr)}</div>
+              </div>
+              <div class="vocab-srs ${SRS.getLevelClass('c:' + c.kr)}" style="position:static"></div>
+            </div>
+            ${c.usage ? `<div class="text-caption mt-4">${escHtml(c.usage)}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    bindSrsFilterPills(container, f => { srsFilter = f; render(); });
+    container.querySelectorAll('[data-ck]').forEach(card =>
+      card.addEventListener('click', () => {
+        const c = conns.find(x => x.kr === card.dataset.ck);
+        if (c) openDetailSheet(c, 'connecteur', { items: filtered, index: filtered.indexOf(c), type: 'connecteur' });
+      })
+    );
+  }
+  render();
+}
+
+// --- Vocabulaire ---
+
+// Affiche la grille de vocabulaire avec filtre par theme
+function renderVocab(chId, container) {
+  const vocab = DATA.vocabulary.filter(v => v.ch === chId);
+  if (!vocab.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de vocabulaire</div></div>'; return; }
+
+  const themes = [...new Set(vocab.map(v => v.theme).filter(Boolean))];
+  let active = null;
+  let srsFilter = null; // null=tous, 0=nouveau, 1=difficile, 2=a revoir, 3=connu
+
+  function render() {
+    let filtered = active ? vocab.filter(v => v.theme === active) : vocab;
+    if (srsFilter !== null) filtered = filtered.filter(v => SRS.getLevel(vocabSrsKey(v)) === srsFilter);
+
+    const srsLabels = [
+      { val: null, label: 'Tous', cls: '' },
+      { val: 0, label: 'Nouveaux', cls: 'srs-new' },
+      { val: 1, label: 'Difficiles', cls: 'srs-hard' },
+      { val: 2, label: 'A revoir', cls: 'srs-review' },
+      { val: 3, label: 'Connus', cls: 'srs-known' }
+    ];
+
+    container.innerHTML = `
+      <div class="pills mb-12" style="padding:0">
+        <button class="pill ${!active ? 'active' : ''}" data-th="">Tous (${vocab.length})</button>
+        ${themes.map(t => `<button class="pill ${active === t ? 'active' : ''}" data-th="${escHtml(t)}">${escHtml(t)} (${vocab.filter(v => v.theme === t).length})</button>`).join('')}
+      </div>
+      <div class="pills mb-12" style="padding:0">
+        ${srsLabels.map(s => `<button class="pill ${srsFilter === s.val ? 'active' : ''}" data-srsf="${s.val}">${s.label}</button>`).join('')}
+      </div>
+      <div class="vocab-grid">
+        ${filtered.map((v, _i) => `
+          <div class="vocab-card" role="button" tabindex="0" style="--i:${_i}" data-vk="${escHtml(v.kr)}">
+            <div class="vocab-srs ${SRS.getLevelClass(vocabSrsKey(v))}"></div>
+            <div class="vocab-kr" lang="ko">${escHtml(v.kr)}</div>
+            <div class="vocab-fr">${escHtml(v.fr)}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    // Pills de filtre par theme
+    container.querySelectorAll('[data-th]').forEach(b =>
+      b.addEventListener('click', () => { active = b.dataset.th || null; render(); })
+    );
+    // Pills de filtre par niveau SRS
+    container.querySelectorAll('[data-srsf]').forEach(b =>
+      b.addEventListener('click', () => { srsFilter = b.dataset.srsf === 'null' ? null : +b.dataset.srsf; render(); })
+    );
+
+    // Clic sur une carte de vocab -> detail
+    container.querySelectorAll('.vocab-card').forEach(card =>
+      card.addEventListener('click', () => {
+        const v = vocab.find(x => x.kr === card.dataset.vk);
+        if (v) openDetailSheet(v, 'vocab', { items: filtered, index: filtered.indexOf(v), type: 'vocab' });
+      })
+    );
+  }
+  render();
+}
+
+// --- Grammaire ---
+
+// Helpers pour le rendu des regles de grammaire
+function renderRules(rules) {
+  if (!rules || !rules.length) return '';
+  if (typeof rules[0] === 'object' && rules[0] !== null) {
+    return `<div class="verb-table" style="margin-top:8px"><table>
+      <thead><tr><th>Contexte</th><th>Forme</th><th>Exemple</th></tr></thead>
+      <tbody>${rules.map(r => `<tr>
+        <td style="font-size:13px">${escHtml(r.context || '')}</td>
+        <td style="font-size:13px">${escHtml(r.form || '')}</td>
+        <td>${r.example_korean ? `<span style="font-weight:600">${escHtml(r.example_korean)}</span>` : ''}${r.example_french ? `<br><span style="font-size:12px;color:var(--text2)">${escHtml(r.example_french)}</span>` : ''}</td>
+      </tr>`).join('')}</tbody></table></div>`;
+  }
+  return `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${rules.map(r => `<span class="chip">${escHtml(r)}</span>`).join('')}</div>`;
+}
+
+// Rendu des exemples de grammaire
+function renderExamples(examples) {
+  if (!examples || !examples.length) return '';
+  return examples.map(ex => `
+    <div class="example-block mt-8">
+      <div style="font-size:16px;font-weight:600">${escHtml(ex.kr)}</div>
+      ${ex.rom ? `<div style="font-size:12px;color:var(--primary);font-style:italic">${escHtml(ex.rom)}</div>` : ''}
+      <div class="text-secondary">${escHtml(ex.fr)}</div>
+    </div>
+  `).join('');
+}
+
+// Affiche les regles de grammaire en accordeon
+function renderGrammar(chId, container) {
+  const items = DATA.grammar.filter(g => g.ch === chId);
+  if (!items.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de grammaire</div></div>'; return; }
+
+  container.innerHTML = accordionHTML(items,
+    (g) => `<div><div style="font-weight:600;font-size:15px">${escHtml(g.title)}</div></div>`,
+    (g) => `
+      ${g.expl ? `<div class="text-body mb-12">${escHtml(g.expl)}</div>` : ''}
+      ${renderRules(g.rules)}
+      ${renderExamples(g.ex)}
+      ${g.note ? `<div class="note-block">${escHtml(g.note)}</div>` : ''}
+    `
+  );
+
+  bindAccordions(container);
+}
+
+// --- Verbes ---
+
+// Affiche le tableau des verbes du chapitre
+function renderVerbs(chId, container) {
+  const verbs = DATA.verbs.filter(v => v.ch === chId);
+  if (!verbs.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de verbes</div></div>'; return; }
+
+  let srsFilter = null;
+
+  function render() {
+    let filtered = srsFilter !== null ? verbs.filter(v => SRS.getLevel('v:' + v.inf) === srsFilter) : verbs;
+
+    container.innerHTML = `
+      ${srsFilterPillsHTML(srsFilter)}
+      <div class="verb-table">
+        <table>
+          <thead><tr><th>Infinitif</th><th>Francais</th><th>Poli</th><th>Informel</th><th>Passe</th></tr></thead>
+          <tbody>
+            ${filtered.map(v => `
+              <tr class="${v.irreg ? 'irreg' : ''}" data-vinf="${escHtml(v.inf)}" style="cursor:pointer">
+                <td style="font-weight:600">${escHtml(v.inf)}${v.irreg ? ' <span style="color:var(--danger);font-size:10px">irreg.</span>' : ''}</td>
+                <td>${escHtml(v.fr)}</td>
+                <td>${escHtml(v.poli || '\u2014')}</td>
+                <td>${escHtml(v.fam || '\u2014')}</td>
+                <td>${escHtml(v.passe || '\u2014')}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+    bindSrsFilterPills(container, f => { srsFilter = f; render(); });
+
+    // Clic sur une ligne -> detail du verbe
+    container.addEventListener('click', e => {
+      const row = e.target.closest('tr[data-vinf]');
+      if (row) {
+        const v = verbs.find(x => x.inf === row.dataset.vinf);
+        if (v) openDetailSheet(v, 'verb', { items: filtered, index: filtered.indexOf(v), type: 'verb' });
+      }
+    });
+  }
+  render();
+}
+
+// --- Particules ---
+
+// Retourne la classe CSS de couleur selon la fonction de la particule
+function particleFnClass(p) {
+  const n = (p.name || p.fn || '').toLowerCase();
+  if (n.includes('sujet')) return 'particle-fn-sujet';
+  if (n.includes('lieu') || n.includes('destination')) return 'particle-fn-lieu';
+  if (n.includes('temps')) return 'particle-fn-temps';
+  if (n.includes('cod') || n.includes('objet')) return 'particle-fn-cod';
+  if (n.includes('theme') || n.includes('th\u00e8me')) return 'particle-fn-theme';
+  return '';
+}
+
+// Affiche les particules en cards colorees avec accordeon
+function renderParticles(chId, container) {
+  const parts = DATA.particles.filter(p => p.ch === chId || (chId > 0 && p.ch === 0));
+  if (!parts.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de particules</div></div>'; return; }
+
+  container.innerHTML = parts.map((p, i) => {
+    const exs = p.ex || [];
+    return `
+      <div class="particle-card ${particleFnClass(p)}" style="padding:0;overflow:hidden">
+        <div class="accordion-header" data-pi="${i}">
+          <div style="flex:1">
+            <div class="particle-name">${escHtml(p.p)}</div>
+            <div class="particle-desc">${escHtml(p.name || '')}</div>
+          </div>
+          ${p.ch > 0 ? `<span class="badge badge-ch${p.ch}">Ch.${p.ch}</span>` : ''}
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="accordion-body" data-pbody="${i}">
+          <div style="padding:0 16px 16px">
+            ${p.fn ? `<div class="text-body mb-8">${escHtml(p.fn)}</div>` : ''}
+            ${p.rule ? `<div class="particle-rule">${escHtml(p.rule)}</div>` : ''}
+            ${exs.map(ex => {
+              if (typeof ex === 'string') return `<div style="margin-top:6px;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:14px">${escHtml(ex)}</div>`;
+              return `<div style="margin-top:6px;padding:8px 12px;background:var(--bg2);border-radius:8px"><div style="font-size:15px;font-weight:600">${escHtml(ex.kr)}</div><div style="font-size:13px;color:var(--text2)">${escHtml(ex.fr)}</div></div>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Delegation des accordeons pour les particules
+  container.addEventListener('click', e => {
+    const h = e.target.closest('.accordion-header');
+    if (!h) return;
+    const i = h.dataset.pi;
+    h.classList.toggle('open');
+    const body = container.querySelector(`.accordion-body[data-pbody="${i}"]`);
+    if (body) body.classList.toggle('open');
+  });
+}
+
+// --- Phrases ---
+
+// Affiche les phrases groupees par categorie
+function renderPhrases(chId, container) {
+  const phrases = DATA.phrases.filter(p => p.ch === chId);
+  if (!phrases.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de phrases</div></div>'; return; }
+
+  let srsFilter = null;
+
+  function render() {
+    let filteredPhrases = srsFilter !== null ? phrases.filter(p => SRS.getLevel(vocabSrsKey(p)) === srsFilter) : phrases;
+
+    // Grouper par categorie
+    const cats = {};
+    filteredPhrases.forEach(p => { const cat = p.cat || 'Divers'; (cats[cat] = cats[cat] || []).push(p); });
+
+    container.innerHTML = `
+      ${srsFilterPillsHTML(srsFilter)}
+      ${Object.entries(cats).map(([cat, items]) => `
+        <div class="section mb-16">
+          <div class="section-subtitle" style="text-transform:uppercase;letter-spacing:0.05em;font-size:11px;font-weight:600;color:var(--primary)">${escHtml(cat)}</div>
+          ${items.map(p => `
+            <div class="card card-interactive mb-8" role="button" tabindex="0" data-pk="${escHtml(p.kr)}">
+              <div style="font-size:18px;font-weight:600;line-height:1.3">${escHtml(p.kr)}</div>
+              ${p.rom ? `<div class="rom-text" style="font-size:12px;color:var(--text3);font-style:italic;margin-top:2px">${escHtml(p.rom)}</div>` : ''}
+              <div style="font-size:14px;color:var(--text2);margin-top:4px">${escHtml(p.fr)}</div>
+              ${p.cat ? `<span class="badge badge-phrase mt-4">${escHtml(p.cat)}</span>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `).join('')}
+    `;
+    bindSrsFilterPills(container, f => { srsFilter = f; render(); });
+
+    // Clic -> detail dans le bottom sheet
+    container.addEventListener('click', e => {
+      const card = e.target.closest('[data-pk]');
+      if (card) {
+        const p = phrases.find(x => x.kr === card.dataset.pk);
+        if (p) openDetailSheet(p, 'phrase', { items: filteredPhrases, index: filteredPhrases.indexOf(p), type: 'phrase' });
+      }
+    });
+  }
+  render();
+}
+
+// --- Expressions ---
+
+// Affiche les expressions : poli / informel cote a cote
+function renderExpressions(chId, container) {
+  const exprs = DATA.expressions.filter(e => e.ch === chId);
+  if (!exprs.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas d\'expressions</div></div>'; return; }
+
+  let srsFilter = null;
+
+  function render() {
+    let filtered = srsFilter !== null ? exprs.filter(e => SRS.getLevel('e:' + (e.poli || e.inf || e.fr)) === srsFilter) : exprs;
+
+    container.innerHTML = `
+      ${srsFilterPillsHTML(srsFilter)}
+      ${filtered.map((ex, i) => `
+        <div class="expr-card" role="button" tabindex="0" data-ei="${i}">
+          <div class="expr-fr">${escHtml(ex.fr)}</div>
+          <div class="expr-row">
+            <div>
+              ${ex.poli ? `<div class="expr-label">Poli</div><div class="expr-kr">${escHtml(ex.poli)}</div>${ex.rp ? `<div class="text-xs-italic">${escHtml(ex.rp)}</div>` : ''}` : ''}
+            </div>
+            <div>
+              ${ex.inf ? `<div class="expr-label">Informel</div><div class="expr-kr">${escHtml(ex.inf)}</div>${ex.ri ? `<div class="text-xs-italic">${escHtml(ex.ri)}</div>` : ''}` : ''}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    `;
+    bindSrsFilterPills(container, f => { srsFilter = f; render(); });
+
+    // Clic -> detail
+    container.addEventListener('click', e => {
+      const card = e.target.closest('[data-ei]');
+      if (card) {
+        const ex = filtered[+card.dataset.ei];
+        if (ex) openDetailSheet(ex, 'expr', { items: filtered, index: +card.dataset.ei, type: 'expr' });
+      }
+    });
+  }
+  render();
+}
+
+// --- Culture ---
+
+// Affiche les articles de culture avec apercu
+function renderCulture(chId, container) {
+  const items = DATA.culture.filter(x => x.ch === chId);
+  if (!items.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Pas de culture</div></div>'; return; }
+
+  container.innerHTML = items.map((cu, i) => `
+    <div class="card card-interactive mb-8" role="button" tabindex="0" data-ci="${i}">
+      <div style="font-size:16px;font-weight:600;margin-bottom:4px">${escHtml(cu.title)}</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.5">${escHtml((cu.body || '').slice(0, 80))}${(cu.body || '').length > 80 ? '...' : ''}</div>
+      ${cu.kw && cu.kw.length ? `<div class="chip-list mt-8">${cu.kw.slice(0, 4).map(kw => `<span class="chip">${escHtml(Array.isArray(kw) ? kw[0] : kw)}</span>`).join('')}</div>` : ''}
+    </div>
+  `).join('');
+
+  // Clic -> bottom sheet avec mots-cles en surbrillance
+  container.addEventListener('click', e => {
+    const card = e.target.closest('[data-ci]');
+    if (card) {
+      const cu = items[+card.dataset.ci];
+      if (cu) openDetailSheet(cu, 'culture');
+    }
+  });
+}
+
+// --- Hangeul ---
+
+// Affiche une grille de caracteres hangeul
+function renderHangeulGrid(type, container) {
+  const items = DATA.hangeul.filter(h => h.type === type);
+  if (!items.length) { container.innerHTML = '<div class="empty"><div class="empty-title">Aucun caractere</div></div>'; return; }
+
+  container.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px">
+      ${items.map((h, i) => `
+        <div class="card text-center" role="button" tabindex="0" data-hi="${i}" style="padding:12px 8px">
+          <div style="font-size:32px;font-weight:700;line-height:1.2">${escHtml(h.l)}</div>
+          <div class="rom-text" style="font-size:12px;color:var(--primary);margin-top:4px">${escHtml(h.rom)}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  container.addEventListener('click', e => {
+    const card = e.target.closest('[data-hi]');
+    if (card) {
+      const h = items[+card.dataset.hi];
+      if (h) openDetailSheet(h, 'hangeul');
+    }
+  });
+}
+
+// Affiche les regles de batchim sous forme de tableau
+function renderBatchim(container) {
+  const rules = DATA.hangeul.filter(h => h.type === 'batchim_regle');
+  const notes = DATA.hangeul.filter(h => h.type === 'prononciation_note');
+
+  container.innerHTML = `
+    <div class="section-title">Consonnes finales (Batchim)</div>
+    <div class="verb-table">
+      <table>
+        <thead><tr><th>Son</th><th>Consonnes</th><th>Description</th></tr></thead>
+        <tbody>
+          ${rules.map(b => `<tr>
+            <td style="font-weight:700;color:var(--primary)">${escHtml(b.rom)}</td>
+            <td style="font-size:16px">${escHtml(b.l)}</td>
+            <td style="font-size:13px;color:var(--text2)">${escHtml(b.desc)}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    ${notes.length ? `
+      <div class="section-title mt-16">Notes</div>
+      ${notes.map(n => `<div class="card mb-8" style="font-size:13px;line-height:1.6"><strong>${escHtml(n.l)}</strong> (${escHtml(n.rom)}) — ${escHtml(n.desc)}</div>`).join('')}
+    ` : ''}
+  `;
+}
+
+
+// ── 10. QUIZ ENGINE ───────────────────────────────
+
+// Classe Quiz : gere l'etat d'une session de quiz
+class Quiz {
+  constructor(mode, items, dir) {
+    this.mode = mode;
+    this.items = shuffle([...items]);
+    this.dir = dir;
+    this.idx = 0;
+    this.score = 0;
+    this.answers = [];
+    this.total = items.length;
+  }
+  current() { return this.items[this.idx]; }
+  next() { this.idx++; return this.idx < this.total; }
+  answer(ok, userAnswer) { this.answers.push({ item: this.current(), correct: ok, userAnswer }); if (ok) this.score++; }
+  progress() { return (this.idx + 1) / this.total; }
+}
+
+// Quiz en cours (accessible globalement)
+let curQuiz = null;
+
+function quitQuiz() {
+  if (!curQuiz || confirm('Quitter le quiz en cours ?')) {
+    _quizCleanup();
+    navigate('#quiz');
+  }
+}
+
+// Protection back browser pendant quiz
+let _quizPopHandler = null;
+function _quizGuardBack() {
+  if (_quizPopHandler) return;
+  history.pushState({ quiz: true }, '');
+  _quizPopHandler = () => {
+    if (curQuiz) {
+      if (confirm('Quitter le quiz en cours ?')) {
+        _quizCleanup();
+        navigate('#quiz');
+      } else {
+        history.pushState({ quiz: true }, '');
+      }
+    }
+  };
+  window.addEventListener('popstate', _quizPopHandler);
+}
+function _quizCleanup() {
+  if (_quizPopHandler) {
+    window.removeEventListener('popstate', _quizPopHandler);
+    _quizPopHandler = null;
+  }
+  curQuiz = null;
+}
+
+// --- Traitement unifie d'une reponse quiz ---
+
+// Fonction unique pour traiter une reponse dans tous les modes quiz
+function handleQuizAnswer(quiz, key, isCorrect, renderNext, successQuality = 1) {
+  if (navigator.vibrate) navigator.vibrate(isCorrect ? [50] : [100, 50, 100]);
+  SRS.update(key, isCorrect ? successQuality : 0);
+  Progress.recordActivity();
+  if (quiz.next()) {
+    setTimeout(renderNext, CFG.QUIZ_DELAY);
+  } else {
+    setTimeout(() => renderQuizResults(quiz), CFG.QUIZ_DELAY);
+  }
+}
+
+// --- Pool d'items ---
+
+// Retourne les items pour un mode quiz selon le chapitre et le nombre
+function getPool(mode, ch, count) {
+  let pool;
+  if (mode === 'conjugaison') {
+    pool = DATA.verbs.filter(v => v.poli || v.fam || v.passe).map(v => ({...v, _type: 'verb'}));
+    if (ch >= 0) pool = pool.filter(v => v.ch === ch);
+  } else if (mode === 'particules') {
+    pool = DATA.phrases.filter(p => p.kr && p.fr).map(p => ({...p, _type: 'phrase'}));
+    if (ch >= 0) pool = pool.filter(p => p.ch === ch);
+  } else {
+    pool = [
+      ...DATA.vocabulary.map(v => ({...v, _type: 'vocab'})),
+      ...DATA.adjectives.map(v => ({...v, _type: 'adj'})),
+      ...DATA.adverbs.map(v => ({...v, _type: 'adv'})),
+      ...DATA.connectors.map(v => ({...v, _type: 'connecteur'}))
+    ];
+    if (ch >= 0) pool = pool.filter(v => v.ch === ch);
+  }
+  return shuffle(pool).slice(0, count);
+}
+
+// Retourne la cle SRS correcte pour un item de quiz
+function quizSrsKey(item) {
+  if (item._srsKey) return item._srsKey;
+  if (item._type === 'verb') return 'v:' + item.inf;
+  if (item._type === 'adj') return 'a:' + item.kr;
+  if (item._type === 'adv') return 'w:' + item.kr;
+  if (item._type === 'connecteur') return 'c:' + item.kr;
+  return vocabSrsKey(item);
+}
+
+// Retourne count distracteurs (meme chapitre en priorite)
+function getDistractors(item, pool, count = 3) {
+  // Essaie d'abord le meme chapitre
+  const sameCh = pool.filter(v => v !== item && v.ch === item.ch);
+  const others = pool.filter(v => v !== item && v.ch !== item.ch);
+  const candidates = shuffle([...sameCh, ...others]).slice(0, count);
+  return candidates;
+}
+
+// --- Barre de progression quiz ---
+
+function quizBar(q) {
+  return `<div class="quiz-progress"><div class="quiz-progress-fill" style="width:${q.progress() * 100}%"></div></div>
+    <div style="text-align:center;font-size:13px;color:var(--text2);margin:8px 0">${q.idx + 1} / ${q.total}</div>`;
+}
+
+// --- Demarrage du quiz ---
+
+function startQuiz(mode, ch, count, dir) {
+  const items = getPool(mode, ch, count);
+  if (!items.length) {
+    app.innerHTML = '<div class="empty mt-24"><div class="empty-title">Pas assez de donnees</div><button class="btn btn-secondary mt-16" onclick="history.back()">Retour</button></div>';
+    return;
+  }
+
+  curQuiz = new Quiz(mode, items, dir);
+  trackQuizMode(mode);
+  curQuiz.ch = ch;
+  _quizGuardBack();
+
+  const renderers = {
+    flashcards: qFlash,
+    qcm: qQCM,
+    ecriture: qEcriture,
+    association: qAssociation,
+    dictee: qDictee,
+    marathon: qMarathon,
+    conjugaison: qConjugaison,
+    particules: qParticules
+  };
+  (renderers[mode] || qFlash)();
+}
+
+// --- Flashcards ---
+
+// Quiz flashcard avec flip + swipe
+function qFlash() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  const kr2fr = q.dir === 'kr2fr';
+  const front = kr2fr ? item.kr : item.fr;
+  const back = kr2fr ? item.fr : item.kr;
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    <div style="display:flex;flex-direction:column;align-items:center;padding:16px 0">
+      <div class="flashcard-container">
+        <div class="flashcard" id="fc">
+          <div class="flashcard-face">
+            <div class="flashcard-word">${escHtml(front)}</div>
+            <div class="flashcard-hint">Toucher pour retourner</div>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <div class="flashcard-word">${escHtml(back)}</div>
+            ${item.rom ? `<div class="flashcard-hint rom-text">${escHtml(item.rom)}</div>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="srs-buttons" id="srsActions" style="opacity:0;pointer-events:none;transition:opacity 0.3s;width:100%;max-width:340px">
+        <button class="srs-btn srs-btn-hard" data-s="0">Difficile</button>
+        <button class="srs-btn srs-btn-review" data-s="1">A revoir</button>
+        <button class="srs-btn srs-btn-known" data-s="2">Connu</button>
+      </div>
+      <button class="btn btn-secondary mt-16" onclick="quitQuiz()">Quitter</button>
+    </div>
+  `;
+
+  const fc = $('#fc'), actions = $('#srsActions');
+  let flipped = false;
+
+  function flipCard() {
+    if (!flipped) {
+      fc.classList.add('flipped');
+      flipped = true;
+      actions.style.opacity = '1';
+      actions.style.pointerEvents = 'auto';
+    }
+  }
+
+  // Tap = flip
+  fc.addEventListener('click', flipCard);
+
+  // Clavier = flip (Enter / Espace)
+  fc.setAttribute('tabindex', '0');
+  fc.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && !flipped) {
+      e.preventDefault();
+      flipCard();
+    }
+  });
+
+  // Cle SRS : utiliser quizSrsKey qui gere les prefixes par type
+  const srsK = quizSrsKey(item);
+
+  // Boutons SRS
+  actions.addEventListener('click', e => {
+    const b = e.target.closest('[data-s]');
+    if (b) {
+      const s = +b.dataset.s;
+      SRS.update(srsK, s);
+      Progress.recordActivity();
+      q.answer(s >= 1, s);
+      if (q.next()) qFlash(); else renderQuizResults(q);
+    }
+  });
+
+  // Swipe gauche/droite
+  let x0 = 0, xc = 0, dragging = false;
+  fc.addEventListener('touchstart', e => {
+    x0 = e.touches[0].clientX; xc = x0; dragging = true;
+    fc.classList.add('swiping');
+  });
+  fc.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    xc = e.touches[0].clientX;
+    const dx = xc - x0;
+    fc.style.transform = `${flipped ? 'rotateY(180deg) ' : ''}translateX(${dx}px) rotate(${dx * 0.05}deg)`;
+    fc.classList.remove('swipe-feedback-left', 'swipe-feedback-right');
+    if (dx > 40) fc.classList.add('swipe-feedback-right');
+    else if (dx < -40) fc.classList.add('swipe-feedback-left');
+  });
+  fc.addEventListener('touchend', () => {
+    if (!dragging) return;
+    dragging = false;
+    fc.classList.remove('swiping');
+    const dx = xc - x0;
+    if (Math.abs(dx) > CFG.SWIPE_THRESHOLD) {
+      const s = dx > 0 ? 2 : 0;
+      fc.classList.add(dx > 0 ? 'swipe-right' : 'swipe-left');
+      SRS.update(srsK, s);
+      Progress.recordActivity();
+      q.answer(s >= 1, s);
+      setTimeout(() => { if (q.next()) qFlash(); else renderQuizResults(q); }, 300);
+    } else {
+      fc.style.transform = flipped ? 'rotateY(180deg)' : '';
+      fc.classList.remove('swipe-feedback-left', 'swipe-feedback-right');
+    }
+  });
+}
+
+// --- Marathon (sans fin) ---
+
+function qMarathon() {
+  const q = curQuiz, item = q.current();
+  if (!item) {
+    // Recharger le pool pour continuer
+    const newItems = getPool('marathon', q.ch !== undefined ? q.ch : -1, 20);
+    if (!newItems.length) { renderQuizResults(q); return; }
+    q.items.push(...newItems);
+    q.total = q.items.length;
+    return qMarathon();
+  }
+
+  const kr2fr = q.dir === 'kr2fr';
+  const front = kr2fr ? item.kr : item.fr;
+  const back = kr2fr ? item.fr : item.kr;
+  const srsK = quizSrsKey(item);
+
+  app.innerHTML = `
+    <div style="text-align:center;font-size:13px;color:var(--text2);margin:8px 0">Marathon · ${q.score} correct${q.score > 1 ? 's' : ''} / ${q.idx + 1}</div>
+    <div style="display:flex;flex-direction:column;align-items:center;padding:16px 0">
+      <div class="flashcard-container">
+        <div class="flashcard" id="fc">
+          <div class="flashcard-face">
+            <div class="flashcard-word">${escHtml(front)}</div>
+            <div class="flashcard-hint">Toucher pour retourner</div>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <div class="flashcard-word">${escHtml(back)}</div>
+            ${item.rom ? `<div class="flashcard-hint rom-text">${escHtml(item.rom)}</div>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="srs-buttons" id="srsActions" style="opacity:0;pointer-events:none;transition:opacity 0.3s;width:100%;max-width:340px">
+        <button class="srs-btn srs-btn-hard" data-s="0">Difficile</button>
+        <button class="srs-btn srs-btn-review" data-s="1">A revoir</button>
+        <button class="srs-btn srs-btn-known" data-s="2">Connu</button>
+      </div>
+      <button class="btn btn-secondary mt-16" onclick="quitQuiz()">Quitter (${q.score}/${q.idx})</button>
+    </div>
+  `;
+
+  const fc = $('#fc'), actions = $('#srsActions');
+  let flipped = false;
+  fc.addEventListener('click', () => {
+    if (!flipped) { fc.classList.add('flipped'); flipped = true; actions.style.opacity = '1'; actions.style.pointerEvents = 'auto'; }
+  });
+  fc.setAttribute('tabindex', '0');
+  fc.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && !flipped) {
+      e.preventDefault();
+      fc.classList.add('flipped');
+      flipped = true;
+      actions.style.opacity = '1';
+      actions.style.pointerEvents = 'auto';
+    }
+  });
+  actions.addEventListener('click', e => {
+    const b = e.target.closest('[data-s]');
+    if (b) {
+      const s = +b.dataset.s;
+      SRS.update(srsK, s);
+      Progress.recordActivity();
+      q.answer(s >= 1, s);
+      q.next();
+      qMarathon();
+    }
+  });
+}
+
+// --- QCM ---
+
+// Quiz QCM : 4 choix
+function qQCM() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  const kr2fr = q.dir === 'kr2fr';
+  const question = kr2fr ? item.kr : item.fr;
+  const correct = kr2fr ? item.fr : item.kr;
+
+  // Distracteurs : meme chapitre/theme en priorite, puis le reste
+  const pool = [...DATA.vocabulary, ...DATA.adjectives, ...DATA.adverbs, ...DATA.connectors].filter(v => v.kr !== item.kr && v.fr !== item.fr);
+  const sameCh = pool.filter(v => v.ch === item.ch);
+  const sameTheme = sameCh.filter(v => v.theme === item.theme);
+  const candidates = sameTheme.length >= 3 ? sameTheme : sameCh.length >= 3 ? sameCh : pool;
+  const distractors = shuffle(candidates).slice(0, 3).map(d => kr2fr ? d.fr : d.kr);
+  const choices = shuffle([{ text: correct, ok: true }, ...distractors.map(d => ({ text: d, ok: false }))]);
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    <div class="quiz-question">${escHtml(question)}</div>
+    ${item.rom && kr2fr && !Settings.get('hideRom') ? `<div class="quiz-hint">${escHtml(item.rom)}</div>` : ''}
+    <div class="quiz-options" id="qcmOpts">
+      ${choices.map((c, i) => `<button class="quiz-option" data-ok="${c.ok}" data-i="${i}">${escHtml(c.text)}</button>`).join('')}
+    </div>
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+  `;
+
+  let done = false;
+  $('#qcmOpts').addEventListener('click', e => {
+    if (done) return;
+    const btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    done = true;
+
+    const ok = btn.dataset.ok === 'true';
+    btn.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) {
+      const good = $('#qcmOpts').querySelector('[data-ok="true"]');
+      if (good) good.classList.add('reveal');
+    }
+
+    q.answer(ok, btn.textContent.trim());
+    handleQuizAnswer(q, quizSrsKey(item), ok, qQCM);
+  });
+}
+
+// --- Ecriture ---
+
+// Quiz ecriture : taper la reponse
+function qEcriture() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  const kr2fr = q.dir === 'kr2fr';
+  const question = kr2fr ? item.kr : item.fr;
+  const expected = kr2fr ? item.fr : item.kr;
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    <div class="quiz-question">${escHtml(question)}</div>
+    ${item.rom && kr2fr && !Settings.get('hideRom') ? `<div class="quiz-hint">${escHtml(item.rom)}</div>` : ''}
+    <div style="padding:0 16px">
+      <input type="text" class="search-input" id="writeIn" placeholder="${kr2fr ? 'Ecris en francais...' : 'Ecris en coreen...'}" autocomplete="off" style="text-align:center;font-size:16px">
+      ${!kr2fr && !localStorage.getItem('blokaja_kb_help_dismissed') ? `
+        <div class="keyboard-help" id="kbHelp">
+          <div class="keyboard-help-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div>Clavier coreen requis. Sur mobile : Parametres &gt; Langues &gt; Ajouter "Coreen". Sur PC : Win+Espace ou Alt+Shift pour changer de clavier.</div>
+          <button class="keyboard-help-dismiss" id="kbDismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>` : ''}
+      <div id="writeHint" style="text-align:center;font-size:13px;color:var(--text3);min-height:20px;margin:8px 0"></div>
+      <div id="writeFb" style="text-align:center;min-height:40px;margin:8px 0"></div>
+      <div class="flex gap-8">
+        <button class="btn btn-secondary flex-1" id="hintBtn">Indice</button>
+        <button class="btn btn-primary flex-1" id="valBtn">Valider</button>
+      </div>
+    </div>
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+  `;
+
+  const input = $('#writeIn');
+  let done = false, hinted = false;
+  setTimeout(() => { input.focus(); input.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+
+  // Fermer l'aide clavier
+  const kbDismiss = $('#kbDismiss');
+  if (kbDismiss) kbDismiss.addEventListener('click', () => {
+    localStorage.setItem('blokaja_kb_help_dismissed', '1');
+    const help = $('#kbHelp');
+    if (help) help.remove();
+  });
+
+  // Indice : premiere syllabe
+  $('#hintBtn').addEventListener('click', () => {
+    if (!hinted) {
+      hinted = true;
+      $('#writeHint').textContent = 'Indice : ' + expected.slice(0, Math.max(1, Math.ceil(expected.length / 4))) + '...';
+    }
+  });
+
+  function validate() {
+    if (done) return;
+    done = true;
+    const ans = input.value.trim();
+    const norm = s => kr2fr ? stripAccents(s.toLowerCase().trim()) : s.replace(/\s+/g, '').trim();
+    const ok = norm(ans) === norm(expected);
+
+    q.answer(ok, ans);
+    input.disabled = true;
+    input.style.borderColor = ok ? 'var(--success)' : 'var(--danger)';
+
+    const fb = $('#writeFb');
+    fb.innerHTML = ok
+      ? '<div style="color:var(--success);font-weight:600">Correct !</div>'
+      : `<div style="color:var(--danger);font-weight:600">Incorrect</div><div style="font-size:14px;color:var(--text2)">Reponse : <strong style="color:var(--primary)">${escHtml(expected)}</strong></div>`;
+
+    handleQuizAnswer(q, quizSrsKey(item), ok, qEcriture, 2);
+  }
+
+  $('#valBtn').addEventListener('click', validate);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') validate(); });
+}
+
+// --- Association ---
+
+// Quiz association : relier les paires
+function qAssociation() {
+  const q = curQuiz;
+  const count = Math.min(6, q.items.length - q.idx);
+  if (count <= 0) return renderQuizResults(q);
+
+  const pairs = q.items.slice(q.idx, q.idx + count);
+  const left = shuffle([...pairs]), right = shuffle([...pairs]);
+  let selLeft = null;
+  const matched = new Set();
+  const errorItems = new Set();
+  let _matchHandler = null;
+
+  function render() {
+    app.innerHTML = `
+      <div class="quiz-progress"><div class="quiz-progress-fill" style="width:${matched.size / count * 100}%"></div></div>
+      <div style="text-align:center;font-size:13px;color:var(--text2);margin:8px 0">${matched.size} / ${count}</div>
+      <div class="match-columns">
+        <div id="mL">${left.map((it, i) => `<div class="match-item ${matched.has(it.kr) ? 'matched' : ''} ${selLeft === i ? 'selected' : ''}" data-s="l" data-i="${i}" data-k="${escHtml(it.kr)}" style="font-weight:600">${escHtml(it.kr)}</div>`).join('')}</div>
+        <div id="mR">${right.map((it, i) => `<div class="match-item ${matched.has(it.kr) ? 'matched' : ''}" data-s="r" data-i="${i}" data-k="${escHtml(it.kr)}">${escHtml(it.fr)}</div>`).join('')}</div>
+      </div>
+      <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+    `;
+
+    if (_matchHandler) app.removeEventListener('click', _matchHandler);
+    _matchHandler = function(e) {
+      const el = e.target.closest('.match-item');
+      if (!el || el.classList.contains('matched')) return;
+
+      if (el.dataset.s === 'l') {
+        selLeft = +el.dataset.i;
+        render();
+      } else if (el.dataset.s === 'r' && selLeft !== null) {
+        const lItem = left[selLeft];
+        const lk = lItem.kr, rk = el.dataset.k;
+        const lSrsKey = quizSrsKey(lItem);
+        if (lk === rk) {
+          matched.add(lk);
+          const wasError = errorItems.has(lk);
+          SRS.update(lSrsKey, wasError ? 0 : 2);
+          Progress.recordActivity();
+          q.answer(!wasError, lk);
+          selLeft = null;
+          if (matched.size === count) {
+            for (let i = 0; i < count; i++) q.next();
+            setTimeout(() => { if (q.idx < q.items.length) qAssociation(); else renderQuizResults(q); }, 400);
+          } else render();
+        } else {
+          el.style.borderColor = 'var(--danger)';
+          errorItems.add(lk);
+          setTimeout(() => { selLeft = null; render(); }, 500);
+        }
+      }
+    };
+    app.addEventListener('click', _matchHandler);
+  }
+  render();
+}
+
+// --- Dictee ---
+
+// Quiz dictee : ecouter et ecrire en coreen
+function qDictee() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  let hasKoVoice = false;
+  try { hasKoVoice = speechSynthesis.getVoices().some(v => v.lang.startsWith('ko')); } catch (e) {}
+
+  // Synthese vocale coreenne
+  function speak() {
+    try {
+      const u = new SpeechSynthesisUtterance(item.kr);
+      u.lang = 'ko-KR';
+      u.rate = 0.8;
+      if (koVoice) u.voice = koVoice;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    <div style="text-align:center;padding:24px 0">
+      <button class="btn btn-primary" id="playBtn" style="width:64px;height:64px;border-radius:50%;padding:0;display:flex;align-items:center;justify-content:center">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+      </button>
+      ${!hasKoVoice ? `
+        <div style="font-size:14px;color:var(--accent);margin-top:12px;background:var(--accent-light);padding:10px 16px;border-radius:10px;line-height:1.5">
+          <div style="font-weight:600;margin-bottom:4px">Pas de voix coreenne detectee</div>
+          ${item.rom ? `<div style="font-style:italic;color:var(--primary)">${escHtml(item.rom)}</div>` : ''}
+          <div style="font-size:12px;color:var(--text3);margin-top:4px">Ecris le mot correspondant en coreen</div>
+        </div>` : ''}
+      <div style="font-size:13px;color:var(--text2);margin-top:8px">${hasKoVoice ? 'Ecoute et ecris en coreen' : 'Ecris le mot en coreen'}</div>
+    </div>
+    <div style="padding:0 16px">
+      <input type="text" class="search-input" id="dictIn" placeholder="Ecris en coreen..." autocomplete="off" style="text-align:center;font-size:16px">
+      <div id="dictFb" style="text-align:center;min-height:40px;margin:12px 0"></div>
+      <div class="flex gap-8">
+        <button class="btn btn-secondary flex-1" id="replayBtn">Reecouter</button>
+        <button class="btn btn-primary flex-1" id="dictVal">Valider</button>
+      </div>
+    </div>
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+  `;
+
+  const input = $('#dictIn');
+  setTimeout(() => { speak(); input.focus(); input.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
+  $('#playBtn').addEventListener('click', speak);
+  $('#replayBtn').addEventListener('click', speak);
+
+  let done = false;
+  function validate() {
+    if (done) return;
+    done = true;
+    const ans = input.value.trim(), ok = ans.replace(/\s+/g, '') === item.kr.replace(/\s+/g, '');
+    q.answer(ok, ans);
+    input.disabled = true;
+    input.style.borderColor = ok ? 'var(--success)' : 'var(--danger)';
+    $('#dictFb').innerHTML = ok
+      ? '<div style="color:var(--success);font-weight:600">Correct !</div>'
+      : `<div style="color:var(--danger);font-weight:600">Incorrect</div><div style="font-size:14px;color:var(--text2)">Reponse : <strong>${escHtml(item.kr)}</strong> — ${escHtml(item.fr)}</div>`;
+    handleQuizAnswer(q, quizSrsKey(item), ok, qDictee, 2);
+  }
+  $('#dictVal').addEventListener('click', validate);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') validate(); });
+}
+
+// --- Conjugaison ---
+
+// Quiz conjugaison : trouver la bonne forme verbale
+function qConjugaison() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  // Formes disponibles
+  const forms = [];
+  if (item.poli) forms.push({ label: 'Forme polie', answer: item.poli, key: 'poli' });
+  if (item.fam) forms.push({ label: 'Forme informelle', answer: item.fam, key: 'fam' });
+  if (item.passe) forms.push({ label: 'Forme passee', answer: item.passe, key: 'passe' });
+
+  if (!forms.length) { if (q.next()) qConjugaison(); else renderQuizResults(q); return; }
+
+  const form = forms[Math.floor(Math.random() * forms.length)];
+  const allV = DATA.verbs.filter(v => v[form.key] && v.inf !== item.inf);
+  const distractors = shuffle(allV).slice(0, 3).map(v => v[form.key]);
+  const choices = shuffle([{ text: form.answer, ok: true }, ...distractors.map(d => ({ text: d, ok: false }))]);
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    <div class="quiz-question">${escHtml(item.inf)}</div>
+    <div style="text-align:center;font-size:14px;color:var(--text2);margin-bottom:8px">${escHtml(item.fr)}</div>
+    <div style="text-align:center;margin-bottom:16px"><span class="badge badge-vocab">${escHtml(form.label)}</span></div>
+    <div class="quiz-options" id="conjOpts">
+      ${choices.map(c => `<button class="quiz-option" data-ok="${c.ok}">${escHtml(c.text)}</button>`).join('')}
+    </div>
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+  `;
+
+  let done = false;
+  $('#conjOpts').addEventListener('click', e => {
+    if (done) return;
+    const btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    done = true;
+    const ok = btn.dataset.ok === 'true';
+    btn.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) {
+      const g = $('#conjOpts').querySelector('[data-ok="true"]');
+      if (g) g.classList.add('reveal');
+    }
+    q.answer(ok, btn.textContent.trim());
+    handleQuizAnswer(q, 'v:' + item.inf, ok, qConjugaison);
+  });
+}
+
+// --- Particules ---
+
+// Quiz particules : phrase a trou
+function qParticules() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  // Toutes les particules uniques (longueur <= 3)
+  const allP = [...new Set(DATA.particles.flatMap(p =>
+    p.p.includes('/') ? p.p.split('/') : [p.p]
+  ).filter(p => p.length > 0 && p.length <= 3))];
+  allP.sort((a, b) => b.length - a.length);
+
+  // Trouver une particule dans la phrase
+  let found = null, blank = item.kr;
+  for (const p of allP) {
+    if (item.kr.includes(p)) { found = p; blank = item.kr.replace(p, '___'); break; }
+  }
+
+  if (!found) { if (q.next()) qParticules(); else renderQuizResults(q); return; }
+
+  const distractors = shuffle(allP.filter(p => p !== found)).slice(0, 3);
+  const choices = shuffle([{ text: found, ok: true }, ...distractors.map(d => ({ text: d, ok: false }))]);
+  const info = DATA.particles.find(p => p.p.includes(found));
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    <div style="text-align:center;padding:16px 0">
+      <div style="font-size:13px;color:var(--text2);margin-bottom:12px">Complete la phrase :</div>
+      <div style="font-size:22px;font-weight:600;line-height:1.5">${escHtml(blank).replace('___', '<span style="color:var(--primary);border-bottom:2px dashed var(--primary);padding:0 4px">___</span>')}</div>
+      <div style="font-size:14px;color:var(--text2);margin-top:8px;font-style:italic">${escHtml(item.fr)}</div>
+    </div>
+    <div class="grid-2-lg" style="padding:0 16px" id="partOpts">
+      ${choices.map(c => `<button class="quiz-option" data-ok="${c.ok}" data-p="${escHtml(c.text)}" style="text-align:center;font-size:18px;font-weight:600">${escHtml(c.text)}</button>`).join('')}
+    </div>
+    <div id="partExpl" style="padding:0 16px;margin-top:12px;min-height:40px"></div>
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+  `;
+
+  let done = false;
+  $('#partOpts').addEventListener('click', e => {
+    if (done) return;
+    const btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    done = true;
+    const ok = btn.dataset.ok === 'true';
+    btn.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) {
+      const g = $('#partOpts').querySelector('[data-ok="true"]');
+      if (g) g.classList.add('reveal');
+    }
+
+    // Explication apres reponse
+    if (info) {
+      $('#partExpl').innerHTML = `<div class="card" style="border-left:3px solid var(--primary)">
+        <div style="font-weight:600;color:var(--primary)">${escHtml(info.p)} — ${escHtml(info.name || '')}</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px">${escHtml(info.fn || '')}</div>
+      </div>`;
+    }
+
+    q.answer(ok, btn.dataset.p);
+    // Delai un peu plus long pour lire l'explication
+    SRS.update(vocabSrsKey(item), ok ? 1 : 0);
+    Progress.recordActivity();
+    if (q.next()) {
+      setTimeout(qParticules, 1200);
+    } else {
+      setTimeout(() => renderQuizResults(q), 1200);
+    }
+  });
+}
+
+// --- Resultats ---
+
+// Page de resultats unique pour tous les modes quiz
+function renderQuizResults(quiz) {
+  if (!quiz) return navigate('#quiz');
+  _quizCleanup();
+  const score = quiz.score, total = quiz.total;
+  const pct = Math.round(score / total * 100);
+  if (pct === 100 && total >= 10) localStorage.setItem('blokaja_perfect', 'true');
+  const errors = quiz.answers.filter(a => !a.correct);
+
+  let msg, mascot;
+  if (pct >= 90) { msg = 'Excellent !'; mascot = MASCOT_HAPPY_SVG; }
+  else if (pct >= 70) { msg = 'Tres bien !'; mascot = MASCOT_HAPPY_SVG; }
+  else if (pct >= 50) { msg = 'Continue comme ca !'; mascot = MASCOT_SVG; }
+  else { msg = 'Continue de reviser !'; mascot = MASCOT_SAD_SVG; }
+
+  // Confetti pour les bons scores
+  if (pct >= 80) setTimeout(showConfetti, 300);
+
+  app.innerHTML = `
+    <div class="page-center">
+      <div class="mascot mascot-lg">${mascot}</div>
+      <div class="quiz-score quiz-score-animated" style="margin-top:12px">${score}/${total}</div>
+      <div class="text-title-md score-msg">${msg}</div>
+      <div class="quiz-progress" style="margin:16px auto;max-width:300px"><div class="quiz-progress-fill" style="width:${pct}%;background:${pct >= 70 ? 'var(--success)' : pct >= 50 ? 'var(--accent)' : 'var(--danger)'}"></div></div>
+      <div style="font-size:14px;color:var(--text2)">${pct}% de bonnes reponses</div>
+    </div>
+
+    ${errors.length ? `
+      <div class="section mt-16">
+        <div class="section-title">Erreurs (${errors.length})</div>
+        ${errors.map(e => `
+          <div class="card mb-8 accent-border" style="border-color:var(--danger)">
+            <div class="text-title-md">${escHtml(e.item.kr || e.item.inf || '')}</div>
+            <div class="text-secondary">${escHtml(e.item.fr || '')}</div>
+            ${e.userAnswer ? `<div class="text-caption mt-4" style="color:var(--danger)">Ta reponse : ${escHtml(String(e.userAnswer))}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
+
+    <div class="flex flex-col gap-8" style="padding:16px 0">
+      <button class="btn btn-primary btn-block" id="restartBtn">Recommencer</button>
+      ${errors.length ? '<button class="btn btn-secondary btn-block" id="reviewBtn">Reviser les erreurs</button>' : ''}
+      <button class="btn btn-secondary btn-block" onclick="quitQuiz()">Retour au menu</button>
+    </div>
+  `;
+
+  // Recommencer avec les memes parametres
+  $('#restartBtn').addEventListener('click', () =>
+    startQuiz(quiz.mode, quiz.ch !== undefined ? quiz.ch : -1, quiz.total, quiz.dir)
+  );
+
+  // Reviser uniquement les erreurs
+  const rev = $('#reviewBtn');
+  if (rev) rev.addEventListener('click', () => {
+    curQuiz = new Quiz(quiz.mode, errors.map(e => e.item), quiz.dir);
+    const renderers = { flashcards: qFlash, qcm: qQCM, ecriture: qEcriture, marathon: qFlash, dictee: qDictee, conjugaison: qConjugaison, particules: qParticules, association: qAssociation };
+    (renderers[curQuiz.mode] || qFlash)();
+  });
+}
+
+
+// ── 10b. REVISION DU JOUR ─────────────────────────
+
+// Lance directement un quiz flashcard avec les items SRS a revoir
+function startReviewSession() {
+  setHeader('Révision du jour', true);
+  const due = SRS.getDueItems();
+  if (!due.length) {
+    app.innerHTML = emptyStateHTML(MASCOT_HAPPY_SVG, 'Rien a reviser pour le moment', 'Apprends de nouveaux mots dans les chapitres, ils apparaitront ici quand il sera temps de les revoir.', '<button class="btn btn-secondary mt-16" onclick="location.hash=\'#cours\'">Retour aux cours</button>');
+    return;
+  }
+  // Convertir les cles SRS en items pour le quiz (tous types)
+  const items = [];
+  due.forEach(d => {
+    const k = d.key;
+    let found = null;
+    // Vocab / phrases (avec ou sans suffixe |ch pour homonymes)
+    if (k.includes('|')) {
+      const [kr, ch] = k.split('|');
+      const chNum = +ch;
+      found = DATA.vocabulary.find(v => v.kr === kr && v.ch === chNum);
+      if (!found) found = DATA.phrases.find(p => p.kr === kr && p.ch === chNum);
+    }
+    if (!found) found = DATA.vocabulary.find(v => v.kr === k);
+    if (!found) found = DATA.phrases.find(p => p.kr === k);
+    // Verbes (prefix v:)
+    if (!found && k.startsWith('v:')) found = DATA.verbs.find(v => v.inf === k.slice(2));
+    // Expressions (prefix e:)
+    if (!found && k.startsWith('e:')) found = DATA.expressions.find(e => (e.poli || e.inf || e.fr) === k.slice(2));
+    // Adjectifs (prefix a:)
+    if (!found && k.startsWith('a:')) found = DATA.adjectives.find(a => a.kr === k.slice(2));
+    // Adverbes (prefix w:)
+    if (!found && k.startsWith('w:')) found = DATA.adverbs.find(a => a.kr === k.slice(2));
+    // Nombres (prefix n:)
+    if (!found && k.startsWith('n:')) found = DATA.numbers.find(n => n.kr === k.slice(2));
+    // Connecteurs (prefix c:)
+    if (!found && k.startsWith('c:')) found = DATA.connectors.find(c => c.kr === k.slice(2));
+    // Particules (prefix p:)
+    if (!found && k.startsWith('p:')) found = DATA.particles.find(p => p.p === k.slice(2));
+    // Hangeul (prefix h:)
+    if (!found && k.startsWith('h:')) found = DATA.hangeul.find(h => h.l === k.slice(2));
+    // Normaliser pour flashcard : besoin de kr et fr + srsKey original
+    if (found) {
+      const item = { kr: found.kr || found.inf || found.p || found.l || '', fr: found.fr || found.name || found.desc || '', rom: found.rom || '', _srsKey: k };
+      if (item.kr && item.fr) items.push(item);
+    }
+  });
+  if (!items.length) {
+    app.innerHTML = '<div class="empty mt-24"><div class="empty-title">Rien à réviser</div><button class="btn btn-secondary mt-16" onclick="location.hash=\'#cours\'">Retour</button></div>';
+    return;
+  }
+  curQuiz = new Quiz('flashcards', items.slice(0, 30), 'kr2fr');
+  _quizGuardBack();
+  qFlash(curQuiz);
+}
+
+// ── 10c. EXAMEN BLANC ─────────────────────────────
+
+// Quiz melangeant tout : vocab + conjugaison + particules + expressions
+function startExamBlanc() {
+  setHeader('Examen blanc', true);
+  const pool = [];
+  // Vocab random
+  const vocabPool = shuffle([...DATA.vocabulary]).slice(0, 15);
+  vocabPool.forEach(v => pool.push({ kr: v.kr, fr: v.fr, rom: v.rom, ch: v.ch, type: 'vocab' }));
+  // Verbes conjugaison
+  const verbPool = shuffle(DATA.verbs.filter(v => v.poli || v.fam || v.passe)).slice(0, 5);
+  verbPool.forEach(v => {
+    const forms = [];
+    if (v.poli) forms.push({ label: 'présent poli', form: v.poli });
+    if (v.fam) forms.push({ label: 'présent informel', form: v.fam });
+    if (v.passe) forms.push({ label: 'passé', form: v.passe });
+    const f = forms[Math.floor(Math.random() * forms.length)];
+    pool.push({ kr: v.inf, fr: v.fr + ' (' + f.label + ')', answer: f.form, type: 'conjugaison' });
+  });
+  // Expressions
+  const exprPool = shuffle([...DATA.expressions]).slice(0, 5);
+  exprPool.forEach(ex => {
+    const kr = ex.poli || ex.inf || '';
+    if (kr) pool.push({ kr, fr: ex.fr, rom: ex.rp || ex.ri || '', type: 'expression' });
+  });
+  // Particules (phrases a trous)
+  const partPool = shuffle(DATA.particles.filter(p => p.ex && p.ex.length)).slice(0, 5);
+  partPool.forEach(p => {
+    if (p.ex && p.ex.length) {
+      const ex = p.ex[0];
+      const kr = typeof ex === 'object' ? ex.kr : (typeof ex === 'string' ? ex : '');
+      const fr = typeof ex === 'object' ? ex.fr : '';
+      if (kr) pool.push({ kr: kr, fr: fr || p.name || '', particle: p.p, type: 'particule' });
+    }
+  });
+
+  if (pool.length < 10) {
+    app.innerHTML = '<div class="empty mt-24"><div class="empty-title">Pas assez de données</div><button class="btn btn-secondary mt-16" onclick="history.back()">Retour</button></div>';
+    return;
+  }
+
+  // Mode QCM sur le pool melange
+  curQuiz = new Quiz('exam', shuffle(pool), 'kr2fr');
+  _quizGuardBack();
+  renderExamQuestion(curQuiz);
+}
+
+function renderExamQuestion(quiz) {
+  const item = quiz.current();
+  if (!item) { renderQuizResults(quiz); return; }
+
+  const progress = `<div class="quiz-progress"><div class="quiz-progress-fill" style="width:${quiz.progress()*100}%"></div></div>
+    <div style="text-align:center;font-size:13px;color:var(--text2);margin:8px 0">${quiz.idx+1} / ${quiz.total}</div>`;
+
+  let questionHTML = '';
+  let optionsHTML = '';
+
+  if (item.type === 'conjugaison' && item.answer) {
+    // Question conjugaison : affiche infinitif, demande la forme
+    questionHTML = `<div class="quiz-question">${escHtml(item.kr)}</div><div class="text-body text-center mb-16">${escHtml(item.fr)}</div>`;
+    const correct = item.answer;
+    const distractors = DATA.verbs.filter(v => v.inf !== item.kr).map(v => v.poli || v.fam || v.passe).filter(Boolean);
+    const choices = shuffle([correct, ...shuffle(distractors).slice(0, 3)]);
+    optionsHTML = `<div class="quiz-options">${choices.map(c =>
+      `<button class="quiz-option card" data-val="${escHtml(c)}" data-correct="${escHtml(correct)}">${escHtml(c)}</button>`
+    ).join('')}</div>`;
+  } else if (item.type === 'particule' && item.particle) {
+    // Question particule : phrase avec trou — chercher la sous-particule presente dans la phrase
+    const subParts = item.particle.includes('/') ? item.particle.split('/') : [item.particle];
+    subParts.sort((a, b) => b.length - a.length);
+    let foundP = subParts.find(sp => item.kr.includes(sp)) || item.particle;
+    const phrase = item.kr.replace(foundP, '___');
+    questionHTML = `<div class="quiz-question" style="font-size:20px">${escHtml(phrase)}</div><div class="text-body text-center mb-16">${escHtml(item.fr)}</div>`;
+    const correct = foundP;
+    const allParticles = [...new Set(DATA.particles.flatMap(p => p.p.includes('/') ? p.p.split('/') : [p.p]).filter(p => p.length > 0 && p.length <= 3 && p !== correct))];
+    const choices = shuffle([correct, ...shuffle(allParticles).slice(0, 3)]);
+    optionsHTML = `<div class="quiz-options">${choices.map(c =>
+      `<button class="quiz-option card" data-val="${escHtml(c)}" data-correct="${escHtml(correct)}">${escHtml(c)}</button>`
+    ).join('')}</div>`;
+  } else {
+    // Question vocab/expression standard : KR → FR
+    questionHTML = `<div class="quiz-question">${escHtml(item.kr)}</div>${item.rom && !Settings.get('hideRom') ? `<div class="quiz-hint" style="font-style:normal">${escHtml(item.rom)}</div>` : ''}`;
+    const correct = item.fr;
+    const distractors = DATA.vocabulary.filter(v => v.fr !== correct).map(v => v.fr);
+    const choices = shuffle([correct, ...shuffle(distractors).slice(0, 3)]);
+    optionsHTML = `<div class="quiz-options">${choices.map(c =>
+      `<button class="quiz-option card" data-val="${escHtml(c)}" data-correct="${escHtml(correct)}">${escHtml(c)}</button>`
+    ).join('')}</div>`;
+  }
+
+  app.innerHTML = `${progress}${questionHTML}${optionsHTML}
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>`;
+
+  // Gestion de la reponse
+  app.addEventListener('click', function _eq(e) {
+    const btn = e.target.closest('.quiz-option');
+    if (!btn || btn.classList.contains('correct') || btn.classList.contains('wrong')) return;
+    app.removeEventListener('click', _eq);
+
+    const val = btn.dataset.val;
+    const correct = btn.dataset.correct;
+    const ok = val === correct;
+
+    btn.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) {
+      app.querySelectorAll('.quiz-option').forEach(b => {
+        if (b.dataset.val === correct) b.classList.add('correct');
+      });
+    }
+
+    let key;
+    if (item.type === 'conjugaison') key = 'v:' + item.kr;
+    else if (item.type === 'expression') key = 'e:' + item.kr;
+    else if (item.type === 'particule') key = item.kr;
+    else key = vocabSrsKey(item);
+    handleQuizAnswer(curQuiz, key, ok, () => renderExamQuestion(curQuiz));
+  });
+}
+
+// ── 10d. ONBOARDING ────────────────────────────────
+
+function showOnboarding() {
+  const steps = [
+    {
+      title: '한글 Bienvenue !',
+      text: 'Blokaja t\'aide a reviser le coreen niveau A1. Vocabulaire, grammaire, conjugaisons, particules — tout y est.',
+      icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>'
+    },
+    {
+      title: 'Revise avec le SRS',
+      text: 'Chaque mot a un niveau : Nouveau, Difficile, A revoir, Connu. L\'app te repropose les mots au bon moment grace a la repetition espacee.',
+      icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 012 2v12"/></svg>'
+    },
+    {
+      title: '8 modes de quiz',
+      text: 'Flashcards, QCM, ecriture, association, dictee, marathon, conjugaison et particules. Varie les plaisirs !',
+      icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>'
+    }
+  ];
+
+  let step = 0;
+  function render() {
+    const s = steps[step];
+    const last = step === steps.length - 1;
+    app.innerHTML = `
+      <div class="onboarding">
+        <div class="onboarding-dots">${steps.map((_, i) => `<div class="onboarding-dot ${i === step ? 'active' : ''}"></div>`).join('')}</div>
+        <div class="onboarding-icon">${s.icon}</div>
+        <div class="onboarding-title">${s.title}</div>
+        <div class="onboarding-text">${s.text}</div>
+        <button class="btn btn-primary btn-block" id="obNext">${last ? 'Commencer' : 'Suivant'}</button>
+        ${!last ? '<button class="btn btn-secondary btn-block mt-8" id="obSkip">Passer</button>' : ''}
+      </div>
+    `;
+    $('#obNext').addEventListener('click', () => {
+      if (last) { finishOnboarding(); return; }
+      step++;
+      render();
+    });
+    const skip = $('#obSkip');
+    if (skip) skip.addEventListener('click', finishOnboarding);
+  }
+
+  function finishOnboarding() {
+    localStorage.setItem('blokaja_onboarded', '1');
+    route();
+  }
+
+  render();
+}
+
+
+// ── 10e. MODE LECON GUIDEE ────────────────────────
+
+// Lecon guidee : decouverte pas-a-pas + mini-quiz
+function startLesson(chId) {
+  setHeader('Lecon', true);
+
+  // Items non vus (SRS level 0) du chapitre
+  const newVocab = DATA.vocabulary.filter(v => v.ch === chId && v.fr && SRS.getLevel(vocabSrsKey(v)) === 0);
+  const allVocab = DATA.vocabulary.filter(v => v.ch === chId && v.fr);
+  const pool = newVocab.length >= 5 ? newVocab : allVocab;
+  const items = shuffle(pool).slice(0, 5);
+
+  if (!items.length) {
+    app.innerHTML = '<div class="empty mt-24"><div class="empty-title">Pas de vocabulaire disponible</div><button class="btn btn-secondary mt-16" onclick="history.back()">Retour</button></div>';
+    return;
+  }
+
+  let step = 0;
+  let revealed = false;
+
+  function renderStep() {
+    const item = items[step];
+    revealed = false;
+
+    app.innerHTML = `
+      <div style="padding:16px 0">
+        <div class="lesson-dots">
+          ${items.map((_, i) => `<div class="lesson-dot ${i < step ? 'done' : ''} ${i === step ? 'active' : ''}"></div>`).join('')}
+        </div>
+        <div class="text-caption text-center mb-16">Decouverte ${step + 1} / ${items.length}</div>
+        <div class="lesson-card" id="lessonCard">
+          <div class="lesson-kr">${escHtml(item.kr)} ${audioBtnHTML(item.kr)}</div>
+          <div id="lessonReveal" class="lesson-reveal">
+            ${item.rom ? `<div style="font-size:14px;color:var(--primary);font-style:italic;margin:8px 0" class="rom-text">${escHtml(item.rom)}</div>` : ''}
+            <div style="font-size:20px;margin-top:12px">${escHtml(item.fr)}</div>
+            ${item.theme ? `<span class="badge badge-vocab mt-8">${escHtml(item.theme)}</span>` : ''}
+          </div>
+          <div id="lessonTapHint" class="text-muted mt-24">Touche pour reveler</div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="btn btn-primary" id="lessonNext" style="display:none;min-width:160px">Suivant</button>
+        </div>
+        <div style="text-align:center;margin-top:12px">
+          <button class="btn btn-secondary" onclick="history.back()">Quitter</button>
+        </div>
+      </div>
+    `;
+
+    // Auto-play audio
+    setTimeout(() => speakKr(item.kr), 300);
+
+    const card = $('#lessonCard');
+    const nextBtn = $('#lessonNext');
+
+    // Tap to reveal
+    card.addEventListener('click', e => {
+      if (e.target.closest('.audio-btn') || revealed) return;
+      revealed = true;
+      $('#lessonReveal').classList.add('visible');
+      $('#lessonTapHint').style.display = 'none';
+      nextBtn.style.display = '';
+      // Marquer comme "vu" dans le SRS (level 1 = Difficile)
+      if (SRS.getLevel(vocabSrsKey(item)) === 0) {
+        SRS.update(vocabSrsKey(item), 0);
+        Progress.recordActivity();
+      }
+    });
+
+    // Next
+    nextBtn.addEventListener('click', () => {
+      step++;
+      if (step < items.length) {
+        renderStep();
+      } else {
+        startLessonQuiz();
+      }
+    });
+  }
+
+  function startLessonQuiz() {
+    setHeader('Mini-quiz', true);
+    app.innerHTML = `
+      <div style="text-align:center;padding:32px 16px">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="heading-sheet" style="margin:16px 0">Bien joue !</div>
+        <div class="text-body" style="margin-bottom:24px">Tu as decouvert ${items.length} mots. Teste-toi maintenant avec un mini-quiz !</div>
+        <button class="btn btn-primary btn-block" id="startMiniQuiz">Commencer le quiz</button>
+        <button class="btn btn-secondary btn-block mt-8" onclick="history.back()">Plus tard</button>
+      </div>
+    `;
+    $('#startMiniQuiz').addEventListener('click', () => {
+      curQuiz = new Quiz('flashcards', items, 'kr2fr');
+      // Track lesson completion
+      try {
+        const count = JSON.parse(localStorage.getItem('blokaja_lessons') || '0');
+        localStorage.setItem('blokaja_lessons', JSON.stringify(count + 1));
+      } catch(e) {}
+      qFlash();
+    });
+  }
+
+  renderStep();
+}
+
+
+// ── 11. INIT ──────────────────────────────────────
+
+// Charger la voix TTS coreenne
+let koVoice = null;
+if (window.speechSynthesis) {
+  const loadVoices = () => {
+    koVoice = speechSynthesis.getVoices().find(v => v.lang.startsWith('ko'));
+  };
+  speechSynthesis.addEventListener('voiceschanged', loadVoices);
+  loadVoices();
+}
+
+// Navigation par onglets
+$$('.tab').forEach(t => t.addEventListener('click', () => {
+  location.hash = '#' + t.dataset.tab;
+}));
+
+// Fermeture du bottom sheet via overlay ou Escape
+$('#bottomSheetOverlay').addEventListener('click', closeBottomSheet);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#bottomSheet').classList.contains('visible')) closeBottomSheet();
 });
 
-// ═══════════════════════════════════════════════════
-// SWIPE — Hangeul (gauche/droite pour changer de catégorie)
-// ═══════════════════════════════════════════════════
-(function() {
-  const HANGEUL_TABS = ['consonnes', 'doubles', 'voyelles', 'composees', 'batchim', 'astuces'];
-  let hgCurrentIndex = 0;
-  let hgTouchStartX = 0, hgTouchStartY = 0;
+// Bouton retour du header
+$('#headerBack').addEventListener('click', () => history.back());
 
-  function goToHangeulTab(index) {
-    if (index < 0 || index >= HANGEUL_TABS.length) return;
-    hgCurrentIndex = index;
-    const tab = HANGEUL_TABS[index];
-    document.querySelectorAll('.hangeul-section').forEach(s => s.style.display = 'none');
-    document.getElementById('hg-' + tab).style.display = 'block';
-    const tabs = document.querySelectorAll('#page-hangeul .tab');
-    tabs.forEach((t, i) => t.classList.toggle('active', i === index));
-    // Scroll active tab into view in the tabs bar
-    if (tabs[index]) tabs[index].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-    // Reset scroll position of main
-    const main = document.querySelector('.main');
-    if (main) main.scrollTop = 0;
-  }
+// Charger la progression au demarrage
+Progress.load();
 
-  // Override switchHangeulTab to track current index for swipe
-  window.switchHangeulTab = function(tab) {
-    const idx = HANGEUL_TABS.indexOf(tab);
-    if (idx !== -1) goToHangeulTab(idx);
-  };
+// Appliquer les settings (romanisation, dark mode)
+applySettings();
 
-  const main = document.querySelector('.main');
-  if (main) {
-    main.addEventListener('touchstart', e => {
-      hgTouchStartX = e.changedTouches[0].screenX;
-      hgTouchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
+// Toggle romanisation
+$('#toggleRom').addEventListener('click', () => {
+  const hidden = Settings.toggle('hideRom');
+  applySettings();
+  $('#toggleRom').classList.toggle('active', hidden);
+  toast(hidden ? 'Romanisation masquee' : 'Romanisation affichee');
+});
+$('#toggleRom').classList.toggle('active', !!Settings.get('hideRom'));
 
-    main.addEventListener('touchend', e => {
-      if (!document.getElementById('page-hangeul').classList.contains('active')) return;
-      const dx = e.changedTouches[0].screenX - hgTouchStartX;
-      const dy = e.changedTouches[0].screenY - hgTouchStartY;
-      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.8) return;
-      if (dx < 0) goToHangeulTab(hgCurrentIndex + 1);
-      else goToHangeulTab(hgCurrentIndex - 1);
-    }, { passive: true });
-  }
+// Toggle dark mode
+$('#toggleDark').addEventListener('click', () => {
+  const cur = Settings.get('darkMode');
+  // cycle: null (auto) -> true (dark) -> false (light) -> null
+  const next = cur === null ? true : cur === true ? false : null;
+  Settings.set('darkMode', next);
+  applySettings();
+  const labels = { true: 'Mode sombre', false: 'Mode clair', null: 'Mode auto' };
+  toast(labels[String(next)]);
+});
+
+// Ecouter le changement de theme systeme
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if (Settings.get('darkMode') === null) applySettings();
+});
+
+// Flush SRS avant fermeture de page
+window.addEventListener('pagehide', () => SRS.flush());
+window.addEventListener('beforeunload', () => SRS.flush());
+
+// Delegation globale pour les boutons audio
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-speak]');
+  if (btn) { e.stopPropagation(); speakKr(btn.dataset.speak); }
+});
+
+// Detecter les homonymes (meme kr, sens differents) pour disambiguer les cles SRS
+(function buildCollisionSet() {
+  const seen = {};
+  [...DATA.vocabulary, ...DATA.phrases].forEach(item => {
+    if (!item.kr || !item.fr) return;
+    if (seen[item.kr] !== undefined && seen[item.kr] !== item.fr) {
+      _srsCollisions.add(item.kr);
+    }
+    if (seen[item.kr] === undefined) seen[item.kr] = item.fr;
+  });
 })();
 
-// ═══════════════════════════════════════════════════
-// SWIPE — Grammaire (gauche/droite pour changer de chapitre)
-// ═══════════════════════════════════════════════════
-(function() {
-  const GRAMMAR_CHAPTERS = [0, 1, 2, 3, 4, 5, 6];
-  let grCurrentIndex = 0;
-  let grTouchStartX = 0, grTouchStartY = 0;
-
-  function goToGrammarTab(index) {
-    if (index < 0 || index >= GRAMMAR_CHAPTERS.length) return;
-    grCurrentIndex = index;
-    renderGrammar(GRAMMAR_CHAPTERS[index]);
-    const tabs = document.querySelectorAll('#grammar-tabs .tab');
-    tabs.forEach((t, i) => t.classList.toggle('active', i === index));
-    if (tabs[index]) tabs[index].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-    const main = document.querySelector('.main');
-    if (main) main.scrollTop = 0;
+// Migration unique : copier les anciennes cles SRS vers les nouvelles cles disambiguees
+(function migrateSrsCollisions() {
+  if (localStorage.getItem('blokaja_srs_migrated_v2')) return;
+  let changed = false;
+  _srsCollisions.forEach(kr => {
+    if (SRS.data[kr]) {
+      const oldEntry = SRS.data[kr];
+      [...DATA.vocabulary, ...DATA.phrases].filter(i => i.kr === kr && i.ch !== undefined).forEach(i => {
+        const newKey = kr + '|' + i.ch;
+        if (!SRS.data[newKey]) {
+          SRS.data[newKey] = { ...oldEntry };
+          changed = true;
+        }
+      });
+      delete SRS.data[kr];
+      changed = true;
+    }
+  });
+  if (changed) {
+    try { localStorage.setItem('blokaja_srs', JSON.stringify(SRS.data)); } catch(e) {}
   }
-
-  // Override filterGrammar (called by onclick) to track index for swipe
-  window.filterGrammar = function(ch) {
-    const idx = GRAMMAR_CHAPTERS.indexOf(ch);
-    if (idx !== -1) goToGrammarTab(idx);
-    else renderGrammar(ch);
-  };
-
-  const main = document.querySelector('.main');
-  if (main) {
-    main.addEventListener('touchstart', e => {
-      grTouchStartX = e.changedTouches[0].screenX;
-      grTouchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    main.addEventListener('touchend', e => {
-      if (!document.getElementById('page-grammar').classList.contains('active')) return;
-      const dx = e.changedTouches[0].screenX - grTouchStartX;
-      const dy = e.changedTouches[0].screenY - grTouchStartY;
-      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.8) return;
-      if (dx < 0) goToGrammarTab(grCurrentIndex + 1);
-      else goToGrammarTab(grCurrentIndex - 1);
-    }, { passive: true });
-  }
+  localStorage.setItem('blokaja_srs_migrated_v2', '1');
 })();
 
-// ═══════════════════════════════════════════════════
-// SWIPE — Phrases clés (gauche/droite pour changer de chapitre)
-// ═══════════════════════════════════════════════════
-(function() {
-  const CHAPTERS = [0, 1, 2, 3, 4, 5, 6];
-  let phCurrentIndex = 0;
-  let phTouchStartX = 0, phTouchStartY = 0;
-
-  function goToPhrasesTab(index) {
-    if (index < 0 || index >= CHAPTERS.length) return;
-    phCurrentIndex = index;
-    filterPhrases(CHAPTERS[index]);
-  }
-
-  const main = document.querySelector('.main');
-  if (main) {
-    main.addEventListener('touchstart', e => {
-      phTouchStartX = e.changedTouches[0].screenX;
-      phTouchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    main.addEventListener('touchend', e => {
-      if (!document.getElementById('page-phrases').classList.contains('active')) return;
-      const dx = e.changedTouches[0].screenX - phTouchStartX;
-      const dy = e.changedTouches[0].screenY - phTouchStartY;
-      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.8) return;
-      if (dx < 0) goToPhrasesTab(phCurrentIndex + 1);
-      else goToPhrasesTab(phCurrentIndex - 1);
-    }, { passive: true });
-  }
-
-  // Sync filterPhrases tab clicks to track index
-  const origFilter = window.filterPhrases;
-  window.filterPhrases = function(ch) {
-    const idx = CHAPTERS.indexOf(ch);
-    if (idx !== -1) phCurrentIndex = idx;
-    origFilter(ch);
-  };
-})();
+// Premier rendu (ou onboarding)
+if (!localStorage.getItem('blokaja_onboarded')) {
+  showOnboarding();
+} else {
+  route();
+}

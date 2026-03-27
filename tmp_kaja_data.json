@@ -1,0 +1,1792 @@
+{
+  "meta": {
+    "source": "Kaja, Hanguk! - Coréen Première Année A1 (Belin Éducation)",
+    "extracted_pages": "1-124 (livre complet A1, chapitres 1-6)",
+    "version": "2.0"
+  },
+
+  "hangeul": {
+    "histoire": {
+      "createur": "Roi Sejong le Grand",
+      "dynaste": "Joseon",
+      "annee_creation": 1443,
+      "annee_publication": 1446,
+      "livre": "Hunminjeongeum (훈민정음)",
+      "application_officielle": 1894,
+      "nom_hangeul_apparu": "≈1910",
+      "nb_lettres": 40,
+      "composition": "14 consonnes de base + 10 voyelles de base + 5 consonnes doubles + 11 voyelles composées",
+      "note": "S'écrit de gauche à droite, de haut en bas. Les lettres se regroupent en syllabes."
+    },
+
+    "consonnes_de_base": [
+      { "lettre": "ㄱ", "romanisation": "g, k", "son_fr": "g (gare)" },
+      { "lettre": "ㄴ", "romanisation": "n", "son_fr": "n (nuit)" },
+      { "lettre": "ㄷ", "romanisation": "d, t", "son_fr": "d (dame)" },
+      { "lettre": "ㄹ", "romanisation": "r", "son_fr": "r (intermédiaire r/l)" },
+      { "lettre": "ㅁ", "romanisation": "m", "son_fr": "m (maman)" },
+      { "lettre": "ㅂ", "romanisation": "b, p", "son_fr": "b (beau)" },
+      { "lettre": "ㅅ", "romanisation": "s, ch", "son_fr": "s (salut)" },
+      { "lettre": "ㅇ", "romanisation": "ø, ng", "son_fr": "muette (devant voyelle) / ng (en finale)" },
+      { "lettre": "ㅈ", "romanisation": "dj", "son_fr": "dj (djinn)" },
+      { "lettre": "ㅊ", "romanisation": "tch", "son_fr": "tch (Tchad)" },
+      { "lettre": "ㅋ", "romanisation": "k", "son_fr": "k (camion)" },
+      { "lettre": "ㅌ", "romanisation": "t", "son_fr": "t (table)" },
+      { "lettre": "ㅍ", "romanisation": "p", "son_fr": "p (Paris)" },
+      { "lettre": "ㅎ", "romanisation": "h", "son_fr": "h (aspiré)" }
+    ],
+
+    "voyelles_de_base": [
+      { "lettre": "ㅏ", "romanisation": "a", "orientation": "verticale" },
+      { "lettre": "ㅑ", "romanisation": "ya", "orientation": "verticale" },
+      { "lettre": "ㅓ", "romanisation": "eo", "orientation": "verticale" },
+      { "lettre": "ㅕ", "romanisation": "yeo", "orientation": "verticale" },
+      { "lettre": "ㅗ", "romanisation": "o", "orientation": "horizontale", "note": "son 'ou' en français puis lèvres comme 'o'" },
+      { "lettre": "ㅛ", "romanisation": "yo", "orientation": "horizontale" },
+      { "lettre": "ㅜ", "romanisation": "ou", "orientation": "horizontale" },
+      { "lettre": "ㅠ", "romanisation": "you", "orientation": "horizontale" },
+      { "lettre": "ㅡ", "romanisation": "eu", "orientation": "horizontale" },
+      { "lettre": "ㅣ", "romanisation": "i", "orientation": "verticale" }
+    ],
+
+    "voyelles_composees": [
+      { "lettre": "ㅐ", "romanisation": "e", "composition": "ㅏ + ㅣ" },
+      { "lettre": "ㅒ", "romanisation": "ye", "composition": "ㅑ + ㅣ" },
+      { "lettre": "ㅔ", "romanisation": "e", "composition": "ㅓ + ㅣ" },
+      { "lettre": "ㅖ", "romanisation": "ye", "composition": "ㅕ + ㅣ" },
+      { "lettre": "ㅘ", "romanisation": "wa", "composition": "ㅗ + ㅏ" },
+      { "lettre": "ㅙ", "romanisation": "wé", "composition": "ㅗ + ㅐ" },
+      { "lettre": "ㅚ", "romanisation": "wé ou ué", "composition": "ㅗ + ㅣ" },
+      { "lettre": "ㅝ", "romanisation": "weo", "composition": "ㅜ + ㅓ" },
+      { "lettre": "ㅞ", "romanisation": "wé ou wé", "composition": "ㅜ + ㅔ" },
+      { "lettre": "ㅟ", "romanisation": "oui", "composition": "ㅜ + ㅣ" },
+      { "lettre": "ㅢ", "romanisation": "eui / i", "composition": "ㅡ + ㅣ", "note": "se prononce parfois 'e' et parfois 'i'" }
+    ],
+
+    "consonnes_doubles": [
+      { "lettre": "ㄲ", "romanisation": "kk", "son_fr": "k (camion) tendu" },
+      { "lettre": "ㄸ", "romanisation": "tt", "son_fr": "t (table) tendu" },
+      { "lettre": "ㅃ", "romanisation": "pp", "son_fr": "p (Paris) tendu" },
+      { "lettre": "ㅆ", "romanisation": "ss", "son_fr": "ss (salut) tendu" },
+      { "lettre": "ㅉ", "romanisation": "jj", "son_fr": "tch (Tchad) tendu" }
+    ],
+
+    "consonnes_finales_batchim": {
+      "explication": "La consonne finale (받침) se place en bas de la syllabe. Les consonnes finales ne prennent que 7 valeurs phonétiques.",
+      "valeurs": [
+        { "phonetique": "k", "consonnes": ["ㄱ", "ㄲ", "ㅋ"], "exemples": [{"mot": "책", "sens": "livre"}, {"mot": "부엌", "sens": "cuisine"}, {"mot": "밖", "sens": "extérieur"}] },
+        { "phonetique": "n", "consonnes": ["ㄴ"], "exemples": [{"mot": "손", "sens": "main"}] },
+        { "phonetique": "t", "consonnes": ["ㄷ", "ㅅ", "ㅆ", "ㅈ", "ㅊ", "ㅌ", "ㅎ"], "exemples": [{"mot": "닫다", "sens": "fermer"}, {"mot": "옷", "sens": "vêtement"}, {"mot": "있다", "sens": "avoir"}, {"mot": "낮", "sens": "jour"}, {"mot": "꽃", "sens": "fleur"}, {"mot": "밑", "sens": "en dessous"}, {"mot": "히읗", "sens": "lettre ㅎ"}] },
+        { "phonetique": "l", "consonnes": ["ㄹ"], "exemples": [{"mot": "달", "sens": "lune"}] },
+        { "phonetique": "m", "consonnes": ["ㅁ"], "exemples": [{"mot": "밤", "sens": "nuit / châtaigne"}] },
+        { "phonetique": "p", "consonnes": ["ㅂ", "ㅍ"], "exemples": [{"mot": "밥", "sens": "riz"}, {"mot": "잎", "sens": "feuille"}] },
+        { "phonetique": "ng", "consonnes": ["ㅇ"], "exemples": [{"mot": "강", "sens": "rivière, fleuve"}] }
+      ]
+    },
+
+    "regles_syllabes": {
+      "structure": "Consonne + Voyelle (+ Consonne finale optionnelle)",
+      "voyelle_verticale": "Consonne à gauche, voyelle à droite",
+      "voyelle_horizontale": "Consonne en haut, voyelle en bas",
+      "consonne_muette": "ㅇ est muet devant une voyelle (remplit la place de consonne)"
+    }
+  },
+
+  "expressions_essentielles": [
+    {
+      "fr": "Bonjour.",
+      "poli": "안녕하세요?",
+      "informel": "안녕?",
+      "romanisation_poli": "annyeonghaseyo",
+      "romanisation_inf": "annyeong"
+    },
+    {
+      "fr": "Enchanté(e).",
+      "poli": "만나서 반가워요.",
+      "informel": "만나서 반가워.",
+      "romanisation_poli": "mannaseo bangawoyo",
+      "romanisation_inf": "mannaseo bangawo"
+    },
+    {
+      "fr": "Comment allez-vous ? / Comment vas-tu ?",
+      "poli": "어떻게 지내세요?",
+      "informel": "어떻게 지내?",
+      "romanisation_poli": "eotteoke jinaeseyo",
+      "romanisation_inf": "eotteoke jinae"
+    },
+    {
+      "fr": "Je vais bien.",
+      "poli": "잘 지내요.",
+      "informel": "잘 지내.",
+      "romanisation_poli": "jal jinaeyo",
+      "romanisation_inf": "jal jinae"
+    },
+    {
+      "fr": "Merci.",
+      "poli": "감사합니다.",
+      "informel": "고마워.",
+      "romanisation_poli": "gamsahamnida",
+      "romanisation_inf": "gomawo"
+    },
+    {
+      "fr": "De rien.",
+      "poli": "아니에요.",
+      "informel": "아니야.",
+      "romanisation_poli": "anieyo",
+      "romanisation_inf": "aniya"
+    },
+    {
+      "fr": "Oui.",
+      "poli": "네.",
+      "informel": "응.",
+      "romanisation_poli": "ne",
+      "romanisation_inf": "eung"
+    },
+    {
+      "fr": "Non.",
+      "poli": "아니요.",
+      "informel": "아니.",
+      "romanisation_poli": "aniyo",
+      "romanisation_inf": "ani"
+    },
+    {
+      "fr": "Bon appétit.",
+      "poli": "맛있게 드세요.",
+      "informel": "맛있게 먹어.",
+      "romanisation_poli": "masitge deuseyo",
+      "romanisation_inf": "masitge meogeo"
+    },
+    {
+      "fr": "Je vais bien manger. (avant le repas)",
+      "poli": "잘 먹겠습니다.",
+      "informel": "잘 먹을게.",
+      "romanisation_poli": "jal meokgesseumnida",
+      "romanisation_inf": "jal meogeulge"
+    },
+    {
+      "fr": "J'ai bien mangé. (après le repas)",
+      "poli": "잘 먹었습니다.",
+      "informel": "잘 먹었어.",
+      "romanisation_poli": "jal meogeosseumnida",
+      "romanisation_inf": "jal meogeosseo"
+    },
+    {
+      "fr": "C'est délicieux.",
+      "poli": "맛있어요.",
+      "informel": "맛있어.",
+      "romanisation_poli": "masisseoyo",
+      "romanisation_inf": "masisseo"
+    },
+    {
+      "fr": "Je suis désolé(e).",
+      "poli": "죄송합니다.",
+      "informel": "미안해.",
+      "romanisation_poli": "joesonghamnida",
+      "romanisation_inf": "mianhae"
+    },
+    {
+      "fr": "Pas de soucis. / Ce n'est pas grave.",
+      "poli": "괜찮아요.",
+      "informel": "괜찮아.",
+      "romanisation_poli": "gwaenchanayo",
+      "romanisation_inf": "gwaenchana"
+    },
+    {
+      "fr": "Au revoir. (le locuteur reste, l'interlocuteur part)",
+      "poli": "안녕히 가세요.",
+      "informel": "안녕!",
+      "romanisation_poli": "annyeonghi gaseyo",
+      "romanisation_inf": "annyeong"
+    },
+    {
+      "fr": "Au revoir. (le locuteur part, l'interlocuteur reste)",
+      "poli": "안녕히 계세요.",
+      "informel": "안녕!",
+      "romanisation_poli": "annyeonghi gyeseyo",
+      "romanisation_inf": "annyeong"
+    }
+  ],
+
+  "vocabulaire": {
+    "ecole": {
+      "titre_kr": "학교",
+      "titre_fr": "L'école",
+      "note": "학교 = école de manière générale. 고등학교 = lycée spécifiquement.",
+      "mots": [
+        { "kr": "교실", "fr": "salle de classe", "rom": "gyosil" },
+        { "kr": "선생님", "fr": "professeur(e)", "rom": "seonsaengnim" },
+        { "kr": "학생", "fr": "élève", "rom": "haksaeng" },
+        { "kr": "칠판", "fr": "tableau", "rom": "chilpan" },
+        { "kr": "책상", "fr": "bureau", "rom": "chaeksang" },
+        { "kr": "의자", "fr": "chaise", "rom": "uija" },
+        { "kr": "시계", "fr": "horloge", "rom": "sigye" },
+        { "kr": "공책", "fr": "cahier", "rom": "gongchaek" },
+        { "kr": "책", "fr": "livre", "rom": "chaek" },
+        { "kr": "가방", "fr": "sac", "rom": "gabang" },
+        { "kr": "태블릿", "fr": "tablette", "rom": "taebeullit" },
+        { "kr": "컴퓨터", "fr": "ordinateur", "rom": "keompyuteo" },
+        { "kr": "필통", "fr": "trousse", "rom": "piltong" },
+        { "kr": "연필", "fr": "crayon", "rom": "yeonpil" },
+        { "kr": "볼펜", "fr": "stylo", "rom": "bolpen" },
+        { "kr": "지우개", "fr": "gomme", "rom": "jiugae" },
+        { "kr": "계산기", "fr": "calculatrice", "rom": "gyesangi" },
+        { "kr": "자", "fr": "règle", "rom": "ja" },
+        { "kr": "가위", "fr": "ciseaux", "rom": "gawi" },
+        { "kr": "풀", "fr": "colle", "rom": "pul" },
+        { "kr": "수첩", "fr": "carnet", "rom": "sucheop" },
+        { "kr": "물", "fr": "eau", "rom": "mul" },
+        { "kr": "지갑", "fr": "portefeuille", "rom": "jigap" },
+        { "kr": "노트북", "fr": "ordinateur portable", "rom": "noteubuk" },
+        { "kr": "안경", "fr": "lunettes", "rom": "angyeong" },
+        { "kr": "열쇠", "fr": "clé", "rom": "yeolsoe" },
+        { "kr": "휴대폰", "fr": "téléphone portable", "rom": "hyudaepon" },
+        { "kr": "사과", "fr": "pomme", "rom": "sagwa" },
+        { "kr": "화이트보드", "fr": "tableau blanc", "rom": "hwaiteu-bodeu" },
+        { "kr": "칠판 지우개", "fr": "efface de tableau", "rom": "chilpan jiugae" },
+        { "kr": "게시판", "fr": "panneau d'affichage", "rom": "gesipan" },
+        { "kr": "사물함", "fr": "casier", "rom": "samulham" },
+        { "kr": "쓰레기통", "fr": "poubelle", "rom": "sseuregitong" }
+      ],
+      "salles_ecole": [
+        { "kr": "체육관", "fr": "gymnase", "rom": "cheyukgwan" },
+        { "kr": "보건실", "fr": "infirmerie", "rom": "bogeonsil" },
+        { "kr": "매점", "fr": "supérette (dans le lycée)", "rom": "maejeom", "note": "Petite supérette très populaire dans les lycées coréens. Les élèves y achètent snacks salés, sucrés, boissons et glaces." },
+        { "kr": "화장실", "fr": "toilettes", "rom": "hwajangsil" },
+        { "kr": "교무실", "fr": "salle des professeurs", "rom": "gyomusil" },
+        { "kr": "학생 식당", "fr": "cantine", "rom": "haksaeng sikdang" },
+        { "kr": "도서관", "fr": "bibliothèque", "rom": "doseogwan" },
+        { "kr": "운동장", "fr": "terrain sportif", "rom": "undongjang" },
+        { "kr": "수영장", "fr": "piscine", "rom": "suyeongjang" },
+        { "kr": "컴퓨터실", "fr": "salle informatique", "rom": "keompyuteosil" },
+        { "kr": "음악실", "fr": "salle de musique", "rom": "eumaksil" },
+        { "kr": "미술실", "fr": "salle d'arts plastiques", "rom": "misulsil" }
+      ]
+    },
+
+    "matieres": {
+      "titre_kr": "과목",
+      "titre_fr": "Les matières",
+      "mots": [
+        { "kr": "한국어", "fr": "coréen", "rom": "hangugeo" },
+        { "kr": "수학", "fr": "mathématiques", "rom": "suhak" },
+        { "kr": "역사", "fr": "histoire", "rom": "yeoksa" },
+        { "kr": "프랑스어", "fr": "français", "rom": "peurangseueo" },
+        { "kr": "과학", "fr": "sciences", "rom": "gwahak" },
+        { "kr": "음악", "fr": "musique", "rom": "eumak" },
+        { "kr": "지리", "fr": "géographie", "rom": "jiri" },
+        { "kr": "영어", "fr": "anglais", "rom": "yeongeo" }
+      ]
+    },
+
+    "quartier": {
+      "titre_kr": "동네",
+      "titre_fr": "Le quartier",
+      "mots": [
+        { "kr": "카페", "fr": "café", "rom": "kape" },
+        { "kr": "약국", "fr": "pharmacie", "rom": "yakguk" },
+        { "kr": "서점", "fr": "librairie", "rom": "seojeom" },
+        { "kr": "백화점", "fr": "grand magasin", "rom": "baekhwajeom" },
+        { "kr": "정육점", "fr": "boucherie", "rom": "jeongyukjeom" },
+        { "kr": "꽃집", "fr": "fleuriste", "rom": "kkotjip" },
+        { "kr": "영화관", "fr": "cinéma", "rom": "yeonghwagwan" },
+        { "kr": "미용실", "fr": "salon de coiffure", "rom": "miyongsil" },
+        { "kr": "빵집", "fr": "boulangerie", "rom": "ppangjip" },
+        { "kr": "식당", "fr": "restaurant", "rom": "sikdang" },
+        { "kr": "도서관", "fr": "bibliothèque", "rom": "doseogwan" },
+        { "kr": "슈퍼마켓", "fr": "supermarché", "rom": "syupeomaket" },
+        { "kr": "노래방", "fr": "noraebang (karaoké)", "rom": "noraebang" },
+        { "kr": "PC방", "fr": "PC bang (salle de jeux vidéo)", "rom": "PC bang" },
+        { "kr": "수영장", "fr": "piscine", "rom": "suyeongjang" },
+        { "kr": "우체국", "fr": "poste", "rom": "ucheguk" },
+        { "kr": "경찰서", "fr": "commissariat", "rom": "gyeongchalseo" },
+        { "kr": "은행", "fr": "banque", "rom": "eunhaeng" },
+        { "kr": "편의점", "fr": "supérette (24h/24)", "rom": "pyeonuijeom" }
+      ]
+    },
+
+    "transports": {
+      "titre_kr": "교통",
+      "titre_fr": "Les transports",
+      "mots": [
+        { "kr": "지하철", "fr": "métro", "rom": "jihacheol" },
+        { "kr": "트램", "fr": "tram", "rom": "teuraem" },
+        { "kr": "킥보드", "fr": "trottinette", "rom": "kikbodeu" },
+        { "kr": "비행기", "fr": "avion", "rom": "bihaenggi" },
+        { "kr": "자동차", "fr": "voiture", "rom": "jadongcha" },
+        { "kr": "택시", "fr": "taxi", "rom": "taeksi" },
+        { "kr": "기차", "fr": "train", "rom": "gicha" },
+        { "kr": "버스", "fr": "bus", "rom": "beoseu" },
+        { "kr": "자전거", "fr": "vélo", "rom": "jajeongeo" },
+        { "kr": "배", "fr": "bateau", "rom": "bae" },
+        { "kr": "오토바이", "fr": "moto", "rom": "otobai" },
+        { "kr": "도보", "fr": "marche (à pied)", "rom": "dobo" }
+      ]
+    },
+
+    "nourriture": {
+      "titre_kr": "음식",
+      "titre_fr": "La nourriture",
+      "mots": [
+        { "kr": "빵", "fr": "pain", "rom": "ppang" },
+        { "kr": "케이크", "fr": "gâteau", "rom": "keikeu" },
+        { "kr": "아이스크림", "fr": "glace", "rom": "aiseukeurim" },
+        { "kr": "계란", "fr": "œuf", "rom": "gyeran" },
+        { "kr": "생선", "fr": "poisson", "rom": "saengseon" },
+        { "kr": "귤", "fr": "clémentine", "rom": "gyul" },
+        { "kr": "사과", "fr": "pomme", "rom": "sagwa" },
+        { "kr": "수박", "fr": "pastèque", "rom": "subak" },
+        { "kr": "딸기", "fr": "fraise", "rom": "ttalgi" },
+        { "kr": "오렌지", "fr": "orange", "rom": "orenji" },
+        { "kr": "토마토", "fr": "tomate", "rom": "tomato" },
+        { "kr": "당근", "fr": "carotte", "rom": "danggeun" },
+        { "kr": "배추", "fr": "chou", "rom": "baechu" },
+        { "kr": "버섯", "fr": "champignon", "rom": "beoseot" },
+        { "kr": "시금치", "fr": "épinard", "rom": "sigeumchi" },
+        { "kr": "감자", "fr": "pomme de terre", "rom": "gamja" },
+        { "kr": "호박", "fr": "courge / citrouille", "rom": "hobak" },
+        { "kr": "마늘", "fr": "ail", "rom": "maneul" },
+        { "kr": "레몬", "fr": "citron", "rom": "remon" },
+        { "kr": "양파", "fr": "oignon", "rom": "yangpa" },
+        { "kr": "고기", "fr": "viande", "rom": "gogi" },
+        { "kr": "치즈", "fr": "fromage", "rom": "chijeu" },
+        { "kr": "버터", "fr": "beurre", "rom": "beoteo" },
+        { "kr": "오이", "fr": "concombre", "rom": "oi" },
+        { "kr": "고추", "fr": "piment", "rom": "gochu" },
+        { "kr": "쌀", "fr": "riz (cru)", "rom": "ssal" },
+        { "kr": "밥", "fr": "riz (cuit)", "rom": "bap" },
+        { "kr": "과일", "fr": "fruit", "rom": "gwail" },
+        { "kr": "닭고기", "fr": "poulet", "rom": "dakgogi" },
+        { "kr": "소고기", "fr": "bœuf", "rom": "sogogi" },
+        { "kr": "반찬", "fr": "accompagnements / petits plats", "rom": "banchan" }
+      ]
+    },
+
+    "plats_coreens": {
+      "titre_fr": "Plats coréens",
+      "mots": [
+        { "kr": "비빔밥", "fr": "bibimbap (riz mélangé avec légumes et viande)", "rom": "bibimbap" },
+        { "kr": "국밥", "fr": "soupe de riz", "rom": "gukbap" },
+        { "kr": "김밥", "fr": "kimbap (rouleaux de riz)", "rom": "gimbap" },
+        { "kr": "냉면", "fr": "nouilles froides", "rom": "naengmyeon" },
+        { "kr": "떡볶이", "fr": "tteokbokki (gâteaux de riz pimentés)", "rom": "tteokbokki" },
+        { "kr": "순두부찌개", "fr": "ragoût de tofu soyeux", "rom": "sundubu jjigae" },
+        { "kr": "불고기", "fr": "bulgogi (viande marinée grillée)", "rom": "bulgogi" },
+        { "kr": "김치볶음밥", "fr": "riz sauté au kimchi", "rom": "gimchi bokkeum bap" },
+        { "kr": "볶음밥", "fr": "riz sauté", "rom": "bokkeum bap" },
+        { "kr": "수육", "fr": "viande bouillie", "rom": "suyuk" },
+        { "kr": "유부초밥", "fr": "riz au tofu frit", "rom": "yubu chobap" },
+        { "kr": "공기밥", "fr": "bol de riz individuel", "rom": "gonggibap" },
+        { "kr": "막걸리", "fr": "makgeolli (vin de riz)", "rom": "makgeolli" },
+        { "kr": "잡채", "fr": "japchae (nouilles sautées aux légumes)", "rom": "japchae" },
+        { "kr": "김치찌개", "fr": "kimchi jjigae (ragoût de kimchi)", "rom": "gimchi jjigae" },
+        { "kr": "국", "fr": "soupe", "rom": "guk" },
+        { "kr": "떡", "fr": "gâteau de riz / tteok", "rom": "tteok" }
+      ]
+    },
+
+    "loisirs": {
+      "titre_kr": "취미",
+      "titre_fr": "Les loisirs",
+      "mots": [
+        { "kr": "피아노", "fr": "piano", "rom": "piano" },
+        { "kr": "기타", "fr": "guitare", "rom": "gita" },
+        { "kr": "산책", "fr": "promenade", "rom": "sanchaek" },
+        { "kr": "등산", "fr": "randonnée", "rom": "deungsan" },
+        { "kr": "비디오 게임", "fr": "jeux vidéo", "rom": "bidio geim" }
+      ]
+    },
+
+    "sports": {
+      "titre_kr": "운동",
+      "titre_fr": "Les sports",
+      "mots": [
+        { "kr": "태권도", "fr": "taekwondo", "rom": "taegwondo" },
+        { "kr": "수영", "fr": "natation", "rom": "suyeong" },
+        { "kr": "테니스", "fr": "tennis", "rom": "teniseu" },
+        { "kr": "배드민턴", "fr": "badminton", "rom": "baedeumiton" },
+        { "kr": "스키", "fr": "ski", "rom": "seuki" },
+        { "kr": "조깅", "fr": "jogging", "rom": "joging" },
+        { "kr": "농구", "fr": "basket", "rom": "nonggu" },
+        { "kr": "축구", "fr": "football", "rom": "chukgu" },
+        { "kr": "야구", "fr": "baseball", "rom": "yagu" },
+        { "kr": "스노우보드", "fr": "snowboard", "rom": "seunoubo-deu" },
+        { "kr": "스케이트", "fr": "patinage", "rom": "seukeiteu" },
+        { "kr": "탁구", "fr": "tennis de table", "rom": "takgu" },
+        { "kr": "배구", "fr": "volley-ball", "rom": "baegu" },
+        { "kr": "유도", "fr": "judo", "rom": "yudo" },
+        { "kr": "골프", "fr": "golf", "rom": "golpeu" }
+      ]
+    },
+
+    "famille": {
+      "titre_kr": "가족",
+      "titre_fr": "La famille",
+      "note": "En Corée, on n'appelle pas les grands frères/sœurs uniquement par leur prénom. Fille → grand frère = 오빠, grande sœur = 언니. Garçon → grand frère = 형, grande sœur = 누나.",
+      "mots": [
+        { "kr": "할머니", "fr": "grand-mère", "rom": "halmeoni" },
+        { "kr": "할아버지", "fr": "grand-père", "rom": "harabeoji" },
+        { "kr": "어머니", "fr": "mère (formel)", "rom": "eomeoni" },
+        { "kr": "아버지", "fr": "père (formel)", "rom": "abeoji" },
+        { "kr": "엄마", "fr": "maman", "rom": "eomma" },
+        { "kr": "아빠", "fr": "papa", "rom": "appa" },
+        { "kr": "오빠", "fr": "grand frère (pour une fille)", "rom": "oppa" },
+        { "kr": "형", "fr": "grand frère (pour un garçon)", "rom": "hyeong" },
+        { "kr": "언니", "fr": "grande sœur (pour une fille)", "rom": "eonni" },
+        { "kr": "누나", "fr": "grande sœur (pour un garçon)", "rom": "nuna" },
+        { "kr": "남동생", "fr": "petit frère", "rom": "namdongsaeng" },
+        { "kr": "여동생", "fr": "petite sœur", "rom": "yeodongsaeng" },
+        { "kr": "(남/여)동생", "fr": "petit frère / petite sœur", "rom": "dongsaeng" },
+        { "kr": "아들", "fr": "fils", "rom": "adeul" },
+        { "kr": "딸", "fr": "fille", "rom": "ttal" },
+        { "kr": "외동", "fr": "enfant unique", "rom": "oedong" },
+        { "kr": "사촌", "fr": "cousin(e)", "rom": "sachon" }
+      ]
+    },
+
+    "amis": {
+      "titre_kr": "친구",
+      "titre_fr": "Les ami(e)s",
+      "mots": [
+        { "kr": "반 친구", "fr": "camarade de classe", "rom": "ban chingu" },
+        { "kr": "남자 친구", "fr": "petit ami / ami (garçon)", "rom": "namja chingu" },
+        { "kr": "여자 친구", "fr": "petite amie / amie (fille)", "rom": "yeoja chingu" }
+      ]
+    },
+
+    "informations_personnelles": {
+      "titre_kr": "개인 정보",
+      "titre_fr": "Informations personnelles",
+      "mots": [
+        { "kr": "성", "fr": "nom de famille", "rom": "seong" },
+        { "kr": "이름", "fr": "prénom", "rom": "ireum" },
+        { "kr": "국적", "fr": "nationalité", "rom": "gukjeok" }
+      ]
+    },
+
+    "pays": {
+      "titre_kr": "나라",
+      "titre_fr": "Les pays",
+      "mots": [
+        { "kr": "독일", "fr": "l'Allemagne", "rom": "dogil" },
+        { "kr": "모로코", "fr": "le Maroc", "rom": "moroko" },
+        { "kr": "베트남", "fr": "le Vietnam", "rom": "beteunam" },
+        { "kr": "브라질", "fr": "le Brésil", "rom": "beurajil" },
+        { "kr": "세네갈", "fr": "le Sénégal", "rom": "senegal" },
+        { "kr": "스페인", "fr": "l'Espagne", "rom": "seupein" },
+        { "kr": "알제리", "fr": "l'Algérie", "rom": "aljeri" },
+        { "kr": "영국", "fr": "le Royaume-Uni", "rom": "yeongguk" },
+        { "kr": "이탈리아", "fr": "l'Italie", "rom": "itallia" },
+        { "kr": "인도", "fr": "l'Inde", "rom": "indo" },
+        { "kr": "일본", "fr": "le Japon", "rom": "ilbon" },
+        { "kr": "중국", "fr": "la Chine", "rom": "jungguk" },
+        { "kr": "캐나다", "fr": "le Canada", "rom": "kaenada" },
+        { "kr": "태국", "fr": "la Thaïlande", "rom": "taeguk" },
+        { "kr": "튀니지", "fr": "la Tunisie", "rom": "twiniji" },
+        { "kr": "프랑스", "fr": "la France", "rom": "peurangseu" },
+        { "kr": "한국", "fr": "la Corée du Sud", "rom": "hanguk" },
+        { "kr": "호주", "fr": "l'Australie", "rom": "hoju" }
+      ]
+    },
+
+    "nationalite": {
+      "titre_kr": "국적",
+      "titre_fr": "La nationalité",
+      "regle": "Pays + 사람 = personne de ce pays | Pays + 친구 = ami(e) de ce pays",
+      "exemples": [
+        { "kr": "프랑스 사람", "fr": "français(e)", "rom": "peurangseu saram" },
+        { "kr": "한국 사람", "fr": "coréen(ne)", "rom": "hanguk saram" },
+        { "kr": "태국 사람", "fr": "thaïlandais(e)", "rom": "taeguk saram" },
+        { "kr": "이탈리아 사람", "fr": "italien(ne)", "rom": "itallia saram" }
+      ]
+    },
+
+    "maison": {
+      "titre_kr": "집",
+      "titre_fr": "La maison",
+      "pieces": [
+        { "kr": "거실", "fr": "salon", "rom": "geosil" },
+        { "kr": "주방", "fr": "cuisine", "rom": "jubang" },
+        { "kr": "방", "fr": "chambre", "rom": "bang" },
+        { "kr": "화장실", "fr": "toilettes / salle de bain", "rom": "hwajangsil" },
+        { "kr": "정원", "fr": "jardin", "rom": "jeongwon" },
+        { "kr": "현관", "fr": "entrée", "rom": "hyeongwan" },
+        { "kr": "베란다", "fr": "véranda, balcon", "rom": "beranda" },
+        { "kr": "사무실", "fr": "bureau (pièce)", "rom": "samusil" },
+        { "kr": "차고", "fr": "garage", "rom": "chago" },
+        { "kr": "아파트", "fr": "appartement", "rom": "apateu" },
+        { "kr": "욕실", "fr": "salle de bain", "rom": "yoksil" }
+      ],
+      "dans_ma_chambre": [
+        { "kr": "책상", "fr": "bureau (meuble)", "rom": "chaeksang" },
+        { "kr": "의자", "fr": "chaise", "rom": "uija" },
+        { "kr": "침대", "fr": "lit", "rom": "chimdae" },
+        { "kr": "옷장", "fr": "armoire", "rom": "otjang" },
+        { "kr": "게임기", "fr": "console de jeux vidéo", "rom": "geimgi" },
+        { "kr": "창문", "fr": "fenêtre", "rom": "changmun" },
+        { "kr": "기타", "fr": "guitare", "rom": "gita" },
+        { "kr": "컴퓨터", "fr": "ordinateur", "rom": "keompyuteo" },
+        { "kr": "피아노", "fr": "piano", "rom": "piano" },
+        { "kr": "포스터", "fr": "affiche / poster", "rom": "poseuteo" },
+        { "kr": "커튼", "fr": "rideau", "rom": "keoteun" },
+        { "kr": "스탠드", "fr": "lampe de bureau", "rom": "seutaendeu" },
+        { "kr": "실내화", "fr": "chaussons d'intérieur (portés dans les lycées)", "rom": "sillaehwa" }
+      ]
+    },
+
+    "position": {
+      "titre_fr": "La position / prépositions de lieu",
+      "mots": [
+        { "kr": "앞", "fr": "devant", "rom": "ap" },
+        { "kr": "뒤", "fr": "derrière", "rom": "dwi" },
+        { "kr": "옆", "fr": "à côté (de)", "rom": "yeop" },
+        { "kr": "위", "fr": "sur, au-dessus (de)", "rom": "wi" },
+        { "kr": "아래", "fr": "sous, en-dessous (de)", "rom": "arae" },
+        { "kr": "안", "fr": "intérieur", "rom": "an" },
+        { "kr": "밖", "fr": "extérieur", "rom": "bak" },
+        { "kr": "오른쪽", "fr": "à droite (de)", "rom": "oreunjok" },
+        { "kr": "왼쪽", "fr": "à gauche (de)", "rom": "oenjok" }
+      ]
+    },
+
+    "continents": {
+      "mots": [
+        { "kr": "아메리카", "fr": "Amérique", "rom": "Amerika" },
+        { "kr": "유럽", "fr": "Europe", "rom": "Yureop" },
+        { "kr": "아시아", "fr": "Asie", "rom": "Asia" },
+        { "kr": "아프리카", "fr": "Afrique", "rom": "Apeurika" },
+        { "kr": "오세아니아", "fr": "Océanie", "rom": "Oseania" },
+        { "kr": "북아메리카", "fr": "Amérique du Nord", "rom": "Bugamerika" },
+        { "kr": "남아메리카", "fr": "Amérique du Sud", "rom": "Namamerika" }
+      ]
+    },
+
+    "oceans": {
+      "titre_fr": "Les océans",
+      "mots": [
+        { "kr": "태평양", "fr": "Océan Pacifique", "rom": "Taepyeongyang" },
+        { "kr": "대서양", "fr": "Océan Atlantique", "rom": "Daeseoyang" },
+        { "kr": "인도양", "fr": "Océan Indien", "rom": "Indoyang" },
+        { "kr": "북극해", "fr": "Océan Arctique", "rom": "Bukgeukhae" },
+        { "kr": "남극해", "fr": "Océan Antarctique", "rom": "Namgeukhae" }
+      ]
+    },
+
+    "jours_semaine": {
+      "titre_fr": "Les jours de la semaine",
+      "mots": [
+        { "kr": "월요일", "fr": "lundi", "rom": "woryoil", "sino": "월(月)" },
+        { "kr": "화요일", "fr": "mardi", "rom": "hwaryoil", "sino": "화(火)" },
+        { "kr": "수요일", "fr": "mercredi", "rom": "suryoil", "sino": "수(水)" },
+        { "kr": "목요일", "fr": "jeudi", "rom": "mogyoil", "sino": "목(木)" },
+        { "kr": "금요일", "fr": "vendredi", "rom": "geumyoil", "sino": "금(金)" },
+        { "kr": "토요일", "fr": "samedi", "rom": "toyoil", "sino": "토(土)" },
+        { "kr": "일요일", "fr": "dimanche", "rom": "iryoil", "sino": "일(日)" }
+      ]
+    },
+
+    "saveurs": {
+      "titre_fr": "Les saveurs",
+      "mots": [
+        { "kr": "달다", "fr": "sucré(e)", "rom": "dalda" },
+        { "kr": "맵다", "fr": "piquant(e)", "rom": "maepda" },
+        { "kr": "시다", "fr": "acide", "rom": "sida" },
+        { "kr": "쓰다", "fr": "amer / amère", "rom": "sseuda" },
+        { "kr": "짜다", "fr": "salé(e)", "rom": "jjada" }
+      ]
+    },
+
+    "boissons": {
+      "titre_fr": "Les boissons",
+      "mots": [
+        { "kr": "물", "fr": "eau", "rom": "mul" },
+        { "kr": "차", "fr": "thé", "rom": "cha" },
+        { "kr": "주스", "fr": "jus", "rom": "juseu" },
+        { "kr": "오렌지 주스", "fr": "jus d'orange", "rom": "orenji juseu" },
+        { "kr": "커피", "fr": "café", "rom": "keopi" },
+        { "kr": "콜라", "fr": "coca / cola", "rom": "kolla" },
+        { "kr": "막걸리", "fr": "makgeolli (vin de riz)", "rom": "makgeolli" },
+        { "kr": "우유", "fr": "lait", "rom": "uyu" }
+      ]
+    },
+
+    "desserts": {
+      "titre_fr": "Les desserts",
+      "mots": [
+        { "kr": "약과", "fr": "yakgwa (biscuit traditionnel au miel)", "rom": "yakgwa" },
+        { "kr": "빙수", "fr": "bingsu (glace pilée)", "rom": "bingsu" },
+        { "kr": "단팥빵", "fr": "danpatbang (brioche à la pâte de haricots rouges)", "rom": "danpatbang" },
+        { "kr": "송편", "fr": "songpyeon (gâteau de riz farci, spécialité de Chuseok)", "rom": "songpyeon" }
+      ]
+    },
+
+    "ingredients": {
+      "titre_fr": "Ingrédients (bibimbap et cuisine coréenne)",
+      "mots": [
+        { "kr": "쌀", "fr": "riz (cru)", "rom": "ssal" },
+        { "kr": "면", "fr": "nouilles", "rom": "myeon" },
+        { "kr": "고기", "fr": "viande", "rom": "gogi" },
+        { "kr": "닭고기", "fr": "poulet", "rom": "dakgogi" },
+        { "kr": "소고기", "fr": "bœuf", "rom": "sogogi" },
+        { "kr": "계란", "fr": "œuf", "rom": "gyeran" },
+        { "kr": "채소", "fr": "légumes", "rom": "chaeso" },
+        { "kr": "배추", "fr": "chou chinois", "rom": "baechu" },
+        { "kr": "고추", "fr": "piment", "rom": "gochu" },
+        { "kr": "간장", "fr": "sauce soja", "rom": "ganjang" },
+        { "kr": "참기름", "fr": "huile de sésame", "rom": "chamgireum" },
+        { "kr": "고추장", "fr": "pâte de piment", "rom": "gochujang" },
+        { "kr": "두부", "fr": "tofu", "rom": "dubu" },
+        { "kr": "김치", "fr": "kimchi", "rom": "gimchi" }
+      ]
+    },
+
+    "classificateurs": {
+      "titre_fr": "Les classificateurs (수량 단위)",
+      "explication": "En coréen, pour compter des objets on ne dit pas '두 사과' (deux pommes) comme en français. On doit utiliser un 'classificateur' entre le nombre et le nom : NOMBRE + CLASSIFICATEUR. Chaque type d'objet a son propre classificateur (comme 'une feuille de papier', 'un verre d'eau' en français, mais systématique en coréen).",
+      "note_nombres": "Avec les nombres coréens natifs : 하나(1), 둘(2), 셋(3), 넷(4) → se contractent en 한, 두, 세, 네 quand ils précèdent un classificateur. Ex: 하나 + 개 → 한 개 (un objet).",
+      "unites": [
+        { "kr": "그릇", "fr": "bol (pour le riz, la soupe)", "exemple_kr": "공기밥 두 그릇", "exemple_fr": "deux bols de riz" },
+        { "kr": "숟가락", "fr": "cuillère (pour ingrédients)", "exemple_kr": "소금 한 숟가락", "exemple_fr": "une cuillère de sel" },
+        { "kr": "봉지", "fr": "sachet, paquet", "exemple_kr": "과자 한 봉지", "exemple_fr": "un paquet de gâteaux" },
+        { "kr": "개", "fr": "objet quelconque (classificateur général)", "exemple_kr": "사과 세 개", "exemple_fr": "trois pommes" },
+        { "kr": "명", "fr": "personnes", "exemple_kr": "학생 열 명", "exemple_fr": "dix étudiants" },
+        { "kr": "마리", "fr": "animaux", "exemple_kr": "고양이 두 마리", "exemple_fr": "deux chats" }
+      ]
+    },
+
+    "moments_journee": {
+      "titre_fr": "Les moments de la journée",
+      "mots": [
+        { "kr": "오늘", "fr": "aujourd'hui", "rom": "oneul" },
+        { "kr": "지금", "fr": "maintenant", "rom": "jigeum" },
+        { "kr": "아침", "fr": "le matin", "rom": "achim" },
+        { "kr": "점심", "fr": "le midi", "rom": "jeomsim" },
+        { "kr": "오후", "fr": "l'après-midi", "rom": "ohu" },
+        { "kr": "저녁", "fr": "le soir", "rom": "jeonyeok" },
+        { "kr": "밤", "fr": "la nuit", "rom": "bam" },
+        { "kr": "어제", "fr": "hier", "rom": "eoje" },
+        { "kr": "주말", "fr": "le week-end", "rom": "jumal" },
+        { "kr": "지난 주말", "fr": "le week-end dernier", "rom": "jinan jumal" },
+        { "kr": "내일", "fr": "demain", "rom": "naeil" }
+      ]
+    },
+
+    "activites": {
+      "titre_fr": "Les activités (활동)",
+      "note": "La plupart sont des verbes en 하다 (conjugaison : 해요 au poli, 해 à l'informel). Quelques verbes ont une conjugaison différente.",
+      "mots": [
+        { "kr": "춤을 추다", "fr": "danser", "rom": "chumeul chuda", "poli": "춤을 춰요", "informel": "춤을 춰" },
+        { "kr": "숙제하다", "fr": "faire ses devoirs", "rom": "sukjehada", "poli": "숙제해요", "informel": "숙제해" },
+        { "kr": "운동하다", "fr": "faire du sport", "rom": "undonghada", "poli": "운동해요", "informel": "운동해" },
+        { "kr": "노래하다", "fr": "chanter", "rom": "noraehada", "poli": "노래해요", "informel": "노래해" },
+        { "kr": "비디오 게임하다", "fr": "jouer à un jeu vidéo", "rom": "bidio geimhada", "poli": "비디오 게임해요", "informel": "비디오 게임해" },
+        { "kr": "요리하다", "fr": "cuisiner", "rom": "yorihada", "poli": "요리해요", "informel": "요리해" },
+        { "kr": "쇼핑하다", "fr": "faire du shopping", "rom": "syopinghada", "poli": "쇼핑해요", "informel": "쇼핑해" },
+        { "kr": "수영하다", "fr": "nager", "rom": "suyeonghada", "poli": "수영해요", "informel": "수영해" },
+        { "kr": "공부하다", "fr": "étudier", "rom": "gongbuhada", "poli": "공부해요", "informel": "공부해" },
+        { "kr": "축구하다", "fr": "jouer au football", "rom": "chukguhada", "poli": "축구해요", "informel": "축구해" },
+        { "kr": "농구하다", "fr": "jouer au basket", "rom": "nongguhada", "poli": "농구해요", "informel": "농구해" },
+        { "kr": "음악을 듣다", "fr": "écouter de la musique", "rom": "eumagul deutda", "poli": "음악을 들어요", "informel": "음악을 들어", "note": "verbe irrégulier : 듣 → 들" },
+        { "kr": "친구를 만나다", "fr": "voir ses ami(e)s", "rom": "chingureul mannada", "poli": "친구를 만나요", "informel": "친구를 만나" },
+        { "kr": "영화를 보다", "fr": "regarder un film", "rom": "yeonghwareul boda", "poli": "영화를 봐요", "informel": "영화를 봐" },
+        { "kr": "드라마를 보다", "fr": "regarder une série", "rom": "deuramareul boda", "poli": "드라마를 봐요", "informel": "드라마를 봐" },
+        { "kr": "책을 읽다", "fr": "lire un livre", "rom": "chaegul ikda", "poli": "책을 읽어요", "informel": "책을 읽어" },
+        { "kr": "수업을 듣다", "fr": "suivre les cours", "rom": "suebeul deutda", "poli": "수업을 들어요", "informel": "수업을 들어" }
+      ]
+    },
+
+    "vie_quotidienne": {
+      "titre_fr": "La vie quotidienne (일상생활)",
+      "note": "Expressions de la routine journalière (일과표 = emploi du temps quotidien).",
+      "mots": [
+        { "kr": "일어나다", "fr": "se lever", "rom": "ireonada", "poli": "일어나요", "informel": "일어나" },
+        { "kr": "샤워하다", "fr": "se doucher", "rom": "syawohada", "poli": "샤워해요", "informel": "샤워해" },
+        { "kr": "아침을 먹다", "fr": "prendre son petit-déjeuner", "rom": "achimeul meokda", "poli": "아침을 먹어요", "informel": "아침을 먹어" },
+        { "kr": "수업을 듣다", "fr": "suivre les cours", "rom": "suebeul deutda", "poli": "수업을 들어요", "informel": "수업을 들어" },
+        { "kr": "점심을 먹다", "fr": "déjeuner", "rom": "jeomsimeul meokda", "poli": "점심을 먹어요", "informel": "점심을 먹어" },
+        { "kr": "저녁을 먹다", "fr": "dîner", "rom": "jeonyeogeul meokda", "poli": "저녁을 먹어요", "informel": "저녁을 먹어" },
+        { "kr": "자다", "fr": "se coucher / dormir", "rom": "jada", "poli": "자요", "informel": "자" }
+      ]
+    },
+
+    "emotions": {
+      "titre_fr": "Expressions d'état / émotions",
+      "mots": [
+        { "kr": "행복하다", "fr": "être heureux / heureuse", "rom": "haengbokhada", "poli": "행복해요", "informel": "행복해" },
+        { "kr": "슬프다", "fr": "être triste", "rom": "seulpeuda", "poli": "슬퍼요", "informel": "슬퍼" },
+        { "kr": "화가 나다", "fr": "être en colère", "rom": "hwaga nada", "poli": "화가 나요", "informel": "화가 나" },
+        { "kr": "피곤하다", "fr": "être fatigué(e)", "rom": "pigonhada", "poli": "피곤해요", "informel": "피곤해" }
+      ]
+    },
+
+    "nombres_sino_coreens": {
+      "titre_fr": "Les nombres sino-coréens (한자 숫자)",
+      "explication": "Utilisés pour : les dates (월, 일), les minutes (분), l'argent (원), les numéros de téléphone, les étages, les adresses.",
+      "mots": [
+        { "numero": 0, "kr": "영/공", "rom": "yeong/gong" },
+        { "numero": 1, "kr": "일", "rom": "il" },
+        { "numero": 2, "kr": "이", "rom": "i" },
+        { "numero": 3, "kr": "삼", "rom": "sam" },
+        { "numero": 4, "kr": "사", "rom": "sa" },
+        { "numero": 5, "kr": "오", "rom": "o" },
+        { "numero": 6, "kr": "육", "rom": "yuk" },
+        { "numero": 7, "kr": "칠", "rom": "chil" },
+        { "numero": 8, "kr": "팔", "rom": "pal" },
+        { "numero": 9, "kr": "구", "rom": "gu" },
+        { "numero": 10, "kr": "십", "rom": "sip" },
+        { "numero": 20, "kr": "이십", "rom": "isip" },
+        { "numero": 30, "kr": "삼십", "rom": "samsip" },
+        { "numero": 40, "kr": "사십", "rom": "sasip" },
+        { "numero": 50, "kr": "오십", "rom": "osip" },
+        { "numero": 100, "kr": "백", "rom": "baek" },
+        { "numero": 1000, "kr": "천", "rom": "cheon" },
+        { "numero": 10000, "kr": "만", "rom": "man" }
+      ],
+      "note": "Pour former un nombre : dizaines + unités. Ex : 25 = 이십오 (isip-o). 11 = 십일 (sibil)."
+    },
+
+    "nombres_coreens_natifs": {
+      "titre_fr": "Les nombres coréens natifs (고유 숫자)",
+      "explication": "Utilisés pour : les heures (시), compter des objets avec un classificateur, l'âge (살).",
+      "mots": [
+        { "numero": 1, "kr": "하나", "rom": "hana", "devant_classif": "한" },
+        { "numero": 2, "kr": "둘", "rom": "dul", "devant_classif": "두" },
+        { "numero": 3, "kr": "셋", "rom": "set", "devant_classif": "세" },
+        { "numero": 4, "kr": "넷", "rom": "net", "devant_classif": "네" },
+        { "numero": 5, "kr": "다섯", "rom": "daseot" },
+        { "numero": 6, "kr": "여섯", "rom": "yeoseot" },
+        { "numero": 7, "kr": "일곱", "rom": "ilgop" },
+        { "numero": 8, "kr": "여덟", "rom": "yeodeol" },
+        { "numero": 9, "kr": "아홉", "rom": "ahop" },
+        { "numero": 10, "kr": "열", "rom": "yeol" },
+        { "numero": 20, "kr": "스물", "rom": "seumul", "devant_classif": "스무" }
+      ],
+      "note": "하나, 둘, 셋, 넷 se contractent en 한, 두, 세, 네 devant un classificateur ou 시 (heure). Ex : 두 시 (2h), 세 개 (3 objets)."
+    },
+
+    "couleurs": {
+      "titre_kr": "색깔",
+      "titre_fr": "Les couleurs",
+      "mots": [
+        { "kr": "빨간색", "fr": "rouge", "rom": "ppalgansaek" },
+        { "kr": "주황색", "fr": "orange", "rom": "juhwangsaek" },
+        { "kr": "노란색", "fr": "jaune", "rom": "noransaek" },
+        { "kr": "초록색", "fr": "vert", "rom": "choroksaek" },
+        { "kr": "파란색", "fr": "bleu", "rom": "paransaek" },
+        { "kr": "보라색", "fr": "violet", "rom": "borasaek" },
+        { "kr": "분홍색", "fr": "rose", "rom": "bunhongsaek" },
+        { "kr": "하얀색", "fr": "blanc", "rom": "hayansaek" },
+        { "kr": "검은색", "fr": "noir", "rom": "geomeunsaek" },
+        { "kr": "갈색", "fr": "marron", "rom": "galsaek" },
+        { "kr": "회색", "fr": "gris", "rom": "hoesaek" }
+      ],
+      "note": "색 = couleur. On peut dire 빨간 (rouge) ou 빨간색 (la couleur rouge)."
+    },
+
+    "saisons": {
+      "titre_kr": "계절",
+      "titre_fr": "Les saisons",
+      "mots": [
+        { "kr": "봄", "fr": "printemps", "rom": "bom" },
+        { "kr": "여름", "fr": "été", "rom": "yeoreum" },
+        { "kr": "가을", "fr": "automne", "rom": "gaeul" },
+        { "kr": "겨울", "fr": "hiver", "rom": "gyeoul" }
+      ]
+    },
+
+    "pronoms": {
+      "titre_fr": "Les pronoms personnels",
+      "explication": "En coréen, on omet souvent le pronom quand le contexte est clair. Le choix du pronom dépend du niveau de politesse.",
+      "mots": [
+        { "kr": "나", "fr": "je, moi (informel)", "rom": "na" },
+        { "kr": "저", "fr": "je, moi (poli/humble)", "rom": "jeo" },
+        { "kr": "너", "fr": "tu, toi (informel)", "rom": "neo" },
+        { "kr": "우리", "fr": "nous / mon, ma (pour famille, groupe)", "rom": "uri" },
+        { "kr": "여러분", "fr": "vous (pluriel, poli)", "rom": "yeoreobun" }
+      ],
+      "note": "나 + 는 = 나는 (moi, en tant que thème) | 저 + 는 = 저는 (forme polie). 우리 sert aussi de possessif : 우리 엄마 = ma maman."
+    },
+
+    "connecteurs": {
+      "titre_fr": "Les connecteurs de phrases",
+      "mots": [
+        { "kr": "그리고", "fr": "et (entre phrases)", "rom": "geurigo", "exemple_kr": "밥을 먹어요. 그리고 숙제해요.", "exemple_fr": "Je mange. Et je fais mes devoirs." },
+        { "kr": "그래서", "fr": "donc, c'est pourquoi", "rom": "geuraeseo", "exemple_kr": "비가 와요. 그래서 집에 있어요.", "exemple_fr": "Il pleut. Donc je reste à la maison." },
+        { "kr": "하지만", "fr": "mais, cependant", "rom": "hajiman", "exemple_kr": "피곤해요. 하지만 공부해요.", "exemple_fr": "Je suis fatigué(e). Mais j'étudie." },
+        { "kr": "그런데", "fr": "mais, or", "rom": "geureonde" },
+        { "kr": "그래도", "fr": "quand même, malgré tout", "rom": "geuraedo" }
+      ]
+    }
+  },
+
+  "grammaire": [
+    {
+      "id": "particule_sujet",
+      "titre": "Particule sujet 이/가",
+      "chapitre": 2,
+      "explication": "Marque le sujet grammatical de la phrase. 가 après une voyelle, 이 après une consonne. Différent de la particule thématique 은/는 : 이/가 met l'accent sur le sujet lui-même (qui fait l'action), alors que 은/는 met l'accent sur le commentaire.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "가", "exemple_kr": "가방에 뭐가 있어?", "exemple_fr": "Qu'est-ce qu'il y a dans le sac ?" },
+        { "contexte": "après consonne", "forme": "이", "exemple_kr": "책이 있어.", "exemple_fr": "Il y a un livre." }
+      ]
+    },
+    {
+      "id": "particule_topic",
+      "titre": "Particule thématique 은/는",
+      "chapitre": 1,
+      "explication": "Se place après le sujet/thème de la phrase. 는 après une voyelle, 은 après une consonne.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "는", "exemple_kr": "나는 알리스야.", "exemple_fr": "Je suis Alice." },
+        { "contexte": "après consonne", "forme": "은", "exemple_kr": "나영은 한국 사람이야.", "exemple_fr": "Nayoung est coréenne." }
+      ]
+    },
+    {
+      "id": "copule_informel",
+      "titre": "Copule informelle ~야/이야 (être)",
+      "chapitre": 1,
+      "explication": "Équivaut à 'c'est / je suis' au registre informel (entre amis, avec des plus jeunes).",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "야", "exemple_kr": "알리스야.", "exemple_fr": "Je m'appelle Alice. / C'est Alice." },
+        { "contexte": "après consonne", "forme": "이야", "exemple_kr": "나영이야.", "exemple_fr": "Je m'appelle Nayoung." }
+      ]
+    },
+    {
+      "id": "copule_poli",
+      "titre": "Copule polie ~예요/이에요 (être)",
+      "chapitre": 1,
+      "explication": "Équivaut à 'c'est / je suis' au registre poli.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "예요", "exemple_kr": "알리스예요.", "exemple_fr": "Je suis Alice." },
+        { "contexte": "après consonne", "forme": "이에요", "exemple_kr": "나영이에요.", "exemple_fr": "Je suis Nayoung." }
+      ],
+      "exemples_supplementaires": [
+        { "kr": "저는 알리스예요.", "fr": "Je suis Alice. (poli)" },
+        { "kr": "저는 프랑스 사람이에요.", "fr": "Je suis français(e). (poli)" },
+        { "kr": "엄마예요.", "fr": "C'est ma maman." }
+      ]
+    },
+    {
+      "id": "negation_copule_informel",
+      "titre": "Négation de la copule informelle ~가/이 아니야",
+      "chapitre": 1,
+      "explication": "Pour dire 'ce n'est pas' au registre informel.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "가 아니야", "exemple_kr": "언니가 아니야.", "exemple_fr": "Ce n'est pas ma grande sœur." },
+        { "contexte": "après consonne", "forme": "이 아니야", "exemple_kr": "남동생이 아니야.", "exemple_fr": "Ce n'est pas mon petit frère." }
+      ]
+    },
+    {
+      "id": "il_y_a",
+      "titre": "이/가 있다 / 없다 (il y a / il n'y a pas)",
+      "chapitre": 2,
+      "explication": "있다 = exister, avoir | 없다 = ne pas exister, ne pas avoir",
+      "formes": [
+        { "base": "있다", "poli": "있어요", "informel": "있어", "fr": "il y a / j'ai" },
+        { "base": "없다", "poli": "없어요", "informel": "없어", "fr": "il n'y a pas / je n'ai pas" }
+      ],
+      "exemples": [
+        { "kr": "가방에 책하고 공책이 있어.", "fr": "Dans le sac, il y a un livre et un cahier." },
+        { "kr": "학교에 있어요.", "fr": "Je suis à l'école." }
+      ]
+    },
+    {
+      "id": "particule_lieu_e",
+      "titre": "Particule de lieu 에 (localisation / dans, à)",
+      "chapitre": 2,
+      "explication": "에 indique la localisation avec des verbes d'état (있다, 없다).",
+      "exemples": [
+        { "kr": "가방에 책이 있어.", "fr": "Dans le sac, il y a un livre." },
+        { "kr": "학교에 있어요.", "fr": "Je suis à l'école." }
+      ]
+    },
+    {
+      "id": "hago",
+      "titre": "하고 (et, avec)",
+      "chapitre": 2,
+      "explication": "Conjonction de coordination entre noms.",
+      "exemples": [
+        { "kr": "책하고 공책이 있어.", "fr": "Il y a un livre et un cahier." }
+      ]
+    },
+    {
+      "id": "pronoms_possessifs",
+      "titre": "Pronoms possessifs 내/제/네/우리",
+      "chapitre": 3,
+      "explication": "내 (mon/ma, informel), 제 (mon/ma, poli), 네 (ton/ta, informel), 우리 (notre/notre)",
+      "formes": [
+        { "kr": "내", "fr": "mon, ma (informel)" },
+        { "kr": "제", "fr": "mon, ma (poli)" },
+        { "kr": "네", "fr": "ton, ta (informel)" },
+        { "kr": "우리", "fr": "notre / mon (pour famille, groupe)" }
+      ],
+      "exemples": [
+        { "kr": "이 책은 내 거야.", "fr": "Ce livre est à moi." },
+        { "kr": "우리 엄마", "fr": "ma maman (lit. notre maman)" }
+      ]
+    },
+    {
+      "id": "present",
+      "titre": "Le présent",
+      "chapitre": 3,
+      "explication": "Pour conjuguer au présent : 1) supprimer 다 de l'infinitif. 2) Ajouter la terminaison selon la dernière voyelle du radical.",
+      "regles": [
+        { "condition": "dernière voyelle ㅏ ou ㅗ", "terminaison": "-아요", "exemple_base": "놀다", "exemple_conj": "놀아요", "fr": "s'amuser → je m'amuse" },
+        { "condition": "autres voyelles", "terminaison": "-어요", "exemple_base": "먹다", "exemple_conj": "먹어요", "fr": "manger → je mange" },
+        { "condition": "verbes en 하다", "terminaison": "해요", "exemple_base": "쇼핑하다", "exemple_conj": "쇼핑해요", "fr": "faire du shopping → je fais du shopping" }
+      ],
+      "contractions": [
+        { "regle": "ㅏ + 아 = ㅏ", "exemple_base": "자다", "exemple_conj": "자요", "fr": "dormir → je dors" },
+        { "regle": "ㅜ + 어 = ㅝ", "exemple_base": "추다", "exemple_conj": "춰요", "fr": "danser → je danse" },
+        { "regle": "ㅗ + 아 = ㅘ", "exemple_base": "보다", "exemple_conj": "봐요", "fr": "regarder → je regarde" }
+      ]
+    },
+    {
+      "id": "particule_COD",
+      "titre": "Particule COD 을/를",
+      "chapitre": 3,
+      "explication": "Marque l'objet direct du verbe. Note: beaucoup de Coréens ne l'emploient pas à l'oral.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "를", "exemple_kr": "영화를 봐.", "exemple_fr": "Je regarde un film." },
+        { "contexte": "après consonne", "forme": "을", "exemple_kr": "책을 읽어.", "exemple_fr": "Je lis un livre." }
+      ]
+    },
+    {
+      "id": "particule_lieu_action",
+      "titre": "Particule de lieu 에서 (action)",
+      "chapitre": 3,
+      "explication": "에서 s'utilise avec des verbes d'action (verbe de mouvement, d'activité).",
+      "exemples": [
+        { "kr": "운동장에서 운동해요.", "fr": "Je fais du sport sur le terrain de sport." }
+      ]
+    },
+    {
+      "id": "particule_temps",
+      "titre": "Particule de temps 에",
+      "chapitre": 3,
+      "explication": "Indique le moment (heure, jour, saison). S'attache à l'expression de temps.",
+      "exemples": [
+        { "kr": "월요일에 축구해요.", "fr": "Je joue au football le lundi." },
+        { "kr": "아침에 샤워해요.", "fr": "Je me douche le matin." }
+      ]
+    },
+    {
+      "id": "negation",
+      "titre": "La négation 안 + verbe",
+      "chapitre": 3,
+      "explication": "안 se place devant le verbe. Pour les verbes en NOM+하다, 안 se met devant 하다.",
+      "exemples": [
+        { "kr": "점심을 안 먹어요.", "fr": "Je ne déjeune pas." },
+        { "kr": "쇼핑 안 해요.", "fr": "Je ne fais pas de shopping." }
+      ]
+    },
+    {
+      "id": "possession",
+      "titre": "La possession ~의",
+      "chapitre": 4,
+      "explication": "의 marque la possession (de). Souvent omis à l'oral.",
+      "exemples": [
+        { "kr": "이 책은 내 거야.", "fr": "Ce livre est à moi." },
+        { "kr": "언니 거야.", "fr": "C'est à ma grande sœur." }
+      ]
+    },
+    {
+      "id": "demonstratifs",
+      "titre": "Les démonstratifs 이/그/저",
+      "chapitre": 4,
+      "explication": "Proche du locuteur (이), loin du locuteur et proche de l'interlocuteur (그), loin des deux (저).",
+      "formes": [
+        { "kr": "이 + NOM", "fr": "ce/cet/cette ... (ici)", "exemple_kr": "이 가방", "exemple_fr": "ce sac (ici)" },
+        { "kr": "그 + NOM", "fr": "ce/cet/cette ... (là)", "exemple_kr": "그 가방", "exemple_fr": "ce sac (là)" },
+        { "kr": "저 + NOM", "fr": "ce/cet/cette ... (là-bas)", "exemple_kr": "저 가방", "exemple_fr": "ce sac (là-bas)" }
+      ],
+      "pronoms_demonstratifs": [
+        { "kr": "이것 / 이거", "fr": "celui-ci, ceci (ici)" },
+        { "kr": "그것 / 그거", "fr": "celui-là, cela (là)" },
+        { "kr": "저것 / 저거", "fr": "celui-là, cela (là-bas)" }
+      ]
+    },
+    {
+      "id": "direction",
+      "titre": "La direction ~으로/로",
+      "chapitre": 4,
+      "explication": "Indique la direction du déplacement.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "로", "exemple_kr": "왼쪽으로 가.", "exemple_fr": "Va à gauche." },
+        { "contexte": "après consonne (sauf ㄹ)", "forme": "으로", "exemple_kr": "오른쪽으로 가.", "exemple_fr": "Va à droite." }
+      ]
+    },
+    {
+      "id": "deplacement",
+      "titre": "Lieu + 에 + verbe de déplacement (가다/오다)",
+      "chapitre": 4,
+      "explication": "Pour dire où on va.",
+      "exemples": [
+        { "kr": "도서관에 가.", "fr": "Je vais à la bibliothèque." },
+        { "kr": "학교에 가요.", "fr": "Je vais à l'école." }
+      ]
+    },
+    {
+      "id": "moyens_transport",
+      "titre": "Moyens de transport ~로/으로 / ~을 타고",
+      "chapitre": 4,
+      "explication": "Pour dire comment on se déplace.",
+      "regles": [
+        { "contexte": "consonne finale ≠ ㄹ", "forme": "을 타고", "exemple_kr": "버스를 타고 가.", "exemple_fr": "J'y vais en bus." },
+        { "contexte": "voyelle ou ㄹ finale", "forme": "로 가다", "exemple_kr": "지하철로 가.", "exemple_fr": "J'y vais en métro." }
+      ],
+      "exemples": [
+        { "kr": "지하철로 가요.", "fr": "J'y vais en métro." },
+        { "kr": "버스를 타고 가요.", "fr": "J'y vais en bus." },
+        { "kr": "자전거로 가요.", "fr": "J'y vais à vélo." },
+        { "kr": "트램으로 가요.", "fr": "J'y vais en tram." }
+      ]
+    },
+    {
+      "id": "de_a_lieu",
+      "titre": "De... à... (lieu) 에서 ~ 까지",
+      "chapitre": 4,
+      "explication": "에서 = de (point de départ) / 까지 = jusqu'à (point d'arrivée)",
+      "exemples": [
+        { "kr": "서울에서 파리까지", "fr": "de Séoul à Paris" }
+      ]
+    },
+    {
+      "id": "vouloir_go_sipda",
+      "titre": "Vouloir / avoir envie de : -고 싶다",
+      "chapitre": 5,
+      "explication": "Pour exprimer un désir ou une envie. Structure : VERBE (radical) + 고 싶어요 (poli) / 고 싶어 (informel).",
+      "formes": [
+        { "contexte": "poli", "structure": "V(radical) + 고 싶어요" },
+        { "contexte": "informel", "structure": "V(radical) + 고 싶어" }
+      ],
+      "exemples": [
+        { "kr": "뭐 먹고 싶어?", "fr": "Qu'est-ce que tu veux manger ? (informel)" },
+        { "kr": "이거 먹고 싶어.", "fr": "Je veux manger ça. (informel)" },
+        { "kr": "뭐 마시고 싶어?", "fr": "Qu'est-ce que tu veux boire ? (informel)" },
+        { "kr": "이거 마시고 싶어.", "fr": "Je veux boire ça. (informel)" }
+      ]
+    },
+    {
+      "id": "fait_de",
+      "titre": "Être fait de : ~(으)로 만들어요",
+      "chapitre": 5,
+      "explication": "Pour dire de quoi quelque chose est fait. Structure : INGRÉDIENT + 로/으로 만들어요.",
+      "regles": [
+        { "contexte": "après voyelle ou ㄹ finale", "forme": "로 만들어요", "exemple_kr": "고기로 만들어요.", "exemple_fr": "C'est fait de viande." },
+        { "contexte": "après consonne (sauf ㄹ)", "forme": "으로 만들어요", "exemple_kr": "쌀로 만들어요.", "exemple_fr": "C'est fait de riz." }
+      ],
+      "question": "이/가 뭐로 만들어요? (De quoi c'est fait ?)"
+    },
+    {
+      "id": "passe",
+      "titre": "Le passé : -았어요 / -었어요",
+      "chapitre": 6,
+      "explication": "Pour conjuguer les verbes au passé, on supprime 다 de l'infinitif et on ajoute la terminaison en fonction de la dernière voyelle du radical du verbe.",
+      "regles": [
+        { "condition": "dernière voyelle ㅏ ou ㅗ", "terminaison": "-았어요", "exemple_base": "가다", "exemple_conj": "갔어요", "fr": "aller → je suis allé(e)" },
+        { "condition": "autres voyelles", "terminaison": "-었어요", "exemple_base": "먹다", "exemple_conj": "먹었어요", "fr": "manger → j'ai mangé" },
+        { "condition": "verbes en 하다", "terminaison": "→ 했어요", "exemple_base": "축구하다", "exemple_conj": "축구했어요", "fr": "jouer au football → j'ai joué au football" }
+      ],
+      "exemples": [
+        { "kr": "스키를 탔어요.", "fr": "J'ai fait du ski." },
+        { "kr": "사진을 찍었어요.", "fr": "J'ai pris des photos." },
+        { "kr": "축구를 했어요.", "fr": "J'ai joué au football." }
+      ],
+      "note": "Pour les formes contractées et la négation, c'est le même fonctionnement qu'au présent."
+    },
+    {
+      "id": "passe_copule",
+      "titre": "Passé du copule (être) : -이었어요 / -였어요",
+      "chapitre": 6,
+      "explication": "Pour dire ce que quelque chose était.",
+      "regles": [
+        { "contexte": "après voyelle", "forme": "-였어요", "exemple_kr": "윷놀이였어요.", "exemple_fr": "C'était le jeu de yut." },
+        { "contexte": "après consonne", "forme": "-이었어요", "exemple_kr": "송편이었어요.", "exemple_fr": "C'était du songpyeon." }
+      ],
+      "negation": [
+        { "contexte": "après voyelle", "forme": "-이 아니었어요", "exemple_kr": "윷놀이가 아니었어요.", "exemple_fr": "Ce n'était pas le jeu de yut." },
+        { "contexte": "après consonne", "forme": "-이 아니었어요", "exemple_kr": "송편이 아니었어요.", "exemple_fr": "Ce n'était pas du songpyeon." }
+      ]
+    },
+    {
+      "id": "la_date",
+      "titre": "La date",
+      "chapitre": 6,
+      "explication": "MOIS = nombre sino-coréen + 월 / JOUR = nombre sino-coréen + 일",
+      "note_exceptions": "Attention aux mois de juin et d'octobre : 6월 = 유월 (pas 육월), 10월 = 시월 (pas 십월)",
+      "mois": [
+        { "numero": 1, "kr": "1월", "fr": "janvier", "prononciation": "일월" },
+        { "numero": 2, "kr": "2월", "fr": "février", "prononciation": "이월" },
+        { "numero": 3, "kr": "3월", "fr": "mars", "prononciation": "삼월" },
+        { "numero": 4, "kr": "4월", "fr": "avril", "prononciation": "사월" },
+        { "numero": 5, "kr": "5월", "fr": "mai", "prononciation": "오월" },
+        { "numero": 6, "kr": "6월", "fr": "juin", "prononciation": "유월", "exception": true },
+        { "numero": 7, "kr": "7월", "fr": "juillet", "prononciation": "칠월" },
+        { "numero": 8, "kr": "8월", "fr": "août", "prononciation": "팔월" },
+        { "numero": 9, "kr": "9월", "fr": "septembre", "prononciation": "구월" },
+        { "numero": 10, "kr": "10월", "fr": "octobre", "prononciation": "시월", "exception": true },
+        { "numero": 11, "kr": "11월", "fr": "novembre", "prononciation": "십일월" },
+        { "numero": 12, "kr": "12월", "fr": "décembre", "prononciation": "십이월" }
+      ],
+      "exemple": "10월 6일 → le 6 octobre"
+    },
+    {
+      "id": "lheure",
+      "titre": "L'heure",
+      "chapitre": 6,
+      "explication": "HEURE = nombres coréens natifs + 시 / MINUTE = nombres sino-coréens + 분 / 반 = demi (30 min)",
+      "note": "N'oublie pas de mettre la particule 에 à la fin du groupe nominal de temps (에 = à, 부터 = à partir de, 까지 = jusqu'à).",
+      "exemples": [
+        { "kr": "두 시", "fr": "2h" },
+        { "kr": "두 시 사십오 분", "fr": "2h45" },
+        { "kr": "아홉 시 반", "fr": "9h30 (9h et demi)" },
+        { "kr": "9시에", "fr": "à 9h" },
+        { "kr": "9시 16분", "fr": "9h16" }
+      ]
+    },
+    {
+      "id": "de_a_temps",
+      "titre": "De... à... (temps) 부터 ~ 까지",
+      "chapitre": 6,
+      "explication": "부터 = à partir de (début temporel) / 까지 = jusqu'à (fin temporelle). À ne pas confondre avec 에서~까지 pour les lieux.",
+      "exemples": [
+        { "kr": "8시부터 9시까지", "fr": "de 8h à 9h" },
+        { "kr": "1월부터 12월까지", "fr": "de janvier à décembre" },
+        { "kr": "아침 9시부터 저녁 8시까지 서울을 구경했어요.", "fr": "De 9h du matin à 8h du soir, j'ai visité Séoul." }
+      ]
+    }
+  ],
+
+  "phrases_cles": [
+    {
+      "situation": "Se présenter",
+      "phrases": [
+        { "kr": "이름이 뭐야?", "fr": "Comment tu t'appelles ? (informel)", "rom": "ireumi mwoya" },
+        { "kr": "나는 알리스야.", "fr": "Je m'appelle Alice. (informel)", "rom": "naneun alliseuya" },
+        { "kr": "저는 알리스예요.", "fr": "Je suis Alice. (poli)", "rom": "jeoneun alliseuye yo" },
+        { "kr": "한국 사람이야?", "fr": "Tu es coréen(ne) ? (informel)", "rom": "hanguk saramiya" },
+        { "kr": "프랑스 사람이야.", "fr": "Je suis français(e). (informel)", "rom": "peurangseu saramiya" },
+        { "kr": "어느 나라 사람이에요?", "fr": "Quelle est votre nationalité ?", "rom": "eoneu nara saramieyo" }
+      ]
+    },
+    {
+      "situation": "Présenter quelqu'un",
+      "phrases": [
+        { "kr": "여동생이야.", "fr": "C'est ma petite sœur.", "rom": "yeodongsaengiya" },
+        { "kr": "형이에요.", "fr": "C'est mon grand frère.", "rom": "hyeongieyo" },
+        { "kr": "엄마예요.", "fr": "C'est ma maman.", "rom": "eommayeyo" }
+      ]
+    },
+    {
+      "situation": "Nier / Corriger",
+      "phrases": [
+        { "kr": "아니, 언니가 아니야. 내 친구 라완이야.", "fr": "Non, ce n'est pas ma grande sœur. C'est mon amie Lawan.", "rom": "" },
+        { "kr": "아니, 한국 사람이 아니야. 태국 사람이야.", "fr": "Non, ce n'est pas une Coréenne. C'est une Thaïlandaise.", "rom": "" }
+      ]
+    },
+    {
+      "situation": "Décrire un lieu / ce qu'il y a",
+      "phrases": [
+        { "kr": "가방에 뭐가 있어?", "fr": "Qu'est-ce qu'il y a dans le sac ?", "rom": "gabange mwoga isseo" },
+        { "kr": "가방에 책하고 공책이 있어.", "fr": "Dans le sac, il y a un livre et un cahier.", "rom": "" },
+        { "kr": "가방에 사과가 없어.", "fr": "Il n'y a pas de pomme dans le sac.", "rom": "" },
+        { "kr": "여기가 어디야?", "fr": "Où est-ce ? (informel)", "rom": "yeogiga eodiya" },
+        { "kr": "여기가 거실이야.", "fr": "Ici, c'est le salon.", "rom": "" },
+        { "kr": "어디에 있어?", "fr": "Où est-ce ?", "rom": "eodie isseo" }
+      ]
+    },
+    {
+      "situation": "Demander / indiquer un chemin",
+      "phrases": [
+        { "kr": "어떻게 가요?", "fr": "Comment on y va ?", "rom": "eotteoke gayo" },
+        { "kr": "왼쪽으로 가요.", "fr": "On va à gauche.", "rom": "oenjokgeuro gayo" },
+        { "kr": "도서관에 가요.", "fr": "Je vais à la bibliothèque.", "rom": "doseogwane gayo" },
+        { "kr": "슈퍼마켓 앞이에요.", "fr": "La supérette est devant.", "rom": "" },
+        { "kr": "어디에 가?", "fr": "Où tu vas ?", "rom": "eodie ga" },
+        { "kr": "서점에 가.", "fr": "Je vais à la librairie.", "rom": "seojeome ga" }
+      ]
+    },
+    {
+      "situation": "Vie quotidienne / activités",
+      "phrases": [
+        { "kr": "뭐 해?", "fr": "Qu'est-ce que tu fais ? (informel)", "rom": "mwo hae" },
+        { "kr": "월요일에 축구해요.", "fr": "Je joue au football le lundi.", "rom": "" },
+        { "kr": "아침에 샤워해요.", "fr": "Je me douche le matin.", "rom": "" },
+        { "kr": "점심을 안 먹어요.", "fr": "Je ne déjeune pas.", "rom": "" },
+        { "kr": "영화를 봐요.", "fr": "Je regarde un film.", "rom": "" },
+        { "kr": "책을 읽어요.", "fr": "Je lis un livre.", "rom": "" }
+      ]
+    },
+    {
+      "situation": "Exprimer un désir / une envie (-고 싶다)",
+      "phrases": [
+        { "kr": "뭐 먹고 싶어?", "fr": "Qu'est-ce que tu veux manger ? (informel)", "rom": "mwo meokgo sipeo" },
+        { "kr": "비빔밥 먹고 싶어.", "fr": "Je veux manger du bibimbap. (informel)", "rom": "bibimbap meokgo sipeo" },
+        { "kr": "뭐 마시고 싶어?", "fr": "Qu'est-ce que tu veux boire ?", "rom": "mwo masigo sipeo" },
+        { "kr": "물 마시고 싶어.", "fr": "Je veux boire de l'eau.", "rom": "mul masigo sipeo" },
+        { "kr": "한국에 가고 싶어요.", "fr": "Je veux aller en Corée. (poli)", "rom": "hanguke gago sipeoyo" }
+      ]
+    },
+    {
+      "situation": "Commander / s'informer sur la nourriture",
+      "phrases": [
+        { "kr": "이/가 뭐로 만들어요?", "fr": "De quoi c'est fait ?", "rom": "i/ga mworo mandeureoyo" },
+        { "kr": "쌀로 만들어요.", "fr": "C'est fait de riz.", "rom": "ssallo mandeureoyo" },
+        { "kr": "공기밥 두 그릇 주세요.", "fr": "Deux bols de riz, s'il vous plaît.", "rom": "gonggibap du geureut juseyo" },
+        { "kr": "맵지 않아요?", "fr": "Ce n'est pas trop piquant ?", "rom": "maepji anayo" },
+        { "kr": "맛있어요!", "fr": "C'est délicieux !", "rom": "masisseoyo" }
+      ]
+    },
+    {
+      "situation": "Parler au passé",
+      "phrases": [
+        { "kr": "주말에 뭐 했어?", "fr": "Qu'est-ce que tu as fait le week-end ? (informel)", "rom": "jumare mwo haesseo" },
+        { "kr": "스키를 탔어요.", "fr": "J'ai fait du ski.", "rom": "seukireul taesseoyo" },
+        { "kr": "사진을 찍었어요.", "fr": "J'ai pris des photos.", "rom": "sajineul jjigeosseoyo" },
+        { "kr": "한국 음식을 먹었어요.", "fr": "J'ai mangé de la cuisine coréenne.", "rom": "hanguk eumsigul meogeosseoyo" },
+        { "kr": "서울에서 쇼핑했어요.", "fr": "J'ai fait du shopping à Séoul.", "rom": "seoure syopinghaesseoyo" },
+        { "kr": "윷놀이였어요.", "fr": "C'était le jeu de yut.", "rom": "yunnoliyo sseoyo" }
+      ]
+    },
+    {
+      "situation": "Dire la date et l'heure",
+      "phrases": [
+        { "kr": "오늘이 몇 월 며칠이에요?", "fr": "Quel jour sommes-nous ? (quelle date ?)", "rom": "oneuri myeot wol myeochilieyo" },
+        { "kr": "오늘은 10월 6일이에요.", "fr": "Aujourd'hui, c'est le 6 octobre.", "rom": "oneureun siwol yugirieyo" },
+        { "kr": "지금 몇 시예요?", "fr": "Quelle heure est-il maintenant ?", "rom": "jigeum myeot siyeyo" },
+        { "kr": "두 시 삼십 분이에요.", "fr": "Il est 2h30.", "rom": "du si samsip bunieyo" },
+        { "kr": "아홉 시 반이에요.", "fr": "Il est 9h30.", "rom": "ahop si banieyo" },
+        { "kr": "9시부터 6시까지 수업이에요.", "fr": "Les cours sont de 9h à 18h.", "rom": "9sibuto 6sikaji sueobieyo" }
+      ]
+    }
+  ],
+
+  "culture": [
+    {
+      "theme": "Le Hangeul",
+      "contenu": "Alphabet coréen créé par le roi Sejong le Grand en 1443 sous la dynastie Joseon. Instauré officiellement en 1894. Le nom 'hangeul' (한글, 'unique grande écriture') apparaît vers 1910. 40 lettres : 14 consonnes de base, 10 voyelles de base, 5 consonnes doubles, 11 voyelles composées."
+    },
+    {
+      "theme": "Les noms coréens",
+      "contenu": "Les prénoms sont généralement composés de deux syllabes. Les noms de famille n'ont souvent qu'une syllabe (김, 이, 박, 최, etc.). En Corée, on indique d'abord le nom de famille, puis le prénom. Pour interpeller quelqu'un de proche et moins âgé, on ajoute 아 (après consonne) ou 야 (après voyelle) à son prénom. Pour les plus âgés, on ajoute 님 après leur titre."
+    },
+    {
+      "theme": "세배 (Le Sebae)",
+      "contenu": "Salutation du Nouvel An lunaire (설날, Seollal) faite aux aînés. Accompagnée de la phrase '새해 복 많이 받으세요' (je vous souhaite beaucoup de bonheur pour cette nouvelle année). Le rituel est différent pour les garçons et les filles."
+    },
+    {
+      "theme": "한복 (Le Hanbok)",
+      "contenu": "L'habit traditionnel coréen. Il en existe plusieurs modèles selon les saisons, les événements ou le statut social. Aujourd'hui, porté à Seollal (Nouvel An lunaire), Chuseok (fête des récoltes, 추석, le 16 septembre), et lors des premiers anniversaires ou mariages."
+    },
+    {
+      "theme": "태극기 (Le drapeau coréen)",
+      "contenu": "Appelé Taegeukgi. Le fond blanc symbolise la pureté, la clarté et la paix. Le taegeuk au centre représente l'équilibre du Yin et Yang. Le rouge symbolise le positif, la chaleur, le Soleil. Le bleu symbolise le négatif, le froid, la Lune. Les 4 trigrammes représentent les 4 éléments : le ciel, le feu, l'eau, la terre."
+    },
+    {
+      "theme": "호랑이 (Le tigre)",
+      "contenu": "Animal symbolique important de la Corée, présent dans de nombreuses peintures traditionnelles et contes populaires. Mascotte des JO de Séoul 1988. Expression : '호랑이도 제 말 하면 온다' (le tigre s'amène quand on parle de lui = 'quand on parle du loup...')."
+    },
+    {
+      "theme": "무궁화 (L'hibiscus syriacus)",
+      "contenu": "Fleur nationale coréenne. Mugunghwa (무궁화) signifie 'la fleur qui fleurit et qui ne fane jamais' (mugung = immortalité). Elle représente la persévérance et la ténacité du peuple coréen. C'est le symbole du Parlement."
+    },
+    {
+      "theme": "태권도 (Le Taekwondo)",
+      "contenu": "Art martial coréen pratiqué sans armes, uniquement avec les mains et les pieds. Épreuve officielle des Jeux Olympiques depuis 2000."
+    },
+    {
+      "theme": "노래방 (Le Noraebang)",
+      "contenu": "Littéralement 'chambre de la chanson'. Très populaire en Corée. On paie à l'heure (~20€/h) dans un noraebang classique. Il existe aussi le 'coin noraebang' pour 1-2 personnes, payé à la chanson (~0,50€). Les lycéens y vont souvent après les cours."
+    },
+    {
+      "theme": "인생네컷 (Photos à quatre poses)",
+      "contenu": "Boutiques spécialisées dans les photomatons. Activité classique très populaire en Corée. On peut prendre 4 à 6 photos pour environ 4€ avec plein d'accessoires."
+    },
+    {
+      "theme": "PC방 (PC bang)",
+      "contenu": "Littéralement 'chambre d'ordinateurs'. Lieu pour les amateurs de jeux vidéo. Très confortable, grands écrans, nombreux jeux. On peut aussi commander à manger. Environ 1,50€/heure. Ouverts 24h/24 et 7j/7."
+    },
+    {
+      "theme": "Quartiers de Séoul à ne pas rater",
+      "contenu": "Bukchon (북촌) : premier arrêt pour découvrir la Corée traditionnelle, maisons hanok, palais royaux. Hongdae (홍대) : quartier de la musique et de la danse, fréquenté par les jeunes. Gangnam (강남) : quartier des affaires, dit 'la petite France de Séoul' (40% des Français en Corée). Cheonggyecheon (청계천) : fleuve en ville. Nandaemun (남대문), Dongdaemun (동대문), Gwangjang (광장) : marchés et shopping."
+    },
+    {
+      "theme": "Le lycée en Corée (고등학교)",
+      "contenu": "Le lycée coréen est très différent du lycée français. Les cours commencent à 9h et finissent à 16h50 (7 cours de 50 min). Les élèves restent souvent jusqu'à 22h pour l'étude autonome nocturne (야간 자율학습). Les élèves portent leurs chaussures d'intérieur appelées 실내화 (slippers en caoutchouc) dès l'entrée. Dans chaque lycée, il y a une petite supérette appelée 매점 où les élèves achètent leurs snacks entre les cours. Les jeunes Coréens préparent leur vie entière pour le 수능 (Suneung = baccalauréat coréen), examen annuel indispensable pour l'université — les avions sont même interdits de vol pendant les épreuves d'oral ! Le jour du Suneung, les horaires des métros et bus sont décalés d'une heure pour éviter les retards."
+    },
+    {
+      "theme": "설날 (Seollal) - Le Nouvel An lunaire",
+      "contenu": "Seollal a lieu le 1er jour du calendrier lunaire. Les Coréens souhaitent une bonne année : 새해 복 많이 받으세요! Puisque les Coréens ont 3 jours fériés consécutifs, beaucoup partent voir leur famille. Le matin du 2e jour, la famille se réunit et prépare une cérémonie appelée 차례 (Charye) pour rendre hommage aux ancêtres. Lors du 세배 (Sebae), on salue et souhaite la bonne année aux personnes les plus âgées de la famille. Les aînés offrent des billets de banque, appelées 세뱃돈 (Sebaedon - équivalent de nos étrennes). Au menu : la 떡국 (tteokguk - soupe de gâteaux de riz). Jusqu'en 2023, il existait 'l'âge coréen' : à la naissance on estimait qu'il avait déjà 1 an, et prenait 1 an à chaque Seollal."
+    },
+    {
+      "theme": "추석 (Chuseok) - La fête des récoltes",
+      "contenu": "Le 15e jour du 8e mois du calendrier lunaire. L'une des dates les plus importantes car le pays était à l'origine une société agricole — les récoltes de l'année ont été bonnes. Puisque les Coréens se rendent dans leur famille, cela crée d'énormes embouteillages ! Comme pour Seollal, la famille se réunit, prépare les plats du Seollal pour célébrer cette fête et rendre hommage aux ancêtres, comme les morts comme les vivants. Ce jour-là on mange des 송편 (songpyeon) : gâteaux de riz au sésame et au miel ou fourrés au sésame et à la pâte de châtaignes, cuits à la vapeur sur des aiguilles de pin. On visite les tombes des ancêtres : 성묘 (Seongmyo). La nuit, on sort pour regarder la pleine lune et faire un vœu. Depuis longtemps, une danse rituelle inscrite au patrimoine immatériel de l'UNESCO est pratiquée à l'humanité : le 강강술래 (Ganggangsullae). Le jeu le plus populaire : le 윷놀이 (Yut) - jeu de plateau avec 4 bâtons de bois remplaçant les dés."
+    },
+    {
+      "theme": "달력 - Calendrier des fêtes coréennes",
+      "contenu": "Les dates importantes pour les Coréens, mois par mois.",
+      "fetes": [
+        { "mois": "1월", "nom_kr": "신정", "nom_fr": "Nouvel An solaire", "date": "1월 1일" },
+        { "mois": "2월", "nom_kr": "설날", "nom_fr": "Seollal, Nouvel An lunaire", "date": "음력 1월 1일", "note": "Date variable selon le calendrier lunaire" },
+        { "mois": "3월", "nom_kr": "삼일절", "nom_fr": "Mouvement d'indépendance", "date": "3월 1일" },
+        { "mois": "4월", "nom_kr": "식목일", "nom_fr": "Jour des Arbres", "date": "4월 5일" },
+        { "mois": "5월", "nom_kr": "어린이날", "nom_fr": "Fête des enfants", "date": "5월 5일" },
+        { "mois": "6월", "nom_kr": "현충일", "nom_fr": "Commémoration des victimes de la guerre de Corée", "date": "6월 6일" },
+        { "mois": "7월", "nom_kr": "제헌절", "nom_fr": "Fête de la Constitution", "date": "7월 17일" },
+        { "mois": "8월", "nom_kr": "광복절", "nom_fr": "Jour de la libération de la Corée", "date": "8월 15일" },
+        { "mois": "9월", "nom_kr": "추석", "nom_fr": "Chuseok, fête des récoltes", "date": "음력 8월 15일", "note": "Date variable selon le calendrier lunaire" },
+        { "mois": "10월", "nom_kr": "한글날", "nom_fr": "Jour du Hangeul", "date": "10월 9일" },
+        { "mois": "11월", "nom_kr": "빼빼로 데이", "nom_fr": "Pepero Day", "date": "11월 11일" },
+        { "mois": "12월", "nom_kr": "성탄절 / 크리스마스", "nom_fr": "Noël", "date": "12월 25일" }
+      ]
+    },
+    {
+      "theme": "급식 - Le déjeuner coréen à la cantine",
+      "contenu": "Le repas coréen typique est généralement composé de riz (밥), d'une soupe (국) ou d'un ragoût (찌개) et de 3-4 sortes d'accompagnements (반찬) disposés sur la table. Le kimchi est servi presque tous les jours. Le menu est de la cuisine coréenne ! En Corée, le riz se mange avec la cuillère et non avec les baguettes ! Avant de manger, les hôtes disent '맛있게 드세요' (bon appétit) et les invités répondent '잘 먹겠습니다' (je vais bien manger). Après le repas, on dit '잘 먹었습니다' (j'ai bien mangé)."
+    },
+    {
+      "theme": "한강 (Hangang) - Pique-nique au bord du fleuve",
+      "contenu": "Les rives du fleuve Han (한강, Hangang) offrent un grand espace pour faire du vélo, prendre un bateau afin d'admirer la ville ou encore pique-niquer. Pas besoin d'emporter ton casse-croûte car on trouve sur place plusieurs supérettes ouvertes 24h/24 et des petits fast-foods. On peut même commander et se faire livrer au bord du fleuve !"
+    },
+    {
+      "theme": "가위바위보 - Pierre-feuille-ciseaux coréen",
+      "contenu": "Le jeu de pierre-feuille-ciseaux en coréen : 가위 (ciseaux), 바위 (pierre), 보 (feuille/papier). On dit '가위 바위 보!' pour lancer. Très utilisé en Corée pour décider de tout ! Dans le manuel, il est combiné avec un jeu où le perdant doit deviner un objet caché et donner la direction (왼쪽으로 가? 오른쪽으로 가?)."
+    }
+  ],
+
+  "verbes_usuels": [
+    { "infinitif": "하다", "fr": "faire", "poli": "해요", "informel": "해", "rom_base": "hada" },
+    { "infinitif": "가다", "fr": "aller", "poli": "가요", "informel": "가", "rom_base": "gada" },
+    { "infinitif": "오다", "fr": "venir", "poli": "와요", "informel": "와", "rom_base": "oda" },
+    { "infinitif": "있다", "fr": "être / avoir / exister", "poli": "있어요", "informel": "있어", "rom_base": "itda" },
+    { "infinitif": "없다", "fr": "ne pas avoir / ne pas exister", "poli": "없어요", "informel": "없어", "rom_base": "eopda" },
+    { "infinitif": "먹다", "fr": "manger", "poli": "먹어요", "informel": "먹어", "rom_base": "meokda" },
+    { "infinitif": "마시다", "fr": "boire", "poli": "마셔요", "informel": "마셔", "rom_base": "masida" },
+    { "infinitif": "보다", "fr": "regarder / voir", "poli": "봐요", "informel": "봐", "rom_base": "boda" },
+    { "infinitif": "읽다", "fr": "lire", "poli": "읽어요", "informel": "읽어", "rom_base": "ikda" },
+    { "infinitif": "듣다", "fr": "écouter", "poli": "들어요", "informel": "들어", "rom_base": "deutda" },
+    { "infinitif": "자다", "fr": "dormir", "poli": "자요", "informel": "자", "rom_base": "jada" },
+    { "infinitif": "공부하다", "fr": "étudier", "poli": "공부해요", "informel": "공부해", "rom_base": "gongbuhada" },
+    { "infinitif": "운동하다", "fr": "faire du sport", "poli": "운동해요", "informel": "운동해", "rom_base": "undonghada" },
+    { "infinitif": "쇼핑하다", "fr": "faire du shopping", "poli": "쇼핑해요", "informel": "쇼핑해", "rom_base": "syopinghada" },
+    { "infinitif": "놀다", "fr": "s'amuser / jouer", "poli": "놀아요", "informel": "놀아", "rom_base": "nolda" },
+    { "infinitif": "추다", "fr": "danser", "poli": "춰요", "informel": "춰", "rom_base": "chuda" },
+    { "infinitif": "노래하다", "fr": "chanter", "poli": "노래해요", "informel": "노래해", "rom_base": "noraehada" },
+    { "infinitif": "샤워하다", "fr": "se doucher", "poli": "샤워해요", "informel": "샤워해", "rom_base": "syawohada" },
+    { "infinitif": "일어나다", "fr": "se lever", "poli": "일어나요", "informel": "일어나", "rom_base": "ireonada" },
+    { "infinitif": "축구하다", "fr": "jouer au football", "poli": "축구해요", "informel": "축구해", "rom_base": "chukguhada" },
+    { "infinitif": "수영하다", "fr": "nager", "poli": "수영해요", "informel": "수영해", "rom_base": "suyeonghada" },
+    { "infinitif": "타다", "fr": "prendre (transport) / monter", "poli": "타요", "informel": "타", "rom_base": "tada" },
+    { "infinitif": "만들다", "fr": "faire / préparer / fabriquer", "poli": "만들어요", "informel": "만들어", "rom_base": "mandeulda" },
+    { "infinitif": "찍다", "fr": "prendre en photo", "poli": "찍어요", "informel": "찍어", "rom_base": "jjikda" },
+    { "infinitif": "사다", "fr": "acheter", "poli": "사요", "informel": "사", "rom_base": "sada" },
+    { "infinitif": "팔다", "fr": "vendre", "poli": "팔아요", "informel": "팔아", "rom_base": "palda" },
+    { "infinitif": "열다", "fr": "ouvrir", "poli": "열어요", "informel": "열어", "rom_base": "yeolda" },
+    { "infinitif": "닫다", "fr": "fermer", "poli": "닫아요", "informel": "닫아", "rom_base": "datda" },
+    { "infinitif": "쓰다", "fr": "écrire / utiliser", "poli": "써요", "informel": "써", "rom_base": "sseuda" },
+    { "infinitif": "요리하다", "fr": "cuisiner", "poli": "요리해요", "informel": "요리해", "rom_base": "yorihada" },
+    { "infinitif": "여행하다", "fr": "voyager", "poli": "여행해요", "informel": "여행해", "rom_base": "yeohaenghada" },
+    { "infinitif": "좋아하다", "fr": "aimer (apprécier)", "poli": "좋아해요", "informel": "좋아해", "rom_base": "joahada" },
+    { "infinitif": "싫어하다", "fr": "ne pas aimer / détester", "poli": "싫어해요", "informel": "싫어해", "rom_base": "sireohada" },
+    { "infinitif": "구경하다", "fr": "visiter / admirer / faire du tourisme", "poli": "구경해요", "informel": "구경해", "rom_base": "gugyeonghada" },
+    { "infinitif": "산책하다", "fr": "se promener", "poli": "산책해요", "informel": "산책해", "rom_base": "sanchaek hada" },
+    { "infinitif": "만나다", "fr": "rencontrer / voir (quelqu'un)", "poli": "만나요", "informel": "만나", "rom_base": "mannada" }
+  ],
+
+  "lexique": {
+    "titre": "Lexique français-coréen",
+    "note": "Extrait du lexique officiel du manuel (pages 172-175).",
+    "entrees": [
+      { "fr": "activité", "kr": "활동" },
+      { "fr": "affiche", "kr": "포스터" },
+      { "fr": "Afrique", "kr": "아프리카" },
+      { "fr": "ail", "kr": "마늘" },
+      { "fr": "aller", "kr": "가다" },
+      { "fr": "Algérie", "kr": "알제리" },
+      { "fr": "Allemagne", "kr": "독일" },
+      { "fr": "ami", "kr": "친구" },
+      { "fr": "Amérique du Nord", "kr": "북아메리카" },
+      { "fr": "Amérique du Sud", "kr": "남아메리카" },
+      { "fr": "anglais (langue)", "kr": "영어" },
+      { "fr": "année (cette)", "kr": "올해 / 금년" },
+      { "fr": "année dernière", "kr": "작년" },
+      { "fr": "anniversaire", "kr": "생일" },
+      { "fr": "appartement", "kr": "아파트" },
+      { "fr": "appareil photo", "kr": "사진기" },
+      { "fr": "après-midi", "kr": "오후" },
+      { "fr": "arbre", "kr": "나무" },
+      { "fr": "argent", "kr": "은 / 돈" },
+      { "fr": "armoire", "kr": "옷장" },
+      { "fr": "Asie", "kr": "아시아" },
+      { "fr": "aubergine", "kr": "가지" },
+      { "fr": "aujourd'hui", "kr": "오늘" },
+      { "fr": "Australie", "kr": "호주" },
+      { "fr": "automne", "kr": "가을" },
+      { "fr": "avion", "kr": "비행기" },
+      { "fr": "avocat", "kr": "아보카도" },
+      { "fr": "avoir", "kr": "있다 / 없다" },
+      { "fr": "avril", "kr": "4월" },
+      { "fr": "badminton (jouer au)", "kr": "배드민턴을 치다" },
+      { "fr": "baguette (couverts)", "kr": "젓가락" },
+      { "fr": "balcon", "kr": "발코니" },
+      { "fr": "ballon", "kr": "풍선" },
+      { "fr": "banane", "kr": "바나나" },
+      { "fr": "baseball (jouer au)", "kr": "야구를 하다" },
+      { "fr": "basket (jouer au)", "kr": "농구를 하다" },
+      { "fr": "bateau", "kr": "배" },
+      { "fr": "bibliothèque", "kr": "도서관" },
+      { "fr": "bibimbap", "kr": "비빔밥" },
+      { "fr": "blanc", "kr": "하얀색" },
+      { "fr": "bleu", "kr": "파란색" },
+      { "fr": "boisson", "kr": "음료수" },
+      { "fr": "bol", "kr": "그릇" },
+      { "fr": "bonbon", "kr": "사탕" },
+      { "fr": "bouche", "kr": "입" },
+      { "fr": "boucherie", "kr": "정육점" },
+      { "fr": "boulangerie", "kr": "빵집" },
+      { "fr": "Brésil", "kr": "브라질" },
+      { "fr": "bulgogi", "kr": "불고기" },
+      { "fr": "bureau (meuble)", "kr": "책상" },
+      { "fr": "bureau (pièce)", "kr": "사무실" },
+      { "fr": "burger", "kr": "버거" },
+      { "fr": "bus", "kr": "버스" },
+      { "fr": "café (boisson)", "kr": "커피" },
+      { "fr": "café (lieu)", "kr": "카페" },
+      { "fr": "cahier", "kr": "공책" },
+      { "fr": "calculatrice", "kr": "계산기" },
+      { "fr": "calendrier", "kr": "달력" },
+      { "fr": "camarade", "kr": "친구 / 반 친구" },
+      { "fr": "campus", "kr": "캠퍼스" },
+      { "fr": "Canada", "kr": "캐나다" },
+      { "fr": "cantine", "kr": "식당" },
+      { "fr": "carnet", "kr": "수첩" },
+      { "fr": "carotte", "kr": "당근" },
+      { "fr": "casier", "kr": "사물함" },
+      { "fr": "casquette / chapeau", "kr": "모자" },
+      { "fr": "chaise", "kr": "의자" },
+      { "fr": "chambre", "kr": "방" },
+      { "fr": "champignon", "kr": "버섯" },
+      { "fr": "chanter", "kr": "노래하다" },
+      { "fr": "chaussette", "kr": "양말" },
+      { "fr": "chaussure", "kr": "신발" },
+      { "fr": "chemise", "kr": "셔츠" },
+      { "fr": "Chine", "kr": "중국" },
+      { "fr": "chou", "kr": "양배추" },
+      { "fr": "cinéma", "kr": "영화관" },
+      { "fr": "ciseaux", "kr": "가위" },
+      { "fr": "citron", "kr": "레몬" },
+      { "fr": "clémentine", "kr": "귤" },
+      { "fr": "colère (être en)", "kr": "화가 나다" },
+      { "fr": "colle", "kr": "풀" },
+      { "fr": "commissariat", "kr": "경찰서" },
+      { "fr": "concombre", "kr": "오이" },
+      { "fr": "console de jeux vidéo", "kr": "게임기" },
+      { "fr": "Corée du Nord", "kr": "북한" },
+      { "fr": "Corée du Sud", "kr": "한국 / 대한민국" },
+      { "fr": "coréen (langue)", "kr": "한국어" },
+      { "fr": "côté", "kr": "옆" },
+      { "fr": "couleur", "kr": "색" },
+      { "fr": "cours", "kr": "수업" },
+      { "fr": "courgette", "kr": "애호박" },
+      { "fr": "cousin(e)", "kr": "사촌" },
+      { "fr": "crayon", "kr": "연필" },
+      { "fr": "cuillère", "kr": "숟가락" },
+      { "fr": "cuisine (pièce)", "kr": "주방" },
+      { "fr": "cuisiner", "kr": "요리하다" },
+      { "fr": "danpatbang", "kr": "단팥빵" },
+      { "fr": "danser", "kr": "춤을 추다" },
+      { "fr": "décembre", "kr": "12월" },
+      { "fr": "demi", "kr": "반" },
+      { "fr": "déjeuner", "kr": "점심 / 점심을 먹다" },
+      { "fr": "dessert", "kr": "디저트" },
+      { "fr": "dessiner", "kr": "그림을 그리다" },
+      { "fr": "devoirs (faire ses)", "kr": "숙제를 하다" },
+      { "fr": "dimanche", "kr": "일요일" },
+      { "fr": "dîner", "kr": "저녁 / 저녁을 먹다" },
+      { "fr": "dormir", "kr": "자다" },
+      { "fr": "droite", "kr": "오른쪽" },
+      { "fr": "e-sport", "kr": "이스포츠" },
+      { "fr": "eau", "kr": "물" },
+      { "fr": "école", "kr": "학교" },
+      { "fr": "écouter", "kr": "듣다" },
+      { "fr": "écrire", "kr": "쓰다" },
+      { "fr": "efface de tableau", "kr": "칠판지우개" },
+      { "fr": "élève", "kr": "학생" },
+      { "fr": "enfant unique", "kr": "외동" },
+      { "fr": "épinard", "kr": "시금치" },
+      { "fr": "Espagne", "kr": "스페인" },
+      { "fr": "et, ensuite", "kr": "그리고" },
+      { "fr": "États-Unis", "kr": "미국" },
+      { "fr": "été", "kr": "여름" },
+      { "fr": "étudier", "kr": "공부하다" },
+      { "fr": "Europe", "kr": "유럽" },
+      { "fr": "extérieur", "kr": "밖" },
+      { "fr": "famille", "kr": "가족" },
+      { "fr": "fenêtre", "kr": "창문" },
+      { "fr": "fermer", "kr": "닫다" },
+      { "fr": "feuille d'arbre", "kr": "잎" },
+      { "fr": "février", "kr": "2월" },
+      { "fr": "fille (enfant)", "kr": "딸" },
+      { "fr": "fils", "kr": "아들" },
+      { "fr": "film", "kr": "영화" },
+      { "fr": "fleur", "kr": "꽃" },
+      { "fr": "fleuriste", "kr": "꽃집" },
+      { "fr": "football (jouer au)", "kr": "축구를 하다" },
+      { "fr": "France", "kr": "프랑스" },
+      { "fr": "fraise", "kr": "딸기" },
+      { "fr": "fromage", "kr": "치즈" },
+      { "fr": "fruit", "kr": "과일" },
+      { "fr": "garage", "kr": "차고" },
+      { "fr": "gauche", "kr": "왼쪽" },
+      { "fr": "géographie", "kr": "지리" },
+      { "fr": "glace (dessert)", "kr": "아이스크림" },
+      { "fr": "golf (jouer au)", "kr": "골프를 치다" },
+      { "fr": "gomme", "kr": "지우개" },
+      { "fr": "grand frère (pour une fille)", "kr": "오빠" },
+      { "fr": "grand frère (pour un garçon)", "kr": "형" },
+      { "fr": "grand magasin", "kr": "백화점" },
+      { "fr": "grand-mère", "kr": "할머니" },
+      { "fr": "grand-père", "kr": "할아버지" },
+      { "fr": "grande sœur (pour une fille)", "kr": "언니" },
+      { "fr": "grande sœur (pour un garçon)", "kr": "누나" },
+      { "fr": "guitare", "kr": "기타" },
+      { "fr": "gymnase", "kr": "체육관" },
+      { "fr": "heureux (être)", "kr": "행복하다" },
+      { "fr": "hibiscus (fleur nationale)", "kr": "무궁화" },
+      { "fr": "hier", "kr": "어제" },
+      { "fr": "histoire", "kr": "역사" },
+      { "fr": "hiver", "kr": "겨울" },
+      { "fr": "horloge", "kr": "시계" },
+      { "fr": "huile de sésame", "kr": "참기름" },
+      { "fr": "Inde", "kr": "인도" },
+      { "fr": "infirmerie", "kr": "보건실" },
+      { "fr": "ingrédient", "kr": "재료" },
+      { "fr": "intérieur", "kr": "안" },
+      { "fr": "Italie", "kr": "이탈리아" },
+      { "fr": "janvier", "kr": "1월" },
+      { "fr": "Japon", "kr": "일본" },
+      { "fr": "jardin", "kr": "정원" },
+      { "fr": "jeu", "kr": "게임" },
+      { "fr": "jeu vidéo (jouer à un)", "kr": "게임을 하다" },
+      { "fr": "jeudi", "kr": "목요일" },
+      { "fr": "jjigae (ragoût)", "kr": "찌개" },
+      { "fr": "jogging", "kr": "조깅" },
+      { "fr": "journée", "kr": "하루" },
+      { "fr": "jour de la semaine", "kr": "요일" },
+      { "fr": "judo", "kr": "유도" },
+      { "fr": "juin", "kr": "6월 (유월)" },
+      { "fr": "jupe", "kr": "치마" },
+      { "fr": "jus d'orange", "kr": "오렌지 주스" },
+      { "fr": "kimchi", "kr": "김치" },
+      { "fr": "kimbap", "kr": "김밥" },
+      { "fr": "kkaktugi", "kr": "깍두기" },
+      { "fr": "lampe de bureau", "kr": "스탠드" },
+      { "fr": "légume", "kr": "야채" },
+      { "fr": "librairie", "kr": "서점" },
+      { "fr": "livre", "kr": "책" },
+      { "fr": "lire un livre", "kr": "책을 읽다" },
+      { "fr": "loisir", "kr": "취미" },
+      { "fr": "lundi", "kr": "월요일" },
+      { "fr": "Lune", "kr": "달" },
+      { "fr": "lunettes", "kr": "안경" },
+      { "fr": "mai", "kr": "5월" },
+      { "fr": "main", "kr": "손" },
+      { "fr": "maintenant", "kr": "지금" },
+      { "fr": "maison", "kr": "집" },
+      { "fr": "maman", "kr": "엄마" },
+      { "fr": "marché", "kr": "시장" },
+      { "fr": "mardi", "kr": "화요일" },
+      { "fr": "mars", "kr": "3월" },
+      { "fr": "marron (couleur)", "kr": "갈색" },
+      { "fr": "Maroc", "kr": "모로코" },
+      { "fr": "mathématiques", "kr": "수학" },
+      { "fr": "matière", "kr": "과목" },
+      { "fr": "matin", "kr": "아침" },
+      { "fr": "médicament", "kr": "약" },
+      { "fr": "mercredi", "kr": "수요일" },
+      { "fr": "métro", "kr": "지하철" },
+      { "fr": "midi", "kr": "낮" },
+      { "fr": "moto", "kr": "오토바이" },
+      { "fr": "musée", "kr": "박물관" },
+      { "fr": "musique (faire de la)", "kr": "음악을 하다" },
+      { "fr": "musique (écouter de la)", "kr": "음악을 듣다" },
+      { "fr": "nager", "kr": "수영하다" },
+      { "fr": "nationalité", "kr": "국적" },
+      { "fr": "noir", "kr": "검은색" },
+      { "fr": "noix", "kr": "호두" },
+      { "fr": "noraebang", "kr": "노래방" },
+      { "fr": "nom de famille", "kr": "성" },
+      { "fr": "nouilles", "kr": "국수" },
+      { "fr": "nouilles froides", "kr": "냉면" },
+      { "fr": "novembre", "kr": "11월" },
+      { "fr": "nuit", "kr": "밤" },
+      { "fr": "océan Atlantique", "kr": "대서양" },
+      { "fr": "océan Arctique", "kr": "북극해" },
+      { "fr": "océan Antarctique", "kr": "남극해" },
+      { "fr": "océan Indien", "kr": "인도양" },
+      { "fr": "océan Pacifique", "kr": "태평양" },
+      { "fr": "Océanie", "kr": "오세아니아" },
+      { "fr": "octobre", "kr": "10월 (시월)" },
+      { "fr": "oiseau", "kr": "새" },
+      { "fr": "oignon", "kr": "양파" },
+      { "fr": "orange (couleur)", "kr": "주황색" },
+      { "fr": "orange (fruit)", "kr": "오렌지" },
+      { "fr": "ordinateur", "kr": "컴퓨터" },
+      { "fr": "ordinateur portable", "kr": "노트북" },
+      { "fr": "pain", "kr": "빵" },
+      { "fr": "pantalon", "kr": "바지" },
+      { "fr": "papa", "kr": "아빠" },
+      { "fr": "parc", "kr": "공원" },
+      { "fr": "passeport", "kr": "여권" },
+      { "fr": "pâte de piment", "kr": "고추장" },
+      { "fr": "pâte de riz (faire de la)", "kr": "떡을 만들다" },
+      { "fr": "patinage", "kr": "스케이트 타다" },
+      { "fr": "patinage artistique (faire du)", "kr": "피겨 스케이팅을 하다" },
+      { "fr": "pays", "kr": "나라" },
+      { "fr": "PC bang", "kr": "PC방" },
+      { "fr": "père", "kr": "아버지 / 아빠" },
+      { "fr": "petit ami", "kr": "남자친구" },
+      { "fr": "petite amie", "kr": "여자친구" },
+      { "fr": "petit déjeuner", "kr": "아침 / 아침을 먹다" },
+      { "fr": "petit frère", "kr": "남동생" },
+      { "fr": "petite sœur", "kr": "여동생" },
+      { "fr": "pharmacie", "kr": "약국" },
+      { "fr": "photo (prendre une)", "kr": "사진을 찍다" },
+      { "fr": "piano", "kr": "피아노" },
+      { "fr": "pied", "kr": "발" },
+      { "fr": "piment", "kr": "고추" },
+      { "fr": "pique-nique", "kr": "소풍" },
+      { "fr": "piscine", "kr": "수영장" },
+      { "fr": "pizza", "kr": "피자" },
+      { "fr": "plat (cuisine)", "kr": "요리" },
+      { "fr": "poisson", "kr": "생선" },
+      { "fr": "pomme", "kr": "사과" },
+      { "fr": "pomme de terre", "kr": "감자" },
+      { "fr": "portefeuille", "kr": "지갑" },
+      { "fr": "poste", "kr": "우체국" },
+      { "fr": "poubelle", "kr": "쓰레기통" },
+      { "fr": "poulet", "kr": "닭고기" },
+      { "fr": "prénom", "kr": "이름" },
+      { "fr": "printemps", "kr": "봄" },
+      { "fr": "professeur(e)", "kr": "선생님" },
+      { "fr": "promenade", "kr": "산책" },
+      { "fr": "quartier", "kr": "동네" },
+      { "fr": "quand", "kr": "언제" },
+      { "fr": "quel(le)(s)", "kr": "어떤 / 무슨" },
+      { "fr": "radio", "kr": "라디오" },
+      { "fr": "radis", "kr": "무" },
+      { "fr": "raisin", "kr": "포도" },
+      { "fr": "randonnée (faire de la)", "kr": "등산을 하다" },
+      { "fr": "regarder", "kr": "보다" },
+      { "fr": "règle (outil)", "kr": "자" },
+      { "fr": "restaurant", "kr": "식당" },
+      { "fr": "rideau", "kr": "커튼" },
+      { "fr": "rivière / fleuve", "kr": "강" },
+      { "fr": "riz (cru)", "kr": "쌀" },
+      { "fr": "riz (cuit)", "kr": "밥" },
+      { "fr": "riz sauté", "kr": "볶음밥" },
+      { "fr": "riz sauté au kimchi", "kr": "김치볶음밥" },
+      { "fr": "rouge", "kr": "빨간색" },
+      { "fr": "rose (couleur)", "kr": "분홍색" },
+      { "fr": "Royaume-Uni", "kr": "영국" },
+      { "fr": "sac", "kr": "가방" },
+      { "fr": "sachet / paquet", "kr": "봉지" },
+      { "fr": "saison", "kr": "계절" },
+      { "fr": "salle d'arts plastiques", "kr": "미술실" },
+      { "fr": "salle de bain", "kr": "욕실" },
+      { "fr": "salle de classe", "kr": "교실" },
+      { "fr": "salle de musique", "kr": "음악실" },
+      { "fr": "salle des professeurs", "kr": "교무실" },
+      { "fr": "salle informatique", "kr": "컴퓨터실" },
+      { "fr": "salon", "kr": "거실" },
+      { "fr": "salon de coiffure", "kr": "미용실" },
+      { "fr": "samedi", "kr": "토요일" },
+      { "fr": "sandwich", "kr": "샌드위치" },
+      { "fr": "sauce soja", "kr": "간장" },
+      { "fr": "saveur / goût", "kr": "맛" },
+      { "fr": "savon", "kr": "비누" },
+      { "fr": "se coucher", "kr": "자다 / 눕다" },
+      { "fr": "se doucher", "kr": "샤워하다" },
+      { "fr": "se lever", "kr": "일어나다" },
+      { "fr": "se promener", "kr": "산책하다" },
+      { "fr": "semaine", "kr": "주" },
+      { "fr": "Sénégal", "kr": "세네갈" },
+      { "fr": "septembre", "kr": "9월" },
+      { "fr": "shopping (faire du)", "kr": "쇼핑하다" },
+      { "fr": "ski (faire du)", "kr": "스키를 타다" },
+      { "fr": "snowboard (faire du)", "kr": "스노우보드를 타다" },
+      { "fr": "soir", "kr": "저녁" },
+      { "fr": "sourire", "kr": "미소 짓다" },
+      { "fr": "sport (faire du)", "kr": "운동하다" },
+      { "fr": "stylo", "kr": "볼펜" },
+      { "fr": "tableau blanc", "kr": "화이트보드" },
+      { "fr": "tableau noir", "kr": "칠판" },
+      { "fr": "tablette", "kr": "태블릿" },
+      { "fr": "taekwondo", "kr": "태권도" },
+      { "fr": "taxi", "kr": "택시" },
+      { "fr": "téléphone portable", "kr": "휴대폰" },
+      { "fr": "tennis (jouer au)", "kr": "테니스를 치다" },
+      { "fr": "tennis de table (jouer au)", "kr": "탁구를 치다" },
+      { "fr": "terrain sportif", "kr": "운동장" },
+      { "fr": "Thaïlande", "kr": "태국" },
+      { "fr": "thé", "kr": "차" },
+      { "fr": "tigre", "kr": "호랑이" },
+      { "fr": "tofu", "kr": "두부" },
+      { "fr": "toilettes", "kr": "화장실" },
+      { "fr": "tomate", "kr": "토마토" },
+      { "fr": "train", "kr": "기차" },
+      { "fr": "transport", "kr": "교통" },
+      { "fr": "trottinette", "kr": "킥보드" },
+      { "fr": "trousse", "kr": "필통" },
+      { "fr": "triste (être)", "kr": "슬프다" },
+      { "fr": "Tunisie", "kr": "튀니지" },
+      { "fr": "tteokbokki", "kr": "떡볶이" },
+      { "fr": "valise", "kr": "여행가방" },
+      { "fr": "vélo", "kr": "자전거" },
+      { "fr": "vendredi", "kr": "금요일" },
+      { "fr": "vêtement", "kr": "옷" },
+      { "fr": "vert", "kr": "초록색" },
+      { "fr": "véranda / balcon", "kr": "베란다" },
+      { "fr": "viande", "kr": "고기" },
+      { "fr": "vie quotidienne", "kr": "일상" },
+      { "fr": "Vietnam", "kr": "베트남" },
+      { "fr": "violet", "kr": "보라색" },
+      { "fr": "visiter", "kr": "방문하다" },
+      { "fr": "voir ses ami(e)s", "kr": "친구를 만나다" },
+      { "fr": "voiture", "kr": "자동차" },
+      { "fr": "volley-ball (jouer au)", "kr": "배구를 하다" },
+      { "fr": "voyager", "kr": "여행하다" },
+      { "fr": "week-end", "kr": "주말" },
+      { "fr": "week-end dernier", "kr": "지난 주말" },
+      { "fr": "yakgwa", "kr": "약과" },
+      { "fr": "hippopotame", "kr": "하마" },
+      { "fr": "cheval", "kr": "말" },
+      { "fr": "lapin", "kr": "토끼" },
+      { "fr": "renard", "kr": "여우" },
+      { "fr": "ours", "kr": "곰" },
+      { "fr": "papillon", "kr": "나비" },
+      { "fr": "forêt", "kr": "숲" },
+      { "fr": "frites", "kr": "감자튀김" },
+      { "fr": "cookie", "kr": "쿠키" },
+      { "fr": "gâteau", "kr": "케이크" },
+      { "fr": "soupe", "kr": "국" },
+      { "fr": "japchae", "kr": "잡채" },
+      { "fr": "lait", "kr": "우유" },
+      { "fr": "pierre (jeu)", "kr": "바위" },
+      { "fr": "feuille/papier (jeu)", "kr": "보" },
+      { "fr": "jambe", "kr": "다리" },
+      { "fr": "os", "kr": "뼈" },
+      { "fr": "pantoufle", "kr": "슬리퍼" },
+      { "fr": "panneau d'affichage", "kr": "게시판" },
+      { "fr": "supérette (24h/24)", "kr": "편의점" },
+      { "fr": "meuble", "kr": "가구" },
+      { "fr": "musculation (faire de la)", "kr": "근력운동을 하다" },
+      { "fr": "jouer d'un instrument de musique", "kr": "악기를 연주하다" },
+      { "fr": "tteok (gâteau de riz)", "kr": "떡" },
+      { "fr": "information personnelle", "kr": "개인 정보" },
+      { "fr": "rue / chemin", "kr": "길" },
+      { "fr": "fleuve Han", "kr": "한강" },
+      { "fr": "accompagnements (petits plats)", "kr": "반찬" },
+      { "fr": "songpyeon (gâteau de riz de Chuseok)", "kr": "송편" }
+    ]
+  }
+}
