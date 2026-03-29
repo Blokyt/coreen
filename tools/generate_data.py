@@ -113,26 +113,20 @@ def main():
     with open(INPUT_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # ── Process vocabulary ─────────────────────────────
-    vocab_items = []
-    theme_mapping_log = {}  # raw -> normalized
-    for item in data.get("vocabulary", []):
-        raw_theme = item.get("theme", "")
-        norm_theme = normalize_theme(raw_theme)
-        theme_mapping_log[raw_theme] = norm_theme
+    # ── Build sets of korean words in specialized sections ──
+    # These will be used to exclude them from vocabulary (no cross-section dupes)
+    specialized_kr = set()
+    for section_key, kr_field in [
+        ("verbs", "infinitive"), ("phrases", "korean"), ("numbers", "korean"),
+        ("connectors", "korean"), ("adjectives", "korean"), ("adverbs", "korean"),
+        ("particles", "particle"),
+    ]:
+        for item in data.get(section_key, []):
+            kr = item.get(kr_field, "").strip()
+            if kr:
+                specialized_kr.add(kr)
 
-        page = item.get("page")
-        ch = assign_chapter(page, item.get("chapter"))
-
-        vocab_items.append({
-            "kr": item.get("korean", ""),
-            "fr": item.get("french", ""),
-            "rom": clean_rom(item.get("romanization", "")),
-            "ch": ch,
-            "theme": norm_theme,
-        })
-
-    # ── Process verbs ──────────────────────────────────
+    # ── Process verbs FIRST (before vocab, so we know which verbs exist) ──
     verb_infinitives = set()
     verb_items = []
     for item in data.get("verbs", []):
@@ -142,13 +136,11 @@ def main():
         page = item.get("page")
         ch = assign_chapter(page, item.get("chapter"))
 
-        # Handle 'forms' field (some verbs use this instead of top-level fields)
         forms = item.get("forms", {})
         polite_present = item.get("polite_present", "") or forms.get("present_poli", "")
         informal_present = item.get("informal_present", "") or forms.get("present_familier", "")
         polite_past = item.get("polite_past", "") or forms.get("passe_poli", "")
 
-        # Clean [auto] from forms too
         polite_present = clean_rom(polite_present) if polite_present and polite_present.startswith("[auto]") else polite_present
         informal_present = clean_rom(informal_present) if informal_present and informal_present.startswith("[auto]") else informal_present
         polite_past = clean_rom(polite_past) if polite_past and polite_past.startswith("[auto]") else polite_past
@@ -162,29 +154,57 @@ def main():
             "rom": clean_rom(item.get("romanization", "")),
             "ch": ch,
         }
-        # Only include irreg if explicitly set
         if "irregular" in item:
             verb_entry["irreg"] = bool(item["irregular"])
 
         verb_items.append(verb_entry)
 
-    # ── 4. Consolidate: vocab items with theme "Verbes" → add to verbs ──
+    # ── Consolidate: vocab items with theme "Verbes" → add to verbs ──
     verbs_from_vocab = 0
-    for v in vocab_items:
-        if v["theme"] == "Verbes":
-            kr = v["kr"]
+    for item in data.get("vocabulary", []):
+        raw_theme = item.get("theme", "")
+        if normalize_theme(raw_theme) == "Verbes":
+            kr = item.get("korean", "")
             if kr and kr not in verb_infinitives:
                 verb_infinitives.add(kr)
+                page = item.get("page")
+                ch = assign_chapter(page, item.get("chapter"))
                 verb_items.append({
                     "inf": kr,
-                    "fr": v["fr"],
+                    "fr": item.get("french", ""),
                     "poli": "",
                     "fam": "",
                     "passe": "",
-                    "rom": v["rom"],
-                    "ch": v["ch"],
+                    "rom": clean_rom(item.get("romanization", "")),
+                    "ch": ch,
                 })
                 verbs_from_vocab += 1
+
+    # ── Process vocabulary (excluding items that belong to specialized sections) ──
+    vocab_items = []
+    vocab_excluded = 0
+    theme_mapping_log = {}
+    for item in data.get("vocabulary", []):
+        kr = item.get("korean", "")
+        raw_theme = item.get("theme", "")
+        norm_theme = normalize_theme(raw_theme)
+        theme_mapping_log[raw_theme] = norm_theme
+
+        # Skip if this word exists in a specialized section
+        if kr in specialized_kr or kr in verb_infinitives:
+            vocab_excluded += 1
+            continue
+
+        page = item.get("page")
+        ch = assign_chapter(page, item.get("chapter"))
+
+        vocab_items.append({
+            "kr": kr,
+            "fr": item.get("french", ""),
+            "rom": clean_rom(item.get("romanization", "")),
+            "ch": ch,
+            "theme": norm_theme,
+        })
 
     # ── Process expressions ────────────────────────────
     expr_items = []
@@ -484,7 +504,7 @@ def main():
     print(f"  Output size: {len(output):,} chars")
     print()
     print("  ── Sections ──────────────────────────────────")
-    print(f"  Vocabulary:   {len(vocab_items):>5} items")
+    print(f"  Vocabulary:   {len(vocab_items):>5} items  ({vocab_excluded} excluded as dupes of specialized sections)")
     print(f"  Verbs:        {len(verb_items):>5} items  ({verbs_from_vocab} added from vocab)")
     print(f"  Expressions:  {len(expr_items):>5} items")
     print(f"  Grammar:      {len(grammar_items):>5} items")

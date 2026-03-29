@@ -204,7 +204,8 @@ const CFG = {
     { id: 'dictee', title: 'Dictee', desc: 'Ecouter et ecrire', color: '--ch1', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>' },
     { id: 'marathon', title: 'Marathon', desc: 'Sans fin', color: '--ch2', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' },
     { id: 'conjugaison', title: 'Conjugaison', desc: 'Forme verbale', color: '--ch6', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>' },
-    { id: 'particules', title: 'Particules', desc: 'Trouver la particule', color: '--ch4', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7.5 7.5l3 3M13.5 13.5l3 3M7.5 16.5l3-3M13.5 10.5l3-3"/></svg>' }
+    { id: 'particules', title: 'Particules', desc: 'Trouver la particule', color: '--ch4', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7.5 7.5l3 3M13.5 13.5l3 3M7.5 16.5l3-3M13.5 10.5l3-3"/></svg>' },
+    { id: 'audio', title: 'Ecoute', desc: 'Ecouter et choisir', color: '--ch3', icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>' }
   ]
 };
 
@@ -376,6 +377,8 @@ const Progress = {
   // Objectif quotidien : done / total
   getGoal() {
     const d = this.load();
+    const today = getToday();
+    if (d.todayDate !== today) return { done: 0, total: d.dailyGoal };
     return { done: d.todayCount || 0, total: d.dailyGoal };
   },
 
@@ -647,6 +650,7 @@ function openDetailSheet(item, type, listCtx) {
     html += `<div style="font-size:16px;margin:4px 0">${escHtml(item.name || '')}</div>`;
     html += `<div style="font-size:14px;color:var(--text2);line-height:1.7;text-align:left">${escHtml(item.fn || '')}</div>`;
     if (item.rule) html += `<div class="chip mt-8">${escHtml(item.rule)}</div>`;
+    html += srsButtonsHTML('p:' + item.p);
 
   } else if (type === 'culture') {
     let body = escHtml(item.body || '');
@@ -683,6 +687,7 @@ function openDetailSheet(item, type, listCtx) {
     html += `<div style="font-size:72px;font-weight:700">${escHtml(item.l)} ${audioBtnHTML(item.l)}</div>`;
     html += `<div style="font-size:18px;color:var(--primary);margin:8px 0" class="rom-text">${escHtml(item.rom)}</div>`;
     html += `<div style="font-size:14px;color:var(--text2);line-height:1.6">${escHtml(item.desc)}</div>`;
+    html += srsButtonsHTML('h:' + item.l);
 
   } else {
     html += `<div class="detail-kr">${escHtml(item.kr || item.p || '')}</div>`;
@@ -1035,7 +1040,7 @@ function renderSearch() {
   let _searchClickHandler = null;
   const doSearch = debounce(() => {
     const q = stripAccents(input.value.toLowerCase().trim());
-    if (q.length < 1) {
+    if (q.length < 2) {
       showSuggestions();
       return;
     }
@@ -1999,15 +2004,6 @@ function quizSrsKey(item) {
   return vocabSrsKey(item);
 }
 
-// Retourne count distracteurs (meme chapitre en priorite)
-function getDistractors(item, pool, count = 3) {
-  // Essaie d'abord le meme chapitre
-  const sameCh = pool.filter(v => v !== item && v.ch === item.ch);
-  const others = pool.filter(v => v !== item && v.ch !== item.ch);
-  const candidates = shuffle([...sameCh, ...others]).slice(0, count);
-  return candidates;
-}
-
 // --- Barre de progression quiz ---
 
 function quizBar(q) {
@@ -2025,6 +2021,7 @@ function startQuiz(mode, ch, count, dir) {
   }
 
   curQuiz = new Quiz(mode, items, dir);
+  if (mode === 'marathon') curQuiz.seenKr = new Set(items.map(i => i.kr));
   trackQuizMode(mode);
   curQuiz.ch = ch;
   _quizGuardBack();
@@ -2037,7 +2034,8 @@ function startQuiz(mode, ch, count, dir) {
     dictee: qDictee,
     marathon: qMarathon,
     conjugaison: qConjugaison,
-    particules: qParticules
+    particules: qParticules,
+    audio: qAudio
   };
   (renderers[mode] || qFlash)();
 }
@@ -2064,7 +2062,7 @@ function qFlash() {
           </div>
           <div class="flashcard-face flashcard-back">
             <div class="flashcard-word">${escHtml(back)}</div>
-            ${item.rom ? `<div class="flashcard-hint rom-text">${escHtml(item.rom)}</div>` : ''}
+            ${item.rom && !Settings.get('hideRom') && SRS.getLevel(quizSrsKey(item)) < 3 ? `<div class="flashcard-hint rom-text">${escHtml(item.rom)}</div>` : ''}
           </div>
         </div>
       </div>
@@ -2116,9 +2114,10 @@ function qFlash() {
     }
   });
 
-  // Swipe gauche/droite
+  // Swipe gauche/droite (seulement apres flip)
   let x0 = 0, xc = 0, dragging = false;
   fc.addEventListener('touchstart', e => {
+    if (!flipped) return;
     x0 = e.touches[0].clientX; xc = x0; dragging = true;
     fc.classList.add('swiping');
   });
@@ -2156,8 +2155,11 @@ function qMarathon() {
   const q = curQuiz, item = q.current();
   if (!item) {
     // Recharger le pool pour continuer
-    const newItems = getPool('marathon', q.ch !== undefined ? q.ch : -1, 20);
-    if (!newItems.length) { renderQuizResults(q); return; }
+    let newItems = getPool('marathon', q.ch !== undefined ? q.ch : -1, 40);
+    if (q.seenKr) newItems = newItems.filter(i => !q.seenKr.has(i.kr));
+    newItems = newItems.slice(0, 20);
+    if (!newItems.length) { toast('Plus de mots disponibles !'); renderQuizResults(q); return; }
+    if (q.seenKr) newItems.forEach(i => q.seenKr.add(i.kr));
     q.items.push(...newItems);
     q.total = q.items.length;
     return qMarathon();
@@ -2179,7 +2181,7 @@ function qMarathon() {
           </div>
           <div class="flashcard-face flashcard-back">
             <div class="flashcard-word">${escHtml(back)}</div>
-            ${item.rom ? `<div class="flashcard-hint rom-text">${escHtml(item.rom)}</div>` : ''}
+            ${item.rom && !Settings.get('hideRom') && SRS.getLevel(quizSrsKey(item)) < 3 ? `<div class="flashcard-hint rom-text">${escHtml(item.rom)}</div>` : ''}
           </div>
         </div>
       </div>
@@ -2242,7 +2244,7 @@ function qQCM() {
   app.innerHTML = `
     ${quizBar(q)}
     <div class="quiz-question">${escHtml(question)}</div>
-    ${item.rom && kr2fr && !Settings.get('hideRom') ? `<div class="quiz-hint">${escHtml(item.rom)}</div>` : ''}
+    ${item.rom && kr2fr && !Settings.get('hideRom') && SRS.getLevel(quizSrsKey(item)) < 3 ? `<div class="quiz-hint">${escHtml(item.rom)}</div>` : ''}
     <div class="quiz-options" id="qcmOpts">
       ${choices.map((c, i) => `<button class="quiz-option" data-ok="${c.ok}" data-i="${i}">${escHtml(c.text)}</button>`).join('')}
     </div>
@@ -2282,7 +2284,7 @@ function qEcriture() {
   app.innerHTML = `
     ${quizBar(q)}
     <div class="quiz-question">${escHtml(question)}</div>
-    ${item.rom && kr2fr && !Settings.get('hideRom') ? `<div class="quiz-hint">${escHtml(item.rom)}</div>` : ''}
+    ${item.rom && kr2fr && !Settings.get('hideRom') && SRS.getLevel(quizSrsKey(item)) < 3 ? `<div class="quiz-hint">${escHtml(item.rom)}</div>` : ''}
     <div style="padding:0 16px">
       <input type="text" class="search-input" id="writeIn" placeholder="${kr2fr ? 'Ecris en francais...' : 'Ecris en coreen...'}" autocomplete="off" style="text-align:center;font-size:16px">
       ${!kr2fr && !localStorage.getItem('blokaja_kb_help_dismissed') ? `
@@ -2325,8 +2327,25 @@ function qEcriture() {
     if (done) return;
     done = true;
     const ans = input.value.trim();
-    const norm = s => kr2fr ? stripAccents(s.toLowerCase().trim()) : s.replace(/\s+/g, '').trim();
-    const ok = norm(ans) === norm(expected);
+    const norm = s => {
+      let n = s.trim()
+        .replace(/[.!?,;:…]+$/g, '')
+        .replace(/\s*\([^)]*\)\s*/g, ' ');
+      n = n.trim();
+      return kr2fr ? stripAccents(n.toLowerCase()).replace(/\s+/g, ' ') : n.replace(/\s+/g, '');
+    };
+    // Accepter n'importe laquelle des alternatives separees par /
+    const normAns = norm(ans);
+    const parts = expected.split(/\s*\/\s*/);
+    const alternatives = parts.map(a => norm(a));
+    // Accepter aussi les variantes de genre : "étudiant(e)" → "étudiante"/"étudiant", "ami(e)s" → "amies"/"amis"
+    parts.forEach(a => {
+      if (/\([^)]+\)/.test(a)) {
+        alternatives.push(norm(a.replace(/\(([^)]+)\)/g, '$1')));
+        alternatives.push(norm(a.replace(/\([^)]+\)/g, '')));
+      }
+    });
+    const ok = alternatives.some(alt => normAns === alt) || normAns === norm(expected);
 
     q.answer(ok, ans);
     input.disabled = true;
@@ -2335,7 +2354,7 @@ function qEcriture() {
     const fb = $('#writeFb');
     fb.innerHTML = ok
       ? '<div style="color:var(--success);font-weight:600">Correct !</div>'
-      : `<div style="color:var(--danger);font-weight:600">Incorrect</div><div style="font-size:14px;color:var(--text2)">Reponse : <strong style="color:var(--primary)">${escHtml(expected)}</strong></div>`;
+      : `<div style="color:var(--danger);font-weight:600">Incorrect</div><div style="font-size:14px;color:var(--text2)">Reponse : <strong style="color:var(--primary)">${escHtml(expected)}</strong>${!kr2fr && item.rom ? `<div class="rom-text" style="font-size:12px;color:var(--primary);margin-top:4px">${escHtml(item.rom)}</div>` : ''}</div>${!kr2fr ? audioBtnHTML(expected) : ''}`;
 
     handleQuizAnswer(q, quizSrsKey(item), ok, qEcriture, 2);
   }
@@ -2385,9 +2404,10 @@ function qAssociation() {
         if (lk === rk) {
           matched.add(lk);
           const wasError = errorItems.has(lk);
-          SRS.update(lSrsKey, wasError ? 0 : 2);
+          SRS.update(lSrsKey, wasError ? 0 : 1);
           Progress.recordActivity();
-          q.answer(!wasError, lk);
+          q.answers.push({ item: lItem, correct: !wasError, userAnswer: lk });
+          if (!wasError) q.score++;
           selLeft = null;
           if (matched.size === count) {
             for (let i = 0; i < count; i++) q.next();
@@ -2403,6 +2423,71 @@ function qAssociation() {
     app.addEventListener('click', _matchHandler);
   }
   render();
+}
+
+// --- Ecoute (QCM Audio) ---
+
+// Quiz ecoute : entendre et choisir la traduction
+function qAudio() {
+  const q = curQuiz, item = q.current();
+  if (!item) return renderQuizResults(q);
+
+  let hasKoVoice = false;
+  try { hasKoVoice = speechSynthesis.getVoices().some(v => v.lang.startsWith('ko')); } catch (e) {}
+
+  const srsK = quizSrsKey(item);
+  const correct = item.fr;
+  const allPool = [...DATA.vocabulary, ...DATA.adjectives, ...DATA.adverbs, ...DATA.connectors];
+  const distractors = shuffle(allPool.filter(v => v.fr && v.fr !== correct && v.kr !== item.kr)).slice(0, 3).map(v => v.fr);
+  const choices = shuffle([{ text: correct, ok: true }, ...distractors.map(d => ({ text: d, ok: false }))]);
+
+  app.innerHTML = `
+    ${quizBar(q)}
+    ${!hasKoVoice ? '<div style="text-align:center;padding:8px;font-size:12px;color:var(--warning)">Voix coreenne non disponible sur cet appareil</div>' : ''}
+    <div style="text-align:center;padding:24px 0">
+      <button class="audio-btn" id="audioPlay" style="width:72px;height:72px;margin:0 auto" aria-label="Ecouter">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+      </button>
+      <div style="font-size:13px;color:var(--text3);margin-top:8px">Ecoute et choisis la traduction</div>
+    </div>
+    <div class="quiz-options" id="audioOpts">
+      ${choices.map((c, i) => `<button class="quiz-option" data-ok="${c.ok}" data-i="${i}">${escHtml(c.text)}</button>`).join('')}
+    </div>
+    <div class="quiz-center"><button class="btn btn-secondary" onclick="quitQuiz()">Quitter</button></div>
+  `;
+
+  // Jouer l'audio automatiquement
+  setTimeout(() => speakKr(item.kr), 300);
+
+  // Bouton reecouter
+  $('#audioPlay').addEventListener('click', () => speakKr(item.kr));
+
+  let done = false;
+  $('#audioOpts').addEventListener('click', e => {
+    if (done) return;
+    const btn = e.target.closest('.quiz-option');
+    if (!btn) return;
+    done = true;
+
+    const ok = btn.dataset.ok === 'true';
+    btn.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) {
+      const good = $('#audioOpts').querySelector('[data-ok="true"]');
+      if (good) good.classList.add('correct');
+    }
+
+    // Afficher le mot coreen apres la reponse
+    const reveal = document.createElement('div');
+    reveal.style.cssText = 'text-align:center;margin-top:12px;font-size:18px;font-weight:600;color:var(--primary)';
+    reveal.textContent = item.kr;
+    if (item.rom && !Settings.get('hideRom')) {
+      reveal.innerHTML += `<div class="rom-text" style="font-size:13px;font-weight:400;font-style:italic">${escHtml(item.rom)}</div>`;
+    }
+    $('#audioOpts').after(reveal);
+
+    q.answer(ok, btn.textContent.trim());
+    handleQuizAnswer(q, srsK, ok, qAudio);
+  });
 }
 
 // --- Dictee ---
@@ -2514,7 +2599,7 @@ function qConjugaison() {
     btn.classList.add(ok ? 'correct' : 'wrong');
     if (!ok) {
       const g = $('#conjOpts').querySelector('[data-ok="true"]');
-      if (g) g.classList.add('reveal');
+      if (g) g.classList.add('correct');
     }
     q.answer(ok, btn.textContent.trim());
     handleQuizAnswer(q, 'v:' + item.inf, ok, qConjugaison);
@@ -2570,7 +2655,7 @@ function qParticules() {
     btn.classList.add(ok ? 'correct' : 'wrong');
     if (!ok) {
       const g = $('#partOpts').querySelector('[data-ok="true"]');
-      if (g) g.classList.add('reveal');
+      if (g) g.classList.add('correct');
     }
 
     // Explication apres reponse
@@ -2582,8 +2667,9 @@ function qParticules() {
     }
 
     q.answer(ok, btn.dataset.p);
+    if (navigator.vibrate) navigator.vibrate(ok ? [50] : [100, 50, 100]);
     // Delai un peu plus long pour lire l'explication
-    SRS.update(vocabSrsKey(item), ok ? 1 : 0);
+    SRS.update(info ? 'p:' + info.p : vocabSrsKey(item), ok ? 1 : 0);
     Progress.recordActivity();
     if (q.next()) {
       setTimeout(qParticules, 1200);
@@ -2651,7 +2737,7 @@ function renderQuizResults(quiz) {
   const rev = $('#reviewBtn');
   if (rev) rev.addEventListener('click', () => {
     curQuiz = new Quiz(quiz.mode, errors.map(e => e.item), quiz.dir);
-    const renderers = { flashcards: qFlash, qcm: qQCM, ecriture: qEcriture, marathon: qFlash, dictee: qDictee, conjugaison: qConjugaison, particules: qParticules, association: qAssociation };
+    const renderers = { flashcards: qFlash, qcm: qQCM, ecriture: qEcriture, marathon: qFlash, dictee: qDictee, conjugaison: qConjugaison, particules: qParticules, association: qAssociation, audio: qAudio };
     (renderers[curQuiz.mode] || qFlash)();
   });
 }
@@ -2662,6 +2748,7 @@ function renderQuizResults(quiz) {
 // Lance directement un quiz flashcard avec les items SRS a revoir
 function startReviewSession() {
   setHeader('Révision du jour', true);
+  trackQuizMode('review');
   const due = SRS.getDueItems();
   if (!due.length) {
     app.innerHTML = emptyStateHTML(MASCOT_HAPPY_SVG, 'Rien a reviser pour le moment', 'Apprends de nouveaux mots dans les chapitres, ils apparaitront ici quand il sera temps de les revoir.', '<button class="btn btn-secondary mt-16" onclick="location.hash=\'#cours\'">Retour aux cours</button>');
@@ -2699,7 +2786,7 @@ function startReviewSession() {
     if (!found && k.startsWith('h:')) found = DATA.hangeul.find(h => h.l === k.slice(2));
     // Normaliser pour flashcard : besoin de kr et fr + srsKey original
     if (found) {
-      const item = { kr: found.kr || found.inf || found.p || found.l || '', fr: found.fr || found.name || found.desc || '', rom: found.rom || '', _srsKey: k };
+      const item = { kr: found.kr || found.poli || found.inf || found.p || found.l || '', fr: found.fr || found.name || (found.val != null ? found.val + (found.sys ? ' (' + found.sys + ')' : '') : '') || found.desc || '', rom: found.rom || '', _srsKey: k };
       if (item.kr && item.fr) items.push(item);
     }
   });
@@ -2709,7 +2796,7 @@ function startReviewSession() {
   }
   curQuiz = new Quiz('flashcards', items.slice(0, 30), 'kr2fr');
   _quizGuardBack();
-  qFlash(curQuiz);
+  qFlash();
 }
 
 // ── 10c. EXAMEN BLANC ─────────────────────────────
@@ -2717,6 +2804,7 @@ function startReviewSession() {
 // Quiz melangeant tout : vocab + conjugaison + particules + expressions
 function startExamBlanc() {
   setHeader('Examen blanc', true);
+  trackQuizMode('exam');
   const pool = [];
   // Vocab random
   const vocabPool = shuffle([...DATA.vocabulary]).slice(0, 15);
@@ -2725,11 +2813,11 @@ function startExamBlanc() {
   const verbPool = shuffle(DATA.verbs.filter(v => v.poli || v.fam || v.passe)).slice(0, 5);
   verbPool.forEach(v => {
     const forms = [];
-    if (v.poli) forms.push({ label: 'présent poli', form: v.poli });
-    if (v.fam) forms.push({ label: 'présent informel', form: v.fam });
-    if (v.passe) forms.push({ label: 'passé', form: v.passe });
+    if (v.poli) forms.push({ label: 'présent poli', form: v.poli, key: 'poli' });
+    if (v.fam) forms.push({ label: 'présent informel', form: v.fam, key: 'fam' });
+    if (v.passe) forms.push({ label: 'passé', form: v.passe, key: 'passe' });
     const f = forms[Math.floor(Math.random() * forms.length)];
-    pool.push({ kr: v.inf, fr: v.fr + ' (' + f.label + ')', answer: f.form, type: 'conjugaison' });
+    pool.push({ kr: v.inf, fr: v.fr + ' (' + f.label + ')', answer: f.form, formKey: f.key, type: 'conjugaison' });
   });
   // Expressions
   const exprPool = shuffle([...DATA.expressions]).slice(0, 5);
@@ -2773,7 +2861,8 @@ function renderExamQuestion(quiz) {
     // Question conjugaison : affiche infinitif, demande la forme
     questionHTML = `<div class="quiz-question">${escHtml(item.kr)}</div><div class="text-body text-center mb-16">${escHtml(item.fr)}</div>`;
     const correct = item.answer;
-    const distractors = DATA.verbs.filter(v => v.inf !== item.kr).map(v => v.poli || v.fam || v.passe).filter(Boolean);
+    const fk = item.formKey || 'poli';
+    const distractors = DATA.verbs.filter(v => v.inf !== item.kr && v[fk]).map(v => v[fk]);
     const choices = shuffle([correct, ...shuffle(distractors).slice(0, 3)]);
     optionsHTML = `<div class="quiz-options">${choices.map(c =>
       `<button class="quiz-option card" data-val="${escHtml(c)}" data-correct="${escHtml(correct)}">${escHtml(c)}</button>`
@@ -2822,10 +2911,12 @@ function renderExamQuestion(quiz) {
       });
     }
 
+    curQuiz.answer(ok, val);
+
     let key;
     if (item.type === 'conjugaison') key = 'v:' + item.kr;
     else if (item.type === 'expression') key = 'e:' + item.kr;
-    else if (item.type === 'particule') key = item.kr;
+    else if (item.type === 'particule') key = 'p:' + (item.particle || item.kr);
     else key = vocabSrsKey(item);
     handleQuizAnswer(curQuiz, key, ok, () => renderExamQuestion(curQuiz));
   });
@@ -2917,7 +3008,7 @@ function startLesson(chId) {
         <div class="lesson-card" id="lessonCard">
           <div class="lesson-kr">${escHtml(item.kr)} ${audioBtnHTML(item.kr)}</div>
           <div id="lessonReveal" class="lesson-reveal">
-            ${item.rom ? `<div style="font-size:14px;color:var(--primary);font-style:italic;margin:8px 0" class="rom-text">${escHtml(item.rom)}</div>` : ''}
+            ${item.rom && !Settings.get('hideRom') && SRS.getLevel(vocabSrsKey(item)) < 3 ? `<div style="font-size:14px;color:var(--primary);font-style:italic;margin:8px 0" class="rom-text">${escHtml(item.rom)}</div>` : ''}
             <div style="font-size:20px;margin-top:12px">${escHtml(item.fr)}</div>
             ${item.theme ? `<span class="badge badge-vocab mt-8">${escHtml(item.theme)}</span>` : ''}
           </div>
@@ -3050,10 +3141,28 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
 window.addEventListener('pagehide', () => SRS.flush());
 window.addEventListener('beforeunload', () => SRS.flush());
 
+// Fix clavier virtuel iOS : garder l'input visible quand le clavier s'ouvre
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    const el = document.activeElement;
+    if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) {
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+    }
+  });
+}
+
 // Delegation globale pour les boutons audio
 document.addEventListener('click', e => {
   const btn = e.target.closest('[data-speak]');
   if (btn) { e.stopPropagation(); speakKr(btn.dataset.speak); }
+});
+
+// Accessibilite : Enter/Space sur les elements role="button" declenchent un click
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const el = e.target.closest('[role="button"]');
+    if (el) { e.preventDefault(); el.click(); }
+  }
 });
 
 // Detecter les homonymes (meme kr, sens differents) pour disambiguer les cles SRS

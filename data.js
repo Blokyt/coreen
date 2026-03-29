@@ -14,7 +14,6 @@ const DATA = {
   ],
 
   vocabulary: [
-    {kr:"가자, 한국!", fr:"Allons-y, Corée !", rom:"Kaja, Hanguk!", ch:0, theme:"Divers"},
     {kr:"서울", fr:"Seoul", rom:"seoul", ch:4, theme:"Lieux"},
     {kr:"인천", fr:"Incheon (ville)", rom:"Incheon", ch:0, theme:"Lieux"},
     {kr:"경기도", fr:"Gyeonggi (province)", rom:"Gyeonggi", ch:0, theme:"Lieux"},
@@ -61,7 +60,7 @@ const DATA = {
     {kr:"포도", fr:"raisin", rom:"podo", ch:0, theme:"Nourriture"},
     {kr:"피자", fr:"pizza", rom:"pija", ch:5, theme:"Plats"},
     {kr:"셔츠", fr:"chemise", rom:"syeocheu", ch:0, theme:"Vêtements"},
-    {kr:"버스", fr:"bus", rom:"beoseu", ch:4, theme:"Transports"},
+    {kr:"버스", fr:"bus", rom:"beoseu", ch:4, theme:"Sports"},
     {kr:"사자", fr:"lion", rom:"saja", ch:0, theme:"Divers"},
     {kr:"주스", fr:"jus", rom:"juseu", ch:5, theme:"Boissons"},
     {kr:"치마", fr:"jupe", rom:"chima", ch:0, theme:"Vêtements"},
@@ -73,8 +72,8 @@ const DATA = {
     {kr:"무", fr:"navet / radis blanc", rom:"mu", ch:0, theme:"Nourriture"},
     {kr:"가지", fr:"aubergine", rom:"gaji", ch:5, theme:"Nourriture"},
     {kr:"치즈", fr:"fromage", rom:"chijeu", ch:5, theme:"Nourriture"},
-    {kr:"커피", fr:"café", rom:"keopi", ch:5, theme:"Boissons"},
-    {kr:"차", fr:"thé", rom:"cha", ch:5, theme:"Boissons"},
+    {kr:"커피", fr:"cafe", rom:"keopi", ch:5, theme:"Boissons"},
+    {kr:"차", fr:"the", rom:"cha", ch:5, theme:"Boissons"},
     {kr:"모자", fr:"casquette", rom:"moja", ch:2, theme:"Objets"},
     {kr:"바지", fr:"pantalon", rom:"baji", ch:0, theme:"Vêtements"},
     {kr:"나비", fr:"papillon", rom:"nabi", ch:0, theme:"Divers"},
@@ -85,7 +84,6 @@ const DATA = {
     {kr:"토끼", fr:"lapin", rom:"tokki", ch:0, theme:"Divers"},
     {kr:"머리띠", fr:"serre-tete", rom:"meoritti", ch:0, theme:"Divers"},
     {kr:"뼈", fr:"os", rom:"ppyeo", ch:0, theme:"Corps"},
-    {kr:"쓰다", fr:"écrire", rom:"sseuda", ch:0, theme:"Verbes"},
     {kr:"찌개", fr:"jjigae (ragout coreen)", rom:"jjigae", ch:5, theme:"Plats"},
     {kr:"약", fr:"medicament", rom:"yak", ch:0, theme:"Hangeul"},
     {kr:"산", fr:"montagne", rom:"san", ch:0, theme:"Hangeul"},
@@ -97,79 +95,75 @@ const DATA = {
     {kr:"부엌", fr:"cuisine", rom:"bueok", ch:0, theme:"Hangeul"},
     {kr:"밖", fr:"exterieur", rom:"bak", ch:4, theme:"Position"},
     {kr:"손", fr:"main", rom:"son", ch:0, theme:"Hangeul"},
-    {kr:"닫다", fr:"fermer", rom:"datda", ch:0, theme:"Hangeul"},
-    {kr:"있다", fr:"il y a / etre (quelque part)", rom:"itda", ch:4, theme:"Verbes"},
     {kr:"낮", fr:"jour", rom:"nat", ch:0, theme:"Hangeul"},
     {kr:"꽃", fr:"fleur", rom:"kkot", ch:0, theme:"Hangeul"},
     {kr:"밑", fr:"en-dessous", rom:"mit", ch:0, theme:"Hangeul"},
     {kr:"히읗", fr:"lettre ㅎ", rom:"hieut", ch:0, theme:"Hangeul"},
-    {kr:"밤", fr:"la nuit", rom:"bam", ch:3, theme:"Temps"},
     {kr:"잎", fr:"feuille", rom:"ip", ch:0, theme:"Hangeul"},
     {kr:"강", fr:"riviere, fleuve", rom:"gang", ch:0, theme:"Hangeul"},
     {kr:"곰", fr:"ours", rom:"gom", ch:0, theme:"Divers"},
     {kr:"입", fr:"bouche", rom:"ip", ch:0, theme:"Corps"},
     {kr:"말", fr:"cheval", rom:"mal", ch:0, theme:"Divers"},
     {kr:"물", fr:"eau (bouteille d'eau)", rom:"mul", ch:2, theme:"Objets"},
-    {kr:"숲", fr:"foret", rom:"sup", ch:0, theme:"Divers"},
+    {kr:"숲", fr:"foret", rom:"soup", ch:0, theme:"Divers"},
     {kr:"컴퓨터", fr:"ordinateur", rom:"keompyuteo", ch:2, theme:"Objets"},
     {kr:"빗", fr:"peigne", rom:"bit", ch:0, theme:"Divers"},
     {kr:"엄마", fr:"maman", rom:"eomma", ch:1, theme:"Famille"},
-    {kr:"발", fr:"pied", rom:"bal", ch:0, theme:"Corps"},
+    {kr:"발", fr:"pied", rom:"pal", ch:0, theme:"Corps"},
     {kr:"음식", fr:"nourriture / plat", rom:"eumsik", ch:5, theme:"Divers"},
     {kr:"양말", fr:"chaussette", rom:"yangmal", ch:0, theme:"Vêtements"},
     {kr:"교실", fr:"salle de classe", rom:"gyosil", ch:0, theme:"École"},
     {kr:"선생님", fr:"professeur(e)", rom:"seonsaengnim", ch:1, theme:"École"},
-    {kr:"학생", fr:"étudiant(e)", rom:"haksaeng", ch:1, theme:"Divers"},
+    {kr:"학생", fr:"etudiant(e)", rom:"haksaeng", ch:5, theme:"Divers"},
     {kr:"칠판", fr:"tableau noir", rom:"chilpan", ch:2, theme:"École"},
     {kr:"책상", fr:"bureau (meuble)", rom:"chaeksang", ch:2, theme:"Chambre"},
-    {kr:"학교", fr:"école", rom:"hakgyo", ch:2, theme:"École"},
+    {kr:"학교", fr:"ecole", rom:"hakgyo", ch:2, theme:"École"},
     {kr:"의자", fr:"chaise", rom:"uija", ch:2, theme:"Chambre"},
     {kr:"공책", fr:"cahier", rom:"gongchaek", ch:2, theme:"Objets"},
     {kr:"가방", fr:"sac (a dos)", rom:"gabang", ch:2, theme:"Objets"},
     {kr:"태블릿", fr:"tablette", rom:"taebeullit", ch:0, theme:"Divers"},
     {kr:"필통", fr:"trousse", rom:"piltong", ch:2, theme:"Objets"},
     {kr:"연필", fr:"stylo", rom:"yeonpil", ch:2, theme:"Objets"},
-    {kr:"볼펜", fr:"stylo", rom:"bolpen", ch:0, theme:"Divers"},
-    {kr:"지우개", fr:"gomme", rom:"jiugae", ch:2, theme:"École"},
+    {kr:"볼펜", fr:"stylo", rom:"bol pen", ch:0, theme:"Divers"},
+    {kr:"지우개", fr:"gomme", rom:"jiugae", ch:4, theme:"École"},
     {kr:"계산기", fr:"calculatrice", rom:"gyesangi", ch:0, theme:"Divers"},
-    {kr:"자", fr:"regle (instrument de mesure)", rom:"ja", ch:2, theme:"Objets"},
-    {kr:"가위", fr:"ciseaux (pierre-feuille-ciseaux)", rom:"gawi", ch:2, theme:"Divers"},
+    {kr:"가위", fr:"ciseaux (pierre-feuille-ciseaux)", rom:"gawi", ch:4, theme:"Divers"},
     {kr:"풀", fr:"colle", rom:"pul", ch:0, theme:"Divers"},
     {kr:"과목", fr:"matieres (scolaires)", rom:"gwamok", ch:2, theme:"École"},
     {kr:"한국어", fr:"la langue coreenne", rom:"hangugeo", ch:1, theme:"Divers"},
-    {kr:"수학", fr:"mathématiques", rom:"suhak", ch:0, theme:"École"},
+    {kr:"수학", fr:"mathématiques", rom:"sou hak", ch:0, theme:"École"},
     {kr:"역사", fr:"histoire", rom:"yeoksa", ch:0, theme:"École"},
     {kr:"프랑스어", fr:"français", rom:"peurangseueo", ch:0, theme:"École"},
-    {kr:"과학", fr:"sciences", rom:"gwahak", ch:0, theme:"École"},
+    {kr:"과학", fr:"sciences", rom:"gwa hak", ch:0, theme:"École"},
     {kr:"음악", fr:"musique", rom:"eumak", ch:3, theme:"Loisirs"},
-    {kr:"지리", fr:"géographie", rom:"jiri", ch:0, theme:"École"},
-    {kr:"영어", fr:"anglais", rom:"yeongeo", ch:0, theme:"École"},
+    {kr:"지리", fr:"géographie", rom:"djili", ch:0, theme:"École"},
+    {kr:"영어", fr:"anglais", rom:"yeong eo", ch:0, theme:"École"},
     {kr:"꽃집", fr:"fleuriste", rom:"kkotjip", ch:4, theme:"Lieux"},
-    {kr:"카페", fr:"café", rom:"kape", ch:3, theme:"Lieux"},
+    {kr:"카페", fr:"cafe", rom:"kape", ch:3, theme:"Lieux"},
     {kr:"약국", fr:"pharmacie", rom:"yakguk", ch:4, theme:"Lieux"},
     {kr:"서점", fr:"librairie", rom:"seojeom", ch:4, theme:"Lieux"},
-    {kr:"영화관", fr:"cinéma", rom:"yeonghwagwan", ch:4, theme:"Lieux"},
+    {kr:"영화관", fr:"cinema", rom:"yeonghwagwan", ch:4, theme:"Lieux"},
     {kr:"미용실", fr:"salon de coiffure", rom:"miyongsil", ch:4, theme:"Lieux"},
     {kr:"백화점", fr:"grand magasin", rom:"baekhwajeom", ch:4, theme:"Lieux"},
     {kr:"빵집", fr:"boulangerie", rom:"ppangjip", ch:4, theme:"Lieux"},
     {kr:"정육점", fr:"boucherie", rom:"jeongyukjeom", ch:4, theme:"Lieux"},
     {kr:"식당", fr:"restaurant", rom:"sikdang", ch:3, theme:"Lieux"},
-    {kr:"교통", fr:"transports", rom:"gyotong", ch:4, theme:"Transports"},
-    {kr:"지하철", fr:"metro", rom:"jihacheol", ch:4, theme:"Transports"},
-    {kr:"트램", fr:"tram", rom:"teuraem", ch:4, theme:"Transports"},
-    {kr:"킥보드", fr:"trottinette", rom:"kikbodeu", ch:4, theme:"Transports"},
-    {kr:"비행기", fr:"avion", rom:"bihaenggi", ch:4, theme:"Transports"},
-    {kr:"자동차", fr:"voiture", rom:"jadongcha", ch:4, theme:"Transports"},
-    {kr:"택시", fr:"taxi", rom:"taeksi", ch:4, theme:"Transports"},
-    {kr:"기차", fr:"train", rom:"gicha", ch:4, theme:"Transports"},
-    {kr:"자전거", fr:"velo", rom:"jajeongeo", ch:4, theme:"Transports"},
-    {kr:"배", fr:"bateau", rom:"bae", ch:0, theme:"Transports"},
+    {kr:"교통", fr:"transports", rom:"gyotong", ch:4, theme:"Sports"},
+    {kr:"지하철", fr:"metro", rom:"jihacheol", ch:4, theme:"Sports"},
+    {kr:"트램", fr:"tram", rom:"teuraem", ch:4, theme:"Sports"},
+    {kr:"킥보드", fr:"trottinette", rom:"kikbodeu", ch:4, theme:"Sports"},
+    {kr:"비행기", fr:"avion", rom:"bihaenggi", ch:4, theme:"Sports"},
+    {kr:"자동차", fr:"voiture", rom:"jadongcha", ch:4, theme:"Sports"},
+    {kr:"택시", fr:"taxi", rom:"taeksi", ch:4, theme:"Sports"},
+    {kr:"기차", fr:"train", rom:"gicha", ch:4, theme:"Sports"},
+    {kr:"자전거", fr:"velo", rom:"jajeongeo", ch:4, theme:"Sports"},
+    {kr:"배", fr:"bateau", rom:"bae", ch:0, theme:"Sports"},
     {kr:"빵", fr:"pain, viennoiserie, brioche", rom:"ppang", ch:5, theme:"Nourriture"},
     {kr:"케이크", fr:"gateau", rom:"keikeu", ch:5, theme:"Desserts"},
     {kr:"아이스크림", fr:"glace / creme glacee", rom:"aiseukeurim", ch:5, theme:"Desserts"},
     {kr:"계란", fr:"oeuf", rom:"gyeran", ch:5, theme:"Nourriture"},
     {kr:"생선", fr:"poisson", rom:"saengseon", ch:5, theme:"Nourriture"},
-    {kr:"귤", fr:"clémentine", rom:"gyul", ch:0, theme:"Divers"},
+    {kr:"귤", fr:"clémentine", rom:"gyoul", ch:0, theme:"Divers"},
     {kr:"사과", fr:"pomme", rom:"sagwa", ch:2, theme:"Objets"},
     {kr:"수박", fr:"pasteque", rom:"subak", ch:5, theme:"Nourriture"},
     {kr:"딸기", fr:"fraise", rom:"ttalgi", ch:0, theme:"Divers"},
@@ -177,7 +171,7 @@ const DATA = {
     {kr:"당근", fr:"carotte", rom:"danggeun", ch:5, theme:"Nourriture"},
     {kr:"배추", fr:"chou", rom:"baechu", ch:5, theme:"Nourriture"},
     {kr:"버섯", fr:"champignon", rom:"beoseot", ch:5, theme:"Nourriture"},
-    {kr:"시금치", fr:"épinard", rom:"sigeumchi", ch:5, theme:"Nourriture"},
+    {kr:"시금치", fr:"epinard", rom:"sigeumchi", ch:5, theme:"Nourriture"},
     {kr:"감자", fr:"pomme de terre", rom:"gamja", ch:5, theme:"Nourriture"},
     {kr:"호박", fr:"courgette", rom:"hobak", ch:5, theme:"Nourriture"},
     {kr:"마늘", fr:"ail", rom:"maneul", ch:5, theme:"Nourriture"},
@@ -187,12 +181,9 @@ const DATA = {
     {kr:"과일", fr:"fruit", rom:"gwail", ch:5, theme:"Nourriture"},
     {kr:"디저트", fr:"dessert", rom:"dijeoteu", ch:5, theme:"Divers"},
     {kr:"시간", fr:"le temps / l'heure", rom:"sigan", ch:3, theme:"Divers"},
-    {kr:"시", fr:"heure", rom:"si", ch:3, theme:"Temps"},
-    {kr:"분", fr:"minute (suffixe)", rom:"bun", ch:6, theme:"Temps"},
     {kr:"한", fr:"un (forme modifiee devant classificateur)", rom:"han", ch:5, theme:"Nombres"},
     {kr:"두", fr:"deux (forme modifiee devant classificateur)", rom:"du", ch:5, theme:"Nombres"},
     {kr:"세", fr:"trois (forme modifiee devant classificateur)", rom:"se", ch:5, theme:"Nombres"},
-    {kr:"네", fr:"quatre", rom:"ne", ch:3, theme:"Nombres"},
     {kr:"색깔", fr:"couleurs", rom:"saekkal", ch:0, theme:"Couleurs"},
     {kr:"빨간색", fr:"rouge", rom:"ppalgansaek", ch:0, theme:"Couleurs"},
     {kr:"주황색", fr:"orange", rom:"juhwangsaek", ch:0, theme:"Couleurs"},
@@ -215,7 +206,7 @@ const DATA = {
     {kr:"12개월", fr:"les douze mois", rom:"sibi gaewol", ch:0, theme:"Nombres"},
     {kr:"1월", fr:"janvier", rom:"irwol", ch:0, theme:"Nombres"},
     {kr:"일월", fr:"janvier", rom:"irwol", ch:6, theme:"Nombres"},
-    {kr:"2월", fr:"février", rom:"iwol", ch:0, theme:"Nombres"},
+    {kr:"2월", fr:"fevrier", rom:"iwol", ch:0, theme:"Nombres"},
     {kr:"이월", fr:"février", rom:"iwol", ch:6, theme:"Nombres"},
     {kr:"3월", fr:"mars", rom:"samwol", ch:0, theme:"Nombres"},
     {kr:"삼월", fr:"mars", rom:"samwol", ch:6, theme:"Nombres"},
@@ -235,17 +226,12 @@ const DATA = {
     {kr:"시월", fr:"octobre", rom:"siwol", ch:6, theme:"Nombres"},
     {kr:"11월", fr:"novembre", rom:"sibirwol", ch:0, theme:"Nombres"},
     {kr:"십일월", fr:"novembre", rom:"sibirwol", ch:6, theme:"Nombres"},
-    {kr:"12월", fr:"décembre", rom:"sibiwol", ch:0, theme:"Nombres"},
+    {kr:"12월", fr:"decembre", rom:"sibiwol", ch:0, theme:"Nombres"},
     {kr:"십이월", fr:"décembre", rom:"sibiwol", ch:6, theme:"Nombres"},
-    {kr:"월", fr:"mois (suffixe)", rom:"wol", ch:6, theme:"Temps"},
-    {kr:"요일", fr:"jour de la semaine", rom:"yoil", ch:6, theme:"Temps"},
-    {kr:"월요일", fr:"lundi", rom:"woryoil", ch:3, theme:"Temps"},
     {kr:"화요일", fr:"mardi", rom:"hwayoil", ch:3, theme:"Temps"},
-    {kr:"수요일", fr:"mercredi", rom:"suyoil", ch:3, theme:"Temps"},
     {kr:"목요일", fr:"jeudi", rom:"mogyoil", ch:3, theme:"Temps"},
     {kr:"금요일", fr:"vendredi", rom:"geumyoil", ch:3, theme:"Temps"},
     {kr:"토요일", fr:"samedi", rom:"toyoil", ch:3, theme:"Temps"},
-    {kr:"일요일", fr:"dimanche", rom:"iryoil", ch:3, theme:"Temps"},
     {kr:"취미", fr:"les loisirs / les hobbies", rom:"chwimi", ch:6, theme:"Loisirs"},
     {kr:"피아노", fr:"piano", rom:"piano", ch:2, theme:"Chambre"},
     {kr:"기타", fr:"guitare", rom:"gita", ch:2, theme:"Chambre"},
@@ -262,7 +248,7 @@ const DATA = {
     {kr:"농구", fr:"basketball", rom:"nonggu", ch:6, theme:"Sports"},
     {kr:"축구", fr:"football", rom:"chukgu", ch:3, theme:"Sports"},
     {kr:"야구", fr:"baseball", rom:"yagu", ch:6, theme:"Sports"},
-    {kr:"스노우보드", fr:"snowboard", rom:"seunobodeu", ch:0, theme:"Lexique"},
+    {kr:"스노우보드", fr:"snowboard", rom:"seunoubudeu", ch:0, theme:"Lexique"},
     {kr:"스케이트", fr:"patinage", rom:"seukeiteu", ch:0, theme:"Lexique"},
     {kr:"탁구", fr:"tennis de table / ping-pong", rom:"takgu", ch:6, theme:"Sports"},
     {kr:"배구", fr:"volley-ball", rom:"baegu", ch:6, theme:"Sports"},
@@ -277,7 +263,6 @@ const DATA = {
     {kr:"추석", fr:"Chuseok (fete des recoltes / action de grace coreenne)", rom:"chuseok", ch:6, theme:"Culture"},
     {kr:"기생충", fr:"Parasite (titre du film en coreen)", rom:"gisaengchung", ch:1, theme:"Culture"},
     {kr:"이름", fr:"prenom", rom:"ireum", ch:1, theme:"Divers"},
-    {kr:"뭐", fr:"quoi / qu' / quel(le)(s)", rom:"mwo", ch:1, theme:"Divers"},
     {kr:"사람", fr:"personne", rom:"saram", ch:1, theme:"Divers"},
     {kr:"프랑스 사람", fr:"francais(e)", rom:"peurangseu saram", ch:1, theme:"Pays"},
     {kr:"한국 사람", fr:"coreen(ne)", rom:"hanguk saram", ch:1, theme:"Pays"},
@@ -334,7 +319,6 @@ const DATA = {
     {kr:"지우", fr:"Jiu (prenom)", rom:"jiu", ch:1, theme:"Divers"},
     {kr:"김민규", fr:"Kim Mingyu (celebrite)", rom:"gim mingyu", ch:1, theme:"Divers"},
     {kr:"이석민", fr:"Lee Seokmin (celebrite)", rom:"i seokmin", ch:1, theme:"Divers"},
-    {kr:"이", fr:"Lee (nom de famille)", rom:"i", ch:1, theme:"Famille"},
     {kr:"박", fr:"Park (nom de famille)", rom:"bak", ch:1, theme:"Famille"},
     {kr:"최", fr:"Choi (nom de famille)", rom:"choe", ch:1, theme:"Famille"},
     {kr:"김 나영", fr:"Kim Nayoung (nom complet)", rom:"gim nayeong", ch:1, theme:"Divers"},
@@ -371,8 +355,8 @@ const DATA = {
     {kr:"도서관", fr:"bibliotheque", rom:"doseogwan", ch:2, theme:"École"},
     {kr:"알리스", fr:"Alice (prenom)", rom:"alliseu", ch:2, theme:"Divers"},
     {kr:"다솔", fr:"Dasol (prenom)", rom:"dasol", ch:2, theme:"Divers"},
-    {kr:"한국 학교", fr:"école coréenne", rom:"hanguk hakgyo", ch:2, theme:"École"},
-    {kr:"고등학교", fr:"lycée", rom:"godeunghakgyo", ch:2, theme:"École"},
+    {kr:"한국 학교", fr:"ecole coreenne", rom:"hanguk hakgyo", ch:2, theme:"École"},
+    {kr:"고등학교", fr:"lycee", rom:"godeunghakgyo", ch:2, theme:"École"},
     {kr:"보건실", fr:"infirmerie", rom:"bogeonsil", ch:2, theme:"École"},
     {kr:"교무실", fr:"salle des professeurs", rom:"gyomusil", ch:2, theme:"École"},
     {kr:"학생 식당", fr:"cantine", rom:"haksaeng sikdang", ch:2, theme:"École"},
@@ -387,20 +371,13 @@ const DATA = {
     {kr:"게시판", fr:"panneau d'affichage", rom:"gesipan", ch:2, theme:"École"},
     {kr:"사물함", fr:"casier", rom:"samulham", ch:2, theme:"École"},
     {kr:"쓰레기통", fr:"poubelle", rom:"sseuregitong", ch:2, theme:"École"},
-    {kr:"내 가방에", fr:"dans mon sac", rom:"nae gabange", ch:2, theme:"Lieux"},
-    {kr:"우리 학교에", fr:"dans mon/notre école", rom:"uri hakgyoe", ch:2, theme:"Lieux"},
-    {kr:"내 방에", fr:"dans ma chambre", rom:"nae bange", ch:2, theme:"Lieux"},
-    {kr:"우리 교실에", fr:"dans ma/notre salle de classe", rom:"uri gyosire", ch:2, theme:"Lieux"},
     {kr:"내", fr:"mon, ma, mes (possession personnelle)", rom:"nae", ch:2, theme:"Divers"},
     {kr:"우리", fr:"mon/notre, ma/notre (possession collective)", rom:"uri", ch:2, theme:"Divers"},
-    {kr:"내 방", fr:"ma chambre", rom:"nae bang", ch:2, theme:"Divers"},
-    {kr:"우리 학교", fr:"mon/notre école", rom:"uri hakgyo", ch:2, theme:"Divers"},
     {kr:"안내실", fr:"accueil", rom:"annaesil", ch:2, theme:"Lieux"},
     {kr:"본관", fr:"batiment principal", rom:"bongwan", ch:2, theme:"Lieux"},
     {kr:"기숙사", fr:"dortoir", rom:"gisuksa", ch:2, theme:"Lieux"},
     {kr:"공원", fr:"parc", rom:"gongwon", ch:2, theme:"Lieux"},
     {kr:"정문", fr:"portail principal / entree principale", rom:"jeongmun", ch:2, theme:"Lieux"},
-    {kr:"우리 가족", fr:"ma/notre famille", rom:"uri gajok", ch:2, theme:"Famille"},
     {kr:"시간표", fr:"emploi du temps / horaires", rom:"siganbyo", ch:2, theme:"École"},
     {kr:"교시", fr:"heure de cours / periode", rom:"gyosi", ch:2, theme:"École"},
     {kr:"아침 조회", fr:"reunion du matin", rom:"achim johoe", ch:2, theme:"École"},
@@ -418,35 +395,15 @@ const DATA = {
     {kr:"악기", fr:"instrument de musique", rom:"akgi", ch:2, theme:"Objets"},
     {kr:"선배", fr:"aine / senior", rom:"seonbae", ch:2, theme:"Divers"},
     {kr:"벽", fr:"mur", rom:"byeok", ch:2, theme:"Maison"},
-    {kr:"오늘", fr:"aujourd'hui", rom:"oneul", ch:3, theme:"Temps"},
-    {kr:"하다", fr:"faire", rom:"hada", ch:3, theme:"Verbes"},
-    {kr:"해", fr:"je fais / tu fais (present familier de 하다)", rom:"hae", ch:3, theme:"Verbes"},
-    {kr:"해요", fr:"je fais / tu fais (present poli de 하다)", rom:"haeyo", ch:3, theme:"Verbes"},
     {kr:"숙제", fr:"devoirs", rom:"sukje", ch:3, theme:"Loisirs"},
     {kr:"노래", fr:"chanson", rom:"norae", ch:3, theme:"Loisirs"},
     {kr:"요리", fr:"cuisine", rom:"yori", ch:3, theme:"Loisirs"},
     {kr:"쇼핑", fr:"shopping", rom:"syoping", ch:3, theme:"Loisirs"},
-    {kr:"운동하다", fr:"faire du sport", rom:"undonghada", ch:3, theme:"Verbes"},
-    {kr:"운동해요", fr:"je fais du sport (present poli)", rom:"undonghaeyo", ch:3, theme:"Verbes"},
     {kr:"공부", fr:"etudes / travail scolaire", rom:"gongbu", ch:3, theme:"Loisirs"},
     {kr:"월요일에", fr:"le lundi", rom:"woryoire", ch:3, theme:"Temps"},
-    {kr:"일어나", fr:"je me leve (present familier)", rom:"ireona", ch:3, theme:"Verbes"},
-    {kr:"일어나다", fr:"se lever", rom:"ireonada", ch:3, theme:"Verbes"},
-    {kr:"샤워해", fr:"je prends une douche (present familier)", rom:"syawohae", ch:3, theme:"Verbes"},
-    {kr:"아침을 먹어", fr:"je prends le petit-dejeuner", rom:"achimeul meogeo", ch:3, theme:"Verbes"},
-    {kr:"수업을 들어", fr:"j'assiste aux cours", rom:"sueobeul deureo", ch:3, theme:"Verbes"},
-    {kr:"점심을 먹어", fr:"je dejeune", rom:"jeomsimeul meogeo", ch:3, theme:"Verbes"},
-    {kr:"영화를 봐", fr:"je regarde un film", rom:"yeonghwareul bwa", ch:3, theme:"Verbes"},
-    {kr:"저녁을 먹어", fr:"je dine", rom:"jeonyeogeul meogeo", ch:3, theme:"Verbes"},
-    {kr:"아침", fr:"matin / petit-dejeuner", rom:"achim", ch:3, theme:"Temps"},
     {kr:"점심", fr:"dejeuner / midi", rom:"jeomsim", ch:3, theme:"Divers"},
-    {kr:"저녁", fr:"diner / soir", rom:"jeonyeok", ch:3, theme:"Temps"},
     {kr:"영화", fr:"film", rom:"yeonghwa", ch:3, theme:"Loisirs"},
     {kr:"수업", fr:"cours", rom:"sueop", ch:3, theme:"École"},
-    {kr:"먹다", fr:"manger", rom:"meokda", ch:3, theme:"Verbes"},
-    {kr:"놀다", fr:"jouer / s'amuser", rom:"nolda", ch:3, theme:"Verbes"},
-    {kr:"읽다", fr:"lire", rom:"ikda", ch:3, theme:"Verbes"},
-    {kr:"듣다", fr:"écouter / entendre", rom:"deutda", ch:3, theme:"Verbes"},
     {kr:"6시", fr:"6 heures", rom:"yeoseot si", ch:3, theme:"Temps"},
     {kr:"7시", fr:"7 heures", rom:"ilgop si", ch:3, theme:"Temps"},
     {kr:"8시", fr:"8 heures", rom:"yeodeol si", ch:3, theme:"Temps"},
@@ -455,40 +412,17 @@ const DATA = {
     {kr:"12시", fr:"12 heures / midi", rom:"yeoldu si", ch:3, theme:"Temps"},
     {kr:"게임", fr:"jeu", rom:"geim", ch:3, theme:"Loisirs"},
     {kr:"드라마", fr:"serie (drama)", rom:"deurama", ch:3, theme:"Loisirs"},
-    {kr:"그리고", fr:"et, ensuite", rom:"geurigo", ch:3, theme:"Divers"},
-    {kr:"혼자", fr:"seul(e)", rom:"honja", ch:3, theme:"Verbes"},
-    {kr:"미술관", fr:"musée", rom:"misulgwan", ch:3, theme:"Lieux"},
-    {kr:"지금", fr:"maintenant", rom:"jigeum", ch:3, theme:"Temps"},
+    {kr:"미술관", fr:"musee", rom:"misulgwan", ch:3, theme:"Lieux"},
     {kr:"너", fr:"tu / toi", rom:"neo", ch:3, theme:"Divers"},
-    {kr:"아니", fr:"non (forme familiere)", rom:"ani", ch:3, theme:"Divers"},
     {kr:"집", fr:"maison", rom:"jip", ch:3, theme:"Lieux"},
     {kr:"학교 캠퍼스", fr:"campus", rom:"hakgyo kaempeoseu", ch:3, theme:"Lieux"},
-    {kr:"오후", fr:"l'apres-midi", rom:"ohu", ch:3, theme:"Temps"},
     {kr:"활동", fr:"activites", rom:"hwaldong", ch:3, theme:"Divers"},
     {kr:"장소", fr:"lieux", rom:"jangso", ch:3, theme:"Divers"},
     {kr:"일상생활", fr:"la vie quotidienne", rom:"ilsangsaenghwal", ch:3, theme:"Divers"},
     {kr:"일주일", fr:"la semaine", rom:"iljuil", ch:3, theme:"Divers"},
-    {kr:"어디", fr:"ou", rom:"eodi", ch:3, theme:"Divers"},
-    {kr:"들어요", fr:"j'ecoute / j'entends (present poli)", rom:"deureoyo", ch:3, theme:"Verbes"},
-    {kr:"봐요", fr:"je regarde (present poli)", rom:"bwayo", ch:3, theme:"Verbes"},
-    {kr:"만나요", fr:"je rencontre (present poli)", rom:"mannayo", ch:3, theme:"Verbes"},
-    {kr:"먹어요", fr:"je mange (present poli)", rom:"meogeoyo", ch:3, theme:"Verbes"},
-    {kr:"놀아요", fr:"Je m'amuse. (present poli)", rom:"norayo", ch:3, theme:"Verbes"},
-    {kr:"쇼핑하다", fr:"faire du shopping", rom:"syopinghada", ch:3, theme:"Verbes"},
-    {kr:"쇼핑해요", fr:"Je fais du shopping. (present poli)", rom:"syopinghaeyo", ch:3, theme:"Verbes"},
-    {kr:"자다", fr:"dormir", rom:"jada", ch:3, theme:"Verbes"},
-    {kr:"자아요", fr:"(forme intermediaire avant contraction)", rom:"jaayo", ch:3, theme:"Verbes"},
-    {kr:"자요", fr:"Je dors. (present poli, contracte)", rom:"jayo", ch:3, theme:"Verbes"},
-    {kr:"추다", fr:"danser", rom:"chuda", ch:3, theme:"Verbes"},
-    {kr:"추어요", fr:"(forme intermediaire avant contraction)", rom:"chueoyo", ch:3, theme:"Verbes"},
-    {kr:"춰요", fr:"Je danse. (present poli, contracte)", rom:"chwoyo", ch:3, theme:"Verbes"},
-    {kr:"보다", fr:"regarder / voir", rom:"boda", ch:3, theme:"Verbes"},
-    {kr:"보아요", fr:"(forme intermediaire avant contraction)", rom:"boayo", ch:3, theme:"Verbes"},
     {kr:"를", fr:"particule COD (apres voyelle)", rom:"reul", ch:3, theme:"Divers"},
     {kr:"을", fr:"particule COD (apres consonne)", rom:"eul", ch:3, theme:"Divers"},
     {kr:"책을 읽어", fr:"Je lis un livre.", rom:"chaekeul ilgeo", ch:3, theme:"Divers"},
-    {kr:"읽어", fr:"je lis (present familier)", rom:"ilgeo", ch:3, theme:"Verbes"},
-    {kr:"에서", fr:"particule de lieu (avec verbe d'action)", rom:"eseo", ch:3, theme:"Divers"},
     {
       kr:"운동장에서 운동해요",
       fr:"Je fais du sport sur le terrain de sport.",
@@ -496,19 +430,12 @@ const DATA = {
       ch:3,
       theme:"Divers"
     },
-    {kr:"에", fr:"particule de lieu (avec verbe d'existence) / particule de temps", rom:"e", ch:3, theme:"Divers"},
-    {kr:"학교에 있어요", fr:"Je suis a l'école.", rom:"hakgyoe isseoyo", ch:3, theme:"Divers"},
-    {kr:"있어요", fr:"il y a / je suis (present poli)", rom:"isseoyo", ch:3, theme:"Verbes"},
+    {kr:"학교에 있어요", fr:"Je suis a l'ecole.", rom:"hakgyoe isseoyo", ch:3, theme:"Divers"},
     {kr:"월요일에 축구해요", fr:"Je joue au football le lundi.", rom:"woryoire chukguhaeyo", ch:3, theme:"Divers"},
-    {kr:"축구해요", fr:"je joue au football (present poli)", rom:"chukguhaeyo", ch:3, theme:"Verbes"},
-    {kr:"축구하다", fr:"jouer au football", rom:"chukguhada", ch:3, theme:"Verbes"},
     {kr:"아침에 샤워해요", fr:"Je me douche le matin.", rom:"achime syawohaeyo", ch:3, theme:"Divers"},
-    {kr:"샤워해요", fr:"je prends une douche (present poli)", rom:"syawohaeyo", ch:3, theme:"Verbes"},
-    {kr:"안", fr:"ne...pas (negation)", rom:"an", ch:3, theme:"Divers"},
     {kr:"점심을 안 먹어요", fr:"Je ne dejeune pas.", rom:"jeomsimeul an meogeoyo", ch:3, theme:"Divers"},
     {kr:"쇼핑 안 해요", fr:"Je ne fais pas de shopping.", rom:"syoping an haeyo", ch:3, theme:"Divers"},
     {kr:"친구하고", fr:"avec un(e) ami(e)", rom:"chinguhago", ch:3, theme:"Divers"},
-    {kr:"만나다", fr:"rencontrer / voir (quelqu'un)", rom:"mannada", ch:3, theme:"Verbes"},
     {kr:"노래방", fr:"noraebang (karaoke coreen)", rom:"noraebang", ch:3, theme:"Loisirs"},
     {kr:"소찬휘", fr:"So Chanwhee (chanteuse)", rom:"So Chanwhi", ch:3, theme:"Culture"},
     {kr:"첫눈처럼", fr:"Comme la premiere neige (titre de chanson)", rom:"cheonnuncheoreom", ch:3, theme:"Culture"},
@@ -517,12 +444,9 @@ const DATA = {
     {kr:"인생네컷", fr:"photos a quatre poses (photomaton tendance)", rom:"insaeng nekkeot", ch:3, theme:"Loisirs"},
     {kr:"인생", fr:"vie", rom:"insaeng", ch:3, theme:"Divers"},
     {kr:"컷", fr:"coupure / prise (de photo)", rom:"keot", ch:3, theme:"Divers"},
-    {kr:"PC방", fr:"PC bang (salle de jeux vidéo / cybercafé)", rom:"pissi bang", ch:3, theme:"Loisirs"},
+    {kr:"PC방", fr:"PC bang (salle de jeux video / cybercafe)", rom:"pissi bang", ch:3, theme:"Loisirs"},
     {kr:"영업", fr:"activite commerciale / ouverture", rom:"yeongop", ch:3, theme:"Divers"},
-    {kr:"음악을 듣다", fr:"écouter de la musique", rom:"eumageul deutda", ch:3, theme:"Verbes"},
-    {kr:"책을 읽다", fr:"lire un livre", rom:"chaekeul ikda", ch:3, theme:"Verbes"},
-    {kr:"공부하다", fr:"étudier", rom:"gongbuhada", ch:3, theme:"Verbes"},
-    {kr:"월요일에 학교에서 공부해요", fr:"Le lundi, j'étudie à l'école.", rom:"woryoire hakgyoeseo gongbuhaeyo", ch:3, theme:"Divers"},
+    {kr:"월요일에 학교에서 공부해요", fr:"Le lundi, j'etudie a l'ecole.", rom:"woryoire hakgyoeseo gongbuhaeyo", ch:3, theme:"Divers"},
     {
       kr:"화요일에 도서관에서 책을 읽어요",
       fr:"Le mardi, je lis un livre a la bibliotheque.",
@@ -549,9 +473,7 @@ const DATA = {
     {kr:"안녕", fr:"salut", rom:"annyeong", ch:3, theme:"Expressions"},
     {kr:"어디야", fr:"c'est ou? / tu es ou? (familier)", rom:"eodiya", ch:3, theme:"Divers"},
     {kr:"도서관에 있어", fr:"Je suis a la bibliotheque. (familier)", rom:"doseogwane isseo", ch:3, theme:"Divers"},
-    {kr:"있어", fr:"il y a / je suis (present familier)", rom:"isseo", ch:3, theme:"Verbes"},
     {kr:"뭐 해", fr:"tu fais quoi? (familier)", rom:"mwo hae", ch:3, theme:"Divers"},
-    {kr:"숙제해", fr:"je fais mes devoirs (present familier)", rom:"sukjehae", ch:3, theme:"Verbes"},
     {kr:"너는 뭐 해", fr:"Et toi, tu fais quoi?", rom:"neoneun mwo hae", ch:3, theme:"Divers"},
     {kr:"나는", fr:"moi, je... (avec particule sujet)", rom:"naneun", ch:3, theme:"Divers"},
     {
@@ -564,21 +486,15 @@ const DATA = {
     {kr:"친구들하고 해", fr:"Je le fais avec des amis. (familier)", rom:"chingudeulhago hae", ch:3, theme:"Divers"},
     {kr:"친구들", fr:"amis (pluriel)", rom:"chingudeul", ch:3, theme:"Divers"},
     {kr:"들", fr:"suffixe pluriel", rom:"deul", ch:3, theme:"Divers"},
-    {kr:"응", fr:"oui (familier)", rom:"eung", ch:3, theme:"Divers"},
     {kr:"너도 와", fr:"Viens toi aussi. (familier)", rom:"neodo wa", ch:3, theme:"Divers"},
-    {kr:"도", fr:"aussi (particule)", rom:"do", ch:3, theme:"Divers"},
-    {kr:"와", fr:"viens! (imperatif familier de 오다)", rom:"wa", ch:3, theme:"Verbes"},
     {kr:"좋아", fr:"Super! / D'accord! / J'aime!", rom:"joa", ch:3, theme:"Expressions"},
     {kr:"북촌", fr:"Bukchon (quartier traditionnel de Seoul)", rom:"bukchon", ch:4, theme:"Lieux"},
-    {kr:"북촌이 어디예요?", fr:"C'est ou Bukchon?", rom:"bukchoni eodiyeyo?", ch:4, theme:"Divers"},
     {kr:"어디예요", fr:"c'est ou? (poli)", rom:"eodiyeyo", ch:4, theme:"Divers"},
     {kr:"한옥", fr:"hanok (maison traditionnelle coreenne)", rom:"hanok", ch:4, theme:"Maison"},
-    {kr:"거", fr:"chose / truc (possessif: a quelqu'un)", rom:"geo", ch:4, theme:"Divers"},
     {kr:"누구 거", fr:"a qui (possession)", rom:"nugu geo", ch:4, theme:"Divers"},
     {kr:"내 거", fr:"a moi / le mien", rom:"nae geo", ch:4, theme:"Divers"},
     {kr:"엄마 거", fr:"a maman / celui de maman", rom:"eomma geo", ch:4, theme:"Famille"},
     {kr:"누구", fr:"qui", rom:"nugu", ch:4, theme:"Divers"},
-    {kr:"여기", fr:"ici", rom:"yeogi", ch:4, theme:"Lieux"},
     {kr:"거기", fr:"la (endroit)", rom:"geogi", ch:4, theme:"Lieux"},
     {kr:"저기", fr:"la-bas", rom:"jeogi", ch:4, theme:"Lieux"},
     {kr:"이거", fr:"celui-ci / ca (proche)", rom:"igeo", ch:4, theme:"Objets"},
@@ -591,7 +507,6 @@ const DATA = {
     {kr:"욕실", fr:"salle de bain", rom:"yoksil", ch:4, theme:"Maison"},
     {kr:"주방", fr:"cuisine", rom:"jubang", ch:4, theme:"Maison"},
     {kr:"여기가 주방이야", fr:"Ici, c'est la cuisine.", rom:"yeogiga jubanghiya", ch:4, theme:"Divers"},
-    {kr:"그 컴퓨터 누구 거야?", fr:"A qui est cet ordinateur(-la)?", rom:"geu keompyuteo nugu geoya?", ch:4, theme:"Divers"},
     {kr:"거야", fr:"c'est a... (familier, possession)", rom:"geoya", ch:4, theme:"Divers"},
     {kr:"우리 언니 거야", fr:"C'est a ma soeur.", rom:"uri eonni geoya", ch:4, theme:"Divers"},
     {kr:"거실", fr:"salon / sejour", rom:"geosil", ch:4, theme:"Maison"},
@@ -606,8 +521,8 @@ const DATA = {
     {kr:"편의점", fr:"superette (24h/24)", rom:"pyeonuijeom", ch:4, theme:"Lieux"},
     {kr:"우체국", fr:"poste", rom:"ucheguk", ch:4, theme:"Lieux"},
     {kr:"경찰서", fr:"commissariat", rom:"gyeongchalseo", ch:4, theme:"Lieux"},
-    {kr:"오토바이", fr:"moto", rom:"otobai", ch:4, theme:"Transports"},
-    {kr:"도보", fr:"marche (a pied)", rom:"dobo", ch:4, theme:"Transports"},
+    {kr:"오토바이", fr:"moto", rom:"otobai", ch:4, theme:"Sports"},
+    {kr:"도보", fr:"marche (a pied)", rom:"dobo", ch:4, theme:"Sports"},
     {kr:"위치", fr:"position / emplacement", rom:"wichi", ch:4, theme:"Position"},
     {kr:"앞", fr:"devant", rom:"ap", ch:4, theme:"Position"},
     {kr:"뒤", fr:"derriere", rom:"dwi", ch:4, theme:"Position"},
@@ -617,22 +532,17 @@ const DATA = {
     {kr:"위", fr:"sur, au-dessus (de), en haut (de)", rom:"wi", ch:4, theme:"Position"},
     {kr:"아래", fr:"sous, en-dessous (de), en bas (de)", rom:"arae", ch:4, theme:"Position"},
     {kr:"이 책", fr:"ce livre(-ci)", rom:"i chaek", ch:4, theme:"Divers"},
-    {kr:"가다", fr:"aller", rom:"gada", ch:4, theme:"Verbes"},
-    {kr:"가", fr:"je vais / tu vas (present familier de 가다)", rom:"ga", ch:4, theme:"Verbes"},
     {kr:"경복궁", fr:"Gyeongbokgung (palais royal Gyeongbok)", rom:"gyeongbokgung", ch:4, theme:"Lieux"},
     {kr:"여의도공원", fr:"parc de Yeouido", rom:"yeouido gongwon", ch:4, theme:"Lieux"},
     {kr:"강남", fr:"Gangnam (quartier de Seoul)", rom:"gangnam", ch:4, theme:"Lieux"},
     {kr:"N서울타워", fr:"N Seoul Tower (tour de Seoul)", rom:"en seoul tawo", ch:4, theme:"Lieux"},
     {kr:"청계천", fr:"Cheonggyecheon (ruisseau de Seoul)", rom:"cheonggyecheon", ch:4, theme:"Lieux"},
-    {kr:"구경하다", fr:"visiter / faire du tourisme / regarder", rom:"gugyeonghada", ch:4, theme:"Verbes"},
-    {kr:"구경해", fr:"je visite / tu visites (present familier)", rom:"gugyeonghae", ch:4, theme:"Verbes"},
     {kr:"파리", fr:"Paris", rom:"pari", ch:4, theme:"Lieux"},
-    {kr:"어떻게", fr:"comment", rom:"eotteoke", ch:4, theme:"Divers"},
     {kr:"이 사람", fr:"cette personne(-ci)", rom:"i saram", ch:4, theme:"Divers"},
     {kr:"그 사람", fr:"cette personne(-la)", rom:"geu saram", ch:4, theme:"Divers"},
     {kr:"저 사람", fr:"cette personne (la-bas)", rom:"jeo saram", ch:4, theme:"Divers"},
     {kr:"북촌한옥마을", fr:"Bukchon Hanok Village (village de hanok de Bukchon)", rom:"bukchon hanok maeul", ch:4, theme:"Lieux"},
-    {kr:"시장", fr:"marché", rom:"sijang", ch:4, theme:"Lieux"},
+    {kr:"사장", fr:"marche", rom:"sijang", ch:4, theme:"Lieux"},
     {kr:"시장", fr:"marche", rom:"sijang", ch:4, theme:"Lieux"},
     {kr:"남대문시장", fr:"marche de Namdaemun", rom:"namdaemun sijang", ch:4, theme:"Lieux"},
     {kr:"동대문시장", fr:"marche de Dongdaemun", rom:"dongdaemun sijang", ch:4, theme:"Lieux"},
@@ -643,15 +553,11 @@ const DATA = {
     {kr:"몽마르뜨 공원", fr:"parc Montmartre (a Seoul)", rom:"mongmareuteu gongwon", ch:4, theme:"Lieux"},
     {kr:"네덜란드", fr:"Pays-Bas", rom:"nedeollandeu", ch:4, theme:"Pays"},
     {kr:"인사동", fr:"Insadong (quartier de Seoul)", rom:"insadong", ch:4, theme:"Lieux"},
-    {kr:"쇼핑해", fr:"je fais du shopping (familier)", rom:"syopinghae", ch:4, theme:"Verbes"},
-    {kr:"운동해", fr:"je fais du sport / de l'exercice (familier)", rom:"undonghae", ch:4, theme:"Verbes"},
     {kr:"바위", fr:"pierre (pierre-feuille-ciseaux)", rom:"bawi", ch:4, theme:"Divers"},
     {kr:"보", fr:"feuille (pierre-feuille-ciseaux)", rom:"bo", ch:4, theme:"Divers"},
     {kr:"신촌", fr:"Sinchon (quartier de Seoul)", rom:"sinchon", ch:4, theme:"Lieux"},
     {kr:"콘서트", fr:"concert", rom:"konseoteu", ch:4, theme:"Loisirs"},
     {kr:"만화", fr:"manhwa, bande dessinee", rom:"manhwa", ch:4, theme:"Culture"},
-    {kr:"맛있게", fr:"delicieusement, de maniere delicieuse", rom:"masitge", ch:5, theme:"Verbes"},
-    {kr:"먹어", fr:"mange (familier de 먹다)", rom:"meogeo", ch:5, theme:"Verbes"},
     {kr:"메뉴", fr:"menu", rom:"menyu", ch:5, theme:"Divers"},
     {kr:"잡채", fr:"japchae (nouilles de patate douce sautees aux legumes)", rom:"japchae", ch:5, theme:"Plats"},
     {kr:"김밥", fr:"gimbap (rouleau de riz et ingredients dans une feuille d'algue)", rom:"gimbap", ch:5, theme:"Plats"},
@@ -664,9 +570,6 @@ const DATA = {
     {kr:"목말라요", fr:"j'ai soif (poli)", rom:"mongmallayo", ch:5, theme:"Expressions"},
     {kr:"쪽", fr:"cote, direction", rom:"jjok", ch:4, theme:"Position"},
     {kr:"배고파요", fr:"j'ai faim !", rom:"baegopayo", ch:5, theme:"Expressions"},
-    {kr:"먹고 싶어", fr:"j'ai envie de manger", rom:"meokgo sipeo", ch:5, theme:"Verbes"},
-    {kr:"마시다", fr:"boire", rom:"masida", ch:5, theme:"Verbes"},
-    {kr:"마시고 싶어", fr:"j'ai envie de boire", rom:"masigo sipeo", ch:5, theme:"Verbes"},
     {kr:"햄버거", fr:"burger", rom:"haembeogeo", ch:5, theme:"Plats"},
     {kr:"맛있어", fr:"c'est bon / c'est delicieux", rom:"masisseo", ch:5, theme:"Expressions"},
     {kr:"채소", fr:"legume", rom:"chaeso", ch:5, theme:"Nourriture"},
@@ -678,13 +581,7 @@ const DATA = {
     {kr:"숟가락", fr:"cuillere", rom:"sutgarak", ch:5, theme:"Divers"},
     {kr:"비빔밥", fr:"bibimbap (riz melange aux legumes)", rom:"bibimbap", ch:5, theme:"Plats"},
     {kr:"면", fr:"nouilles", rom:"myeon", ch:5, theme:"Nourriture"},
-    {kr:"만들다", fr:"fabriquer / faire / preparer", rom:"mandeulda", ch:5, theme:"Verbes"},
-    {kr:"만들어요", fr:"c'est fait (de) / on fait (avec) (poli)", rom:"mandeureoyo", ch:5, theme:"Verbes"},
-    {kr:"만들어", fr:"c'est fait (de) / on fait (avec) (familier)", rom:"mandeureo", ch:5, theme:"Verbes"},
     {kr:"비빔밥이에요", fr:"c'est le bibimbap !", rom:"bibimbabieyo", ch:5, theme:"Divers"},
-    {kr:"밥으로 만들어요?", fr:"c'est fait avec du riz ?", rom:"babeuro mandeureoyo", ch:5, theme:"Divers"},
-    {kr:"뭐로 만들어요?", fr:"de quoi c'est fait ? / quels sont les ingredients ?", rom:"mworo mandeureoyo", ch:5, theme:"Divers"},
-    {kr:"하고", fr:"et (particule de liaison)", rom:"hago", ch:5, theme:"Divers"},
     {
       kr:"김치는 배추하고 고추로 만들어요",
       fr:"le kimchi est fait de chou et de piment",
@@ -696,34 +593,25 @@ const DATA = {
     {kr:"면으로 만들어", fr:"c'est fait de nouilles", rom:"myeoneuro mandeureo", ch:5, theme:"Divers"},
     {kr:"쌀로 만들어", fr:"c'est fait de riz (cru)", rom:"ssallo mandeureo", ch:5, theme:"Divers"},
     {kr:"쌀", fr:"riz (cru)", rom:"ssal", ch:5, theme:"Nourriture"},
-    {kr:"이게 뭐예요?", fr:"qu'est-ce que c'est ?", rom:"ige mwoyeyo", ch:5, theme:"Divers"},
     {kr:"김치예요", fr:"c'est du kimchi", rom:"gimchiyeyo", ch:5, theme:"Divers"},
     {kr:"배추하고 고추로 만들어", fr:"c'est fait de chou et de piment", rom:"baechuhago gochuro mandeureo", ch:5, theme:"Divers"},
-    {kr:"어디야?", fr:"tu es ou ?", rom:"eodiya", ch:5, theme:"Divers"},
     {kr:"한국 음식", fr:"nourriture coreenne", rom:"hanguk eumsik", ch:5, theme:"Divers"},
     {kr:"퀴즈", fr:"quiz", rom:"kwijeu", ch:5, theme:"Divers"},
     {kr:"간장", fr:"sauce soja", rom:"ganjang", ch:5, theme:"Divers"},
     {kr:"음", fr:"hmm", rom:"eum", ch:5, theme:"Divers"},
-    {kr:"매워?", fr:"c'est piquant ?", rom:"maewo", ch:5, theme:"Divers"},
     {kr:"뭐야?", fr:"c'est quoi ?", rom:"mwoya", ch:5, theme:"Divers"},
     {kr:"ㅋㅋㅋ", fr:"hahaha (rire en ligne)", rom:"kkk", ch:5, theme:"Expressions"},
     {kr:"두 개", fr:"deux (objets)", rom:"du gae", ch:5, theme:"Nombres"},
     {kr:"세 개", fr:"trois (objets)", rom:"se gae", ch:5, theme:"Nombres"},
     {kr:"한 봉지", fr:"un sachet", rom:"han bongji", ch:5, theme:"Nombres"},
     {kr:"네 봉지", fr:"quatre sachets", rom:"ne bongji", ch:5, theme:"Nombres"},
-    {kr:"다섯", fr:"cinq", rom:"daseot", ch:5, theme:"Nombres"},
     {kr:"참기름", fr:"huile de sesame", rom:"chamgireum", ch:5, theme:"Divers"},
     {kr:"매워(요)", fr:"c'est piquant", rom:"maewo(yo)", ch:5, theme:"Divers"},
     {kr:"개", fr:"classificateur pour les objets", rom:"gae", ch:5, theme:"Divers"},
     {kr:"그릇", fr:"classificateur pour les bols (litteralement: un bol)", rom:"geureut", ch:5, theme:"Divers"},
     {kr:"봉지", fr:"classificateur pour les sachets (litteralement: un sachet)", rom:"bongji", ch:5, theme:"Divers"},
-    {kr:"하나", fr:"un (nombre coreen)", rom:"hana", ch:5, theme:"Nombres"},
-    {kr:"둘", fr:"deux (nombre coreen)", rom:"dul", ch:5, theme:"Nombres"},
-    {kr:"셋", fr:"trois (nombre coreen)", rom:"set", ch:5, theme:"Nombres"},
-    {kr:"넷", fr:"quatre (nombre coreen)", rom:"net", ch:5, theme:"Nombres"},
-    {kr:"간장 두 숟가락", fr:"deux cuilleres de sauce soja", rom:"ganjang du sutgarak", ch:5, theme:"Divers"},
     {kr:"당근 두 개", fr:"deux carottes", rom:"danggeun du gae", ch:5, theme:"Divers"},
-    {kr:"시금치 네 봉지", fr:"quatre sachets d'épinards", rom:"sigeumchi ne bongji", ch:5, theme:"Divers"},
+    {kr:"시금치 네 봉지", fr:"quatre sachets d'epinards", rom:"sigeumchi ne bongji", ch:5, theme:"Divers"},
     {kr:"떡", fr:"pate de riz", rom:"tteok", ch:5, theme:"Nourriture"},
     {kr:"닭고기", fr:"poulet", rom:"dalgogi", ch:5, theme:"Nourriture"},
     {kr:"재료", fr:"ingredients", rom:"jaeryo", ch:5, theme:"Divers"},
@@ -742,54 +630,16 @@ const DATA = {
     {kr:"음료수", fr:"boissons (categorie)", rom:"eumnyosu", ch:5, theme:"Boissons"},
     {kr:"콜라", fr:"coca", rom:"kolla", ch:5, theme:"Boissons"},
     {kr:"목말라", fr:"J'ai soif.", rom:"mongmalla", ch:5, theme:"Expressions"},
-    {kr:"맛있어!", fr:"C'est bon !", rom:"masisseo!", ch:5, theme:"Expressions"},
-    {kr:"맛없어!", fr:"Ce n'est pas bon !", rom:"madeopseo!", ch:5, theme:"Expressions"},
-    {kr:"맛있게 먹어!", fr:"Bon appetit ! (informel)", rom:"masitge meogeo!", ch:5, theme:"Expressions"},
     {kr:"사탕", fr:"bonbon", rom:"satang", ch:5, theme:"Divers"},
     {kr:"고기로 만들어요", fr:"C'est fait de viande.", rom:"gogiro mandeureoyo", ch:5, theme:"Divers"},
     {kr:"레몬으로 만들어요", fr:"C'est fait de citron.", rom:"remoneuro mandeureoyo", ch:5, theme:"Divers"},
     {kr:"쌀로 만들어요", fr:"C'est fait de riz.", rom:"ssallo mandeureoyo", ch:5, theme:"Divers"},
-    {kr:"먹고 싶어요", fr:"j'ai envie de manger / je veux manger", rom:"meokgo sipeoyo", ch:5, theme:"Expressions"},
-    {
-      kr:"감자튀김하고 햄버거 먹고 싶어요.",
-      fr:"J'ai envie de manger des frites et un burger.",
-      rom:"gamjatwigimhago haembeogeo meokgo sipeoyo.",
-      ch:5,
-      theme:"Divers"
-    },
-    {kr:"마시고 싶어요", fr:"j'ai envie de boire / je veux boire", rom:"masigo sipeoyo", ch:5, theme:"Expressions"},
-    {
-      kr:"커피하고 물 마시고 싶어요.",
-      fr:"J'ai envie de boire un café et de l'eau.",
-      rom:"keopihago mul masigo sipeoyo.",
-      ch:5,
-      theme:"Divers"
-    },
     {kr:"명", fr:"classificateur pour les personnes", rom:"myeong", ch:5, theme:"Divers"},
     {kr:"마리", fr:"classificateur pour les animaux", rom:"mari", ch:5, theme:"Divers"},
-    {kr:"여섯", fr:"six (nombre coreen)", rom:"yeoseot", ch:5, theme:"Nombres"},
-    {kr:"열", fr:"dix (nombre coreen)", rom:"yeol", ch:5, theme:"Nombres"},
-    {kr:"샌드위치 두 개", fr:"deux sandwichs", rom:"saendeuwichi du gae", ch:5, theme:"Divers"},
-    {kr:"소고기", fr:"boeuf (viande)", rom:"sogogi", ch:5, theme:"Divers"},
+    {kr:"소고기", fr:"boeuf (viande)", rom:"sogoggi", ch:5, theme:"Divers"},
     {kr:"급식실", fr:"cantine", rom:"geupsiksil", ch:5, theme:"École"},
     {kr:"반찬", fr:"banchan (accompagnements / petits plats)", rom:"banchan", ch:5, theme:"Divers"},
     {kr:"국", fr:"soupe", rom:"guk", ch:5, theme:"Plats"},
-    {kr:"맛있게 드세요.", fr:"Bon appetit ! (poli, dit par l'hote)", rom:"masitge deuseyo.", ch:5, theme:"Expressions"},
-    {kr:"맛있게 먹어.", fr:"Bon appetit ! (informel, dit par l'hote)", rom:"masitge meogeo.", ch:5, theme:"Expressions"},
-    {
-      kr:"잘 먹겠습니다.",
-      fr:"Bon appetit ! / Je vais bien manger. (tres poli, dit par l'invite)",
-      rom:"jal meokgesseumnida.",
-      ch:5,
-      theme:"Expressions"
-    },
-    {
-      kr:"잘 먹을게.",
-      fr:"Bon appetit ! / Je vais bien manger. (informel, dit par l'invite)",
-      rom:"jal meogeulge.",
-      ch:5,
-      theme:"Expressions"
-    },
     {kr:"토마토 스파게티", fr:"spaghettis a la tomate", rom:"tomato seupageti", ch:5, theme:"Plats"},
     {kr:"스파게티", fr:"spaghettis", rom:"seupageti", ch:5, theme:"Plats"},
     {kr:"크림수프", fr:"soupe a la creme / veloute", rom:"keurimsupeu", ch:5, theme:"Plats"},
@@ -797,115 +647,42 @@ const DATA = {
     {kr:"샐러드", fr:"salade", rom:"saelleodeu", ch:5, theme:"Plats"},
     {kr:"티라미수", fr:"tiramisu", rom:"tiramisu", ch:5, theme:"Desserts"},
     {kr:"계란국", fr:"soupe aux oeufs", rom:"gyeranguk", ch:5, theme:"Plats"},
-    {kr:"시금치 나물", fr:"épinards assaisonnés (namul)", rom:"sigeumchi namul", ch:5, theme:"Plats"},
+    {kr:"시금치 나물", fr:"epinards assaisonnes (namul)", rom:"sigeumchi namul", ch:5, theme:"Plats"},
     {kr:"나물", fr:"namul (legumes assaisonnes)", rom:"namul", ch:5, theme:"Plats"},
     {kr:"우동", fr:"udon (nouilles epaisses)", rom:"udong", ch:5, theme:"Plats"},
     {kr:"핫도그", fr:"hot-dog", rom:"hatdogeu", ch:5, theme:"Plats"},
     {kr:"과일 푸딩", fr:"pudding aux fruits", rom:"gwail puding", ch:5, theme:"Desserts"},
-    {kr:"김밥은 밥으로 만들어요...", fr:"Le gimbap est fait de riz...", rom:"gimbapeun babeuro mandeureoyo...", ch:5, theme:"Divers"},
-    {kr:"뭐로 만들어?", fr:"De quoi c'est fait ? (informel)", rom:"mworo mandeureo?", ch:5, theme:"Expressions"},
-    {
-      kr:"밥하고, 고기하고 ...로 만들어.",
-      fr:"C'est fait de riz, de viande et de ...",
-      rom:"baphago, gogihago ...ro mandeureo.",
-      ch:5,
-      theme:"Divers"
-    },
-    {kr:"목말라?", fr:"Tu as soif ?", rom:"mongmalla?", ch:5, theme:"Expressions"},
-    {kr:"응, 마시고 싶어.", fr:"Oui, j'ai envie de boire.", rom:"eung, masigo sipeo.", ch:5, theme:"Divers"},
     {kr:"내 가방에 ...가 있어!", fr:"Dans mon sac il y a ... !", rom:"nae gabange ...ga isseo!", ch:5, theme:"Divers"},
     {kr:"자!", fr:"Tiens ! / Allez !", rom:"ja!", ch:5, theme:"Expressions"},
-    {kr:"여기!", fr:"Ici ! / Voila !", rom:"yeogi!", ch:5, theme:"Expressions"},
     {kr:"아, ...먹고 싶어.", fr:"Ah, j'ai envie de manger ...", rom:"a, ...meokgo sipeo.", ch:5, theme:"Divers"},
-    {kr:"고마워!", fr:"Merci ! (informel)", rom:"gomawo!", ch:5, theme:"Expressions"},
     {kr:"편", fr:"episode / partie (classificateur)", rom:"pyeon", ch:5, theme:"Divers"},
-    {
-      kr:"추석에 가족 집에 갔어!",
-      fr:"On est alle dans ma famille pour Chuseok !",
-      rom:"chuseoge gajok jibe gasseo!",
-      ch:6,
-      theme:"Divers"
-    },
-    {kr:"갔어", fr:"je suis alle(e) / on est alle(e) (passe informel de 가다)", rom:"gasseo", ch:6, theme:"Verbes"},
-    {kr:"어제", fr:"hier", rom:"eoje", ch:6, theme:"Temps"},
     {kr:"비밀", fr:"secret", rom:"bimil", ch:6, theme:"Expressions"},
-    {kr:"행복하다", fr:"etre heureux/heureuse", rom:"haengbokhada", ch:6, theme:"Divers"},
-    {kr:"슬프다", fr:"etre triste", rom:"seulpeuda", ch:6, theme:"Divers"},
-    {kr:"화가 나다", fr:"etre en colere", rom:"hwaga nada", ch:6, theme:"Divers"},
-    {kr:"수영하다", fr:"nager / faire de la natation", rom:"suyeonghada", ch:6, theme:"Sports"},
-    {kr:"테니스를 치다", fr:"jouer au tennis", rom:"teniseureul chida", ch:6, theme:"Sports"},
-    {kr:"등산하다", fr:"faire de la randonnee en montagne", rom:"deungsanhada", ch:6, theme:"Sports"},
-    {kr:"야구하다", fr:"jouer au baseball", rom:"yaguhada", ch:6, theme:"Sports"},
-    {kr:"농구하다", fr:"jouer au basketball", rom:"nongguhada", ch:6, theme:"Sports"},
-    {kr:"배드민턴을 치다", fr:"jouer au badminton", rom:"baedeminteoneul chida", ch:6, theme:"Sports"},
-    {kr:"주말", fr:"le week-end", rom:"jumal", ch:6, theme:"Temps"},
-    {kr:"올해", fr:"cette annee", rom:"olhae", ch:6, theme:"Temps"},
     {kr:"송편", fr:"songpyeon (gateau de riz farci, specialite de Chuseok)", rom:"songpyeon", ch:6, theme:"Culture"},
     {kr:"윷놀이", fr:"yunnori (jeu de plateau traditionnel coreen)", rom:"yunnori", ch:6, theme:"Culture"},
     {kr:"달력", fr:"calendrier", rom:"dallyeok", ch:6, theme:"Objets"},
-    {kr:"일", fr:"jour (suffixe)", rom:"il", ch:6, theme:"Temps"},
     {kr:"차례", fr:"Charye (ceremonie en l'honneur des ancetres)", rom:"charye", ch:6, theme:"Culture"},
     {kr:"음력", fr:"calendrier lunaire", rom:"eumnyeok", ch:6, theme:"Temps"},
-    {kr:"차를 마시다", fr:"boire un the", rom:"chareul masida", ch:6, theme:"Boissons"},
-    {kr:"사진을 찍다", fr:"prendre des photos", rom:"sajineul jjikda", ch:6, theme:"Loisirs"},
-    {kr:"반", fr:"demi (30 minutes)", rom:"ban", ch:6, theme:"Temps"},
-    {kr:"부터", fr:"a partir de / depuis (particule de temps)", rom:"buteo", ch:6, theme:"Divers"},
-    {kr:"까지", fr:"jusqu'a (particule de temps)", rom:"kkaji", ch:6, theme:"Divers"},
-    {kr:"탁구를 치다", fr:"jouer au tennis de table / ping-pong", rom:"takgureul chida", ch:6, theme:"Sports"},
-    {kr:"골프를 치다", fr:"jouer au golf", rom:"golpeureul chida", ch:6, theme:"Sports"},
-    {kr:"헬스하다", fr:"faire de la musculation", rom:"helseuhada", ch:6, theme:"Sports"},
-    {kr:"배구하다", fr:"jouer au volley-ball", rom:"baeguhada", ch:6, theme:"Sports"},
-    {kr:"e-스포츠를 하다", fr:"faire de l'e-sport", rom:"i-seupocheureul hada", ch:6, theme:"Sports"},
-    {kr:"유도를 하다", fr:"faire du judo", rom:"yudoreul hada", ch:6, theme:"Sports"},
-    {kr:"피겨 스케이팅을 하다", fr:"faire du patinage artistique", rom:"pigyeo seukeitingeul hada", ch:6, theme:"Sports"},
-    {kr:"스키를 타다", fr:"faire du ski", rom:"seukireul tada", ch:6, theme:"Sports"},
-    {kr:"자전거를 타다", fr:"faire du velo", rom:"jajeongoreul tada", ch:6, theme:"Sports"},
-    {kr:"지난 주말", fr:"le week-end dernier", rom:"jinan jumal", ch:6, theme:"Temps"},
-    {kr:"작년", fr:"l'annee derniere", rom:"jangnyeon", ch:6, theme:"Temps"},
-    {kr:"생일", fr:"anniversaire", rom:"saengil", ch:6, theme:"Temps"},
     {kr:"오전", fr:"matin / matinee (avant midi)", rom:"ojeon", ch:6, theme:"Temps"},
     {kr:"새벽", fr:"aube / petit matin", rom:"saebyeok", ch:6, theme:"Temps"},
-    {kr:"여행하다", fr:"voyager", rom:"yeohaenghada", ch:6, theme:"Loisirs"},
-    {kr:"그림을 그리다", fr:"dessiner", rom:"geurimeul geurida", ch:6, theme:"Loisirs"},
-    {kr:"요리하다", fr:"cuisiner", rom:"yorihada", ch:6, theme:"Loisirs"},
-    {kr:"게임하다", fr:"jouer a un jeu", rom:"geimhada", ch:6, theme:"Loisirs"},
-    {kr:"산책하다", fr:"se promener", rom:"sanchaek hada", ch:6, theme:"Loisirs"},
-    {kr:"미술관에 가다", fr:"aller au musée", rom:"misulgwane gada", ch:6, theme:"Loisirs"},
-    {kr:"연주하다", fr:"jouer (d'un instrument)", rom:"yeonjuhada", ch:6, theme:"Loisirs"},
     {kr:"았어요", fr:"terminaison du passé (radical voyelle ㅏ ou ㅗ + 았어요)", rom:"asseoyo", ch:6, theme:"Divers"},
     {kr:"었어요", fr:"terminaison du passé (radical voyelle autre que ㅏ/ㅗ + 었어요)", rom:"eosseoyo", ch:6, theme:"Divers"},
     {kr:"했어요", fr:"terminaison du passé pour les verbes en 하다", rom:"haesseoyo", ch:6, theme:"Divers"},
     {kr:"스키를 탔어요", fr:"J'ai fait du ski.", rom:"seukireul tasseoyo", ch:6, theme:"Divers"},
     {kr:"사진을 찍었어요", fr:"J'ai pris des photos.", rom:"sajineul jjigeosseoyo", ch:6, theme:"Divers"},
     {kr:"축구했어요", fr:"J'ai joué au football.", rom:"chukguhaesseoyo", ch:6, theme:"Divers"},
-    {kr:"이다", fr:"être (verbe copule)", rom:"ida", ch:6, theme:"Divers"},
     {kr:"윷놀이였어요", fr:"C'était le jeu de yut.", rom:"yunnoriyeosseoyo", ch:6, theme:"Divers"},
     {kr:"윷놀이가 아니었어요", fr:"Ce n'était pas le jeu de yut.", rom:"yunnori-ga anieosseoyo", ch:6, theme:"Divers"},
     {kr:"송편이었어요", fr:"C'était des songpyeons.", rom:"songpyeonieosseoyo", ch:6, theme:"Divers"},
     {kr:"송편이 아니었어요", fr:"Ce n'était pas des songpyeons.", rom:"songpyeoni anieosseoyo", ch:6, theme:"Divers"},
     {kr:"두시 사십오분", fr:"2 h 45", rom:"dusi sashibobun", ch:6, theme:"Divers"},
-    {kr:"새해 복 많이 받으세요!", fr:"Bonne année ! (souhait du nouvel an)", rom:"saehae bok mani badeuseyo", ch:6, theme:"Culture"},
     {kr:"세뱃돈", fr:"étrennes (argent offert aux enfants à Seollal)", rom:"Sebaetdon", ch:6, theme:"Culture"},
     {kr:"성묘", fr:"visite des tombes des ancêtres", rom:"Seongmyo", ch:6, theme:"Culture"},
     {kr:"강강술래", fr:"Ganggangsullae (danse rituelle traditionnelle)", rom:"Ganggangsullae", ch:6, theme:"Culture"},
     {kr:"삼육구", fr:"jeu 3-6-9 (jeu de comptage coréen)", rom:"samyukgu", ch:6, theme:"Divers"},
-    {kr:"미술관에 갔어?", fr:"Tu es allé(e) au musée d'art ?", rom:"misulgwane gasseo?", ch:6, theme:"Divers"},
-    {kr:"어제 뭐 했어?", fr:"Qu'est-ce que tu as fait hier ?", rom:"eoje mwo haesseo?", ch:6, theme:"Divers"},
-    {
-      kr:"나는 오후에 친구하고 운동했어.",
-      fr:"L'après-midi, j'ai fait du sport avec un(e) ami(e).",
-      rom:"naneun ohue chinguhago undonhaesseo.",
-      ch:6,
-      theme:"Divers"
-    },
-    {kr:"몇 시에 비행기를 타?", fr:"À quelle heure tu prends l'avion ?", rom:"myeot sie bihaenggireul ta?", ch:6, theme:"Divers"},
     {kr:"에 타.", fr:"Je le prends à ... (heure à compléter).", rom:"...e ta.", ch:6, theme:"Divers"},
     {kr:"프랑스에서 만나자.", fr:"On se voit en France.", rom:"peurangseu-eseo mannaja.", ch:6, theme:"Divers"},
     {kr:"프랑스에 언제 와?", fr:"Tu viens quand en France ?", rom:"peurangseu-e eonje wa?", ch:6, theme:"Divers"},
     {kr:"에 가!", fr:"J'y vais en ... (mois à compléter) !", rom:"...e ga!", ch:6, theme:"Divers"},
-    {kr:"알았어. 곧 보자!", fr:"D'accord. À bientôt !", rom:"arasseo. got boja!", ch:6, theme:"Divers"},
-    {kr:"안녕, 다미앙!", fr:"Au revoir, Damien !", rom:"annyeong, Damiang!", ch:6, theme:"Divers"},
-    {kr:"안녕, 지아야!", fr:"Au revoir, Jia !", rom:"annyeong, Jiaya!", ch:6, theme:"Divers"},
     {kr:"북아메리카", fr:"Amérique du Nord", rom:"bugamerika", ch:0, theme:"Lexique"},
     {kr:"남아메리카", fr:"Amérique du Sud", rom:"namamerika", ch:0, theme:"Lexique"},
     {kr:"팔월 / 8월", fr:"août", rom:"parwol", ch:0, theme:"Lexique"},
@@ -914,19 +691,15 @@ const DATA = {
     {kr:"배드민턴 (을 치다)", fr:"badminton (jouer au)", rom:"baedeuminteon (eul chida)", ch:0, theme:"Lexique"},
     {kr:"야구 (하다)", fr:"baseball (jouer au)", rom:"yagu (hada)", ch:0, theme:"Lexique"},
     {kr:"농구 (하다)", fr:"basket (jouer au)", rom:"nonggu (hada)", ch:0, theme:"Lexique"},
-    {kr:"하얀색 / 흰색", fr:"blanc", rom:"hayansaek / huinsaek", ch:0, theme:"Lexique"},
+    {kr:"하안색 / 흰색", fr:"blanc", rom:"haansaek / huinsaek", ch:0, theme:"Lexique"},
     {kr:"학생 식당 / 급식실", fr:"cantine", rom:"haksaeng sikdang / geupsiksil", ch:0, theme:"Lexique"},
     {kr:"책가방", fr:"cartable", rom:"chaekgabang", ch:0, theme:"Lexique"},
-    {kr:"노래하다", fr:"chanter", rom:"noraehada", ch:0, theme:"Lexique"},
     {kr:"북한", fr:"Corée du Nord", rom:"bukhan", ch:0, theme:"Lexique"},
     {kr:"대한민국 / 한국", fr:"Corée du Sud", rom:"daehanminguk / hanguk", ch:0, theme:"Lexique"},
     {kr:"수업 (을 듣다)", fr:"cours (suivre les)", rom:"sueop (eul deutda)", ch:0, theme:"Lexique"},
     {kr:"주방, 부엌", fr:"cuisine", rom:"jubang, bueok", ch:0, theme:"Lexique"},
-    {kr:"춤을 추다", fr:"danser", rom:"chumeul chuda", ch:0, theme:"Lexique"},
     {kr:"십이월 / 12월", fr:"décembre", rom:"sibiwol", ch:0, theme:"Lexique"},
-    {kr:"점심을 먹다", fr:"déjeuner", rom:"jeomsimeul meokda", ch:0, theme:"Lexique"},
     {kr:"숙제 (하다)", fr:"devoirs (faire ses)", rom:"sukje (hada)", ch:0, theme:"Lexique"},
-    {kr:"저녁을 먹다", fr:"dîner", rom:"jeonyeogeul meokda", ch:0, theme:"Lexique"},
     {kr:"e-스포츠 (를 하다)", fr:"e-sport (faire de l')", rom:"e-seupocheu (reul hada)", ch:0, theme:"Lexique"},
     {kr:"미국", fr:"États-Unis", rom:"miguk", ch:0, theme:"Lexique"},
     {kr:"이월 / 2월", fr:"février", rom:"iwol", ch:0, theme:"Lexique"},
@@ -946,7 +719,7 @@ const DATA = {
     {kr:"삼월 / 3월", fr:"mars", rom:"samwol / samwol", ch:0, theme:"Lexique"},
     {kr:"아침 / 오전", fr:"matin", rom:"achim / ojeon", ch:0, theme:"Lexique"},
     {kr:"헬스 (하다)", fr:"musculation (faire de la)", rom:"helseu (hada)", ch:0, theme:"Lexique"},
-    {kr:"음악 (을 듣다)", fr:"musique (écouter de la)", rom:"eumak (eul deutda)", ch:0, theme:"Lexique"},
+    {kr:"음악 (을 듣다)", fr:"musique (ecouter de la)", rom:"eumak (eul deutda)", ch:0, theme:"Lexique"},
     {kr:"검정색 / 까만색", fr:"noir", rom:"geomjeongsaek / kkamanssaek", ch:0, theme:"Lexique"},
     {kr:"십일월 / 11월", fr:"novembre", rom:"sibilwol / sibilwol", ch:0, theme:"Lexique"},
     {kr:"대서양", fr:"ocean Atlantique", rom:"daeseoyang", ch:0, theme:"Lexique"},
@@ -959,9 +732,7 @@ const DATA = {
     {kr:"아침 (을 먹다)", fr:"petit-dejeuner (prendre son)", rom:"achim (eul meokda)", ch:0, theme:"Lexique"},
     {kr:"사진 (을 찍다)", fr:"photo (prendre une)", rom:"sajin (eul jjikda)", ch:0, theme:"Lexique"},
     {kr:"소풍", fr:"pique-nique", rom:"sopung", ch:6, theme:"Loisirs"},
-    {kr:"언제", fr:"quand", rom:"eonje", ch:6, theme:"Temps"},
     {kr:"등산 (하다)", fr:"randonnee (faire de la)", rom:"deungsan (hada)", ch:0, theme:"Lexique"},
-    {kr:"샤워하다", fr:"se doucher", rom:"syawohada", ch:0, theme:"Lexique"},
     {kr:"구월 / 9월", fr:"septembre", rom:"guwol / guwol", ch:0, theme:"Lexique"},
     {kr:"드라마 (를 보다)", fr:"serie (regarder une)", rom:"deurama (reul boda)", ch:0, theme:"Lexique"},
     {kr:"쇼핑 (하다)", fr:"shopping (faire du)", rom:"syoping (hada)", ch:0, theme:"Lexique"},
@@ -971,13 +742,9 @@ const DATA = {
     {kr:"테니스 (를 치다)", fr:"tennis (jouer au)", rom:"teniseu (reul chida)", ch:0, theme:"Lexique"},
     {kr:"탁구 (를 치다)", fr:"tennis de table (jouer au)", rom:"takgu (reul chida)", ch:0, theme:"Lexique"},
     {kr:"자전거 (를 타다)", fr:"velo (faire du)", rom:"jajeongeo (reul tada)", ch:0, theme:"Lexique"},
-    {kr:"친구를 만나다", fr:"voir ses ami(e)s", rom:"chingureul mannada", ch:0, theme:"Lexique"},
     {kr:"배구 (하다)", fr:"volley-ball (jouer au)", rom:"baegu (hada)", ch:0, theme:"Lexique"},
     {kr:"대한민국", fr:"Coree du Sud", rom:"daehanminguk", ch:0, theme:"Lieux"},
-    {kr:"백", fr:"cent (100)", rom:"baek", ch:0, theme:"Nombres"},
-    {kr:"천", fr:"mille (1000)", rom:"cheon", ch:0, theme:"Nombres"},
     {kr:"뭐/뮈", fr:"quoi", rom:"mwo", ch:3, theme:"Divers"},
-    {kr:"날", fr:"jour", rom:"nal", ch:6, theme:"Temps"},
     {kr:"헬스", fr:"musculation", rom:"helseu", ch:6, theme:"Sports"},
     {kr:"그림", fr:"dessin, peinture", rom:"geurim", ch:6, theme:"Loisirs"},
     {kr:"사진", fr:"photo", rom:"sajin", ch:6, theme:"Loisirs"},
@@ -990,144 +757,98 @@ const DATA = {
     {kr:"광복절", fr:"Jour de la liberation de la Coree (15 aout)", rom:"gwangbokjeol", ch:6, theme:"Culture"},
     {kr:"한글날", fr:"Jour du Hangeul (9 octobre)", rom:"hangeulnal", ch:6, theme:"Culture"},
     {kr:"빼빼로 데이", fr:"Pepero day (11 novembre)", rom:"ppeppero dei", ch:6, theme:"Culture"},
-    {kr:"성탄절", fr:"Noël (25 décembre)", rom:"seongtanjeol", ch:6, theme:"Culture"},
+    {kr:"성탄절", fr:"Noel (25 decembre)", rom:"seongtanjeol", ch:6, theme:"Culture"},
     {kr:"밀", fr:"ble / en-dessous", rom:"mil", ch:0, theme:"Divers"},
     {kr:"수업 시간", fr:"heure de cours", rom:"sueop sigan", ch:2, theme:"École"},
-    {kr:"주방 / 부엌", fr:"cuisine", rom:"jubang / bueok", ch:6, theme:"Divers"},
+    {kr:"주방 / 부엌", fr:"cuisine", ch:6, theme:"Divers"},
     {kr:"하얀색 / 흰색", fr:"blanc", rom:"hayansaek / huinsaek", ch:0, theme:"Lexique"},
     {kr:"크리스마스", fr:"Noel (Christmas)", rom:"keuriseumaseu", ch:6, theme:"Culture"},
     {kr:"앞으로", fr:"vers l'avant", rom:"apeuro", ch:2, theme:"Divers"},
-    {kr:"숙제하다", fr:"faire ses devoirs", rom:"sukjehada", ch:3, theme:"Loisirs"},
-    {kr:"비디오 게임하다", fr:"jouer a un jeu video", rom:"bidio geimhada", ch:3, theme:"Loisirs"},
-    {kr:"영화를 보다", fr:"regarder un film", rom:"yeonghwareul boda", ch:3, theme:"Loisirs"},
-    {kr:"드라마를 보다", fr:"regarder une serie", rom:"deuramareul boda", ch:3, theme:"Loisirs"},
-    {kr:"아침을 먹다", fr:"prendre son petit-dejeuner", rom:"achimeul meokda", ch:3, theme:"Divers"},
-    {kr:"수업을 듣다", fr:"suivre les cours", rom:"sueobeul deutda", ch:3, theme:"Divers"},
-    {kr:"버스로", fr:"en bus", rom:"beoseuro", ch:4, theme:"Transports"},
-    {kr:"지하철로", fr:"en metro", rom:"jihacheollro", ch:4, theme:"Transports"},
-    {kr:"트램으로", fr:"en tram", rom:"teuraemeuro", ch:4, theme:"Transports"},
     {kr:"배구해", fr:"jouer au volley", rom:"baeguhae", ch:6, theme:"Sports"},
     {kr:"운동했어", fr:"j'ai fait du sport", rom:"undonhaesseo", ch:6, theme:"Sports"},
-    {kr:"쇼핑했어", fr:"j'ai fait du shopping", rom:"syopinghaesseo", ch:6, theme:"Verbes"},
-    {kr:"산책했어", fr:"je me suis promene(e)", rom:"sanchaekhaesseo", ch:6, theme:"Verbes"},
-    {kr:"일곱", fr:"7", rom:"ilgop", ch:0, theme:"Nombres"},
-    {kr:"여덟", fr:"8", rom:"yeodeol", ch:0, theme:"Nombres"},
-    {kr:"아홉", fr:"9", rom:"ahop", ch:0, theme:"Nombres"},
-    {kr:"스물", fr:"20", rom:"seumul", ch:0, theme:"Nombres"},
-    {kr:"서른", fr:"30", rom:"seoreun", ch:0, theme:"Nombres"},
-    {kr:"마흔", fr:"40", rom:"maheun", ch:0, theme:"Nombres"},
-    {kr:"쉰", fr:"50", rom:"swin", ch:0, theme:"Nombres"},
-    {kr:"예순", fr:"60", rom:"yesun", ch:0, theme:"Nombres"},
-    {kr:"일흔", fr:"70", rom:"ilheun", ch:0, theme:"Nombres"},
-    {kr:"여든", fr:"80", rom:"yeodeun", ch:0, theme:"Nombres"},
-    {kr:"아흔", fr:"90", rom:"aheun", ch:0, theme:"Nombres"},
-    {kr:"삼", fr:"3", rom:"sam", ch:0, theme:"Nombres"},
-    {kr:"사", fr:"4", rom:"sa", ch:0, theme:"Nombres"},
-    {kr:"오", fr:"5", rom:"o", ch:0, theme:"Nombres"},
-    {kr:"육", fr:"6", rom:"yuk", ch:0, theme:"Nombres"},
-    {kr:"칠", fr:"7", rom:"chil", ch:0, theme:"Nombres"},
-    {kr:"팔", fr:"8", rom:"pal", ch:0, theme:"Nombres"},
-    {kr:"구", fr:"9", rom:"gu", ch:0, theme:"Nombres"},
-    {kr:"십", fr:"10", rom:"sip", ch:0, theme:"Nombres"},
-    {kr:"이십", fr:"20", rom:"isip", ch:0, theme:"Nombres"},
-    {kr:"삼십", fr:"30", rom:"samsip", ch:0, theme:"Nombres"},
-    {kr:"사십", fr:"40", rom:"sasip", ch:0, theme:"Nombres"},
-    {kr:"오십", fr:"50", rom:"osip", ch:0, theme:"Nombres"},
-    {kr:"육십", fr:"60", rom:"yuksip", ch:0, theme:"Nombres"},
-    {kr:"칠십", fr:"70", rom:"chilsip", ch:0, theme:"Nombres"},
-    {kr:"팔십", fr:"80", rom:"palsip", ch:0, theme:"Nombres"},
-    {kr:"구십", fr:"90", rom:"gusip", ch:0, theme:"Nombres"},
     {kr:"오빠/형", fr:"grand frère", rom:"oppa/hyeong", ch:1, theme:"Famille"},
     {kr:"언니/누나", fr:"grande soeur", rom:"eonni/nuna", ch:1, theme:"Famille"},
     {kr:"드라마를 봐", fr:"je regarde une serie", rom:"deuramareul bwa", ch:3, theme:"Loisirs"},
     {kr:"친구를 만나", fr:"je vois mes ami(e)s", rom:"chingureul manna", ch:3, theme:"Loisirs"},
     {kr:"야채, 채소", fr:"legume", rom:"yachae, chaeso", ch:5, theme:"Nourriture"},
-    {kr:"성탄절, 크리스마스", fr:"Noël (25 décembre)", rom:"seongtanjeol, keuriseumaseu", ch:6, theme:"Culture"},
+    {kr:"성탄절, 크리스마스", fr:"Noel (25 decembre)", rom:"seongtanjeol, keuriseumaseu", ch:6, theme:"Culture"},
     {kr:"카카오톡", fr:"KakaoTalk (application de messagerie coreenne)", rom:"kakao tok", ch:1, theme:"Culture"},
     {kr:"맞아", fr:"c'est vrai / exact / c'est ca", rom:"maja", ch:1, theme:"Expressions"},
-    {kr:"국적이 뭐야?", fr:"quelle est ta nationalite ? (familier)", rom:"gukjeogi mwoya?", ch:1, theme:"Divers"},
     {kr:"e-스포츠", fr:"e-sport", rom:"i-seupocheu", ch:6, theme:"Sports"},
     {kr:"피겨 스케이팅", fr:"patinage artistique", rom:"pigyeo seuketing", ch:6, theme:"Sports"},
-    {kr:"없다", fr:"ne pas exister, ne pas avoir, ne pas etre la", rom:"eopda", ch:2, theme:"Divers"},
     {kr:"없어", fr:"il n'y a pas, je n'ai pas (forme casual de 없다)", rom:"eopseo", ch:2, theme:"Divers"},
     {kr:"으로", fr:"par, en, avec (particule de moyen/direction, apres consonne)", rom:"euro", ch:4, theme:"Divers"},
     {kr:"로", fr:"par, en, avec (particule de moyen/direction, apres voyelle)", rom:"ro", ch:4, theme:"Divers"},
-    {kr:"어떻게 가?", fr:"comment on y va ?", rom:"eotteoke ga?", ch:4, theme:"Transports"},
     {kr:"가위 바위 보", fr:"pierre-feuille-ciseaux", rom:"gawi bawi bo", ch:4, theme:"Divers"},
     {kr:"영화를 봤어", fr:"j'ai regarde un film", rom:"yeonghwareul bwasseo", ch:6, theme:"Loisirs"},
     {kr:"책을 읽었어", fr:"j'ai lu un livre", rom:"chaegeul ilgeosseo", ch:6, theme:"Loisirs"},
     {kr:"곧 보자!", fr:"A bientot !", rom:"got boja!", ch:6, theme:"Expressions"},
-    {kr:"가자", fr:"allons-y (familier)", rom:"gaja", ch:4, theme:"Expressions"},
     {kr:"저벅저벅", fr:"bruit de pas (onomatopee)", rom:"jeobeok-jeobeok", ch:1, theme:"Divers"},
     {kr:"너는", fr:"toi / tu (sujet, familier)", rom:"neoneun", ch:1, theme:"Divers"},
-    {kr:"만나서 반가워", fr:"ravi(e) de te rencontrer", rom:"mannaseo bangawo", ch:1, theme:"Expressions"},
     {kr:"들어와", fr:"entre (imperatif familier)", rom:"deureo-wa", ch:2, theme:"Expressions"},
     {kr:"네 거", fr:"le tien / a toi", rom:"ne geo", ch:2, theme:"Divers"},
     {kr:"뭐 해?", fr:"tu fais quoi ?", rom:"mwo hae?", ch:3, theme:"Loisirs"},
     {kr:"축구해", fr:"je joue au foot", rom:"chukguhae", ch:3, theme:"Loisirs"},
     {kr:"옆에", fr:"a cote de", rom:"yeop-e", ch:4, theme:"Position"},
-    {kr:"지나갔다", fr:"c'est passe (le bus/metro est passe)", rom:"jinagatta", ch:4, theme:"Transports"},
+    {kr:"지나갔다", fr:"c'est passe (le bus/metro est passe)", rom:"jinagatta", ch:4, theme:"Sports"},
     {kr:"했어", fr:"j'ai fait (passe de 하다)", rom:"haesseo", ch:6, theme:"Divers"},
     {kr:"몇 시", fr:"quelle heure", rom:"myeot si", ch:6, theme:"Divers"},
-    {kr:"타", fr:"prendre (un transport) / monter", rom:"ta", ch:6, theme:"Transports"},
+    {kr:"타", fr:"prendre (un transport) / monter", rom:"ta", ch:6, theme:"Sports"},
     {kr:"만나자", fr:"retrouvons-nous / voyons-nous", rom:"mannaja", ch:6, theme:"Expressions"},
     {kr:"알았어", fr:"d'accord / j'ai compris", rom:"arasseo", ch:6, theme:"Expressions"},
     {kr:"곧 보자", fr:"a bientot (familier)", rom:"got boja", ch:6, theme:"Divers"},
     {kr:"쭉", fr:"tout droit", rom:"jjuk", ch:3, theme:"Position"},
-    {kr:"지나가다", fr:"passer / dépasser", rom:"jinagada", ch:4, theme:"Verbes"},
-    {kr:"그럼", fr:"alors, dans ce cas", rom:"geureom", ch:4, theme:"Divers"},
-    {kr:"잘", fr:"bien", rom:"jal", ch:5, theme:"Verbes"},
     {kr:"화", fr:"mardi", rom:"hwa", ch:6, theme:"Temps"},
     {kr:"수", fr:"mercredi", rom:"su", ch:6, theme:"Temps"},
     {kr:"목", fr:"jeudi", rom:"mok", ch:6, theme:"Temps"},
     {kr:"금", fr:"vendredi", rom:"geum", ch:6, theme:"Temps"},
     {kr:"토", fr:"samedi", rom:"to", ch:6, theme:"Temps"},
     {kr:"신발", fr:"chaussures", rom:"sinbal", ch:2, theme:"Objets"},
-    {kr:"솔", fr:"pin", rom:"sol", ch:0, theme:"Divers"},
-    {kr:"스물 하나", fr:"21", rom:"seumul hana", ch:0, theme:"Divers"},
-    {kr:"이십오", fr:"25", rom:"isibo", ch:0, theme:"Divers"},
-    {kr:"6시 40분 (여섯 시 사십분)", fr:"6 h 40 / 18 h 40", rom:"yeoseot si sasipbun", ch:0, theme:"Divers"},
-    {kr:"8시 15분 (여덟 시 십오분)", fr:"8 h 15 / 20 h 15", rom:"yeodeol si sibobun", ch:0, theme:"Divers"},
-    {kr:"1월 - 일월", fr:"janvier", rom:"irwol", ch:0, theme:"Divers"},
-    {kr:"6월 - 유월", fr:"juin", rom:"yuwol", ch:0, theme:"Divers"},
-    {kr:"10월 - 시월", fr:"octobre", rom:"siwol", ch:0, theme:"Divers"},
-    {kr:"학생 식당도 있어", fr:"Il y a aussi une cantine?", rom:"haksaeng sikdangdo isseo", ch:2, theme:"Divers"},
-    {kr:"학교에 뭐가 있어", fr:"Qu'est-ce qu'il y a dans l'école?", rom:"hakgyoe mwoga isseo", ch:2, theme:"Divers"},
-    {kr:"방 -> 방에 -> 내 방에", fr:"chambre -> dans la chambre -> dans ma chambre", rom:"bang -> bange -> nae bange", ch:2, theme:"Divers"},
-    {kr:"학교 -> 학교에 -> 우리 학교에", fr:"école -> dans l'école -> dans mon école", rom:"hakgyo -> hakgyoe -> uri hakgyoe", ch:2, theme:"Divers"},
-    {kr:"도서관이 있어", fr:"Il y a une bibliotheque.", rom:"doseogwani isseo", ch:2, theme:"Divers"},
-    {kr:"의자가 있어", fr:"Il y a une chaise.", rom:"uijaga isseo", ch:2, theme:"Divers"},
-    {kr:"놀다 → 놀아요", fr:"s'amuser → Je m'amuse.", rom:"nolda → norayo", ch:3, theme:"Divers"},
-    {kr:"먹다 → 먹어요", fr:"manger → Je mange.", rom:"meokda → meogeoyo", ch:3, theme:"Divers"},
-    {kr:"하다 → 해요", fr:"faire → Je fais.", rom:"hada → haeyo", ch:3, theme:"Divers"},
-    {kr:"카페에 있어", fr:"Je suis au café.", rom:"kapee isseo", ch:3, theme:"Divers"},
-    {kr:"미술관에 있어", fr:"Je suis au musée !", rom:"misulgwane isseo", ch:3, theme:"Divers"},
-    {kr:"운동하다 → 운동해요", fr:"faire du sport → Je fais du sport.", rom:"undonghada → undonghaeyo", ch:3, theme:"Divers"},
-    {kr:"쇼핑하다 → 쇼핑해요", fr:"faire du shopping → Je fais du shopping.", rom:"syopinghada → syopinghaeyo", ch:3, theme:"Divers"},
-    {kr:"자다 → 자요", fr:"dormir → Je dors.", rom:"jada → jayo", ch:3, theme:"Divers"},
-    {kr:"추다 → 춰요", fr:"danser → Je danse.", rom:"chuda → chwoyo", ch:3, theme:"Divers"},
-    {kr:"보다 → 봐요", fr:"regarder → Je regarde.", rom:"boda → bwayo", ch:3, theme:"Divers"},
-    {kr:"한글", fr:"Hangeul", rom:"hangeul", ch:0, theme:"Divers"},
-    {kr:"자음", fr:"consonne", rom:"jaeum", ch:0, theme:"Divers"},
-    {kr:"모음", fr:"voyelle", rom:"moeum", ch:0, theme:"Divers"},
-    {kr:"수도", fr:"capitale", rom:"sudo", ch:0, theme:"Divers"},
-    {kr:"존댓말", fr:"langage poli / formel", rom:"jondenmal", ch:0, theme:"Divers"},
-    {kr:"반말", fr:"langage familier / informel", rom:"banmal", ch:0, theme:"Divers"}
+    {kr:"솔", fr:"pin", ch:0, theme:"Divers"},
+    {kr:"스물 하나", fr:"21", ch:0, theme:"Divers"},
+    {kr:"이십오", fr:"25", ch:0, theme:"Divers"},
+    {kr:"6시 40분 (여섯 시 사십분)", fr:"6 h 40 / 18 h 40", ch:0, theme:"Divers"},
+    {kr:"8시 15분 (여덟 시 십오분)", fr:"8 h 15 / 20 h 15", ch:0, theme:"Divers"},
+    {kr:"1월 - 일월", fr:"janvier", ch:0, theme:"Divers"},
+    {kr:"6월 - 유월", fr:"juin", ch:0, theme:"Divers"},
+    {kr:"10월 - 시월", fr:"octobre", ch:0, theme:"Divers"},
+    {kr:"학생 식당도 있어", fr:"Il y a aussi une cantine?", ch:2, theme:"Divers"},
+    {kr:"학교에 뭐가 있어", fr:"Qu'est-ce qu'il y a dans l'ecole?", ch:2, theme:"Divers"},
+    {kr:"방 -> 방에 -> 내 방에", fr:"chambre -> dans la chambre -> dans ma chambre", ch:2, theme:"Divers"},
+    {kr:"학교 -> 학교에 -> 우리 학교에", fr:"ecole -> dans l'ecole -> dans mon ecole", ch:2, theme:"Divers"},
+    {kr:"도서관이 있어", fr:"Il y a une bibliotheque.", ch:2, theme:"Divers"},
+    {kr:"의자가 있어", fr:"Il y a une chaise.", ch:2, theme:"Divers"},
+    {kr:"놀다 → 놀아요", fr:"s'amuser → Je m'amuse.", ch:3, theme:"Divers"},
+    {kr:"먹다 → 먹어요", fr:"manger → Je mange.", ch:3, theme:"Divers"},
+    {kr:"하다 → 해요", fr:"faire → Je fais.", ch:3, theme:"Divers"},
+    {kr:"카페에 있어", fr:"Je suis au cafe.", ch:3, theme:"Divers"},
+    {kr:"미술관에 있어", fr:"Je suis au musee !", ch:3, theme:"Divers"},
+    {kr:"운동하다 → 운동해요", fr:"faire du sport → Je fais du sport.", ch:3, theme:"Divers"},
+    {kr:"쇼핑하다 → 쇼핑해요", fr:"faire du shopping → Je fais du shopping.", ch:3, theme:"Divers"},
+    {kr:"자다 → 자요", fr:"dormir → Je dors.", ch:3, theme:"Divers"},
+    {kr:"추다 → 춰요", fr:"danser → Je danse.", ch:3, theme:"Divers"},
+    {kr:"보다 → 봐요", fr:"regarder → Je regarde.", ch:3, theme:"Divers"},
+    {kr:"한글", fr:"Hangeul", ch:0, theme:"Divers"},
+    {kr:"자음", fr:"consonne", ch:0, theme:"Divers"},
+    {kr:"모음", fr:"voyelle", ch:0, theme:"Divers"},
+    {kr:"수도", fr:"capitale", ch:0, theme:"Divers"},
+    {kr:"존댓말", fr:"langage poli / formel", ch:0, theme:"Divers"},
+    {kr:"반말", fr:"langage familier / informel", ch:0, theme:"Divers"}
   ],
 
   verbs: [
-    {inf:"쓰다", fr:"écrire", poli:"써요", fam:"써", passe:"썼어요", rom:"sseuda", ch:0},
-    {inf:"닫다", fr:"fermer", poli:"닫아요", fam:"닫아", passe:"닫았어요", rom:"datda", ch:0},
-    {inf:"있다", fr:"il y a / etre (quelque part)", poli:"있어요", fam:"있어", rom:"itda", ch:2},
-    {inf:"없다", fr:"ne pas exister, ne pas avoir, ne pas etre la", poli:"없어요", fam:"없어", rom:"eopda", ch:2},
+    {inf:"쓰다", fr:"ecrire", rom:"sseuda", ch:0},
+    {inf:"닫다", fr:"fermer", rom:"datda", ch:0},
+    {inf:"있다", fr:"il y a / exister / avoir", poli:"있어요", fam:"있어", rom:"itda", ch:2},
+    {inf:"없다", fr:"il n'y a pas / ne pas exister / ne pas avoir", poli:"없어요", fam:"없어", rom:"eopda", ch:2},
     {inf:"먹다", fr:"manger", poli:"먹어요", fam:"먹어", passe:"먹었어요", rom:"meokda", ch:5, irreg:false},
-    {inf:"놀다", fr:"jouer / s'amuser", poli:"놀아요", fam:"놀아", rom:"nolda", ch:3},
+    {inf:"놀다", fr:"s'amuser", poli:"놀아요", fam:"놀아", rom:"nolda", ch:3},
     {inf:"보다", fr:"voir / regarder", poli:"봐요", fam:"봐", rom:"boda", ch:3},
-    {inf:"듣다", fr:"écouter / entendre", poli:"들어요", fam:"들어", rom:"deutda", ch:3, irreg:true},
+    {inf:"듣다", fr:"ecouter", poli:"들어요", fam:"들어", rom:"deutda", ch:3, irreg:true},
     {inf:"만나다", fr:"rencontrer / voir (quelqu'un)", poli:"만나요", fam:"만나", rom:"mannada", ch:3},
     {inf:"읽다", fr:"lire", poli:"읽어요", fam:"읽어", rom:"ikda", ch:3},
     {inf:"하다", fr:"faire", poli:"해요", fam:"해", rom:"hada", ch:3},
-    {inf:"공부하다", fr:"étudier", poli:"공부해요", fam:"공부해", rom:"gongbuhada", ch:3},
+    {inf:"공부하다", fr:"etudier", poli:"공부해요", fam:"공부해", rom:"gongbuhada", ch:3},
     {inf:"운동하다", fr:"faire du sport", poli:"운동해요", fam:"운동해", passe:"운동했어요", rom:"undonghada", ch:6, irreg:false},
     {inf:"춤을 추다", fr:"danser", poli:"춤을 춰요", fam:"춤을 춰", passe:"춤을 췄어요", rom:"chum-eul chuda", ch:6, irreg:false},
     {inf:"숙제하다", fr:"faire ses devoirs", poli:"숙제해요", fam:"숙제해", rom:"sukjehada", ch:3},
@@ -1144,13 +865,13 @@ const DATA = {
     },
     {inf:"요리하다", fr:"cuisiner", poli:"요리해요", fam:"요리해", passe:"요리했어요", rom:"yorihada", ch:6, irreg:false},
     {inf:"쇼핑하다", fr:"faire du shopping", poli:"쇼핑해요", fam:"쇼핑해", passe:"쇼핑했어요", rom:"syopinghada", ch:4, irreg:false},
-    {inf:"수영하다", fr:"nager / faire de la natation", poli:"수영해요", fam:"수영해", passe:"수영했어요", rom:"suyeonghada", ch:6, irreg:false},
+    {inf:"수영하다", fr:"nager", poli:"수영해요", fam:"수영해", passe:"수영했어요", rom:"suyeonghada", ch:6, irreg:false},
     {inf:"축구하다", fr:"jouer au football", poli:"축구해요", fam:"축구해", passe:"축구했어요", rom:"chukguhada", ch:6, irreg:false},
-    {inf:"농구하다", fr:"jouer au basketball", poli:"농구해요", fam:"농구해", passe:"농구했어요", rom:"nongguhada", ch:3},
+    {inf:"농구하다", fr:"jouer au basket", poli:"농구해요", fam:"농구해", rom:"nongguhada", ch:3},
     {inf:"일어나다", fr:"se lever", poli:"일어나요", fam:"일어나", passe:"일어났어요", rom:"ireonada", ch:6, irreg:false},
     {inf:"샤워하다", fr:"se doucher", poli:"샤워해요", fam:"샤워해", rom:"syawohada", ch:3},
-    {inf:"자다", fr:"dormir", poli:"자요", fam:"자", rom:"jada", ch:3},
-    {inf:"이다", fr:"être (verbe copule)", poli:"이에요/예요", fam:"이야/야", passe:"이었어요/였어요", rom:"ida", ch:1, irreg:true},
+    {inf:"자다", fr:"se coucher / dormir", poli:"자요", fam:"자", rom:"jada", ch:3},
+    {inf:"이다", fr:"etre", poli:"이에요/예요", fam:"이야/야", passe:"이었어요/였어요", rom:"ida", ch:1, irreg:true},
     {inf:"아니다", fr:"ne pas etre", poli:"아니에요", fam:"아니야", passe:"아니었어요", rom:"anida", ch:1, irreg:false},
     {inf:"지내다", fr:"aller (bien), vivre", poli:"지내요", fam:"지내", passe:"지냈어요", rom:"jinaeda", ch:0, irreg:false},
     {inf:"드시다", fr:"manger (honorifique)", poli:"드세요", passe:"드셨어요", rom:"deusida", ch:0, irreg:true},
@@ -1159,7 +880,7 @@ const DATA = {
     {inf:"추다", fr:"danser", poli:"춰요", fam:"춰", rom:"chuda", ch:3, irreg:false},
     {
       inf:"음악을 듣다",
-      fr:"écouter de la musique",
+      fr:"ecouter de la musique",
       poli:"음악을 들어요",
       fam:"음악을 들어",
       passe:"음악을 들었어요",
@@ -1240,7 +961,7 @@ const DATA = {
       irreg:false
     },
     {inf:"오다", fr:"venir", poli:"와요", fam:"와", passe:"왔어요", rom:"oda", ch:6, irreg:false},
-    {inf:"만들다", fr:"fabriquer / faire / preparer", poli:"만들어요", fam:"만들어", passe:"만들었어요", rom:"mandeulda", ch:5, irreg:true},
+    {inf:"만들다", fr:"fabriquer, preparer (cuisine)", poli:"만들어요", fam:"만들어", passe:"만들었어요", rom:"mandeulda", ch:5, irreg:true},
     {inf:"마시다", fr:"boire", poli:"마셔요", fam:"마셔", passe:"마셨어요", rom:"masida", ch:5, irreg:false},
     {
       inf:"타다",
@@ -1264,7 +985,7 @@ const DATA = {
     },
     {inf:"찍다", fr:"prendre (photo)", poli:"찍어요", fam:"찍어", passe:"찍었어요", rom:"jjikda", ch:6, irreg:false},
     {inf:"여행하다", fr:"voyager", poli:"여행해요", fam:"여행해", passe:"여행했어요", rom:"yeohaenghada", ch:6, irreg:false},
-    {inf:"산책하다", fr:"se promener", poli:"산책해요", fam:"산책해", passe:"산책했어요", rom:"sanchaek hada", ch:6, irreg:false},
+    {inf:"산책하다", fr:"se promener", poli:"산책해요", fam:"산책해", passe:"산책했어요", rom:"sanchaekada", ch:6, irreg:false},
     {inf:"게임하다", fr:"jouer a un jeu", poli:"게임해요", fam:"게임해", passe:"게임했어요", rom:"geimhada", ch:6, irreg:false},
     {
       inf:"등산하다",
@@ -1290,7 +1011,7 @@ const DATA = {
       irreg:false
     },
     {inf:"그리다", fr:"dessiner", poli:"그려요", fam:"그려", passe:"그렸어요", rom:"geurida", ch:6, irreg:false},
-    {inf:"지나가다", fr:"passer / dépasser", poli:"지나가요", fam:"지나가", passe:"지나갔어요", rom:"jinagada", ch:4, irreg:false},
+    {inf:"지나가다", fr:"passer (devant), rater", poli:"지나가요", fam:"지나가", passe:"지나갔어요", rom:"jinagada", ch:4, irreg:false},
     {inf:"알다", fr:"savoir, connaitre", poli:"알아요", fam:"알아", passe:"알았어요", rom:"alda", ch:6, irreg:true},
     {inf:"반갑다", fr:"etre content (de rencontrer)", poli:"반가워요", fam:"반가워", passe:"반가웠어요", rom:"bangapda", ch:1, irreg:true},
     {inf:"감사하다", fr:"remercier", poli:"감사해요", fam:"감사해", passe:"감사했어요", rom:"gamsahada", ch:0, irreg:false},
@@ -1309,7 +1030,7 @@ const DATA = {
     {inf:"죄송하다", fr:"etre desole (formel)", poli:"죄송해요", fam:"죄송해", passe:"죄송했어요", rom:"joesonghada", ch:0, irreg:false},
     {inf:"들어오다", fr:"entrer", poli:"들어와요", fam:"들어와", passe:"들어왔어요", rom:"deureooda", ch:2, irreg:false},
     {inf:"넣다", fr:"mettre (dans), ajouter", poli:"넣어요", fam:"넣어", passe:"넣었어요", rom:"neota", ch:5, irreg:false},
-    {inf:"썰다", fr:"couper, emincer", poli:"썰어요", fam:"썰어", passe:"썰었어요", rom:"sseolda", ch:5, irreg:false},
+    {inf:"썰다", fr:"couper, emincer", poli:"썰어요", fam:"썰어", passe:"썰었어요", rom:"sseolda", ch:5, irreg:true},
     {inf:"볶다", fr:"faire sauter, faire revenir", poli:"볶아요", fam:"볶아", passe:"볶았어요", rom:"bokda", ch:5, irreg:false},
     {inf:"끓이다", fr:"faire bouillir", poli:"끓여요", fam:"끓여", passe:"끓였어요", rom:"kkeurida", ch:5, irreg:false},
     {inf:"굽다", fr:"griller, cuire au four", poli:"구워요", fam:"구워", passe:"구웠어요", rom:"gupda", ch:5, irreg:true},
@@ -1400,7 +1121,7 @@ const DATA = {
     },
     {
       inf:"미술관에 가다",
-      fr:"aller au musée",
+      fr:"aller au musee",
       poli:"미술관에 가요",
       fam:"미술관에 가",
       passe:"미술관에 갔어요",
@@ -1529,8 +1250,8 @@ const DATA = {
     {fr:"Professeur, qu'est-ce qu'il y a dans votre sac ?", ch:2},
     {fr:"Y a-t-il un livre ?", ch:2},
     {fr:"Qu'est-ce qu'il y a dans la chambre ?", ch:2},
-    {fr:"Comment est l'école coreenne ?", ch:2},
-    {fr:"Qu'est-ce qu'il y a a l'école ?", ch:2},
+    {fr:"Comment est l'ecole coreenne ?", ch:2},
+    {fr:"Qu'est-ce qu'il y a a l'ecole ?", ch:2},
     {fr:"Ah bon ? / Ah vraiment ?", ch:2},
     {fr:"Ou es-tu ?", ch:3},
     {fr:"Tu fais quoi ?", ch:3},
@@ -1606,11 +1327,11 @@ const DATA = {
     {fr:"Il y a un livre? / Tu as un livre?", ch:2},
     {fr:"Qu'y a-t-il dans la chambre?", ch:2},
     {fr:"Il y a un lit. Il n'y a pas de piano.", ch:2},
-    {fr:"Comment est l'école coreenne? Qu'y a-t-il a l'école?", ch:2},
-    {fr:"A l'école, il y a un gymnase", ch:2},
+    {fr:"Comment est l'ecole coreenne? Qu'y a-t-il a l'ecole?", ch:2},
+    {fr:"A l'ecole, il y a un gymnase", ch:2},
     {fr:"Ah bon? Il y a aussi une cantine?", ch:2},
     {fr:"Oui, il y a aussi une cantine", ch:2},
-    {fr:"Il y a une piscine a l'école?", ch:2},
+    {fr:"Il y a une piscine a l'ecole?", ch:2},
     {fr:"Il n'y a pas de piscine.", ch:2},
     {fr:"Dans ma valise de voyage, il y a un appareil photo...", ch:2},
     {fr:"Dans ma valise, il y a un appareil photo et des lunettes...", ch:2},
@@ -1647,7 +1368,7 @@ const DATA = {
     {fr:"C'est le bibimbap !", ch:5},
     {fr:"Le kimbap est fait de riz...", ch:5},
     {fr:"T'es ou ?", ch:5},
-    {fr:"Je suis a l'école la.", ch:5},
+    {fr:"Je suis a l'ecole la.", ch:5},
     {fr:"On va ou ?", ch:4},
     {fr:"Comment on va a Hongdae ?", ch:4},
     {fr:"Va tout droit devant.", ch:4},
@@ -1655,103 +1376,1609 @@ const DATA = {
   ],
 
   grammar: [
-    {"title":"La particule 은/는 (thème)","ch":1,"expl":"Particule de thème, mentionnée dans le sommaire du chapitre 1. Détails non visibles dans ces pages."},
-    {"title":"Être au présent à la forme affirmative","ch":1,"expl":"Le verbe être (이다) au présent affirmatif, mentionné dans le sommaire du chapitre 1."},
-    {"title":"Être au présent à la forme négative","ch":1,"expl":"Le verbe être au présent négatif (아니다), mentionné dans le sommaire du chapitre 1."},
-    {"title":"La conjonction de coordination 하고 (et)","ch":2,"expl":"하고 signifie 'et' pour relier des noms. Mentionné dans le sommaire du chapitre 2."},
-    {"title":"La particule de lieu 에 (dans) + verbe d'existence","ch":2,"expl":"Particule de lieu 에 utilisée avec les verbes d'existence (있다/없다). Mentionnée dans le sommaire du chapitre 2."},
-    {"title":"La particule de lieu 에서 + verbe d'action","ch":3,"expl":"Particule de lieu 에서 utilisée avec les verbes d'action (à la différence de 에 avec verbes d'existence). Mentionnée dans le sommaire du chapitre 3."},
-    {"title":"La particule de temps 에","ch":3,"expl":"Particule 에 utilisée pour indiquer le temps. Mentionnée dans le sommaire du chapitre 3."},
-    {"title":"La négation 안 + verbe","ch":3,"expl":"Négation courte avec 안 placé devant le verbe. Mentionnée dans le sommaire du chapitre 3."},
-    {"title":"La particule de lieu 에 + verbe de déplacement","ch":4,"expl":"Particule 에 avec verbes de déplacement (aller, venir). Mentionnée dans le sommaire du chapitre 4."},
-    {"title":"lieu + 에서... / lieu + 까지... (de... à...)","ch":4,"expl":"Structure pour exprimer 'de (lieu) à (lieu)' avec 에서 et 까지. Mentionnée dans le sommaire du chapitre 4."},
-    {"title":"La terminaison -고 싶어요 (vouloir, avoir envie de)","ch":5,"expl":"Terminaison exprimant le désir/l'envie. Mentionnée dans le sommaire du chapitre 5."},
-    {"title":"으로/로 만들어요 (être fait de)","ch":5,"expl":"Structure pour exprimer la matière/composition d'un plat. Mentionnée dans le sommaire du chapitre 5."},
-    {"title":"Les classificateurs","ch":5,"expl":"En coreen, on ne peut pas associer un nombre a un nom comme en francais. On doit utiliser les classificateurs selon le modele : NOM + nombre coreen + classificateur. Attention, les 4 premiers chiffres coreens changent de forme associes aux classificateurs !","rules":["개 = pour les objets","그릇 = pour les bols","숟가락 = pour les cuilleres","봉지 = pour les sachets","명 = pour les personnes","마리 = pour les animaux","하나 (un) -> 한 + classificateur","둘 (deux) -> 두 + classificateur","셋 (trois) -> 세 + classificateur","넷 (quatre) -> 네 + classificateur"],"ex":[{"kr":"호박 여섯 개","fr":"six courgettes (courgette + 6 + classificateur objets)","rom":""},{"kr":"학생 열 명","fr":"dix étudiants (étudiant + 10 + classificateur personnes)","rom":""},{"kr":"샌드위치 두 개","fr":"deux sandwichs (sandwich + 2 + classificateur objets)","rom":""}]},
-    {"title":"Les terminaisons du passé","ch":6,"expl":"Conjugaison des verbes au passé en coréen. Mentionnée dans le sommaire du chapitre 6."},
-    {"title":"temps + 부터... / temps + 까지... (de... à...)","ch":6,"expl":"Structure pour exprimer 'de (heure) à (heure)' avec 부터 et 까지. Mentionnée dans le sommaire du chapitre 6."},
-    {"title":"Construction des syllabes en Hangeul","ch":0,"expl":"En coréen, on n'écrit pas les lettres les unes après les autres sur une même ligne, mais on les regroupe dans une syllabe. La base d'une syllabe est toujours constituée d'une consonne suivie d'une voyelle. Consonne + voyelle horizontale : la voyelle se place à droite (ex: ㄴ + ㅏ = 나). Consonne + voyelle verticale : la voyelle se place en dessous (ex: ㄴ + ㅗ = 노). ㅇ est une consonne dite 'muette' lorsqu'elle est placée devant une voyelle.","rules":[{"context":"Voyelle verticale (ㅏ, ㅑ, ㅓ, ㅕ, ㅣ)","form":"Consonne à gauche + Voyelle à droite","example_korean":"나","example_french":"na (ㄴ + ㅏ)"},{"context":"Voyelle horizontale (ㅗ, ㅛ, ㅜ, ㅠ, ㅡ)","form":"Consonne en haut + Voyelle en dessous","example_korean":"노","example_french":"no (ㄴ + ㅗ)"}]},
-    {"title":"Consonne muette ㅇ","ch":0,"expl":"ㅇ est une consonne dite 'muette' lorsqu'elle est placee devant une voyelle. Par exemple, 아 se prononce 'a'.","rules":["ㅇ + voyelle = la voyelle seule est prononcee","ㅇ sert de support graphique pour ecrire une voyelle en position initiale"],"ex":[{"kr":"아이","fr":"enfant (ai)","rom":""},{"kr":"여우","fr":"renard (yeou)","rom":""},{"kr":"요요","fr":"yoyo (yoyo)","rom":""},{"kr":"오이","fr":"concombre (oi)","rom":""},{"kr":"우유","fr":"lait (uyu)","rom":""}]},
-    {"title":"Les consonnes finales (batchim) - Prononciation","ch":0,"expl":"Les consonnes finales ne peuvent prendre que sept valeurs phonetiques en position finale. Plusieurs consonnes se prononcent de la meme facon.","rules":["ㄱ, ㅋ, ㄲ se prononcent k en position finale","ㄴ se prononce n en position finale","ㄷ, ㅅ, ㅆ, ㅈ, ㅊ, ㅌ, ㅎ se prononcent t en position finale","ㄹ se prononce l en position finale","ㅁ se prononce m en position finale","ㅂ, ㅍ se prononcent p en position finale","ㅇ se prononce ng en position finale"],"ex":[{"kr":"책","fr":"livre","rom":""},{"kr":"부엌","fr":"cuisine","rom":""},{"kr":"밖","fr":"exterieur","rom":""},{"kr":"손","fr":"main","rom":""},{"kr":"닫다","fr":"fermer","rom":""},{"kr":"옷","fr":"vetement","rom":""},{"kr":"있다","fr":"avoir","rom":""},{"kr":"낮","fr":"jour","rom":""},{"kr":"꽃","fr":"fleur","rom":""},{"kr":"밑","fr":"en-dessous","rom":""},{"kr":"달","fr":"lune","rom":""},{"kr":"밤","fr":"chataigne","rom":""},{"kr":"밥","fr":"riz","rom":""},{"kr":"잎","fr":"feuille","rom":""},{"kr":"강","fr":"riviere, fleuve","rom":""}]},
-    {"title":"Construction des syllabes avec consonnes finales","ch":0,"expl":"La majorite des consonnes peuvent etre utilisees comme consonnes finales. La consonne finale se place en bas de la voyelle. Structure : C+V+C (consonne + voyelle + consonne finale).","rules":["Structure horizontale : consonne initiale + voyelle horizontale + consonne finale en dessous","Structure verticale : consonne initiale + voyelle verticale + consonne finale en dessous"],"ex":[{"kr":"날","fr":"jour","rom":""},{"kr":"솔","fr":"pin","rom":""},{"kr":"약","fr":"medicament","rom":""},{"kr":"산","fr":"montagne","rom":""},{"kr":"옷","fr":"vetement","rom":""},{"kr":"달","fr":"lune","rom":""},{"kr":"김","fr":"algue","rom":""},{"kr":"밥","fr":"riz","rom":""},{"kr":"공","fr":"ballon","rom":""}]},
-    {"title":"Registres de langue en coreen","ch":0,"expl":"En coreen, il existe plusieurs registres de langue (familier, soutenu, formel, informel, etc.). Il faut bien choisir le registre selon l'interlocuteur et la situation.","rules":["Quand tu parles a quelqu'un de plus age que toi : utiliser le registre poli","Quand tu parles a quelqu'un de ton age : utiliser le registre informel"]},
-    {"title":"Formation des nombres coréens de 11 à 99","ch":0,"expl":"Former les nombres coréens de 11 à 99 est très simple puisqu'il suffit d'accoler le mot des dizaines avec celui des unités.","rules":["dizaine + unité = nombre composé","Exemple : 21 = 스물 (20) + 하나 (1) = 스물 하나"],"ex":[{"kr":"스물 하나","fr":"21","rom":"seumul hana"}]},
-    {"title":"Formation des nombres sino-coréens","ch":0,"expl":"Les multiples de 10 se forment à partir de 십. Pour former les nombres de 1 à 99, il suffit d'accoler le mot correspondant aux dizaines avec celui correspondant aux unités.","rules":["chiffre + 십 = dizaine (ex: 이 × 십 = 이십 = 20)","dizaine + unité = nombre composé","Exemple : 25 = (2 × 10) + 5 → 이십오"],"ex":[{"kr":"이십오","fr":"25","rom":"isibo"}]},
-    {"title":"Dire l'heure en coréen","ch":0,"expl":"HEURE = nombres coréens + 시. MINUTE = nombres sino-coréens + 분. En coréen, on ne compte généralement pas au-delà de 12 quand on donne l'heure.","rules":["Heure : nombre coréen + 시","Minute : nombre sino-coréen + 분","Les 4 premiers chiffres coréens changent de forme associés aux heures : 하나→한, 둘→두, 셋→세, 넷→네"],"ex":[{"kr":"6시 40분 (여섯 시 사십분)","fr":"6 h 40 / 18 h 40","rom":"yeoseot si sasipbun"},{"kr":"8시 15분 (여덟 시 십오분)","fr":"8 h 15 / 20 h 15","rom":"yeodeol si sibobun"}]},
-    {"title":"Nombres sino-coreens + 월 pour les mois","ch":0,"expl":"Pour les mois, on utilise les nombres sino-coreens + 월 (mois). Attention aux prononciations irregulieres de juin (유월, pas 육월) et octobre (시월, pas 십월).","rules":["nombre sino-coreen + 월 = mois de l'annee","6월 se prononce 유월 (yuwol) et non 육월","10월 se prononce 시월 (siwol) et non 십월"],"ex":[{"kr":"1월 - 일월","fr":"janvier","rom":""},{"kr":"6월 - 유월","fr":"juin","rom":""},{"kr":"10월 - 시월","fr":"octobre","rom":""}]},
-    {"title":"이름이 뭐야? - Demander le prenom (forme familiere)","ch":1,"expl":"이름이 뭐야? signifie 'Comment tu t'appelles ?' Litteralement : 'Quel est ton prenom ?' 이름 = prenom, 이 = particule sujet, 뭐 = quoi/quel, 야 = etre (forme familiere).","rules":["이름 = prenom","이 = particule sujet (apres consonne)","뭐 = quoi / qu' / quel(le)(s)","야 = etre (forme familiere, apres voyelle)"],"ex":[{"kr":"이름이 뭐야?","fr":"Comment tu t'appelles ?","rom":""}]},
-    {"title":"La particule 은/는 (particule de theme/sujet)","ch":1,"expl":"La particule 은/는 est la particule de theme (ou sujet). Elle se place apres le sujet de la phrase. On utilise 는 apres une voyelle et 은 apres une consonne.","rules":["voyelle + 는","consonne + 은"],"ex":[{"kr":"나는 알리스야.","fr":"Je suis Alice.","rom":""},{"kr":"나영은 한국 사람이야.","fr":"Nayoung est coreenne.","rom":""}]},
-    {"title":"Le verbe etre 이다 - Forme polie (예요/이에요)","ch":1,"expl":"Pour se presenter ou presenter quelqu'un en forme polie, on utilise 예요 apres une voyelle et 이에요 apres une consonne. C'est la forme polie du verbe etre 이다.","rules":["voyelle + 예요 (ex: 알리스 → 알리스예요, 엄마 → 엄마예요)","consonne + 이에요 (ex: 나영 → 나영이에요, 동생 → 동생이에요)"],"ex":[{"kr":"알리스예요.","fr":"Je suis Alice.","rom":""},{"kr":"나영이에요.","fr":"Je suis Nayoung.","rom":""},{"kr":"엄마예요.","fr":"C'est ma maman.","rom":""},{"kr":"동생이에요.","fr":"C'est mon petit frere. / C'est ma petite soeur.","rom":""}]},
-    {"title":"이다 - etre (forme affirmative)","ch":1,"expl":"On utilise le verbe 'etre' (이다) apres un nom afin d'identifier un objet ou de presenter une personne. La conjugaison de 이다 change selon le registre (familier ou poli) et selon que le nom se termine par une voyelle ou une consonne. La phrase affirmative et la phrase interrogative se construisent de la meme maniere : il faut preter attention a l'intonation (montante pour les questions).","rules":["Langage familier : si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi","Langage poli : si tu parles aux personnes plus agees que toi","Voyelle + 야 (familier) : 알리스야 = C'est Alice","Consonne + 이야 (familier) : 나영이야 = C'est Nayoung","Voyelle + 예요 (poli) : 알리스예요 = C'est Alice","Consonne + 이에요 (poli) : 나영이에요 = C'est Nayoung"],"ex":[{"kr":"알리스야?","fr":"C'est Alice? (familier)","rom":""},{"kr":"알리스야.","fr":"C'est Alice. (familier)","rom":""},{"kr":"알리스예요?","fr":"Est-ce Alice? (poli)","rom":""},{"kr":"알리스예요.","fr":"C'est Alice. (poli)","rom":""},{"kr":"나영이야?","fr":"C'est Nayoung? (familier)","rom":""},{"kr":"나영이야.","fr":"C'est Nayoung. (familier)","rom":""},{"kr":"나영이에요?","fr":"Est-ce Nayoung? (poli)","rom":""},{"kr":"나영이에요.","fr":"C'est Nayoung. (poli)","rom":""}]},
-    {"title":"아니다 - ne pas etre (forme negative)","ch":1,"expl":"Voici comment former des phrases avec le verbe 'etre' a la forme negative. La particule 가 ou 이 s'ajoute au nom avant 아니야/아니에요 selon que le nom se termine par une voyelle ou une consonne.","rules":["Voyelle + 가 아니야 (familier) : 엄마가 아니야 = Ce n'est pas ma maman","Consonne + 이 아니야 (familier) : 선생님이 아니야 = Il/Elle n'est pas professeur(e)","Voyelle + 가 아니에요 (poli) : 엄마가 아니에요 = Ce n'est pas ma maman","Consonne + 이 아니에요 (poli) : 선생님이 아니에요 = Il/Elle n'est pas professeur(e)"],"ex":[{"kr":"엄마가 아니야.","fr":"Ce n'est pas ma maman. (familier)","rom":""},{"kr":"엄마가 아니에요.","fr":"Ce n'est pas ma maman. (poli)","rom":""},{"kr":"선생님이 아니야.","fr":"Il/Elle n'est pas professeur(e). (familier)","rom":""},{"kr":"선생님이 아니에요.","fr":"Il/Elle n'est pas professeur(e). (poli)","rom":""}]},
-    {"title":"Forme affirmative/negative avec 야/이야 et 가 아니야/이 아니야 (recapitulatif exercice)","ch":1,"expl":"Encadre 'Fais bien la difference!' - Resume des formes affirmative et negative au registre familier.","rules":["Forme affirmative : voyelle + 야 (ex: 언니야)","Forme affirmative : consonne + 이야 (ex: 남동생이야)","Forme negative : voyelle + 가 아니야 (ex: 언니가 아니야)","Forme negative : consonne + 이 아니야 (ex: 남동생이 아니야)"],"ex":[{"kr":"언니야.","fr":"C'est ma grande soeur.","rom":""},{"kr":"남동생이야.","fr":"C'est mon petit frere.","rom":""},{"kr":"언니가 아니야.","fr":"Ce n'est pas ma grande soeur.","rom":""},{"kr":"남동생이 아니야.","fr":"Ce n'est pas mon petit frere.","rom":""}]},
-    {"title":"Formation de la nationalite : pays + 사람 / pays + 친구","ch":1,"expl":"Pour exprimer la nationalite, on ajoute 사람 (personne) apres le nom du pays. Pour dire 'un(e) ami(e) de tel pays', on ajoute 친구 (ami) apres le nom du pays.","rules":["pays + 사람 = personne de ce pays (nationalite)","pays + 친구 = ami(e) de ce pays"],"ex":[{"kr":"프랑스 사람","fr":"francais(e)","rom":""},{"kr":"프랑스 친구","fr":"un(e) ami(e) francais(e)","rom":""},{"kr":"한국 사람","fr":"coreen(ne)","rom":""},{"kr":"한국 친구","fr":"un(e) ami(e) coreen(ne)","rom":""}]},
-    {"title":"Conjonction 하고 (et / avec)","ch":2,"expl":"하고 est une particule de liaison placee apres un nom pour relier deux elements (sens de 'et' ou 'avec').","rules":["Nom1 + 하고 + Nom2 : relie deux noms","Se place directement apres le premier nom, sans espace"],"ex":[{"kr":"가방에 책하고 공책이 있어.","fr":"Dans le sac, il y a un livre et un cahier.","rom":""},{"kr":"책하고 연필하고 휴대폰이 있어.","fr":"Il y a un livre, un stylo et un telephone.","rom":""},{"kr":"방에 책상하고 의자가 있어.","fr":"Dans la chambre, il y a un bureau et une chaise.","rom":""}]},
-    {"title":"Particule de lieu 에 (dans, a)","ch":2,"expl":"La particule 에 est placee apres un nom de lieu pour indiquer l'endroit ou quelque chose se trouve. Elle s'utilise avec les verbes d'existence 있다/없다.","rules":["lieu + 에 + objet + 이/가 + 있어/없어","가방에 = dans le sac","방에 = dans la chambre","학교에 = a l'école"],"ex":[{"kr":"가방에 책하고 공책이 있어.","fr":"Dans le sac, il y a un livre et un cahier.","rom":""},{"kr":"방에 책상하고 의자가 있어.","fr":"Dans la chambre, il y a un bureau et une chaise.","rom":""},{"kr":"방에 기타가 없어.","fr":"Dans la chambre, il n'y a pas de guitare.","rom":""},{"kr":"학교에 체육관이 있어.","fr":"A l'école, il y a un gymnase.","rom":""}]},
-    {"title":"Forme polie avec 요","ch":2,"expl":"Pour passer du registre informel au registre poli, il suffit d'ajouter 요 a la fin de la phrase. C'est la forme a utiliser avec les personnes plus agees, les professeurs, les inconnus.","rules":["있어 -> 있어요 (il y a, forme polie)","없어 -> 없어요 (il n'y a pas, forme polie)"],"ex":[{"kr":"선생님, 가방에 뭐가 있어요?","fr":"Professeur, qu'est-ce qu'il y a dans votre sac ?","rom":""},{"kr":"책이 있어요?","fr":"Y a-t-il un livre ?","rom":""}]},
-    {"title":"도 - particule 'aussi'","ch":2,"expl":"La particule 도 s'ajoute apres un nom pour exprimer 'aussi'. Elle remplace les particules 이/가 ou 은/는. Structure: ...도 있어 = il y a aussi...","rules":["Nom + 도 있어 = il y a aussi [nom]","도 remplace la particule sujet (이/가) ou thematique (은/는)"],"ex":[{"kr":"우리 학교에 수영장도 있어.","fr":"Il y a aussi une piscine dans mon école.","rom":""},{"kr":"학생 식당도 있어?","fr":"Il y a aussi une cantine?","rom":""},{"kr":"응, 학생 식당도 있어","fr":"Oui, il y a aussi une cantine","rom":""},{"kr":"우리 학교에 학생 식당도 있어.","fr":"Dans notre école, il y a aussi une cantine.","rom":""}]},
-    {"title":"하고 - et (conjonction entre noms)","ch":2,"expl":"La particule 하고 s'utilise entre deux noms pour les relier, comme 'et' en francais. Structure: nom 하고 nom.","rules":["nom + 하고 + nom : relie deux noms ensemble","S'utilise independamment de la derniere lettre du nom (voyelle ou consonne)"],"ex":[{"kr":"책하고 공책이 있어.","fr":"Il y a un livre et un cahier.","rom":""},{"kr":"방에 책상하고 의자가 있어.","fr":"Dans la chambre, il y a un bureau et une chaise.","rom":""}]},
-    {"title":"lieu + 에 - dans (particule de lieu avec verbes d'existence)","ch":2,"expl":"Avec les verbes d'existence (있어/없어), on met 에 apres le lieu pour indiquer l'endroit. Le lieu se place en debut de phrase.","rules":["lieu + 에 + ... 있어/없어 : dans [lieu], il y a / il n'y a pas...","에 se place directement apres le nom de lieu"],"ex":[{"kr":"방에 책상하고 의자가 있어.","fr":"Dans la chambre, il y a un bureau et une chaise.","rom":""},{"kr":"학교에 뭐가 있어?","fr":"Qu'est-ce qu'il y a dans l'école?","rom":""},{"kr":"우리 학교에 도서관이 있어.","fr":"Dans notre école, il y a une bibliotheque.","rom":""},{"kr":"학교에 수영장이 있어?","fr":"Il y a une piscine a l'école?","rom":""}]},
-    {"title":"내 ou 우리 - possessifs 'mon/ma' vs 'notre'","ch":2,"expl":"Pour dire 'mon/ma/mes', on utilise 내 ou 우리 selon le type de possession. 내 s'utilise pour quelque chose qui n'appartient qu'a toi. 우리 s'utilise pour quelque chose qui n'appartient pas qu'a toi (ton lycee, ta ville...). D'ailleurs, 우리 veut dire aussi 'notre'.","rules":["내 : si tu parles de quelque chose qui n'appartient qu'a toi (ex: 내 방 = ma chambre, 내 가방 = mon sac)","우리 : si c'est quelque chose qui n'appartient pas qu'a toi, comme ton lycee, ta ville... (ex: 우리 학교 = mon/notre école, 우리 가족 = ma/notre famille)","우리 veut dire aussi 'notre'"],"ex":[{"kr":"내 가방","fr":"mon sac","rom":""},{"kr":"내 방","fr":"ma chambre","rom":""},{"kr":"우리 학교","fr":"mon/notre école","rom":""},{"kr":"우리 가족","fr":"ma/notre famille","rom":""},{"kr":"방 -> 방에 -> 내 방에","fr":"chambre -> dans la chambre -> dans ma chambre","rom":""},{"kr":"학교 -> 학교에 -> 우리 학교에","fr":"école -> dans l'école -> dans mon école","rom":""}]},
-    {"title":"Particule sujet 이/가 (recapitulatif avec 있어/없어)","ch":2,"expl":"La particule sujet 이 ou 가 s'attache au nom qui precede 있어 ou 없어. Le choix depend de la derniere lettre du nom.","rules":["Nom terminant par une voyelle + 가 : 열쇠가, 의자가","Nom terminant par une consonne + 이 : 책이, 연필이, 도서관이, 수영장이"],"ex":[{"kr":"열쇠가 있어.","fr":"Il y a des cles.","rom":""},{"kr":"책이 있어.","fr":"Il y a un livre.","rom":""},{"kr":"도서관이 있어.","fr":"Il y a une bibliotheque.","rom":""},{"kr":"의자가 있어.","fr":"Il y a une chaise.","rom":""},{"kr":"매점이 있어.","fr":"Il y a une superette.","rom":""},{"kr":"수영장이 없어.","fr":"Il n'y a pas de piscine.","rom":""}]},
-    {"title":"La particule 에서 + verbe d'action vs 에 + verbe d'existence","ch":3,"expl":"Il faut distinguer deux particules de lieu : 에서 s'utilise avec un verbe d'action (pour indiquer le lieu ou se deroule l'action), tandis que 에 s'utilise avec un verbe d'existence (있다/없다) pour indiquer le lieu ou l'on se trouve.","rules":["lieu + 에서 + verbe d'action (ex: 학교에서 공부해요 = j'étudie à l'école)","lieu + 에 + verbe d'existence (ex: 학교에 있어요 = je suis a l'école)"],"ex":[{"kr":"학교에서 공부해요.","fr":"J'étudie à l'école.","rom":""},{"kr":"학교에 있어요.","fr":"Je suis a l'école.","rom":""},{"kr":"공원에서 운동해.","fr":"Je fais du sport au parc.","rom":""},{"kr":"공원에 있어.","fr":"Je suis au parc.","rom":""},{"kr":"식당에서 저녁을 먹어.","fr":"Je dine au restaurant.","rom":""},{"kr":"카페에 있어.","fr":"Je suis au café.","rom":""},{"kr":"미술관에 있어!","fr":"Je suis au musée !","rom":""}]},
-    {"title":"La negation 안 + verbe","ch":3,"expl":"Pour former la negation en coreen, on place 안 devant le verbe. C'est l'equivalent de 'ne... pas' en francais.","rules":["안 + verbe = ne pas + verbe"],"ex":[{"kr":"책을 안 읽어요.","fr":"Je ne lis pas de livres.","rom":""},{"kr":"친구를 안 만나.","fr":"Je ne vois pas mes ami(e)s.","rom":""}]},
-    {"title":"이다 - Le verbe etre (copule)","ch":1,"expl":"On utilise le verbe etre apres un nom afin d'identifier un objet ou de presenter une personne. La conjugaison varie selon le registre (familier/poli) et selon si le nom se termine par une voyelle ou une consonne.","rules":["Apres voyelle + 야 (familier) : 알리스야","Apres consonne + 이야 (familier) : 나영이야","Apres voyelle + 예요 (poli) : 알리스예요","Apres consonne + 이에요 (poli) : 나영이에요","La phrase affirmative et interrogative ont la meme forme : on distingue par l'intonation (montante = question)"],"ex":[{"kr":"알리스야.","fr":"C'est Alice.","rom":""},{"kr":"알리스야?","fr":"C'est Alice ?","rom":""},{"kr":"나영이야.","fr":"C'est Nayoung.","rom":""},{"kr":"알리스예요.","fr":"C'est Alice. (poli)","rom":""},{"kr":"나영이에요.","fr":"C'est Nayoung. (poli)","rom":""}]},
-    {"title":"아니다 - Le verbe ne pas etre (negation de la copule)","ch":1,"expl":"Forme negative de 이다. On place la particule sujet 가/이 entre le nom et 아니야/아니에요.","rules":["Apres voyelle + 가 아니야 (familier) : 엄마가 아니야","Apres consonne + 이 아니야 (familier) : 선생님이 아니야","Apres voyelle + 가 아니에요 (poli) : 엄마가 아니에요","Apres consonne + 이 아니에요 (poli) : 선생님이 아니에요"],"ex":[{"kr":"엄마가 아니야.","fr":"Ce n'est pas ma maman. (familier)","rom":""},{"kr":"엄마가 아니에요.","fr":"Ce n'est pas ma maman. (poli)","rom":""},{"kr":"선생님이 아니야.","fr":"Il/Elle n'est pas professeur(e). (familier)","rom":""},{"kr":"선생님이 아니에요.","fr":"Il/Elle n'est pas professeur(e). (poli)","rom":""}]},
-    {"title":"Se presenter : 나는 + nom + 이야/야","ch":1,"expl":"Pour se presenter en langage familier, on utilise 나는 (je + particule de theme) suivi du prenom et de la copule 이다.","rules":["나는 + prenom finissant par voyelle + 야 : 나는 알리스야.","나는 + prenom finissant par consonne + 이야 : 나는 나영이야.","En poli, 저는 remplace 나는 et 이에요/예요 remplace 이야/야."],"ex":[{"kr":"나는 알리스야.","fr":"Je m'appelle Alice. (familier)","rom":""},{"kr":"나는 나영이야.","fr":"Je m'appelle Nayoung. (familier)","rom":""},{"kr":"저는 알리스예요.","fr":"Je suis Alice. (poli)","rom":""},{"kr":"저는 프랑스 사람이에요.","fr":"Je suis francais(e). (poli)","rom":""}]},
-    {"title":"이름이 뭐야? - Demander le prenom","ch":1,"expl":"이름 = prenom, 이 = particule sujet (apres consonne), 뭐 = quoi, 야 = copule familier. Litteralement : Le prenom est quoi ?","rules":["이름이 뭐야? (familier) = Comment tu t'appelles ?","뭐 = quoi / qu' / quel(le)(s)"],"ex":[{"kr":"이름이 뭐야?","fr":"Comment tu t'appelles ?","rom":""},{"kr":"나는 알리스야.","fr":"Je m'appelle Alice.","rom":""}]},
-    {"title":"Suffixe d'appellation 아/야","ch":1,"expl":"Lorsqu'on interpelle une personne proche et moins agee, on ajoute un suffixe a son prenom.","rules":["아 si le prenom se termine par une consonne : 나영아","야 s'il se termine par une voyelle : 지우야","Pour les personnes plus agees, on utilise 님 a la fin (ex: 선생님)"],"ex":[{"kr":"나영아!","fr":"Nayoung ! (appel)","rom":""},{"kr":"지우야!","fr":"Jiu ! (appel)","rom":""},{"kr":"선생님!","fr":"Professeur ! (respectueux)","rom":""}]},
-    {"title":"Les consonnes finales (받침) et leur prononciation","ch":0,"expl":"Les consonnes finales (받침) ne peuvent prendre que 7 valeurs phonetiques en position finale : k, n, t, l, m, p, ng.","rules":["ㄱ, ㅋ, ㄲ → k (ex: 책, 부엌, 밖)","ㄴ → n (ex: 손)","ㄷ, ㅅ, ㅆ, ㅈ, ㅊ, ㅌ, ㅎ → t (ex: 닫다, 옷, 있다, 낮, 꽃, 밑, 히읗)","ㄹ → l (ex: 달)","ㅁ → m (ex: 밤)","ㅂ, ㅍ → p (ex: 밥, 잎)","ㅇ → ng (ex: 강)"],"ex":[{"kr":"책","fr":"livre (prononce tchaek → k final)","rom":""},{"kr":"손","fr":"main (prononce son → n final)","rom":""},{"kr":"옷","fr":"vetement (prononce ot → t final)","rom":""},{"kr":"달","fr":"lune (prononce dal → l final)","rom":""},{"kr":"밥","fr":"riz (prononce bap → p final)","rom":""},{"kr":"강","fr":"riviere (prononce gang → ng final)","rom":""}]},
-    {"title":"Il y a / Il n'y a pas: 이/가 있어(요) / 이/가 없어(요)","ch":2,"expl":"Pour exprimer l'existence (il y a) ou l'absence (il n'y a pas). 있어/없어 servent aussi a dire: 1) Il y a / Il n'y a pas, 2) J'ai / Je n'ai pas, 3) C'est la / Ce n'est pas la. Pour le style poli, ajouter 요 a la fin.","rules":["voyelle + 가 있어(요) = il y a (apres voyelle)","consonne + 이 있어(요) = il y a (apres consonne)","voyelle + 가 없어(요) = il n'y a pas (apres voyelle)","consonne + 이 없어(요) = il n'y a pas (apres consonne)"],"ex":[{"kr":"열쇠가 있어.","fr":"Il y a des cles.","rom":""},{"kr":"책이 있어.","fr":"Il y a un livre.","rom":""},{"kr":"열쇠가 없어.","fr":"Il n'y a pas de cles.","rom":""},{"kr":"책이 없어.","fr":"Il n'y a pas de livre.","rom":""},{"kr":"연필이 있어.","fr":"Il y a un stylo. / J'ai un stylo. / Le stylo est la.","rom":""},{"kr":"연필이 없어.","fr":"Il n'y a pas de stylo. / Je n'ai pas de stylo. / Le stylo n'est pas la.","rom":""}]},
-    {"title":"내 ou 우리: mon/ma/notre","ch":2,"expl":"Pour dire mon/ma/mes: utiliser 내 pour ce qui n'appartient qu'a toi, et 우리 pour ce qui est partage (ecole, ville, famille). 우리 signifie aussi 'notre'.","rules":["내 + nom = mon/ma (possession personnelle: 내 가방, 내 방)","우리 + nom = mon/notre (possession partagee: 우리 학교, 우리 가족)"],"ex":[{"kr":"내 가방","fr":"mon sac","rom":""},{"kr":"내 방","fr":"ma chambre","rom":""},{"kr":"우리 학교","fr":"mon/notre école","rom":""},{"kr":"우리 가족","fr":"ma/notre famille","rom":""}]},
-    {"title":"Lieu + 에: dans (avec verbes d'existence)","ch":2,"expl":"Avec les verbes d'existence (있다/없다), on met 에 apres le lieu.","rules":["lieu + 에 + 있어(요)/없어(요)"],"ex":[{"kr":"방에 책상하고 의자가 있어.","fr":"Dans la chambre, il y a un bureau et une chaise.","rom":""},{"kr":"우리 학교에 도서관이 있어.","fr":"Dans notre école, il y a une bibliotheque.","rom":""}]},
-    {"title":"Les verbes en 하다: conjugaison au present","ch":3,"expl":"Les verbes composes de nom + 하다 se conjuguent au present en remplacant 하다 par 해요 (poli) ou 해 (informel).","rules":["Infinitif: nom + 하다","Present poli: nom + 해요","Present informel: nom + 해"],"ex":[{"kr":"운동하다 → 운동해요.","fr":"faire du sport → Je fais du sport.","rom":""},{"kr":"오늘 운동해요.","fr":"Aujourd'hui, je fais du sport.","rom":""},{"kr":"금요일에 수영해.","fr":"Je nage le vendredi.","rom":""}]},
-    {"title":"Jour + particule de temps 에","ch":3,"expl":"On ajoute 에 apres un jour ou un moment pour indiquer 'le lundi', 'le matin', etc.","rules":["jour/moment + 에 = le jour/au moment","Exception: 오늘 et 지금 ne prennent PAS 에"],"ex":[{"kr":"월요일에 운동해.","fr":"Le lundi, je fais du sport.","rom":""},{"kr":"월요일에 축구해요.","fr":"Je joue au football le lundi.","rom":""},{"kr":"아침에 샤워해요.","fr":"Je me douche le matin.","rom":""}]},
-    {"title":"Les terminaisons du present: -아요/-어요","ch":3,"expl":"Pour conjuguer les verbes au present: 1. Supprimer -다 de l'infinitif. 2. Ajouter la terminaison selon la derniere voyelle du radical. En coreen, il n'y a pas de conjugaison par personne: meme forme pour tous les sujets.","rules":["Radical avec voyelle ㅏ ou ㅗ → radical + -아요 (poli) / -아 (informel)","Radical avec autre voyelle → radical + -어요 (poli) / -어 (informel)","Verbes en 하다 → 해요 (poli) / 해 (informel)","Contraction ㅏ+ㅏ = ㅏ: 자다 → 자아요 → 자요","Contraction ㅜ+ㅓ = ㅝ: 추다 → 추어요 → 춰요","Contraction ㅗ+ㅏ = ㅘ: 보다 → 보아요 → 봐요"],"ex":[{"kr":"놀다 → 놀아요.","fr":"s'amuser → Je m'amuse.","rom":""},{"kr":"먹다 → 먹어요.","fr":"manger → Je mange.","rom":""},{"kr":"쇼핑하다 → 쇼핑해요.","fr":"faire du shopping → Je fais du shopping.","rom":""},{"kr":"자다 → 자요.","fr":"dormir → Je dors.","rom":""},{"kr":"추다 → 춰요.","fr":"danser → Je danse.","rom":""},{"kr":"보다 → 봐요.","fr":"regarder → Je regarde.","rom":""}]},
-    {"title":"La particule COD: 을/를","ch":3,"expl":"La particule du complement d'objet direct (COD) se place apres le nom objet.","rules":["Apres consonne: 을","Apres voyelle: 를","Beaucoup de Coreens ne l'emploient pas a l'oral"],"ex":[{"kr":"수업을 들어.","fr":"Je suis les cours.","rom":""},{"kr":"영화를 봐.","fr":"Je regarde un film.","rom":""},{"kr":"아침을 먹어.","fr":"Je prends mon petit-dejeuner.","rom":""},{"kr":"드라마를 봐.","fr":"Je regarde une serie.","rom":""},{"kr":"친구를 만나.","fr":"Je vois mes ami(e)s.","rom":""},{"kr":"책을 읽어.","fr":"Je lis un livre.","rom":""}]},
-    {"title":"Lieu + 에서 + verbe d'action vs Lieu + 에 + verbe d'existence","ch":3,"expl":"Distinction fondamentale: 에서 apres un lieu avec un verbe d'action, 에 apres un lieu avec un verbe d'existence.","rules":["lieu + 에서 + verbe d'action","lieu + 에 + verbe d'existence (있다/없다)"],"ex":[{"kr":"학교에서 공부해요.","fr":"J'étudie à l'école.","rom":""},{"kr":"학교에 있어요.","fr":"Je suis a l'école.","rom":""},{"kr":"식당에서 저녁을 먹어.","fr":"Je dine au restaurant.","rom":""},{"kr":"공원에 있어.","fr":"Je suis au parc.","rom":""}]},
-    {"title":"La negation: 안 + verbe","ch":3,"expl":"Pour la negation, placer 안 devant le verbe. Pour les verbes en nom+하다, placer 안 entre le nom et 하다.","rules":["안 + verbe conjugue","Pour nom+하다: nom + 안 + 하다/해요/해"],"ex":[{"kr":"책을 안 읽어요.","fr":"Je ne lis pas de livres.","rom":""},{"kr":"점심을 안 먹어요.","fr":"Je ne dejeune pas.","rom":""},{"kr":"쇼핑 안 해요.","fr":"Je ne fais pas de shopping.","rom":""},{"kr":"친구를 안 만나.","fr":"Je ne vois pas mes ami(e)s.","rom":""}]},
-    {"title":"La possession: possesseur + 거","ch":4,"expl":"Pour indiquer a qui appartient quelque chose, on utilise possesseur + 거 (chose/truc de...).","rules":["possesseur + 거 = la chose de...","누구 거 = a qui?","내 거 = a moi / le mien","nom + 거 = a [nom]"],"ex":[{"kr":"누구 거?","fr":"C'est a qui?","rom":""},{"kr":"내 거.","fr":"C'est a moi.","rom":""},{"kr":"엄마 거.","fr":"C'est a maman.","rom":""},{"kr":"이 책은 언니 거야.","fr":"Ce livre est a ma grande soeur.","rom":""},{"kr":"그 컴퓨터 누구 거야?","fr":"A qui est cet ordinateur(-la)?","rom":""},{"kr":"우리 언니 거야.","fr":"C'est a ma soeur.","rom":""}]},
-    {"title":"Les demonstratifs: 이/그/저 + 거/기/nom","ch":4,"expl":"Systeme a 3 niveaux base sur la distance par rapport au locuteur et l'interlocuteur. Pas de masculin/feminin ni singulier/pluriel en coreen.","rules":["이 (proche du locuteur): 이거 (celui-ci), 여기 (ici), 이+nom (ce...ci)","그 (loin du locuteur, proche de l'interlocuteur): 그거 (celui-la), 거기 (la), 그+nom (ce...la)","저 (loin des deux): 저거 (celui la-bas), 저기 (la-bas), 저+nom (ce...la-bas)"],"ex":[{"kr":"이 가방","fr":"ce sac(-ci)","rom":""},{"kr":"그 가방","fr":"ce sac(-la)","rom":""},{"kr":"저 가방","fr":"ce sac (la-bas)","rom":""},{"kr":"여기가 주방이야.","fr":"Ici, c'est la cuisine.","rom":""},{"kr":"이 사람","fr":"cette personne(-ci)","rom":""},{"kr":"그 사람","fr":"cette personne(-la)","rom":""},{"kr":"저 사람","fr":"cette personne (la-bas)","rom":""}]},
-    {"title":"La position: lieu + 앞/뒤/옆/위/아래 + 에","ch":4,"expl":"Pour indiquer la position d'un objet ou lieu par rapport a un autre.","rules":["lieu + 앞에 = devant","lieu + 뒤에 = derriere","lieu + 옆에 = a cote de","lieu + 왼쪽에 = a gauche de","lieu + 오른쪽에 = a droite de"],"ex":[{"kr":"저는 서점 앞에 있어요.","fr":"Je suis devant la librairie.","rom":""},{"kr":"편의점은 빵집 앞에 있어.","fr":"La superette est devant la boulangerie.","rom":""},{"kr":"집 오른쪽에 있어.","fr":"C'est a droite de la maison.","rom":""}]},
-    {"title":"La direction: (으)로 가","ch":4,"expl":"Pour indiquer la direction, on utilise (으)로 avec un verbe de deplacement.","rules":["Apres voyelle: 로","Apres consonne: 으로","Apres consonne ㄹ: 로 (exception)"],"ex":[{"kr":"오른쪽으로 가.","fr":"Je vais a droite.","rom":""},{"kr":"뒤로 가.","fr":"Je vais derriere.","rom":""},{"kr":"왼쪽으로 가.","fr":"On va a gauche.","rom":""}]},
-    {"title":"Lieu + 에 + verbe de deplacement (가다)","ch":4,"expl":"Avec les verbes de deplacement comme 가다 (aller), on utilise 에 apres le lieu de destination.","rules":["lieu + 에 + verbe de deplacement (가다, etc.)"],"ex":[{"kr":"도서관에 가.","fr":"Je vais a la bibliotheque.","rom":""},{"kr":"빵집에 어떻게 가?","fr":"Comment on va a la boulangerie?","rom":""}]},
-    {"title":"Les moyens de transport: transport + (으)로 가다","ch":4,"expl":"Pour dire comment on se deplace, on utilise le moyen de transport + (으)로 + 가다.","rules":["transport finissant par voyelle + 로 가","transport finissant par consonne + 으로 가","transport finissant par ㄹ + 로 가"],"ex":[{"kr":"버스로 가.","fr":"J'y vais en bus.","rom":""},{"kr":"트램으로 가.","fr":"J'y vais en tram.","rom":""},{"kr":"지하철로 가.","fr":"J'y vais en metro.","rom":""},{"kr":"자전거로 가.","fr":"On y va a velo.","rom":""},{"kr":"강남에서 경복궁까지 지하철로 가.","fr":"De Gangnam a Gyeongbokgung, on y va en metro.","rom":""}]},
-    {"title":"De... a... (lieux): 에서...까지","ch":4,"expl":"Pour exprimer un trajet d'un lieu a un autre.","rules":["lieu depart + 에서 + lieu arrivee + 까지"],"ex":[{"kr":"서울에서 파리까지","fr":"de Seoul a Paris","rom":""},{"kr":"강남에서 경복궁까지 어떻게 가?","fr":"Comment va-t-on de Gangnam a Gyeongbokgung?","rom":""}]},
-    {"title":"이다 - verbe etre (langage familier)","ch":1,"expl":"On utilise le verbe etre (이다) apres un nom afin d'identifier un objet ou de presenter une personne. Langage familier : si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi, tu utiliseras le langage familier.","rules":["Forme affirmative : voyelle + 야 (ex: 언니야)","Forme affirmative : consonne + 이야 (ex: 남동생이야)","Forme negative : voyelle + 가 아니야 (ex: 언니가 아니야)","Forme negative : consonne + 이 아니야 (ex: 남동생이 아니야)"],"ex":[{"kr":"언니야.","fr":"C'est ma grande soeur.","rom":""},{"kr":"남동생이야.","fr":"C'est mon petit frere.","rom":""},{"kr":"언니가 아니야.","fr":"Ce n'est pas ma grande soeur.","rom":""},{"kr":"남동생이 아니야.","fr":"Ce n'est pas mon petit frere.","rom":""}]},
-    {"title":"이다 - verbe etre (conjugaison familier + poli)","ch":1,"expl":"Voici la conjugaison de 이다 selon le registre que tu veux utiliser. Langage poli : si tu parles aux personnes plus agees que toi, tu utiliseras le langage poli.","rules":["Familier : voyelle + 야 (question et affirmation)","Familier : consonne + 이야 (question et affirmation)","Poli : voyelle + 예요 (question et affirmation)","Poli : consonne + 이에요 (question et affirmation)"],"ex":[{"kr":"알리스야?","fr":"C'est Alice ?","rom":""},{"kr":"알리스야.","fr":"C'est Alice.","rom":""},{"kr":"나영이야?","fr":"C'est Nayoung ?","rom":""},{"kr":"나영이야.","fr":"C'est Nayoung.","rom":""},{"kr":"알리스예요?","fr":"Est-ce Alice ?","rom":""},{"kr":"알리스예요.","fr":"C'est Alice.","rom":""},{"kr":"나영이에요?","fr":"Est-ce Nayoung ?","rom":""},{"kr":"나영이에요.","fr":"C'est Nayoung.","rom":""}]},
-    {"title":"J'observe - 이다 forme informelle","ch":1,"expl":"Encadre J'observe avec exemples d'utilisation de 야 et 가 아니야.","ex":[{"kr":"음바페야.","fr":"(C'est) Mbappe.","rom":""},{"kr":"아리아나 그란데가 아니야.","fr":"Ce n'est pas Ariana Grande.","rom":""}]},
-    {"title":"Fais bien la difference - 내/우리","ch":2,"expl":"내 = mon/ma (possessif singulier). 우리 = mon/notre (possessif collectif, souvent utilise en coreen).","rules":["내 방 = ma chambre","우리 학교 = mon/notre école"],"ex":[{"kr":"내 방","fr":"ma chambre","rom":""},{"kr":"우리 학교","fr":"mon/notre école","rom":""}]},
-    {"title":"Je retiens - 있어 avec lieu","ch":2,"expl":"Encadre Je retiens avec les phrases modeles pour exprimer l'existence dans un lieu.","rules":["우리 학교에 + nom + 이 있어 (dans notre école il y a...)","우리 학교에 + nom + 도 있어 (dans notre école il y a aussi...)"],"ex":[{"kr":"우리 학교에 도서관이 있어.","fr":"Dans notre école, il y a une bibliotheque.","rom":""},{"kr":"우리 학교에 학생 식당도 있어.","fr":"Dans notre école, il y a aussi une cantine.","rom":""}]},
-    {"title":"Je retiens - Actions quotidiennes avec 을/를","ch":3,"expl":"Encadre Je retiens montrant les actions quotidiennes avec la particule COD.","ex":[{"kr":"아침을 먹어.","fr":"Je prends mon petit-dejeuner.","rom":""},{"kr":"드라마를 봐.","fr":"Je regarde une serie.","rom":""},{"kr":"수업을 들어.","fr":"Je suis les cours.","rom":""},{"kr":"친구를 만나.","fr":"Je vois mes ami(e)s.","rom":""}]},
-    {"title":"lieu + 에 + verbe de deplacement","ch":4,"expl":"Pour exprimer un deplacement vers un lieu, on utilise la particule 에 suivie d'un verbe de deplacement.","rules":["lieu + 에 + verbe de deplacement","가다 = aller"],"ex":[{"kr":"도서관에 가.","fr":"Je vais a la bibliotheque.","rom":""}]},
-    {"title":"de... a... (lieu) - 에서...까지","ch":4,"expl":"Pour exprimer un trajet d'un lieu a un autre.","rules":["lieu + 에서 (de, depuis)","lieu + 까지 (jusqu'a)"],"ex":[{"kr":"서울에서 파리까지","fr":"de Seoul a Paris","rom":""}]},
-    {"title":"Je retiens - Lieu et hanok","ch":4,"expl":"Encadre Je retiens sur les pieces de la maison et la possession.","ex":[{"kr":"여기가 주방이야.","fr":"Ici, c'est la cuisine.","rom":""},{"kr":"그 컴퓨터 누구 거야?","fr":"A qui est cet ordinateur(-la) ?","rom":""},{"kr":"우리 언니 거야.","fr":"C'est a ma soeur.","rom":""}]},
-    {"title":"으로/로 만들어요 - etre fait de","ch":5,"expl":"Pour exprimer la matiere ou l'ingredient dont quelque chose est fait.","rules":["voyelle -> 로 만들어요","consonne -> 으로 만들어요","consonne ㄹ -> 로 만들어요"],"ex":[{"kr":"뭐로 만들어요?","fr":"De quoi c'est fait ?","rom":""},{"kr":"고기로 만들어요.","fr":"C'est fait de viande.","rom":""},{"kr":"레몬으로 만들어요.","fr":"C'est fait de citron.","rom":""},{"kr":"쌀로 만들어요.","fr":"C'est fait de riz.","rom":""}]},
-    {"title":"-고 싶어요 - vouloir, avoir envie de","ch":5,"expl":"La terminaison -고 싶어요 equivaut a 'vouloir' au present. On l'ajoute apres le verbe, uniquement a la 1re et a la 2e personne.","rules":["radical du verbe + -고 싶어요 = vouloir / avoir envie de","먹고 싶어요 = vouloir manger","마시고 싶어요 = vouloir boire","Rappel : s'il y a plus d'une chose, tu utiliseras la conjonction 하고 !"],"ex":[{"kr":"감자튀김하고 햄버거 먹고 싶어요.","fr":"J'ai envie de manger des frites et un burger.","rom":""},{"kr":"커피하고 물 마시고 싶어요.","fr":"J'ai envie de boire un café et de l'eau.","rom":""}]},
-    {"title":"Le passe - radical + 았/었어요","ch":6,"expl":"Pour conjuguer au passe, on ajoute -았어요 ou -었어요 au radical du verbe selon la voyelle, et 했어요 pour les verbes en 하다.","rules":["voyelle ㅏ/ㅗ : radical + -았어요","ni ㅏ ni ㅗ : radical + -었어요","verbes en 하다 : 하다 -> 했어요"],"ex":[{"kr":"스키를 탔어요.","fr":"J'ai fait du ski.","rom":""},{"kr":"사진을 찍었어요.","fr":"J'ai pris des photos.","rom":""},{"kr":"축구했어요.","fr":"J'ai joue au football.","rom":""}]},
-    {"title":"이다 au passe (forme affirmative et negative)","ch":6,"expl":"Le verbe etre 이다 conjugue au passe, forme affirmative et negative.","rules":["Affirmatif : voyelle + 였어요","Affirmatif : consonne + 이었어요","Negatif : voyelle + 가 아니었어요","Negatif : consonne + 이 아니었어요"],"ex":[{"kr":"윷놀이였어요.","fr":"C'etait le jeu de yut.","rom":""},{"kr":"송편이었어요.","fr":"C'etait des songpyeons.","rom":""},{"kr":"윷놀이가 아니었어요.","fr":"Ce n'etait pas le jeu de yut.","rom":""},{"kr":"송편이 아니었어요.","fr":"Ce n'etait pas des songpyeons.","rom":""}]},
-    {"title":"La date","ch":6,"expl":"MOIS (nombre sino-coreen + 월) + JOUR (nombre sino-coreen + 일) + (JOUR DE LA SEMAINE). Attention aux mois de juin et d'octobre, ce sont des exceptions !","rules":["1월 일월 = janvier","2월 이월 = fevrier","3월 삼월 = mars","4월 사월 = avril","5월 오월 = mai","6월 유월 = juin (exception: 육 -> 유월)","7월 칠월 = juillet","8월 팔월 = aout","9월 구월 = septembre","10월 시월 = octobre (exception: 십 -> 시월)","11월 십일월 = novembre","12월 십이월 = decembre"],"ex":[{"kr":"10월 6일 (일요일)","fr":"le (dimanche) 6 octobre","rom":""}]},
-    {"title":"L'heure","ch":6,"expl":"HEURE = nombres coreens + 시. MINUTE = nombres sino-coreens + 분. A la place de 30분, on peut utiliser le mot 반 qui signifie 'demi'.","rules":["HEURE = nombre coreen + 시","MINUTE = nombre sino-coreen + 분","1시 30분 = 1시 반 (1h30)","N'oublie pas de mettre la particule de temps 에 a la fin du groupe nominal !"],"ex":[{"kr":"2시 45분 (두시 사십오분)","fr":"2 h 45","rom":""},{"kr":"9월 16일 토요일 3시에","fr":"a 3 h le samedi 16 septembre","rom":""}]},
-    {"title":"De... a... (temps) - 부터...까지","ch":6,"expl":"Pour exprimer une duree de temps.","rules":["temps + 부터 = a partir de (de)","temps + 까지 = jusqu'a (a)"],"ex":[{"kr":"1월부터 12월까지","fr":"de janvier a décembre","rom":""},{"kr":"9시부터 6시까지","fr":"de 9 h a 6 h","rom":""}]},
-    {"title":"이다 - etre (langage familier et poli)","ch":1,"expl":"On utilise le verbe etre apres un nom afin d'identifier un objet ou de presenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser. La phrase affirmative et la phrase interrogative se construisent de la meme maniere. Il faut preter attention a l'intonation : elle est montante dans les questions.","rules":["Langage familier: voyelle + 야 (ex: 알리스야. C'est Alice.)","Langage familier: consonne + 이야 (ex: 나영이야. C'est Nayoung.)","Langage poli: voyelle + 예요 (ex: 알리스예요. C'est Alice.)","Langage poli: consonne + 이에요 (ex: 나영이에요. C'est Nayoung.)","Si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi, tu utiliseras le langage familier.","Si tu parles aux personnes plus agees que toi, tu utiliseras le langage poli."],"ex":[{"kr":"알리스야?","fr":"C'est Alice ?","rom":""},{"kr":"알리스야.","fr":"C'est Alice.","rom":""},{"kr":"나영이야?","fr":"C'est Nayoung ?","rom":""},{"kr":"나영이야.","fr":"C'est Nayoung.","rom":""},{"kr":"알리스예요?","fr":"Est-ce Alice ?","rom":""},{"kr":"알리스예요.","fr":"C'est Alice.","rom":""},{"kr":"나영이에요?","fr":"Est-ce Nayoung ?","rom":""},{"kr":"나영이에요.","fr":"C'est Nayoung.","rom":""}]},
-    {"title":"아니다 - ne pas etre","ch":1,"expl":"Voici comment former des phrases avec le verbe etre a la forme negative.","rules":["Langage familier: voyelle + 가 아니야 (ex: 엄마가 아니야.)","Langage familier: consonne + 이 아니야 (ex: 선생님이 아니야.)","Langage poli: voyelle + 가 아니에요 (ex: 엄마가 아니에요.)","Langage poli: consonne + 이 아니에요 (ex: 선생님이 아니에요.)"],"ex":[{"kr":"엄마가 아니야.","fr":"Ce n'est pas ma maman.","rom":""},{"kr":"선생님이 아니야.","fr":"Il/Elle n'est pas professeur(e).","rom":""},{"kr":"엄마가 아니에요.","fr":"Ce n'est pas ma maman.","rom":""},{"kr":"선생님이 아니에요.","fr":"Il/Elle n'est pas professeur(e).","rom":""}]},
-    {"title":"Fais bien la difference - 이다 forme affirmative vs negative (familier)","ch":1,"expl":"Comparaison entre la forme affirmative et negative de 이다 en langage familier.","rules":["Forme affirmative: voyelle + 야 / consonne + 이야","Forme negative: voyelle + 가 아니야 / consonne + 이 아니야"],"ex":[{"kr":"언니야.","fr":"C'est ma grande soeur.","rom":""},{"kr":"남동생이야.","fr":"C'est mon petit frere.","rom":""},{"kr":"언니가 아니야.","fr":"Ce n'est pas ma grande soeur.","rom":""},{"kr":"남동생이 아니야.","fr":"Ce n'est pas mon petit frere.","rom":""}]},
-    {"title":"하고 - et (conjonction)","ch":2,"expl":"La conjonction 하고 relie deux noms.","rules":["nom + 하고 + nom"],"ex":[{"kr":"책하고 공책이 있어.","fr":"Il y a un livre et un cahier.","rom":""}]},
-    {"title":"lieu + 에 - dans","ch":2,"expl":"Avec les verbes d'existence, on met 에 apres le lieu.","rules":["lieu + 에 + verbe d'existence (있어/없어)"],"ex":[{"kr":"방에 책상하고 의자가 있어.","fr":"Dans la chambre, il y a un bureau et une chaise.","rom":""}]},
-    {"title":"내 ou 우리 - mon/ma/mes ou notre/nos","ch":2,"expl":"Pour dire mon/ma/mes, tu utiliseras 내 si tu parles de quelque chose qui n'appartient qu'a toi, et 우리 si c'est quelque chose qui n'appartient pas qu'a toi (ton lycee, ta ville, ...). D'ailleurs, 우리 veut dire aussi notre !","rules":["내 = pour ce qui t'appartient personnellement (내 가방 = mon sac, 내 방 = ma chambre)","우리 = pour ce qui est partage (우리 학교 = mon/notre école, 우리 가족 = ma/notre famille)"],"ex":[{"kr":"방","fr":"chambre","rom":""},{"kr":"방에","fr":"dans la chambre","rom":""},{"kr":"내 방에","fr":"dans ma chambre","rom":""},{"kr":"학교","fr":"école","rom":""},{"kr":"학교에","fr":"dans l'école","rom":""},{"kr":"우리 학교에","fr":"dans mon école","rom":""}]},
-    {"title":"...도 있어 - il y a aussi...","ch":2,"expl":"La particule 도 remplace 이/가 pour exprimer 'aussi'.","rules":["nom + 도 있어 = il y a aussi..."],"ex":[{"kr":"우리 학교에 수영장도 있어.","fr":"Il y a aussi une piscine dans mon école.","rom":""}]},
-    {"title":"Fais bien la difference - 내 방 vs 우리 학교","ch":2,"expl":"Difference entre 내 (personnel) et 우리 (partage).","rules":["내 방 = ma chambre (personnel)","우리 학교 = mon/notre école (partage)"],"ex":[{"kr":"내 방","fr":"ma chambre","rom":""},{"kr":"우리 학교","fr":"mon/notre école","rom":""}]},
-    {"title":"Je retiens - Ch.2","ch":2,"expl":"Resume des phrases cles du chapitre 2.","ex":[{"kr":"우리 학교에 도서관이 있어.","fr":"Dans notre école, il y a une bibliotheque.","rom":""},{"kr":"우리 학교에 학생 식당도 있어.","fr":"Dans notre école, il y a aussi une cantine.","rom":""}]},
-    {"title":"Je retiens - Ch.3","ch":3,"expl":"Resume des phrases cles du chapitre 3.","ex":[{"kr":"아침을 먹어.","fr":"Je prends mon petit-dejeuner.","rom":""},{"kr":"드라마를 봐.","fr":"Je regarde une serie.","rom":""},{"kr":"수업을 들어.","fr":"Je suis les cours.","rom":""},{"kr":"친구를 만나.","fr":"Je vois mes ami(e)s.","rom":""}]},
-    {"title":"Fais bien la difference - 에서 vs 에","ch":3,"expl":"Difference entre les particules de lieu 에서 et 에.","rules":["lieu + 에서 + verbe d'action (ex: 학교에서 공부해요. J'etudie a l'école.)","lieu + 에 + verbe d'existence (ex: 학교에 있어요. Je suis a l'école.)"],"ex":[{"kr":"학교에서 공부해요.","fr":"J'étudie à l'école.","rom":""},{"kr":"학교에 있어요.","fr":"Je suis a l'école.","rom":""}]},
-    {"title":"La negation - 안 + verbe","ch":3,"expl":"Pour former la negation, on place 안 devant le verbe.","rules":["안 + verbe"],"ex":[{"kr":"책을 안 읽어요.","fr":"Je ne lis pas de livres.","rom":""}]},
-    {"title":"Je retiens - Ch.3 (lieux et negation)","ch":3,"expl":"Resume des phrases cles du chapitre 3 sur les lieux et la negation.","ex":[{"kr":"어디야?","fr":"Ou es-tu ?","rom":""},{"kr":"공원에 있어.","fr":"Je suis au parc.","rom":""},{"kr":"식당에서 저녁을 먹어.","fr":"Je dine au restaurant.","rom":""},{"kr":"친구를 안 만나.","fr":"Je ne vois pas mes ami(e)s.","rom":""}]},
-    {"title":"Je retiens - Ch.4","ch":4,"expl":"Resume des phrases cles du chapitre 4.","ex":[{"kr":"여기가 주방이야.","fr":"Ici, c'est la cuisine.","rom":""},{"kr":"그 컴퓨터 누구 거야?","fr":"A qui est cet ordinateur(-la) ?","rom":""},{"kr":"우리 언니 거야.","fr":"C'est a ma soeur.","rom":""}]},
-    {"title":"Le passe - radical + 았어요/었어요/했어요","ch":6,"expl":"Formation du passe en coreen selon la voyelle du radical.","rules":["radical avec voyelle ㅏ ou ㅗ: radical + -았어요 (ex: 스키를 탔어요. J'ai fait du ski.)","radical sans ㅏ ni ㅗ: radical + -었어요 (ex: 사진을 찍었어요. J'ai pris des photos.)","verbes en 하다: 하다 -> 했어요 (ex: 축구했어요. J'ai joue au football.)"],"ex":[{"kr":"스키를 탔어요.","fr":"J'ai fait du ski.","rom":""},{"kr":"사진을 찍었어요.","fr":"J'ai pris des photos.","rom":""},{"kr":"축구했어요.","fr":"J'ai joue au football.","rom":""}]},
-    {"title":"이다 au passe - forme affirmative et negative","ch":6,"expl":"Conjugaison du verbe 이다 (etre) au passe, forme affirmative et negative.","rules":["Forme affirmative: voyelle + 였어요 (ex: 윷놀이였어요.)","Forme affirmative: consonne + 이었어요 (ex: 송편이었어요.)","Forme negative: voyelle + 가 아니었어요 (ex: 윷놀이가 아니었어요.)","Forme negative: consonne + 이 아니었어요 (ex: 송편이 아니었어요.)"],"ex":[{"kr":"윷놀이였어요.","fr":"C'etait le jeu de yut.","rom":""},{"kr":"송편이었어요.","fr":"C'etait des songpyeons.","rom":""},{"kr":"윷놀이가 아니었어요.","fr":"Ce n'etait pas le jeu de yut.","rom":""},{"kr":"송편이 아니었어요.","fr":"Ce n'etait pas des songpyeons.","rom":""}]},
-    {"title":"La negation 못 + verbe","ch":3,"expl":"못 se place devant le verbe pour exprimer l'incapacite (ne pas pouvoir). Contrairement a 안 (choix de ne pas faire), 못 indique qu'on ne peut pas.","ex":[{"kr":"저는 한국어를 못 해요.","fr":"Je ne sais pas parler coreen.","rom":"jeoneun hangugeoreul mot haeyo."},{"kr":"오늘 못 가요.","fr":"Je ne peux pas y aller aujourd'hui.","rom":"oneul mot gayo."}],"note":"못 ne s'utilise pas avec les adjectifs. Pour les verbes en 하다, on peut dire 못 하다 ou 못하다 (attache)."},
-    {"title":"L'imperatif poli -(으)세요","ch":4,"expl":"-(으)세요 s'ajoute au radical du verbe pour donner un ordre ou une instruction polie. Apres une voyelle : -세요. Apres une consonne : -으세요.","ex":[{"kr":"여기 앉으세요.","fr":"Asseyez-vous ici.","rom":"yeogi anjeuseyo."},{"kr":"이거 보세요.","fr":"Regardez ceci.","rom":"igeo boseyo."},{"kr":"조심하세요.","fr":"Faites attention.","rom":"josimhaseyo."}]}
+    {
+      title:"La particule 은/는 (thème)",
+      ch:1,
+      expl:"Particule de thème, mentionnée dans le sommaire du chapitre 1. Détails non visibles dans ces pages."
+    },
+    {
+      title:"Être au présent à la forme affirmative",
+      ch:1,
+      expl:"Le verbe être (이다) au présent affirmatif, mentionné dans le sommaire du chapitre 1."
+    },
+    {
+      title:"Être au présent à la forme négative",
+      ch:1,
+      expl:"Le verbe être au présent négatif (아니다), mentionné dans le sommaire du chapitre 1."
+    },
+    {title:"Il y a / Il n'y a pas", ch:2, expl:"있다/없다 - verbes d'existence, mentionnés dans le sommaire du chapitre 2."},
+    {
+      title:"La conjonction de coordination 하고 (et)",
+      ch:2,
+      expl:"하고 signifie 'et' pour relier des noms. Mentionné dans le sommaire du chapitre 2."
+    },
+    {
+      title:"La particule de lieu 에 (dans) + verbe d'existence",
+      ch:2,
+      expl:"Particule de lieu 에 utilisée avec les verbes d'existence (있다/없다). Mentionnée dans le sommaire du chapitre 2."
+    },
+    {
+      title:"Les pronoms possessifs (mon/ma/mes/notre)",
+      ch:2,
+      expl:"Pronoms possessifs en coréen. Mentionnés dans le sommaire du chapitre 2."
+    },
+    {
+      title:"Les terminaisons du présent",
+      ch:3,
+      expl:"Conjugaison des verbes au présent en coréen. Mentionnée dans le sommaire du chapitre 3."
+    },
+    {
+      title:"La particule COD 을/를",
+      ch:3,
+      expl:"Particule de complément d'objet direct. Mentionnée dans le sommaire du chapitre 3.",
+      rules:["consonne + 을", "voyelle + 를"],
+      ex:[
+        {kr:"수업을 들어.", fr:"Je suis les cours.", rom:""},
+        {kr:"영화를 봐.", fr:"Je regarde un film.", rom:""},
+        {kr:"아침을 먹어.", fr:"Je prends mon petit-dejeuner.", rom:""},
+        {kr:"드라마를 봐.", fr:"Je regarde une serie.", rom:""},
+        {kr:"친구를 만나.", fr:"Je vois mes ami(e)s.", rom:""}
+      ]
+    },
+    {
+      title:"La particule de lieu 에서 + verbe d'action",
+      ch:3,
+      expl:"Particule de lieu 에서 utilisée avec les verbes d'action (à la différence de 에 avec verbes d'existence). Mentionnée dans le sommaire du chapitre 3."
+    },
+    {
+      title:"La particule de temps 에",
+      ch:3,
+      expl:"Particule 에 utilisée pour indiquer le temps. Mentionnée dans le sommaire du chapitre 3."
+    },
+    {
+      title:"La négation 안 + verbe",
+      ch:3,
+      expl:"Négation courte avec 안 placé devant le verbe. Mentionnée dans le sommaire du chapitre 3."
+    },
+    {
+      title:"La possession « C'est à... »",
+      ch:4,
+      expl:"Exprimer la possession en coréen. Mentionnée dans le sommaire du chapitre 4."
+    },
+    {
+      title:"Les adjectifs démonstratifs",
+      ch:4,
+      expl:"Adjectifs démonstratifs en coréen (이/그/저). Mentionnés dans le sommaire du chapitre 4."
+    },
+    {
+      title:"La particule de lieu 에 + verbe de déplacement",
+      ch:4,
+      expl:"Particule 에 avec verbes de déplacement (aller, venir). Mentionnée dans le sommaire du chapitre 4."
+    },
+    {
+      title:"Les prépositions de lieu",
+      ch:4,
+      expl:"Prépositions de lieu (위, 아래, 앞, 뒤, etc.). Mentionnées dans le sommaire du chapitre 4."
+    },
+    {title:"La direction", ch:4, expl:"Exprimer la direction en coréen. Mentionnée dans le sommaire du chapitre 4."},
+    {
+      title:"lieu + 에서... / lieu + 까지... (de... à...)",
+      ch:4,
+      expl:"Structure pour exprimer 'de (lieu) à (lieu)' avec 에서 et 까지. Mentionnée dans le sommaire du chapitre 4."
+    },
+    {
+      title:"La terminaison -고 싶어요 (vouloir, avoir envie de)",
+      ch:5,
+      expl:"Terminaison exprimant le désir/l'envie. Mentionnée dans le sommaire du chapitre 5."
+    },
+    {
+      title:"으로/로 만들어요 (être fait de)",
+      ch:5,
+      expl:"Structure pour exprimer la matière/composition d'un plat. Mentionnée dans le sommaire du chapitre 5."
+    },
+    {
+      title:"Les classificateurs",
+      ch:5,
+      expl:"En coreen, on ne peut pas associer un nombre a un nom comme en francais. On doit utiliser les classificateurs selon le modele : NOM + nombre coreen + classificateur. Attention, les 4 premiers chiffres coreens changent de forme associes aux classificateurs !",
+      rules:[
+        "개 = pour les objets",
+        "그릇 = pour les bols",
+        "숟가락 = pour les cuilleres",
+        "봉지 = pour les sachets",
+        "명 = pour les personnes",
+        "마리 = pour les animaux",
+        "하나 (un) -> 한 + classificateur",
+        "둘 (deux) -> 두 + classificateur",
+        "셋 (trois) -> 세 + classificateur",
+        "넷 (quatre) -> 네 + classificateur"
+      ],
+      ex:[
+        {kr:"호박 여섯 개", fr:"six courgettes (courgette + 6 + classificateur objets)", rom:""},
+        {kr:"학생 열 명", fr:"dix etudiants (etudiant + 10 + classificateur personnes)", rom:""},
+        {kr:"샌드위치 두 개", fr:"deux sandwichs (sandwich + 2 + classificateur objets)", rom:""}
+      ]
+    },
+    {
+      title:"Les terminaisons du passé",
+      ch:6,
+      expl:"Conjugaison des verbes au passé en coréen. Mentionnée dans le sommaire du chapitre 6."
+    },
+    {
+      title:"L'expression de la date (mois + jour)",
+      ch:6,
+      expl:"Comment exprimer les dates en coréen. Mentionnée dans le sommaire du chapitre 6."
+    },
+    {
+      title:"L'expression de l'heure (heure + minute) avec la particule de temps 에",
+      ch:6,
+      expl:"Comment exprimer l'heure en coréen avec la particule 에. Mentionnée dans le sommaire du chapitre 6."
+    },
+    {
+      title:"temps + 부터... / temps + 까지... (de... à...)",
+      ch:6,
+      expl:"Structure pour exprimer 'de (heure) à (heure)' avec 부터 et 까지. Mentionnée dans le sommaire du chapitre 6."
+    },
+    {
+      title:"Construction des syllabes en Hangeul",
+      ch:0,
+      expl:"En coréen, on n'écrit pas les lettres les unes après les autres sur une même ligne, mais on les regroupe dans une syllabe. La base d'une syllabe est toujours constituée d'une consonne suivie d'une voyelle. Consonne + voyelle horizontale : la voyelle se place à droite (ex: ㄴ + ㅏ = 나). Consonne + voyelle verticale : la voyelle se place en dessous (ex: ㄴ + ㅗ = 노). ㅇ est une consonne dite 'muette' lorsqu'elle est placée devant une voyelle.",
+      rules:[
+        {
+          context:"Voyelle verticale (ㅏ, ㅑ, ㅓ, ㅕ, ㅣ)",
+          form:"Consonne à gauche + Voyelle à droite",
+          example_korean:"나",
+          example_french:"na (ㄴ + ㅏ)"
+        },
+        {
+          context:"Voyelle horizontale (ㅗ, ㅛ, ㅜ, ㅠ, ㅡ)",
+          form:"Consonne en haut + Voyelle en dessous",
+          example_korean:"노",
+          example_french:"no (ㄴ + ㅗ)"
+        }
+      ]
+    },
+    {
+      title:"Consonne muette ㅇ",
+      ch:0,
+      expl:"ㅇ est une consonne dite 'muette' lorsqu'elle est placee devant une voyelle. Par exemple, 아 se prononce 'a'.",
+      rules:[
+        "ㅇ + voyelle = la voyelle seule est prononcee",
+        "ㅇ sert de support graphique pour ecrire une voyelle en position initiale"
+      ],
+      ex:[
+        {kr:"아이", fr:"enfant (ai)", rom:""},
+        {kr:"여우", fr:"renard (yeou)", rom:""},
+        {kr:"요요", fr:"yoyo (yoyo)", rom:""},
+        {kr:"오이", fr:"concombre (oi)", rom:""},
+        {kr:"우유", fr:"lait (uyu)", rom:""}
+      ]
+    },
+    {
+      title:"Les consonnes finales (batchim) - Prononciation",
+      ch:0,
+      expl:"Les consonnes finales ne peuvent prendre que sept valeurs phonetiques en position finale. Plusieurs consonnes se prononcent de la meme facon.",
+      rules:[
+        "ㄱ, ㅋ, ㄲ se prononcent k en position finale",
+        "ㄴ se prononce n en position finale",
+        "ㄷ, ㅅ, ㅆ, ㅈ, ㅊ, ㅌ, ㅎ se prononcent t en position finale",
+        "ㄹ se prononce l en position finale",
+        "ㅁ se prononce m en position finale",
+        "ㅂ, ㅍ se prononcent p en position finale",
+        "ㅇ se prononce ng en position finale"
+      ],
+      ex:[
+        {kr:"책", fr:"livre", rom:""},
+        {kr:"부엌", fr:"cuisine", rom:""},
+        {kr:"밖", fr:"exterieur", rom:""},
+        {kr:"손", fr:"main", rom:""},
+        {kr:"닫다", fr:"fermer", rom:""},
+        {kr:"옷", fr:"vetement", rom:""},
+        {kr:"있다", fr:"avoir", rom:""},
+        {kr:"낮", fr:"jour", rom:""},
+        {kr:"꽃", fr:"fleur", rom:""},
+        {kr:"밑", fr:"en-dessous", rom:""},
+        {kr:"달", fr:"lune", rom:""},
+        {kr:"밤", fr:"chataigne", rom:""},
+        {kr:"밥", fr:"riz", rom:""},
+        {kr:"잎", fr:"feuille", rom:""},
+        {kr:"강", fr:"riviere, fleuve", rom:""}
+      ]
+    },
+    {
+      title:"Construction des syllabes avec consonnes finales",
+      ch:0,
+      expl:"La majorite des consonnes peuvent etre utilisees comme consonnes finales. La consonne finale se place en bas de la voyelle. Structure : C+V+C (consonne + voyelle + consonne finale).",
+      rules:[
+        "Structure horizontale : consonne initiale + voyelle horizontale + consonne finale en dessous",
+        "Structure verticale : consonne initiale + voyelle verticale + consonne finale en dessous"
+      ],
+      ex:[
+        {kr:"날", fr:"jour", rom:""},
+        {kr:"솔", fr:"pin", rom:""},
+        {kr:"약", fr:"medicament", rom:""},
+        {kr:"산", fr:"montagne", rom:""},
+        {kr:"옷", fr:"vetement", rom:""},
+        {kr:"달", fr:"lune", rom:""},
+        {kr:"김", fr:"algue", rom:""},
+        {kr:"밥", fr:"riz", rom:""},
+        {kr:"공", fr:"ballon", rom:""}
+      ]
+    },
+    {
+      title:"Registres de langue en coreen",
+      ch:0,
+      expl:"En coreen, il existe plusieurs registres de langue (familier, soutenu, formel, informel, etc.). Il faut bien choisir le registre selon l'interlocuteur et la situation.",
+      rules:[
+        "Quand tu parles a quelqu'un de plus age que toi : utiliser le registre poli",
+        "Quand tu parles a quelqu'un de ton age : utiliser le registre informel"
+      ]
+    },
+    {
+      title:"Formation des nombres coréens de 11 à 99",
+      ch:0,
+      expl:"Former les nombres coréens de 11 à 99 est très simple puisqu'il suffit d'accoler le mot des dizaines avec celui des unités.",
+      rules:["dizaine + unité = nombre composé", "Exemple : 21 = 스물 (20) + 하나 (1) = 스물 하나"],
+      ex:[
+        {kr:"스물 하나", fr:"21", rom:"seumul hana"}
+      ]
+    },
+    {
+      title:"Formation des nombres sino-coréens",
+      ch:0,
+      expl:"Les multiples de 10 se forment à partir de 십. Pour former les nombres de 1 à 99, il suffit d'accoler le mot correspondant aux dizaines avec celui correspondant aux unités.",
+      rules:[
+        "chiffre + 십 = dizaine (ex: 이 × 십 = 이십 = 20)",
+        "dizaine + unité = nombre composé",
+        "Exemple : 25 = (2 × 10) + 5 → 이십오"
+      ],
+      ex:[
+        {kr:"이십오", fr:"25", rom:"isibo"}
+      ]
+    },
+    {
+      title:"Dire l'heure en coréen",
+      ch:0,
+      expl:"HEURE = nombres coréens + 시. MINUTE = nombres sino-coréens + 분. En coréen, on ne compte généralement pas au-delà de 12 quand on donne l'heure.",
+      rules:[
+        "Heure : nombre coréen + 시",
+        "Minute : nombre sino-coréen + 분",
+        "Les 4 premiers chiffres coréens changent de forme associés aux heures : 하나→한, 둘→두, 셋→세, 넷→네"
+      ],
+      ex:[
+        {kr:"6시 40분 (여섯 시 사십분)", fr:"6 h 40 / 18 h 40", rom:"yeoseot si sasipbun"},
+        {kr:"8시 15분 (여덟 시 십오분)", fr:"8 h 15 / 20 h 15", rom:"yeodeol si sibobun"}
+      ]
+    },
+    {
+      title:"Nombres sino-coreens + 월 pour les mois",
+      ch:0,
+      expl:"Pour les mois, on utilise les nombres sino-coreens + 월 (mois). Attention aux prononciations irregulieres de juin (유월, pas 육월) et octobre (시월, pas 십월).",
+      rules:[
+        "nombre sino-coreen + 월 = mois de l'annee",
+        "6월 se prononce 유월 (yuwol) et non 육월",
+        "10월 se prononce 시월 (siwol) et non 십월"
+      ],
+      ex:[
+        {kr:"1월 - 일월", fr:"janvier", rom:""},
+        {kr:"6월 - 유월", fr:"juin", rom:""},
+        {kr:"10월 - 시월", fr:"octobre", rom:""}
+      ]
+    },
+    {
+      title:"이름이 뭐야? - Demander le prenom (forme familiere)",
+      ch:1,
+      expl:"이름이 뭐야? signifie 'Comment tu t'appelles ?' Litteralement : 'Quel est ton prenom ?' 이름 = prenom, 이 = particule sujet, 뭐 = quoi/quel, 야 = etre (forme familiere).",
+      rules:[
+        "이름 = prenom",
+        "이 = particule sujet (apres consonne)",
+        "뭐 = quoi / qu' / quel(le)(s)",
+        "야 = etre (forme familiere, apres voyelle)"
+      ],
+      ex:[
+        {kr:"이름이 뭐야?", fr:"Comment tu t'appelles ?", rom:""}
+      ]
+    },
+    {
+      title:"La particule 은/는 (particule de theme/sujet)",
+      ch:1,
+      expl:"La particule 은/는 est la particule de theme (ou sujet). Elle se place apres le sujet de la phrase. On utilise 는 apres une voyelle et 은 apres une consonne.",
+      rules:["voyelle + 는", "consonne + 은"],
+      ex:[
+        {kr:"나는 알리스야.", fr:"Je suis Alice.", rom:""},
+        {kr:"나영은 한국 사람이야.", fr:"Nayoung est coreenne.", rom:""}
+      ]
+    },
+    {
+      title:"Le verbe etre 이다 - Forme familiere (이야/야)",
+      ch:1,
+      expl:"Pour dire 'je m'appelle...' ou 'je suis...' en forme familiere, on utilise 야 apres une voyelle et 이야 apres une consonne. C'est la forme familiere du verbe etre 이다.",
+      rules:["voyelle + 야 (ex: 알리스 → 알리스야)", "consonne + 이야 (ex: 나영 → 나영이야)"],
+      ex:[
+        {kr:"알리스야.", fr:"Je m'appelle Alice.", rom:""},
+        {kr:"나영이야.", fr:"Je m'appelle Nayoung.", rom:""}
+      ]
+    },
+    {
+      title:"Le verbe etre 이다 - Forme polie (예요/이에요)",
+      ch:1,
+      expl:"Pour se presenter ou presenter quelqu'un en forme polie, on utilise 예요 apres une voyelle et 이에요 apres une consonne. C'est la forme polie du verbe etre 이다.",
+      rules:[
+        "voyelle + 예요 (ex: 알리스 → 알리스예요, 엄마 → 엄마예요)",
+        "consonne + 이에요 (ex: 나영 → 나영이에요, 동생 → 동생이에요)"
+      ],
+      ex:[
+        {kr:"알리스예요.", fr:"Je suis Alice.", rom:""},
+        {kr:"나영이에요.", fr:"Je suis Nayoung.", rom:""},
+        {kr:"엄마예요.", fr:"C'est ma maman.", rom:""},
+        {kr:"동생이에요.", fr:"C'est mon petit frere. / C'est ma petite soeur.", rom:""}
+      ]
+    },
+    {
+      title:"어느 나라 사람이에요? - Demander la nationalite (forme polie)",
+      ch:1,
+      expl:"어느 나라 사람이에요? signifie 'Quelle est votre nationalite ?' Litteralement : 'Vous etes une personne de quel pays ?' 어느 = laquelle/le(s)quel(le)(s), 나라 = pays.",
+      rules:[
+        "어느 = laquelle, le(s)quel(le)(s)",
+        "나라 = pays",
+        "사람이에요 = etre une personne (forme polie)"
+      ],
+      ex:[
+        {kr:"어느 나라 사람이에요?", fr:"Quelle est votre nationalite ?", rom:""}
+      ]
+    },
+    {
+      title:"이다 - etre (forme affirmative)",
+      ch:1,
+      expl:"On utilise le verbe 'etre' (이다) apres un nom afin d'identifier un objet ou de presenter une personne. La conjugaison de 이다 change selon le registre (familier ou poli) et selon que le nom se termine par une voyelle ou une consonne. La phrase affirmative et la phrase interrogative se construisent de la meme maniere : il faut preter attention a l'intonation (montante pour les questions).",
+      rules:[
+        "Langage familier : si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi",
+        "Langage poli : si tu parles aux personnes plus agees que toi",
+        "Voyelle + 야 (familier) : 알리스야 = C'est Alice",
+        "Consonne + 이야 (familier) : 나영이야 = C'est Nayoung",
+        "Voyelle + 예요 (poli) : 알리스예요 = C'est Alice",
+        "Consonne + 이에요 (poli) : 나영이에요 = C'est Nayoung"
+      ],
+      ex:[
+        {kr:"알리스야?", fr:"C'est Alice? (familier)", rom:""},
+        {kr:"알리스야.", fr:"C'est Alice. (familier)", rom:""},
+        {kr:"알리스예요?", fr:"Est-ce Alice? (poli)", rom:""},
+        {kr:"알리스예요.", fr:"C'est Alice. (poli)", rom:""},
+        {kr:"나영이야?", fr:"C'est Nayoung? (familier)", rom:""},
+        {kr:"나영이야.", fr:"C'est Nayoung. (familier)", rom:""},
+        {kr:"나영이에요?", fr:"Est-ce Nayoung? (poli)", rom:""},
+        {kr:"나영이에요.", fr:"C'est Nayoung. (poli)", rom:""}
+      ]
+    },
+    {
+      title:"아니다 - ne pas etre (forme negative)",
+      ch:1,
+      expl:"Voici comment former des phrases avec le verbe 'etre' a la forme negative. La particule 가 ou 이 s'ajoute au nom avant 아니야/아니에요 selon que le nom se termine par une voyelle ou une consonne.",
+      rules:[
+        "Voyelle + 가 아니야 (familier) : 엄마가 아니야 = Ce n'est pas ma maman",
+        "Consonne + 이 아니야 (familier) : 선생님이 아니야 = Il/Elle n'est pas professeur(e)",
+        "Voyelle + 가 아니에요 (poli) : 엄마가 아니에요 = Ce n'est pas ma maman",
+        "Consonne + 이 아니에요 (poli) : 선생님이 아니에요 = Il/Elle n'est pas professeur(e)"
+      ],
+      ex:[
+        {kr:"엄마가 아니야.", fr:"Ce n'est pas ma maman. (familier)", rom:""},
+        {kr:"엄마가 아니에요.", fr:"Ce n'est pas ma maman. (poli)", rom:""},
+        {kr:"선생님이 아니야.", fr:"Il/Elle n'est pas professeur(e). (familier)", rom:""},
+        {kr:"선생님이 아니에요.", fr:"Il/Elle n'est pas professeur(e). (poli)", rom:""}
+      ]
+    },
+    {
+      title:"Forme affirmative/negative avec 야/이야 et 가 아니야/이 아니야 (recapitulatif exercice)",
+      ch:1,
+      expl:"Encadre 'Fais bien la difference!' - Resume des formes affirmative et negative au registre familier.",
+      rules:[
+        "Forme affirmative : voyelle + 야 (ex: 언니야)",
+        "Forme affirmative : consonne + 이야 (ex: 남동생이야)",
+        "Forme negative : voyelle + 가 아니야 (ex: 언니가 아니야)",
+        "Forme negative : consonne + 이 아니야 (ex: 남동생이 아니야)"
+      ],
+      ex:[
+        {kr:"언니야.", fr:"C'est ma grande soeur.", rom:""},
+        {kr:"남동생이야.", fr:"C'est mon petit frere.", rom:""},
+        {kr:"언니가 아니야.", fr:"Ce n'est pas ma grande soeur.", rom:""},
+        {kr:"남동생이 아니야.", fr:"Ce n'est pas mon petit frere.", rom:""}
+      ]
+    },
+    {
+      title:"Suffixe d'appel 아/야 pour interpeller quelqu'un",
+      ch:1,
+      expl:"Lorsqu'on interpelle une personne tres proche et moins agee, on ajoutera un suffixe a son prenom. Ce suffixe change selon la derniere lettre du prenom.",
+      rules:[
+        "아 si le prenom se termine par une consonne (ex: 나영 -> 나영아)",
+        "야 si le prenom se termine par une voyelle (ex: 지우 -> 지우야)"
+      ],
+      ex:[
+        {kr:"나영아", fr:"Nayoung! (appel)", rom:""},
+        {kr:"수진아", fr:"Sujin! (appel, implicite)", rom:""},
+        {kr:"지우야", fr:"Jiu! (appel, implicite)", rom:""}
+      ]
+    },
+    {
+      title:"Formation de la nationalite : pays + 사람 / pays + 친구",
+      ch:1,
+      expl:"Pour exprimer la nationalite, on ajoute 사람 (personne) apres le nom du pays. Pour dire 'un(e) ami(e) de tel pays', on ajoute 친구 (ami) apres le nom du pays.",
+      rules:[
+        "pays + 사람 = personne de ce pays (nationalite)",
+        "pays + 친구 = ami(e) de ce pays"
+      ],
+      ex:[
+        {kr:"프랑스 사람", fr:"francais(e)", rom:""},
+        {kr:"프랑스 친구", fr:"un(e) ami(e) francais(e)", rom:""},
+        {kr:"한국 사람", fr:"coreen(ne)", rom:""},
+        {kr:"한국 친구", fr:"un(e) ami(e) coreen(ne)", rom:""}
+      ]
+    },
+    {
+      title:"Il y a : 있어 (il y a) avec particule de sujet 이/가",
+      ch:2,
+      expl:"Pour dire 'il y a' en coreen, on utilise 있어 (forme informelle) ou 있어요 (forme polie). Le sujet prend la particule 가 apres une voyelle et 이 apres une consonne.",
+      rules:[
+        "voyelle + 가 있어 : quand le mot se termine par une voyelle, on ajoute 가 puis 있어",
+        "consonne + 이 있어 : quand le mot se termine par une consonne, on ajoute 이 puis 있어",
+        "lieu + 에 : la particule 에 indique le lieu (dans, a)",
+        "하고 : conjonction 'et' (ou 'avec') pour relier deux noms"
+      ],
+      ex:[
+        {kr:"가방에 책하고 공책이 있어.", fr:"Dans le sac, il y a un livre et un cahier.", rom:""},
+        {kr:"열쇠가 있어.", fr:"Il y a des cles.", rom:""},
+        {kr:"책이 있어.", fr:"Il y a un livre.", rom:""}
+      ]
+    },
+    {
+      title:"Il n'y a pas : 없어 (il n'y a pas) avec particule de sujet 이/가",
+      ch:2,
+      expl:"Pour dire 'il n'y a pas' en coreen, on utilise 없어 (forme informelle) ou 없어요 (forme polie). Le sujet prend la particule 가 apres une voyelle et 이 apres une consonne, comme pour 있어.",
+      rules:[
+        "voyelle + 가 없어 : quand le mot se termine par une voyelle, on ajoute 가 puis 없어",
+        "consonne + 이 없어 : quand le mot se termine par une consonne, on ajoute 이 puis 없어"
+      ],
+      ex:[
+        {kr:"게임기가 없어.", fr:"Il n'y a pas de console.", rom:""},
+        {kr:"책이 없어.", fr:"Il n'y a pas de livre.", rom:""},
+        {kr:"방에 기타가 없어.", fr:"Dans la chambre, il n'y a pas de guitare.", rom:""},
+        {kr:"피아노가 없어.", fr:"Il n'y a pas de piano.", rom:""}
+      ]
+    },
+    {
+      title:"Conjonction 하고 (et / avec)",
+      ch:2,
+      expl:"하고 est une particule de liaison placee apres un nom pour relier deux elements (sens de 'et' ou 'avec').",
+      rules:[
+        "Nom1 + 하고 + Nom2 : relie deux noms",
+        "Se place directement apres le premier nom, sans espace"
+      ],
+      ex:[
+        {kr:"가방에 책하고 공책이 있어.", fr:"Dans le sac, il y a un livre et un cahier.", rom:""},
+        {kr:"책하고 연필하고 휴대폰이 있어.", fr:"Il y a un livre, un stylo et un telephone.", rom:""},
+        {kr:"방에 책상하고 의자가 있어.", fr:"Dans la chambre, il y a un bureau et une chaise.", rom:""}
+      ]
+    },
+    {
+      title:"Particule de lieu 에 (dans, a)",
+      ch:2,
+      expl:"La particule 에 est placee apres un nom de lieu pour indiquer l'endroit ou quelque chose se trouve. Elle s'utilise avec les verbes d'existence 있다/없다.",
+      rules:[
+        "lieu + 에 + objet + 이/가 + 있어/없어",
+        "가방에 = dans le sac",
+        "방에 = dans la chambre",
+        "학교에 = a l'ecole"
+      ],
+      ex:[
+        {kr:"가방에 책하고 공책이 있어.", fr:"Dans le sac, il y a un livre et un cahier.", rom:""},
+        {kr:"방에 책상하고 의자가 있어.", fr:"Dans la chambre, il y a un bureau et une chaise.", rom:""},
+        {kr:"방에 기타가 없어.", fr:"Dans la chambre, il n'y a pas de guitare.", rom:""},
+        {kr:"학교에 체육관이 있어.", fr:"A l'ecole, il y a un gymnase.", rom:""}
+      ]
+    },
+    {
+      title:"Forme polie avec 요",
+      ch:2,
+      expl:"Pour passer du registre informel au registre poli, il suffit d'ajouter 요 a la fin de la phrase. C'est la forme a utiliser avec les personnes plus agees, les professeurs, les inconnus.",
+      rules:["있어 -> 있어요 (il y a, forme polie)", "없어 -> 없어요 (il n'y a pas, forme polie)"],
+      ex:[
+        {kr:"선생님, 가방에 뭐가 있어요?", fr:"Professeur, qu'est-ce qu'il y a dans votre sac ?", rom:""},
+        {kr:"책이 있어요?", fr:"Y a-t-il un livre ?", rom:""}
+      ]
+    },
+    {
+      title:"이/가 있어 - il y a (existence affirmative)",
+      ch:2,
+      expl:"Pour exprimer l'existence ou la possession ('il y a', 'j'ai', 'c'est la'), on utilise 있어 apres le nom avec la particule sujet 이 ou 가. La particule change selon que le nom se termine par une voyelle ou une consonne.",
+      rules:[
+        "Nom se terminant par une voyelle + 가 있어 : 열쇠가 있어 = Il y a des cles",
+        "Nom se terminant par une consonne + 이 있어 : 책이 있어 = Il y a un livre",
+        "Pour le style poli, ajoute simplement 요 a la fin : 있어요"
+      ],
+      ex:[
+        {kr:"열쇠가 있어.", fr:"Il y a des cles.", rom:""},
+        {kr:"책이 있어.", fr:"Il y a un livre.", rom:""},
+        {kr:"연필이 있어.", fr:"Il y a un stylo. / J'ai un stylo. / Le stylo est la.", rom:""}
+      ]
+    },
+    {
+      title:"이/가 없어 - il n'y a pas (existence negative)",
+      ch:2,
+      expl:"Pour exprimer l'absence ou la non-possession ('il n'y a pas', 'je n'ai pas', 'ce n'est pas la'), on utilise 없어 apres le nom avec la particule sujet 이 ou 가.",
+      rules:[
+        "Nom se terminant par une voyelle + 가 없어 : 열쇠가 없어 = Il n'y a pas de cles",
+        "Nom se terminant par une consonne + 이 없어 : 책이 없어 = Il n'y a pas de livre",
+        "Pour le style poli, ajoute simplement 요 a la fin : 없어요"
+      ],
+      ex:[
+        {kr:"열쇠가 없어.", fr:"Il n'y a pas de cles.", rom:""},
+        {kr:"책이 없어.", fr:"Il n'y a pas de livre.", rom:""},
+        {kr:"연필이 없어.", fr:"Il n'y a pas de stylo. / Je n'ai pas de stylo. / Le stylo n'est pas la.", rom:""},
+        {kr:"수영장이 없어.", fr:"Il n'y a pas de piscine.", rom:""}
+      ]
+    },
+    {
+      title:"도 - particule 'aussi'",
+      ch:2,
+      expl:"La particule 도 s'ajoute apres un nom pour exprimer 'aussi'. Elle remplace les particules 이/가 ou 은/는. Structure: ...도 있어 = il y a aussi...",
+      rules:[
+        "Nom + 도 있어 = il y a aussi [nom]",
+        "도 remplace la particule sujet (이/가) ou thematique (은/는)"
+      ],
+      ex:[
+        {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans mon ecole.", rom:""},
+        {kr:"학생 식당도 있어?", fr:"Il y a aussi une cantine?", rom:""},
+        {kr:"응, 학생 식당도 있어", fr:"Oui, il y a aussi une cantine", rom:""},
+        {kr:"우리 학교에 학생 식당도 있어.", fr:"Dans notre ecole, il y a aussi une cantine.", rom:""}
+      ]
+    },
+    {
+      title:"하고 - et (conjonction entre noms)",
+      ch:2,
+      expl:"La particule 하고 s'utilise entre deux noms pour les relier, comme 'et' en francais. Structure: nom 하고 nom.",
+      rules:[
+        "nom + 하고 + nom : relie deux noms ensemble",
+        "S'utilise independamment de la derniere lettre du nom (voyelle ou consonne)"
+      ],
+      ex:[
+        {kr:"책하고 공책이 있어.", fr:"Il y a un livre et un cahier.", rom:""},
+        {kr:"방에 책상하고 의자가 있어.", fr:"Dans la chambre, il y a un bureau et une chaise.", rom:""}
+      ]
+    },
+    {
+      title:"lieu + 에 - dans (particule de lieu avec verbes d'existence)",
+      ch:2,
+      expl:"Avec les verbes d'existence (있어/없어), on met 에 apres le lieu pour indiquer l'endroit. Le lieu se place en debut de phrase.",
+      rules:[
+        "lieu + 에 + ... 있어/없어 : dans [lieu], il y a / il n'y a pas...",
+        "에 se place directement apres le nom de lieu"
+      ],
+      ex:[
+        {kr:"방에 책상하고 의자가 있어.", fr:"Dans la chambre, il y a un bureau et une chaise.", rom:""},
+        {kr:"학교에 뭐가 있어?", fr:"Qu'est-ce qu'il y a dans l'ecole?", rom:""},
+        {kr:"우리 학교에 도서관이 있어.", fr:"Dans notre ecole, il y a une bibliotheque.", rom:""},
+        {kr:"학교에 수영장이 있어?", fr:"Il y a une piscine a l'ecole?", rom:""}
+      ]
+    },
+    {
+      title:"내 ou 우리 - possessifs 'mon/ma' vs 'notre'",
+      ch:2,
+      expl:"Pour dire 'mon/ma/mes', on utilise 내 ou 우리 selon le type de possession. 내 s'utilise pour quelque chose qui n'appartient qu'a toi. 우리 s'utilise pour quelque chose qui n'appartient pas qu'a toi (ton lycee, ta ville...). D'ailleurs, 우리 veut dire aussi 'notre'.",
+      rules:[
+        "내 : si tu parles de quelque chose qui n'appartient qu'a toi (ex: 내 방 = ma chambre, 내 가방 = mon sac)",
+        "우리 : si c'est quelque chose qui n'appartient pas qu'a toi, comme ton lycee, ta ville... (ex: 우리 학교 = mon/notre ecole, 우리 가족 = ma/notre famille)",
+        "우리 veut dire aussi 'notre'"
+      ],
+      ex:[
+        {kr:"내 가방", fr:"mon sac", rom:""},
+        {kr:"내 방", fr:"ma chambre", rom:""},
+        {kr:"우리 학교", fr:"mon/notre ecole", rom:""},
+        {kr:"우리 가족", fr:"ma/notre famille", rom:""},
+        {kr:"방 -> 방에 -> 내 방에", fr:"chambre -> dans la chambre -> dans ma chambre", rom:""},
+        {kr:"학교 -> 학교에 -> 우리 학교에", fr:"ecole -> dans l'ecole -> dans mon ecole", rom:""}
+      ]
+    },
+    {
+      title:"Particule sujet 이/가 (recapitulatif avec 있어/없어)",
+      ch:2,
+      expl:"La particule sujet 이 ou 가 s'attache au nom qui precede 있어 ou 없어. Le choix depend de la derniere lettre du nom.",
+      rules:[
+        "Nom terminant par une voyelle + 가 : 열쇠가, 의자가",
+        "Nom terminant par une consonne + 이 : 책이, 연필이, 도서관이, 수영장이"
+      ],
+      ex:[
+        {kr:"열쇠가 있어.", fr:"Il y a des cles.", rom:""},
+        {kr:"책이 있어.", fr:"Il y a un livre.", rom:""},
+        {kr:"도서관이 있어.", fr:"Il y a une bibliotheque.", rom:""},
+        {kr:"의자가 있어.", fr:"Il y a une chaise.", rom:""},
+        {kr:"매점이 있어.", fr:"Il y a une superette.", rom:""},
+        {kr:"수영장이 없어.", fr:"Il n'y a pas de piscine.", rom:""}
+      ]
+    },
+    {
+      title:"Les terminaisons du present (-아요 / -어요)",
+      ch:3,
+      expl:"En coreen, il n'y a pas de conjugaison qui change selon les sujets. C'est donc la meme forme pour toutes les personnes. Pour conjuguer au present poli, on ajoute une terminaison au radical du verbe. Si la derniere voyelle du radical est ㅏ ou ㅗ, on ajoute -아요. Pour les autres voyelles, on ajoute -어요. Les verbes en 하다 deviennent 해요.",
+      rules:[
+        "Voyelles ㅏ / ㅗ + -아요",
+        "Autres voyelles + -어요",
+        "Verbes en 하다 → 해요",
+        "Attention : tous les verbes dont le radical se termine par une voyelle connaissent la contraction avec leur terminaison (voir p.102)"
+      ],
+      ex:[
+        {kr:"놀다 → 놀아요.", fr:"s'amuser → Je m'amuse.", rom:""},
+        {kr:"먹다 → 먹어요.", fr:"manger → Je mange.", rom:""},
+        {kr:"하다 → 해요.", fr:"faire → Je fais.", rom:""}
+      ]
+    },
+    {
+      title:"La particule 에서 + verbe d'action vs 에 + verbe d'existence",
+      ch:3,
+      expl:"Il faut distinguer deux particules de lieu : 에서 s'utilise avec un verbe d'action (pour indiquer le lieu ou se deroule l'action), tandis que 에 s'utilise avec un verbe d'existence (있다/없다) pour indiquer le lieu ou l'on se trouve.",
+      rules:[
+        "lieu + 에서 + verbe d'action (ex: 학교에서 공부해요 = j'etudie a l'ecole)",
+        "lieu + 에 + verbe d'existence (ex: 학교에 있어요 = je suis a l'ecole)"
+      ],
+      ex:[
+        {kr:"학교에서 공부해요.", fr:"J'etudie a l'ecole.", rom:""},
+        {kr:"학교에 있어요.", fr:"Je suis a l'ecole.", rom:""},
+        {kr:"공원에서 운동해.", fr:"Je fais du sport au parc.", rom:""},
+        {kr:"공원에 있어.", fr:"Je suis au parc.", rom:""},
+        {kr:"식당에서 저녁을 먹어.", fr:"Je dine au restaurant.", rom:""},
+        {kr:"카페에 있어.", fr:"Je suis au cafe.", rom:""},
+        {kr:"미술관에 있어!", fr:"Je suis au musee !", rom:""}
+      ]
+    },
+    {
+      title:"La negation 안 + verbe",
+      ch:3,
+      expl:"Pour former la negation en coreen, on place 안 devant le verbe. C'est l'equivalent de 'ne... pas' en francais.",
+      rules:["안 + verbe = ne pas + verbe"],
+      ex:[
+        {kr:"책을 안 읽어요.", fr:"Je ne lis pas de livres.", rom:""},
+        {kr:"친구를 안 만나.", fr:"Je ne vois pas mes ami(e)s.", rom:""}
+      ]
+    },
+    {
+      title:"이다 - Le verbe etre (copule)",
+      ch:1,
+      expl:"On utilise le verbe etre apres un nom afin d'identifier un objet ou de presenter une personne. La conjugaison varie selon le registre (familier/poli) et selon si le nom se termine par une voyelle ou une consonne.",
+      rules:[
+        "Apres voyelle + 야 (familier) : 알리스야",
+        "Apres consonne + 이야 (familier) : 나영이야",
+        "Apres voyelle + 예요 (poli) : 알리스예요",
+        "Apres consonne + 이에요 (poli) : 나영이에요",
+        "La phrase affirmative et interrogative ont la meme forme : on distingue par l'intonation (montante = question)"
+      ],
+      ex:[
+        {kr:"알리스야.", fr:"C'est Alice.", rom:""},
+        {kr:"알리스야?", fr:"C'est Alice ?", rom:""},
+        {kr:"나영이야.", fr:"C'est Nayoung.", rom:""},
+        {kr:"알리스예요.", fr:"C'est Alice. (poli)", rom:""},
+        {kr:"나영이에요.", fr:"C'est Nayoung. (poli)", rom:""}
+      ]
+    },
+    {
+      title:"아니다 - Le verbe ne pas etre (negation de la copule)",
+      ch:1,
+      expl:"Forme negative de 이다. On place la particule sujet 가/이 entre le nom et 아니야/아니에요.",
+      rules:[
+        "Apres voyelle + 가 아니야 (familier) : 엄마가 아니야",
+        "Apres consonne + 이 아니야 (familier) : 선생님이 아니야",
+        "Apres voyelle + 가 아니에요 (poli) : 엄마가 아니에요",
+        "Apres consonne + 이 아니에요 (poli) : 선생님이 아니에요"
+      ],
+      ex:[
+        {kr:"엄마가 아니야.", fr:"Ce n'est pas ma maman. (familier)", rom:""},
+        {kr:"엄마가 아니에요.", fr:"Ce n'est pas ma maman. (poli)", rom:""},
+        {kr:"선생님이 아니야.", fr:"Il/Elle n'est pas professeur(e). (familier)", rom:""},
+        {kr:"선생님이 아니에요.", fr:"Il/Elle n'est pas professeur(e). (poli)", rom:""}
+      ]
+    },
+    {
+      title:"Se presenter : 나는 + nom + 이야/야",
+      ch:1,
+      expl:"Pour se presenter en langage familier, on utilise 나는 (je + particule de theme) suivi du prenom et de la copule 이다.",
+      rules:[
+        "나는 + prenom finissant par voyelle + 야 : 나는 알리스야.",
+        "나는 + prenom finissant par consonne + 이야 : 나는 나영이야.",
+        "En poli, 저는 remplace 나는 et 이에요/예요 remplace 이야/야."
+      ],
+      ex:[
+        {kr:"나는 알리스야.", fr:"Je m'appelle Alice. (familier)", rom:""},
+        {kr:"나는 나영이야.", fr:"Je m'appelle Nayoung. (familier)", rom:""},
+        {kr:"저는 알리스예요.", fr:"Je suis Alice. (poli)", rom:""},
+        {kr:"저는 프랑스 사람이에요.", fr:"Je suis francais(e). (poli)", rom:""}
+      ]
+    },
+    {
+      title:"이름이 뭐야? - Demander le prenom",
+      ch:1,
+      expl:"이름 = prenom, 이 = particule sujet (apres consonne), 뭐 = quoi, 야 = copule familier. Litteralement : Le prenom est quoi ?",
+      rules:["이름이 뭐야? (familier) = Comment tu t'appelles ?", "뭐 = quoi / qu' / quel(le)(s)"],
+      ex:[
+        {kr:"이름이 뭐야?", fr:"Comment tu t'appelles ?", rom:""},
+        {kr:"나는 알리스야.", fr:"Je m'appelle Alice.", rom:""}
+      ]
+    },
+    {
+      title:"어느 나라 사람이에요? - Demander la nationalite",
+      ch:1,
+      expl:"어느 = quel(le), 나라 = pays, 사람 = personne. Construction pour demander la nationalite.",
+      rules:[
+        "어느 나라 사람이에요? (poli) = Quelle est votre nationalite ?",
+        "어느 나라 사람이야? (familier)",
+        "Reponse : [pays] 사람이에요/이야."
+      ],
+      ex:[
+        {kr:"어느 나라 사람이에요?", fr:"Quelle est votre nationalite ?", rom:""},
+        {kr:"프랑스 사람이에요.", fr:"Je suis francais(e).", rom:""},
+        {kr:"한국 사람이야.", fr:"Je suis coreen(ne). (familier)", rom:""}
+      ]
+    },
+    {
+      title:"Suffixe d'appellation 아/야",
+      ch:1,
+      expl:"Lorsqu'on interpelle une personne proche et moins agee, on ajoute un suffixe a son prenom.",
+      rules:[
+        "아 si le prenom se termine par une consonne : 나영아",
+        "야 s'il se termine par une voyelle : 지우야",
+        "Pour les personnes plus agees, on utilise 님 a la fin (ex: 선생님)"
+      ],
+      ex:[
+        {kr:"나영아!", fr:"Nayoung ! (appel)", rom:""},
+        {kr:"지우야!", fr:"Jiu ! (appel)", rom:""},
+        {kr:"선생님!", fr:"Professeur ! (respectueux)", rom:""}
+      ]
+    },
+    {
+      title:"Les consonnes finales (받침) et leur prononciation",
+      ch:0,
+      expl:"Les consonnes finales (받침) ne peuvent prendre que 7 valeurs phonetiques en position finale : k, n, t, l, m, p, ng.",
+      rules:[
+        "ㄱ, ㅋ, ㄲ → k (ex: 책, 부엌, 밖)",
+        "ㄴ → n (ex: 손)",
+        "ㄷ, ㅅ, ㅆ, ㅈ, ㅊ, ㅌ, ㅎ → t (ex: 닫다, 옷, 있다, 낮, 꽃, 밑, 히읗)",
+        "ㄹ → l (ex: 달)",
+        "ㅁ → m (ex: 밤)",
+        "ㅂ, ㅍ → p (ex: 밥, 잎)",
+        "ㅇ → ng (ex: 강)"
+      ],
+      ex:[
+        {kr:"책", fr:"livre (prononce tchaek → k final)", rom:""},
+        {kr:"손", fr:"main (prononce son → n final)", rom:""},
+        {kr:"옷", fr:"vetement (prononce ot → t final)", rom:""},
+        {kr:"달", fr:"lune (prononce dal → l final)", rom:""},
+        {kr:"밥", fr:"riz (prononce bap → p final)", rom:""},
+        {kr:"강", fr:"riviere (prononce gang → ng final)", rom:""}
+      ]
+    },
+    {
+      title:"Il y a / Il n'y a pas: 이/가 있어(요) / 이/가 없어(요)",
+      ch:2,
+      expl:"Pour exprimer l'existence (il y a) ou l'absence (il n'y a pas). 있어/없어 servent aussi a dire: 1) Il y a / Il n'y a pas, 2) J'ai / Je n'ai pas, 3) C'est la / Ce n'est pas la. Pour le style poli, ajouter 요 a la fin.",
+      rules:[
+        "voyelle + 가 있어(요) = il y a (apres voyelle)",
+        "consonne + 이 있어(요) = il y a (apres consonne)",
+        "voyelle + 가 없어(요) = il n'y a pas (apres voyelle)",
+        "consonne + 이 없어(요) = il n'y a pas (apres consonne)"
+      ],
+      ex:[
+        {kr:"열쇠가 있어.", fr:"Il y a des cles.", rom:""},
+        {kr:"책이 있어.", fr:"Il y a un livre.", rom:""},
+        {kr:"열쇠가 없어.", fr:"Il n'y a pas de cles.", rom:""},
+        {kr:"책이 없어.", fr:"Il n'y a pas de livre.", rom:""},
+        {kr:"연필이 있어.", fr:"Il y a un stylo. / J'ai un stylo. / Le stylo est la.", rom:""},
+        {kr:"연필이 없어.", fr:"Il n'y a pas de stylo. / Je n'ai pas de stylo. / Le stylo n'est pas la.", rom:""}
+      ]
+    },
+    {
+      title:"내 ou 우리: mon/ma/notre",
+      ch:2,
+      expl:"Pour dire mon/ma/mes: utiliser 내 pour ce qui n'appartient qu'a toi, et 우리 pour ce qui est partage (ecole, ville, famille). 우리 signifie aussi 'notre'.",
+      rules:[
+        "내 + nom = mon/ma (possession personnelle: 내 가방, 내 방)",
+        "우리 + nom = mon/notre (possession partagee: 우리 학교, 우리 가족)"
+      ],
+      ex:[
+        {kr:"내 가방", fr:"mon sac", rom:""},
+        {kr:"내 방", fr:"ma chambre", rom:""},
+        {kr:"우리 학교", fr:"mon/notre ecole", rom:""},
+        {kr:"우리 가족", fr:"ma/notre famille", rom:""}
+      ]
+    },
+    {
+      title:"Lieu + 에: dans (avec verbes d'existence)",
+      ch:2,
+      expl:"Avec les verbes d'existence (있다/없다), on met 에 apres le lieu.",
+      rules:["lieu + 에 + 있어(요)/없어(요)"],
+      ex:[
+        {kr:"방에 책상하고 의자가 있어.", fr:"Dans la chambre, il y a un bureau et une chaise.", rom:""},
+        {kr:"우리 학교에 도서관이 있어.", fr:"Dans notre ecole, il y a une bibliotheque.", rom:""}
+      ]
+    },
+    {
+      title:"Les verbes en 하다: conjugaison au present",
+      ch:3,
+      expl:"Les verbes composes de nom + 하다 se conjuguent au present en remplacant 하다 par 해요 (poli) ou 해 (informel).",
+      rules:["Infinitif: nom + 하다", "Present poli: nom + 해요", "Present informel: nom + 해"],
+      ex:[
+        {kr:"운동하다 → 운동해요.", fr:"faire du sport → Je fais du sport.", rom:""},
+        {kr:"오늘 운동해요.", fr:"Aujourd'hui, je fais du sport.", rom:""},
+        {kr:"금요일에 수영해.", fr:"Je nage le vendredi.", rom:""}
+      ]
+    },
+    {
+      title:"Jour + particule de temps 에",
+      ch:3,
+      expl:"On ajoute 에 apres un jour ou un moment pour indiquer 'le lundi', 'le matin', etc.",
+      rules:["jour/moment + 에 = le jour/au moment", "Exception: 오늘 et 지금 ne prennent PAS 에"],
+      ex:[
+        {kr:"월요일에 운동해.", fr:"Le lundi, je fais du sport.", rom:""},
+        {kr:"월요일에 축구해요.", fr:"Je joue au football le lundi.", rom:""},
+        {kr:"아침에 샤워해요.", fr:"Je me douche le matin.", rom:""}
+      ]
+    },
+    {
+      title:"Les terminaisons du present: -아요/-어요",
+      ch:3,
+      expl:"Pour conjuguer les verbes au present: 1. Supprimer -다 de l'infinitif. 2. Ajouter la terminaison selon la derniere voyelle du radical. En coreen, il n'y a pas de conjugaison par personne: meme forme pour tous les sujets.",
+      rules:[
+        "Radical avec voyelle ㅏ ou ㅗ → radical + -아요 (poli) / -아 (informel)",
+        "Radical avec autre voyelle → radical + -어요 (poli) / -어 (informel)",
+        "Verbes en 하다 → 해요 (poli) / 해 (informel)",
+        "Contraction ㅏ+ㅏ = ㅏ: 자다 → 자아요 → 자요",
+        "Contraction ㅜ+ㅓ = ㅝ: 추다 → 추어요 → 춰요",
+        "Contraction ㅗ+ㅏ = ㅘ: 보다 → 보아요 → 봐요"
+      ],
+      ex:[
+        {kr:"놀다 → 놀아요.", fr:"s'amuser → Je m'amuse.", rom:""},
+        {kr:"먹다 → 먹어요.", fr:"manger → Je mange.", rom:""},
+        {kr:"쇼핑하다 → 쇼핑해요.", fr:"faire du shopping → Je fais du shopping.", rom:""},
+        {kr:"자다 → 자요.", fr:"dormir → Je dors.", rom:""},
+        {kr:"추다 → 춰요.", fr:"danser → Je danse.", rom:""},
+        {kr:"보다 → 봐요.", fr:"regarder → Je regarde.", rom:""}
+      ]
+    },
+    {
+      title:"La particule COD: 을/를",
+      ch:3,
+      expl:"La particule du complement d'objet direct (COD) se place apres le nom objet.",
+      rules:[
+        "Apres consonne: 을",
+        "Apres voyelle: 를",
+        "Beaucoup de Coreens ne l'emploient pas a l'oral"
+      ],
+      ex:[
+        {kr:"수업을 들어.", fr:"Je suis les cours.", rom:""},
+        {kr:"영화를 봐.", fr:"Je regarde un film.", rom:""},
+        {kr:"아침을 먹어.", fr:"Je prends mon petit-dejeuner.", rom:""},
+        {kr:"드라마를 봐.", fr:"Je regarde une serie.", rom:""},
+        {kr:"친구를 만나.", fr:"Je vois mes ami(e)s.", rom:""},
+        {kr:"책을 읽어.", fr:"Je lis un livre.", rom:""}
+      ]
+    },
+    {
+      title:"Lieu + 에서 + verbe d'action vs Lieu + 에 + verbe d'existence",
+      ch:3,
+      expl:"Distinction fondamentale: 에서 apres un lieu avec un verbe d'action, 에 apres un lieu avec un verbe d'existence.",
+      rules:["lieu + 에서 + verbe d'action", "lieu + 에 + verbe d'existence (있다/없다)"],
+      ex:[
+        {kr:"학교에서 공부해요.", fr:"J'etudie a l'ecole.", rom:""},
+        {kr:"학교에 있어요.", fr:"Je suis a l'ecole.", rom:""},
+        {kr:"식당에서 저녁을 먹어.", fr:"Je dine au restaurant.", rom:""},
+        {kr:"공원에 있어.", fr:"Je suis au parc.", rom:""}
+      ]
+    },
+    {
+      title:"La negation: 안 + verbe",
+      ch:3,
+      expl:"Pour la negation, placer 안 devant le verbe. Pour les verbes en nom+하다, placer 안 entre le nom et 하다.",
+      rules:["안 + verbe conjugue", "Pour nom+하다: nom + 안 + 하다/해요/해"],
+      ex:[
+        {kr:"책을 안 읽어요.", fr:"Je ne lis pas de livres.", rom:""},
+        {kr:"점심을 안 먹어요.", fr:"Je ne dejeune pas.", rom:""},
+        {kr:"쇼핑 안 해요.", fr:"Je ne fais pas de shopping.", rom:""},
+        {kr:"친구를 안 만나.", fr:"Je ne vois pas mes ami(e)s.", rom:""}
+      ]
+    },
+    {
+      title:"La possession: possesseur + 거",
+      ch:4,
+      expl:"Pour indiquer a qui appartient quelque chose, on utilise possesseur + 거 (chose/truc de...).",
+      rules:[
+        "possesseur + 거 = la chose de...",
+        "누구 거 = a qui?",
+        "내 거 = a moi / le mien",
+        "nom + 거 = a [nom]"
+      ],
+      ex:[
+        {kr:"누구 거?", fr:"C'est a qui?", rom:""},
+        {kr:"내 거.", fr:"C'est a moi.", rom:""},
+        {kr:"엄마 거.", fr:"C'est a maman.", rom:""},
+        {kr:"이 책은 언니 거야.", fr:"Ce livre est a ma grande soeur.", rom:""},
+        {kr:"그 컴퓨터 누구 거야?", fr:"A qui est cet ordinateur(-la)?", rom:""},
+        {kr:"우리 언니 거야.", fr:"C'est a ma soeur.", rom:""}
+      ]
+    },
+    {
+      title:"Les demonstratifs: 이/그/저 + 거/기/nom",
+      ch:4,
+      expl:"Systeme a 3 niveaux base sur la distance par rapport au locuteur et l'interlocuteur. Pas de masculin/feminin ni singulier/pluriel en coreen.",
+      rules:[
+        "이 (proche du locuteur): 이거 (celui-ci), 여기 (ici), 이+nom (ce...ci)",
+        "그 (loin du locuteur, proche de l'interlocuteur): 그거 (celui-la), 거기 (la), 그+nom (ce...la)",
+        "저 (loin des deux): 저거 (celui la-bas), 저기 (la-bas), 저+nom (ce...la-bas)"
+      ],
+      ex:[
+        {kr:"이 가방", fr:"ce sac(-ci)", rom:""},
+        {kr:"그 가방", fr:"ce sac(-la)", rom:""},
+        {kr:"저 가방", fr:"ce sac (la-bas)", rom:""},
+        {kr:"여기가 주방이야.", fr:"Ici, c'est la cuisine.", rom:""},
+        {kr:"이 사람", fr:"cette personne(-ci)", rom:""},
+        {kr:"그 사람", fr:"cette personne(-la)", rom:""},
+        {kr:"저 사람", fr:"cette personne (la-bas)", rom:""}
+      ]
+    },
+    {
+      title:"La position: lieu + 앞/뒤/옆/위/아래 + 에",
+      ch:4,
+      expl:"Pour indiquer la position d'un objet ou lieu par rapport a un autre.",
+      rules:[
+        "lieu + 앞에 = devant",
+        "lieu + 뒤에 = derriere",
+        "lieu + 옆에 = a cote de",
+        "lieu + 왼쪽에 = a gauche de",
+        "lieu + 오른쪽에 = a droite de"
+      ],
+      ex:[
+        {kr:"저는 서점 앞에 있어요.", fr:"Je suis devant la librairie.", rom:""},
+        {kr:"편의점은 빵집 앞에 있어.", fr:"La superette est devant la boulangerie.", rom:""},
+        {kr:"집 오른쪽에 있어.", fr:"C'est a droite de la maison.", rom:""}
+      ]
+    },
+    {
+      title:"La direction: (으)로 가",
+      ch:4,
+      expl:"Pour indiquer la direction, on utilise (으)로 avec un verbe de deplacement.",
+      rules:["Apres voyelle: 로", "Apres consonne: 으로", "Apres consonne ㄹ: 로 (exception)"],
+      ex:[
+        {kr:"오른쪽으로 가.", fr:"Je vais a droite.", rom:""},
+        {kr:"뒤로 가.", fr:"Je vais derriere.", rom:""},
+        {kr:"왼쪽으로 가.", fr:"On va a gauche.", rom:""}
+      ]
+    },
+    {
+      title:"Lieu + 에 + verbe de deplacement (가다)",
+      ch:4,
+      expl:"Avec les verbes de deplacement comme 가다 (aller), on utilise 에 apres le lieu de destination.",
+      rules:["lieu + 에 + verbe de deplacement (가다, etc.)"],
+      ex:[
+        {kr:"도서관에 가.", fr:"Je vais a la bibliotheque.", rom:""},
+        {kr:"빵집에 어떻게 가?", fr:"Comment on va a la boulangerie?", rom:""}
+      ]
+    },
+    {
+      title:"Les moyens de transport: transport + (으)로 가다",
+      ch:4,
+      expl:"Pour dire comment on se deplace, on utilise le moyen de transport + (으)로 + 가다.",
+      rules:[
+        "transport finissant par voyelle + 로 가",
+        "transport finissant par consonne + 으로 가",
+        "transport finissant par ㄹ + 로 가"
+      ],
+      ex:[
+        {kr:"버스로 가.", fr:"J'y vais en bus.", rom:""},
+        {kr:"트램으로 가.", fr:"J'y vais en tram.", rom:""},
+        {kr:"지하철로 가.", fr:"J'y vais en metro.", rom:""},
+        {kr:"자전거로 가.", fr:"On y va a velo.", rom:""},
+        {kr:"강남에서 경복궁까지 지하철로 가.", fr:"De Gangnam a Gyeongbokgung, on y va en metro.", rom:""}
+      ]
+    },
+    {
+      title:"De... a... (lieux): 에서...까지",
+      ch:4,
+      expl:"Pour exprimer un trajet d'un lieu a un autre.",
+      rules:["lieu depart + 에서 + lieu arrivee + 까지"],
+      ex:[
+        {kr:"서울에서 파리까지", fr:"de Seoul a Paris", rom:""},
+        {kr:"강남에서 경복궁까지 어떻게 가?", fr:"Comment va-t-on de Gangnam a Gyeongbokgung?", rom:""}
+      ]
+    },
+    {
+      title:"이다 - verbe etre (langage familier)",
+      ch:1,
+      expl:"On utilise le verbe etre (이다) apres un nom afin d'identifier un objet ou de presenter une personne. Langage familier : si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi, tu utiliseras le langage familier.",
+      rules:[
+        "Forme affirmative : voyelle + 야 (ex: 언니야)",
+        "Forme affirmative : consonne + 이야 (ex: 남동생이야)",
+        "Forme negative : voyelle + 가 아니야 (ex: 언니가 아니야)",
+        "Forme negative : consonne + 이 아니야 (ex: 남동생이 아니야)"
+      ],
+      ex:[
+        {kr:"언니야.", fr:"C'est ma grande soeur.", rom:""},
+        {kr:"남동생이야.", fr:"C'est mon petit frere.", rom:""},
+        {kr:"언니가 아니야.", fr:"Ce n'est pas ma grande soeur.", rom:""},
+        {kr:"남동생이 아니야.", fr:"Ce n'est pas mon petit frere.", rom:""}
+      ]
+    },
+    {
+      title:"이다 - verbe etre (conjugaison familier + poli)",
+      ch:1,
+      expl:"Voici la conjugaison de 이다 selon le registre que tu veux utiliser. Langage poli : si tu parles aux personnes plus agees que toi, tu utiliseras le langage poli.",
+      rules:[
+        "Familier : voyelle + 야 (question et affirmation)",
+        "Familier : consonne + 이야 (question et affirmation)",
+        "Poli : voyelle + 예요 (question et affirmation)",
+        "Poli : consonne + 이에요 (question et affirmation)"
+      ],
+      ex:[
+        {kr:"알리스야?", fr:"C'est Alice ?", rom:""},
+        {kr:"알리스야.", fr:"C'est Alice.", rom:""},
+        {kr:"나영이야?", fr:"C'est Nayoung ?", rom:""},
+        {kr:"나영이야.", fr:"C'est Nayoung.", rom:""},
+        {kr:"알리스예요?", fr:"Est-ce Alice ?", rom:""},
+        {kr:"알리스예요.", fr:"C'est Alice.", rom:""},
+        {kr:"나영이에요?", fr:"Est-ce Nayoung ?", rom:""},
+        {kr:"나영이에요.", fr:"C'est Nayoung.", rom:""}
+      ]
+    },
+    {
+      title:"J'observe - 이다 forme informelle",
+      ch:1,
+      expl:"Encadre J'observe avec exemples d'utilisation de 야 et 가 아니야.",
+      ex:[
+        {kr:"음바페야.", fr:"(C'est) Mbappe.", rom:""},
+        {kr:"아리아나 그란데가 아니야.", fr:"Ce n'est pas Ariana Grande.", rom:""}
+      ]
+    },
+    {
+      title:"있다/없다 - il y a / il n'y a pas",
+      ch:2,
+      expl:"있다 signifie 'il y a' ou 'avoir'. 없다 signifie 'il n'y a pas' ou 'ne pas avoir'. Particule 도 signifie 'aussi'.",
+      rules:[
+        "lieu + 에 + nom + 이/가 + 있어 (il y a)",
+        "lieu + 에 + nom + 이/가 + 없어 (il n'y a pas)",
+        "...도 있어 = il y a aussi..."
+      ],
+      ex:[
+        {kr:"학교에 체육관이 있어.", fr:"Il y a un gymnase a l'ecole.", rom:""},
+        {kr:"매점이 있어.", fr:"Il y a une superette.", rom:""},
+        {kr:"학생 식당도 있어?", fr:"Il y a aussi une cantine ?", rom:""},
+        {kr:"응, 학생 식당도 있어.", fr:"Oui, il y a aussi une cantine.", rom:""},
+        {kr:"학교에 수영장이 있어?", fr:"Il y a une piscine a l'ecole ?", rom:""},
+        {kr:"수영장이 없어.", fr:"Il n'y a pas de piscine.", rom:""},
+        {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans mon ecole.", rom:""}
+      ]
+    },
+    {
+      title:"Fais bien la difference - 내/우리",
+      ch:2,
+      expl:"내 = mon/ma (possessif singulier). 우리 = mon/notre (possessif collectif, souvent utilise en coreen).",
+      rules:["내 방 = ma chambre", "우리 학교 = mon/notre ecole"],
+      ex:[
+        {kr:"내 방", fr:"ma chambre", rom:""},
+        {kr:"우리 학교", fr:"mon/notre ecole", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - 있어 avec lieu",
+      ch:2,
+      expl:"Encadre Je retiens avec les phrases modeles pour exprimer l'existence dans un lieu.",
+      rules:[
+        "우리 학교에 + nom + 이 있어 (dans notre ecole il y a...)",
+        "우리 학교에 + nom + 도 있어 (dans notre ecole il y a aussi...)"
+      ],
+      ex:[
+        {kr:"우리 학교에 도서관이 있어.", fr:"Dans notre ecole, il y a une bibliotheque.", rom:""},
+        {kr:"우리 학교에 학생 식당도 있어.", fr:"Dans notre ecole, il y a aussi une cantine.", rom:""}
+      ]
+    },
+    {
+      title:"Les terminaisons du present",
+      ch:3,
+      expl:"Conjugaison des verbes au present poli (-아요/-어요). En coreen, il n'y a pas de conjugaison qui change selon les sujets. C'est donc la meme forme pour toutes les personnes.",
+      rules:[
+        "voyelles ㅏ/ㅗ + -아요",
+        "autres voyelles + -어요",
+        "les verbes en 하다 -> 해요",
+        "Attention, tous les verbes dont le radical se termine par une voyelle connaissent la contraction avec leur terminaison ! (voir p.102)"
+      ],
+      ex:[
+        {kr:"놀다 -> 놀아요.", fr:"s'amuser -> Je m'amuse.", rom:""},
+        {kr:"먹다 -> 먹어요.", fr:"manger -> Je mange.", rom:""}
+      ]
+    },
+    {
+      title:"La particule COD - 을/를",
+      ch:3,
+      expl:"La particule COD (complement d'objet direct) se place apres le nom.",
+      rules:["consonne + 을", "voyelle + 를"],
+      ex:[
+        {kr:"수업을 들어.", fr:"Je suis les cours. (Litt. J'ecoute un cours.)", rom:""},
+        {kr:"영화를 봐.", fr:"Je regarde un film.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Actions quotidiennes avec 을/를",
+      ch:3,
+      expl:"Encadre Je retiens montrant les actions quotidiennes avec la particule COD.",
+      ex:[
+        {kr:"아침을 먹어.", fr:"Je prends mon petit-dejeuner.", rom:""},
+        {kr:"드라마를 봐.", fr:"Je regarde une serie.", rom:""},
+        {kr:"수업을 들어.", fr:"Je suis les cours.", rom:""},
+        {kr:"친구를 만나.", fr:"Je vois mes ami(e)s.", rom:""}
+      ]
+    },
+    {
+      title:"La position",
+      ch:4,
+      expl:"Pour indiquer la position d'un lieu par rapport a un autre.",
+      rules:[
+        "lieu + 앞 = devant",
+        "lieu + 뒤 = derriere",
+        "lieu + 옆 = a cote",
+        "lieu + 왼쪽 = gauche",
+        "lieu + 오른쪽 = droite"
+      ],
+      ex:[
+        {kr:"저는 서점 앞에 있어요.", fr:"Je suis devant la librairie.", rom:""}
+      ]
+    },
+    {
+      title:"La direction - 으로/로",
+      ch:4,
+      expl:"Particule de direction pour indiquer ou l'on va.",
+      rules:["consonne + 으로", "voyelle + 로"],
+      ex:[
+        {kr:"오른쪽으로 가.", fr:"Je vais a droite.", rom:""},
+        {kr:"뒤로 가.", fr:"Je vais derriere.", rom:""}
+      ]
+    },
+    {
+      title:"lieu + 에 + verbe de deplacement",
+      ch:4,
+      expl:"Pour exprimer un deplacement vers un lieu, on utilise la particule 에 suivie d'un verbe de deplacement.",
+      rules:["lieu + 에 + verbe de deplacement", "가다 = aller"],
+      ex:[
+        {kr:"도서관에 가.", fr:"Je vais a la bibliotheque.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Direction et position",
+      ch:4,
+      expl:"Encadre Je retiens combinant direction, deplacement et position.",
+      ex:[
+        {kr:"빵집에 어떻게 가?", fr:"Comment on va a la boulangerie ?", rom:""},
+        {kr:"왼쪽으로 가.", fr:"On va a gauche.", rom:""},
+        {kr:"편의점은 빵집 앞에 있어.", fr:"La superette est devant la boulangerie.", rom:""}
+      ]
+    },
+    {
+      title:"de... a... (lieu) - 에서...까지",
+      ch:4,
+      expl:"Pour exprimer un trajet d'un lieu a un autre.",
+      rules:["lieu + 에서 (de, depuis)", "lieu + 까지 (jusqu'a)"],
+      ex:[
+        {kr:"서울에서 파리까지", fr:"de Seoul a Paris", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Lieu et hanok",
+      ch:4,
+      expl:"Encadre Je retiens sur les pieces de la maison et la possession.",
+      ex:[
+        {kr:"여기가 주방이야.", fr:"Ici, c'est la cuisine.", rom:""},
+        {kr:"그 컴퓨터 누구 거야?", fr:"A qui est cet ordinateur(-la) ?", rom:""},
+        {kr:"우리 언니 거야.", fr:"C'est a ma soeur.", rom:""}
+      ]
+    },
+    {
+      title:"으로/로 만들어요 - etre fait de",
+      ch:5,
+      expl:"Pour exprimer la matiere ou l'ingredient dont quelque chose est fait.",
+      rules:["voyelle -> 로 만들어요", "consonne -> 으로 만들어요", "consonne ㄹ -> 로 만들어요"],
+      ex:[
+        {kr:"뭐로 만들어요?", fr:"De quoi c'est fait ?", rom:""},
+        {kr:"고기로 만들어요.", fr:"C'est fait de viande.", rom:""},
+        {kr:"레몬으로 만들어요.", fr:"C'est fait de citron.", rom:""},
+        {kr:"쌀로 만들어요.", fr:"C'est fait de riz.", rom:""}
+      ]
+    },
+    {
+      title:"-고 싶어요 - vouloir, avoir envie de",
+      ch:5,
+      expl:"La terminaison -고 싶어요 equivaut a 'vouloir' au present. On l'ajoute apres le verbe, uniquement a la 1re et a la 2e personne.",
+      rules:[
+        "radical du verbe + -고 싶어요 = vouloir / avoir envie de",
+        "먹고 싶어요 = vouloir manger",
+        "마시고 싶어요 = vouloir boire",
+        "Rappel : s'il y a plus d'une chose, tu utiliseras la conjonction 하고 !"
+      ],
+      ex:[
+        {kr:"감자튀김하고 햄버거 먹고 싶어요.", fr:"J'ai envie de manger des frites et un burger.", rom:""},
+        {kr:"커피하고 물 마시고 싶어요.", fr:"J'ai envie de boire un cafe et de l'eau.", rom:""}
+      ]
+    },
+    {
+      title:"Le passe - radical + 았/었어요",
+      ch:6,
+      expl:"Pour conjuguer au passe, on ajoute -았어요 ou -었어요 au radical du verbe selon la voyelle, et 했어요 pour les verbes en 하다.",
+      rules:[
+        "voyelle ㅏ/ㅗ : radical + -았어요",
+        "ni ㅏ ni ㅗ : radical + -었어요",
+        "verbes en 하다 : 하다 -> 했어요"
+      ],
+      ex:[
+        {kr:"스키를 탔어요.", fr:"J'ai fait du ski.", rom:""},
+        {kr:"사진을 찍었어요.", fr:"J'ai pris des photos.", rom:""},
+        {kr:"축구했어요.", fr:"J'ai joue au football.", rom:""}
+      ]
+    },
+    {
+      title:"이다 au passe (forme affirmative et negative)",
+      ch:6,
+      expl:"Le verbe etre 이다 conjugue au passe, forme affirmative et negative.",
+      rules:[
+        "Affirmatif : voyelle + 였어요",
+        "Affirmatif : consonne + 이었어요",
+        "Negatif : voyelle + 가 아니었어요",
+        "Negatif : consonne + 이 아니었어요"
+      ],
+      ex:[
+        {kr:"윷놀이였어요.", fr:"C'etait le jeu de yut.", rom:""},
+        {kr:"송편이었어요.", fr:"C'etait des songpyeons.", rom:""},
+        {kr:"윷놀이가 아니었어요.", fr:"Ce n'etait pas le jeu de yut.", rom:""},
+        {kr:"송편이 아니었어요.", fr:"Ce n'etait pas des songpyeons.", rom:""}
+      ]
+    },
+    {
+      title:"La date",
+      ch:6,
+      expl:"MOIS (nombre sino-coreen + 월) + JOUR (nombre sino-coreen + 일) + (JOUR DE LA SEMAINE). Attention aux mois de juin et d'octobre, ce sont des exceptions !",
+      rules:[
+        "1월 일월 = janvier",
+        "2월 이월 = fevrier",
+        "3월 삼월 = mars",
+        "4월 사월 = avril",
+        "5월 오월 = mai",
+        "6월 유월 = juin (exception: 육 -> 유월)",
+        "7월 칠월 = juillet",
+        "8월 팔월 = aout",
+        "9월 구월 = septembre",
+        "10월 시월 = octobre (exception: 십 -> 시월)",
+        "11월 십일월 = novembre",
+        "12월 십이월 = decembre"
+      ],
+      ex:[
+        {kr:"10월 6일 (일요일)", fr:"le (dimanche) 6 octobre", rom:""}
+      ]
+    },
+    {
+      title:"L'heure",
+      ch:6,
+      expl:"HEURE = nombres coreens + 시. MINUTE = nombres sino-coreens + 분. A la place de 30분, on peut utiliser le mot 반 qui signifie 'demi'.",
+      rules:[
+        "HEURE = nombre coreen + 시",
+        "MINUTE = nombre sino-coreen + 분",
+        "1시 30분 = 1시 반 (1h30)",
+        "N'oublie pas de mettre la particule de temps 에 a la fin du groupe nominal !"
+      ],
+      ex:[
+        {kr:"2시 45분 (두시 사십오분)", fr:"2 h 45", rom:""},
+        {kr:"9월 16일 토요일 3시에", fr:"a 3 h le samedi 16 septembre", rom:""}
+      ]
+    },
+    {
+      title:"De... a... (temps) - 부터...까지",
+      ch:6,
+      expl:"Pour exprimer une duree de temps.",
+      rules:["temps + 부터 = a partir de (de)", "temps + 까지 = jusqu'a (a)"],
+      ex:[
+        {kr:"1월부터 12월까지", fr:"de janvier a decembre", rom:""},
+        {kr:"9시부터 6시까지", fr:"de 9 h a 6 h", rom:""}
+      ]
+    },
+    {
+      title:"이다 - etre (langage familier et poli)",
+      ch:1,
+      expl:"On utilise le verbe etre apres un nom afin d'identifier un objet ou de presenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser. La phrase affirmative et la phrase interrogative se construisent de la meme maniere. Il faut preter attention a l'intonation : elle est montante dans les questions.",
+      rules:[
+        "Langage familier: voyelle + 야 (ex: 알리스야. C'est Alice.)",
+        "Langage familier: consonne + 이야 (ex: 나영이야. C'est Nayoung.)",
+        "Langage poli: voyelle + 예요 (ex: 알리스예요. C'est Alice.)",
+        "Langage poli: consonne + 이에요 (ex: 나영이에요. C'est Nayoung.)",
+        "Si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi, tu utiliseras le langage familier.",
+        "Si tu parles aux personnes plus agees que toi, tu utiliseras le langage poli."
+      ],
+      ex:[
+        {kr:"알리스야?", fr:"C'est Alice ?", rom:""},
+        {kr:"알리스야.", fr:"C'est Alice.", rom:""},
+        {kr:"나영이야?", fr:"C'est Nayoung ?", rom:""},
+        {kr:"나영이야.", fr:"C'est Nayoung.", rom:""},
+        {kr:"알리스예요?", fr:"Est-ce Alice ?", rom:""},
+        {kr:"알리스예요.", fr:"C'est Alice.", rom:""},
+        {kr:"나영이에요?", fr:"Est-ce Nayoung ?", rom:""},
+        {kr:"나영이에요.", fr:"C'est Nayoung.", rom:""}
+      ]
+    },
+    {
+      title:"아니다 - ne pas etre",
+      ch:1,
+      expl:"Voici comment former des phrases avec le verbe etre a la forme negative.",
+      rules:[
+        "Langage familier: voyelle + 가 아니야 (ex: 엄마가 아니야.)",
+        "Langage familier: consonne + 이 아니야 (ex: 선생님이 아니야.)",
+        "Langage poli: voyelle + 가 아니에요 (ex: 엄마가 아니에요.)",
+        "Langage poli: consonne + 이 아니에요 (ex: 선생님이 아니에요.)"
+      ],
+      ex:[
+        {kr:"엄마가 아니야.", fr:"Ce n'est pas ma maman.", rom:""},
+        {kr:"선생님이 아니야.", fr:"Il/Elle n'est pas professeur(e).", rom:""},
+        {kr:"엄마가 아니에요.", fr:"Ce n'est pas ma maman.", rom:""},
+        {kr:"선생님이 아니에요.", fr:"Il/Elle n'est pas professeur(e).", rom:""}
+      ]
+    },
+    {
+      title:"Fais bien la difference - 이다 forme affirmative vs negative (familier)",
+      ch:1,
+      expl:"Comparaison entre la forme affirmative et negative de 이다 en langage familier.",
+      rules:[
+        "Forme affirmative: voyelle + 야 / consonne + 이야",
+        "Forme negative: voyelle + 가 아니야 / consonne + 이 아니야"
+      ],
+      ex:[
+        {kr:"언니야.", fr:"C'est ma grande soeur.", rom:""},
+        {kr:"남동생이야.", fr:"C'est mon petit frere.", rom:""},
+        {kr:"언니가 아니야.", fr:"Ce n'est pas ma grande soeur.", rom:""},
+        {kr:"남동생이 아니야.", fr:"Ce n'est pas mon petit frere.", rom:""}
+      ]
+    },
+    {
+      title:"il y a / il n'y a pas - 있어 / 없어",
+      ch:2,
+      expl:"Exprimer l'existence ou l'absence de quelque chose.",
+      rules:[
+        "il y a: voyelle + 가 있어 (ex: 열쇠가 있어.)",
+        "il y a: consonne + 이 있어 (ex: 책이 있어.)",
+        "il n'y a pas: voyelle + 가 없어 (ex: 열쇠가 없어.)",
+        "il n'y a pas: consonne + 이 없어 (ex: 책이 없어.)",
+        "Pour le style poli, ajoute simplement 요 a la fin !"
+      ],
+      ex:[
+        {kr:"열쇠가 있어.", fr:"Il y a des cles.", rom:""},
+        {kr:"책이 있어.", fr:"Il y a un livre.", rom:""},
+        {kr:"열쇠가 없어.", fr:"Il n'y a pas de cles.", rom:""},
+        {kr:"책이 없어.", fr:"Il n'y a pas de livre.", rom:""}
+      ]
+    },
+    {
+      title:"하고 - et (conjonction)",
+      ch:2,
+      expl:"La conjonction 하고 relie deux noms.",
+      rules:["nom + 하고 + nom"],
+      ex:[
+        {kr:"책하고 공책이 있어.", fr:"Il y a un livre et un cahier.", rom:""}
+      ]
+    },
+    {
+      title:"lieu + 에 - dans",
+      ch:2,
+      expl:"Avec les verbes d'existence, on met 에 apres le lieu.",
+      rules:["lieu + 에 + verbe d'existence (있어/없어)"],
+      ex:[
+        {kr:"방에 책상하고 의자가 있어.", fr:"Dans la chambre, il y a un bureau et une chaise.", rom:""}
+      ]
+    },
+    {
+      title:"내 ou 우리 - mon/ma/mes ou notre/nos",
+      ch:2,
+      expl:"Pour dire mon/ma/mes, tu utiliseras 내 si tu parles de quelque chose qui n'appartient qu'a toi, et 우리 si c'est quelque chose qui n'appartient pas qu'a toi (ton lycee, ta ville, ...). D'ailleurs, 우리 veut dire aussi notre !",
+      rules:[
+        "내 = pour ce qui t'appartient personnellement (내 가방 = mon sac, 내 방 = ma chambre)",
+        "우리 = pour ce qui est partage (우리 학교 = mon/notre ecole, 우리 가족 = ma/notre famille)"
+      ],
+      ex:[
+        {kr:"방", fr:"chambre", rom:""},
+        {kr:"방에", fr:"dans la chambre", rom:""},
+        {kr:"내 방에", fr:"dans ma chambre", rom:""},
+        {kr:"학교", fr:"ecole", rom:""},
+        {kr:"학교에", fr:"dans l'ecole", rom:""},
+        {kr:"우리 학교에", fr:"dans mon ecole", rom:""}
+      ]
+    },
+    {
+      title:"...도 있어 - il y a aussi...",
+      ch:2,
+      expl:"La particule 도 remplace 이/가 pour exprimer 'aussi'.",
+      rules:["nom + 도 있어 = il y a aussi..."],
+      ex:[
+        {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans mon ecole.", rom:""}
+      ]
+    },
+    {
+      title:"Fais bien la difference - 내 방 vs 우리 학교",
+      ch:2,
+      expl:"Difference entre 내 (personnel) et 우리 (partage).",
+      rules:["내 방 = ma chambre (personnel)", "우리 학교 = mon/notre ecole (partage)"],
+      ex:[
+        {kr:"내 방", fr:"ma chambre", rom:""},
+        {kr:"우리 학교", fr:"mon/notre ecole", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Ch.2",
+      ch:2,
+      expl:"Resume des phrases cles du chapitre 2.",
+      ex:[
+        {kr:"우리 학교에 도서관이 있어.", fr:"Dans notre ecole, il y a une bibliotheque.", rom:""},
+        {kr:"우리 학교에 학생 식당도 있어.", fr:"Dans notre ecole, il y a aussi une cantine.", rom:""}
+      ]
+    },
+    {
+      title:"Fais bien la difference - La particule COD 을/를",
+      ch:3,
+      expl:"La particule COD marque le complement d'objet direct.",
+      rules:["consonne + 을", "voyelle + 를"],
+      ex:[
+        {kr:"수업을 들어.", fr:"Je suis les cours. (Litteralement: J'ecoute un cours.)", rom:""},
+        {kr:"영화를 봐.", fr:"Je regarde un film.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Ch.3",
+      ch:3,
+      expl:"Resume des phrases cles du chapitre 3.",
+      ex:[
+        {kr:"아침을 먹어.", fr:"Je prends mon petit-dejeuner.", rom:""},
+        {kr:"드라마를 봐.", fr:"Je regarde une serie.", rom:""},
+        {kr:"수업을 들어.", fr:"Je suis les cours.", rom:""},
+        {kr:"친구를 만나.", fr:"Je vois mes ami(e)s.", rom:""}
+      ]
+    },
+    {
+      title:"Fais bien la difference - 에서 vs 에",
+      ch:3,
+      expl:"Difference entre les particules de lieu 에서 et 에.",
+      rules:[
+        "lieu + 에서 + verbe d'action (ex: 학교에서 공부해요. J'etudie a l'ecole.)",
+        "lieu + 에 + verbe d'existence (ex: 학교에 있어요. Je suis a l'ecole.)"
+      ],
+      ex:[
+        {kr:"학교에서 공부해요.", fr:"J'etudie a l'ecole.", rom:""},
+        {kr:"학교에 있어요.", fr:"Je suis a l'ecole.", rom:""}
+      ]
+    },
+    {
+      title:"La negation - 안 + verbe",
+      ch:3,
+      expl:"Pour former la negation, on place 안 devant le verbe.",
+      rules:["안 + verbe"],
+      ex:[
+        {kr:"책을 안 읽어요.", fr:"Je ne lis pas de livres.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Ch.3 (lieux et negation)",
+      ch:3,
+      expl:"Resume des phrases cles du chapitre 3 sur les lieux et la negation.",
+      ex:[
+        {kr:"어디야?", fr:"Ou es-tu ?", rom:""},
+        {kr:"공원에 있어.", fr:"Je suis au parc.", rom:""},
+        {kr:"식당에서 저녁을 먹어.", fr:"Je dine au restaurant.", rom:""},
+        {kr:"친구를 안 만나.", fr:"Je ne vois pas mes ami(e)s.", rom:""}
+      ]
+    },
+    {
+      title:"La possession - possesseur + 거",
+      ch:4,
+      expl:"Pour exprimer la possession, on utilise possesseur + 거.",
+      rules:["possesseur + 거 + 야 (familier)"],
+      ex:[
+        {kr:"이 책은 언니 거야.", fr:"Ce livre est a ma grande soeur.", rom:""}
+      ]
+    },
+    {
+      title:"Les demonstratifs",
+      ch:4,
+      expl:"Les demonstratifs en coreen varient selon la distance par rapport au locuteur et a l'interlocuteur. Il n'y a ni masculin ni feminin, et on ne precise ni le singulier ni le pluriel !",
+      rules:[
+        "이거 = celui-ci, ca (proche du locuteur et de l'interlocuteur) / 이 + NOM / 이 사람 = cette personne(-ci)",
+        "그거 = celui-la (loin du locuteur et proche de l'interlocuteur) / 그 + NOM / 그 사람 = cette personne(-la)",
+        "저거 = celui la-bas (loin du locuteur et de l'interlocuteur) / 저 + NOM / 저 사람 = cette personne (la-bas)",
+        "여기 = ici / 거기 = la / 저기 = la-bas"
+      ],
+      ex:[
+        {kr:"이 사람", fr:"cette personne(-ci)", rom:""},
+        {kr:"그 사람", fr:"cette personne(-la)", rom:""},
+        {kr:"저 사람", fr:"cette personne (la-bas)", rom:""}
+      ]
+    },
+    {
+      title:"Fais bien la difference - La direction (으로/로)",
+      ch:4,
+      expl:"Difference entre la position et la direction avec 으로/로.",
+      rules:["consonne + 으로 (ex: 오른쪽으로 가.)", "voyelle + 로 (ex: 뒤로 가.)"],
+      ex:[
+        {kr:"오른쪽으로 가.", fr:"Je vais a droite.", rom:""},
+        {kr:"뒤로 가.", fr:"Je vais derriere.", rom:""}
+      ]
+    },
+    {
+      title:"Les moyens de transport - 으로/로 가",
+      ch:4,
+      expl:"Pour exprimer le moyen de transport, on utilise 으로/로 + 가다.",
+      rules:[
+        "voyelle + 로 (ex: 버스로 가.)",
+        "consonne + 으로 (ex: 트램으로 가.)",
+        "consonne ㄹ + 로 (ex: 지하철로 가.)"
+      ],
+      ex:[
+        {kr:"버스로 가.", fr:"J'y vais en bus.", rom:""},
+        {kr:"트램으로 가.", fr:"J'y vais en tram.", rom:""},
+        {kr:"지하철로 가.", fr:"J'y vais en metro.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Ch.4",
+      ch:4,
+      expl:"Resume des phrases cles du chapitre 4.",
+      ex:[
+        {kr:"여기가 주방이야.", fr:"Ici, c'est la cuisine.", rom:""},
+        {kr:"그 컴퓨터 누구 거야?", fr:"A qui est cet ordinateur(-la) ?", rom:""},
+        {kr:"우리 언니 거야.", fr:"C'est a ma soeur.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Ch.4 (transport et direction)",
+      ch:4,
+      expl:"Resume des phrases cles sur les directions et transports.",
+      ex:[
+        {kr:"빵집에 어떻게 가?", fr:"Comment on va a la boulangerie ?", rom:""},
+        {kr:"왼쪽으로 가.", fr:"On va a gauche.", rom:""},
+        {kr:"편의점은 빵집 앞에 있어.", fr:"La superette est devant la boulangerie.", rom:""}
+      ]
+    },
+    {
+      title:"Je retiens - Ch.4 (transport complet)",
+      ch:4,
+      expl:"Resume des phrases sur le transport.",
+      ex:[
+        {kr:"어떻게 가?", fr:"Comment on y va ?", rom:""},
+        {kr:"자전거로 가.", fr:"On y va a velo.", rom:""},
+        {kr:"강남에서 경복궁까지 어떻게 가?", fr:"Comment va-t-on de Gangnam a Gyeongbokgung ?", rom:""}
+      ]
+    },
+    {
+      title:"Le passe - radical + 았어요/었어요/했어요",
+      ch:6,
+      expl:"Formation du passe en coreen selon la voyelle du radical.",
+      rules:[
+        "radical avec voyelle ㅏ ou ㅗ: radical + -았어요 (ex: 스키를 탔어요. J'ai fait du ski.)",
+        "radical sans ㅏ ni ㅗ: radical + -었어요 (ex: 사진을 찍었어요. J'ai pris des photos.)",
+        "verbes en 하다: 하다 -> 했어요 (ex: 축구했어요. J'ai joue au football.)"
+      ],
+      ex:[
+        {kr:"스키를 탔어요.", fr:"J'ai fait du ski.", rom:""},
+        {kr:"사진을 찍었어요.", fr:"J'ai pris des photos.", rom:""},
+        {kr:"축구했어요.", fr:"J'ai joue au football.", rom:""}
+      ]
+    },
+    {
+      title:"이다 au passe - forme affirmative et negative",
+      ch:6,
+      expl:"Conjugaison du verbe 이다 (etre) au passe, forme affirmative et negative.",
+      rules:[
+        "Forme affirmative: voyelle + 였어요 (ex: 윷놀이였어요.)",
+        "Forme affirmative: consonne + 이었어요 (ex: 송편이었어요.)",
+        "Forme negative: voyelle + 가 아니었어요 (ex: 윷놀이가 아니었어요.)",
+        "Forme negative: consonne + 이 아니었어요 (ex: 송편이 아니었어요.)"
+      ],
+      ex:[
+        {kr:"윷놀이였어요.", fr:"C'etait le jeu de yut.", rom:""},
+        {kr:"송편이었어요.", fr:"C'etait des songpyeons.", rom:""},
+        {kr:"윷놀이가 아니었어요.", fr:"Ce n'etait pas le jeu de yut.", rom:""},
+        {kr:"송편이 아니었어요.", fr:"Ce n'etait pas des songpyeons.", rom:""}
+      ]
+    }
   ],
 
   phrases: [
@@ -1763,10 +2990,12 @@ const DATA = {
     {kr:"우리 학교에...", fr:"Dans mon école...", rom:"Uri hakgyoe...", ch:2, cat:"École"},
     {kr:"월요일에...", fr:"Le lundi...", rom:"Woryoire...", ch:3, cat:"Semaine"},
     {kr:"아침을 먹어.", fr:"Je prends mon petit-déjeuner.", rom:"Achimeul meogeo.", ch:3, cat:"Vie quotidienne"},
+    {kr:"어디야?", fr:"Où es-tu ?", rom:"Eodiya?", ch:3, cat:"Lieux"},
     {kr:"여기가 거실이야!", fr:"Ici, c'est le salon !", rom:"Yeogiga geosiliya!", ch:4, cat:"Maison"},
     {kr:"우리 동네에...", fr:"Dans mon quartier...", rom:"Uri dongnee...", ch:4, cat:"Quartier"},
     {kr:"자전거로 서울을 구경해!", fr:"Séoul à vélo !", rom:"Jajeongeoро Seoureul gugyeonghae!", ch:4, cat:"Transports"},
     {kr:"배고파!", fr:"J'ai faim !", rom:"Baegopa!", ch:5, cat:"Nourriture"},
+    {kr:"맛있어!", fr:"C'est bon !", rom:"Masisseo!", ch:5, cat:"Nourriture"},
     {kr:"밥 두 그릇!", fr:"Deux bols de riz !", rom:"Bap du geureut!", ch:5, cat:"Nourriture"},
     {kr:"어제 테니스를 쳤어!", fr:"J'ai joué au tennis hier !", rom:"Eoje teniseureul chyeosseo!", ch:6, cat:"Sports/Loisirs"},
     {
@@ -1887,24 +3116,24 @@ const DATA = {
     },
     {
       kr:"한국 학교가 어때? 학교에 뭐가 있어?",
-      fr:"Comment est l'école coreenne ? Qu'est-ce qu'il y a a l'école ?",
+      fr:"Comment est l'ecole coreenne ? Qu'est-ce qu'il y a a l'ecole ?",
       rom:"hanguk hakgyoga eottae? hakgyoe mwoga isseo?",
       ch:2,
       cat:"dialogue KakaoTalk"
     },
-    {kr:"학교에 체육관이 있어.", fr:"A l'école, il y a un gymnase.", rom:"hakgyoe cheyukgwani isseo.", ch:2, cat:"dialogue KakaoTalk"},
-    {kr:"매점이 있어.", fr:"Il y a une superette.", rom:"maejeomi isseo.", ch:2, cat:"dialogue KakaoTalk"},
+    {kr:"학교에 체육관이 있어.", fr:"A l'ecole, il y a un gymnase.", rom:"hakgyoe cheyukgwani isseo.", ch:2, cat:"dialogue KakaoTalk"},
+    {kr:"매점이 있어.", fr:"Il y a une cafeteria.", rom:"maejeomi isseo.", ch:2, cat:"dialogue KakaoTalk"},
     {kr:"아 그래?", fr:"Ah bon ?", rom:"a geurae?", ch:2, cat:"dialogue KakaoTalk"},
-    {kr:"학교에 체육관", fr:"(Il y a) un gymnase a l'école", rom:"hakgyoe cheyukgwan", ch:2},
+    {kr:"학교에 체육관", fr:"(Il y a) un gymnase a l'ecole", rom:"hakgyoe cheyukgwan", ch:2},
     {kr:"아 그래? 학생 식당도 있어?", fr:"Ah bon? Il y a aussi une cantine?", rom:"a geurae? haksaeng sikdangdo isseo?", ch:2},
     {kr:"응, 학생 식당도 있어", fr:"Oui, il y a aussi une cantine", rom:"eung, haksaeng sikdangdo isseo", ch:2},
-    {kr:"학교에 수영장이 있어?", fr:"Il y a une piscine a l'école?", rom:"hakgyoe suyeongjang-i isseo?", ch:2},
+    {kr:"학교에 수영장이 있어?", fr:"Il y a une piscine a l'ecole?", rom:"hakgyoe suyeongjang-i isseo?", ch:2},
     {kr:"수영장이 없어.", fr:"Il n'y a pas de piscine.", rom:"suyeongjang-i eopseo.", ch:2},
-    {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans mon école.", rom:"uri hakgyoe suyeongjangdo isseo.", ch:2},
-    {kr:"우리 학교에 도서관이 있어.", fr:"Dans notre école, il y a une bibliotheque.", rom:"uri hakgyoe doseogwani isseo.", ch:2},
+    {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans mon ecole.", rom:"uri hakgyoe suyeongjangdo isseo.", ch:2},
+    {kr:"우리 학교에 도서관이 있어.", fr:"Dans notre ecole, il y a une bibliotheque.", rom:"uri hakgyoe doseogwani isseo.", ch:2},
     {
       kr:"우리 학교에 학생 식당도 있어.",
-      fr:"Dans notre école, il y a aussi une cantine.",
+      fr:"Dans notre ecole, il y a aussi une cantine.",
       rom:"uri hakgyoe haksaeng sikdangdo isseo.",
       ch:2
     },
@@ -1913,8 +3142,13 @@ const DATA = {
     {kr:"연필이 없어.", fr:"Il n'y a pas de stylo.", rom:"yeonpiri eopseo.", ch:2},
     {kr:"책하고 공책이 있어.", fr:"Il y a un livre et un cahier.", rom:"chaekhago gongchaegi isseo.", ch:2},
     {kr:"내 가방", fr:"mon sac", rom:"nae gabang", ch:2},
+    {kr:"내 방", fr:"ma chambre", rom:"nae bang", ch:2},
+    {kr:"우리 학교", fr:"mon/notre ecole", rom:"uri hakgyo", ch:2},
+    {kr:"우리 가족", fr:"ma/notre famille", rom:"uri gajok", ch:2},
     {kr:"방에", fr:"dans la chambre", rom:"bange", ch:2},
-    {kr:"학교에", fr:"dans l'école", rom:"hakgyoe", ch:2},
+    {kr:"내 방에", fr:"dans ma chambre", rom:"nae bange", ch:2},
+    {kr:"학교에", fr:"dans l'ecole", rom:"hakgyoe", ch:2},
+    {kr:"우리 학교에", fr:"dans mon ecole", rom:"uri hakgyoe", ch:2},
     {
       kr:"내 여행 가방에 카메라가 있어...",
       fr:"Dans mon sac de voyage, il y a un appareil photo...",
@@ -1955,12 +3189,14 @@ const DATA = {
     {kr:"점심을 먹어.", fr:"Je dejeune.", rom:"jeomsimeul meogeo.", ch:3},
     {kr:"영화를 봐.", fr:"Je regarde un film.", rom:"yeonghwareul bwa.", ch:3},
     {kr:"저녁을 먹어.", fr:"Je dine.", rom:"jeonyeogeul meogeo.", ch:3},
+    {kr:"친구를 만나다", fr:"voir ses ami(e)s", rom:"chingureul mannada", ch:3},
+    {kr:"드라마를 보다", fr:"regarder une serie", rom:"deuramareul boda", ch:3},
     {kr:"드라마를 봐.", fr:"Je regarde une serie.", rom:"deuramareul bwa", ch:3},
     {kr:"친구를 만나.", fr:"Je vois mes ami(e)s.", rom:"chingureul manna", ch:3},
     {kr:"지금 공원에 있어. 너는?", fr:"Je suis au parc maintenant. Et toi ?", rom:"jigeum gongwone isseo. neoneun?", ch:3},
     {
       kr:"나는 카페에 있어. 공원에서 뭐 해?",
-      fr:"Je suis au café. Tu fais quoi au parc ?",
+      fr:"Je suis au cafe. Tu fais quoi au parc ?",
       rom:"naneun kapee isseo. gongwoneseo mwo hae?",
       ch:3
     },
@@ -1985,15 +3221,23 @@ const DATA = {
       ch:3
     },
     {kr:"남동생은 어디에 있어?", fr:"Ou est ton petit frere ?", rom:"namdongsaengeun eodie isseo?", ch:3},
-    {kr:"지금 미술관에 있어!", fr:"Il est au musée maintenant !", rom:"jigeum misulgwane isseo!", ch:3},
-    {kr:"학교에서 공부해요.", fr:"J'étudie à l'école.", rom:"hakgyoeseo gongbuhaeyo", ch:3},
-    {kr:"학교에 있어요.", fr:"Je suis a l'école.", rom:"hakgyoe isseoyo", ch:3},
+    {kr:"지금 미술관에 있어!", fr:"Il est au musee maintenant !", rom:"jigeum misulgwane isseo!", ch:3},
+    {kr:"학교에서 공부해요.", fr:"J'etudie a l'ecole.", rom:"hakgyoeseo gongbuhaeyo", ch:3},
+    {kr:"학교에 있어요.", fr:"Je suis a l'ecole.", rom:"hakgyoe isseoyo", ch:3},
     {kr:"공원에서 운동해.", fr:"Je fais du sport au parc.", rom:"gongwoneseo undonghae", ch:3},
     {kr:"책을 안 읽어요.", fr:"Je ne lis pas de livres.", rom:"chaekeul an ilgeoyo", ch:3},
     {kr:"공원에 있어.", fr:"Je suis au parc.", rom:"gongwone isseo", ch:3},
     {kr:"식당에서 저녁을 먹어.", fr:"Je dine au restaurant.", rom:"sikdangeseo jeonyeogeul meogeo", ch:3},
     {kr:"친구를 안 만나.", fr:"Je ne vois pas mes ami(e)s.", rom:"chingureul an manna", ch:3},
+    {kr:"음악을 듣다", fr:"ecouter de la musique", rom:"eumageul deutda", ch:3},
+    {kr:"영화를 보다", fr:"regarder un film", rom:"yeonghwareul boda", ch:3},
+    {kr:"책을 읽다", fr:"lire un livre", rom:"chaekeul ikda", ch:3},
+    {kr:"아침을 먹다", fr:"prendre son petit-dejeuner", rom:"achimeul meokda", ch:3},
+    {kr:"수업을 듣다", fr:"suivre les cours", rom:"sueobeul deutda", ch:3},
+    {kr:"점심을 먹다", fr:"dejeuner", rom:"jeonsimeul meokda", ch:3},
+    {kr:"저녁을 먹다", fr:"diner", rom:"jeonyeogeul meokda", ch:3},
     {kr:"여기가 주방이야.", fr:"Ici, c'est la cuisine.", rom:"yeogiga jubangyiya", ch:4},
+    {kr:"그 컴퓨터 누구 거야?", fr:"A qui est cet ordinateur(-la)?", rom:"geu keompyuteo nugu geoya", ch:4},
     {kr:"우리 언니 거야.", fr:"C'est a ma soeur.", rom:"uri eonni geoya", ch:4},
     {kr:"도서관에 가.", fr:"Je vais a la bibliotheque.", rom:"doseogwane ga", ch:4},
     {kr:"빵집에 어떻게 가?", fr:"Comment on va a la boulangerie?", rom:"ppangjibe eotteoke ga", ch:4},
@@ -2002,6 +3246,7 @@ const DATA = {
     {kr:"저는 서점 앞에 있어요.", fr:"Je suis devant la librairie.", rom:"jeoneun seojeom ape isseoyo", ch:4},
     {kr:"집 오른쪽에 있어.", fr:"C'est a droite de la maison.", rom:"jip oreunjjoge isseo", ch:4},
     {kr:"서울에서 파리까지", fr:"de Seoul a Paris", rom:"seoureseo parikkaji", ch:4},
+    {kr:"어떻게 가?", fr:"Comment on y va?", rom:"eotteoke ga", ch:4},
     {
       kr:"강남에서 경복궁까지 지하철로 가.",
       fr:"De Gangnam a Gyeongbokgung, on y va en metro.",
@@ -2035,6 +3280,9 @@ const DATA = {
     {kr:"이 책은 언니 거야.", fr:"Ce livre est a ma grande soeur.", rom:"i chaekeun eonni geoya", ch:4},
     {kr:"서점에 가.", fr:"Je vais a la librairie.", rom:"seojeome ga", ch:4},
     {kr:"집 밖에 있어요.", fr:"Il est a l'exterieur de la maison.", rom:"jip bakke isseoyo", ch:4},
+    {kr:"버스로", fr:"en bus", rom:"beoseuro", ch:4},
+    {kr:"지하철로", fr:"en metro", rom:"jihacheolro", ch:4},
+    {kr:"트램으로", fr:"en tram", rom:"teurameuro", ch:4},
     {kr:"이네스가 어디에 있어?", fr:"Ou est Ines?", rom:"ineseuga eodie isseo", ch:4},
     {kr:"사라 앞에 있어.", fr:"Elle est devant Sara.", rom:"sara ape isseo", ch:4},
     {kr:"서점에서 편의점까지", fr:"de la librairie a la superette", rom:"seojeomeseo pyeonuijeomkkaji", ch:4},
@@ -2062,10 +3310,15 @@ const DATA = {
     {kr:"지나갔다!", fr:"C'est passe! / On l'a rate!", rom:"jinagatta!", ch:4},
     {kr:"그럼 우리 ...로 홍대에 가자!", fr:"Alors allons a Hongdae en ...!", rom:"geureom uri ...ro hongdae-e gaja!", ch:4},
     {kr:"응 좋아! 가자!", fr:"Oui super! Allons-y!", rom:"eung joa! gaja!", ch:4},
+    {kr:"가자", fr:"allons-y! (propositionnel de 가다)", rom:"gaja", ch:4},
     {kr:"갈까?", fr:"on y va? (forme suggestive de 가다)", rom:"galkka?", ch:4},
+    {kr:"맛있게 먹어!", fr:"Bon appetit! (lit. Mange delicieusement!)", rom:"masitge meogeo!", ch:5},
     {kr:"목말라요!", fr:"J'ai soif!", rom:"mongmallayo!", ch:5},
+    {kr:"추석에 가족 집에 갔어!", fr:"On est alle dans ma famille pour Chuseok !", rom:"Chuseo-ge gajok jibe gasseo!", ch:6},
     {kr:"아빠예요?", fr:"C'est le papa ?", rom:"appayeyo?", ch:1, cat:"Auto-evaluation - Famille"},
     {kr:"아니요, 오빠예요.", fr:"Non, c'est le grand frere.", rom:"aniyo, oppayeyo.", ch:1, cat:"Auto-evaluation - Famille"},
+    {kr:"내 가방에", fr:"dans mon sac", rom:"nae gabange", ch:2, cat:"Auto-evaluation - Vocabulaire"},
+    {kr:"우리 교실에", fr:"dans ma salle de classe", rom:"uri gyosire", ch:2, cat:"Auto-evaluation - Vocabulaire"},
     {kr:"공원에서 뭐 해?", fr:"Tu fais quoi au parc ?", rom:"gongwoneseo mwo hae?", ch:3, cat:"Auto-evaluation - KakaoTalk"},
     {kr:"음악을 들어.", fr:"J'ecoute de la musique.", rom:"eumageul deureo.", ch:3, cat:"Auto-evaluation - KakaoTalk"},
     {kr:"혼자 있어.", fr:"Je suis seul(e).", rom:"honja isseo.", ch:3, cat:"Auto-evaluation - KakaoTalk"},
@@ -2094,8 +3347,16 @@ const DATA = {
     {kr:"햄버거 먹고 싶어.", fr:"J'ai envie de manger un burger.", rom:"haembeogeo meokgo sipeo.", ch:5, cat:"je retiens"},
     {kr:"뭐 마시고 싶어?", fr:"Qu'est-ce que tu veux boire ?", rom:"mwo masigo sipeo?", ch:5, cat:"je retiens"},
     {kr:"물 마시고 싶어.", fr:"J'ai envie de boire de l'eau.", rom:"mul masigo sipeo.", ch:5, cat:"je retiens"},
+    {kr:"밥으로 만들어요?", fr:"C'est fait avec du riz ?", rom:"babeuro mandeureoyo?", ch:5, cat:"dialogue"},
     {kr:"비빔밥이에요!", fr:"C'est le bibimbap !", rom:"bibimbabieeyo!", ch:5, cat:"dialogue"},
     {kr:"네...", fr:"Oui...", rom:"ne...", ch:5, cat:"dialogue"},
+    {
+      kr:"뭐로 만들어요?",
+      fr:"Quels sont les ingredients ? / De quoi c'est fait ?",
+      rom:"mworo mandeureoyo?",
+      ch:5,
+      cat:"grammaire"
+    },
     {
       kr:"김치는 배추하고 고추로 만들어요.",
       fr:"Le kimchi est fait de chou et de piment.",
@@ -2106,11 +3367,12 @@ const DATA = {
     {kr:"고기로 만들어.", fr:"C'est fait de viande.", rom:"gogiro mandeureo.", ch:5, cat:"grammaire"},
     {kr:"면으로 만들어.", fr:"C'est fait de nouilles.", rom:"myeoneuro mandeureo.", ch:5, cat:"grammaire"},
     {kr:"쌀로 만들어.", fr:"C'est fait de riz (cru).", rom:"ssallo mandeureo.", ch:5, cat:"grammaire"},
+    {kr:"이게 뭐예요?", fr:"Qu'est-ce que c'est ?", rom:"ige mwoyeyo?", ch:5, cat:"je retiens"},
     {kr:"김치예요.", fr:"C'est du kimchi.", rom:"gimchiyeyo.", ch:5, cat:"je retiens"},
     {kr:"배추하고 고추로 만들어.", fr:"C'est fait de chou et de piment.", rom:"baechuhago gochuro mandeureo.", ch:5, cat:"je retiens"},
     {
       kr:"나 지금 학교야. 배고파?",
-      fr:"Moi je suis a l'école maintenant. Tu as faim ?",
+      fr:"Moi je suis a l'ecole maintenant. Tu as faim ?",
       rom:"na jigeum hakgyoya. baegopa?",
       ch:5,
       cat:"KakaoTalk"
@@ -2132,20 +3394,42 @@ const DATA = {
     },
     {kr:"음... 비빔밥?", fr:"Hmm... bibimbap ?", rom:"eum... bibimbap?", ch:5, cat:"KakaoTalk"},
     {kr:"아니, 면으로 만들어.", fr:"Non, c'est fait avec des nouilles.", rom:"ani, myeoneuro mandeureo.", ch:5, cat:"KakaoTalk"},
+    {kr:"매워?", fr:"C'est piquant ?", rom:"maewo?", ch:5, cat:"KakaoTalk"},
     {kr:"아니.", fr:"Non.", rom:"ani.", ch:5, cat:"KakaoTalk"},
     {kr:"음... 뭐야?", fr:"Hmm... c'est quoi ?", rom:"eum... mwoya?", ch:5, cat:"KakaoTalk"},
     {
       kr:"ㅋㅋㅋ 당근 두 개, 호박 세 개, 면 한 봉지, 시금치 네 봉지, 계란 두 개, 참기름 다섯 숟가락!",
-      fr:"kkk Deux carottes, trois courgettes, un sachet de nouilles, quatre sachets d'épinards, deux oeufs, cinq cuilleres d'huile de sesame !",
+      fr:"kkk Deux carottes, trois courgettes, un sachet de nouilles, quatre sachets d'epinards, deux oeufs, cinq cuilleres d'huile de sesame !",
       rom:"kkk danggeun du gae, hobak se gae, myeon han bongji, sigeumchi ne bongji, gyeran du gae, chamgireum daseot sutgarak!",
       ch:5,
       cat:"KakaoTalk"
     },
+    {kr:"간장 두 숟가락", fr:"deux cuilleres de sauce soja", rom:"ganjang du sutgarak", ch:5, cat:"exemple classificateur"},
     {kr:"배고파.", fr:"J'ai faim.", rom:"baegopa.", ch:5, cat:"expression"},
     {kr:"목말라.", fr:"J'ai soif.", rom:"mongmalla.", ch:5, cat:"expression"},
+    {kr:"맛없어!", fr:"Ce n'est pas bon !", rom:"madeopseo!", ch:5, cat:"expression"},
     {kr:"고기로 만들어요.", fr:"C'est fait de viande.", rom:"gogiro mandeureoyo.", ch:5, cat:"grammaire"},
     {kr:"레몬으로 만들어요.", fr:"C'est fait de citron.", rom:"lemoneuro mandeureoyo.", ch:5, cat:"grammaire"},
     {kr:"쌀로 만들어요.", fr:"C'est fait de riz.", rom:"ssallo mandeureoyo.", ch:5, cat:"grammaire"},
+    {
+      kr:"감자튀김하고 햄버거 먹고 싶어요.",
+      fr:"J'ai envie de manger des frites et un burger.",
+      rom:"gamjatwigimhago haembeogeo meokgo sipeoyo.",
+      ch:5,
+      cat:"grammaire"
+    },
+    {
+      kr:"커피하고 물 마시고 싶어요.",
+      fr:"J'ai envie de boire un cafe et de l'eau.",
+      rom:"keopihago mul masigo sipeoyo.",
+      ch:5,
+      cat:"grammaire"
+    },
+    {kr:"김밥은 밥으로 만들어요...", fr:"Le kimbap est fait avec du riz...", rom:"gimbapeun babeuro mandeureoyo...", ch:5, cat:"jeu"},
+    {kr:"맛있게 드세요.", fr:"Bon appetit (poli, hotes).", rom:"masitge deuseyo.", ch:5, cat:"culture bon appetit"},
+    {kr:"맛있게 먹어.", fr:"Bon appetit (informel, hotes).", rom:"masitge meogeo.", ch:5, cat:"culture bon appetit"},
+    {kr:"잘 먹겠습니다.", fr:"Bon appetit (formel, invites).", rom:"jal meokgesseumnida.", ch:5, cat:"culture bon appetit"},
+    {kr:"잘 먹을게.", fr:"Bon appetit (informel, invites).", rom:"jal meogeulge.", ch:5, cat:"culture bon appetit"},
     {kr:"안녕 나영! 뭐 해?", fr:"Salut Nayoung ! Tu fais quoi ?", rom:"annyeong nayeong! mwo hae?", ch:6, cat:"KakaoTalk"},
     {
       kr:"집에서 책 읽어. 너는?",
@@ -2155,6 +3439,7 @@ const DATA = {
       cat:"KakaoTalk"
     },
     {kr:"나도 집에 있어.", fr:"Moi aussi je suis a la maison.", rom:"nado jibe isseo.", ch:6, cat:"KakaoTalk"},
+    {kr:"어제 뭐 했어?", fr:"Qu'est-ce que tu as fait hier ?", rom:"eoje mwo haesseo?", ch:6, cat:"KakaoTalk"},
     {
       kr:"어제? 어제가 무슨 요일이었어?",
       fr:"Hier ? C'etait quel jour hier ?",
@@ -2247,7 +3532,8 @@ const DATA = {
     {kr:"놀다 -> 놀아요.", fr:"s'amuser -> Je m'amuse.", rom:"nolda -> norayo", ch:3, cat:"Grammaire"},
     {kr:"먹다 -> 먹어요.", fr:"manger -> Je mange.", rom:"meokda -> meogeoyo", ch:3, cat:"Grammaire"},
     {kr:"호박 여섯 개", fr:"six courgettes", rom:"hobak yeoseot gae", ch:5, cat:"Grammaire"},
-    {kr:"학생 열 명", fr:"dix étudiants", rom:"haksaeng yeol myeong", ch:5, cat:"Grammaire"},
+    {kr:"학생 열 명", fr:"dix etudiants", rom:"haksaeng yeol myeong", ch:5, cat:"Grammaire"},
+    {kr:"샌드위치 두 개", fr:"deux sandwichs", rom:"saendeuwichi du gae", ch:5, cat:"Grammaire"},
     {kr:"스키를 탔어요.", fr:"J'ai fait du ski.", rom:"seukireul tasseoyo", ch:6, cat:"Grammaire"},
     {kr:"사진을 찍었어요.", fr:"J'ai pris des photos.", rom:"sajin-eul jjigeosseoyo", ch:6, cat:"Grammaire"},
     {kr:"축구했어요.", fr:"J'ai joue au football.", rom:"chukguhaesseoyo", ch:6, cat:"Grammaire"},
@@ -2259,10 +3545,11 @@ const DATA = {
     {kr:"2시 45분 (두시 사십오분)", fr:"2 h 45", rom:"dusi sasibobun", ch:6, cat:"Grammaire"},
     {kr:"9월 16일 토요일 3시에", fr:"a 3 h le samedi 16 septembre", rom:"guwol simnyugil toyoil sesie", ch:6, cat:"Grammaire"},
     {kr:"1시 30분 = 1시 반", fr:"1 h 30", rom:"hansi samshipbun = hansi ban", ch:6, cat:"Grammaire"},
-    {kr:"1월부터 12월까지", fr:"de janvier a décembre", rom:"irwolbuteo sibirwolkkaji", ch:6, cat:"Grammaire"},
+    {kr:"1월부터 12월까지", fr:"de janvier a decembre", rom:"irwolbuteo sibirwolkkaji", ch:6, cat:"Grammaire"},
     {kr:"9시부터 6시까지", fr:"de 9 h a 6 h", rom:"ahopsibuteo yeoseotsiккaji", ch:6, cat:"Grammaire"},
-    {kr:"안녕하세요?", fr:"Bonjour. (poli)", rom:"annyeonghaseyo?", ch:2, cat:"salutations"},
-    {kr:"만나서 반가워요.", fr:"Enchante(e). (poli)", rom:"mannaseo bangawoyo", ch:2, cat:"salutations"},
+    {kr:"새해 복 많이 받으세요!", fr:"Bonne annee !", rom:"saehae bok mani badeuseyo!", ch:6, cat:"Grammaire"},
+    {kr:"안녕하세요?", fr:"Bonjour. (formel)", rom:"annyeonghaseyo?", ch:2, cat:"salutations"},
+    {kr:"만나서 반가워요.", fr:"Enchante(e). (formel)", rom:"mannaseo bangawoyo", ch:2, cat:"salutations"},
     {
       kr:"어떻게 지내세요?",
       fr:"Comment allez-vous ? / Comment vas-tu ? (formel)",
@@ -2273,18 +3560,18 @@ const DATA = {
     {kr:"어떻게 지내?", fr:"Comment vas-tu ? (informel)", rom:"eotteoke jinae?", ch:2, cat:"salutations"},
     {kr:"잘 지내요.", fr:"Je vais bien. (formel)", rom:"jal jinaeyo", ch:2, cat:"salutations"},
     {kr:"잘 지내.", fr:"Je vais bien. (informel)", rom:"jal jinae", ch:2, cat:"salutations"},
-    {kr:"감사합니다.", fr:"Merci. (très poli)", rom:"gamsahamnida", ch:2, cat:"politesse"},
+    {kr:"감사합니다.", fr:"Merci. (formel)", rom:"gamsahamnida", ch:2, cat:"politesse"},
     {kr:"고마워.", fr:"Merci. (informel)", rom:"gomawo", ch:2, cat:"politesse"},
     {kr:"아니에요.", fr:"De rien. (formel)", rom:"anieyo", ch:2, cat:"politesse"},
     {kr:"아니야.", fr:"De rien. (informel)", rom:"aniya", ch:2, cat:"politesse"},
     {kr:"네.", fr:"Oui. (formel)", rom:"ne", ch:2, cat:"reponses"},
     {kr:"응.", fr:"Oui. (informel)", rom:"eung", ch:2, cat:"reponses"},
     {kr:"아니요.", fr:"Non. (formel)", rom:"aniyo", ch:2, cat:"reponses"},
-    {kr:"맛있어요.", fr:"C'est delicieux. (poli)", rom:"masisseoyo", ch:2, cat:"repas"},
+    {kr:"맛있어요.", fr:"C'est delicieux. (formel)", rom:"masisseoyo", ch:2, cat:"repas"},
     {kr:"맛있어.", fr:"C'est delicieux. (informel)", rom:"masisseo", ch:2, cat:"repas"},
-    {kr:"죄송합니다.", fr:"Je suis desole(e). (très poli)", rom:"joesonghamnida", ch:2, cat:"politesse"},
+    {kr:"죄송합니다.", fr:"Je suis desole(e). (formel)", rom:"joesonghamnida", ch:2, cat:"politesse"},
     {kr:"미안해.", fr:"Desole(e). (informel)", rom:"mianhae", ch:2, cat:"politesse"},
-    {kr:"괜찮아요.", fr:"Pas de soucis. / Ca va. (poli)", rom:"gwaenchanayo", ch:2, cat:"politesse"},
+    {kr:"괜찮아요.", fr:"Pas de soucis. / Ce n'est pas grave. (formel)", rom:"gwaenchanayo", ch:2, cat:"politesse"},
     {kr:"괜찮아.", fr:"Pas de soucis. (informel)", rom:"gwaenchana", ch:2, cat:"politesse"},
     {
       kr:"안녕히 가세요.",
@@ -2307,6 +3594,7 @@ const DATA = {
       ch:1,
       cat:"voeux / culture"
     },
+    {kr:"만나서 반가워", fr:"Enchante(e) de te rencontrer (familier)", rom:"mannaseo bangawo", ch:1, cat:"presentations"},
     {kr:"나는 다미앙이야", fr:"Moi c'est Damien (familier)", rom:"naneun damiang-iya", ch:1, cat:"presentations"},
     {kr:"들어 와", fr:"Entre ! / Entrez ! (familier)", rom:"deureo wa", ch:2, cat:"instructions / manhwa"},
     {kr:"내 방이야", fr:"C'est ma chambre (familier)", rom:"nae bang-iya", ch:2, cat:"reponses / manhwa"},
@@ -2334,7 +3622,7 @@ const DATA = {
     {kr:"좋아!", fr:"Super ! / D'accord !", rom:"joa!", ch:3, cat:"manhwa / accord"},
     {
       kr:"월요일에 학교에서 공부해요. 화요일에 도서관에서 책을 읽어요. 목요일에 게임해요. 금요일에 공원에서 춤을 춰요. 토요일에 친구하고 영화를 봐요.",
-      fr:"Le lundi, j'étudie à l'école. Le mardi, je lis un livre a la bibliotheque. Le jeudi, je joue a un jeu. Le vendredi, je danse au parc. Le samedi, je regarde un film avec un(e) ami(e).",
+      fr:"Le lundi, j'etudie a l'ecole. Le mardi, je lis un livre a la bibliotheque. Le jeudi, je joue a un jeu. Le vendredi, je danse au parc. Le samedi, je regarde un film avec un(e) ami(e).",
       rom:"woryoire hakgyoeseo gongbuhaeyo. hwayoire doseogwaneseo chaekeul ilgeoyo. mogyoire geimhaeyo. geumyoire gongwoneseo chumeul chwoyo. toyoire chinguhago yeonghwareul bwayo.",
       ch:3,
       cat:"emploi du temps / auto-evaluation"
@@ -2348,6 +3636,9 @@ const DATA = {
       cat:"manhwa ep.4"
     },
     {kr:"목말라!", fr:"J'ai soif !", rom:"mongmalla!", ch:5, cat:"expressions repas"},
+    {kr:"먹고 싶어요", fr:"j'ai envie de manger", rom:"meokgo sipeoyo", ch:5, cat:"grammaire vouloir"},
+    {kr:"마시고 싶어요", fr:"j'ai envie de boire", rom:"masigo sipeoyo", ch:5, cat:"grammaire vouloir"},
+    {kr:"뭐로 만들어?", fr:"De quoi c'est fait ? (informel)", rom:"mworo mandeureo?", ch:5, cat:"manhwa ep.5"},
     {
       kr:"밥하고, 고기하고 ... 로 만들어.",
       fr:"C'est fait de riz, de viande et de...",
@@ -2355,6 +3646,8 @@ const DATA = {
       ch:5,
       cat:"manhwa ep.5"
     },
+    {kr:"목말라?", fr:"Tu as soif ?", rom:"mongmalla?", ch:5, cat:"manhwa ep.5"},
+    {kr:"응, 마시고 싶어.", fr:"Oui, j'ai envie de boire.", rom:"eung, masigo sipeo.", ch:5, cat:"manhwa ep.5"},
     {
       kr:"내 가방에 ... 가 있어! 자!",
       fr:"J'ai ... dans mon sac ! Tiens !",
@@ -2363,6 +3656,8 @@ const DATA = {
       cat:"manhwa ep.5"
     },
     {kr:"아, ... 먹고 싶어.", fr:"Ah, j'ai envie de manger ...", rom:"a, ... meokgo sipeo.", ch:5, cat:"manhwa ep.5"},
+    {kr:"여기!", fr:"Ici !", rom:"yeogi!", ch:5, cat:"manhwa ep.5"},
+    {kr:"고마워!", fr:"Merci !", rom:"gomawo!", ch:5, cat:"manhwa ep.5"},
     {
       kr:"오늘 뭐 해? 영화를 봐.",
       fr:"Qu'est-ce que tu fais aujourd'hui ? Je regarde un film.",
@@ -2378,13 +3673,28 @@ const DATA = {
       cat:"present vs passe"
     },
     {kr:"추행복한석", fr:"Joyeux Chuseok (voeu sur carte)", rom:"chu haengbokhan seok", ch:6, cat:"fete Chuseok"},
+    {
+      kr:"나는 오후에 친구하고 운동했어.",
+      fr:"L'apres-midi j'ai fait du sport avec un ami.",
+      rom:"naneun ohue chinguhago undonghasseo.",
+      ch:6
+    },
+    {kr:"가자, 한국!", fr:"Allons-y, en Coree !", rom:"Gaja, Hanguk!", ch:0, cat:"Culture"},
+    {kr:"미술관에 갔어?", fr:"Tu es alle(e) au musee ?", rom:"Misulgwane gasseo?", ch:3, cat:"Culture"},
     {kr:"김밥은 밥으로 만들어요.", fr:"Le gimbap est fait de riz.", rom:"Gimbapeun babeuro mandeureoyo.", ch:5, cat:"Culture"},
+    {kr:"북촌이 어디예요?", fr:"C'est ou Bukchon ?", rom:"Bukchoni eodiyeyo?", ch:4, cat:"Culture"},
     {kr:"아니, 신발들이 없어.", fr:"Non, il n'y a pas de chaussures.", rom:"ani, sinbaldeuri eopseo.", ch:2, cat:"Dialogue BD"},
+    {kr:"놀다", fr:"s'amuser", rom:"nolda", ch:3, cat:"Grammaire"},
     {kr:"놀아요.", fr:"Je m'amuse.", rom:"norayo.", ch:3, cat:"Grammaire"},
+    {kr:"먹다", fr:"manger", rom:"meokda", ch:3, cat:"Grammaire"},
     {kr:"먹어요.", fr:"Je mange.", rom:"meogeoyo.", ch:3, cat:"Grammaire"},
+    {kr:"쇼핑하다", fr:"faire du shopping", rom:"syoping-hada", ch:3, cat:"Grammaire"},
     {kr:"쇼핑해요.", fr:"Je fais du shopping.", rom:"syoping-haeyo.", ch:3, cat:"Grammaire"},
+    {kr:"자다", fr:"dormir", rom:"jada", ch:3, cat:"Grammaire"},
     {kr:"자요.", fr:"Je dors.", rom:"jayo.", ch:3, cat:"Grammaire"},
+    {kr:"추다", fr:"danser", rom:"chuda", ch:3, cat:"Grammaire"},
     {kr:"춰요.", fr:"Je danse.", rom:"chwoyo.", ch:3, cat:"Grammaire"},
+    {kr:"보다", fr:"regarder", rom:"boda", ch:3, cat:"Grammaire"},
     {kr:"봐요.", fr:"Je regarde.", rom:"bwayo.", ch:3, cat:"Grammaire"},
     {kr:"4월 8일 = 사월 팔일", fr:"8 avril", rom:"sawol paril", ch:6, cat:"Grammaire - La date"},
     {kr:"들어와.", fr:"Entre.", rom:"deureo-wa.", ch:2, cat:"Manhwa Ep.2"},
@@ -2407,6 +3717,13 @@ const DATA = {
     },
     {kr:"친구들하고 해?", fr:"Tu joues avec des amis ?", rom:"chingudeulhago hae?", ch:3, cat:"Manhwa Ep.3"},
     {kr:"...이 있어!", fr:"Il y a... !", rom:"...i isseo!", ch:5, cat:"Manhwa Ep.5"},
+    {
+      kr:"밥하고, 고기하고 ...로 만들어.",
+      fr:"C'est fait avec du riz, de la viande et...",
+      rom:"baphago, gogihago ...ro mandeureo.",
+      ch:5,
+      cat:"Manhwa Ep.5"
+    },
     {kr:"응, ...마시고 싶어.", fr:"Oui, je veux boire...", rom:"eung, ...masigo sipeo.", ch:5, cat:"Manhwa Ep.5"},
     {
       kr:"내 가방에 ...가 있어! 자!",
@@ -2416,6 +3733,7 @@ const DATA = {
       cat:"Manhwa Ep.5"
     },
     {kr:"...에서 ... 너는?", fr:"A/dans... Et toi ?", rom:"...eseo ... neoneun?", ch:6, cat:"Manhwa Ep.6"},
+    {kr:"몇 시에 비행기를 타?", fr:"A quelle heure tu prends l'avion ?", rom:"myeot sie bihaenggireul ta?", ch:6, cat:"Manhwa Ep.6"},
     {kr:"...에 타.", fr:"A... (heure).", rom:"...e ta.", ch:6, cat:"Manhwa Ep.6"},
     {
       kr:"프랑스에서 만나자. 프랑스에 언제 와?",
@@ -2425,8 +3743,12 @@ const DATA = {
       cat:"Manhwa Ep.6"
     },
     {kr:"...에 가!", fr:"J'y vais en... !", rom:"...e ga!", ch:6, cat:"Manhwa Ep.6"},
+    {kr:"알았어. 곧 보자!", fr:"D'accord. A bientot !", rom:"arasseo. got boja!", ch:6, cat:"Manhwa Ep.6"},
+    {kr:"안녕, 다미앙!", fr:"Au revoir, Damien !", rom:"annyeong, damiang!", ch:6, cat:"Manhwa Ep.6"},
+    {kr:"안녕, 지아야!", fr:"Au revoir, Jia !", rom:"annyeong, jiaya!", ch:6, cat:"Manhwa Ep.6"},
     {kr:"에 있어. 너는?", fr:"Je suis à... Et toi ?", rom:"...e isseo. neoneun?", ch:3, cat:"Auto-évaluation"},
     {kr:"아니, 한국 사람이 아니야.", fr:"Non, je ne suis pas coréen(ne).", rom:"ani, hanguk sarami aniya.", ch:1, cat:"Dialogue"},
+    {kr:"국적이 뭐야?", fr:"Quelle est ta nationalité ?", rom:"gukjeogi mwoya?", ch:1, cat:"Exercice"},
     {
       kr:"아니, 신발이 아니야. 실내화가 있어.",
       fr:"Non, ce ne sont pas des chaussures. Ce sont des chaussons.",
@@ -2521,20 +3843,20 @@ const DATA = {
     {kr:"피아노가 없어", fr:"Il n'y a pas de piano.", ch:2, cat:"Grammaire"},
     {kr:"책하고 연필하고 휴대폰이 있어", fr:"Il y a un livre, un stylo et un telephone.", ch:2, cat:"Grammaire"},
     {kr:"방에 책상하고 의자가 있어", fr:"Dans la chambre, il y a un bureau et une chaise.", ch:2, cat:"Grammaire"},
-    {kr:"학교에 체육관이 있어", fr:"A l'école, il y a un gymnase.", ch:2, cat:"Grammaire"},
+    {kr:"학교에 체육관이 있어", fr:"A l'ecole, il y a un gymnase.", ch:2, cat:"Grammaire"},
     {kr:"선생님, 가방에 뭐가 있어요", fr:"Professeur, qu'est-ce qu'il y a dans votre sac ?", ch:2, cat:"Grammaire"},
     {kr:"책이 있어요", fr:"Y a-t-il un livre ?", ch:2, cat:"Grammaire"},
     {kr:"연필이 있어", fr:"Il y a un stylo. / J'ai un stylo. / Le stylo est la.", ch:2, cat:"Grammaire"},
     {kr:"열쇠가 없어", fr:"Il n'y a pas de cles.", ch:2, cat:"Grammaire"},
     {kr:"연필이 없어", fr:"Il n'y a pas de stylo. / Je n'ai pas de stylo. / Le stylo n'est pas la.", ch:2, cat:"Grammaire"},
     {kr:"수영장이 없어", fr:"Il n'y a pas de piscine.", ch:2, cat:"Grammaire"},
-    {kr:"우리 학교에 수영장도 있어", fr:"Il y a aussi une piscine dans mon école.", ch:2, cat:"Grammaire"},
-    {kr:"우리 학교에 학생 식당도 있어", fr:"Dans notre école, il y a aussi une cantine.", ch:2, cat:"Grammaire"},
+    {kr:"우리 학교에 수영장도 있어", fr:"Il y a aussi une piscine dans mon ecole.", ch:2, cat:"Grammaire"},
+    {kr:"우리 학교에 학생 식당도 있어", fr:"Dans notre ecole, il y a aussi une cantine.", ch:2, cat:"Grammaire"},
     {kr:"책하고 공책이 있어", fr:"Il y a un livre et un cahier.", ch:2, cat:"Grammaire"},
-    {kr:"우리 학교에 도서관이 있어", fr:"Dans notre école, il y a une bibliotheque.", ch:2, cat:"Grammaire"},
-    {kr:"학교에 수영장이 있어", fr:"Il y a une piscine a l'école?", ch:2, cat:"Grammaire"},
+    {kr:"우리 학교에 도서관이 있어", fr:"Dans notre ecole, il y a une bibliotheque.", ch:2, cat:"Grammaire"},
+    {kr:"학교에 수영장이 있어", fr:"Il y a une piscine a l'ecole?", ch:2, cat:"Grammaire"},
     {kr:"매점이 있어", fr:"Il y a une superette.", ch:2, cat:"Grammaire"},
-    {kr:"학교에서 공부해요", fr:"J'étudie à l'école.", ch:3, cat:"Grammaire"},
+    {kr:"학교에서 공부해요", fr:"J'etudie a l'ecole.", ch:3, cat:"Grammaire"},
     {kr:"공원에서 운동해", fr:"Je fais du sport au parc.", ch:3, cat:"Grammaire"},
     {kr:"공원에 있어", fr:"Je suis au parc.", ch:3, cat:"Grammaire"},
     {kr:"식당에서 저녁을 먹어", fr:"Je dine au restaurant.", ch:3, cat:"Grammaire"},
@@ -2570,7 +3892,7 @@ const DATA = {
     {kr:"먹다 -> 먹어요", fr:"manger -> Je mange.", ch:3, cat:"Grammaire"},
     {kr:"뭐로 만들어요", fr:"De quoi c'est fait ?", ch:5, cat:"Grammaire"},
     {kr:"감자튀김하고 햄버거 먹고 싶어요", fr:"J'ai envie de manger des frites et un burger.", ch:5, cat:"Grammaire"},
-    {kr:"커피하고 물 마시고 싶어요", fr:"J'ai envie de boire un café et de l'eau.", ch:5, cat:"Grammaire"},
+    {kr:"커피하고 물 마시고 싶어요", fr:"J'ai envie de boire un cafe et de l'eau.", ch:5, cat:"Grammaire"},
     {kr:"어떻게 가", fr:"Comment on y va ?", ch:4, cat:"Grammaire"}
   ],
 
@@ -2685,8 +4007,17 @@ const DATA = {
   ],
 
   connectors: [
+    {kr:"하고", fr:"et", usage:"Conjonction de coordination pour relier des noms", rom:"hago", ch:2},
     {kr:"에서...까지", fr:"de... à... (lieu)", usage:"Exprimer un trajet d'un lieu à un autre", rom:"eseo...kkaji", ch:4},
     {kr:"부터...까지", fr:"de... à... (temps)", usage:"Exprimer une durée d'un moment à un autre", rom:"buteo...kkaji", ch:6},
+    {
+      kr:"에",
+      fr:"dans / a (particule de lieu)",
+      usage:"Particule placee apres un nom de lieu pour indiquer l'endroit ou se trouve quelque chose. S'utilise avec 있다/없다.",
+      rom:"e",
+      ch:2
+    },
+    {kr:"그리고", fr:"et, et aussi, et puis", usage:"Connecteur pour enchainer des phrases ou des actions", rom:"geurigo", ch:4},
     {
       kr:"그런데",
       fr:"mais, cependant, par contre",
@@ -2694,15 +4025,21 @@ const DATA = {
       rom:"geureonde",
       ch:1
     },
+    {kr:"네", fr:"oui (poli)", usage:"Reponse affirmative polie", rom:"ne", ch:0},
+    {kr:"응", fr:"oui (familier)", usage:"Reponse affirmative informelle", rom:"eung", ch:0},
     {kr:"아니요", fr:"non (poli)", usage:"Reponse negative polie", rom:"aniyo", ch:0},
+    {kr:"아니", fr:"non (informel)", usage:"Negation informelle en debut de phrase pour contredire", rom:"ani", ch:5},
+    {kr:"잘", fr:"bien", usage:"Adverbe modifiant un verbe pour indiquer la qualite", rom:"jal", ch:0},
     {kr:"안녕히", fr:"en paix, paisiblement", usage:"Adverbe utilise dans les salutations d'au revoir", rom:"annyeonghi", ch:0},
+    {kr:"안", fr:"ne...pas (negation)", usage:"Adverbe de negation place devant le verbe", rom:"an", ch:3},
+    {kr:"그럼", fr:"alors, dans ce cas", usage:"Introduit une consequence ou suggestion logique", rom:"geureom", ch:4},
     {kr:"곧", fr:"bientot", usage:"Adverbe de temps indiquant la proximite", rom:"got", ch:6},
     {kr:"왜", fr:"pourquoi", usage:"Mot interrogatif", rom:"wae", ch:6},
     {kr:"맛있게 드세요", fr:"bon appetit (poli)", usage:"Expression figee, utilisee quand on parle a quelqu'un de plus age", ch:0},
     {kr:"맛있게 먹어", fr:"bon appetit (informel)", usage:"Expression figee entre amis du meme age", ch:0},
     {kr:"안녕하세요", fr:"bonjour (poli)", usage:"Salutation formelle, pour quelqu'un de plus age ou inconnu", ch:0},
     {kr:"만나서 반가워요", fr:"enchante(e) (poli)", usage:"Premiere rencontre, registre poli", ch:0},
-    {kr:"어떻게 지내세요?", fr:"Comment allez-vous ? / Comment vas-tu ? (formel)", usage:"Pour prendre des nouvelles, registre poli", ch:0},
+    {kr:"어떻게 지내세요?", fr:"comment allez-vous ? (poli)", usage:"Pour prendre des nouvelles, registre poli", ch:0},
     {kr:"어떻게 지내?", fr:"comment vas-tu ? (informel)", usage:"Pour prendre des nouvelles, entre amis", ch:0},
     {kr:"잘 지내요", fr:"je vais bien (poli)", usage:"Reponse a 'comment allez-vous ?'", ch:0},
     {kr:"감사합니다", fr:"merci (tres formel)", usage:"Remerciement formel, niveau de politesse le plus haut", ch:0},
@@ -2833,7 +4170,7 @@ const DATA = {
       ch:1,
       ex:[
         {kr:"나는 알리스야", fr:"Je suis Alice (moi, je...)", rom:""},
-        {kr:"저는 학생이에요", fr:"Je suis étudiant(e) (moi, je...)", rom:""}
+        {kr:"저는 학생이에요", fr:"Je suis etudiant(e) (moi, je...)", rom:""}
       ]
     },
     {
@@ -2858,7 +4195,7 @@ const DATA = {
       ac:"에서",
       ch:3,
       ex:[
-        {kr:"학교에서 공부해요", fr:"J'étudie à l'école", rom:""}
+        {kr:"학교에서 공부해요", fr:"J'etudie a l'ecole", rom:""}
       ]
     },
     {
@@ -2911,7 +4248,7 @@ const DATA = {
       ch:2,
       ex:[
         {kr:"학생 식당도 있어.", fr:"Il y a aussi une cantine.", rom:""},
-        {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans notre école.", rom:""}
+        {kr:"우리 학교에 수영장도 있어.", fr:"Il y a aussi une piscine dans notre ecole.", rom:""}
       ]
     },
     {
@@ -2919,7 +4256,7 @@ const DATA = {
       rule:"lieu + 에 + verbe d'existence (있다) ou verbe de deplacement (가다, 오다)",
       ch:3,
       ex:[
-        "학교에 있어요. = Je suis a l'école.",
+        "학교에 있어요. = Je suis a l'ecole.",
         "공원에 있어. = Je suis au parc.",
         "도서관에 가. = Je vais a la bibliotheque.",
         "빵집에 어떻게 가? = Comment on va a la boulangerie?"
@@ -2968,58 +4305,52 @@ const DATA = {
     {kr:"슬프다", fr:"etre triste", rom:"seulpeuda", ch:6},
     {kr:"화가 나다", fr:"etre en colere", rom:"hwaga nada", ch:6},
     {kr:"배고프다", fr:"avoir faim", rom:"baegoproda", ch:5},
-    {kr:"목마르다", fr:"avoir soif", rom:"mongmareuda", ch:5},
-    {kr:"크다", fr:"etre grand", rom:"keuda", ch:0},
-    {kr:"작다", fr:"etre petit", rom:"jakda", ch:0},
-    {kr:"나쁘다", fr:"etre mauvais", rom:"nappeuda", ch:0},
-    {kr:"많다", fr:"etre beaucoup / nombreux", rom:"manta", ch:0},
-    {kr:"적다", fr:"etre peu / rare", rom:"jeokda", ch:0},
-    {kr:"높다", fr:"etre haut", rom:"nopda", ch:0},
-    {kr:"낮다", fr:"etre bas", rom:"natda", ch:0},
-    {kr:"길다", fr:"etre long", rom:"gilda", ch:0},
-    {kr:"짧다", fr:"etre court", rom:"jjalda", ch:0},
-    {kr:"넓다", fr:"etre large / spacieux", rom:"neolda", ch:0},
-    {kr:"좁다", fr:"etre etroit", rom:"jopda", ch:0},
-    {kr:"무겁다", fr:"etre lourd", rom:"mugeopda", ch:0},
-    {kr:"가볍다", fr:"etre leger", rom:"gabyeopda", ch:0},
-    {kr:"빠르다", fr:"etre rapide", rom:"ppareuda", ch:0},
-    {kr:"느리다", fr:"etre lent", rom:"neurida", ch:0},
-    {kr:"쉽다", fr:"etre facile", rom:"swipda", ch:0},
-    {kr:"어렵다", fr:"etre difficile", rom:"eoryeopda", ch:0},
-    {kr:"비싸다", fr:"etre cher", rom:"bissada", ch:0},
-    {kr:"싸다", fr:"etre bon marche / pas cher", rom:"ssada", ch:0},
-    {kr:"재미있다", fr:"etre interessant / amusant", rom:"jaemiitda", ch:0},
-    {kr:"재미없다", fr:"etre ennuyeux", rom:"jaemieopsda", ch:0},
-    {kr:"예쁘다", fr:"etre joli / beau", rom:"yeppeuda", ch:0},
-    {kr:"귀엽다", fr:"etre mignon", rom:"gwiyeopda", ch:0},
-    {kr:"시끄럽다", fr:"etre bruyant", rom:"sikkeureupda", ch:0},
-    {kr:"조용하다", fr:"etre calme / silencieux", rom:"joyonghada", ch:0}
+    {kr:"목마르다", fr:"avoir soif", rom:"mongmareuda", ch:5}
   ],
 
   adverbs: [
+    {kr:"어떻게", fr:"comment", rom:"eotteoke", ch:0},
+    {kr:"맛있게", fr:"delicieusement / avec appetit", rom:"masitge", ch:0},
+    {kr:"여기", fr:"ici", rom:"yeogi", ch:4},
+    {kr:"어디", fr:"ou", rom:"eodi", ch:3},
+    {kr:"오늘", fr:"aujourd'hui", rom:"oneul", ch:6},
+    {kr:"아니", fr:"non", rom:"ani", ch:1},
+    {kr:"응", fr:"oui (informel)", rom:"eung", ch:2},
+    {kr:"뭐", fr:"quoi", rom:"mwo", ch:2},
     {kr:"어때", fr:"comment (c'est comment?)", rom:"eottae", ch:2},
+    {kr:"어제", fr:"hier", rom:"eoje", ch:6},
     {kr:"곧", fr:"bientot", rom:"got", ch:6},
+    {kr:"지금", fr:"maintenant", rom:"jigeum", ch:3},
+    {kr:"혼자", fr:"seul(e)", rom:"honja", ch:3},
     {kr:"같이", fr:"ensemble", rom:"gachi", ch:6},
     {kr:"왜", fr:"pourquoi", rom:"wae", ch:6},
+    {kr:"올해", fr:"cette annee", rom:"olhae", ch:6},
+    {kr:"아침", fr:"matin", rom:"achim", ch:6},
     {kr:"아침에", fr:"le matin", rom:"achime", ch:6},
+    {kr:"저녁", fr:"soir", rom:"jeonyeok", ch:6},
     {kr:"저녁에는", fr:"le soir", rom:"jeonyeogeneun", ch:6},
+    {kr:"오후", fr:"apres-midi", rom:"ohu", ch:6},
+    {kr:"밤", fr:"nuit", rom:"bam", ch:6},
+    {kr:"언제", fr:"quand", rom:"eonje", ch:6},
     {kr:"주말에", fr:"le week-end", rom:"jumare", ch:6},
+    {kr:"그리고", fr:"et puis, ensuite", rom:"geurigo", ch:6},
+    {kr:"월", fr:"mois (suffixe)", rom:"wol", ch:6},
+    {kr:"일", fr:"jour (suffixe)", rom:"il", ch:6},
+    {kr:"요일", fr:"jour de la semaine", rom:"yoil", ch:6},
+    {kr:"일요일", fr:"dimanche", rom:"iryoil", ch:6},
+    {kr:"월요일", fr:"lundi", rom:"woryoil", ch:6},
+    {kr:"수요일", fr:"mercredi", rom:"suyoil", ch:6},
+    {kr:"시", fr:"heure (suffixe)", rom:"si", ch:6},
+    {kr:"분", fr:"minute (suffixe)", rom:"bun", ch:6},
+    {kr:"반", fr:"demi (30 minutes)", rom:"ban", ch:6},
+    {kr:"부터", fr:"de / a partir de (heure)", rom:"buteo", ch:6},
+    {kr:"까지", fr:"jusqu'a (heure)", rom:"kkaji", ch:6},
+    {kr:"날", fr:"jour (nom)", rom:"nal", ch:6},
     {kr:"일 월 화 수 목 금 토", fr:"dim lun mar mer jeu ven sam (jours calendrier)", rom:"il wol hwa su mok geum to", ch:6},
-    {kr:"많이", fr:"beaucoup", rom:"mani", ch:0},
-    {kr:"조금", fr:"un peu", rom:"jogeum", ch:0},
-    {kr:"빨리", fr:"vite, rapidement", rom:"ppalli", ch:0},
-    {kr:"천천히", fr:"lentement", rom:"cheoncheonhi", ch:0},
-    {kr:"잘", fr:"bien", rom:"jal", ch:0},
-    {kr:"아주", fr:"tres, tout a fait", rom:"aju", ch:0},
-    {kr:"너무", fr:"trop, tres", rom:"neomu", ch:0},
-    {kr:"항상", fr:"toujours", rom:"hangsang", ch:0},
-    {kr:"자주", fr:"souvent", rom:"jaju", ch:0},
-    {kr:"보통", fr:"d'habitude, normalement", rom:"botong", ch:0},
-    {kr:"아직", fr:"encore, pas encore", rom:"ajik", ch:0},
-    {kr:"벌써", fr:"deja", rom:"beolsseo", ch:0},
-    {kr:"정말", fr:"vraiment", rom:"jeongmal", ch:0},
-    {kr:"진짜", fr:"vraiment (familier)", rom:"jinjja", ch:0},
-    {kr:"다", fr:"tout, entierement", rom:"da", ch:0}
+    {kr:"주말", fr:"le week-end", rom:"jumal", ch:6},
+    {kr:"지난 주말", fr:"le week-end dernier", rom:"jinan jumal", ch:6},
+    {kr:"작년", fr:"l'annee derniere", rom:"jangnyeon", ch:6},
+    {kr:"생일", fr:"anniversaire", rom:"saengil", ch:6}
   ],
 
   culture: [
@@ -3051,46 +4382,38 @@ const DATA = {
     },
     {
       title:"Le Sebae (les présentations)",
-      body:"Le Sebae (세배) est une reverence traditionnelle effectuee lors du Nouvel An lunaire (설날). Les plus jeunes s'inclinent devant les aines en signe de respect et leur souhaitent une bonne annee avec la formule 새해 복 많이 받으세요 (recevez beaucoup de chance pour la nouvelle annee). En retour, les aines offrent le Sebaetdon (세뱃돈), des billets neufs dans une enveloppe. C'est un moment cle pour renforcer les liens familiaux.",
+      body:"K-zine du chapitre 1 sur les présentations et le Sebae (salut traditionnel). Détails non visibles dans ces pages.",
       kw:[
-        ["세배", "Sebae"],
-        ["새해 복 많이 받으세요", "Bonne annee"],
-        ["세뱃돈", "Etrennes"]
+        ["세배", "Sebae"]
       ],
       ch:1
     },
     {
       title:"Le lycée en Corée",
-      body:"Le lycee coreen (고등학교) est connu pour son rythme intense. Les cours commencent a 8h et finissent vers 16h, mais la plupart des eleves enchainent avec des academies privees (학원, hagwon) jusqu'a 22h. Les matieres principales sont le coreen, l'anglais et les mathematiques. L'uniforme (교복) est obligatoire et est devenu un symbole culturel, souvent personnalise par les eleves. L'annee scolaire commence en mars et comporte deux semestres.",
-      kw:["고등학교", "학원", "교복"],
+      body:"K-zine du chapitre 2 sur le lycée en Corée. Détails non visibles dans ces pages.",
       ch:2
     },
     {
       title:"Les loisirs des Coréens après les cours",
-      body:"Apres les cours, les jeunes Coreens aiment se retrouver dans des lieux typiques : le PC방 (PC bang, salle de jeux video), le 노래방 (noraebang, karaoke), ou les cafes a theme. Les photomatons tendance (인생네컷) sont tres populaires pour prendre des photos entre amis. Le shopping a Hongdae ou Myeongdong, les concerts de K-pop et les sorties au cinema sont aussi des activites courantes. Le week-end, beaucoup pratiquent un sport ou se retrouvent au parc.",
-      kw:["PC방", "노래방", "인생네컷", "홍대"],
+      body:"K-zine du chapitre 3 sur les loisirs des Coréens après les cours. Détails non visibles dans ces pages.",
       ch:3
     },
     {
       title:"Les quartiers de Séoul à ne pas rater en Corée !",
-      body:"Seoul regorge de quartiers aux ambiances variees. Bukchon Hanok Village (북촌한옥마을) offre des ruelles de maisons traditionnelles. Les marches (시장) comme Namdaemun et Gwangjang sont celebres pour la street food. Hongdae (홍대) est le quartier de la musique indie et du street art. Le fleuve Han (한강) est l'endroit prefere des Seoulites pour le velo et les pique-niques. Gangnam (강남) est le quartier moderne et chic, et Seorae Village (서래마을) est surnomme la 'petite France' de Seoul.",
-      kw:["북촌", "시장", "홍대", "한강", "강남", "서래마을"],
+      body:"K-zine du chapitre 4 sur les quartiers incontournables de Séoul. Détails non visibles dans ces pages.",
       ch:4
     },
     {
       title:"Le déjeuner coréen",
-      body:"Le repas coreen typique est compose de riz (밥), d'une soupe (국) ou d'un ragout (찌개) et de plusieurs petits accompagnements (반찬) dont le kimchi est incontournable. A la cantine scolaire (급식실), les eleves mangent un menu different chaque jour, souvent un melange de cuisine coreenne et internationale. En Coree, le riz se mange avec la cuillere (숟가락) et les autres plats avec les baguettes (젓가락). Dire 잘 먹겠습니다 avant le repas et 잘 먹었습니다 apres est une marque de politesse.",
-      kw:["밥", "국", "찌개", "반찬", "김치", "급식실"],
+      body:"K-zine du chapitre 5 sur le déjeuner coréen. Détails non visibles dans ces pages.",
       ch:5
     },
     {
       title:"Deux fêtes traditionnelles : Seollal et Chuseok",
-      body:"Seollal (설날) et Chuseok (추석) sont les deux grandes fetes coreennes. Seollal celebre le Nouvel An lunaire sur 3 jours : on prepare des plats traditionnels, on effectue le Charye (차례, ceremonie pour les ancetres) et le Sebae (세배). Chuseok, le 15e jour du 8e mois lunaire, est la fete des recoltes. On mange des songpyeon (송편, gateaux de riz), on visite les tombes (성묘) et on pratique le Ganggangsullae (강강술래, danse rituelle UNESCO). Le jeu populaire est le Yutnori (윷놀이).",
+      body:"K-zine du chapitre 6 sur les deux grandes fêtes traditionnelles coréennes : Seollal (Nouvel An lunaire) et Chuseok (fête des récoltes). Détails non visibles dans ces pages.",
       kw:[
         ["설날", "Seollal"],
-        ["추석", "Chuseok"],
-        ["송편", "Songpyeon"],
-        ["윷놀이", "Yutnori"]
+        ["추석", "Chuseok"]
       ],
       ch:6
     },
@@ -3142,53 +4465,14 @@ const DATA = {
       kw:["기생충", "아빠", "아버지", "엄마", "어머니", "오빠", "형", "언니", "누나", "동생"],
       ch:1
     },
-    {
-      title:"Les noms coreens",
-      body:"En Coree, le nom de famille vient en premier, suivi du prenom. Il n'y a que 300 noms de famille environ, et les trois plus courants sont 김 (Kim), 이 (Lee) et 박 (Park), portes par pres de la moitie de la population. Le prenom est generalement compose de deux syllabes. Beaucoup de prenoms sont d'origine sino-coreenne et portent un sens (ex: 지아 signifie sagesse + elegance). Les Coreens n'utilisent presque jamais le prenom seul pour s'adresser a quelqu'un de plus age : on utilise le titre (선생님, 형, 언니, etc.).",
-      kw:["김", "이", "박", "성", "이름"],
-      ch:1
-    },
-    {
-      title:"Interpeller quelqu'un en coreen",
-      body:"En coreen, on n'appelle jamais quelqu'un par son seul prenom sauf s'il est plus jeune ou du meme age et proche. Pour les aines, on utilise des titres relationnels : 오빠/형 (grand frere), 언니/누나 (grande soeur), 선생님 (professeur ou monsieur/madame). Le suffixe -씨 (ssi) apres le prenom complet est une forme polie neutre. Entre amis proches du meme age, on ajoute souvent -야 (apres voyelle) ou -아 (apres consonne) au prenom : 지아야 !, 다미앙아 !",
-      kw:["씨", "야", "아", "선생님"],
-      ch:1
-    },
-    {
-      title:"Appellation des grands freres et grandes soeurs en Coree du Sud",
-      body:"Le systeme d'appellation familiale differe selon le sexe du locuteur. Une fille dit 오빠 (oppa) pour un grand frere et 언니 (eonni) pour une grande soeur. Un garcon dit 형 (hyeong) pour un grand frere et 누나 (nuna) pour une grande soeur. Ces appellations s'utilisent aussi en dehors de la famille, pour tout aine proche (ami, collegue, idol). Un petit frere est 남동생, une petite soeur 여동생, et le terme generique pour cadet(te) est 동생.",
-      kw:["오빠", "언니", "형", "누나", "동생"],
-      ch:1
-    },
-    {
-      title:"Le Sebae (세배) - Salutation du Nouvel An lunaire",
-      body:"Le Sebae est un salut traditionnel effectue par les jeunes envers leurs aines lors du Nouvel An lunaire (설날). On s'agenouille, on pose les mains au sol et on s'incline profondement. En retour, les aines offrent le Sebaetdon (세뱃돈), de l'argent dans une enveloppe, generalement en billets neufs. C'est un moment important de la culture coreenne qui renforce les liens familiaux et le respect intergenerationnel.",
-      kw:["세배", "세뱃돈", "설날"],
-      ch:1
-    },
-    {
-      title:"Et dans les autres pays d'Asie...",
-      body:"Le systeme de politesse base sur l'age n'est pas unique a la Coree. Au Japon, on utilise les suffixes -san, -kun, -chan et -senpai selon la relation. En Chine, les termes familiaux (哥 ge, 姐 jie) sont aussi utilises entre non-parents. Au Vietnam, les pronoms changent completement selon l'age relatif. Cependant, le systeme coreen est particulierement elabore avec ses multiples niveaux de langage (존댓말, 반말) qui affectent la conjugaison entiere des verbes.",
-      kw:["존댓말", "반말"],
-      ch:1
-    },
-    {
-      title:"학교 signifie ecole de maniere generale, 고등학교 pour le lycee",
-      body:"En Coree, le systeme scolaire comprend l'école primaire (초등학교, 6 ans), le college (중학교, 3 ans) et le lycee (고등학교, 3 ans). Les cours vont generalement de 8h a 16h, mais beaucoup d'eleves continuent dans des academies privees (학원, hagwon) jusqu'a 22h. L'uniforme scolaire (교복) est obligatoire dans la plupart des ecoles. Le systeme est tres competitif, surtout en vue du Suneung (수능), l'examen d'entree a l'universite.",
-      kw:["학교", "고등학교", "학원", "교복", "수능"],
-      ch:2
-    },
-    {
-      title:"L'ecole coreenne - lieux et installations",
-      body:"Une ecole coreenne typique comprend des salles de classe (교실), une cantine (급식실), une bibliotheque (도서관), un gymnase (체육관), un terrain de sport (운동장) et parfois une piscine. Les eleves ont chacun un casier et portent des chaussons d'interieur (실내화) dans l'école. Le nettoyage des locaux est fait par les eleves eux-memes apres les cours, une tradition educative importante.",
-      kw:["교실", "급식실", "도서관", "체육관", "운동장", "실내화"],
-      ch:2
-    },
-    {
-      title:"Plan du campus Dasom Highschool (한국폴리텍 다솜고등학교)",
-      body:"Le campus type d'un lycee coreen comprend plusieurs batiments : le batiment principal avec les salles de classe, un batiment administratif, une cantine, un gymnase, un terrain de sport en plein air et souvent des installations supplementaires comme des laboratoires de sciences et des salles informatiques. Les ecoles coreennes attachent une grande importance aux espaces communs et aux installations sportives.",
-      ch:2
-    },
+    {title:"Les noms coreens", ch:1},
+    {title:"Interpeller quelqu'un en coreen", ch:1},
+    {title:"Appellation des grands freres et grandes soeurs en Coree du Sud", ch:1},
+    {title:"Le Sebae (세배) - Salutation du Nouvel An lunaire", ch:1},
+    {title:"Et dans les autres pays d'Asie...", ch:1},
+    {title:"학교 signifie ecole de maniere generale, 고등학교 pour le lycee", ch:2},
+    {title:"L'ecole coreenne - lieux et installations", ch:2},
+    {title:"Plan du campus Dasom Highschool (한국폴리텍 다솜고등학교)", ch:2},
     {
       title:"K-zine Ch.4 - Les quartiers de Seoul a ne pas rater",
       body:"Bukchon Hanok Village : entre palais royaux et hanok (maisons traditionnelles), c'est le quartier historique. Les marches traditionnels (sijang) comme Namdaemun, Dongdaemun et Gwangjang sont ouverts 7j/7, incontournables pour la street food. Hongdae est le quartier de la musique, tres frequente par les jeunes. Les rives du fleuve Han (Hangang) offrent espace pour velo, bateau et pique-nique avec superettes 24h/24. Seorae Village pres de Gangnam est la petite France de Seoul avec boulangeries, fromageries et le parc Montmartre.",

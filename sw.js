@@ -2,13 +2,17 @@
 // BLOKAJA v2 — Service Worker (offline support)
 // ═══════════════════════════════════════════════════
 
-const CACHE_NAME = 'blokaja-v2-cache-v2';
+// Incrementer le numero apres chaque mise a jour de fichiers
+const CACHE_NAME = 'blokaja-v2-cache-v3';
 const ASSETS = [
   './',
   './index.html',
   './app.js',
   './data.js',
-  './styles.css'
+  './styles.css',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 // Pre-cache core assets on install
@@ -33,6 +37,24 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   // Skip non-GET requests
   if (e.request.method !== 'GET') return;
+
+  // Cache-first pour Google Fonts (changent rarement)
+  const url = new URL(e.request.url);
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+    e.respondWith(
+      caches.match(e.request).then(cached => {
+        if (cached) return cached;
+        return fetch(e.request).then(resp => {
+          if (resp && resp.ok) {
+            const clone = resp.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+          }
+          return resp;
+        }).catch(() => cached);
+      })
+    );
+    return;
+  }
 
   e.respondWith(
     caches.match(e.request).then(cached => {
