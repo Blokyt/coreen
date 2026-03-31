@@ -4,35 +4,19 @@ www/
 *.apk
 node_modules/
 
-# Source PDF (165MB, pas dans git)
+# Source PDF
 kaja_detailled.pdf
 *.pdf
 
-
-# Extraction pipeline (regenerable)
+# Extraction pipeline (data brute, regenerable)
 extraction_data/
-pdf_chunks/
 
-# Temp files from audit/analysis
-ANALYSIS_RESULTS.txt
-FINAL_SUMMARY.json
-INDEX_OF_REPORTS.txt
-counts_output.txt
-data_js_duplicates.json
-detailed_gap_report.json
-detailed_missing_items.json
-final_analysis.txt
-gap_analysis.txt
-missing_items_analysis.json
-summary_report.txt
+# Tools d'extraction (plus besoin, data finale dans data/)
+tools/
+
+# Temp files
 tmp_*
-
-# Screenshots de test
 test-*.png
-
-# Playwright
 .playwright-mcp/
-
-# Env
 .env
 .env.local

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Blokaja - Révision Coréen A1</title>
+  <title>Blokaja</title>
   <link rel="icon" href="icon-512.png">
   <link rel="apple-touch-icon" href="icon-512.png">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,146 +13,74 @@
 </head>
 <body>
   <div id="app">
-    <!-- Header -->
     <header id="header">
       <button id="btn-back" class="icon-btn hidden" aria-label="Retour">←</button>
       <h1 id="header-title">Blokaja</h1>
-      <div id="header-right">
-        <button id="btn-search" class="icon-btn" aria-label="Rechercher">🔍</button>
-        <button id="btn-dark" class="icon-btn" aria-label="Mode sombre">◐</button>
-      </div>
+      <button id="btn-dark" class="icon-btn" aria-label="Thème">◐</button>
     </header>
 
-    <!-- Search overlay -->
-    <div id="search-overlay" class="hidden">
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Chercher en coréen ou français..." autocomplete="off">
-        <button id="search-close" class="icon-btn">✕</button>
-      </div>
+    <!-- Search bar (always visible on home) -->
+    <div id="search-wrap" class="hidden">
+      <input type="text" id="search-input" placeholder="Chercher en coréen ou français..." autocomplete="off">
       <div id="search-results"></div>
     </div>
 
-    <!-- Home screen -->
+    <!-- Home -->
     <section id="screen-home" class="screen active">
-      <div class="home-stats">
-        <div class="stat-card">
-          <span class="stat-number" id="stat-total">0</span>
-          <span class="stat-label">items</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="stat-mastered">0</span>
-          <span class="stat-label">maîtrisés</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number" id="stat-streak">0</span>
-          <span class="stat-label">jours</span>
-        </div>
+      <div id="search-home-wrap">
+        <input type="text" id="search-home" placeholder="Rechercher..." autocomplete="off">
       </div>
-
+      <div id="global-progress"></div>
       <h2 class="section-title">Chapitres</h2>
-      <div id="chapters-list" class="cards-grid"></div>
-
-      <h2 class="section-title">Par catégorie</h2>
-      <div id="categories-list" class="cards-grid"></div>
+      <div id="chapters-grid" class="grid"></div>
+      <h2 class="section-title">Catégories</h2>
+      <div id="categories-grid" class="grid"></div>
     </section>
 
-    <!-- Chapter / Category items list -->
+    <!-- List -->
     <section id="screen-list" class="screen">
-      <div class="list-header">
-        <h2 id="list-title"></h2>
-        <div class="list-actions">
-          <button id="btn-flashcard" class="action-btn">Flashcards</button>
-          <button id="btn-quiz" class="action-btn accent">Quiz</button>
+      <div class="list-head">
+        <div>
+          <h2 id="list-title"></h2>
+          <div class="list-stats"><span id="list-known">0</span> / <span id="list-total">0</span> maîtrisés</div>
         </div>
+        <button id="btn-fc" class="btn-primary">Réviser</button>
       </div>
-      <div class="list-progress">
-        <div class="progress-bar"><div id="list-progress-fill" class="progress-fill"></div></div>
-        <span id="list-progress-text">0%</span>
-      </div>
-      <div id="items-list" class="items-container"></div>
+      <div class="progress-bar"><div id="list-bar" class="bar-fill"></div></div>
+      <div id="items"></div>
     </section>
 
-    <!-- Flashcard screen -->
-    <section id="screen-flashcard" class="screen">
-      <div class="flashcard-progress">
-        <span id="fc-counter">1/10</span>
-        <div class="progress-bar"><div id="fc-progress-fill" class="progress-fill"></div></div>
+    <!-- Flashcard (infinite) -->
+    <section id="screen-fc" class="screen">
+      <div class="fc-top">
+        <span id="fc-cat" class="fc-cat"></span>
+        <span id="fc-page" class="fc-page"></span>
       </div>
-      <div id="flashcard" class="flashcard" role="button" tabindex="0">
-        <div class="fc-front">
-          <span class="fc-label" id="fc-label">Coréen</span>
-          <span class="fc-main" id="fc-front-text"></span>
-          <span class="fc-sub" id="fc-front-sub"></span>
-        </div>
-        <div class="fc-back hidden">
-          <span class="fc-main" id="fc-back-text"></span>
-          <span class="fc-sub" id="fc-back-sub"></span>
-          <span class="fc-extra" id="fc-back-extra"></span>
-        </div>
+      <div id="fc-card" class="fc-card">
+        <div id="fc-front" class="fc-face"></div>
+        <div id="fc-back" class="fc-face hidden"></div>
       </div>
-      <div id="fc-buttons" class="fc-buttons hidden">
-        <button class="fc-btn fail" id="fc-fail">✗ Revoir</button>
-        <button class="fc-btn ok" id="fc-ok">~ Moyen</button>
-        <button class="fc-btn pass" id="fc-pass">✓ Su</button>
+      <div id="fc-actions" class="hidden">
+        <button id="fc-nope" class="btn-nope">Pas su</button>
+        <button id="fc-ok" class="btn-ok">Su</button>
       </div>
-      <div class="fc-controls">
-        <button id="fc-speak" class="icon-btn" aria-label="Prononcer">🔊</button>
-        <button id="fc-flip" class="action-btn">Retourner</button>
-        <button id="fc-skip" class="icon-btn" aria-label="Passer">→</button>
-      </div>
+      <button id="fc-reveal" class="btn-reveal">Voir la réponse</button>
     </section>
 
-    <!-- Quiz screen -->
-    <section id="screen-quiz" class="screen">
-      <div class="quiz-progress">
-        <span id="qz-counter">1/10</span>
-        <div class="progress-bar"><div id="qz-progress-fill" class="progress-fill"></div></div>
-        <span id="qz-score">0</span>
+    <!-- Search results (full screen) -->
+    <section id="screen-search" class="screen">
+      <div id="search-full-wrap">
+        <input type="text" id="search-full" placeholder="Rechercher en coréen ou français..." autocomplete="off">
       </div>
-      <div class="quiz-question">
-        <span class="qz-label" id="qz-label">Traduisez</span>
-        <span class="qz-prompt" id="qz-prompt"></span>
-        <span class="qz-hint" id="qz-hint"></span>
-      </div>
-      <div id="qz-choices" class="qz-choices"></div>
-      <div id="qz-feedback" class="qz-feedback hidden"></div>
-      <button id="qz-next" class="action-btn accent hidden">Suivant</button>
-    </section>
-
-    <!-- Results screen -->
-    <section id="screen-results" class="screen">
-      <div class="results-card">
-        <h2>Résultats</h2>
-        <div class="results-score">
-          <span id="res-score" class="big-score">0</span>
-          <span class="score-label">/ <span id="res-total">0</span></span>
-        </div>
-        <div id="res-details" class="results-details"></div>
-        <div class="results-actions">
-          <button id="res-retry" class="action-btn">Recommencer</button>
-          <button id="res-home" class="action-btn accent">Accueil</button>
-        </div>
-      </div>
+      <div id="search-full-results"></div>
     </section>
 
     <!-- Tab bar -->
-    <nav id="tabbar">
-      <button class="tab active" data-tab="home">
-        <span class="tab-icon">⌂</span>
-        <span class="tab-label">Accueil</span>
-      </button>
-      <button class="tab" data-tab="browse">
-        <span class="tab-icon">目</span>
-        <span class="tab-label">Explorer</span>
-      </button>
-      <button class="tab" data-tab="progress">
-        <span class="tab-icon">◈</span>
-        <span class="tab-label">Progrès</span>
-      </button>
+    <nav id="tabs">
+      <button class="tab active" data-screen="home">Accueil</button>
+      <button class="tab" data-screen="search">Recherche</button>
     </nav>
   </div>
-
-  <script src="data/course_data.json" type="application/json" id="course-data-src"></script>
   <script src="app.js"></script>
 </body>
 </html>
