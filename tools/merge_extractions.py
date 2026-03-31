@@ -1,185 +1,180 @@
-"""Merge all extraction_NNN.json files into a single unified_data.json."""
+#!/usr/bin/env python
+"""Merge all raw chapter extractions into a single unified course_data.json."""
+
 import json
 import os
-import re
+from pathlib import Path
+from collections import defaultdict
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "extraction_data")
-CATEGORIES = [
-    "vocabulary", "expressions", "grammar", "verbs", "phrases",
-    "culture", "hangeul", "numbers", "connectors", "other"
+PROJECT = Path(__file__).resolve().parent.parent
+RAW_DIR = PROJECT / "extraction_data" / "raw"
+OUTPUT = PROJECT / "data" / "course_data.json"
+
+# Category prefixes for stable IDs
+PREFIXES = {
+    "hangeul": "han", "vocabulary": "voc", "verbs": "vrb", "grammar": "grm",
+    "particles": "ptc", "connectors": "con", "expressions": "exp",
+    "dialogues": "dlg", "numbers": "num", "adjectives": "adj", "adverbs": "adv",
+    "classifiers": "clf", "pronunciation_rules": "pron", "culture": "cul",
+    "time_expressions": "time",
+}
+
+CHAPTERS_META = [
+    {"number": 0, "title_fr": "J'apprends le Hangeul", "title_ko": "한글", "pages": "7-51",
+     "topics": ["voyelles", "consonnes", "syllabes", "batchim", "prononciation", "premiers mots"]},
+    {"number": 1, "title_fr": "Se présenter", "title_ko": "만나서 반가워!", "pages": "52-71",
+     "topics": ["identité", "nationalités", "이다/아니다", "은/는", "이/가", "politesse"]},
+    {"number": 2, "title_fr": "Mon sac à dos", "title_ko": "내 가방에...", "pages": "72-91",
+     "topics": ["objets", "있다/없다", "에", "도", "possessifs"]},
+    {"number": 3, "title_fr": "Aujourd'hui", "title_ko": "오늘 뭐 해?", "pages": "92-111",
+     "topics": ["activités", "présent 아요/어요/해요", "하다", "안", "을/를", "에서", "하고"]},
+    {"number": 4, "title_fr": "Où est-ce ?", "title_ko": "어디에 있어?", "pages": "112-131",
+     "topics": ["lieux", "directions", "으로/로", "에서...까지", "이/그/저", "위/아래/옆/앞/뒤"]},
+    {"number": 5, "title_fr": "Bon appétit !", "title_ko": "맛있게 먹어!", "pages": "132-151",
+     "topics": ["nourriture", "goûts", "-고 싶다", "classificateurs", "으로/로", "saveurs"]},
+    {"number": 6, "title_fr": "Chuseok", "title_ko": "추석에 가족 집에 갔어!", "pages": "152-171",
+     "topics": ["passé 았/었/했", "nombres", "heure", "date", "fêtes", "sports"]},
 ]
 
-def load_extractions():
-    files = sorted(f for f in os.listdir(DATA_DIR) if re.match(r"extraction_\d{3}\.json", f))
-    print(f"Found {len(files)} extraction files")
-    all_data = {cat: [] for cat in CATEGORIES}
-    all_meta = []
-    for fname in files:
-        path = os.path.join(DATA_DIR, fname)
-        with open(path, "r", encoding="utf-8") as f:
+ALL_CATEGORIES = list(PREFIXES.keys())
+
+
+def dedup_key(item, category):
+    """Generate a deduplication key for an item."""
+    if category == "hangeul":
+        return (item.get("letter", ""), item.get("type", ""))
+    elif category == "verbs":
+        return (item.get("infinitive", ""), item.get("chapter", 0))
+    elif category == "grammar":
+        return (item.get("title", ""), item.get("chapter", 0))
+    elif category == "particles":
+        return (item.get("particle", ""), item.get("chapter", 0))
+    elif category == "dialogues":
+        return (item.get("title_fr", ""), item.get("chapter", 0))
+    elif category == "culture":
+        return (item.get("title", ""), item.get("chapter", 0))
+    elif category == "pronunciation_rules":
+        return (item.get("title", ""), item.get("chapter", 0))
+    elif category == "numbers":
+        return (item.get("korean", ""), item.get("system", ""))
+    elif category == "classifiers":
+        return (item.get("korean", ""),)
+    elif category == "expressions":
+        french = item.get("french", "")
+        polite = item.get("polite", {})
+        if isinstance(polite, dict):
+            korean = polite.get("korean", "")
+        else:
+            korean = ""
+        informal = item.get("informal", {})
+        if isinstance(informal, dict):
+            korean2 = informal.get("korean", "")
+        else:
+            korean2 = ""
+        return (french, korean or korean2)
+    else:
+        return (item.get("korean", ""), item.get("chapter", 0))
+
+
+def get_chapter(item, file_chapter):
+    """Determine item chapter, defaulting to file chapter."""
+    ch = item.get("chapter", file_chapter)
+    if ch == "lexique":
+        return -1  # Special handling
+    try:
+        return int(ch)
+    except (ValueError, TypeError):
+        return int(file_chapter) if file_chapter != "lexique" else -1
+
+
+def merge():
+    """Main merge logic."""
+    merged = {cat: [] for cat in ALL_CATEGORIES}
+    seen = {cat: set() for cat in ALL_CATEGORIES}
+
+    # Load all raw files
+    raw_files = sorted(RAW_DIR.glob("*_extracted.json"))
+    print(f"Found {len(raw_files)} raw extraction files")
+
+    for raw_file in raw_files:
+        with open(raw_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-        all_meta.append(data.get("meta", {}))
-        for cat in CATEGORIES:
-            items = data.get(cat, [])
-            if items:
-                all_data[cat].extend(items)
-    return all_data, all_meta
 
-def dedup_vocabulary(items):
-    seen = {}
-    for item in items:
-        key = item.get("korean", "").strip()
-        if not key:
-            continue
-        if key in seen:
-            existing = seen[key]
-            # Keep the one with more fields filled
-            new_score = sum(1 for v in item.values() if v)
-            old_score = sum(1 for v in existing.values() if v)
-            if new_score > old_score:
-                seen[key] = item
-        else:
-            seen[key] = item
-    return list(seen.values())
+        file_chapter = data.get("chapter", 0)
+        print(f"\n  Processing {raw_file.name} (chapter {file_chapter})...")
 
-def dedup_grammar(items):
-    seen = {}
-    for item in items:
-        key = item.get("title", "").strip().lower()
-        if not key:
-            continue
-        if key in seen:
-            existing = seen[key]
-            # Merge examples
-            existing_examples = existing.get("examples", [])
-            new_examples = item.get("examples", [])
-            existing_ex_set = {e.get("korean", "") for e in existing_examples}
-            for ex in new_examples:
-                if ex.get("korean", "") not in existing_ex_set:
-                    existing_examples.append(ex)
-            existing["examples"] = existing_examples
-            # Merge rules
-            existing_rules = existing.get("rules", [])
-            new_rules = item.get("rules", [])
-            existing_rule_set = set()
-            for r in existing_rules:
-                if isinstance(r, dict):
-                    existing_rule_set.add(r.get("form", "") + r.get("context", ""))
+        for category in ALL_CATEGORIES:
+            items = data.get(category, [])
+            if not isinstance(items, list):
+                continue
+
+            added = 0
+            for item in items:
+                # Normalize chapter
+                if "chapter" not in item:
+                    item["chapter"] = get_chapter(item, file_chapter)
                 else:
-                    existing_rule_set.add(str(r))
-            for rule in new_rules:
-                if isinstance(rule, dict):
-                    key_r = rule.get("form", "") + rule.get("context", "")
-                else:
-                    key_r = str(rule)
-                if key_r not in existing_rule_set:
-                    existing_rules.append(rule)
-            existing["rules"] = existing_rules
-        else:
-            seen[key] = item
-    return list(seen.values())
+                    item["chapter"] = get_chapter(item, file_chapter)
 
-def dedup_verbs(items):
-    seen = {}
-    for item in items:
-        key = item.get("infinitive", "").strip()
-        if not key:
-            continue
-        if key in seen:
-            existing = seen[key]
-            # Keep the one with more conjugation forms
-            new_score = sum(1 for k in ["polite_present", "informal_present", "polite_past"] if item.get(k))
-            old_score = sum(1 for k in ["polite_present", "informal_present", "polite_past"] if existing.get(k))
-            if new_score > old_score:
-                seen[key] = item
-        else:
-            seen[key] = item
-    return list(seen.values())
+                # Dedup
+                key = dedup_key(item, category)
+                if key in seen[category]:
+                    continue
+                seen[category].add(key)
 
-def dedup_expressions(items):
-    seen = {}
-    for item in items:
-        key = (item.get("polite_korean", "").strip(), item.get("french", "").strip())
-        if not key[0] and not key[1]:
-            continue
-        if key not in seen:
-            seen[key] = item
-    return list(seen.values())
+                merged[category].append(item)
+                added += 1
 
-def dedup_phrases(items):
-    seen = {}
-    for item in items:
-        key = item.get("korean", "").strip()
-        if not key:
-            continue
-        if key not in seen:
-            seen[key] = item
-    return list(seen.values())
+            if added > 0:
+                print(f"    {category}: +{added} items")
 
-def dedup_hangeul(items):
-    seen = {}
-    for item in items:
-        key = item.get("letter", "").strip()
-        if not key:
-            continue
-        if key not in seen:
-            seen[key] = item
-    return list(seen.values())
+    # Sort each category by chapter then page
+    for category in ALL_CATEGORIES:
+        merged[category].sort(key=lambda x: (
+            x.get("chapter", 0) if isinstance(x.get("chapter", 0), int) else 999,
+            x.get("page", 0) if isinstance(x.get("page", 0), int) else 0,
+        ))
 
-def dedup_generic(items, key_field="korean"):
-    seen = {}
-    for item in items:
-        key = item.get(key_field, "").strip()
-        if not key:
-            continue
-        if key not in seen:
-            seen[key] = item
-    return list(seen.values())
+    # Assign stable IDs
+    id_counters = defaultdict(lambda: defaultdict(int))
+    for category in ALL_CATEGORIES:
+        prefix = PREFIXES[category]
+        for item in merged[category]:
+            ch = item.get("chapter", 0)
+            ch_str = f"ch{ch}" if isinstance(ch, int) and ch >= 0 else "lex"
+            id_counters[category][ch_str] += 1
+            seq = id_counters[category][ch_str]
+            item["id"] = f"{prefix}_{ch_str}_{seq:03d}"
 
-def main():
-    all_data, all_meta = load_extractions()
+    # Build stats
+    stats = {cat: len(items) for cat, items in merged.items()}
+    total = sum(stats.values())
 
-    # Print raw counts
-    print("\n--- RAW counts (before dedup) ---")
-    for cat in CATEGORIES:
-        print(f"  {cat}: {len(all_data[cat])}")
+    # Build final structure
+    output = {
+        "meta": {
+            "version": "1.0.0",
+            "source": "Kaja Hanguk - Belin A1",
+            "extracted": "2026-03-31",
+            "total_items": total,
+            "stats": stats,
+        },
+        "chapters": CHAPTERS_META,
+    }
+    output.update(merged)
 
-    # Deduplicate
-    all_data["vocabulary"] = dedup_vocabulary(all_data["vocabulary"])
-    all_data["grammar"] = dedup_grammar(all_data["grammar"])
-    all_data["verbs"] = dedup_verbs(all_data["verbs"])
-    all_data["expressions"] = dedup_expressions(all_data["expressions"])
-    all_data["phrases"] = dedup_phrases(all_data["phrases"])
-    all_data["hangeul"] = dedup_hangeul(all_data["hangeul"])
-    all_data["numbers"] = dedup_generic(all_data["numbers"])
-    all_data["connectors"] = dedup_generic(all_data["connectors"])
-    all_data["culture"] = dedup_generic(all_data["culture"], key_field="title")
+    # Write output
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print("\n--- DEDUPED counts ---")
-    total = 0
-    for cat in CATEGORIES:
-        count = len(all_data[cat])
-        total += count
-        print(f"  {cat}: {count}")
-    print(f"  TOTAL: {total}")
+    print(f"\n{'='*50}")
+    print(f"MERGE COMPLETE: {OUTPUT}")
+    print(f"Total items: {total}")
+    for cat, count in sorted(stats.items(), key=lambda x: -x[1]):
+        if count > 0:
+            print(f"  {cat}: {count}")
 
-    # Validate Korean text
-    hangul_pattern = re.compile(r"[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]")
-    missing_korean = 0
-    for cat in ["vocabulary", "verbs", "phrases", "connectors"]:
-        for item in all_data[cat]:
-            korean_field = item.get("korean") or item.get("infinitive") or ""
-            if korean_field and not hangul_pattern.search(korean_field):
-                missing_korean += 1
-    print(f"\n  Items missing Hangul characters: {missing_korean}")
-
-    # Save
-    output = {"meta_log": all_meta, **all_data}
-    out_path = os.path.join(DATA_DIR, "unified_data.json")
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
-    size_kb = os.path.getsize(out_path) / 1024
-    print(f"\nSaved: {out_path} ({size_kb:.0f} KB)")
 
 if __name__ == "__main__":
-    main()
+    merge()

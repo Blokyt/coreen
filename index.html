@@ -2,93 +2,157 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Blokaja v2</title>
-  <meta name="theme-color" content="#3D7A6E">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Blokaja - Révision Coréen A1</title>
+  <link rel="icon" href="icon-512.png">
+  <link rel="apple-touch-icon" href="icon-512.png">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="app">
+    <!-- Header -->
+    <header id="header">
+      <button id="btn-back" class="icon-btn hidden" aria-label="Retour">←</button>
+      <h1 id="header-title">Blokaja</h1>
+      <div id="header-right">
+        <button id="btn-search" class="icon-btn" aria-label="Rechercher">🔍</button>
+        <button id="btn-dark" class="icon-btn" aria-label="Mode sombre">◐</button>
+      </div>
+    </header>
 
-  <!-- Header -->
-  <header class="header">
-    <button class="header-back" id="headerBack" aria-label="Retour">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-    </button>
-    <h1 class="header-title" id="headerTitle">Blokaja</h1>
-    <div class="header-actions">
-      <button class="header-icon-btn" id="toggleRom" aria-label="Romanisation" title="Afficher/Masquer la romanisation">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      </button>
-      <button class="header-icon-btn" id="toggleDark" aria-label="Theme" title="Mode sombre">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </button>
+    <!-- Search overlay -->
+    <div id="search-overlay" class="hidden">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Chercher en coréen ou français..." autocomplete="off">
+        <button id="search-close" class="icon-btn">✕</button>
+      </div>
+      <div id="search-results"></div>
     </div>
-  </header>
 
-  <!-- Main content -->
-  <div id="app" aria-live="polite"></div>
+    <!-- Home screen -->
+    <section id="screen-home" class="screen active">
+      <div class="home-stats">
+        <div class="stat-card">
+          <span class="stat-number" id="stat-total">0</span>
+          <span class="stat-label">items</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-mastered">0</span>
+          <span class="stat-label">maîtrisés</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-streak">0</span>
+          <span class="stat-label">jours</span>
+        </div>
+      </div>
 
-  <!-- Tab bar -->
-  <nav class="tab-bar" role="tablist" aria-label="Navigation principale">
-    <button class="tab active" data-tab="cours" role="tab" aria-selected="true">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-      </svg>
-      <span>Cours</span>
-    </button>
-    <button class="tab" data-tab="recherche" role="tab" aria-selected="false">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <span>Recherche</span>
-    </button>
-    <button class="tab" data-tab="quiz" role="tab" aria-selected="false">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="9 12 11 14 15 10"></polyline>
-      </svg>
-      <span>Quiz</span>
-    </button>
-    <button class="tab" data-tab="progression" role="tab" aria-selected="false">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="14" width="4" height="7" rx="1"></rect>
-        <rect x="10" y="9" width="4" height="12" rx="1"></rect>
-        <rect x="17" y="4" width="4" height="17" rx="1"></rect>
-      </svg>
-      <span>Progression</span>
-    </button>
-  </nav>
+      <h2 class="section-title">Chapitres</h2>
+      <div id="chapters-list" class="cards-grid"></div>
 
-  <!-- Bottom sheet -->
-  <div class="bottom-sheet-overlay" id="bottomSheetOverlay"></div>
-  <div class="bottom-sheet" id="bottomSheet">
-    <div class="bottom-sheet-handle"></div>
-    <div class="bottom-sheet-content" id="bottomSheetContent"></div>
+      <h2 class="section-title">Par catégorie</h2>
+      <div id="categories-list" class="cards-grid"></div>
+    </section>
+
+    <!-- Chapter / Category items list -->
+    <section id="screen-list" class="screen">
+      <div class="list-header">
+        <h2 id="list-title"></h2>
+        <div class="list-actions">
+          <button id="btn-flashcard" class="action-btn">Flashcards</button>
+          <button id="btn-quiz" class="action-btn accent">Quiz</button>
+        </div>
+      </div>
+      <div class="list-progress">
+        <div class="progress-bar"><div id="list-progress-fill" class="progress-fill"></div></div>
+        <span id="list-progress-text">0%</span>
+      </div>
+      <div id="items-list" class="items-container"></div>
+    </section>
+
+    <!-- Flashcard screen -->
+    <section id="screen-flashcard" class="screen">
+      <div class="flashcard-progress">
+        <span id="fc-counter">1/10</span>
+        <div class="progress-bar"><div id="fc-progress-fill" class="progress-fill"></div></div>
+      </div>
+      <div id="flashcard" class="flashcard" role="button" tabindex="0">
+        <div class="fc-front">
+          <span class="fc-label" id="fc-label">Coréen</span>
+          <span class="fc-main" id="fc-front-text"></span>
+          <span class="fc-sub" id="fc-front-sub"></span>
+        </div>
+        <div class="fc-back hidden">
+          <span class="fc-main" id="fc-back-text"></span>
+          <span class="fc-sub" id="fc-back-sub"></span>
+          <span class="fc-extra" id="fc-back-extra"></span>
+        </div>
+      </div>
+      <div id="fc-buttons" class="fc-buttons hidden">
+        <button class="fc-btn fail" id="fc-fail">✗ Revoir</button>
+        <button class="fc-btn ok" id="fc-ok">~ Moyen</button>
+        <button class="fc-btn pass" id="fc-pass">✓ Su</button>
+      </div>
+      <div class="fc-controls">
+        <button id="fc-speak" class="icon-btn" aria-label="Prononcer">🔊</button>
+        <button id="fc-flip" class="action-btn">Retourner</button>
+        <button id="fc-skip" class="icon-btn" aria-label="Passer">→</button>
+      </div>
+    </section>
+
+    <!-- Quiz screen -->
+    <section id="screen-quiz" class="screen">
+      <div class="quiz-progress">
+        <span id="qz-counter">1/10</span>
+        <div class="progress-bar"><div id="qz-progress-fill" class="progress-fill"></div></div>
+        <span id="qz-score">0</span>
+      </div>
+      <div class="quiz-question">
+        <span class="qz-label" id="qz-label">Traduisez</span>
+        <span class="qz-prompt" id="qz-prompt"></span>
+        <span class="qz-hint" id="qz-hint"></span>
+      </div>
+      <div id="qz-choices" class="qz-choices"></div>
+      <div id="qz-feedback" class="qz-feedback hidden"></div>
+      <button id="qz-next" class="action-btn accent hidden">Suivant</button>
+    </section>
+
+    <!-- Results screen -->
+    <section id="screen-results" class="screen">
+      <div class="results-card">
+        <h2>Résultats</h2>
+        <div class="results-score">
+          <span id="res-score" class="big-score">0</span>
+          <span class="score-label">/ <span id="res-total">0</span></span>
+        </div>
+        <div id="res-details" class="results-details"></div>
+        <div class="results-actions">
+          <button id="res-retry" class="action-btn">Recommencer</button>
+          <button id="res-home" class="action-btn accent">Accueil</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab bar -->
+    <nav id="tabbar">
+      <button class="tab active" data-tab="home">
+        <span class="tab-icon">⌂</span>
+        <span class="tab-label">Accueil</span>
+      </button>
+      <button class="tab" data-tab="browse">
+        <span class="tab-icon">目</span>
+        <span class="tab-label">Explorer</span>
+      </button>
+      <button class="tab" data-tab="progress">
+        <span class="tab-icon">◈</span>
+        <span class="tab-label">Progrès</span>
+      </button>
+    </nav>
   </div>
 
-  <!-- Data + App scripts -->
-  <script src="data.js" defer></script>
-  <script src="app.js" defer></script>
-  <!-- Service Worker registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
-    }
-  </script>
+  <script src="data/course_data.json" type="application/json" id="course-data-src"></script>
+  <script src="app.js"></script>
 </body>
 </html>

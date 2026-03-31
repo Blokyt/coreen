@@ -5,7 +5,9 @@ www/
 node_modules/
 
 # Source PDF (165MB, pas dans git)
+kaja_detailled.pdf
 *.pdf
+
 
 # Extraction pipeline (regenerable)
 extraction_data/
