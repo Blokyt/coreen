@@ -8,74 +8,70 @@
   <title>Blokaja</title>
   <link rel="icon" href="icon-512.png">
   <link rel="apple-touch-icon" href="icon-512.png">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="app">
     <header id="header">
-      <button id="btn-back" class="icon-btn hidden" aria-label="Retour">←</button>
-      <h1 id="header-title">Blokaja</h1>
-      <button id="btn-dark" class="icon-btn" aria-label="Thème">◐</button>
+      <button id="btn-back" class="hdr-btn hidden" aria-label="Retour">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h1 id="header-title">블로카자</h1>
+      <button id="btn-dark" class="hdr-btn" aria-label="Theme">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M9 2A7 7 0 0 1 9 16V2Z" fill="currentColor"/></svg>
+      </button>
     </header>
-
-    <!-- Search bar (always visible on home) -->
-    <div id="search-wrap" class="hidden">
-      <input type="text" id="search-input" placeholder="Chercher en coréen ou français..." autocomplete="off">
-      <div id="search-results"></div>
-    </div>
 
     <!-- Home -->
     <section id="screen-home" class="screen active">
-      <div id="search-home-wrap">
-        <input type="text" id="search-home" placeholder="Rechercher..." autocomplete="off">
-      </div>
+      <input type="text" id="search-home" class="search-input" placeholder="Chercher un mot...">
+
       <div id="global-progress"></div>
-      <h2 class="section-title">Chapitres</h2>
-      <div id="chapters-grid" class="grid"></div>
-      <h2 class="section-title">Catégories</h2>
-      <div id="categories-grid" class="grid"></div>
+
+      <div class="section-label">Chapitres</div>
+      <div id="chapters-grid"></div>
+
+      <div class="section-label">Categories</div>
+      <div id="categories-grid"></div>
     </section>
 
     <!-- List -->
     <section id="screen-list" class="screen">
       <div class="list-head">
-        <div>
+        <div class="list-meta">
           <h2 id="list-title"></h2>
-          <div class="list-stats"><span id="list-known">0</span> / <span id="list-total">0</span> maîtrisés</div>
+          <span id="list-stats" class="list-stats"></span>
         </div>
-        <button id="btn-fc" class="btn-primary">Réviser</button>
+        <button id="btn-fc" class="btn-go">Reviser</button>
       </div>
-      <div class="progress-bar"><div id="list-bar" class="bar-fill"></div></div>
+      <div class="bar"><div id="list-bar" class="bar-fill"></div></div>
       <div id="items"></div>
     </section>
 
-    <!-- Flashcard (infinite) -->
+    <!-- Flashcard -->
     <section id="screen-fc" class="screen">
-      <div class="fc-top">
-        <span id="fc-cat" class="fc-cat"></span>
-        <span id="fc-page" class="fc-page"></span>
+      <div class="fc-meta">
+        <span id="fc-cat"></span>
+        <span id="fc-page"></span>
       </div>
       <div id="fc-card" class="fc-card">
         <div id="fc-front" class="fc-face"></div>
         <div id="fc-back" class="fc-face hidden"></div>
       </div>
-      <div id="fc-actions" class="hidden">
+      <div id="fc-actions" class="fc-actions hidden">
         <button id="fc-nope" class="btn-nope">Pas su</button>
         <button id="fc-ok" class="btn-ok">Su</button>
       </div>
-      <button id="fc-reveal" class="btn-reveal">Voir la réponse</button>
+      <button id="fc-reveal" class="btn-reveal">Retourner</button>
     </section>
 
-    <!-- Search results (full screen) -->
+    <!-- Search -->
     <section id="screen-search" class="screen">
-      <div id="search-full-wrap">
-        <input type="text" id="search-full" placeholder="Rechercher en coréen ou français..." autocomplete="off">
-      </div>
-      <div id="search-full-results"></div>
+      <input type="text" id="search-full" class="search-input" placeholder="Chercher un mot...">
+      <div id="search-results"></div>
     </section>
 
-    <!-- Tab bar -->
     <nav id="tabs">
       <button class="tab active" data-screen="home">Accueil</button>
       <button class="tab" data-screen="search">Recherche</button>
