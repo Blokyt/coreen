@@ -146,6 +146,22 @@ function knownCount(items) {
   return items.filter(i => i.id && isKnown(i.id)).length;
 }
 
+// Count items by SRS state for a list of flashable items
+function stateCounts(items) {
+  const now = Date.now();
+  let nw = 0, learn = 0, due = 0, ok = 0;
+  for (const it of items) {
+    if (!it.id) continue;
+    const c = P[it.id];
+    if (!c || c.st === 0) { nw++; continue; }
+    if (c.st === 1 || c.st === 3) { learn++; continue; }
+    // st === 2 (review)
+    if (c.due && c.due <= now) { due++; }
+    else { ok++; }
+  }
+  return { nw, learn, due, ok, total: nw + learn + due + ok };
+}
+
 // Format next due time for display
 function dueLabel(id) {
   const c = P[id];
@@ -198,28 +214,29 @@ function renderHome() {
   show('home');
   $('#header-title').textContent = 'Blokaja';
 
-  let total = 0, kn = 0, due = 0;
-  const now = Date.now();
-  for (const cat of FLASHABLE) for (const it of (D[cat] || [])) {
-    if (!it.id) continue;
-    total++;
-    if (isKnown(it.id)) kn++;
-    const c = P[it.id];
-    if (!c || c.st === 0 || (c.due && c.due <= now)) due++;
-  }
-  const pct = total ? Math.round(kn / total * 100) : 0;
+  const allFlashable = [];
+  for (const cat of FLASHABLE) for (const it of (D[cat] || [])) if (it.id) allFlashable.push({...it, _c: cat});
+  const g = stateCounts(allFlashable);
+  const pct = g.total ? Math.round(g.ok / g.total * 100) : 0;
 
   $('#global-progress').innerHTML =
     `<div class="gp-pct">${pct}%</div>
      <div class="gp-right">
-       <div class="gp-bar"><div class="gp-fill" style="width:${pct}%"></div></div>
-       <div class="gp-label">${kn} maitrise${kn > 1 ? 's' : ''} sur ${total} · ${due} a revoir</div>
+       <div class="gp-bar">
+         <div class="gp-fill" style="width:${pct}%"></div>
+       </div>
+       <div class="gp-counts">
+         <span class="gc gc-new">${g.nw} nouveau${g.nw > 1 ? 'x' : ''}</span>
+         <span class="gc gc-learn">${g.learn} en cours</span>
+         <span class="gc gc-due">${g.due} a revoir</span>
+         <span class="gc gc-ok">${g.ok} su${g.ok > 1 ? 's' : ''}</span>
+       </div>
      </div>`;
 
   $('#chapters-grid').innerHTML = D.chapters.map((ch, i) => {
     const items = chItems(ch.number).filter(x => FLASHABLE.includes(x._c));
-    const k = knownCount(items), t = items.length, p = t ? Math.round(k / t * 100) : 0;
-    const d = items.filter(x => x.id && (!P[x.id] || P[x.id].st === 0 || (P[x.id].due && P[x.id].due <= now))).length;
+    const s = stateCounts(items);
+    const p = s.total ? Math.round(s.ok / s.total * 100) : 0;
     return `<div class="card card-ch" data-ch="${ch.number}">
       <div class="card-ch-num" style="background:${CH_COLORS[i]}">${ch.number}</div>
       <div class="card-ch-body">
@@ -227,20 +244,36 @@ function renderHome() {
         <div class="card-ch-sub">${esc(ch.title_ko || '')}</div>
       </div>
       <div class="card-ch-right">
-        <div class="card-ch-count">${k}/${t}${d ? ` · ${d} a revoir` : ''}</div>
+        <div class="card-ch-stats">
+          ${s.nw ? `<span class="cs cs-new">${s.nw}</span>` : ''}
+          ${s.learn ? `<span class="cs cs-learn">${s.learn}</span>` : ''}
+          ${s.due ? `<span class="cs cs-due">${s.due}</span>` : ''}
+          <span class="cs cs-ok">${s.ok}/${s.total}</span>
+        </div>
         <div class="card-ch-bar"><div class="card-ch-bar-fill" style="width:${p}%"></div></div>
       </div>
     </div>`;
   }).join('');
 
   $('#categories-grid').innerHTML = Object.entries(CATS).map(([cat, label]) => {
-    const items = D[cat] || [];
+    const items = (D[cat] || []).map(it => ({...it, _c: cat}));
     if (!items.length) return '';
     const fl = FLASHABLE.includes(cat);
-    const k = fl ? items.filter(i => i.id && isKnown(i.id)).length : null;
+    if (!fl) {
+      return `<div class="card" data-cat="${cat}">
+        <div class="card-cat-title">${esc(label)}</div>
+        <div class="card-cat-count">${items.length}</div>
+      </div>`;
+    }
+    const s = stateCounts(items);
     return `<div class="card" data-cat="${cat}">
       <div class="card-cat-title">${esc(label)}</div>
-      <div class="card-cat-count">${k !== null ? k + ' / ' : ''}${items.length}</div>
+      <div class="card-cat-stats">
+        ${s.nw ? `<span class="cs cs-new">${s.nw}</span>` : ''}
+        ${s.learn ? `<span class="cs cs-learn">${s.learn}</span>` : ''}
+        ${s.due ? `<span class="cs cs-due">${s.due}</span>` : ''}
+        <span class="cs cs-ok">${s.ok}/${s.total}</span>
+      </div>
     </div>`;
   }).join('');
 }
@@ -253,11 +286,11 @@ function openList(title, items) {
   $('#header-title').textContent = title;
 
   const fl = items.filter(i => FLASHABLE.includes(i._c) && i.id);
-  const k = knownCount(fl), t = fl.length;
+  const s = stateCounts(fl);
   $('#list-title').textContent = title;
-  $('#list-stats').textContent = `${k} / ${t}`;
-  $('#list-bar').style.width = (t ? Math.round(k / t * 100) : 0) + '%';
-  $('#btn-fc').classList.toggle('hidden', t === 0);
+  $('#list-stats').innerHTML = `<span class="cs cs-new">${s.nw}</span> <span class="cs cs-learn">${s.learn}</span> <span class="cs cs-due">${s.due}</span> <span class="cs cs-ok">${s.ok}/${s.total}</span>`;
+  $('#list-bar').style.width = (s.total ? Math.round(s.ok / s.total * 100) : 0) + '%';
+  $('#btn-fc').classList.toggle('hidden', s.total === 0);
   $('#items').innerHTML = items.map(renderItem).join('');
 }
 

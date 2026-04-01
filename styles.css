@@ -116,6 +116,22 @@ body {
   transition: width .5s cubic-bezier(.4,0,.2,1);
 }
 .gp-label { font-size: 0.74rem; color: var(--fg3); }
+.gp-counts { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* State count badges */
+.gc, .cs {
+  font-size: 0.68rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.gc-new, .cs-new { color: var(--fg3); }
+.gc-learn, .cs-learn { color: var(--red); }
+.gc-due, .cs-due { color: var(--amber); }
+.gc-ok, .cs-ok { color: var(--green); }
+
+.card-ch-stats, .card-cat-stats {
+  display: flex; gap: 6px; align-items: center;
+  font-size: 0.68rem;
+}
 
 /* ===== Sections ===== */
 .section-label {
