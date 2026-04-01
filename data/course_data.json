@@ -10659,7 +10659,7 @@
       "id": "voc_ch6_036"
     },
     {
-      "korean": "성탄절",
+      "korean": "성탄절 / 크리스마스",
       "french": "Noel",
       "romanization": "seongtanjeol",
       "theme": "fete",
@@ -10668,17 +10668,6 @@
       "notes": "12월 25일",
       "chapter": 6,
       "id": "voc_ch6_037"
-    },
-    {
-      "korean": "크리스마스",
-      "french": "Noel (mot anglais)",
-      "romanization": "keuriseumaseu",
-      "theme": "fete",
-      "word_type": "noun",
-      "page": 157,
-      "notes": "12월 25일",
-      "chapter": 6,
-      "id": "voc_ch6_038"
     },
     {
       "korean": "언제",
