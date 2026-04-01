@@ -1,4 +1,4 @@
-/* Blokaja v3 */
+/* Blokaja v4 — SRS Anki-like, infinite mode */
 
 let D = null;
 let P = {};
@@ -6,85 +6,181 @@ let P = {};
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 const esc = s => s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : '';
-const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 const CATS = {
-  vocabulary:         'Vocabulaire',
-  verbs:              'Verbes',
-  grammar:            'Grammaire',
-  particles:          'Particules',
-  expressions:        'Expressions',
-  hangeul:            'Hangeul',
-  numbers:            'Nombres',
-  culture:            'Culture',
-  dialogues:          'Dialogues',
-  pronunciation_rules:'Prononciation',
-  time_expressions:   'Temps',
-  classifiers:        'Classificateurs',
-  connectors:         'Connecteurs',
-  adjectives:         'Adjectifs',
-  adverbs:            'Adverbes',
+  vocabulary: 'Vocabulaire', verbs: 'Verbes', grammar: 'Grammaire',
+  particles: 'Particules', expressions: 'Expressions', hangeul: 'Hangeul',
+  numbers: 'Nombres', culture: 'Culture', dialogues: 'Dialogues',
+  pronunciation_rules: 'Prononciation', time_expressions: 'Temps',
+  classifiers: 'Classificateurs', connectors: 'Connecteurs',
+  adjectives: 'Adjectifs', adverbs: 'Adverbes',
 };
 
 const CH_COLORS = ['#4338ca','#7c3aed','#db2777','#dc2626','#ea580c','#ca8a04','#16a34a'];
-
 const FLASHABLE = ['vocabulary','verbs','hangeul','numbers','expressions','particles',
   'time_expressions','classifiers','connectors','adjectives','adverbs'];
-
 const READABLE = ['grammar','culture','dialogues','pronunciation_rules'];
 
-// ===== Init =====
+// ========== SRS Engine (Anki SM-2 inspired) ==========
+//
+// Card states: 0=new, 1=learning, 2=review, 3=relearning
+//
+// P[id] = { st, e, iv, due, step, reps }
+//   st   : state (0-3)
+//   e    : ease factor (default 2.5, min 1.3)
+//   iv   : current interval in minutes
+//   due  : timestamp (ms) when next review is due
+//   step : current learning step index
+//   reps : total number of reviews
+
+const LEARN_STEPS = [1, 10];       // learning steps in minutes
+const RELEARN_STEPS = [10];        // relearning steps in minutes
+const GRADUATING_IV = 1440;        // first review interval after learning: 1 day
+const EASY_BONUS = 1.3;
+const MIN_EASE = 1.3;
+const INIT_EASE = 2.5;
+
+function getCard(id) {
+  if (!P[id]) P[id] = { st: 0, e: INIT_EASE, iv: 0, due: 0, step: 0, reps: 0 };
+  // Migrate old format {s, c, t, iv} → new format
+  if (P[id].s !== undefined && P[id].st === undefined) {
+    const old = P[id];
+    const accuracy = old.s ? old.c / old.s : 0;
+    P[id] = {
+      st: accuracy >= 0.8 ? 2 : accuracy > 0 ? 1 : 0,
+      e: Math.max(MIN_EASE, 1.3 + accuracy * 1.2),
+      iv: old.iv || (accuracy >= 0.8 ? 1440 : 10),
+      due: old.t || 0,
+      step: 0,
+      reps: old.s || 0,
+    };
+  }
+  return P[id];
+}
+
+function srsAgain(id) {
+  const c = getCard(id);
+  if (c.st === 2) {
+    // Review → Relearning: ease drops, back to relearn steps
+    c.e = Math.max(MIN_EASE, c.e - 0.2);
+    c.st = 3;
+    c.step = 0;
+    c.due = Date.now() + RELEARN_STEPS[0] * 60000;
+    c.iv = Math.max(1, Math.round(c.iv * 0.5)); // halve interval on lapse
+  } else {
+    // New/Learning/Relearning → back to step 0
+    if (c.st === 0) c.st = 1;
+    c.step = 0;
+    const steps = c.st === 3 ? RELEARN_STEPS : LEARN_STEPS;
+    c.due = Date.now() + steps[0] * 60000;
+  }
+  c.reps++;
+  saveP();
+}
+
+function srsGood(id) {
+  const c = getCard(id);
+  if (c.st === 0 || c.st === 1 || c.st === 3) {
+    // Learning or Relearning: advance step
+    const steps = c.st === 3 ? RELEARN_STEPS : LEARN_STEPS;
+    c.step++;
+    if (c.st === 0) c.st = 1;
+
+    if (c.step >= steps.length) {
+      // Graduate to Review
+      c.st = 2;
+      c.iv = c.st === 3 ? Math.max(GRADUATING_IV, Math.round(c.iv * 0.7)) : GRADUATING_IV;
+      c.due = Date.now() + c.iv * 60000;
+    } else {
+      c.due = Date.now() + steps[c.step] * 60000;
+    }
+  } else {
+    // Review: interval grows by ease factor
+    c.iv = Math.round(c.iv * c.e);
+    c.due = Date.now() + c.iv * 60000;
+    // Slight ease bonus for consistent good answers
+    c.e = Math.min(3.0, c.e + 0.05);
+  }
+  c.reps++;
+  saveP();
+}
+
+// Priority for infinite feed: higher = show sooner
+function srsPriority(item) {
+  const c = P[item.id];
+  if (!c || c.st === 0) return 10000; // new cards first
+
+  const now = Date.now();
+  const overdue = now - (c.due || 0); // positive = overdue
+
+  if (c.st === 1 || c.st === 3) {
+    // Learning/relearning: show ASAP when due
+    return overdue > 0 ? 8000 + Math.min(overdue / 60000, 999) : -(overdue / 60000);
+  }
+
+  if (c.st === 2 && overdue > 0) {
+    // Review card overdue: priority by how overdue
+    return 5000 + Math.min(overdue / 60000, 999);
+  }
+
+  // Review card not yet due: low priority, sorted by time to due
+  return -(overdue / 60000);
+}
+
+// Display helpers
+function cardState(id) {
+  const c = P[id];
+  if (!c || c.st === 0) return 'new';
+  if (c.st === 1 || c.st === 3) return 'learning';
+  // Review: use ease to determine mastery level
+  if (c.e < 1.8) return 'almost';
+  return 'known';
+}
+
+function isKnown(id) {
+  const c = P[id];
+  return c && c.st === 2 && c.iv >= GRADUATING_IV;
+}
+
+function knownCount(items) {
+  return items.filter(i => i.id && isKnown(i.id)).length;
+}
+
+// Format next due time for display
+function dueLabel(id) {
+  const c = P[id];
+  if (!c || c.st === 0) return '';
+  const diff = (c.due || 0) - Date.now();
+  if (diff <= 0) return 'maintenant';
+  const min = Math.round(diff / 60000);
+  if (min < 60) return `${min}min`;
+  const hr = Math.round(min / 60);
+  if (hr < 24) return `${hr}h`;
+  const d = Math.round(hr / 24);
+  return `${d}j`;
+}
+
+// ========== Data ==========
+
 async function init() {
   const res = await fetch('data/course_data.json');
   D = await res.json();
-  P = JSON.parse(localStorage.getItem('blokaja3') || '{}');
+  P = JSON.parse(localStorage.getItem('blokaja4') || '{}');
   renderHome();
   setupEvents();
 }
 
-function saveP() { localStorage.setItem('blokaja3', JSON.stringify(P)); }
-
-// SRS: each item has {s: seen, c: correct, t: last_review_timestamp, iv: interval_minutes}
-// Mastery = weighted score factoring recency + accuracy
-function m(id) {
-  const p = P[id];
-  if (!p || !p.s) return 0;
-  return p.c / p.s;
-}
-
-function dot(id) {
-  const p = P[id];
-  if (!p) return 'new';
-  const v = m(id);
-  if (v < 0.4) return 'learning';
-  if (v < 0.8) return 'almost';
-  return 'known';
-}
-
-// SRS priority score: higher = needs review more urgently
-function srsPriority(item) {
-  const p = P[item.id];
-  if (!p) return 1000; // never seen = highest priority
-  const now = Date.now();
-  const age = (now - (p.t || 0)) / 60000; // minutes since last review
-  const interval = p.iv || 1; // current interval in minutes
-  const overdue = age / interval; // >1 means overdue
-  const accuracy = p.s ? p.c / p.s : 0;
-  // Low accuracy + overdue = high priority
-  return overdue * (1.5 - accuracy);
-}
+function saveP() { localStorage.setItem('blokaja4', JSON.stringify(P)); }
 
 function chItems(ch) {
   const out = [];
   for (const cat of Object.keys(CATS)) for (const it of (D[cat] || [])) if (it.chapter === ch) out.push({...it, _c: cat});
   return out;
 }
-
 function catItems(cat) { return (D[cat] || []).map(it => ({...it, _c: cat})); }
 
-function known(items) { return items.filter(i => i.id && m(i.id) >= 0.8).length; }
+// ========== Navigation ==========
 
-// ===== Nav =====
 let screen = 'home', curItems = [], curTitle = '';
 
 function show(s) {
@@ -96,35 +192,42 @@ function show(s) {
     t.dataset.screen === s || ((s === 'list' || s === 'fc') && t.dataset.screen === 'home')));
 }
 
-// ===== Home =====
+// ========== Home ==========
+
 function renderHome() {
   show('home');
   $('#header-title').textContent = 'Blokaja';
 
-  let total = 0, kn = 0;
-  for (const cat of FLASHABLE) for (const it of (D[cat] || [])) if (it.id) { total++; if (m(it.id) >= 0.8) kn++; }
+  let total = 0, kn = 0, due = 0;
+  const now = Date.now();
+  for (const cat of FLASHABLE) for (const it of (D[cat] || [])) {
+    if (!it.id) continue;
+    total++;
+    if (isKnown(it.id)) kn++;
+    const c = P[it.id];
+    if (!c || c.st === 0 || (c.due && c.due <= now)) due++;
+  }
   const pct = total ? Math.round(kn / total * 100) : 0;
 
   $('#global-progress').innerHTML =
     `<div class="gp-pct">${pct}%</div>
      <div class="gp-right">
        <div class="gp-bar"><div class="gp-fill" style="width:${pct}%"></div></div>
-       <div class="gp-label">${kn} sur ${total} maitrise${kn > 1 ? 's' : ''}</div>
+       <div class="gp-label">${kn} maitrise${kn > 1 ? 's' : ''} sur ${total} · ${due} a revoir</div>
      </div>`;
 
   $('#chapters-grid').innerHTML = D.chapters.map((ch, i) => {
     const items = chItems(ch.number).filter(x => FLASHABLE.includes(x._c));
-    const k = known(items), t = items.length, p = t ? Math.round(k / t * 100) : 0;
+    const k = knownCount(items), t = items.length, p = t ? Math.round(k / t * 100) : 0;
+    const d = items.filter(x => x.id && (!P[x.id] || P[x.id].st === 0 || (P[x.id].due && P[x.id].due <= now))).length;
     return `<div class="card card-ch" data-ch="${ch.number}">
-      <div class="card-ch-num" style="background:${CH_COLORS[i]}">
-        ${ch.number}
-      </div>
+      <div class="card-ch-num" style="background:${CH_COLORS[i]}">${ch.number}</div>
       <div class="card-ch-body">
         <div class="card-ch-title">${esc(ch.title_fr)}</div>
         <div class="card-ch-sub">${esc(ch.title_ko || '')}</div>
       </div>
       <div class="card-ch-right">
-        <div class="card-ch-count">${k}/${t}</div>
+        <div class="card-ch-count">${k}/${t}${d ? ` · ${d} a revoir` : ''}</div>
         <div class="card-ch-bar"><div class="card-ch-bar-fill" style="width:${p}%"></div></div>
       </div>
     </div>`;
@@ -134,7 +237,7 @@ function renderHome() {
     const items = D[cat] || [];
     if (!items.length) return '';
     const fl = FLASHABLE.includes(cat);
-    const k = fl ? items.filter(i => i.id && m(i.id) >= 0.8).length : null;
+    const k = fl ? items.filter(i => i.id && isKnown(i.id)).length : null;
     return `<div class="card" data-cat="${cat}">
       <div class="card-cat-title">${esc(label)}</div>
       <div class="card-cat-count">${k !== null ? k + ' / ' : ''}${items.length}</div>
@@ -142,14 +245,15 @@ function renderHome() {
   }).join('');
 }
 
-// ===== List =====
+// ========== List ==========
+
 function openList(title, items) {
   curTitle = title; curItems = items;
   show('list');
   $('#header-title').textContent = title;
 
   const fl = items.filter(i => FLASHABLE.includes(i._c) && i.id);
-  const k = known(fl), t = fl.length;
+  const k = knownCount(fl), t = fl.length;
   $('#list-title').textContent = title;
   $('#list-stats').textContent = `${k} / ${t}`;
   $('#list-bar').style.width = (t ? Math.round(k / t * 100) : 0) + '%';
@@ -172,7 +276,6 @@ function renderItem(it) {
         <div class="detail-src">Reformule depuis le manuel ${pg}</div>
       </div>`;
     }
-
     const body = it.explanation || it.explanation_fr || it.body || '';
     let ex = '';
     if (it.examples?.length) {
@@ -189,24 +292,29 @@ function renderItem(it) {
     </div>`;
   }
 
-  const kr = getKr(it), fr = getFr(it), d = it.id ? dot(it.id) : 'new';
+  const kr = getKr(it), fr = getFr(it);
+  const st = it.id ? cardState(it.id) : 'new';
+  const dl = it.id ? dueLabel(it.id) : '';
   return `<div class="item">
-    <div class="dot dot-${d}"></div>
+    <div class="dot dot-${st}"></div>
     <div class="item-body">
       <div class="item-kr">${esc(kr)}</div>
       <div class="item-fr">${esc(fr)}</div>
-      ${pg ? `<div class="item-pg">${pg}</div>` : ''}
+      <div class="item-pg">${pg}${dl ? ` · ${dl}` : ''}</div>
     </div>
   </div>`;
 }
 
-// ===== Flashcard =====
+// ========== Flashcard (infinite) ==========
+
 let deck = [], fi = 0, flipped = false;
 
 function startFc() {
   const fl = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
   if (!fl.length) return;
-  // Sort by SRS priority (highest first), then take top batch
+  // Initialize cards that have no SRS data
+  fl.forEach(i => getCard(i.id));
+  // Sort by SRS priority
   deck = [...fl].sort((a, b) => srsPriority(b) - srsPriority(a));
   fi = 0;
   show('fc');
@@ -216,18 +324,23 @@ function startFc() {
 
 function showCard() {
   if (fi >= deck.length) {
-    // Re-sort by SRS priority for next loop
-    deck = [...deck].sort((a, b) => srsPriority(b) - srsPriority(a));
+    // Reshuffle by priority for next loop
+    deck.sort((a, b) => srsPriority(b) - srsPriority(a));
     fi = 0;
   }
   const it = deck[fi];
   flipped = false;
   $('#fc-cat').textContent = CATS[it._c] || '';
-  $('#fc-page').textContent = it.page ? `p.${it.page}` : '';
+
+  const pg = it.page ? `p.${it.page}` : '';
+  const dl = dueLabel(it.id);
+  $('#fc-page').textContent = pg + (dl ? ` · ${dl}` : '');
+
   $('#fc-front').innerHTML = buildFront(it);
   $('#fc-back').innerHTML = buildBack(it);
-  $('#fc-front').classList.remove('hidden');
+  $('#fc-front').classList.remove('hidden', 'flip-out');
   $('#fc-back').classList.add('hidden');
+  $('#fc-back').classList.remove('flip-in');
   $('#fc-actions').classList.add('hidden');
   $('#fc-reveal').classList.remove('hidden');
 }
@@ -250,24 +363,16 @@ function flip() {
 
 function answer(ok) {
   const it = deck[fi];
-  if (it.id) {
-    if (!P[it.id]) P[it.id] = {s: 0, c: 0, iv: 1};
-    const p = P[it.id];
-    p.s++;
-    if (ok) {
-      p.c++;
-      // SRS: increase interval (1 -> 10 -> 60 -> 360 -> 1440 -> 4320 min)
-      p.iv = Math.min((p.iv || 1) * 3, 4320);
-    } else {
-      // SRS: reset interval, re-insert item soon
-      p.iv = 1;
-      // Re-insert this item 4-6 cards later for immediate re-test
-      const reinsertAt = Math.min(fi + 4 + (Math.random() * 3 | 0), deck.length);
-      deck.splice(reinsertAt, 0, {...it});
-    }
-    p.t = Date.now();
-    saveP();
+
+  if (ok) {
+    srsGood(it.id);
+  } else {
+    srsAgain(it.id);
+    // Re-insert for re-test soon (Anki learning behavior)
+    const reinsert = Math.min(fi + 3 + (Math.random() * 3 | 0), deck.length);
+    deck.splice(reinsert, 0, it);
   }
+
   const card = $('#fc-card');
   card.classList.add(ok ? 'slide-right' : 'slide-left');
   setTimeout(() => {
@@ -277,7 +382,8 @@ function answer(ok) {
   }, 200);
 }
 
-// ===== Content helpers =====
+// ========== Content helpers ==========
+
 function getKr(it) {
   const c = it._c;
   if (c === 'expressions') return it.polite?.korean || it.informal?.korean || '';
@@ -358,7 +464,8 @@ function buildBack(it) {
   return `<div class="fc-main">${esc(main)}</div>${sub ? `<div class="fc-sub">${esc(sub)}</div>` : ''}${extra ? `<div class="fc-extra">${esc(extra)}</div>` : ''}`;
 }
 
-// ===== Search =====
+// ========== Search ==========
+
 function doSearch(q, el) {
   q = q.trim().toLowerCase();
   if (q.length < 2) { el.innerHTML = ''; return; }
@@ -390,7 +497,8 @@ function doSearch(q, el) {
   }).join('');
 }
 
-// ===== Events =====
+// ========== Events ==========
+
 function setupEvents() {
   $('#btn-back').onclick = () => {
     if (screen === 'fc') { openList(curTitle, curItems); return; }
