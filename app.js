@@ -205,8 +205,15 @@ function showCard() {
 function flip() {
   if (flipped) return;
   flipped = true;
-  $('#fc-front').classList.add('hidden');
-  $('#fc-back').classList.remove('hidden');
+  const front = $('#fc-front'), back = $('#fc-back');
+  front.classList.add('flip-out');
+  setTimeout(() => {
+    front.classList.add('hidden');
+    front.classList.remove('flip-out');
+    back.classList.remove('hidden');
+    back.classList.add('flip-in');
+    setTimeout(() => back.classList.remove('flip-in'), 150);
+  }, 140);
   $('#fc-reveal').classList.add('hidden');
   $('#fc-actions').classList.remove('hidden');
 }
@@ -220,8 +227,13 @@ function answer(ok) {
     P[it.id].t = Date.now();
     saveP();
   }
-  fi++;
-  showCard();
+  const card = $('#fc-card');
+  card.classList.add(ok ? 'slide-right' : 'slide-left');
+  setTimeout(() => {
+    card.classList.remove('slide-right', 'slide-left');
+    fi++;
+    showCard();
+  }, 200);
 }
 
 // ===== Content helpers =====
