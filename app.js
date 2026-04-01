@@ -43,8 +43,36 @@ async function init() {
 }
 
 function saveP() { localStorage.setItem('blokaja3', JSON.stringify(P)); }
-function m(id) { const p = P[id]; return p && p.s ? p.c / p.s : 0; }
-function dot(id) { const v = m(id); if (!P[id]) return 'new'; if (v < 0.4) return 'learning'; if (v < 0.8) return 'almost'; return 'known'; }
+
+// SRS: each item has {s: seen, c: correct, t: last_review_timestamp, iv: interval_minutes}
+// Mastery = weighted score factoring recency + accuracy
+function m(id) {
+  const p = P[id];
+  if (!p || !p.s) return 0;
+  return p.c / p.s;
+}
+
+function dot(id) {
+  const p = P[id];
+  if (!p) return 'new';
+  const v = m(id);
+  if (v < 0.4) return 'learning';
+  if (v < 0.8) return 'almost';
+  return 'known';
+}
+
+// SRS priority score: higher = needs review more urgently
+function srsPriority(item) {
+  const p = P[item.id];
+  if (!p) return 1000; // never seen = highest priority
+  const now = Date.now();
+  const age = (now - (p.t || 0)) / 60000; // minutes since last review
+  const interval = p.iv || 1; // current interval in minutes
+  const overdue = age / interval; // >1 means overdue
+  const accuracy = p.s ? p.c / p.s : 0;
+  // Low accuracy + overdue = high priority
+  return overdue * (1.5 - accuracy);
+}
 
 function chItems(ch) {
   const out = [];
@@ -71,7 +99,7 @@ function show(s) {
 // ===== Home =====
 function renderHome() {
   show('home');
-  $('#header-title').textContent = '블로카자';
+  $('#header-title').textContent = 'Blokaja';
 
   let total = 0, kn = 0;
   for (const cat of FLASHABLE) for (const it of (D[cat] || [])) if (it.id) { total++; if (m(it.id) >= 0.8) kn++; }
@@ -178,10 +206,8 @@ let deck = [], fi = 0, flipped = false;
 function startFc() {
   const fl = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
   if (!fl.length) return;
-  const unseen = fl.filter(i => !P[i.id]);
-  const weak = fl.filter(i => P[i.id] && m(i.id) < 0.8);
-  const strong = fl.filter(i => P[i.id] && m(i.id) >= 0.8);
-  deck = [...shuffle(unseen), ...shuffle(weak), ...shuffle(strong)];
+  // Sort by SRS priority (highest first), then take top batch
+  deck = [...fl].sort((a, b) => srsPriority(b) - srsPriority(a));
   fi = 0;
   show('fc');
   $('#header-title').textContent = curTitle;
@@ -189,7 +215,11 @@ function startFc() {
 }
 
 function showCard() {
-  if (fi >= deck.length) { deck = shuffle(deck); fi = 0; }
+  if (fi >= deck.length) {
+    // Re-sort by SRS priority for next loop
+    deck = [...deck].sort((a, b) => srsPriority(b) - srsPriority(a));
+    fi = 0;
+  }
   const it = deck[fi];
   flipped = false;
   $('#fc-cat').textContent = CATS[it._c] || '';
@@ -221,10 +251,21 @@ function flip() {
 function answer(ok) {
   const it = deck[fi];
   if (it.id) {
-    if (!P[it.id]) P[it.id] = {s: 0, c: 0};
-    P[it.id].s++;
-    if (ok) P[it.id].c++;
-    P[it.id].t = Date.now();
+    if (!P[it.id]) P[it.id] = {s: 0, c: 0, iv: 1};
+    const p = P[it.id];
+    p.s++;
+    if (ok) {
+      p.c++;
+      // SRS: increase interval (1 -> 10 -> 60 -> 360 -> 1440 -> 4320 min)
+      p.iv = Math.min((p.iv || 1) * 3, 4320);
+    } else {
+      // SRS: reset interval, re-insert item soon
+      p.iv = 1;
+      // Re-insert this item 4-6 cards later for immediate re-test
+      const reinsertAt = Math.min(fi + 4 + (Math.random() * 3 | 0), deck.length);
+      deck.splice(reinsertAt, 0, {...it});
+    }
+    p.t = Date.now();
     saveP();
   }
   const card = $('#fc-card');
@@ -351,12 +392,6 @@ function doSearch(q, el) {
 
 // ===== Events =====
 function setupEvents() {
-  if (localStorage.getItem('blokaja_dark') === 'true') document.documentElement.classList.add('dark');
-  $('#btn-dark').onclick = () => {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('blokaja_dark', document.documentElement.classList.contains('dark'));
-  };
-
   $('#btn-back').onclick = () => {
     if (screen === 'fc') { openList(curTitle, curItems); return; }
     renderHome();

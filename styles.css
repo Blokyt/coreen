@@ -1,26 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f4f2eb;
-  --surface: #faf9f5;
-  --border: #dfdcd2;
-  --fg: #1d1c18;
-  --fg2: #58564e;
-  --fg3: #96948a;
-  --accent: #1d1c18;
-  --accent-soft: #eae8e0;
-  --red: #b33a2e;
-  --red-bg: #fceeed;
-  --amber: #a67c1a;
-  --green: #2d7a3f;
-  --green-bg: #edf7f0;
-  --radius: 12px;
-  --kr: 'Noto Sans KR', sans-serif;
-  --ui: 'DM Sans', sans-serif;
-  --safe-b: env(safe-area-inset-bottom, 0px);
-}
-
-.dark {
   --bg: #121210;
   --surface: #1b1a17;
   --border: #2c2a25;
@@ -31,8 +11,13 @@
   --accent-soft: #252420;
   --red: #e05545;
   --red-bg: #2b1916;
+  --amber: #d4a02a;
   --green: #5cb870;
   --green-bg: #162b1a;
+  --radius: 12px;
+  --kr: 'Noto Sans KR', sans-serif;
+  --ui: 'DM Sans', sans-serif;
+  --safe-b: env(safe-area-inset-bottom, 0px);
 }
 
 html {
