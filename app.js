@@ -203,9 +203,7 @@ function show(s) {
   $$('.screen').forEach(el => el.classList.remove('active'));
   $(`#screen-${s}`).classList.add('active');
   screen = s;
-  $('#btn-back').classList.toggle('hidden', s === 'home' || s === 'search');
-  $$('.tab').forEach(t => t.classList.toggle('active',
-    t.dataset.screen === s || ((s === 'list' || s === 'fc') && t.dataset.screen === 'home')));
+  $('#btn-back').classList.toggle('hidden', s === 'home');
 }
 
 // ========== Home ==========
@@ -514,17 +512,32 @@ function doSearch(q, el) {
 
 // ========== Events ==========
 
+function openSearch() {
+  $('#search-overlay').classList.remove('hidden');
+  $('#search-full').value = $('#search-input').value;
+  $('#search-full').focus();
+  if ($('#search-full').value.length >= 2) doSearch($('#search-full').value, $('#search-results'));
+}
+
+function closeSearch() {
+  $('#search-overlay').classList.add('hidden');
+  $('#search-input').value = '';
+  $('#search-input').blur();
+}
+
 function setupEvents() {
+  // Back
   $('#btn-back').onclick = () => {
     if (screen === 'fc') { openList(curTitle, curItems); return; }
     renderHome();
   };
 
-  $$('.tab').forEach(t => t.onclick = () => {
-    if (t.dataset.screen === 'home') renderHome();
-    if (t.dataset.screen === 'search') { show('search'); $('#search-full').value = ''; $('#search-full').focus(); }
-  });
+  // Search: tap input on home → open overlay
+  $('#search-input').onfocus = () => openSearch();
+  $('#search-close').onclick = closeSearch;
+  $('#search-full').oninput = e => doSearch(e.target.value, $('#search-results'));
 
+  // Chapters
   $('#chapters-grid').onclick = e => {
     const card = e.target.closest('[data-ch]');
     if (!card) return;
@@ -533,6 +546,7 @@ function setupEvents() {
     openList(`Ch.${ch} ${info?.title_fr || ''}`, chItems(ch));
   };
 
+  // Categories
   $('#categories-grid').onclick = e => {
     const card = e.target.closest('[data-cat]');
     if (!card) return;
@@ -540,21 +554,14 @@ function setupEvents() {
     openList(CATS[cat] || cat, catItems(cat));
   };
 
+  // Flashcards
   $('#btn-fc').onclick = startFc;
   $('#fc-card').onclick = flip;
   $('#fc-reveal').onclick = flip;
   $('#fc-nope').onclick = () => answer(false);
   $('#fc-ok').onclick = () => answer(true);
 
-  $('#search-home').oninput = e => {
-    if (e.target.value.trim().length >= 2) {
-      show('search');
-      $('#search-full').value = e.target.value;
-      doSearch(e.target.value, $('#search-results'));
-    }
-  };
-  $('#search-full').oninput = e => doSearch(e.target.value, $('#search-results'));
-
+  // Swipe
   let tx = 0;
   $('#fc-card').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
   $('#fc-card').addEventListener('touchend', e => {

@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#121210">
   <title>Blokaja</title>
   <link rel="icon" href="icon-512.png">
   <link rel="apple-touch-icon" href="icon-512.png">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="app">
     <header id="header">
-      <button id="btn-back" class="hdr-btn hidden" aria-label="Retour">
+      <button id="btn-back" class="hdr-btn hidden">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <h1 id="header-title">Blokaja</h1>
@@ -22,16 +23,30 @@
 
     <!-- Home -->
     <section id="screen-home" class="screen active">
-      <input type="text" id="search-home" class="search-input" placeholder="Chercher un mot...">
-
+      <div id="search-bar" class="search-bar">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" id="search-input" placeholder="Chercher un mot..." autocomplete="off">
+      </div>
       <div id="global-progress"></div>
-
       <div class="section-label">Chapitres</div>
       <div id="chapters-grid"></div>
-
       <div class="section-label">Categories</div>
       <div id="categories-grid"></div>
     </section>
+
+    <!-- Search overlay -->
+    <div id="search-overlay" class="overlay hidden">
+      <div class="overlay-head">
+        <div class="search-bar search-bar-focus">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="text" id="search-full" placeholder="Chercher un mot..." autocomplete="off">
+          <button id="search-close" class="search-x">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="search-results" class="overlay-body"></div>
+    </div>
 
     <!-- List -->
     <section id="screen-list" class="screen">
@@ -62,17 +77,6 @@
       </div>
       <button id="fc-reveal" class="btn-reveal">Retourner</button>
     </section>
-
-    <!-- Search -->
-    <section id="screen-search" class="screen">
-      <input type="text" id="search-full" class="search-input" placeholder="Chercher un mot...">
-      <div id="search-results"></div>
-    </section>
-
-    <nav id="tabs">
-      <button class="tab active" data-screen="home">Accueil</button>
-      <button class="tab" data-screen="search">Recherche</button>
-    </nav>
   </div>
   <script src="app.js"></script>
 </body>
