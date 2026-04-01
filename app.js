@@ -178,9 +178,33 @@ function dueLabel(id) {
 
 // ========== Data ==========
 
+/* Normalize expression data: 3 source formats → 1 canonical { polite, informal } */
+function normalizeExpression(it) {
+  // Format A: flat korean_formal/korean_informal (12 items, pages 33-34)
+  if (it.korean_formal !== undefined) {
+    return { ...it,
+      polite:   { korean: it.korean_formal,   romanization: it.romanization_formal   || '' },
+      informal: { korean: it.korean_informal,  romanization: it.romanization_informal || '' },
+    };
+  }
+  // Format B: flat korean/romanization, no register split (3 items)
+  if (it.korean !== undefined && !it.polite) {
+    return { ...it,
+      polite: { korean: it.korean, romanization: it.romanization || '' },
+    };
+  }
+  // Format C: nested polite/informal — already canonical
+  return it;
+}
+
+function normalizeData(raw) {
+  if (raw.expressions) raw.expressions = raw.expressions.map(normalizeExpression);
+  return raw;
+}
+
 async function init() {
   const res = await fetch('data/course_data.json');
-  D = await res.json();
+  D = normalizeData(await res.json());
   P = JSON.parse(localStorage.getItem('blokaja4') || '{}');
   renderHome();
   setupEvents();
@@ -395,86 +419,127 @@ function answer(ok) {
   }, 200);
 }
 
-// ========== Content helpers ==========
+// ========== Content accessors ==========
 
 function getKr(it) {
   const c = it._c;
   if (c === 'expressions') return it.polite?.korean || it.informal?.korean || '';
-  if (c === 'verbs') return it.infinitive || '';
-  if (c === 'hangeul') return it.letter || '';
-  if (c === 'particles') return it.particle || '';
-  if (c === 'adjectives') return it.infinitive || it.korean || '';
+  if (c === 'verbs')       return it.infinitive || '';
+  if (c === 'hangeul')     return it.letter || '';
+  if (c === 'particles')   return it.particle || '';
+  if (c === 'adjectives')  return it.infinitive || it.korean || '';
   return it.korean || '';
 }
 
 function getFr(it) {
   const c = it._c;
   if (c === 'particles') return it.function_fr || it.name_fr || '';
-  if (c === 'expressions') return it.french || '';
-  if (c === 'numbers') return String(it.numeral ?? '') + (it.system === 'native-korean' ? ' (natif)' : it.system === 'sino-korean' ? ' (sino)' : '');
-  if (c === 'hangeul') return it.romanization || '';
+  if (c === 'numbers')   return String(it.numeral ?? '') + (it.system === 'native-korean' ? ' (natif)' : it.system === 'sino-korean' ? ' (sino)' : '');
+  if (c === 'hangeul')   return it.romanization || '';
   return it.french || '';
 }
 
+function getRom(it) {
+  if (it._c === 'expressions') return it.polite?.romanization || it.informal?.romanization || '';
+  return it.romanization || '';
+}
+
+// ---- Category-specific back helpers ----
+
+function verbBack(it) {
+  const cj = it.conjugations || {};
+  return cj.polite_present || cj.informal_present || cj.polite_present_after_vowel || '';
+}
+function verbExtra(it) {
+  const cj = it.conjugations || {};
+  const p = [];
+  if (cj.polite_present)  p.push(`poli : ${cj.polite_present}`);
+  if (cj.informal_present) p.push(`informel : ${cj.informal_present}`);
+  if (cj.polite_past)     p.push(`passé : ${cj.polite_past}`);
+  if (cj.polite_negative) p.push(`nég : ${cj.polite_negative}`);
+  let s = p.join(' · ');
+  if (it.contraction_note) s += (s ? '\n' : '') + it.contraction_note;
+  return s;
+}
+function particleSub(it) {
+  const f = it.forms || {};
+  return (f.after_vowel || f.after_consonant)
+    ? `voyelle : ${f.after_vowel || '?'} / consonne : ${f.after_consonant || '?'}` : '';
+}
+function particleExtra(it) {
+  return it.examples?.length ? it.examples.slice(0, 2).map(e => e.korean || '').join('\n') : '';
+}
+function exprSub(it) {
+  const pol = it.polite?.korean || '', inf = it.informal?.korean || '';
+  return (pol && inf && pol !== inf) ? `informel : ${inf}` : '';
+}
+function exprRom(it) {
+  const rp = it.polite?.romanization || '', ri = it.informal?.romanization || '';
+  if (rp && ri && rp !== ri) return `${rp} / ${ri}`;
+  return rp || ri;
+}
+
+// ========== Card config (declarative) ==========
+//
+// Each category declares what goes on the front and back of its flashcard.
+// fMain/fSub = front main/sub, bMain/bSub/bExtra = back main/sub/extra.
+// Functions receive the item and return a string.
+
+const STD = { fMain: getKr, fSub: getRom, bMain: getFr };
+
+const CARD = {
+  vocabulary:       { label: 'Vocabulaire',      ...STD },
+  time_expressions: { label: 'Temps',            ...STD },
+  adverbs:          { label: 'Adverbes',         ...STD },
+  connectors:       { label: 'Connecteurs',      ...STD },
+  classifiers:      { label: 'Classificateurs',  ...STD },
+  verbs: {
+    label: 'Verbe', fMain: getKr, fSub: getFr,
+    bMain: verbBack, bExtra: verbExtra,
+  },
+  adjectives: {
+    label: 'Adjectif', fMain: getKr, fSub: getFr,
+    bMain: it => it.korean_polite || '', bSub: getFr,
+  },
+  hangeul: {
+    label: 'Hangeul', fMain: getKr,
+    bMain: getRom, bSub: it => it.description_fr || '',
+  },
+  numbers: {
+    label: it => it.system === 'native-korean' ? 'Nombre natif' : 'Nombre sino',
+    fMain: it => String(it.numeral ?? ''),
+    bMain: getKr, bSub: it => it.korean_before_counter ? `devant compteur : ${it.korean_before_counter}` : '',
+  },
+  particles: {
+    label: 'Particule', fMain: getKr,
+    bMain: getFr, bSub: particleSub, bExtra: particleExtra,
+  },
+  expressions: {
+    label: 'Expression', fMain: getFr,
+    bMain: getKr, bSub: exprSub, bExtra: exprRom,
+  },
+};
+
 function buildFront(it) {
-  const c = it._c;
-  let label = '', main = '', sub = '';
-
-  if (['vocabulary','time_expressions','adverbs','connectors','classifiers'].includes(c)) {
-    label = CATS[c]; main = it.korean || ''; sub = it.romanization || '';
-  } else if (c === 'verbs') {
-    label = 'Verbe'; main = it.infinitive || ''; sub = it.french || '';
-  } else if (c === 'hangeul') {
-    label = 'Hangeul'; main = it.letter || '';
-  } else if (c === 'numbers') {
-    label = it.system === 'native-korean' ? 'Nombre natif' : 'Nombre sino';
-    main = String(it.numeral ?? '');
-  } else if (c === 'particles') {
-    label = 'Particule'; main = it.particle || '';
-  } else if (c === 'adjectives') {
-    label = 'Adjectif'; main = it.infinitive || it.korean || ''; sub = it.french || '';
-  } else if (c === 'expressions') {
-    label = 'Expression'; main = it.french || '';
-  }
-
-  return `<div class="fc-label">${esc(label)}</div><div class="fc-main">${esc(main)}</div>${sub ? `<div class="fc-sub">${esc(sub)}</div>` : ''}`;
+  const cfg = CARD[it._c];
+  if (!cfg) return '';
+  const label = typeof cfg.label === 'function' ? cfg.label(it) : cfg.label;
+  const main  = cfg.fMain?.(it) || '';
+  const sub   = cfg.fSub?.(it)  || '';
+  return `<div class="fc-label">${esc(label)}</div>`
+       + `<div class="fc-main">${esc(main)}</div>`
+       + (sub ? `<div class="fc-sub">${esc(sub)}</div>` : '');
 }
 
 function buildBack(it) {
-  const c = it._c;
-  let main = '', sub = '', extra = '';
-
-  if (['vocabulary','time_expressions','adverbs','connectors','classifiers'].includes(c)) {
-    main = it.french || '';
-  } else if (c === 'verbs') {
-    const cj = it.conjugations || {};
-    main = cj.polite_present || cj.informal_present || cj.polite_present_after_vowel || '';
-    const p = [];
-    if (cj.polite_present) p.push(`poli : ${cj.polite_present}`);
-    if (cj.informal_present) p.push(`informel : ${cj.informal_present}`);
-    if (cj.polite_past) p.push(`passe : ${cj.polite_past}`);
-    if (cj.polite_negative) p.push(`neg : ${cj.polite_negative}`);
-    extra = p.join(' · ');
-    if (it.contraction_note) extra += (extra ? '\n' : '') + it.contraction_note;
-  } else if (c === 'hangeul') {
-    main = it.romanization || ''; sub = it.description_fr || '';
-  } else if (c === 'numbers') {
-    main = it.korean || '';
-    if (it.korean_before_counter) sub = `devant compteur : ${it.korean_before_counter}`;
-  } else if (c === 'particles') {
-    main = it.function_fr || '';
-    const f = it.forms || {};
-    if (f.after_vowel || f.after_consonant) sub = `voyelle : ${f.after_vowel || '?'} / consonne : ${f.after_consonant || '?'}`;
-    if (it.examples?.length) extra = it.examples.slice(0, 2).map(e => e.korean || '').join('\n');
-  } else if (c === 'adjectives') {
-    main = it.korean_polite || ''; sub = it.french || '';
-  } else if (c === 'expressions') {
-    const pol = it.polite?.korean || '', inf = it.informal?.korean || '';
-    main = pol || inf;
-    if (pol && inf && pol !== inf) sub = `informel : ${inf}`;
-  }
-
-  return `<div class="fc-main">${esc(main)}</div>${sub ? `<div class="fc-sub">${esc(sub)}</div>` : ''}${extra ? `<div class="fc-extra">${esc(extra)}</div>` : ''}`;
+  const cfg = CARD[it._c];
+  if (!cfg) return '';
+  const main  = cfg.bMain?.(it)  || '';
+  const sub   = cfg.bSub?.(it)   || '';
+  const extra = cfg.bExtra?.(it) || '';
+  return `<div class="fc-main">${esc(main)}</div>`
+       + (sub   ? `<div class="fc-sub">${esc(sub)}</div>`     : '')
+       + (extra ? `<div class="fc-extra">${esc(extra)}</div>` : '');
 }
 
 // ========== Search ==========
@@ -491,6 +556,7 @@ function doSearch(q, el) {
         it.letter, it.particle, it.romanization, it.explanation,
         it.explanation_fr, it.body, it.name_fr, it.function_fr,
         it.polite?.korean, it.informal?.korean,
+        it.polite?.romanization, it.informal?.romanization,
       ].filter(Boolean).map(s => s.toLowerCase());
       if (fields.some(f => f.includes(q))) res.push({it, cat});
     }
