@@ -257,6 +257,15 @@ body {
 .fc-sub  { font-size: 0.9rem; color: var(--fg2); margin-top: 10px; line-height: 1.4; }
 .fc-extra { font-size: 0.78rem; color: var(--fg3); margin-top: 14px; line-height: 1.5; white-space: pre-line; }
 
+/* Session progress */
+.fc-session-bar {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  font-size: 0.72rem; color: var(--fg3); font-variant-numeric: tabular-nums;
+}
+.fc-session-track { flex: 1; height: 4px; border-radius: 2px; background: var(--accent-soft); overflow: hidden; }
+.fc-session-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width .4s cubic-bezier(.4,0,.2,1); }
+
+/* SRS buttons */
 .fc-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
 .btn-nope, .btn-ok {
   padding: 15px; border: none; border-radius: 12px;

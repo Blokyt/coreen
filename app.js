@@ -36,7 +36,6 @@ const READABLE = ['grammar','culture','dialogues','pronunciation_rules'];
 const LEARN_STEPS = [1, 10];       // learning steps in minutes
 const RELEARN_STEPS = [10];        // relearning steps in minutes
 const GRADUATING_IV = 1440;        // first review interval after learning: 1 day
-const EASY_BONUS = 1.3;
 const MIN_EASE = 1.3;
 const INIT_EASE = 2.5;
 
@@ -82,14 +81,15 @@ function srsGood(id) {
   const c = getCard(id);
   if (c.st === 0 || c.st === 1 || c.st === 3) {
     // Learning or Relearning: advance step
-    const steps = c.st === 3 ? RELEARN_STEPS : LEARN_STEPS;
+    const wasRelearn = c.st === 3;
+    const steps = wasRelearn ? RELEARN_STEPS : LEARN_STEPS;
     c.step++;
     if (c.st === 0) c.st = 1;
 
     if (c.step >= steps.length) {
       // Graduate to Review
+      c.iv = wasRelearn ? Math.max(GRADUATING_IV, Math.round(c.iv * 0.7)) : GRADUATING_IV;
       c.st = 2;
-      c.iv = c.st === 3 ? Math.max(GRADUATING_IV, Math.round(c.iv * 0.7)) : GRADUATING_IV;
       c.due = Date.now() + c.iv * 60000;
     } else {
       c.due = Date.now() + steps[c.step] * 60000;
@@ -137,15 +137,6 @@ function cardState(id) {
   return 'known';
 }
 
-function isKnown(id) {
-  const c = P[id];
-  return c && c.st === 2 && c.iv >= GRADUATING_IV;
-}
-
-function knownCount(items) {
-  return items.filter(i => i.id && isKnown(i.id)).length;
-}
-
 // Count items by SRS state for a list of flashable items
 function stateCounts(items) {
   const now = Date.now();
@@ -155,11 +146,11 @@ function stateCounts(items) {
     const c = P[it.id];
     if (!c || c.st === 0) { nw++; continue; }
     if (c.st === 1 || c.st === 3) { learn++; continue; }
-    // st === 2 (review)
-    if (c.due && c.due <= now) { due++; }
-    else { ok++; }
+    // st === 2 (review) — all graduated cards count as "ok" for progress
+    ok++;
+    if (c.due && c.due <= now) due++;
   }
-  return { nw, learn, due, ok, total: nw + learn + due + ok };
+  return { nw, learn, due, ok, total: nw + learn + ok };
 }
 
 // Format next due time for display
@@ -241,11 +232,16 @@ function renderHome() {
   const g = stateCounts(allFlashable);
   const pct = g.total ? Math.round(g.ok / g.total * 100) : 0;
 
+  const parts = [];
+  if (g.learn) parts.push(`${g.learn} en cours`);
+  if (g.due) parts.push(`${g.due} à revoir`);
+  const sub = parts.length ? parts.join(' · ') : '';
+
   $('#global-progress').innerHTML =
     `<div class="gp-pct">${pct}%</div>
      <div class="gp-right">
        <div class="gp-bar"><div class="gp-fill" style="width:${pct}%"></div></div>
-       <div class="gp-label">${g.ok} / ${g.total}</div>
+       <div class="gp-label">${g.ok} acquis / ${g.total}${sub ? ` · ${sub}` : ''}</div>
      </div>`;
 
   $('#chapters-grid').innerHTML = D.chapters.map((ch, i) => {
@@ -253,7 +249,7 @@ function renderHome() {
     const s = stateCounts(items);
     const p = s.total ? Math.round(s.ok / s.total * 100) : 0;
     return `<div class="card card-ch" data-ch="${ch.number}">
-      <div class="card-ch-num" style="background:${CH_COLORS[i]}">${ch.number}</div>
+      <div class="card-ch-num" style="background:${CH_COLORS[i % CH_COLORS.length]}">${ch.number}</div>
       <div class="card-ch-body">
         <div class="card-ch-title">${esc(ch.title_fr)}</div>
         <div class="card-ch-sub">${esc(ch.title_ko || '')}</div>
@@ -373,6 +369,14 @@ function showCard() {
   const dl = dueLabel(it.id);
   $('#fc-page').textContent = pg + (dl ? ` · ${dl}` : '');
 
+  // Session progress
+  const fl = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
+  const s = stateCounts(fl);
+  const done = s.ok + s.learn;
+  $('#fc-progress').textContent = `${done} / ${s.total}`;
+  const pct = s.total ? Math.round(done / s.total * 100) : 0;
+  $('#fc-progress-fill').style.width = pct + '%';
+
   $('#fc-front').innerHTML = buildFront(it);
   $('#fc-back').innerHTML = buildBack(it);
   $('#fc-front').classList.remove('hidden', 'flip-out');
@@ -401,10 +405,10 @@ function flip() {
 function answer(ok) {
   const it = deck[fi];
 
-  if (ok) {
-    srsGood(it.id);
-  } else {
-    srsAgain(it.id);
+  if (ok) srsGood(it.id);
+  else    srsAgain(it.id);
+
+  if (!ok) {
     // Re-insert for re-test soon (Anki learning behavior)
     const reinsert = Math.min(fi + 3 + (Math.random() * 3 | 0), deck.length);
     deck.splice(reinsert, 0, it);
