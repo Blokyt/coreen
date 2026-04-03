@@ -141,8 +141,11 @@ body {
   font-variant-numeric: tabular-nums;
 }
 .gp-right { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-.gp-bar { height: 6px; border-radius: 3px; background: var(--accent-soft); overflow: hidden; }
-.gp-fill { height: 100%; border-radius: 3px; background: var(--accent); transition: width .5s cubic-bezier(.4,0,.2,1); }
+.gp-bar { display: flex; height: 6px; border-radius: 3px; background: var(--accent-soft); overflow: hidden; }
+.seg { height: 100%; transition: width .5s cubic-bezier(.4,0,.2,1); }
+.seg-known { background: var(--green); }
+.seg-almost { background: var(--amber); }
+.seg-learn { background: var(--red); }
 .gp-label { font-size: 0.74rem; color: var(--fg3); font-variant-numeric: tabular-nums; }
 
 /* ===== Sections ===== */
@@ -175,8 +178,7 @@ body {
 .card-ch-sub { font-family: var(--kr); font-size: 0.76rem; color: var(--fg3); margin-top: 2px; }
 .card-ch-right { text-align: right; flex-shrink: 0; }
 .card-ch-count { font-size: 0.72rem; color: var(--fg2); font-variant-numeric: tabular-nums; }
-.card-ch-bar { width: 44px; height: 3px; border-radius: 2px; background: var(--accent-soft); margin-top: 5px; overflow: hidden; }
-.card-ch-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); }
+.card-ch-bar { display: flex; width: 44px; height: 3px; border-radius: 2px; background: var(--accent-soft); margin-top: 5px; overflow: hidden; }
 
 .card-cat-title { font-size: 0.82rem; font-weight: 500; }
 .card-cat-count { font-size: 0.7rem; color: var(--fg3); margin-top: 4px; font-variant-numeric: tabular-nums; }
@@ -193,8 +195,7 @@ body {
 }
 .btn-go:active { opacity: 0.65; }
 
-.bar { height: 3px; border-radius: 2px; background: var(--accent-soft); margin-bottom: 14px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width .4s ease; }
+.bar { display: flex; height: 3px; border-radius: 2px; background: var(--accent-soft); margin-bottom: 14px; overflow: hidden; }
 
 .item {
   display: flex; align-items: flex-start; gap: 10px;
@@ -262,8 +263,7 @@ body {
   display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
   font-size: 0.72rem; color: var(--fg3); font-variant-numeric: tabular-nums;
 }
-.fc-session-track { flex: 1; height: 4px; border-radius: 2px; background: var(--accent-soft); overflow: hidden; }
-.fc-session-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width .4s cubic-bezier(.4,0,.2,1); }
+.fc-session-track { display: flex; flex: 1; height: 4px; border-radius: 2px; background: var(--accent-soft); overflow: hidden; }
 
 /* SRS buttons */
 .fc-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }

@@ -140,17 +140,26 @@ function cardState(id) {
 // Count items by SRS state for a list of flashable items
 function stateCounts(items) {
   const now = Date.now();
-  let nw = 0, learn = 0, due = 0, ok = 0;
+  let nw = 0, learn = 0, due = 0, almost = 0, known = 0;
   for (const it of items) {
     if (!it.id) continue;
     const c = P[it.id];
     if (!c || c.st === 0) { nw++; continue; }
     if (c.st === 1 || c.st === 3) { learn++; continue; }
-    // st === 2 (review) — all graduated cards count as "ok" for progress
-    ok++;
+    // st === 2 (review)
+    if (c.e < 1.8) almost++; else known++;
     if (c.due && c.due <= now) due++;
   }
-  return { nw, learn, due, ok, total: nw + learn + ok };
+  const ok = almost + known;
+  return { nw, learn, due, almost, known, ok, total: nw + learn + ok };
+}
+
+function segBar(s, cls) {
+  if (!s.total) return `<div class="${cls}"></div>`;
+  const pK = s.known / s.total * 100;
+  const pA = s.almost / s.total * 100;
+  const pL = s.learn / s.total * 100;
+  return `<div class="${cls}"><div class="seg seg-known" style="width:${pK}%"></div><div class="seg seg-almost" style="width:${pA}%"></div><div class="seg seg-learn" style="width:${pL}%"></div></div>`;
 }
 
 // Format next due time for display
@@ -230,24 +239,25 @@ function renderHome() {
   const allFlashable = [];
   for (const cat of FLASHABLE) for (const it of (D[cat] || [])) if (it.id) allFlashable.push({...it, _c: cat});
   const g = stateCounts(allFlashable);
-  const pct = g.total ? Math.round(g.ok / g.total * 100) : 0;
+  const touched = g.ok + g.learn;
+  const pct = g.total ? Math.round(touched / g.total * 100) : 0;
 
-  const parts = [];
+  const parts = [`${g.known} acquis`];
+  if (g.almost) parts.push(`${g.almost} fragile${g.almost > 1 ? 's' : ''}`);
   if (g.learn) parts.push(`${g.learn} en cours`);
   if (g.due) parts.push(`${g.due} à revoir`);
-  const sub = parts.length ? parts.join(' · ') : '';
+  parts.push(`${g.nw} nouveau${g.nw > 1 ? 'x' : ''}`);
 
   $('#global-progress').innerHTML =
     `<div class="gp-pct">${pct}%</div>
      <div class="gp-right">
-       <div class="gp-bar"><div class="gp-fill" style="width:${pct}%"></div></div>
-       <div class="gp-label">${g.ok} acquis / ${g.total}${sub ? ` · ${sub}` : ''}</div>
+       ${segBar(g, 'gp-bar')}
+       <div class="gp-label">${parts.join(' · ')}</div>
      </div>`;
 
   $('#chapters-grid').innerHTML = D.chapters.map((ch, i) => {
     const items = chItems(ch.number).filter(x => FLASHABLE.includes(x._c));
     const s = stateCounts(items);
-    const p = s.total ? Math.round(s.ok / s.total * 100) : 0;
     return `<div class="card card-ch" data-ch="${ch.number}">
       <div class="card-ch-num" style="background:${CH_COLORS[i % CH_COLORS.length]}">${ch.number}</div>
       <div class="card-ch-body">
@@ -255,8 +265,8 @@ function renderHome() {
         <div class="card-ch-sub">${esc(ch.title_ko || '')}</div>
       </div>
       <div class="card-ch-right">
-        <div class="card-ch-count">${s.ok} / ${s.total}</div>
-        <div class="card-ch-bar"><div class="card-ch-bar-fill" style="width:${p}%"></div></div>
+        <div class="card-ch-count">${s.ok + s.learn} / ${s.total}</div>
+        ${segBar(s, 'card-ch-bar')}
       </div>
     </div>`;
   }).join('');
@@ -273,7 +283,7 @@ function renderHome() {
     const s = stateCounts(items);
     return `<div class="card" data-cat="${cat}">
       <div class="card-cat-title">${esc(label)}</div>
-      <div class="card-cat-count">${s.ok} / ${s.total}</div>
+      <div class="card-cat-count">${s.ok + s.learn} / ${s.total}</div>
     </div>`;
   }).join('');
 }
@@ -288,8 +298,12 @@ function openList(title, items) {
   const fl = items.filter(i => FLASHABLE.includes(i._c) && i.id);
   const s = stateCounts(fl);
   $('#list-title').textContent = title;
-  $('#list-stats').textContent = s.total ? `${s.ok} / ${s.total}` : '';
-  $('#list-bar').style.width = (s.total ? Math.round(s.ok / s.total * 100) : 0) + '%';
+  const lp = [];
+  if (s.ok) lp.push(`${s.ok} acquis`);
+  if (s.learn) lp.push(`${s.learn} en cours`);
+  lp.push(`${s.total} total`);
+  $('#list-stats').textContent = s.total ? lp.join(' · ') : '';
+  $('#list-bar-wrap').innerHTML = s.total ? segBar(s, 'bar') : '';
   $('#btn-fc').classList.toggle('hidden', s.total === 0);
   $('#items').innerHTML = items.map(renderItem).join('');
 }
@@ -374,8 +388,7 @@ function showCard() {
   const s = stateCounts(fl);
   const done = s.ok + s.learn;
   $('#fc-progress').textContent = `${done} / ${s.total}`;
-  const pct = s.total ? Math.round(done / s.total * 100) : 0;
-  $('#fc-progress-fill').style.width = pct + '%';
+  $('#fc-bar-wrap').innerHTML = segBar(s, 'fc-session-track');
 
   $('#fc-front').innerHTML = buildFront(it);
   $('#fc-back').innerHTML = buildBack(it);
