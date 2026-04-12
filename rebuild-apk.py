@@ -152,9 +152,10 @@ def setup_android_env():
 
     return env
 
-def build_apk(project_root, app_name):
-    """Build the Android APK"""
-    log_step("3/4", "Building APK")
+def build_apk(project_root, app_name, release=False):
+    """Build the Android APK (debug) or AAB (release)"""
+    mode = "Release AAB" if release else "Debug APK"
+    log_step("3/4", f"Building {mode}")
 
     android_dir = project_root / "android"
     if not android_dir.exists():
@@ -169,9 +170,10 @@ def build_apk(project_root, app_name):
 
     env = setup_android_env()
 
-    log("  Building... (this may take a few minutes)")
+    gradle_task = "bundleRelease" if release else "assembleDebug"
+    log(f"  Building ({gradle_task})... (this may take a few minutes)")
     success, stdout, stderr = run_cmd(
-        f'"{gradle_wrapper}" assembleDebug',
+        f'"{gradle_wrapper}" {gradle_task}',
         cwd=android_dir,
         timeout=600,
         env=env
@@ -184,37 +186,50 @@ def build_apk(project_root, app_name):
                 log_success(line.strip())
                 break
     else:
-        log_error("APK build failed")
+        log_error(f"{mode} build failed")
         # Show last 30 lines of output
         lines = (stdout + stderr).split('\n')
         print('\n'.join(lines[-30:]))
         sys.exit(1)
 
-def locate_and_copy_apk(project_root, app_name):
-    """Find the built APK and copy it to project root"""
-    log_step("4/4", "Locating APK")
+def locate_and_copy_apk(project_root, app_name, release=False):
+    """Find the built APK/AAB and copy it to project root"""
+    log_step("4/4", "Locating output")
 
-    apk_path = project_root / "android/app/build/outputs/apk/debug/app-debug.apk"
+    if release:
+        build_path = project_root / "android/app/build/outputs/bundle/release/app-release.aab"
+        output_name = f"{app_name}.aab"
+    else:
+        build_path = project_root / "android/app/build/outputs/apk/debug/app-debug.apk"
+        output_name = f"{app_name}.apk"
 
-    if not apk_path.exists():
-        log_error("APK not found at expected location")
+    if not build_path.exists():
+        log_error(f"Build output not found at {build_path}")
         sys.exit(1)
 
-    # Copy to project root with app name
-    output_name = f"{app_name}.apk"
     output_path = project_root / output_name
-
-    shutil.copy2(apk_path, output_path)
+    shutil.copy2(build_path, output_path)
 
     size_mb = output_path.stat().st_size / (1024 * 1024)
-    log_success(f"APK built successfully: {output_name} ({size_mb:.1f} MB)")
+    label = "AAB" if release else "APK"
+    log_success(f"{label} built successfully: {output_name} ({size_mb:.1f} MB)")
     log(f"\n  Location: {output_path}", Colors.BOLD)
 
     return output_path
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Build Capacitor APK/AAB")
+    parser.add_argument('--release', action='store_true',
+                        help="Build a signed release AAB for Play Store")
+    args = parser.parse_args()
+
+    release = args.release
+    build_type = "Release AAB (Play Store)" if release else "Debug APK"
+
     print(f"\n{Colors.BOLD}{Colors.HEADER}{'='*60}{Colors.RESET}")
     print(f"{Colors.BOLD}{Colors.HEADER}   APK Rebuild Script for Capacitor Apps{Colors.RESET}")
+    print(f"{Colors.BOLD}{Colors.HEADER}   Mode: {build_type}{Colors.RESET}")
     print(f"{Colors.BOLD}{Colors.HEADER}{'='*60}{Colors.RESET}\n")
 
     # Load Capacitor config
@@ -233,8 +248,8 @@ def main():
     try:
         sync_web_assets(project_root, web_dir)
         capacitor_sync(project_root)
-        build_apk(project_root, app_name)
-        apk_path = locate_and_copy_apk(project_root, app_name)
+        build_apk(project_root, app_name, release=release)
+        output_path = locate_and_copy_apk(project_root, app_name, release=release)
 
         # Success summary
         try:
@@ -246,10 +261,17 @@ def main():
             print(f"{Colors.BOLD}{Colors.GREEN}  Build Complete!{Colors.RESET}")
             print(f"{Colors.BOLD}{Colors.GREEN}{'='*60}{Colors.RESET}\n")
 
-        log("Next steps:", Colors.BOLD)
-        log("  1. Transfer the APK to your phone")
-        log("  2. Install it (enable 'Unknown sources' if needed)")
-        log("  3. Connect to the same WiFi as your development server")
+        if release:
+            log("Next steps:", Colors.BOLD)
+            log("  1. Go to https://play.google.com/console")
+            log("  2. Create a new release in Production")
+            log(f"  3. Upload {app_name}.aab")
+            log("  4. Submit for review")
+        else:
+            log("Next steps:", Colors.BOLD)
+            log("  1. Transfer the APK to your phone")
+            log("  2. Install it (enable 'Unknown sources' if needed)")
+            log("  3. Connect to the same WiFi as your development server")
 
         if 'server' in config and 'url' in config['server']:
             server_url = config['server']['url']

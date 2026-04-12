@@ -2,6 +2,8 @@
 android/
 www/
 *.apk
+*.aab
+*.jks
 node_modules/
 
 # Source PDF
