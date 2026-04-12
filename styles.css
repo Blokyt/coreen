@@ -265,15 +265,22 @@ body {
 }
 .fc-session-track { display: flex; flex: 1; height: 4px; border-radius: 2px; background: var(--accent-soft); overflow: hidden; }
 
-/* SRS buttons */
-.fc-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
-.btn-nope, .btn-ok {
-  padding: 15px; border: none; border-radius: 12px;
-  font-family: var(--ui); font-size: 0.88rem; font-weight: 600; cursor: pointer;
+/* SRS buttons (4 grades) */
+.fc-actions { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; margin-top: 16px; }
+.btn-again, .btn-hard, .btn-good, .btn-easy {
+  padding: 10px 4px; border: none; border-radius: 12px;
+  font-family: var(--ui); font-size: 0.78rem; font-weight: 600; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
 }
-.btn-nope:active, .btn-ok:active { transform: scale(0.96); }
-.btn-nope { background: var(--red-bg); color: var(--red); }
-.btn-ok   { background: var(--green-bg); color: var(--green); }
+.btn-again:active, .btn-hard:active, .btn-good:active, .btn-easy:active { transform: scale(0.96); }
+.btn-again { background: var(--red-bg); color: var(--red); }
+.btn-hard  { background: #3a2800; color: #f59e0b; }
+.btn-good  { background: var(--green-bg); color: var(--green); }
+.btn-easy  { background: #0c2d48; color: #38bdf8; }
+.btn-iv { font-size: 0.68rem; font-weight: 400; opacity: 0.75; }
+
+/* Leech indicator */
+.fc-card.leech { box-shadow: 0 0 0 2px var(--red), 0 0 12px rgba(239,68,68,0.3); }
 
 .btn-reveal {
   display: block; width: 100%; margin-top: 16px;
@@ -298,3 +305,17 @@ body {
 .sr-meta { font-size: 0.66rem; color: var(--fg3); margin-top: 4px; }
 
 .empty { text-align: center; padding: 48px 20px; color: var(--fg3); font-size: 0.85rem; }
+
+/* ===== Settings ===== */
+.settings-title { font-family: var(--ui); font-size: 1.1rem; font-weight: 600; flex: 1; }
+.overlay-head { display: flex; align-items: center; }
+.settings-body { padding: 20px 16px; }
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.setting-row label { font-family: var(--ui); font-size: 0.88rem; color: var(--fg); }
+.setting-row select {
+  background: var(--surface); color: var(--fg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 12px; font-family: var(--ui); font-size: 0.85rem;
+}

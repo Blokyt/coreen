@@ -1,4 +1,4 @@
-/* Blokaja v4 — SRS Anki-like, infinite mode */
+/* Blokaja v4 — SRS Anki SM-2, infinite mode */
 
 let D = null;
 let P = {};
@@ -21,26 +21,70 @@ const FLASHABLE = ['vocabulary','verbs','hangeul','numbers','expressions','parti
   'time_expressions','classifiers','connectors','adjectives','adverbs'];
 const READABLE = ['grammar','culture','dialogues','pronunciation_rules'];
 
-// ========== SRS Engine (Anki SM-2 inspired) ==========
+// ========== SRS Engine (Anki SM-2) ==========
 //
 // Card states: 0=new, 1=learning, 2=review, 3=relearning
+// Grades: 1=Again, 2=Hard, 3=Good, 4=Easy
 //
-// P[id] = { st, e, iv, due, step, reps }
-//   st   : state (0-3)
-//   e    : ease factor (default 2.5, min 1.3)
-//   iv   : current interval in minutes
-//   due  : timestamp (ms) when next review is due
-//   step : current learning step index
-//   reps : total number of reviews
+// P[id] = { st, e, iv, due, step, reps, lapses }
+//   st     : state (0-3)
+//   e      : ease factor (default 2.5, min 1.3)
+//   iv     : current interval in minutes
+//   due    : timestamp (ms) when next review is due
+//   step   : current learning step index
+//   reps   : total number of reviews
+//   lapses : number of times a review card was failed
 
-const LEARN_STEPS = [1, 10];       // learning steps in minutes
-const RELEARN_STEPS = [10];        // relearning steps in minutes
-const GRADUATING_IV = 1440;        // first review interval after learning: 1 day
-const MIN_EASE = 1.3;
-const INIT_EASE = 2.5;
+const LEARN_STEPS    = [1, 10];    // learning steps in minutes
+const RELEARN_STEPS  = [10];       // relearning steps in minutes
+const GRADUATING_IV  = 1440;       // first review interval after learning: 1 day
+const EASY_IV        = 5760;       // Easy graduation interval: 4 days
+const MIN_EASE       = 1.3;
+const INIT_EASE      = 2.5;
+const HARD_MULT      = 1.2;        // Hard interval multiplier
+const EASY_BONUS     = 1.3;        // Easy interval bonus multiplier
+const LEECH_THRESHOLD = 8;         // lapses before leech flag
+
+// Settings (persisted in localStorage)
+const SETTINGS_KEY = 'blokaja4_settings';
+function getSettings() {
+  try { return { newPerDay: 20, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
+  catch { return { newPerDay: 20 }; }
+}
+function saveSettings(s) { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); }
+
+// Daily new-card counter (persisted in localStorage)
+const NEW_COUNT_KEY = 'blokaja4_newcount';
+function getNewCount() {
+  try {
+    const d = JSON.parse(localStorage.getItem(NEW_COUNT_KEY) || '{}');
+    const today = new Date().toDateString();
+    return d.day === today ? d.count : 0;
+  } catch { return 0; }
+}
+function incNewCount() {
+  const today = new Date().toDateString();
+  let d;
+  try { d = JSON.parse(localStorage.getItem(NEW_COUNT_KEY) || '{}'); } catch { d = {}; }
+  if (d.day !== today) d = { day: today, count: 0 };
+  d.count++;
+  localStorage.setItem(NEW_COUNT_KEY, JSON.stringify(d));
+}
+
+// Interval fuzz to prevent card clustering (Anki-style)
+function fuzzInterval(iv) {
+  if (iv < 2880) return iv; // < 2 days: no fuzz
+  const days = iv / 1440;
+  let fuzz;
+  if (days < 7)       fuzz = Math.max(1, Math.round(days * 0.25));
+  else if (days < 30) fuzz = Math.max(2, Math.round(days * 0.15));
+  else                fuzz = Math.max(4, Math.round(days * 0.05));
+  const fuzzMin = fuzz * 1440;
+  return Math.max(1440, iv + Math.round((Math.random() * 2 - 1) * fuzzMin));
+}
 
 function getCard(id) {
-  if (!P[id]) P[id] = { st: 0, e: INIT_EASE, iv: 0, due: 0, step: 0, reps: 0 };
+  if (!P[id]) P[id] = { st: 0, e: INIT_EASE, iv: 0, due: 0, step: 0, reps: 0, lapses: 0 };
   // Migrate old format {s, c, t, iv} → new format
   if (P[id].s !== undefined && P[id].st === undefined) {
     const old = P[id];
@@ -52,23 +96,28 @@ function getCard(id) {
       due: old.t || 0,
       step: 0,
       reps: old.s || 0,
+      lapses: 0,
     };
   }
+  // Ensure lapses field exists (migration from v4 without lapses)
+  if (P[id].lapses === undefined) P[id].lapses = 0;
   return P[id];
 }
 
+// Grade 1: Again
 function srsAgain(id) {
   const c = getCard(id);
   if (c.st === 2) {
-    // Review → Relearning: ease drops, back to relearn steps
+    // Review → Relearning (lapse)
     c.e = Math.max(MIN_EASE, c.e - 0.2);
     c.st = 3;
     c.step = 0;
     c.due = Date.now() + RELEARN_STEPS[0] * 60000;
-    c.iv = Math.max(1, Math.round(c.iv * 0.5)); // halve interval on lapse
+    c.iv = GRADUATING_IV; // reset to 1 day (Anki default: new_interval = 0)
+    c.lapses++;
   } else {
     // New/Learning/Relearning → back to step 0
-    if (c.st === 0) c.st = 1;
+    if (c.st === 0) { c.st = 1; incNewCount(); }
     c.step = 0;
     const steps = c.st === 3 ? RELEARN_STEPS : LEARN_STEPS;
     c.due = Date.now() + steps[0] * 60000;
@@ -77,6 +126,26 @@ function srsAgain(id) {
   saveP();
 }
 
+// Grade 2: Hard
+function srsHard(id) {
+  const c = getCard(id);
+  if (c.st === 2) {
+    // Review: interval * 1.2, ease -0.15
+    c.e = Math.max(MIN_EASE, c.e - 0.15);
+    c.iv = fuzzInterval(Math.max(c.iv + 1440, Math.round(c.iv * HARD_MULT)));
+    c.due = Date.now() + c.iv * 60000;
+  } else {
+    // Learning/Relearning: repeat current step
+    if (c.st === 0) { c.st = 1; incNewCount(); }
+    const steps = c.st === 3 ? RELEARN_STEPS : LEARN_STEPS;
+    const stepIdx = Math.min(c.step, steps.length - 1);
+    c.due = Date.now() + steps[stepIdx] * 60000;
+  }
+  c.reps++;
+  saveP();
+}
+
+// Grade 3: Good
 function srsGood(id) {
   const c = getCard(id);
   if (c.st === 0 || c.st === 1 || c.st === 3) {
@@ -84,43 +153,104 @@ function srsGood(id) {
     const wasRelearn = c.st === 3;
     const steps = wasRelearn ? RELEARN_STEPS : LEARN_STEPS;
     c.step++;
-    if (c.st === 0) c.st = 1;
+    if (c.st === 0) { c.st = 1; incNewCount(); }
 
     if (c.step >= steps.length) {
       // Graduate to Review
       c.iv = wasRelearn ? Math.max(GRADUATING_IV, Math.round(c.iv * 0.7)) : GRADUATING_IV;
       c.st = 2;
-      c.due = Date.now() + c.iv * 60000;
+      c.due = Date.now() + fuzzInterval(c.iv) * 60000;
     } else {
       c.due = Date.now() + steps[c.step] * 60000;
     }
   } else {
-    // Review: interval grows by ease factor
-    c.iv = Math.round(c.iv * c.e);
+    // Review: interval grows by ease factor + overdue bonus
+    const delay = Math.max(0, Date.now() - c.due) / 60000; // overdue minutes
+    c.iv = fuzzInterval(Math.round((c.iv + delay / 2) * c.e));
     c.due = Date.now() + c.iv * 60000;
-    // Slight ease bonus for consistent good answers
-    c.e = Math.min(3.0, c.e + 0.05);
+    // No ease change on Good (Anki SM-2 behavior)
   }
   c.reps++;
   saveP();
 }
 
+// Grade 4: Easy
+function srsEasy(id) {
+  const c = getCard(id);
+  if (c.st === 0 || c.st === 1 || c.st === 3) {
+    // Skip remaining learning steps, graduate immediately
+    if (c.st === 0) { c.st = 1; incNewCount(); }
+    c.iv = EASY_IV; // 4 days
+    c.st = 2;
+    c.step = 0;
+    c.due = Date.now() + fuzzInterval(c.iv) * 60000;
+  } else {
+    // Review: interval * ease * easy bonus + full overdue bonus
+    const delay = Math.max(0, Date.now() - c.due) / 60000;
+    c.iv = fuzzInterval(Math.round((c.iv + delay) * c.e * EASY_BONUS));
+    c.due = Date.now() + c.iv * 60000;
+    c.e += 0.15; // ease bonus for Easy
+  }
+  c.reps++;
+  saveP();
+}
+
+// Preview what interval each grade would give (for button labels)
+function previewIntervals(id) {
+  const c = getCard(id);
+  const now = Date.now();
+  const delay = Math.max(0, now - (c.due || 0)) / 60000;
+
+  if (c.st === 0 || c.st === 1 || c.st === 3) {
+    const steps = (c.st === 3) ? RELEARN_STEPS : LEARN_STEPS;
+    const againStep = steps[0];
+    const hardStep = steps[Math.min(c.step, steps.length - 1)];
+    const goodNext = c.step + 1 >= steps.length;
+    const goodIv = goodNext
+      ? ((c.st === 3) ? Math.max(GRADUATING_IV, Math.round(c.iv * 0.7)) : GRADUATING_IV)
+      : steps[c.step + 1] || steps[c.step];
+    return { again: againStep, hard: hardStep, good: goodIv, easy: EASY_IV };
+  }
+
+  // Review
+  const ivHard = Math.max(c.iv + 1440, Math.round(c.iv * HARD_MULT));
+  const ivGood = Math.round((c.iv + delay / 2) * c.e);
+  const ivEasy = Math.round((c.iv + delay) * c.e * EASY_BONUS);
+  return { again: RELEARN_STEPS[0], hard: ivHard, good: ivGood, easy: ivEasy };
+}
+
+// Format interval for button display
+function fmtIv(min) {
+  if (min < 60) return `${Math.round(min)}min`;
+  if (min < 1440) return `${Math.round(min / 60)}h`;
+  const d = min / 1440;
+  if (d < 30) return `${Math.round(d)}j`;
+  if (d < 365) return `${Math.round(d / 30)}mo`;
+  return `${(d / 365).toFixed(1)}a`;
+}
+
 // Priority for infinite feed: higher = show sooner
+// Order: overdue reviews > overdue learning > new cards > not yet due
 function srsPriority(item) {
   const c = P[item.id];
-  if (!c || c.st === 0) return 10000; // new cards first
+  if (!c || c.st === 0) {
+    // New card: check daily limit
+    const s = getSettings();
+    if (s.newPerDay > 0 && getNewCount() >= s.newPerDay) return -Infinity;
+    return 5000; // after overdue reviews/learning
+  }
 
   const now = Date.now();
   const overdue = now - (c.due || 0); // positive = overdue
 
+  if (c.st === 2 && overdue > 0) {
+    // Review card overdue: highest priority
+    return 10000 + Math.min(overdue / 60000, 999);
+  }
+
   if (c.st === 1 || c.st === 3) {
     // Learning/relearning: show ASAP when due
     return overdue > 0 ? 8000 + Math.min(overdue / 60000, 999) : -(overdue / 60000);
-  }
-
-  if (c.st === 2 && overdue > 0) {
-    // Review card overdue: priority by how overdue
-    return 5000 + Math.min(overdue / 60000, 999);
   }
 
   // Review card not yet due: low priority, sorted by time to due
@@ -413,22 +543,42 @@ function flip() {
   }, 140);
   $('#fc-reveal').classList.add('hidden');
   $('#fc-actions').classList.remove('hidden');
+
+  // Show predicted intervals on buttons
+  const it = deck[fi];
+  const iv = previewIntervals(it.id);
+  $('#fc-again').innerHTML = `<span class="btn-iv">${fmtIv(iv.again)}</span>Pas su`;
+  $('#fc-hard').innerHTML  = `<span class="btn-iv">${fmtIv(iv.hard)}</span>Difficile`;
+  $('#fc-good').innerHTML  = `<span class="btn-iv">${fmtIv(iv.good)}</span>Su`;
+  $('#fc-easy').innerHTML  = `<span class="btn-iv">${fmtIv(iv.easy)}</span>Facile`;
+
+  // Leech indicator
+  const c = getCard(it.id);
+  if (c.lapses >= LEECH_THRESHOLD) {
+    $('#fc-card').classList.add('leech');
+  } else {
+    $('#fc-card').classList.remove('leech');
+  }
 }
 
-function answer(ok) {
+// grade: 1=Again, 2=Hard, 3=Good, 4=Easy
+function answer(grade) {
   const it = deck[fi];
 
-  if (ok) srsGood(it.id);
-  else    srsAgain(it.id);
+  if (grade === 1) srsAgain(it.id);
+  else if (grade === 2) srsHard(it.id);
+  else if (grade === 3) srsGood(it.id);
+  else srsEasy(it.id);
 
-  if (!ok) {
+  if (grade <= 2) {
     // Re-insert for re-test soon (Anki learning behavior)
     const reinsert = Math.min(fi + 3 + (Math.random() * 3 | 0), deck.length);
     deck.splice(reinsert, 0, it);
   }
 
+  const slideDir = grade >= 3 ? 'slide-right' : 'slide-left';
   const card = $('#fc-card');
-  card.classList.add(ok ? 'slide-right' : 'slide-left');
+  card.classList.add(slideDir);
   setTimeout(() => {
     card.classList.remove('slide-right', 'slide-left');
     fi++;
@@ -641,18 +791,46 @@ function setupEvents() {
   $('#btn-fc').onclick = startFc;
   $('#fc-card').onclick = flip;
   $('#fc-reveal').onclick = flip;
-  $('#fc-nope').onclick = () => answer(false);
-  $('#fc-ok').onclick = () => answer(true);
+  $('#fc-again').onclick = () => answer(1);
+  $('#fc-hard').onclick  = () => answer(2);
+  $('#fc-good').onclick  = () => answer(3);
+  $('#fc-easy').onclick  = () => answer(4);
 
-  // Swipe
+  // Swipe (left = Again, right = Good)
   let tx = 0;
   $('#fc-card').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
   $('#fc-card').addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - tx;
     if (!flipped && Math.abs(dx) < 30) return;
-    if (flipped && dx > 60) answer(true);
-    if (flipped && dx < -60) answer(false);
+    if (flipped && dx > 60) answer(3);  // swipe right = Good
+    if (flipped && dx < -60) answer(1); // swipe left = Again
   }, {passive: true});
+
+  // Settings
+  if ($('#btn-settings')) $('#btn-settings').onclick = openSettings;
+}
+
+// ========== Settings panel ==========
+
+function openSettings() {
+  const s = getSettings();
+  const overlay = $('#settings-overlay');
+  const sel = $('#settings-new-per-day');
+  if (sel) sel.value = String(s.newPerDay);
+  overlay.classList.remove('hidden');
+}
+
+function closeSettings() {
+  $('#settings-overlay').classList.add('hidden');
+}
+
+function applySettings() {
+  const val = $('#settings-new-per-day').value;
+  const s = getSettings();
+  s.newPerDay = val === '0' ? 0 : Number(val);
+  saveSettings(s);
+  closeSettings();
+  renderHome();
 }
 
 init();
