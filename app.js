@@ -229,14 +229,19 @@ function fmtIv(min) {
   return `${(d / 365).toFixed(1)}a`;
 }
 
+// Cached new-card limit check (set before each sort to avoid O(N) localStorage reads)
+let _newLimitReached = false;
+function refreshNewLimit() {
+  const s = getSettings();
+  _newLimitReached = s.newPerDay > 0 && getNewCount() >= s.newPerDay;
+}
+
 // Priority for infinite feed: higher = show sooner
 // Order: overdue reviews > overdue learning > new cards > not yet due
 function srsPriority(item) {
   const c = P[item.id];
   if (!c || c.st === 0) {
-    // New card: check daily limit
-    const s = getSettings();
-    if (s.newPerDay > 0 && getNewCount() >= s.newPerDay) return -Infinity;
+    if (_newLimitReached) return -Infinity;
     return 5000; // after overdue reviews/learning
   }
 
@@ -298,12 +303,7 @@ function dueLabel(id) {
   if (!c || c.st === 0) return '';
   const diff = (c.due || 0) - Date.now();
   if (diff <= 0) return 'maintenant';
-  const min = Math.round(diff / 60000);
-  if (min < 60) return `${min}min`;
-  const hr = Math.round(min / 60);
-  if (hr < 24) return `${hr}h`;
-  const d = Math.round(hr / 24);
-  return `${d}j`;
+  return fmtIv(diff / 60000);
 }
 
 // ========== Data ==========
@@ -484,15 +484,16 @@ function renderItem(it) {
 
 // ========== Flashcard (infinite) ==========
 
-let deck = [], fi = 0, flipped = false;
+let deck = [], fi = 0, flipped = false, deckFlashable = [];
 
 function startFc() {
-  const fl = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
-  if (!fl.length) return;
+  deckFlashable = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
+  if (!deckFlashable.length) return;
   // Initialize cards that have no SRS data
-  fl.forEach(i => getCard(i.id));
+  deckFlashable.forEach(i => getCard(i.id));
   // Sort by SRS priority
-  deck = [...fl].sort((a, b) => srsPriority(b) - srsPriority(a));
+  refreshNewLimit();
+  deck = [...deckFlashable].sort((a, b) => srsPriority(b) - srsPriority(a));
   fi = 0;
   show('fc');
   $('#header-title').textContent = curTitle;
@@ -502,6 +503,7 @@ function startFc() {
 function showCard() {
   if (fi >= deck.length) {
     // Reshuffle by priority for next loop
+    refreshNewLimit();
     deck.sort((a, b) => srsPriority(b) - srsPriority(a));
     fi = 0;
   }
@@ -513,9 +515,8 @@ function showCard() {
   const dl = dueLabel(it.id);
   $('#fc-page').textContent = pg + (dl ? ` · ${dl}` : '');
 
-  // Session progress
-  const fl = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
-  const s = stateCounts(fl);
+  // Session progress (reuse cached flashable list)
+  const s = stateCounts(deckFlashable);
   const done = s.ok + s.learn;
   $('#fc-progress').textContent = `${done} / ${s.total}`;
   $('#fc-bar-wrap').innerHTML = segBar(s, 'fc-session-track');
@@ -553,12 +554,7 @@ function flip() {
   $('#fc-easy').innerHTML  = `<span class="btn-iv">${fmtIv(iv.easy)}</span>Facile`;
 
   // Leech indicator
-  const c = getCard(it.id);
-  if (c.lapses >= LEECH_THRESHOLD) {
-    $('#fc-card').classList.add('leech');
-  } else {
-    $('#fc-card').classList.remove('leech');
-  }
+  $('#fc-card').classList.toggle('leech', getCard(it.id).lapses >= LEECH_THRESHOLD);
 }
 
 // grade: 1=Again, 2=Hard, 3=Good, 4=Easy
@@ -808,7 +804,7 @@ function setupEvents() {
   }, {passive: true});
 
   // Settings
-  if ($('#btn-settings')) $('#btn-settings').onclick = openSettings;
+  $('#btn-settings').onclick = openSettings;
 }
 
 // ========== Settings panel ==========

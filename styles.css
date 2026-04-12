@@ -11,9 +11,12 @@
   --accent-soft: #252420;
   --red: #e05545;
   --red-bg: #2b1916;
-  --amber: #d4a02a;
+  --amber: #f59e0b;
+  --amber-bg: #3a2800;
   --green: #5cb870;
   --green-bg: #162b1a;
+  --blue: #38bdf8;
+  --blue-bg: #0c2d48;
   --radius: 12px;
   --kr: 'Noto Sans KR', sans-serif;
   --ui: 'DM Sans', sans-serif;
@@ -274,9 +277,9 @@ body {
 }
 .btn-again:active, .btn-hard:active, .btn-good:active, .btn-easy:active { transform: scale(0.96); }
 .btn-again { background: var(--red-bg); color: var(--red); }
-.btn-hard  { background: #3a2800; color: #f59e0b; }
+.btn-hard  { background: var(--amber-bg); color: var(--amber); }
 .btn-good  { background: var(--green-bg); color: var(--green); }
-.btn-easy  { background: #0c2d48; color: #38bdf8; }
+.btn-easy  { background: var(--blue-bg); color: var(--blue); }
 .btn-iv { font-size: 0.68rem; font-weight: 400; opacity: 0.75; }
 
 /* Leech indicator */
@@ -319,3 +322,4 @@ body {
   background: var(--surface); color: var(--fg); border: 1px solid var(--border);
   border-radius: 8px; padding: 8px 12px; font-family: var(--ui); font-size: 0.85rem;
 }
+.btn-apply { margin-top: 20px; width: 100%; }
