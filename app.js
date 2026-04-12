@@ -189,7 +189,7 @@ function srsEasy(id) {
     const delay = Math.max(0, Date.now() - c.due) / 60000;
     c.iv = fuzzInterval(Math.round((c.iv + delay) * c.e * EASY_BONUS));
     c.due = Date.now() + c.iv * 60000;
-    c.e += 0.15; // ease bonus for Easy
+    c.e = Math.min(3.69, c.e + 0.15); // ease bonus for Easy, capped like Anki
   }
   c.reps++;
   saveP();
@@ -250,11 +250,11 @@ function srsPriority(item) {
 
   if (c.st === 1 || c.st === 3) {
     // Learning/relearning: show ASAP when due
-    return overdue > 0 ? 8000 + Math.min(overdue / 60000, 999) : -(overdue / 60000);
+    return overdue > 0 ? 8000 + Math.min(overdue / 60000, 999) : overdue / 60000;
   }
 
-  // Review card not yet due: low priority, sorted by time to due
-  return -(overdue / 60000);
+  // Review card not yet due: below new cards, sooner due = higher priority
+  return Math.min(4999, -(overdue / 60000));
 }
 
 // Display helpers
@@ -564,14 +564,15 @@ function flip() {
 // grade: 1=Again, 2=Hard, 3=Good, 4=Easy
 function answer(grade) {
   const it = deck[fi];
+  const wasReview = (P[it.id]?.st === 2); // capture before srs* mutates state
 
   if (grade === 1) srsAgain(it.id);
   else if (grade === 2) srsHard(it.id);
   else if (grade === 3) srsGood(it.id);
   else srsEasy(it.id);
 
-  if (grade <= 2) {
-    // Re-insert for re-test soon (Anki learning behavior)
+  // Re-insert for re-test: Again always, Hard only for learning/relearning (not review)
+  if (grade === 1 || (grade === 2 && !wasReview)) {
     const reinsert = Math.min(fi + 3 + (Math.random() * 3 | 0), deck.length);
     deck.splice(reinsert, 0, it);
   }
