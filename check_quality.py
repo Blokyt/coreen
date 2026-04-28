@@ -18,6 +18,60 @@ FLASHABLE = ['vocabulary', 'verbs', 'hangeul', 'numbers', 'expressions',
 READABLE = ['grammar', 'culture', 'dialogues', 'pronunciation_rules']
 
 
+# ========== JS accessors ported from app.js ==========
+
+def normalize_expression(it):
+    """Mirror app.js normalizeExpression()."""
+    if 'korean_formal' in it:
+        return {**it,
+            'polite':   {'korean': it.get('korean_formal'),
+                         'romanization': it.get('romanization_formal') or ''},
+            'informal': {'korean': it.get('korean_informal'),
+                         'romanization': it.get('romanization_informal') or ''}}
+    if 'korean' in it and 'polite' not in it:
+        return {**it, 'polite': {'korean': it['korean'],
+                                 'romanization': it.get('romanization') or ''}}
+    return it
+
+
+def get_kr(it, c):
+    if c == 'expressions':
+        return (it.get('polite') or {}).get('korean') \
+            or (it.get('informal') or {}).get('korean') or ''
+    if c == 'verbs':       return it.get('infinitive') or ''
+    if c == 'hangeul':     return it.get('letter') or ''
+    if c == 'particles':   return it.get('particle') or ''
+    if c == 'adjectives':  return it.get('infinitive') or it.get('korean') or ''
+    return it.get('korean') or ''
+
+
+def get_fr(it, c):
+    if c == 'particles':
+        return it.get('function_fr') or it.get('name_fr') or ''
+    if c == 'numbers':
+        n = it.get('numeral')
+        sys_ = it.get('system')
+        suf = ' (natif)' if sys_ == 'native-korean' else ' (sino)' if sys_ == 'sino-korean' else ''
+        return ('' if n is None else str(n)) + suf
+    if c == 'hangeul':
+        return it.get('romanization') or ''
+    return it.get('french') or ''
+
+
+def get_rom(it, c):
+    if c == 'expressions':
+        return (it.get('polite') or {}).get('romanization') \
+            or (it.get('informal') or {}).get('romanization') or ''
+    return it.get('romanization') or ''
+
+
+def verb_back(it):
+    cj = it.get('conjugations') or {}
+    return cj.get('polite_present') \
+        or cj.get('informal_present') \
+        or cj.get('polite_present_after_vowel') or ''
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
