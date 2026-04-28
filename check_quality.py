@@ -163,6 +163,75 @@ def check_rendering(D, errors):
                 _err(errors, 'E005', cat, iid, 'verso vide')
 
 
+# Required fields per category (mirrors spec section "Schemas par categorie").
+# Special markers:
+#   'OR(a,b,...)' = at least one of these fields/paths must be truthy.
+#   'PATH(a.b)'   = nested path (dot-separated) — also valid inside OR(...).
+FLASHABLE_SCHEMA = {
+    'vocabulary': ['korean', 'french', 'romanization', 'page', 'chapter', 'id'],
+    'verbs': ['infinitive', 'french', 'romanization',
+              'OR(conjugations.polite_present,'
+              'conjugations.informal_present,'
+              'conjugations.polite_present_after_vowel,'
+              'conjugations.polite_present_after_consonant)',
+              'page', 'chapter', 'id'],
+    'hangeul': ['letter', 'romanization', 'type', 'page', 'chapter', 'id'],
+    'numbers': ['numeral', 'korean', 'system', 'romanization',
+                'page', 'chapter', 'id'],
+    'expressions': ['OR(korean_formal,korean_informal,'
+                    'polite.korean,informal.korean)',
+                    'french',
+                    'OR(romanization_formal,romanization_informal,'
+                    'polite.romanization,informal.romanization)',
+                    'page', 'chapter', 'id'],
+    'particles': ['particle', 'OR(function_fr,name_fr)',
+                  'page', 'chapter', 'id'],
+    'time_expressions': ['korean', 'french', 'romanization',
+                         'page', 'chapter', 'id'],
+    'classifiers': ['korean', 'french', 'romanization',
+                    'page', 'chapter', 'id'],
+    'connectors': ['korean', 'french', 'romanization',
+                   'page', 'chapter', 'id'],
+    'adjectives': ['OR(korean,infinitive)', 'french', 'romanization',
+                   'korean_polite', 'page', 'chapter', 'id'],
+    'adverbs': ['korean', 'french', 'romanization',
+                'page', 'chapter', 'id'],
+}
+
+
+def _path_get(d, path):
+    """Resolve dot-path on a dict. Returns None if any segment is missing."""
+    cur = d
+    for seg in path.split('.'):
+        if not isinstance(cur, dict) or seg not in cur:
+            return None
+        cur = cur[seg]
+    return cur
+
+
+def _has_field(it, spec):
+    """Truthy on at least one field for OR(...), single field otherwise.
+
+    A field is satisfied when its resolved value is not None and not the empty
+    string. Numeric zero is allowed (e.g. chapter=0).
+    """
+    if spec.startswith('OR(') and spec.endswith(')'):
+        fields = [f.strip() for f in spec[3:-1].split(',')]
+        return any(_has_field(it, f) for f in fields)
+    val = _path_get(it, spec)
+    return val is not None and val != ''
+
+
+def check_schema(D, errors):
+    for cat, fields in FLASHABLE_SCHEMA.items():
+        for raw in D.get(cat, []):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id') or '?'
+            for f in fields:
+                if not _has_field(it, f):
+                    _err(errors, 'E006', cat, iid, f'champ requis : {f}')
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
@@ -187,6 +256,7 @@ def main():
 
     check_structural(D, errors)
     check_rendering(D, errors)
+    check_schema(D, errors)
 
     if args.json:
         print(json.dumps({
