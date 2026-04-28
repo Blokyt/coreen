@@ -151,6 +151,18 @@ def check_structural(D, errors):
                      f'chapter invalide : {ch!r}')
 
 
+def check_rendering(D, errors):
+    """E004 empty front, E005 empty back (post-normalization)."""
+    for cat in FLASHABLE:
+        for raw in D.get(cat, []):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id') or '?'
+            if not build_front(it, cat):
+                _err(errors, 'E004', cat, iid, 'recto vide')
+            if not build_back(it, cat):
+                _err(errors, 'E005', cat, iid, 'verso vide')
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
@@ -174,6 +186,7 @@ def main():
     warnings = []
 
     check_structural(D, errors)
+    check_rendering(D, errors)
 
     if args.json:
         print(json.dumps({
