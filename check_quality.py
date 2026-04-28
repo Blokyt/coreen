@@ -114,6 +114,43 @@ def build_back(it, c):
     return _back_main(it, c)
 
 
+# ========== Validation rules ==========
+
+def _err(errors, code, cat, iid, msg):
+    errors.append({'code': code, 'cat': cat, 'id': iid or '?', 'msg': msg})
+
+
+def _warn(warnings, code, cat, iid, msg):
+    warnings.append({'code': code, 'cat': cat, 'id': iid or '?', 'msg': msg})
+
+
+def check_structural(D, errors):
+    """E001 missing id, E002 duplicate id, E003 invalid chapter."""
+    valid_chapters = {ch.get('number') for ch in D.get('chapters', [])}
+    valid_chapters.add(-1)  # -1 = lexique
+
+    seen_ids = {}  # id -> "cat#index" of first occurrence
+    for cat in FLASHABLE:
+        for idx, raw in enumerate(D.get(cat, [])):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id')
+
+            if not iid:
+                _err(errors, 'E001', cat, f'#{idx}', 'id manquant')
+                continue
+
+            if iid in seen_ids:
+                _err(errors, 'E002', cat, iid,
+                     f'id duplique (deja vu en {seen_ids[iid]})')
+            else:
+                seen_ids[iid] = f'{cat}#{idx}'
+
+            ch = it.get('chapter')
+            if ch is None or ch not in valid_chapters:
+                _err(errors, 'E003', cat, iid,
+                     f'chapter invalide : {ch!r}')
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
@@ -135,6 +172,8 @@ def main():
 
     errors = []
     warnings = []
+
+    check_structural(D, errors)
 
     if args.json:
         print(json.dumps({
