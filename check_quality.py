@@ -72,6 +72,48 @@ def verb_back(it):
         or cj.get('polite_present_after_vowel') or ''
 
 
+# ========== Declarative CARD table (mirrors app.js) ==========
+# Each entry returns the strings used at each slot.
+
+def _front_main(it, c):
+    if c == 'expressions': return get_fr(it, c)
+    if c == 'numbers':
+        n = it.get('numeral')
+        return '' if n is None else str(n)
+    return get_kr(it, c)
+
+
+def _front_sub(it, c):
+    # POST-PATCH expectations: verbs/adjectives use romanization.
+    if c in ('vocabulary', 'time_expressions', 'adverbs',
+             'connectors', 'classifiers', 'verbs', 'adjectives'):
+        return get_rom(it, c)
+    return ''
+
+
+def _back_main(it, c):
+    if c in ('vocabulary', 'time_expressions', 'adverbs',
+             'connectors', 'classifiers'):
+        return get_fr(it, c)
+    if c == 'verbs':       return verb_back(it)
+    if c == 'adjectives':  return it.get('korean_polite') or ''
+    if c == 'hangeul':     return get_rom(it, c)
+    if c == 'numbers':     return get_kr(it, c)
+    if c == 'particles':   return get_fr(it, c)
+    if c == 'expressions': return get_kr(it, c)
+    return ''
+
+
+def build_front(it, c):
+    """Return the front main string. Empty front = E004."""
+    return _front_main(it, c)
+
+
+def build_back(it, c):
+    """Return the back main string. Empty back = E005."""
+    return _back_main(it, c)
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
