@@ -84,9 +84,40 @@ def verify_web_dir(project_root, web_dir):
         sys.exit(1)
     return web_path
 
+def quality_check(project_root, strict=True):
+    """Run check_quality.py before the build pipeline.
+
+    On strict=True (release builds, default debug builds), any failure
+    aborts the build. The --skip-quality-check flag flips strict to False
+    on debug builds only — it is forced back to True on --release.
+    """
+    log_step("1/5", "Quality check (data integrity)")
+
+    success, stdout, stderr = run_cmd(
+        "python check_quality.py",
+        cwd=project_root,
+        timeout=30,
+    )
+    if stdout:
+        print(stdout)
+    if stderr:
+        print(stderr, file=sys.stderr)
+
+    if success:
+        log_success("Quality check passed")
+        return
+
+    if strict:
+        log_error("Quality check failed - aborting build")
+        log_warning("Use --skip-quality-check to bypass (debug builds only)")
+        sys.exit(1)
+
+    log_warning("Quality check failed - continuing anyway (debug + skip flag)")
+
+
 def sync_web_assets(project_root, web_dir):
     """Copy latest web files to www/"""
-    log_step("1/4", "Syncing web assets")
+    log_step("2/5", "Syncing web assets")
 
     web_path = verify_web_dir(project_root, web_dir)
 
@@ -96,6 +127,7 @@ def sync_web_assets(project_root, web_dir):
         ('styles.css', 'styles.css'),
         ('data.js', 'data.js'),
         ('app.js', 'app.js'),
+        ('data/course_data.json', 'data/course_data.json'),
     ]
     copied = []
     seen_dst = set()
@@ -104,6 +136,7 @@ def sync_web_assets(project_root, web_dir):
         src = project_root / src_name
         if src.exists() and dst_name not in seen_dst:
             dst = web_path / dst_name
+            dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
             seen_dst.add(dst_name)
             label = src_name if src_name == dst_name else f"{src_name} → {dst_name}"
@@ -118,7 +151,7 @@ def sync_web_assets(project_root, web_dir):
 
 def capacitor_sync(project_root):
     """Run npx cap sync android"""
-    log_step("2/4", "Running Capacitor sync")
+    log_step("3/5", "Running Capacitor sync")
 
     success, stdout, stderr = run_cmd("npx cap sync android", cwd=project_root, timeout=120)
 
@@ -155,7 +188,7 @@ def setup_android_env():
 def build_apk(project_root, app_name, release=False):
     """Build the Android APK (debug) or AAB (release)"""
     mode = "Release AAB" if release else "Debug APK"
-    log_step("3/4", f"Building {mode}")
+    log_step("4/5", f"Building {mode}")
 
     android_dir = project_root / "android"
     if not android_dir.exists():
@@ -194,7 +227,7 @@ def build_apk(project_root, app_name, release=False):
 
 def locate_and_copy_apk(project_root, app_name, release=False):
     """Find the built APK/AAB and copy it to project root"""
-    log_step("4/4", "Locating output")
+    log_step("5/5", "Locating output")
 
     if release:
         build_path = project_root / "android/app/build/outputs/bundle/release/app-release.aab"
@@ -222,9 +255,16 @@ def main():
     parser = argparse.ArgumentParser(description="Build Capacitor APK/AAB")
     parser.add_argument('--release', action='store_true',
                         help="Build a signed release AAB for Play Store")
+    parser.add_argument('--skip-quality-check', action='store_true',
+                        help="Skip data quality check (debug builds only; "
+                             "ignored on --release)")
     args = parser.parse_args()
 
     release = args.release
+    skip_qc = args.skip_quality_check
+    if release and skip_qc:
+        skip_qc = False
+        log_warning("--skip-quality-check ignored on --release builds")
     build_type = "Release AAB (Play Store)" if release else "Debug APK"
 
     print(f"\n{Colors.BOLD}{Colors.HEADER}{'='*60}{Colors.RESET}")
@@ -246,6 +286,7 @@ def main():
 
     # Execute build pipeline
     try:
+        quality_check(project_root, strict=not skip_qc)
         sync_web_assets(project_root, web_dir)
         capacitor_sync(project_root)
         build_apk(project_root, app_name, release=release)
