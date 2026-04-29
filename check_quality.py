@@ -232,6 +232,47 @@ def check_schema(D, errors):
                     _err(errors, 'E006', cat, iid, f'champ requis : {f}')
 
 
+def check_duplicates(D, errors):
+    """E007 same (korean, french) pair within a category AND chapter.
+
+    Cross-chapter duplicates are intentional: a word may live in its
+    introducing chapter AND in the global lexique (chapter -1) as a SRS
+    revision aid. Only flag duplicates within the same chapter.
+    """
+    for cat in FLASHABLE:
+        seen = {}  # (chapter, korean, french) -> first iid
+        for raw in D.get(cat, []):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id') or '?'
+            kr, fr = get_kr(it, cat), get_fr(it, cat)
+            if not kr and not fr:
+                continue  # already flagged by E004/E005
+            key = (it.get('chapter'), kr, fr)
+            if key in seen:
+                _err(errors, 'E007', cat, iid,
+                     f'doublon de contenu (meme paire que {seen[key]} '
+                     f'dans le meme chapitre)')
+            else:
+                seen[key] = iid
+
+
+def check_readable(D, errors):
+    """E008 readable item with no displayable text."""
+    for cat in READABLE:
+        for idx, it in enumerate(D.get(cat, [])):
+            iid = it.get('id') or f'#{idx}'
+            if cat == 'dialogues':
+                lines = it.get('lines') or []
+                if not lines or not any((l.get('korean') or l.get('french'))
+                                        for l in lines):
+                    _err(errors, 'E008', cat, iid, 'dialogue sans lignes')
+                continue
+            body = (it.get('explanation') or it.get('explanation_fr')
+                    or it.get('body') or '')
+            if not body:
+                _err(errors, 'E008', cat, iid, 'aucun contenu lisible')
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
@@ -257,6 +298,8 @@ def main():
     check_structural(D, errors)
     check_rendering(D, errors)
     check_schema(D, errors)
+    check_duplicates(D, errors)
+    check_readable(D, errors)
 
     if args.json:
         print(json.dumps({
