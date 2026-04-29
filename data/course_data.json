@@ -4436,7 +4436,7 @@
     {
       "korean": "아이",
       "french": "enfant",
-      "romanization": "",
+      "romanization": "ai",
       "theme": "exemples voyelles avec ㅇ muet",
       "word_type": "noun",
       "page": 9,
@@ -4447,7 +4447,7 @@
     {
       "korean": "여우",
       "french": "renard",
-      "romanization": "",
+      "romanization": "yeou",
       "theme": "exemples voyelles avec ㅇ muet",
       "word_type": "noun",
       "page": 9,
@@ -4458,7 +4458,7 @@
     {
       "korean": "요요",
       "french": "yoyo",
-      "romanization": "",
+      "romanization": "yoyo",
       "theme": "exemples voyelles avec ㅇ muet",
       "word_type": "noun",
       "page": 9,
@@ -4469,7 +4469,7 @@
     {
       "korean": "오이",
       "french": "concombre",
-      "romanization": "",
+      "romanization": "oi",
       "theme": "exemples voyelles avec ㅇ muet",
       "word_type": "noun",
       "page": 9,
@@ -4480,7 +4480,7 @@
     {
       "korean": "우유",
       "french": "lait",
-      "romanization": "",
+      "romanization": "uyu",
       "theme": "exemples voyelles avec ㅇ muet",
       "word_type": "noun",
       "page": 9,
@@ -4491,7 +4491,7 @@
     {
       "korean": "고기",
       "french": "viande",
-      "romanization": "",
+      "romanization": "gogi",
       "theme": "exercice consonnes ㄱ + voyelles",
       "word_type": "noun",
       "page": 12,
@@ -4502,7 +4502,7 @@
     {
       "korean": "가구",
       "french": "meuble",
-      "romanization": "",
+      "romanization": "gagu",
       "theme": "exercice consonnes ㄱ + voyelles",
       "word_type": "noun",
       "page": 12,
@@ -4513,7 +4513,7 @@
     {
       "korean": "나",
       "french": "moi",
-      "romanization": "",
+      "romanization": "na",
       "theme": "exercice consonnes ㄴ + voyelles",
       "word_type": "noun",
       "page": 12,
@@ -4524,7 +4524,7 @@
     {
       "korean": "누나",
       "french": "grande soeur",
-      "romanization": "",
+      "romanization": "nuna",
       "theme": "exercice consonnes ㄴ + voyelles",
       "word_type": "noun",
       "page": 12,
@@ -4535,7 +4535,7 @@
     {
       "korean": "나무",
       "french": "arbre",
-      "romanization": "",
+      "romanization": "namu",
       "theme": "exercice consonnes ㅁ + voyelles",
       "word_type": "noun",
       "page": 12,
@@ -4546,7 +4546,7 @@
     {
       "korean": "미소",
       "french": "sourire",
-      "romanization": "",
+      "romanization": "miso",
       "theme": "exercice consonnes ㅁ + voyelles",
       "word_type": "noun",
       "page": 12,
@@ -4557,7 +4557,7 @@
     {
       "korean": "코",
       "french": "nez",
-      "romanization": "",
+      "romanization": "ko",
       "theme": "exercice consonnes ㅋ + voyelles",
       "word_type": "noun",
       "page": 13,
@@ -4568,7 +4568,7 @@
     {
       "korean": "쿠키",
       "french": "cookie",
-      "romanization": "",
+      "romanization": "kuki",
       "theme": "exercice consonnes ㅋ + voyelles",
       "word_type": "noun",
       "page": 13,
@@ -4579,7 +4579,7 @@
     {
       "korean": "구두",
       "french": "chaussure",
-      "romanization": "",
+      "romanization": "gudu",
       "theme": "exercice consonnes ㄷ + voyelles",
       "word_type": "noun",
       "page": 14,
@@ -4590,7 +4590,7 @@
     {
       "korean": "라디오",
       "french": "radio",
-      "romanization": "",
+      "romanization": "radio",
       "theme": "exercice consonnes ㄷ + voyelles",
       "word_type": "noun",
       "page": 14,
@@ -4601,7 +4601,7 @@
     {
       "korean": "버터",
       "french": "beurre",
-      "romanization": "",
+      "romanization": "beoteo",
       "theme": "exercice consonnes ㅌ + voyelles",
       "word_type": "noun",
       "page": 15,
@@ -4612,7 +4612,7 @@
     {
       "korean": "토마토",
       "french": "tomate",
-      "romanization": "",
+      "romanization": "tomato",
       "theme": "exercice consonnes ㅌ + voyelles",
       "word_type": "noun",
       "page": 15,
@@ -4623,7 +4623,7 @@
     {
       "korean": "루비",
       "french": "rubis",
-      "romanization": "",
+      "romanization": "rubi",
       "theme": "exercice consonnes ㄹ + voyelles",
       "word_type": "noun",
       "page": 15,
@@ -4634,7 +4634,7 @@
     {
       "korean": "다리",
       "french": "jambe",
-      "romanization": "",
+      "romanization": "dari",
       "theme": "exercice consonnes ㄹ + voyelles",
       "word_type": "noun",
       "page": 15,
@@ -4645,7 +4645,7 @@
     {
       "korean": "비누",
       "french": "savon",
-      "romanization": "",
+      "romanization": "binu",
       "theme": "exercice consonnes ㅂ + voyelles",
       "word_type": "noun",
       "page": 16,
@@ -4656,7 +4656,7 @@
     {
       "korean": "두부",
       "french": "tofu",
-      "romanization": "",
+      "romanization": "dubu",
       "theme": "exercice consonnes ㅂ + voyelles",
       "word_type": "noun",
       "page": 16,
@@ -4667,7 +4667,7 @@
     {
       "korean": "포도",
       "french": "raisin",
-      "romanization": "",
+      "romanization": "podo",
       "theme": "exercice consonnes ㅍ + voyelles",
       "word_type": "noun",
       "page": 16,
@@ -4678,7 +4678,7 @@
     {
       "korean": "피자",
       "french": "pizza",
-      "romanization": "",
+      "romanization": "pija",
       "theme": "exercice consonnes ㅍ + voyelles",
       "word_type": "noun",
       "page": 16,
@@ -4689,7 +4689,7 @@
     {
       "korean": "셔츠",
       "french": "chemise",
-      "romanization": "",
+      "romanization": "syeocheu",
       "theme": "exercice consonnes ㅅ + voyelles",
       "word_type": "noun",
       "page": 17,
@@ -4700,7 +4700,7 @@
     {
       "korean": "버스",
       "french": "bus",
-      "romanization": "",
+      "romanization": "beoseu",
       "theme": "exercice consonnes ㅅ + voyelles",
       "word_type": "noun",
       "page": 17,
@@ -4711,7 +4711,7 @@
     {
       "korean": "사자",
       "french": "lion",
-      "romanization": "",
+      "romanization": "saja",
       "theme": "exercice consonnes ㅈ + voyelles",
       "word_type": "noun",
       "page": 17,
@@ -4722,7 +4722,7 @@
     {
       "korean": "주스",
       "french": "jus",
-      "romanization": "",
+      "romanization": "juseu",
       "theme": "exercice consonnes ㅈ + voyelles",
       "word_type": "noun",
       "page": 17,
@@ -16621,11 +16621,11 @@
       "french": "Quand es-tu venu(e) en Corée ?",
       "polite": {
         "korean": "언제 한국에 왔어요?",
-        "romanization": ""
+        "romanization": "eonje hanguge wasseoyo?"
       },
       "informal": {
         "korean": "언제 한국에 왔어?",
-        "romanization": ""
+        "romanization": "eonje hanguge wasseo?"
       },
       "context": "question",
       "page": 157,
@@ -16636,11 +16636,11 @@
       "french": "Quel jour est-ce ?",
       "polite": {
         "korean": "무슨 날이에요?",
-        "romanization": ""
+        "romanization": "museun nariyeyo?"
       },
       "informal": {
         "korean": "무슨 날이야?",
-        "romanization": ""
+        "romanization": "museun nariya?"
       },
       "context": "question",
       "page": 157,
@@ -16741,11 +16741,11 @@
       "french": "À quelle heure tu prends l'avion ?",
       "polite": {
         "korean": "몇 시에 비행기를 타요?",
-        "romanization": ""
+        "romanization": "myeot sie bihaenggireul tayo?"
       },
       "informal": {
         "korean": "몇 시에 비행기를 타?",
-        "romanization": ""
+        "romanization": "myeot sie bihaenggireul ta?"
       },
       "context": "question",
       "page": 168,
@@ -16760,7 +16760,7 @@
       },
       "informal": {
         "korean": "프랑스에서 만나자.",
-        "romanization": ""
+        "romanization": "peurangseueseo mannaja."
       },
       "context": "farewell",
       "page": 169,
@@ -16775,7 +16775,7 @@
       },
       "informal": {
         "korean": "프랑스에 언제 와?",
-        "romanization": ""
+        "romanization": "peurangseue eonje wa?"
       },
       "context": "question",
       "page": 169,
@@ -16786,11 +16786,11 @@
       "french": "D'accord / Compris.",
       "polite": {
         "korean": "알았어요.",
-        "romanization": ""
+        "romanization": "arasseoyo."
       },
       "informal": {
         "korean": "알았어.",
-        "romanization": ""
+        "romanization": "arasseo."
       },
       "context": "reaction",
       "page": 169,
@@ -16805,7 +16805,7 @@
       },
       "informal": {
         "korean": "곧 보자!",
-        "romanization": ""
+        "romanization": "got boja!"
       },
       "context": "farewell",
       "page": 169,
