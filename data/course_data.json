@@ -10964,7 +10964,13 @@
       "notes": "Presente comme exemple de consonne double ㅆ",
       "chapter": 0,
       "id": "vrb_ch0_001",
-      "infinitive": "쓰다"
+      "infinitive": "쓰다",
+      "conjugations": {
+        "polite_present": "써요",
+        "informal_present": "써",
+        "polite_past": "썼어요",
+        "polite_negative": "안 써요"
+      }
     },
     {
       "infinitive": "이다",
@@ -18250,7 +18256,8 @@
       "page": 78,
       "notes": "Forme informelle de 어떻다 (être comment). Utilisé dans: 한국 학교가 어때?",
       "chapter": 2,
-      "id": "adj_ch2_001"
+      "id": "adj_ch2_001",
+      "korean_polite": "어때요"
     },
     {
       "infinitive": "달다",
@@ -18309,7 +18316,8 @@
       "page": 153,
       "notes": "emotion",
       "chapter": 6,
-      "id": "adj_ch6_001"
+      "id": "adj_ch6_001",
+      "korean_polite": "행복해요"
     },
     {
       "korean": "슬프다",
@@ -18318,7 +18326,8 @@
       "page": 153,
       "notes": "emotion",
       "chapter": 6,
-      "id": "adj_ch6_002"
+      "id": "adj_ch6_002",
+      "korean_polite": "슬퍼요"
     },
     {
       "korean": "화가 나다",
@@ -18327,7 +18336,8 @@
       "page": 153,
       "notes": "expression avec 화 (colere) + 가 나다 (sortir)",
       "chapter": 6,
-      "id": "adj_ch6_003"
+      "id": "adj_ch6_003",
+      "korean_polite": "화가 나요"
     },
     {
       "infinitive": "행복하다",

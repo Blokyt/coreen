@@ -10,7 +10,7 @@ import json
 import sys
 from pathlib import Path
 
-DATA_PATH = Path('www/data/course_data.json')
+DATA_PATH = Path('data/course_data.json')
 
 FLASHABLE = ['vocabulary', 'verbs', 'hangeul', 'numbers', 'expressions',
              'particles', 'time_expressions', 'classifiers', 'connectors',
