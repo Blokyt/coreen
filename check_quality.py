@@ -353,7 +353,12 @@ def main():
         print(f'Cartes flashables : {flashable_total} - Lisibles : {readable_total}')
         print()
         print(f'ERREURS ({len(errors)})')
+        for e in errors:
+            print(f"  [{e['code']}] {e['cat']}/{e['id']} : {e['msg']}")
+        print()
         print(f'WARNINGS ({len(warnings)})')
+        for w in warnings:
+            print(f"  [{w['code']}] {w['cat']}/{w['id']} : {w['msg']}")
         print()
         if errors:
             print('ECHEC - corriger avant de builder une release.')
