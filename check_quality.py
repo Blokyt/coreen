@@ -273,6 +273,39 @@ def check_readable(D, errors):
                 _err(errors, 'E008', cat, iid, 'aucun contenu lisible')
 
 
+def _is_clean_rom(s):
+    """Accept ASCII + Latin-1 supplement (covers French diacritics like
+    o, e, e, ø used intentionally in hangeul romanizations)."""
+    return all(ord(ch) <= 0xFF for ch in s)
+
+
+def check_warnings(D, warnings):
+    """W001 missing romanization on a category that expects one,
+    W002 page missing/<=0, W003 suspicious romanization (above Latin-1)."""
+    for cat in FLASHABLE:
+        for raw in D.get(cat, []):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id') or '?'
+
+            # W001 missing rom for expectant categories
+            if cat in ('vocabulary', 'time_expressions', 'adverbs',
+                       'connectors', 'classifiers', 'verbs', 'adjectives',
+                       'hangeul'):
+                if not get_rom(it, cat):
+                    _warn(warnings, 'W001', cat, iid, 'romanisation absente')
+
+            # W002 page missing/invalid
+            page = it.get('page')
+            if page is None or (isinstance(page, (int, float)) and page <= 0):
+                _warn(warnings, 'W002', cat, iid, f'page invalide : {page!r}')
+
+            # W003 suspicious romanization (above Latin-1 supplement)
+            rom = get_rom(it, cat)
+            if rom and not _is_clean_rom(rom):
+                _warn(warnings, 'W003', cat, iid,
+                      f'romanisation suspecte : {rom!r}')
+
+
 def load_data():
     if not DATA_PATH.exists():
         print(f'ERROR: {DATA_PATH} not found', file=sys.stderr)
@@ -300,6 +333,7 @@ def main():
     check_schema(D, errors)
     check_duplicates(D, errors)
     check_readable(D, errors)
+    check_warnings(D, warnings)
 
     if args.json:
         print(json.dumps({
