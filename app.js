@@ -658,11 +658,11 @@ const CARD = {
   connectors:       { label: 'Connecteurs',      ...STD },
   classifiers:      { label: 'Classificateurs',  ...STD },
   verbs: {
-    label: 'Verbe', fMain: getKr, fSub: getFr,
-    bMain: verbBack, bExtra: verbExtra,
+    label: 'Verbe', fMain: getKr, fSub: getRom,
+    bMain: verbBack, bSub: getFr, bExtra: verbExtra,
   },
   adjectives: {
-    label: 'Adjectif', fMain: getKr, fSub: getFr,
+    label: 'Adjectif', fMain: getKr, fSub: getRom,
     bMain: it => it.korean_polite || '', bSub: getFr,
   },
   hangeul: {
