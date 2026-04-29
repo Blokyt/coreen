@@ -150,10 +150,12 @@ def sync_web_assets(project_root, web_dir):
         log_success(f"Copied {len(copied)} file(s) to {web_dir}/")
 
 def capacitor_sync(project_root):
-    """Run npx cap sync android"""
+    """Run cap sync via bunx (if bun.lock present) or npx."""
     log_step("3/5", "Running Capacitor sync")
 
-    success, stdout, stderr = run_cmd("npx cap sync android", cwd=project_root, timeout=120)
+    runner = "bunx" if (project_root / "bun.lock").exists() else "npx"
+    success, stdout, stderr = run_cmd(f"{runner} cap sync android",
+                                      cwd=project_root, timeout=120)
 
     if success:
         log_success("Capacitor sync completed")
