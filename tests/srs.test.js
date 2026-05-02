@@ -301,6 +301,20 @@ describe('migration', () => {
   });
 });
 
+// ===== Suspend / leech =====
+
+describe('suspend', () => {
+  test('suspended cards get -Infinity priority', () => {
+    srs._setP({
+      a: { st: 2, e: 2.5, iv: 1440, due: Date.now() - 10*60000, step: 0, reps: 5, lapses: 0 },
+      b: { st: 2, e: 2.5, iv: 1440, due: Date.now() - 10*60000, step: 0, reps: 5, lapses: 0, suspended: true },
+    });
+    srs.refreshNewLimit();
+    expect(srs.srsPriority({ id: 'a' })).toBeGreaterThan(0);
+    expect(srs.srsPriority({ id: 'b' })).toBe(-Infinity);
+  });
+});
+
 // ===== Daily new count =====
 
 describe('daily new count', () => {

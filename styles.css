@@ -325,6 +325,54 @@ body {
 }
 .btn-apply { margin-top: 20px; width: 100%; }
 
+/* ===== Leech banner ===== */
+.leech-banner {
+  margin: 8px 0 12px;
+  padding: 10px 12px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  font-family: var(--ui);
+  font-size: 0.82rem;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.leech-banner.hidden { display: none; }
+.leech-text { flex: 1; min-width: 200px; color: var(--fg); }
+.leech-actions { display: flex; gap: 6px; }
+.leech-keep, .leech-suspend {
+  padding: 6px 12px; font-size: 0.78rem; font-weight: 500;
+  border-radius: 6px; border: 1px solid var(--border); cursor: pointer;
+  font-family: var(--ui);
+}
+.leech-keep { background: var(--surface); color: var(--fg2); }
+.leech-suspend { background: rgba(239, 68, 68, 0.6); color: #fff; border-color: transparent; }
+
+/* ===== Suspended list (in settings) ===== */
+.setting-section-label {
+  margin-top: 24px; margin-bottom: 8px;
+  font-family: var(--ui); font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg3);
+}
+.suspended-list { max-height: 200px; overflow-y: auto; }
+.empty-mini {
+  padding: 12px 0; color: var(--fg3); font-size: 0.82rem;
+  font-family: var(--ui); text-align: center;
+}
+.suspended-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+}
+.suspended-text { flex: 1; min-width: 0; }
+.suspended-kr { font-family: var(--kr); font-size: 0.95rem; margin-right: 8px; }
+.suspended-fr { font-size: 0.78rem; color: var(--fg3); }
+.suspended-restore {
+  padding: 6px 10px; font-size: 0.75rem;
+  background: var(--surface); color: var(--fg2);
+  border: 1px solid var(--border); border-radius: 6px; cursor: pointer;
+  font-family: var(--ui);
+}
+.suspended-restore:hover { color: var(--fg); }
+
 /* ===== TTS button ===== */
 .tts-btn {
   display: inline-flex; align-items: center; justify-content: center;

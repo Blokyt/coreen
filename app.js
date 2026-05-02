@@ -250,6 +250,8 @@ function refreshNewLimit() {
 // Order: overdue reviews > overdue learning > new cards > not yet due
 function srsPriority(item) {
   const c = P[item.id];
+  // Suspended cards (manually set) never appear in any deck
+  if (c && c.suspended) return -Infinity;
   if (!c || c.st === 0) {
     if (_newLimitReached) return -Infinity;
     return 5000; // after overdue reviews/learning
@@ -572,8 +574,12 @@ function flip() {
   $('#fc-good').innerHTML  = `<span class="btn-iv">${fmtIv(iv.good)}</span>Su`;
   $('#fc-easy').innerHTML  = `<span class="btn-iv">${fmtIv(iv.easy)}</span>Facile`;
 
-  // Leech indicator
-  $('#fc-card').classList.toggle('leech', getCard(it.id).lapses >= LEECH_THRESHOLD);
+  // Leech indicator + banner
+  const card = getCard(it.id);
+  $('#fc-card').classList.toggle('leech', card.lapses >= LEECH_THRESHOLD);
+  if (card.lapses >= LEECH_THRESHOLD && !card.leechAcknowledged) {
+    showLeechBanner(it.id);
+  }
 
   // Auto-play Korean TTS if the user enabled it
   if (getSettings().autoSpeak) {
@@ -622,6 +628,79 @@ function answer(grade) {
     fi++;
     showCard();
   }, 200);
+}
+
+function showLeechBanner(cardId) {
+  const banner = $('#fc-leech-banner');
+  if (!banner) return;
+  banner.classList.remove('hidden');
+  $('#fc-leech-suspend').onclick = e => {
+    e.stopPropagation();
+    suspendCard(cardId);
+    banner.classList.add('hidden');
+  };
+  $('#fc-leech-keep').onclick = e => {
+    e.stopPropagation();
+    const c = getCard(cardId);
+    c.leechAcknowledged = true;
+    saveP();
+    banner.classList.add('hidden');
+  };
+}
+
+function suspendCard(cardId) {
+  const c = getCard(cardId);
+  c.suspended = true;
+  saveP();
+  // Drop all instances of the card from the active deck so user moves on.
+  for (let i = deck.length - 1; i >= 0; i--) {
+    if (deck[i].id === cardId) deck.splice(i, 1);
+  }
+  if (fi >= deck.length) fi = 0;
+  showToast('Carte suspendue');
+  if (deck.length) showCard();
+  else show('home'), renderHome();
+}
+
+function unsuspendCard(cardId) {
+  const c = getCard(cardId);
+  c.suspended = false;
+  c.leechAcknowledged = false;
+  saveP();
+  renderSuspendedList();
+}
+
+function renderSuspendedList() {
+  const el = $('#settings-suspended');
+  if (!el || !D) return;
+  const ids = Object.keys(P).filter(id => P[id]?.suspended);
+  if (!ids.length) {
+    el.innerHTML = '<div class="empty-mini">Aucune carte suspendue.</div>';
+    return;
+  }
+  // Build a lookup from id -> { kr, fr, cat } using D
+  const lookup = {};
+  for (const cat of Object.keys(CATS)) {
+    for (const it of (D[cat] || [])) {
+      if (it.id) lookup[it.id] = { it, cat };
+    }
+  }
+  el.innerHTML = ids.map(id => {
+    const e = lookup[id];
+    if (!e) return '';
+    const kr = getKr({ ...e.it, _c: e.cat });
+    const fr = getFr({ ...e.it, _c: e.cat });
+    return `<div class="suspended-row">
+      <div class="suspended-text">
+        <span class="suspended-kr">${esc(kr)}</span>
+        <span class="suspended-fr">${esc(fr)}</span>
+      </div>
+      <button class="suspended-restore" data-id="${esc(id)}">Réactiver</button>
+    </div>`;
+  }).join('');
+  el.querySelectorAll('.suspended-restore').forEach(btn => {
+    btn.onclick = () => unsuspendCard(btn.dataset.id);
+  });
 }
 
 function undoLastAnswer() {
@@ -906,6 +985,7 @@ function openSettings() {
   if (sel) sel.value = String(s.newPerDay);
   const auto = $('#settings-auto-speak');
   if (auto) auto.checked = !!s.autoSpeak;
+  renderSuspendedList();
   overlay.classList.remove('hidden');
 }
 
