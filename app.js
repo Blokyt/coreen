@@ -827,7 +827,8 @@ function applySettings() {
   s.newPerDay = val === '0' ? 0 : Number(val);
   saveSettings(s);
   closeSettings();
-  renderHome();
+  // Only re-render home if user is on home screen — don't disrupt active sessions
+  if (screen === 'home') renderHome();
 }
 
 init();
