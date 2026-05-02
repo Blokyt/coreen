@@ -827,8 +827,19 @@ function applySettings() {
   s.newPerDay = val === '0' ? 0 : Number(val);
   saveSettings(s);
   closeSettings();
+  showToast('Réglages enregistrés');
   // Only re-render home if user is on home screen — don't disrupt active sessions
   if (screen === 'home') renderHome();
+}
+
+let _toastTimer = null;
+function showToast(msg) {
+  const el = $('#toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => el.classList.add('hidden'), 1500);
 }
 
 init();

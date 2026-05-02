@@ -323,3 +323,15 @@ body {
   border-radius: 8px; padding: 8px 12px; font-family: var(--ui); font-size: 0.85rem;
 }
 .btn-apply { margin-top: 20px; width: 100%; }
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%);
+  background: var(--surface); color: var(--fg); border: 1px solid var(--border);
+  padding: 10px 18px; border-radius: 999px; font-family: var(--ui);
+  font-size: 0.85rem; font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 1000; pointer-events: none;
+  opacity: 1; transition: opacity 200ms ease;
+}
+.toast.hidden { opacity: 0; }

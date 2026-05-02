@@ -27,7 +27,7 @@
     <!-- Settings overlay -->
     <div id="settings-overlay" class="overlay hidden">
       <div class="overlay-head">
-        <h2 class="settings-title">Reglages</h2>
+        <h2 class="settings-title">Réglages</h2>
         <button onclick="closeSettings()" class="search-x">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
@@ -40,7 +40,7 @@
             <option value="10">10</option>
             <option value="20" selected>20</option>
             <option value="50">50</option>
-            <option value="0">Illimite</option>
+            <option value="0">Illimité</option>
           </select>
         </div>
         <button class="btn-go btn-apply" onclick="applySettings()">Appliquer</button>
@@ -56,7 +56,7 @@
       <div id="global-progress"></div>
       <div class="section-label">Chapitres</div>
       <div id="chapters-grid"></div>
-      <div class="section-label">Categories</div>
+      <div class="section-label">Catégories</div>
       <div id="categories-grid"></div>
     </section>
 
@@ -81,7 +81,7 @@
           <h2 id="list-title"></h2>
           <span id="list-stats" class="list-stats"></span>
         </div>
-        <button id="btn-fc" class="btn-go">Reviser</button>
+        <button id="btn-fc" class="btn-go">Réviser</button>
       </div>
       <div id="list-bar-wrap"></div>
       <div id="items"></div>
@@ -110,6 +110,7 @@
       <button id="fc-reveal" class="btn-reveal">Retourner</button>
     </section>
   </div>
+  <div id="toast" class="toast hidden"></div>
   <script src="app.js"></script>
 </body>
 </html>
