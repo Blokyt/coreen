@@ -46,6 +46,7 @@ body {
 
 .screen {
   display: none;
+  position: relative;
   padding: 16px calc(16px + var(--safe-r)) 24px calc(16px + var(--safe-l));
 }
 .screen.active { display: block; animation: fadeUp .18s ease-out; }
@@ -323,6 +324,19 @@ body {
   border-radius: 8px; padding: 8px 12px; font-family: var(--ui); font-size: 0.85rem;
 }
 .btn-apply { margin-top: 20px; width: 100%; }
+
+/* ===== Flashcard undo ===== */
+.fc-undo {
+  position: absolute; top: 12px; left: 12px; z-index: 5;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface); color: var(--fg2); border: 1px solid var(--border);
+  border-radius: 999px; cursor: pointer;
+  transition: opacity 200ms ease, color 150ms ease;
+  opacity: 0.85;
+}
+.fc-undo:hover { color: var(--fg); opacity: 1; }
+.fc-undo.hidden { display: none; }
 
 /* ===== Toast ===== */
 .toast {

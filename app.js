@@ -495,6 +495,7 @@ function renderItem(it) {
 // ========== Flashcard (infinite) ==========
 
 let deck = [], fi = 0, flipped = false, deckFlashable = [];
+let _undo = null; // snapshot of last graded state, or null when nothing to undo
 
 function startFc() {
   deckFlashable = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
@@ -505,9 +506,17 @@ function startFc() {
   refreshNewLimit();
   deck = [...deckFlashable].sort((a, b) => srsPriority(b) - srsPriority(a));
   fi = 0;
+  _undo = null;
+  updateUndoButton();
   show('fc');
   $('#header-title').textContent = curTitle;
   showCard();
+}
+
+function updateUndoButton() {
+  const btn = $('#fc-undo');
+  if (!btn) return;
+  btn.classList.toggle('hidden', _undo === null);
 }
 
 function showCard() {
@@ -572,6 +581,15 @@ function answer(grade) {
   const it = deck[fi];
   const wasReview = (P[it.id]?.st === 2); // capture before srs* mutates state
 
+  // Snapshot for undo (state BEFORE the grade)
+  _undo = {
+    cardId: it.id,
+    fi,
+    P_id_snap: P[it.id] ? JSON.parse(JSON.stringify(P[it.id])) : null,
+    newCount_snap: localStorage.getItem('blokaja4_newcount'),
+    reinsertedAt: null,
+  };
+
   if (grade === 1) srsAgain(it.id);
   else if (grade === 2) srsHard(it.id);
   else if (grade === 3) srsGood(it.id);
@@ -581,7 +599,9 @@ function answer(grade) {
   if (grade === 1 || (grade === 2 && !wasReview)) {
     const reinsert = Math.min(fi + 3 + (Math.random() * 3 | 0), deck.length);
     deck.splice(reinsert, 0, it);
+    _undo.reinsertedAt = reinsert;
   }
+  updateUndoButton();
 
   const slideDir = grade >= 3 ? 'slide-right' : 'slide-left';
   const card = $('#fc-card');
@@ -591,6 +611,32 @@ function answer(grade) {
     fi++;
     showCard();
   }, 200);
+}
+
+function undoLastAnswer() {
+  if (!_undo) return;
+  const { cardId, fi: prevFi, P_id_snap, newCount_snap, reinsertedAt } = _undo;
+
+  // Restore card state
+  if (P_id_snap === null) delete P[cardId];
+  else P[cardId] = P_id_snap;
+  saveP();
+
+  // Restore daily new-card counter
+  if (newCount_snap === null) localStorage.removeItem('blokaja4_newcount');
+  else localStorage.setItem('blokaja4_newcount', newCount_snap);
+  refreshNewLimit();
+
+  // Remove the re-inserted instance from deck (if any)
+  if (reinsertedAt !== null && reinsertedAt < deck.length && deck[reinsertedAt]?.id === cardId) {
+    deck.splice(reinsertedAt, 1);
+  }
+
+  fi = prevFi;
+  _undo = null;
+  updateUndoButton();
+  showCard();
+  showToast('Annulé');
 }
 
 // ========== Content accessors ==========
@@ -802,6 +848,7 @@ function setupEvents() {
   $('#fc-hard').onclick  = () => answer(2);
   $('#fc-good').onclick  = () => answer(3);
   $('#fc-easy').onclick  = () => answer(4);
+  if ($('#fc-undo')) $('#fc-undo').onclick = e => { e.stopPropagation(); undoLastAnswer(); };
 
   // Swipe (left = Again, right = Good)
   let tx = 0;
