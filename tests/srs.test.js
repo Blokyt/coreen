@@ -176,6 +176,44 @@ describe('intervals', () => {
     // iv = round((1000 + 0) * 2.0 * 1.3) = 2600
     expect(srs.getCard('a').iv).toBe(2600);
   });
+
+  test('Hard on review with delay=0 uses pure iv*HARD_MULT (no +1d floor)', () => {
+    const now = Date.now();
+    // iv=2000 (1.4 days). Old formula: max(2000+1440, 2000*1.2) = max(3440, 2400) = 3440 (inflated).
+    // New formula: round(2000 * 1.2 + 0) = 2400.
+    srs._setP({ a: { st: 2, e: 2.0, iv: 2000, due: now, step: 0, reps: 5, lapses: 0 } });
+    srs.srsHard('a');
+    expect(srs.getCard('a').iv).toBe(2400);
+  });
+
+  test('Hard delay capped at 1xiv, then divided by 4', () => {
+    const now = Date.now();
+    // iv=1000. Card is 100x overdue (delay=100000). Cap delay at iv=1000.
+    // New iv = round(1000 * 1.2 + 1000/4) = round(1200 + 250) = 1450.
+    srs._setP({ a: { st: 2, e: 2.0, iv: 1000, due: now - 100000 * 60000, step: 0, reps: 5, lapses: 0 } });
+    srs.srsHard('a');
+    expect(srs.getCard('a').iv).toBe(1450);
+  });
+
+  test('Good with huge overdue delay does not balloon (delay capped at iv)', () => {
+    const now = Date.now();
+    // iv=1000. Delay 100000 (huge). Cap at iv=1000.
+    // Old (no cap): round((1000 + 100000/2) * 2.0) = round(102000) — BAD.
+    // New (capped): round((1000 + 1000/2) * 2.0) = round(3000) = 3000.
+    srs._setP({ a: { st: 2, e: 2.0, iv: 1000, due: now - 100000 * 60000, step: 0, reps: 5, lapses: 0 } });
+    srs.srsGood('a');
+    expect(srs.getCard('a').iv).toBe(3000);
+  });
+
+  test('Easy with huge overdue delay does not balloon (delay capped at iv)', () => {
+    const now = Date.now();
+    // iv=1000. Delay 100000 (huge). Cap at iv=1000.
+    // Old (no cap): round((1000+100000) * 2.0 * 1.3) = ~262600 — BAD.
+    // New (capped): round((1000+1000) * 2.0 * 1.3) = 5200.
+    srs._setP({ a: { st: 2, e: 2.0, iv: 1000, due: now - 100000 * 60000, step: 0, reps: 5, lapses: 0 } });
+    srs.srsEasy('a');
+    expect(srs.getCard('a').iv).toBe(5200);
+  });
 });
 
 // ===== Fuzz =====

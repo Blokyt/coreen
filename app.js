@@ -130,9 +130,14 @@ function srsAgain(id) {
 function srsHard(id) {
   const c = getCard(id);
   if (c.st === 2) {
-    // Review: interval * 1.2, ease -0.15
+    // Review: interval * 1.2 + delay/4, ease -0.15
+    // (Anki SM-2: Hard now also benefits from overdue delay, capped at 1×iv
+    //  to prevent runaway growth after long breaks. Previous +1440 floor
+    //  inflated short intervals and was non-standard.)
     c.e = Math.max(MIN_EASE, c.e - 0.15);
-    c.iv = fuzzInterval(Math.max(c.iv + 1440, Math.round(c.iv * HARD_MULT)));
+    const delay = Math.max(0, Date.now() - c.due) / 60000;
+    const cappedDelay = Math.min(delay, c.iv);
+    c.iv = fuzzInterval(Math.max(1, Math.round(c.iv * HARD_MULT + cappedDelay / 4)));
     c.due = Date.now() + c.iv * 60000;
   } else {
     // Learning/Relearning: repeat current step
@@ -165,8 +170,11 @@ function srsGood(id) {
     }
   } else {
     // Review: interval grows by ease factor + overdue bonus
-    const delay = Math.max(0, Date.now() - c.due) / 60000; // overdue minutes
-    c.iv = fuzzInterval(Math.round((c.iv + delay / 2) * c.e));
+    // Delay capped at 1×iv so a card studied very late can't balloon
+    // its interval into multi-year territory.
+    const delay = Math.max(0, Date.now() - c.due) / 60000;
+    const cappedDelay = Math.min(delay, c.iv);
+    c.iv = fuzzInterval(Math.round((c.iv + cappedDelay / 2) * c.e));
     c.due = Date.now() + c.iv * 60000;
     // No ease change on Good (Anki SM-2 behavior)
   }
@@ -185,9 +193,10 @@ function srsEasy(id) {
     c.step = 0;
     c.due = Date.now() + fuzzInterval(c.iv) * 60000;
   } else {
-    // Review: interval * ease * easy bonus + full overdue bonus
+    // Review: interval * ease * easy bonus + capped overdue bonus
     const delay = Math.max(0, Date.now() - c.due) / 60000;
-    c.iv = fuzzInterval(Math.round((c.iv + delay) * c.e * EASY_BONUS));
+    const cappedDelay = Math.min(delay, c.iv);
+    c.iv = fuzzInterval(Math.round((c.iv + cappedDelay) * c.e * EASY_BONUS));
     c.due = Date.now() + c.iv * 60000;
     c.e = Math.min(3.69, c.e + 0.15); // ease bonus for Easy, capped like Anki
   }
@@ -212,10 +221,11 @@ function previewIntervals(id) {
     return { again: againStep, hard: hardStep, good: goodIv, easy: EASY_IV };
   }
 
-  // Review
-  const ivHard = Math.max(c.iv + 1440, Math.round(c.iv * HARD_MULT));
-  const ivGood = Math.round((c.iv + delay / 2) * c.e);
-  const ivEasy = Math.round((c.iv + delay) * c.e * EASY_BONUS);
+  // Review (delay capped at 1×iv to match srs* mutators)
+  const cappedDelay = Math.min(delay, c.iv);
+  const ivHard = Math.max(1, Math.round(c.iv * HARD_MULT + cappedDelay / 4));
+  const ivGood = Math.round((c.iv + cappedDelay / 2) * c.e);
+  const ivEasy = Math.round((c.iv + cappedDelay) * c.e * EASY_BONUS);
   return { again: RELEARN_STEPS[0], hard: ivHard, good: ivGood, easy: ivEasy };
 }
 
