@@ -13,8 +13,9 @@ kaja_detailled.pdf
 # Extraction pipeline (data brute, regenerable)
 extraction_data/
 
-# Tools d'extraction (plus besoin, data finale dans data/)
-tools/
+# Tools d'extraction (plus besoin, data finale dans data/) — but track maintenance scripts
+tools/*
+!tools/fix_accents.py
 
 # Temp files
 tmp_*
