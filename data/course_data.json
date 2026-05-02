@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "source": "Kaja Hanguk - Belin A1",
     "extracted": "2026-03-31",
-    "total_items": 1475,
+    "total_items": 1473,
     "stats": {
       "hangeul": 40,
       "vocabulary": 934,
@@ -14,7 +14,7 @@
       "expressions": 132,
       "dialogues": 16,
       "numbers": 41,
-      "adjectives": 12,
+      "adjectives": 11,
       "adverbs": 14,
       "classifiers": 11,
       "pronunciation_rules": 13,
@@ -615,7 +615,7 @@
       "type": "double",
       "letter": "ㄲ",
       "romanization": "kk",
-      "description_fr": "Consonne double, valeur phonetique en francais : k (comme dans 'camion')",
+      "description_fr": "Consonne double, valeur phonétique en français : k (comme dans 'camion')",
       "components": [
         "ㄱ",
         "ㄱ"
@@ -631,7 +631,7 @@
       "type": "double",
       "letter": "ㄸ",
       "romanization": "tt",
-      "description_fr": "Consonne double, valeur phonetique en francais : t (comme dans 'table')",
+      "description_fr": "Consonne double, valeur phonétique en français : t (comme dans 'table')",
       "components": [
         "ㄷ",
         "ㄷ"
@@ -647,7 +647,7 @@
       "type": "double",
       "letter": "ㅃ",
       "romanization": "pp",
-      "description_fr": "Consonne double, valeur phonetique en francais : p (comme dans 'Paris')",
+      "description_fr": "Consonne double, valeur phonétique en français : p (comme dans 'Paris')",
       "components": [
         "ㅂ",
         "ㅂ"
@@ -663,7 +663,7 @@
       "type": "double",
       "letter": "ㅆ",
       "romanization": "ss",
-      "description_fr": "Consonne double, valeur phonetique en francais : ss",
+      "description_fr": "Consonne double, valeur phonétique en français : ss",
       "components": [
         "ㅅ",
         "ㅅ"
@@ -679,7 +679,7 @@
       "type": "double",
       "letter": "ㅉ",
       "romanization": "jj",
-      "description_fr": "Consonne double, valeur phonetique en francais : tj",
+      "description_fr": "Consonne double, valeur phonétique en français : tj",
       "components": [
         "ㅈ",
         "ㅈ"
@@ -695,7 +695,7 @@
   "vocabulary": [
     {
       "korean": "팔월 / 8월",
-      "french": "aout",
+      "french": "août",
       "romanization": "parwol / 8wol",
       "theme": "mois",
       "word_type": "noun",
@@ -728,7 +728,7 @@
     },
     {
       "korean": "오후",
-      "french": "apres-midi",
+      "french": "après-midi",
       "romanization": "ohu",
       "theme": "temps",
       "word_type": "noun",
@@ -992,7 +992,7 @@
     },
     {
       "korean": "커피",
-      "french": "cafe (boisson)",
+      "french": "café (boisson)",
       "romanization": "keopi",
       "theme": "nourriture",
       "word_type": "noun",
@@ -1003,7 +1003,7 @@
     },
     {
       "korean": "카페",
-      "french": "cafe (lieu)",
+      "french": "café (lieu)",
       "romanization": "kape",
       "theme": "lieux",
       "word_type": "noun",
@@ -1126,7 +1126,7 @@
       "korean": "모자",
       "french": "casquette, chapeau",
       "romanization": "moja",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 172,
       "notes": "",
@@ -1190,7 +1190,7 @@
     },
     {
       "korean": "북한",
-      "french": "Coree du Nord",
+      "french": "Corée du Nord",
       "romanization": "bukhan",
       "theme": "geographie",
       "word_type": "noun",
@@ -1201,7 +1201,7 @@
     },
     {
       "korean": "대한민국 / 한국",
-      "french": "Coree du Sud",
+      "french": "Corée du Sud",
       "romanization": "daehanminguk / hanguk",
       "theme": "geographie",
       "word_type": "noun",
@@ -1212,7 +1212,7 @@
     },
     {
       "korean": "한국어",
-      "french": "coreen (langue)",
+      "french": "coréen (langue)",
       "romanization": "hangugeo",
       "theme": "langues",
       "word_type": "noun",
@@ -1223,7 +1223,7 @@
     },
     {
       "korean": "옆",
-      "french": "cote",
+      "french": "côté",
       "romanization": "yeop",
       "theme": "position",
       "word_type": "noun",
@@ -1344,7 +1344,7 @@
     },
     {
       "korean": "십이월 / 12월",
-      "french": "decembre",
+      "french": "décembre",
       "romanization": "sibiwol / 12wol",
       "theme": "mois",
       "word_type": "noun",
@@ -1498,7 +1498,7 @@
     },
     {
       "korean": "쓰다",
-      "french": "ecrire",
+      "french": "écrire",
       "romanization": "sseuda",
       "theme": "verbes",
       "word_type": "verb",
@@ -1597,7 +1597,7 @@
     },
     {
       "korean": "여름",
-      "french": "ete",
+      "french": "été",
       "romanization": "yeoreum",
       "theme": "saisons",
       "word_type": "noun",
@@ -1707,7 +1707,7 @@
     },
     {
       "korean": "프랑스어",
-      "french": "francais (langue)",
+      "french": "français (langue)",
       "romanization": "peurangseueo",
       "theme": "langues",
       "word_type": "noun",
@@ -1839,7 +1839,7 @@
     },
     {
       "korean": "오빠 / 형",
-      "french": "grand frere",
+      "french": "grand frère",
       "romanization": "oppa / hyeong",
       "theme": "famille",
       "word_type": "noun",
@@ -1872,7 +1872,7 @@
     },
     {
       "korean": "할머니",
-      "french": "grand-mere",
+      "french": "grand-mère",
       "romanization": "halmeoni",
       "theme": "famille",
       "word_type": "noun",
@@ -1883,7 +1883,7 @@
     },
     {
       "korean": "할아버지",
-      "french": "grand-pere",
+      "french": "grand-père",
       "romanization": "harabeoji",
       "theme": "famille",
       "word_type": "noun",
@@ -2182,7 +2182,7 @@
       "korean": "치마",
       "french": "jupe",
       "romanization": "chima",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 174,
       "notes": "",
@@ -2510,7 +2510,7 @@
     },
     {
       "korean": "어머니",
-      "french": "mere",
+      "french": "mère",
       "romanization": "eomeoni",
       "theme": "famille",
       "word_type": "noun",
@@ -2576,7 +2576,7 @@
     },
     {
       "korean": "국적",
-      "french": "nationalite",
+      "french": "nationalité",
       "romanization": "gukjeok",
       "theme": "divers",
       "word_type": "noun",
@@ -2807,7 +2807,7 @@
     },
     {
       "korean": "아버지",
-      "french": "pere",
+      "french": "père",
       "romanization": "abeoji",
       "theme": "famille",
       "word_type": "noun",
@@ -2851,7 +2851,7 @@
     },
     {
       "korean": "남동생",
-      "french": "petit frere",
+      "french": "petit frère",
       "romanization": "namdongsaeng",
       "theme": "famille",
       "word_type": "noun",
@@ -3225,7 +3225,7 @@
     },
     {
       "korean": "이름",
-      "french": "prenom",
+      "french": "prénom",
       "romanization": "ireum",
       "theme": "divers",
       "word_type": "noun",
@@ -3324,7 +3324,7 @@
     },
     {
       "korean": "자",
-      "french": "regle",
+      "french": "règle",
       "romanization": "ja",
       "theme": "ecole",
       "word_type": "noun",
@@ -3797,7 +3797,7 @@
     },
     {
       "korean": "슬프다",
-      "french": "triste (etre)",
+      "french": "triste (être)",
       "romanization": "seulpeuda",
       "theme": "adjectifs",
       "word_type": "adjective",
@@ -4072,9 +4072,9 @@
     },
     {
       "korean": "옷",
-      "french": "vetement",
+      "french": "vêtement",
       "romanization": "ot",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 178,
       "notes": "",
@@ -4375,7 +4375,7 @@
       "word_type": "noun",
       "page": 8,
       "chapter": 0,
-      "notes": "carte de Coree",
+      "notes": "carte de Corée",
       "id": "voc_ch0_014"
     },
     {
@@ -4386,7 +4386,7 @@
       "word_type": "noun",
       "page": 8,
       "chapter": 0,
-      "notes": "carte de Coree",
+      "notes": "carte de Corée",
       "id": "voc_ch0_015"
     },
     {
@@ -4397,7 +4397,7 @@
       "word_type": "noun",
       "page": 8,
       "chapter": 0,
-      "notes": "carte de Coree",
+      "notes": "carte de Corée",
       "id": "voc_ch0_016"
     },
     {
@@ -4408,7 +4408,7 @@
       "word_type": "noun",
       "page": 8,
       "chapter": 0,
-      "notes": "carte de Coree",
+      "notes": "carte de Corée",
       "id": "voc_ch0_017"
     },
     {
@@ -4419,7 +4419,7 @@
       "word_type": "noun",
       "page": 8,
       "chapter": 0,
-      "notes": "carte de Coree",
+      "notes": "carte de Corée",
       "id": "voc_ch0_018"
     },
     {
@@ -4430,7 +4430,7 @@
       "word_type": "noun",
       "page": 8,
       "chapter": 0,
-      "notes": "carte de Coree",
+      "notes": "carte de Corée",
       "id": "voc_ch0_019"
     },
     {
@@ -4787,7 +4787,7 @@
     },
     {
       "korean": "커피",
-      "french": "cafe",
+      "french": "café",
       "romanization": "keopi",
       "theme": "boissons",
       "word_type": "noun",
@@ -4800,10 +4800,10 @@
       "korean": "치마",
       "french": "jupe",
       "romanization": "chima",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 23,
-      "notes": "Section 'Les vetements'",
+      "notes": "Section 'Les vêtements'",
       "chapter": 0,
       "id": "voc_ch0_053"
     },
@@ -4811,10 +4811,10 @@
       "korean": "모자",
       "french": "chapeau",
       "romanization": "moja",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 23,
-      "notes": "Section 'Les vetements'",
+      "notes": "Section 'Les vêtements'",
       "chapter": 0,
       "id": "voc_ch0_054"
     },
@@ -4822,10 +4822,10 @@
       "korean": "바지",
       "french": "pantalon",
       "romanization": "baji",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 23,
-      "notes": "Section 'Les vetements'",
+      "notes": "Section 'Les vêtements'",
       "chapter": 0,
       "id": "voc_ch0_055"
     },
@@ -4899,7 +4899,7 @@
       "korean": "머리띠",
       "french": "serre-tete",
       "romanization": "meoritti",
-      "theme": "vetements",
+      "theme": "vêtements",
       "word_type": "noun",
       "page": 28,
       "notes": "Exercice consonnes doubles ㄸ",
@@ -4919,7 +4919,7 @@
     },
     {
       "korean": "쓰다",
-      "french": "ecrire",
+      "french": "écrire",
       "romanization": "sseuda",
       "theme": "actions",
       "word_type": "verb",
@@ -5229,7 +5229,7 @@
       "korean": "양말",
       "french": "chaussette",
       "romanization": "yangmal",
-      "theme": "Vetements",
+      "theme": "Vêtements",
       "word_type": "noun",
       "page": 32,
       "chapter": 0,
@@ -6327,7 +6327,7 @@
     },
     {
       "korean": "이름",
-      "french": "prenom",
+      "french": "prénom",
       "romanization": "ireum",
       "theme": "informations personnelles",
       "word_type": "noun",
@@ -6382,7 +6382,7 @@
     },
     {
       "korean": "한국",
-      "french": "la Coree du Sud",
+      "french": "la Corée du Sud",
       "romanization": "hanguk",
       "theme": "pays",
       "word_type": "noun",
@@ -6404,23 +6404,23 @@
     },
     {
       "korean": "프랑스 사람",
-      "french": "francais(e)",
+      "french": "français(e)",
       "romanization": "peurangseu saram",
-      "theme": "nationalite",
+      "theme": "nationalité",
       "word_type": "noun",
       "page": 53,
-      "notes": "pays + 사람 = nationalite",
+      "notes": "pays + 사람 = nationalité",
       "chapter": 1,
       "id": "voc_ch1_008"
     },
     {
       "korean": "한국 사람",
-      "french": "coreen(ne)",
+      "french": "coréen(ne)",
       "romanization": "hanguk saram",
-      "theme": "nationalite",
+      "theme": "nationalité",
       "word_type": "noun",
       "page": 53,
-      "notes": "pays + 사람 = nationalite",
+      "notes": "pays + 사람 = nationalité",
       "chapter": 1,
       "id": "voc_ch1_009"
     },
@@ -6428,10 +6428,10 @@
       "korean": "태국 사람",
       "french": "thailandais(e)",
       "romanization": "taeguk saram",
-      "theme": "nationalite",
+      "theme": "nationalité",
       "word_type": "noun",
       "page": 53,
-      "notes": "pays + 사람 = nationalite",
+      "notes": "pays + 사람 = nationalité",
       "chapter": 1,
       "id": "voc_ch1_010"
     },
@@ -6448,7 +6448,7 @@
     },
     {
       "korean": "어머니",
-      "french": "mere",
+      "french": "mère",
       "romanization": "eomeoni",
       "theme": "famille",
       "word_type": "noun",
@@ -6459,7 +6459,7 @@
     },
     {
       "korean": "아버지",
-      "french": "pere",
+      "french": "père",
       "romanization": "abeoji",
       "theme": "famille",
       "word_type": "noun",
@@ -6492,34 +6492,34 @@
     },
     {
       "korean": "동생",
-      "french": "petit(e) frere/soeur (cadet(te))",
+      "french": "petit(e) frère/soeur (cadet(te))",
       "romanization": "dongsaeng",
       "theme": "famille",
       "word_type": "noun",
       "page": 56,
-      "notes": "Terme generique pour frere/soeur plus jeune",
+      "notes": "Terme generique pour frère/soeur plus jeune",
       "chapter": 1,
       "id": "voc_ch1_016"
     },
     {
       "korean": "오빠",
-      "french": "grand frere (pour une fille)",
+      "french": "grand frère (pour une fille)",
       "romanization": "oppa",
       "theme": "famille",
       "word_type": "noun",
       "page": 56,
-      "notes": "Utilise par les filles pour designer leur frere aine",
+      "notes": "Utilise par les filles pour designer leur frère aîné",
       "chapter": 1,
       "id": "voc_ch1_017"
     },
     {
       "korean": "형",
-      "french": "grand frere (pour un garcon)",
+      "french": "grand frère (pour un garcon)",
       "romanization": "hyeong",
       "theme": "famille",
       "word_type": "noun",
       "page": 56,
-      "notes": "Utilise par les garcons pour designer leur frere aine",
+      "notes": "Utilise par les garcons pour designer leur frère aîné",
       "chapter": 1,
       "id": "voc_ch1_018"
     },
@@ -6530,7 +6530,7 @@
       "theme": "famille",
       "word_type": "noun",
       "page": 56,
-      "notes": "Utilise par les filles pour designer leur soeur ainee",
+      "notes": "Utilise par les filles pour designer leur soeur aînée",
       "chapter": 1,
       "id": "voc_ch1_019"
     },
@@ -6541,7 +6541,7 @@
       "theme": "famille",
       "word_type": "noun",
       "page": 56,
-      "notes": "Utilise par les garcons pour designer leur soeur ainee",
+      "notes": "Utilise par les garcons pour designer leur soeur aînée",
       "chapter": 1,
       "id": "voc_ch1_020"
     },
@@ -6582,7 +6582,7 @@
       "korean": "나라",
       "french": "pays",
       "romanization": "nara",
-      "theme": "nationalite",
+      "theme": "nationalité",
       "word_type": "noun",
       "page": 57,
       "notes": "",
@@ -6602,7 +6602,7 @@
     },
     {
       "korean": "국적",
-      "french": "nationalite",
+      "french": "nationalité",
       "romanization": "gukjeok",
       "theme": "informations personnelles",
       "word_type": "noun",
@@ -6624,7 +6624,7 @@
     },
     {
       "korean": "할머니",
-      "french": "grand-mere",
+      "french": "grand-mère",
       "romanization": "halmeoni",
       "theme": "famille",
       "word_type": "noun",
@@ -6635,7 +6635,7 @@
     },
     {
       "korean": "할아버지",
-      "french": "grand-pere",
+      "french": "grand-père",
       "romanization": "harabeoji",
       "theme": "famille",
       "word_type": "noun",
@@ -6646,7 +6646,7 @@
     },
     {
       "korean": "남동생",
-      "french": "petit frere",
+      "french": "petit frère",
       "romanization": "namdongsaeng",
       "theme": "famille",
       "word_type": "noun",
@@ -6866,23 +6866,23 @@
     },
     {
       "korean": "프랑스 친구",
-      "french": "un(e) ami(e) francais(e)",
+      "french": "un(e) ami(e) français(e)",
       "romanization": "peurangseu chingu",
-      "theme": "nationalite",
+      "theme": "nationalité",
       "word_type": "noun",
       "page": 60,
-      "notes": "pays + 친구 = ami(e) de cette nationalite",
+      "notes": "pays + 친구 = ami(e) de cette nationalité",
       "chapter": 1,
       "id": "voc_ch1_050"
     },
     {
       "korean": "한국 친구",
-      "french": "un(e) ami(e) coreen(ne)",
+      "french": "un(e) ami(e) coréen(ne)",
       "romanization": "hanguk chingu",
-      "theme": "nationalite",
+      "theme": "nationalité",
       "word_type": "noun",
       "page": 60,
-      "notes": "pays + 친구 = ami(e) de cette nationalite",
+      "notes": "pays + 친구 = ami(e) de cette nationalité",
       "chapter": 1,
       "id": "voc_ch1_051"
     },
@@ -7003,7 +7003,7 @@
       "theme": "suffixes",
       "word_type": "noun",
       "page": 63,
-      "notes": "Pour nommer les personnes plus agees, on utilisera 님 a la fin.",
+      "notes": "Pour nommer les personnes plus âgées, on utilisera 님 a la fin.",
       "chapter": 1,
       "id": "voc_ch1_062"
     },
@@ -8065,7 +8065,7 @@
     },
     {
       "korean": "카페",
-      "french": "cafe",
+      "french": "café",
       "romanization": "kape",
       "theme": "lieux",
       "word_type": "noun",
@@ -8087,7 +8087,7 @@
     },
     {
       "korean": "남동생",
-      "french": "petit frere",
+      "french": "petit frère",
       "romanization": "namdongsaeng",
       "theme": "famille",
       "word_type": "noun",
@@ -8208,7 +8208,7 @@
     },
     {
       "korean": "오후",
-      "french": "l'apres-midi",
+      "french": "l'après-midi",
       "romanization": "ohu",
       "theme": "temps",
       "word_type": "noun",
@@ -8312,7 +8312,7 @@
       "theme": "culture",
       "word_type": "noun",
       "page": 105,
-      "notes": "Salle de karaoke coreenne",
+      "notes": "Salle de karaoke coréenne",
       "chapter": 3,
       "id": "voc_ch3_043"
     },
@@ -8333,7 +8333,7 @@
       "theme": "culture",
       "word_type": "noun",
       "page": 107,
-      "notes": "Photomaton coreen",
+      "notes": "Photomaton coréen",
       "chapter": 3,
       "id": "voc_ch3_045"
     },
@@ -8383,7 +8383,7 @@
     },
     {
       "korean": "한국",
-      "french": "Coree",
+      "french": "Corée",
       "romanization": "hanguk",
       "theme": "voyage",
       "word_type": "noun",
@@ -8421,7 +8421,7 @@
       "theme": "ecole",
       "word_type": "noun",
       "page": 112,
-      "notes": "Claquettes portees dans les ecoles coreennes",
+      "notes": "Claquettes portees dans les ecoles coréennes",
       "chapter": 4,
       "id": "voc_ch4_007"
     },
@@ -8608,7 +8608,7 @@
       "theme": "quartier",
       "word_type": "noun",
       "page": 115,
-      "notes": "Karaoke coreen",
+      "notes": "Karaoke coréen",
       "chapter": 4,
       "id": "voc_ch4_024"
     },
@@ -8658,7 +8658,7 @@
     },
     {
       "korean": "옆",
-      "french": "a cote (de)",
+      "french": "à côté (de)",
       "romanization": "yeop",
       "theme": "position",
       "word_type": "noun",
@@ -8751,7 +8751,7 @@
       "theme": "lieux",
       "word_type": "noun",
       "page": 118,
-      "notes": "Capitale de la Coree du Sud",
+      "notes": "Capitale de la Corée du Sud",
       "chapter": 4,
       "id": "voc_ch4_037"
     },
@@ -9202,7 +9202,7 @@
       "theme": "quartiers_seoul",
       "word_type": "noun",
       "page": 125,
-      "notes": "Quartier de la musique, tres frequente par les jeunes",
+      "notes": "Quartier de la musique, très fréquente par les jeunes",
       "chapter": 4,
       "id": "voc_ch4_078"
     },
@@ -9224,7 +9224,7 @@
       "theme": "quartiers_seoul",
       "word_type": "noun",
       "page": 125,
-      "notes": "La petite France de Seoul, 40% des Francais en Coree y vivent",
+      "notes": "La petite France de Seoul, 40% des Français en Corée y vivent",
       "chapter": 4,
       "id": "voc_ch4_080"
     },
@@ -9400,7 +9400,7 @@
       "theme": "plats",
       "word_type": "noun",
       "page": 133,
-      "notes": "nouilles sautees coreennes",
+      "notes": "nouilles sautées coréennes",
       "chapter": 5,
       "id": "voc_ch5_002"
     },
@@ -9477,7 +9477,7 @@
       "theme": "desserts",
       "word_type": "noun",
       "page": 134,
-      "notes": "ecrit 팥빙수 aussi",
+      "notes": "écrit 팥빙수 aussi",
       "chapter": 5,
       "id": "voc_ch5_009"
     },
@@ -9758,7 +9758,7 @@
     },
     {
       "korean": "카페",
-      "french": "cafe (lieu)",
+      "french": "café (lieu)",
       "romanization": "kape",
       "theme": "lieux",
       "word_type": "noun",
@@ -9769,7 +9769,7 @@
     },
     {
       "korean": "한국 음식",
-      "french": "cuisine coreenne",
+      "french": "cuisine coréenne",
       "romanization": "hanguk eumsik",
       "theme": "cuisine",
       "word_type": "noun",
@@ -9967,7 +9967,7 @@
     },
     {
       "korean": "커피",
-      "french": "cafe",
+      "french": "café",
       "romanization": "keopi",
       "theme": "boissons",
       "word_type": "noun",
@@ -10082,7 +10082,7 @@
       "theme": "cuisine_coreenne",
       "word_type": "noun",
       "page": 146,
-      "notes": "petits plats d'accompagnement du repas coreen",
+      "notes": "petits plats d'accompagnement du repas coréen",
       "chapter": 5,
       "id": "voc_ch5_064"
     },
@@ -10451,7 +10451,7 @@
     },
     {
       "korean": "한국",
-      "french": "Coree",
+      "french": "Corée",
       "romanization": "Hanguk",
       "theme": "pays",
       "word_type": "noun",
@@ -10473,18 +10473,18 @@
     },
     {
       "korean": "추석",
-      "french": "Chuseok, fete des recoltes",
+      "french": "Chuseok, fête des récoltes",
       "romanization": "chuseok",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 155,
-      "notes": "fete traditionnelle coreenne, 8월 15일 calendrier lunaire",
+      "notes": "fête traditionnelle coréenne, 8월 15일 calendrier lunaire",
       "chapter": 6,
       "id": "voc_ch6_020"
     },
     {
       "korean": "한복",
-      "french": "hanbok (vetement traditionnel coreen)",
+      "french": "hanbok (vêtement traditionnel coréen)",
       "romanization": "hanbok",
       "theme": "culture",
       "word_type": "noun",
@@ -10530,7 +10530,7 @@
       "korean": "설날",
       "french": "Seollal, nouvel an lunaire",
       "romanization": "seollal",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 156,
       "notes": "1월 1일 calendrier lunaire",
@@ -10541,7 +10541,7 @@
       "korean": "신정",
       "french": "Nouvel an solaire",
       "romanization": "sinjeong",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 156,
       "notes": "1월 1일",
@@ -10552,7 +10552,7 @@
       "korean": "삼일절",
       "french": "Mouvement d'independance",
       "romanization": "samiljeol",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 156,
       "notes": "3월 1일",
@@ -10563,7 +10563,7 @@
       "korean": "식목일",
       "french": "Jour des Arbres",
       "romanization": "singmogil",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 156,
       "notes": "4월 5일",
@@ -10572,9 +10572,9 @@
     },
     {
       "korean": "어린이 날",
-      "french": "Fete des enfants",
+      "french": "Fête des enfants",
       "romanization": "eorini nal",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 156,
       "notes": "5월 5일",
@@ -10583,9 +10583,9 @@
     },
     {
       "korean": "현충일",
-      "french": "Commemoration des victimes de la guerre de Coree",
+      "french": "Commemoration des victimes de la guerre de Corée",
       "romanization": "hyeonchungil",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 156,
       "notes": "6월 6일",
@@ -10616,9 +10616,9 @@
     },
     {
       "korean": "제헌절",
-      "french": "Fete de la Constitution",
+      "french": "Fête de la Constitution",
       "romanization": "jeheonjeol",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 157,
       "notes": "7월 17일",
@@ -10627,9 +10627,9 @@
     },
     {
       "korean": "광복절",
-      "french": "Jour de la liberation de la Coree",
+      "french": "Jour de la liberation de la Corée",
       "romanization": "gwangbokjeol",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 157,
       "notes": "8월 15일",
@@ -10640,7 +10640,7 @@
       "korean": "한글날",
       "french": "Jour du Hangeul",
       "romanization": "hangeullal",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 157,
       "notes": "10월 9일",
@@ -10651,7 +10651,7 @@
       "korean": "빼빼로 데이",
       "french": "Pepero day",
       "romanization": "ppeppero dei",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 157,
       "notes": "11월 11일",
@@ -10662,7 +10662,7 @@
       "korean": "성탄절 / 크리스마스",
       "french": "Noel",
       "romanization": "seongtanjeol",
-      "theme": "fete",
+      "theme": "fête",
       "word_type": "noun",
       "page": 157,
       "notes": "12월 25일",
@@ -10907,7 +10907,7 @@
       "theme": "culture",
       "word_type": "noun",
       "page": 164,
-      "notes": "saluer et souhaiter la bonne annee aux aines",
+      "notes": "saluer et souhaiter la bonne annee aux aînés",
       "chapter": 6,
       "id": "voc_ch6_060"
     },
@@ -10958,10 +10958,10 @@
   ],
   "verbs": [
     {
-      "french": "ecrire",
+      "french": "écrire",
       "romanization": "sseuda",
       "page": 28,
-      "notes": "Presente comme exemple de consonne double ㅆ",
+      "notes": "Présente comme exemple de consonne double ㅆ",
       "chapter": 0,
       "id": "vrb_ch0_001",
       "infinitive": "쓰다",
@@ -10974,7 +10974,7 @@
     },
     {
       "infinitive": "이다",
-      "french": "etre",
+      "french": "être",
       "romanization": "ida",
       "stem": "이",
       "verb_type": "copula",
@@ -10988,7 +10988,7 @@
         "polite_negative": "",
         "informal_negative": ""
       },
-      "contraction_note": "On utilise le verbe 'etre' apres un nom afin d'identifier un objet ou de presenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser. Apres voyelle: 야 (familier) / 예요 (poli). Apres consonne: 이야 (familier) / 이에요 (poli). Les phrases affirmatives et interrogatives s'ecrivent de la meme maniere. Alors comment les distinguer ? Il faut preter attention a l'intonation : elle est montante dans les questions.",
+      "contraction_note": "On utilise le verbe 'être' après un nom afin d'identifier un objet ou de présenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser. Après voyelle: 야 (familier) / 예요 (poli). Après consonne: 이야 (familier) / 이에요 (poli). Les phrases affirmatives et interrogatives s'ecrivent de la même manière. Alors comment les distinguer ? Il faut prêter attention a l'intonation : elle est montante dans les questions.",
       "page": 61,
       "examples": [
         {
@@ -11021,7 +11021,7 @@
     },
     {
       "infinitive": "아니다",
-      "french": "ne pas etre",
+      "french": "ne pas être",
       "romanization": "anida",
       "stem": "아니",
       "verb_type": "copula",
@@ -11035,7 +11035,7 @@
         "polite_negative": "",
         "informal_negative": ""
       },
-      "contraction_note": "Voici comment former des phrases avec le verbe 'etre' a la forme negative. Apres voyelle: 가 아니야 (familier) / 가 아니에요 (poli). Apres consonne: 이 아니야 (familier) / 이 아니에요 (poli). Le nom prend la particule sujet 이/가 avant 아니다.",
+      "contraction_note": "Voici comment former des phrases avec le verbe 'être' a la forme negative. Après voyelle: 가 아니야 (familier) / 가 아니에요 (poli). Après consonne: 이 아니야 (familier) / 이 아니에요 (poli). Le nom prend la particule sujet 이/가 avant 아니다.",
       "page": 62,
       "examples": [
         {
@@ -11543,7 +11543,7 @@
     },
     {
       "infinitive": "있다",
-      "french": "il y a, exister, etre (quelque part)",
+      "french": "il y a, exister, être (quelque part)",
       "romanization": "itda",
       "stem": "있",
       "verb_type": "irregular",
@@ -11650,7 +11650,7 @@
         "polite_negative": "",
         "informal_negative": ""
       },
-      "contraction_note": "toujours utilise avec -고 싶다 apres un verbe",
+      "contraction_note": "toujours utilise avec -고 싶다 après un verbe",
       "page": 135,
       "chapter": 5,
       "id": "vrb_ch5_003"
@@ -12170,7 +12170,7 @@
     },
     {
       "infinitive": "이다",
-      "french": "etre (copule)",
+      "french": "être (copule)",
       "romanization": "ida",
       "stem": "이",
       "verb_type": "copula",
@@ -12259,7 +12259,7 @@
       "page": 18,
       "chapter": 0,
       "id": "grm_ch0_002",
-      "explanation": "Chaque syllabe coreenne se construit en combinant une consonne (en violet/bleu) avec une voyelle (en vert/cyan). La consonne precede la voyelle. Pour les voyelles verticales (ㅏ, ㅓ, ㅣ...), la consonne se place a gauche. Pour les voyelles horizontales (ㅗ, ㅜ, ㅡ), la consonne se place au-dessus."
+      "explanation": "Chaque syllabe coréenne se construit en combinant une consonne (en violet/bleu) avec une voyelle (en vert/cyan). La consonne precede la voyelle. Pour les voyelles verticales (ㅏ, ㅓ, ㅣ...), la consonne se place a gauche. Pour les voyelles horizontales (ㅗ, ㅜ, ㅡ), la consonne se place au-dessus."
     },
     {
       "title": "11 voyelles composees",
@@ -12290,7 +12290,7 @@
       "page": 25,
       "chapter": 0,
       "id": "grm_ch0_004",
-      "explanation": "Pour ecrire les voyelles composees, on ecrit d'abord la premiere voyelle composante puis la seconde, en suivant l'ordre des traits de chaque voyelle simple."
+      "explanation": "Pour écrire les voyelles composees, on écrit d'abord la premiere voyelle composante puis la seconde, en suivant l'ordre des traits de chaque voyelle simple."
     },
     {
       "title": "5 consonnes doubles",
@@ -12304,7 +12304,7 @@
       "page": 27,
       "chapter": 0,
       "id": "grm_ch0_005",
-      "explanation": "Les 5 consonnes doubles sont formees en doublant une consonne de base. Elles se prononcent de maniere plus tendue et forte que les consonnes simples correspondantes."
+      "explanation": "Les 5 consonnes doubles sont formees en doublant une consonne de base. Elles se prononcent de manière plus tendue et forte que les consonnes simples correspondantes."
     },
     {
       "title": "Formation de l'heure",
@@ -12374,8 +12374,8 @@
       "explanation": "Pour les mois, on utilise les nombres sino-coréens + 월 (mois). Exceptions : juin = 유월 (pas 육월), octobre = 시월 (pas 십월)."
     },
     {
-      "title": "Formation des nationalites : pays + 사람 / 친구",
-      "explanation": "Pour exprimer la nationalite, on ajoute 사람 (personne) apres le nom du pays. Pour dire 'un(e) ami(e) de telle nationalite', on ajoute 친구 (ami) apres le nom du pays.",
+      "title": "Formation des nationalités : pays + 사람 / 친구",
+      "explanation": "Pour exprimer la nationalité, on ajoute 사람 (personne) après le nom du pays. Pour dire 'un(e) ami(e) de telle nationalité', on ajoute 친구 (ami) après le nom du pays.",
       "rules": [
         {
           "condition": "Nationalite",
@@ -12391,22 +12391,22 @@
       "examples": [
         {
           "korean": "프랑스 사람",
-          "french": "francais(e)",
+          "french": "français(e)",
           "breakdown": "프랑스 (France) + 사람 (personne)"
         },
         {
           "korean": "프랑스 친구",
-          "french": "un(e) ami(e) francais(e)",
+          "french": "un(e) ami(e) français(e)",
           "breakdown": "프랑스 (France) + 친구 (ami)"
         },
         {
           "korean": "한국 사람",
-          "french": "coreen(ne)",
+          "french": "coréen(ne)",
           "breakdown": "한국 (Coree) + 사람 (personne)"
         },
         {
           "korean": "한국 친구",
-          "french": "un(e) ami(e) coreen(ne)",
+          "french": "un(e) ami(e) coréen(ne)",
           "breakdown": "한국 (Coree) + 친구 (ami)"
         }
       ],
@@ -12421,8 +12421,8 @@
       "id": "grm_ch1_001"
     },
     {
-      "title": "Appellation des freres et soeurs aines en Coree",
-      "explanation": "En Coree du Sud, on n'appelle pas les grands freres et grandes soeurs uniquement par leur prenom. Il faut ajouter quelque chose : si tu es une fille, tu appelleras ton grand frere 오빠 et ta grande soeur 언니. Si tu es un garcon, ton grand frere sera 형 et ta grande soeur 누나.",
+      "title": "Appellation des frères et soeurs aînés en Corée",
+      "explanation": "En Corée du Sud, on n'appelle pas les grands frères et grandes soeurs uniquement par leur prénom. Il faut ajouter quelque chose : si tu es une fille, tu appelleras ton grand frère 오빠 et ta grande soeur 언니. Si tu es un garcon, ton grand frère sera 형 et ta grande soeur 누나.",
       "rules": [],
       "examples": [],
       "page": 60,
@@ -12439,7 +12439,7 @@
     },
     {
       "title": "Langage familier vs Langage poli",
-      "explanation": "Langage familier : Si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le meme age que toi, tu utiliseras le langage familier. Langage poli : Si tu parles aux personnes plus agees que toi, tu utiliseras le langage poli.",
+      "explanation": "Langage familier : Si tu t'adresses a tes ami(e)s ou aux personnes qui ont a peu pres le même âge que toi, tu utiliseras le langage familier. Langage poli : Si tu parles aux personnes plus âgées que toi, tu utiliseras le langage poli.",
       "rules": [],
       "examples": [],
       "page": 61,
@@ -12453,8 +12453,8 @@
       "id": "grm_ch1_003"
     },
     {
-      "title": "이다 - etre (copule affirmative)",
-      "explanation": "On utilise le verbe 'etre' apres un nom afin d'identifier un objet ou de presenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser.",
+      "title": "이다 - être (copule affirmative)",
+      "explanation": "On utilise le verbe 'être' après un nom afin d'identifier un objet ou de présenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser.",
       "rules": [
         {
           "condition": "Apres une voyelle",
@@ -12511,7 +12511,7 @@
     },
     {
       "title": "Distinction phrase affirmative / interrogative avec 이다",
-      "explanation": "Les phrases affirmatives et interrogatives s'ecrivent de la meme maniere. Alors comment les distinguer ? Il faut preter attention a l'intonation : elle est montante dans les questions.",
+      "explanation": "Les phrases affirmatives et interrogatives s'ecrivent de la même manière. Alors comment les distinguer ? Il faut prêter attention a l'intonation : elle est montante dans les questions.",
       "rules": [],
       "examples": [],
       "page": 62,
@@ -12524,8 +12524,8 @@
       "id": "grm_ch1_005"
     },
     {
-      "title": "아니다 - ne pas etre (copule negative)",
-      "explanation": "Voici comment former des phrases avec le verbe 'etre' a la forme negative.",
+      "title": "아니다 - ne pas être (copule negative)",
+      "explanation": "Voici comment former des phrases avec le verbe 'être' a la forme negative.",
       "rules": [
         {
           "condition": "Apres une voyelle",
@@ -12581,18 +12581,18 @@
       "id": "grm_ch1_006"
     },
     {
-      "title": "Nom de famille + prenom en coreen",
-      "explanation": "Et lorsqu'on se presente, on indique d'abord le nom de famille, puis le prenom. Meme a l'ecrit !",
+      "title": "Nom de famille + prénom en coréen",
+      "explanation": "Et lorsqu'on se présente, on indique d'abord le nom de famille, puis le prénom. Même a l'écrit !",
       "rules": [],
       "examples": [
         {
           "korean": "김민규",
-          "french": "Kim Mingyu (nom + prenom)",
+          "french": "Kim Mingyu (nom + prénom)",
           "breakdown": "김 (nom) + 민규 (prenom)"
         },
         {
           "korean": "이석민",
-          "french": "Lee Seokmin (nom + prenom)",
+          "french": "Lee Seokmin (nom + prénom)",
           "breakdown": "이 (nom) + 석민 (prenom)"
         }
       ],
@@ -12606,8 +12606,8 @@
       "id": "grm_ch1_007"
     },
     {
-      "title": "Suffixes d'appellation pour les prenoms (아/야)",
-      "explanation": "Lorsqu'on interpelle une personne tres proche et moins agee, on ajoutera un suffixe a son prenom : 아 si le prenom se termine par une consonne ; 야 s'il se termine par une voyelle.",
+      "title": "Suffixes d'appellation pour les prénoms (아/야)",
+      "explanation": "Lorsqu'on interpelle une personne très proche et moins âgée, on ajoutera un suffixe a son prénom : 아 si le prénom se termine par une consonne ; 야 s'il se termine par une voyelle.",
       "rules": [
         {
           "condition": "Prenom se termine par une consonne",
@@ -12643,7 +12643,7 @@
     },
     {
       "title": "Suffixe de respect 님",
-      "explanation": "Pour nommer les personnes plus agees, on utilisera 님 a la fin. Tu veux appeler ton enseignant(e) par exemple ? Ajoute 님 au mot 선생 !",
+      "explanation": "Pour nommer les personnes plus âgées, on utilisera 님 a la fin. Tu veux appeler ton enseignant(e) par exemple ? Ajoute 님 au mot 선생 !",
       "rules": [
         {
           "condition": "Respect envers une personne plus agee",
@@ -13059,7 +13059,7 @@
     },
     {
       "title": "Les verbes en 하다",
-      "explanation": "De nombreux verbes coreens sont formes a partir d'un nom + 하다 (faire). A l'infinitif : nom + 하다. Conjugues au present : nom + 해요 (poli) ou nom + 해 (informel).",
+      "explanation": "De nombreux verbes coréens sont formes à partir d'un nom + 하다 (faire). A l'infinitif : nom + 하다. Conjugues au present : nom + 해요 (poli) ou nom + 해 (informel).",
       "rules": [
         {
           "condition": "Verbe en 하다",
@@ -13090,7 +13090,7 @@
     },
     {
       "title": "Les terminaisons du present (아요/어요/해요)",
-      "explanation": "Pour conjuguer les verbes au present : 1. supprimer -다 de l'infinitif. 2. ajouter la terminaison en fonction de la derniere voyelle du radical du verbe. En coreen, il n'y a pas de conjugaison qui change selon les sujets. C'est donc la meme forme pour toutes les personnes.",
+      "explanation": "Pour conjuguer les verbes au present : 1. supprimer -다 de l'infinitif. 2. ajouter la terminaison en fonction de la derniere voyelle du radical du verbe. En coréen, il n'y a pas de conjugaison qui change selon les sujets. C'est donc la même forme pour toutes les personnes.",
       "rules": [
         {
           "condition": "Radical avec voyelle ㅏ ou ㅗ",
@@ -13229,7 +13229,7 @@
     },
     {
       "title": "La direction: consonne + 으로 / voyelle + 로",
-      "explanation": "Pour indiquer la direction, on ajoute 으로 apres une consonne et 로 apres une voyelle ou la consonne ㄹ.",
+      "explanation": "Pour indiquer la direction, on ajoute 으로 après une consonne et 로 après une voyelle ou la consonne ㄹ.",
       "rules": [
         {
           "condition": "Apres consonne",
@@ -13389,7 +13389,7 @@
     },
     {
       "title": "Les moyens de transport: transport + (으)로 가다",
-      "explanation": "Pour indiquer le moyen de transport, on utilise la meme particule de direction 으로/로 avec le nom du transport.",
+      "explanation": "Pour indiquer le moyen de transport, on utilise la même particule de direction 으로/로 avec le nom du transport.",
       "rules": [
         {
           "condition": "Apres voyelle",
@@ -13528,7 +13528,7 @@
     },
     {
       "title": "Les pronoms de lieu 여기/거기/저기",
-      "explanation": "Pronoms demonstratifs de lieu, meme logique de distance que 이/그/저. Il n'y a ni masculin ni feminin, et on ne precise ni le singulier ni le pluriel.",
+      "explanation": "Pronoms demonstratifs de lieu, même logique de distance que 이/그/저. Il n'y a ni masculin ni feminin, et on ne precise ni le singulier ni le pluriel.",
       "rules": [
         {
           "condition": "Ici (proche du locuteur)",
@@ -13565,7 +13565,7 @@
     },
     {
       "title": "-고 싶다 (vouloir, avoir envie de)",
-      "explanation": "La terminaison -고 싶어요 equivaut a 'vouloir' au present. On l'ajoute apres le radical du verbe, uniquement a la 1re et a la 2e personne.",
+      "explanation": "La terminaison -고 싶어요 equivaut a 'vouloir' au present. On l'ajoute après le radical du verbe, uniquement a la 1re et a la 2e personne.",
       "rules": [
         {
           "condition": "tous les verbes",
@@ -13621,7 +13621,7 @@
         },
         {
           "korean": "커피하고 물 마시고 싶어요.",
-          "french": "J'ai envie de boire un cafe et de l'eau.",
+          "french": "J'ai envie de boire un café et de l'eau.",
           "breakdown": "커피 + 하고 + 물 + 마시고 싶어요"
         }
       ],
@@ -13635,8 +13635,8 @@
       "id": "grm_ch5_001"
     },
     {
-      "title": "으로/로 만들어요 (etre fait de)",
-      "explanation": "La particule 으로/로 suivie de 만들어요 signifie 'etre fait de' ou 'c'est fait avec'. On utilise 로 apres une voyelle ou la consonne ㄹ, et 으로 apres une consonne.",
+      "title": "으로/로 만들어요 (être fait de)",
+      "explanation": "La particule 으로/로 suivie de 만들어요 signifie 'être fait de' ou 'c'est fait avec'. On utilise 로 après une voyelle ou la consonne ㄹ, et 으로 après une consonne.",
       "rules": [
         {
           "condition": "apres une voyelle",
@@ -13731,8 +13731,8 @@
       "id": "grm_ch5_002"
     },
     {
-      "title": "Les classificateurs (NOM + nombre coreen + classificateur)",
-      "explanation": "En coreen, on ne peut pas associer un nombre a un nom directement. On doit utiliser les classificateurs selon le modele : NOM + nombre coreen + classificateur. Les 4 premiers chiffres coreens changent de forme devant un classificateur.",
+      "title": "Les classificateurs (NOM + nombre coréen + classificateur)",
+      "explanation": "En coréen, on ne peut pas associer un nombre a un nom directement. On doit utiliser les classificateurs selon le modele : NOM + nombre coréen + classificateur. Les 4 premiers chiffres coréens changent de forme devant un classificateur.",
       "rules": [
         {
           "condition": "modele general",
@@ -13768,7 +13768,7 @@
         },
         {
           "korean": "학생 열 명",
-          "french": "dix etudiants",
+          "french": "dix étudiants",
           "breakdown": "학생 (etudiant) + 열 (10) + 명 (classificateur personnes)"
         },
         {
@@ -13835,7 +13835,7 @@
     },
     {
       "title": "Le passe (았/었/했어요)",
-      "explanation": "Pour conjuguer les verbes au passe: 1. supprimer -다 de l'infinitif. 2. ajouter la terminaison en fonction de la derniere voyelle du radical du verbe. Pour les formes contractees et la negation, c'est la meme chose qu'au present (voir p. 102).",
+      "explanation": "Pour conjuguer les verbes au passe: 1. supprimer -다 de l'infinitif. 2. ajouter la terminaison en fonction de la derniere voyelle du radical du verbe. Pour les formes contractees et la negation, c'est la même chose qu'au present (voir p. 102).",
       "rules": [
         {
           "condition": "Radical avec voyelle ㅏ ou ㅗ",
@@ -13882,8 +13882,8 @@
       "id": "grm_ch6_002"
     },
     {
-      "title": "Le passe du verbe etre 이다",
-      "explanation": "Le verbe etre 이다 se conjugue differemment au passe selon que le mot se termine par une voyelle ou une consonne.",
+      "title": "Le passe du verbe être 이다",
+      "explanation": "Le verbe être 이다 se conjugue differemment au passe selon que le mot se termine par une voyelle ou une consonne.",
       "rules": [
         {
           "condition": "Mot se terminant par une voyelle",
@@ -13940,7 +13940,7 @@
     },
     {
       "title": "La date",
-      "explanation": "La date en coreen s'exprime: MOIS (nombre sino-coreen + 월) + JOUR (nombre sino-coreen + 일) + (JOUR DE LA SEMAINE). Attention aux mois de juin (유월, pas 육월) et d'octobre (시월, pas 십월), ce sont des exceptions.",
+      "explanation": "La date en coréen s'exprime: MOIS (nombre sino-coréen + 월) + JOUR (nombre sino-coréen + 일) + (JOUR DE LA SEMAINE). Attention aux mois de juin (유월, pas 육월) et d'octobre (시월, pas 십월), ce sont des exceptions.",
       "rules": [
         {
           "condition": "Structure de la date",
@@ -13973,7 +13973,7 @@
     },
     {
       "title": "L'heure",
-      "explanation": "HEURE = nombres coreens (natifs) + 시. MINUTE = nombres sino-coreens + 분. A la place de 30분, on peut utiliser le mot 반 qui signifie 'demi'. N'oublie pas de mettre la particule de temps 에 a la fin du groupe nominal. Les Coreens n'utilisent pas beaucoup les nombres de 13 a 24. Pour dire 20h, on dira plutot 8h du soir en placant les mots 아침/오전, 오후, 저녁, 밤 AVANT l'heure.",
+      "explanation": "HEURE = nombres coréens (natifs) + 시. MINUTE = nombres sino-coréens + 분. A la place de 30분, on peut utiliser le mot 반 qui signifie 'demi'. N'oublie pas de mettre la particule de temps 에 a la fin du groupe nominal. Les Coréens n'utilisent pas beaucoup les nombres de 13 a 24. Pour dire 20h, on dira plutot 8h du soir en placant les mots 아침/오전, 오후, 저녁, 밤 AVANT l'heure.",
       "rules": [
         {
           "condition": "Heure",
@@ -14042,7 +14042,7 @@
       "examples": [
         {
           "korean": "1월부터 12월까지",
-          "french": "de janvier a decembre",
+          "french": "de janvier a décembre",
           "breakdown": "1월부터=depuis janvier, 12월까지=jusqu'a decembre"
         },
         {
@@ -14084,7 +14084,7 @@
         },
         {
           "korean": "나영은 한국 사람이야.",
-          "french": "Nayoung est coreenne.",
+          "french": "Nayoung est coréenne.",
           "highlighted": "은"
         },
         {
@@ -14094,7 +14094,7 @@
         },
         {
           "korean": "저는 프랑스 사람이에요.",
-          "french": "Je suis francais(e).",
+          "french": "Je suis français(e).",
           "highlighted": "는"
         }
       ],
@@ -14114,7 +14114,7 @@
       "examples": [
         {
           "korean": "이름이 뭐야?",
-          "french": "Comment tu t'appelles ? (Litt: Quel est ton prenom ?)",
+          "french": "Comment tu t'appelles ? (Litt: Quel est ton prénom ?)",
           "highlighted": "이"
         },
         {
@@ -14129,7 +14129,7 @@
         },
         {
           "korean": "한국 사람이 아니야.",
-          "french": "Il/Elle n'est pas coreen(ne).",
+          "french": "Il/Elle n'est pas coréen(ne).",
           "highlighted": "이"
         },
         {
@@ -14144,7 +14144,7 @@
         }
       ],
       "page": 53,
-      "notes": "Particule sujet: voyelle + 가 / consonne + 이. Utilisee notamment avec 아니다 (ne pas etre) et dans les questions avec 뭐.",
+      "notes": "Particule sujet: voyelle + 가 / consonne + 이. Utilisee notamment avec 아니다 (ne pas être) et dans les questions avec 뭐.",
       "chapter": 1,
       "id": "ptc_ch1_002"
     },
@@ -14287,7 +14287,7 @@
     {
       "particle": "을/를",
       "name_fr": "Particule COD (complement d'objet direct)",
-      "function_fr": "Marque le complement d'objet direct du verbe. Beaucoup de Coreens ne l'emploient pas a l'oral.",
+      "function_fr": "Marque le complement d'objet direct du verbe. Beaucoup de Coréens ne l'emploient pas a l'oral.",
       "forms": {
         "after_vowel": "를",
         "after_consonant": "을"
@@ -14529,7 +14529,7 @@
         }
       ],
       "page": 136,
-      "notes": "apres ㄹ on utilise 로 (pas 으로): 쌀로",
+      "notes": "après ㄹ on utilise 로 (pas 으로): 쌀로",
       "chapter": 5,
       "id": "ptc_ch5_001"
     },
@@ -14675,7 +14675,7 @@
     },
     {
       "particle": "부터",
-      "name_fr": "particule de temps (depuis/a partir de)",
+      "name_fr": "particule de temps (depuis/à partir de)",
       "function_fr": "Indique le point de depart dans le temps",
       "forms": {
         "after_vowel": "부터",
@@ -14684,7 +14684,7 @@
       "examples": [
         {
           "korean": "1월부터 12월까지",
-          "french": "de janvier a decembre",
+          "french": "de janvier a décembre",
           "highlighted": "1월부터"
         },
         {
@@ -14713,7 +14713,7 @@
       "examples": [
         {
           "korean": "1월부터 12월까지",
-          "french": "de janvier a decembre",
+          "french": "de janvier a décembre",
           "highlighted": "12월까지"
         },
         {
@@ -14774,11 +14774,11 @@
       "korean": "하고",
       "french": "avec / et",
       "romanization": "hago",
-      "usage_fr": "Connecteur utilise pour relier deux noms (signifiant 'et' ou 'avec'). Place apres le nom.",
+      "usage_fr": "Connecteur utilise pour relier deux noms (signifiant 'et' ou 'avec'). Place après le nom.",
       "examples": [
         {
           "korean": "남동생하고 식당에서 저녁을 먹어.",
-          "french": "Je dine au restaurant avec mon petit frere."
+          "french": "Je dine au restaurant avec mon petit frère."
         },
         {
           "korean": "친구하고 운동장에서 운동해.",
@@ -14850,7 +14850,7 @@
         },
         {
           "korean": "커피하고 물 마시고 싶어요.",
-          "french": "J'ai envie de boire un cafe et de l'eau."
+          "french": "J'ai envie de boire un café et de l'eau."
         },
         {
           "korean": "밥하고, 고기하고 ...로 만들어.",
@@ -15097,7 +15097,7 @@
         "korean": "이름이 뭐야?",
         "romanization": "ireumi mwoya?"
       },
-      "context": "Litteralement: Quel est ton prenom ?",
+      "context": "Litteralement: Quel est ton prénom ?",
       "page": 53,
       "chapter": 1,
       "id": "exp_ch1_001"
@@ -15112,7 +15112,7 @@
         "korean": "나는 알리스야.",
         "romanization": "naneun alliseuya."
       },
-      "context": "Prenom se terminant par une voyelle",
+      "context": "Prénom se terminant par une voyelle",
       "page": 54,
       "chapter": 1,
       "id": "exp_ch1_002"
@@ -15127,13 +15127,13 @@
         "korean": "나는 나영이야.",
         "romanization": "naneun nayeongiya."
       },
-      "context": "Prenom se terminant par une consonne",
+      "context": "Prénom se terminant par une consonne",
       "page": 54,
       "chapter": 1,
       "id": "exp_ch1_003"
     },
     {
-      "french": "Tu es coreen(ne) ?",
+      "french": "Tu es coréen(ne) ?",
       "polite": {
         "korean": "",
         "romanization": ""
@@ -15142,13 +15142,13 @@
         "korean": "한국 사람이야?",
         "romanization": "hanguk saramiya?"
       },
-      "context": "Demander la nationalite (familier)",
+      "context": "Demander la nationalité (familier)",
       "page": 54,
       "chapter": 1,
       "id": "exp_ch1_004"
     },
     {
-      "french": "Je suis francais(e).",
+      "french": "Je suis français(e).",
       "polite": {
         "korean": "저는 프랑스 사람이에요.",
         "romanization": "jeoneun peurangseu saramieyo."
@@ -15163,7 +15163,7 @@
       "id": "exp_ch1_005"
     },
     {
-      "french": "Quelle est votre nationalite ?",
+      "french": "Quelle est votre nationalité ?",
       "polite": {
         "korean": "어느 나라 사람이에요?",
         "romanization": "eoneu nara saramieyo?"
@@ -15172,7 +15172,7 @@
         "korean": "",
         "romanization": ""
       },
-      "context": "Forme polie pour demander la nationalite",
+      "context": "Forme polie pour demander la nationalité",
       "page": 57,
       "chapter": 1,
       "id": "exp_ch1_006"
@@ -15193,7 +15193,7 @@
       "id": "exp_ch1_007"
     },
     {
-      "french": "Non, c'est le grand frere.",
+      "french": "Non, c'est le grand frère.",
       "polite": {
         "korean": "아니요, 오빠에요.",
         "romanization": "aniyo, oppaeyo."
@@ -15247,7 +15247,7 @@
         "korean": "안녕?",
         "romanization": "annyeong?"
       },
-      "context": "Salutation familiere (entre amis / meme age)",
+      "context": "Salutation familiere (entre amis / même âge)",
       "page": 67,
       "chapter": 1,
       "id": "exp_ch1_011"
@@ -15838,7 +15838,7 @@
       "id": "exp_ch3_011"
     },
     {
-      "french": "Je suis au cafe. Qu'est-ce que tu fais au parc ?",
+      "french": "Je suis au café. Qu'est-ce que tu fais au parc ?",
       "polite": {
         "korean": "",
         "romanization": ""
@@ -15913,7 +15913,7 @@
       "id": "exp_ch3_016"
     },
     {
-      "french": "Je dine au restaurant avec mon petit frere.",
+      "french": "Je dine au restaurant avec mon petit frère.",
       "polite": {
         "korean": "",
         "romanization": ""
@@ -15928,7 +15928,7 @@
       "id": "exp_ch3_017"
     },
     {
-      "french": "Ou est ton petit frere ?",
+      "french": "Ou est ton petit frère ?",
       "polite": {
         "korean": "",
         "romanization": ""
@@ -16072,7 +16072,7 @@
         "korean": "여기가 주방이야.",
         "romanization": "yeogiga jubangiya."
       },
-      "context": "Presenter une piece de la maison",
+      "context": "Présenter une piece de la maison",
       "page": 113,
       "chapter": 4,
       "id": "exp_ch4_003"
@@ -16483,7 +16483,7 @@
       "id": "exp_ch5_012"
     },
     {
-      "french": "Tiens ! / Voila !",
+      "french": "Tiens ! / Voilà !",
       "polite": {
         "korean": "",
         "romanization": ""
@@ -16815,8 +16815,8 @@
   ],
   "dialogues": [
     {
-      "title_fr": "Je retiens - Se presenter (familier)",
-      "setting_fr": "Phrases-cles a retenir pour se presenter entre amis",
+      "title_fr": "Je retiens - Se présenter (familier)",
+      "setting_fr": "Phrases-cles a retenir pour se présenter entre amis",
       "lines": [
         {
           "speaker": "",
@@ -16839,13 +16839,13 @@
         {
           "speaker": "",
           "korean": "한국 사람이야?",
-          "french": "Tu es coreen(ne) ?",
+          "french": "Tu es coréen(ne) ?",
           "romanization": "hanguk saramiya?"
         },
         {
           "speaker": "",
           "korean": "프랑스 사람이야.",
-          "french": "Je suis francais(e).",
+          "french": "Je suis français(e).",
           "romanization": "peurangseu saramiya."
         }
       ],
@@ -16855,7 +16855,7 @@
       "id": "dlg_ch1_001"
     },
     {
-      "title_fr": "Se presenter a la famille Parasite",
+      "title_fr": "Se présenter a la famille Parasite",
       "setting_fr": "Presentation des membres de la famille Kim du film Parasite (기생충) de Bong Joon-Ho. Le film a remporte la Palme d'Or a Cannes et le Best Picture aux Oscars.",
       "lines": [
         {
@@ -16867,19 +16867,19 @@
         {
           "speaker": "동익",
           "korean": "아버지",
-          "french": "pere",
+          "french": "père",
           "romanization": "abeoji"
         },
         {
           "speaker": "기우",
           "korean": "오빠/형",
-          "french": "grand frere",
+          "french": "grand frère",
           "romanization": "oppa/hyeong"
         },
         {
           "speaker": "연교",
           "korean": "어머니",
-          "french": "mere",
+          "french": "mère",
           "romanization": "eomeoni"
         },
         {
@@ -16891,7 +16891,7 @@
         {
           "speaker": "다송",
           "korean": "(남)동생",
-          "french": "petit frere",
+          "french": "petit frère",
           "romanization": "(nam)dongsaeng"
         },
         {
@@ -16902,7 +16902,7 @@
         }
       ],
       "page": 56,
-      "notes": "Audio 49. Dialogue pour identifier les membres d'une famille a partir de l'affiche du film Parasite.",
+      "notes": "Audio 49. Dialogue pour identifier les membres d'une famille à partir de l'affiche du film Parasite.",
       "chapter": 1,
       "id": "dlg_ch1_002"
     },
@@ -16919,7 +16919,7 @@
         {
           "speaker": "Reponse",
           "korean": "아니요, 오빠에요.",
-          "french": "Non, c'est le grand frere.",
+          "french": "Non, c'est le grand frère.",
           "romanization": "aniyo, oppaeyo."
         }
       ],
@@ -16929,8 +16929,8 @@
       "id": "dlg_ch1_003"
     },
     {
-      "title_fr": "Je retiens - Se presenter (poli)",
-      "setting_fr": "Phrases-cles a retenir pour se presenter poliment",
+      "title_fr": "Je retiens - Se présenter (poli)",
+      "setting_fr": "Phrases-cles a retenir pour se présenter poliment",
       "lines": [
         {
           "speaker": "",
@@ -16941,7 +16941,7 @@
         {
           "speaker": "",
           "korean": "저는 프랑스 사람이에요.",
-          "french": "Je suis francais(e).",
+          "french": "Je suis français(e).",
           "romanization": "jeoneun peurangseu saramieyo."
         },
         {
@@ -16958,7 +16958,7 @@
     },
     {
       "title_fr": "BD - Jia et Damien se rencontrent",
-      "setting_fr": "Jia part etudier en Coree. Le premier jour, elle rencontre Damien dans le couloir de leur residence...",
+      "setting_fr": "Jia part etudier en Corée. Le premier jour, elle rencontre Damien dans le couloir de leur residence...",
       "lines": [
         {
           "speaker": "Jia",
@@ -16987,18 +16987,18 @@
         {
           "speaker": "Jia",
           "korean": "한국 사람이야?",
-          "french": "Tu es coreen ?",
+          "french": "Tu es coréen ?",
           "romanization": "hanguk saramiya?"
         },
         {
           "speaker": "Damien",
           "korean": "아니, 한국 사람이 아니야. 프랑스 사람이야.",
-          "french": "Non, je ne suis pas coreen. Je suis francais.",
+          "french": "Non, je ne suis pas coréen. Je suis français.",
           "romanization": "ani, hanguk sarami aniya. peurangseu saramiya."
         }
       ],
       "page": 67,
-      "notes": "Section 'Mon imagination !' - BD manga avec dialogue complet de presentation entre deux etudiants",
+      "notes": "Section 'Mon imagination !' - BD manga avec dialogue complet de presentation entre deux étudiants",
       "chapter": 1,
       "id": "dlg_ch1_005"
     },
@@ -17099,7 +17099,7 @@
     },
     {
       "title_fr": "Conversation par messages - Dasol et Nayoung",
-      "setting_fr": "Echange de messages sur smartphone entre deux amis un apres-midi",
+      "setting_fr": "Echange de messages sur smartphone entre deux amis un après-midi",
       "lines": [
         {
           "speaker": "나영",
@@ -17116,7 +17116,7 @@
         {
           "speaker": "나영",
           "korean": "나는 카페에 있어. 공원에서 뭐 해?",
-          "french": "Je suis au cafe. Qu'est-ce que tu fais au parc ?",
+          "french": "Je suis au café. Qu'est-ce que tu fais au parc ?",
           "romanization": "naneun kapee isseo. gongwoneseo mwo hae?"
         },
         {
@@ -17146,13 +17146,13 @@
         {
           "speaker": "다솔",
           "korean": "남동생하고 식당에서 저녁을 먹어.",
-          "french": "Je dine au restaurant avec mon petit frere.",
+          "french": "Je dine au restaurant avec mon petit frère.",
           "romanization": "namdongsaenghago sikdangeseo jeonyeogeul meogeo."
         },
         {
           "speaker": "나영",
           "korean": "남동생은 어디에 있어?",
-          "french": "Ou est ton petit frere ?",
+          "french": "Ou est ton petit frère ?",
           "romanization": "namdongsaengeun eodie isseo?"
         },
         {
@@ -17305,7 +17305,7 @@
         {
           "speaker": "Jia",
           "korean": "신촌 옆에 있어.",
-          "french": "C'est a cote de Sinchon.",
+          "french": "C'est à côté de Sinchon.",
           "romanization": "sinchon yeope isseo."
         },
         {
@@ -17345,18 +17345,18 @@
     },
     {
       "title_fr": "Devinette culinaire (textos)",
-      "setting_fr": "Nayoung et Dasol discutent par messages d'un plat coreen",
+      "setting_fr": "Nayoung et Dasol discutent par messages d'un plat coréen",
       "lines": [
         {
           "speaker": "다솔",
           "korean": "한국 음식? 뭐?",
-          "french": "Cuisine coreenne ? Quoi ?",
+          "french": "Cuisine coréenne ? Quoi ?",
           "romanization": "hanguk eumsik? mwo?"
         },
         {
           "speaker": "나영",
           "korean": "퀴즈! 이 한국 음식은 야채, 고기, 간장으로 만들어!",
-          "french": "Quiz ! Ce plat coreen est fait de legumes, viande et sauce soja !",
+          "french": "Quiz ! Ce plat coréen est fait de legumes, viande et sauce soja !",
           "romanization": "kwijeu! i hanguk eumsigeun yachae, gogi, ganjangeuro mandeureo!"
         },
         {
@@ -17548,13 +17548,13 @@
         {
           "speaker": "나영",
           "korean": "프랑스 친구가 한국에 왔어!",
-          "french": "Un(e) ami(e) francais(e) est venu(e) en Coree !",
+          "french": "Un(e) ami(e) français(e) est venu(e) en Corée !",
           "romanization": "peurangseu chinguga hanguge wasseo!"
         },
         {
           "speaker": "다솔",
           "korean": "와! 프랑스 친구? 누구?",
-          "french": "Wah ! Un(e) ami(e) francais(e) ? Qui ?",
+          "french": "Wah ! Un(e) ami(e) français(e) ? Qui ?",
           "romanization": "wa! peurangseu chingu? nugu?"
         },
         {
@@ -18262,7 +18262,7 @@
     {
       "infinitive": "달다",
       "korean_polite": "달아요",
-      "french": "etre sucre",
+      "french": "être sucre",
       "romanization": "dalda",
       "semantic_group": "saveurs",
       "page": 139,
@@ -18311,7 +18311,7 @@
     },
     {
       "korean": "행복하다",
-      "french": "etre heureux/heureuse",
+      "french": "être heureux/heureuse",
       "romanization": "haengbokhada",
       "page": 153,
       "notes": "emotion",
@@ -18320,18 +18320,8 @@
       "korean_polite": "행복해요"
     },
     {
-      "korean": "슬프다",
-      "french": "etre triste",
-      "romanization": "seulpeuda",
-      "page": 153,
-      "notes": "emotion",
-      "chapter": 6,
-      "id": "adj_ch6_002",
-      "korean_polite": "슬퍼요"
-    },
-    {
       "korean": "화가 나다",
-      "french": "etre en colere",
+      "french": "être en colere",
       "romanization": "hwaga nada",
       "page": 153,
       "notes": "expression avec 화 (colere) + 가 나다 (sortir)",
@@ -18437,7 +18427,7 @@
     },
     {
       "korean": "맛있게",
-      "french": "delicieusement, de maniere delicieuse",
+      "french": "delicieusement, de manière delicieuse",
       "romanization": "masitge",
       "usage": "utilise dans 맛있게 먹어 (Bon appetit), 맛있게 드세요 (Bon appetit poli)",
       "page": 132,
@@ -18592,7 +18582,7 @@
       "examples": [
         {
           "korean": "학생 열 명",
-          "french": "dix etudiants"
+          "french": "dix étudiants"
         }
       ],
       "page": 143,
@@ -18626,7 +18616,7 @@
       "romanization": "il",
       "system": "sino-korean",
       "page": 162,
-      "notes": "Utilise avec les nombres sino-coreens",
+      "notes": "Utilise avec les nombres sino-coréens",
       "chapter": 6,
       "id": "clf_ch6_002"
     }
@@ -18742,7 +18732,7 @@
     },
     {
       "title": "Voyelles composees homophones",
-      "explanation_fr": "Certaines voyelles composees se prononcent presque de la meme maniere : ㅐ et ㅔ se prononcent 'e ou e', ㅒ et ㅖ se prononcent 'ye ou ye', ㅙ et ㅞ se prononcent 'we ou we'.",
+      "explanation_fr": "Certaines voyelles composees se prononcent presque de la même manière : ㅐ et ㅔ se prononcent 'e ou e', ㅒ et ㅖ se prononcent 'ye ou ye', ㅙ et ㅞ se prononcent 'we ou we'.",
       "rule_pattern": "ㅐ = ㅔ, ㅒ = ㅖ, ㅙ = ㅞ",
       "examples": [
         {
@@ -19003,7 +18993,7 @@
       "chapter": 1,
       "id": "pron_ch1_001",
       "title": "Intonation montante pour les questions",
-      "explanation_fr": "Les phrases affirmatives et interrogatives avec 이다 s'ecrivent de la meme maniere. Pour les distinguer, il faut preter attention a l'intonation : elle est montante dans les questions."
+      "explanation_fr": "Les phrases affirmatives et interrogatives avec 이다 s'ecrivent de la même manière. Pour les distinguer, il faut prêter attention a l'intonation : elle est montante dans les questions."
     },
     {
       "examples": [
@@ -19014,7 +19004,7 @@
       "chapter": 6,
       "id": "pron_ch6_001",
       "title": "Exception des mois de juin et octobre",
-      "explanation_fr": "6월 se prononce et s'ecrit 유월 (yuwol) et non 육월 (yukwol). 10월 se prononce et s'ecrit 시월 (siwol) et non 십월 (sipwol)."
+      "explanation_fr": "6월 se prononce et s'écrit 유월 (yuwol) et non 육월 (yukwol). 10월 se prononce et s'écrit 시월 (siwol) et non 십월 (sipwol)."
     }
   ],
   "culture": [
@@ -19076,8 +19066,8 @@
       "id": "cul_ch0_004"
     },
     {
-      "title": "Les fruits en Coree",
-      "body": "Section 'Les fruits' : exercice de reconnaissance et recopie des mots coreens pour les fruits courants.",
+      "title": "Les fruits en Corée",
+      "body": "Section 'Les fruits' : exercice de reconnaissance et recopie des mots coréens pour les fruits courants.",
       "keywords": [
         "fruits",
         "vocabulaire",
@@ -19092,7 +19082,7 @@
     },
     {
       "title": "La nourriture",
-      "body": "Section 'La nourriture' : vocabulaire des aliments courants en Coree incluant viande, fromage, beurre, pizza.",
+      "body": "Section 'La nourriture' : vocabulaire des aliments courants en Corée incluant viande, fromage, beurre, pizza.",
       "keywords": [
         "nourriture",
         "고기",
@@ -19105,8 +19095,8 @@
       "id": "cul_ch0_006"
     },
     {
-      "title": "Les vetements",
-      "body": "Section 'Les vetements' : vocabulaire des vetements courants.",
+      "title": "Les vêtements",
+      "body": "Section 'Les vêtements' : vocabulaire des vêtements courants.",
       "keywords": [
         "vetements",
         "치마",
@@ -19247,7 +19237,7 @@
     },
     {
       "title": "Le film Parasite (기생충)",
-      "body": "Presentation des membres de la famille du film Parasite de Bong Joon-Ho, gagnant du Best Picture aux Oscars et de la Palme d'Or a Cannes. Les personnages sont : 기택 (papa/아빠), 동익 (pere/아버지), 기우 (grand frere/오빠/형), 연교 (mere/어머니), 기정 (grande soeur/언니/누나), 다송 (petit frere/(남)동생), 혜 (petite soeur/(여)동생). Illustration des termes familiaux informels (아빠, 엄마) vs formels (아버지, 어머니).",
+      "body": "Presentation des membres de la famille du film Parasite de Bong Joon-Ho, gagnant du Best Picture aux Oscars et de la Palme d'Or a Cannes. Les personnages sont : 기택 (papa/아빠), 동익 (père/아버지), 기우 (grand frère/오빠/형), 연교 (mère/어머니), 기정 (grande soeur/언니/누나), 다송 (petit frère/(남)동생), 혜 (petite soeur/(여)동생). Illustration des termes familiaux informels (아빠, 엄마) vs formels (아버지, 어머니).",
       "keywords": [
         "기생충",
         "Parasite",
@@ -19260,8 +19250,8 @@
       "id": "cul_ch1_001"
     },
     {
-      "title": "Appellation des freres et soeurs en Coree du Sud",
-      "body": "En Coree du Sud, on n'appelle pas les grands freres et grandes soeurs uniquement par leur prenom. Il faut ajouter quelque chose : si tu es une fille, tu appelleras ton grand frere 오빠 et ta grande soeur 언니. Si tu es un garcon, ton grand frere sera 형 et ta grande soeur 누나.",
+      "title": "Appellation des frères et soeurs en Corée du Sud",
+      "body": "En Corée du Sud, on n'appelle pas les grands frères et grandes soeurs uniquement par leur prénom. Il faut ajouter quelque chose : si tu es une fille, tu appelleras ton grand frère 오빠 et ta grande soeur 언니. Si tu es un garcon, ton grand frère sera 형 et ta grande soeur 누나.",
       "keywords": [
         "오빠",
         "형",
@@ -19274,8 +19264,8 @@
       "id": "cul_ch1_002"
     },
     {
-      "title": "Ordre nom-prenom en Coree",
-      "body": "Et lorsqu'on se presente, on indique d'abord le nom de famille, puis le prenom. Meme a l'ecrit ! Exemples de celebrites : 김민규 (Kim Mingyu), 이석민 (Lee Seokmin).",
+      "title": "Ordre nom-prénom en Corée",
+      "body": "Et lorsqu'on se présente, on indique d'abord le nom de famille, puis le prénom. Même a l'écrit ! Exemples de celebrites : 김민규 (Kim Mingyu), 이석민 (Lee Seokmin).",
       "keywords": [
         "성",
         "이름",
@@ -19288,8 +19278,8 @@
       "id": "cul_ch1_003"
     },
     {
-      "title": "Suffixes d'appellation 아/야 pour les prenoms",
-      "body": "Lorsqu'on interpelle une personne tres proche et moins agee, on ajoutera un suffixe a son prenom : 아 si le prenom se termine par une consonne ; 야 s'il se termine par une voyelle.",
+      "title": "Suffixes d'appellation 아/야 pour les prénoms",
+      "body": "Lorsqu'on interpelle une personne très proche et moins âgée, on ajoutera un suffixe a son prénom : 아 si le prénom se termine par une consonne ; 야 s'il se termine par une voyelle.",
       "keywords": [
         "아",
         "야",
@@ -19302,7 +19292,7 @@
     },
     {
       "title": "Le suffixe de respect 님",
-      "body": "Pour nommer les personnes plus agees, on utilisera 님 a la fin. Tu veux appeler ton enseignant(e) par exemple ? Ajoute 님 au mot 선생 ! On obtient 선생님.",
+      "body": "Pour nommer les personnes plus âgées, on utilisera 님 a la fin. Tu veux appeler ton enseignant(e) par exemple ? Ajoute 님 au mot 선생 ! On obtient 선생님.",
       "keywords": [
         "님",
         "선생님",
@@ -19314,8 +19304,8 @@
       "id": "cul_ch1_005"
     },
     {
-      "title": "Noms de famille et prenoms dans les autres pays d'Asie",
-      "body": "En Chine aussi, le nom de famille precede le prenom (mentionne brievement sur la page K-zine).",
+      "title": "Noms de famille et prénoms dans les autres pays d'Asie",
+      "body": "En Chine aussi, le nom de famille precede le prénom (mentionne brievement sur la page K-zine).",
       "keywords": [
         "noms",
         "Asie",
@@ -19326,7 +19316,7 @@
       "id": "cul_ch1_006"
     },
     {
-      "title": "La reverence coreenne",
+      "title": "La reverence coréenne",
       "body": "Incline legerement ton dos et ta tete pour faire une reverence.",
       "keywords": [
         "reverence",
@@ -19454,7 +19444,7 @@
     },
     {
       "title": "Le noraebang (노래방)",
-      "body": "A la difference de la France, les Coreens se rendent au noraebang regulierement et pour le moindre pretexte : pour s'entrainer a chanter, pour destresser, ou meme pour nouer des liens entre collegues. Le noraebang classique est une piece avec un canape ou on peut chanter avec ses ami(e)s. Quant au 'coin noraebang', c'est une sorte de cabine pour une ou deux personnes maximum, ou l'on paie a la chanson choisie avec une piece de 500 wons (environ 0,50 euros/chanson). Comme ca n'est pas cher, les lyceens coreens y vont souvent pour chanter une ou deux chansons apres les cours. Si tu souhaites chanter une chanson qui n'est pas adaptee a ta voix, tu peux changer la tessiture sur la machine. Des tambourins sont aussi a ta disposition dans la salle pour que tu puisses battre le rythme des melodies. A la fin de ta prestation, une note te sera donnee sur l'ecran ; ca te permettra d'ameliorer ton chant (ou pas) !",
+      "body": "A la difference de la France, les Coréens se rendent au noraebang regulierement et pour le moindre pretexte : pour s'entrainer a chanter, pour destresser, ou même pour nouer des liens entre collegues. Le noraebang classique est une piece avec un canape ou on peut chanter avec ses ami(e)s. Quant au 'coin noraebang', c'est une sorte de cabine pour une ou deux personnes maximum, ou l'on paie a la chanson choisie avec une piece de 500 wons (environ 0,50 euros/chanson). Comme ca n'est pas cher, les lyceens coréens y vont souvent pour chanter une ou deux chansons après les cours. Si tu souhaites chanter une chanson qui n'est pas adaptee a ta voix, tu peux changer la tessiture sur la machine. Des tambourins sont aussi a ta disposition dans la salle pour que tu puisses battre le rythme des melodies. A la fin de ta prestation, une note te sera donnee sur l'ecran ; ca te permettra d'ameliorer ton chant (ou pas) !",
       "keywords": [
         "노래방",
         "karaoke",
@@ -19467,7 +19457,7 @@
     },
     {
       "title": "인생네컷 - Les photos a quatre poses",
-      "body": "Il y a de nombreuses boutiques specialisees dans les photomatons en centre-ville. C'est une activite classique dont raffolent les Coreens, un moment pour s'amuser et se creer des souvenirs. On peut y trouver plein d'accessoires en libre-service pour se deguiser. Tu peux prendre 4 a 6 photos a la fois pour seulement 4 euros et les partager ensuite avec tes ami(e)s. Attention, ce ne sont pas des photomatons ordinaires dans lesquels tu vas pour tes photos d'identite ! Celles-ci sont le plus souvent prises par un photographe et sont d'ailleurs toujours tres retouchees.",
+      "body": "Il y a de nombreuses boutiques specialisees dans les photomatons en centre-ville. C'est une activite classique dont raffolent les Coréens, un moment pour s'amuser et se creer des souvenirs. On peut y trouver plein d'accessoires en libre-service pour se deguiser. Tu peux prendre 4 a 6 photos a la fois pour seulement 4 euros et les partager ensuite avec tes ami(e)s. Attention, ce ne sont pas des photomatons ordinaires dans lesquels tu vas pour tes photos d'identite ! Celles-ci sont le plus souvent prises par un photographe et sont d'ailleurs toujours très retouchees.",
       "keywords": [
         "인생네컷",
         "photomaton",
@@ -19479,7 +19469,7 @@
     },
     {
       "title": "Le PC bang (PC방)",
-      "body": "Le PC bang, litteralement 'chambre d'ordinateurs', est un lieu ideal pour les amateurs/trices de jeux video. En Coree, c'est un loisir classique, pratique par tout le monde, peu importe l'age, et qui n'a pas forcement une connotation negative comme ailleurs. Imagine une chaise tres confortable et parfaitement adaptee pour jouer, un super ordinateur qui ne bugge jamais, un grand ecran, une lumiere tamisee comme au cinema et l'acces a de nombreux jeux video habituellement tres chers. Et ce n'est pas fini : tu peux aussi commander de quoi grignoter. Pour quelques heures, seul(e) ou avec des amis, c'est tres facilement accessible.",
+      "body": "Le PC bang, litteralement 'chambre d'ordinateurs', est un lieu ideal pour les amateurs/trices de jeux video. En Corée, c'est un loisir classique, pratique par tout le monde, peu importe l'âge, et qui n'a pas forcement une connotation negative comme ailleurs. Imagine une chaise très confortable et parfaitement adaptee pour jouer, un super ordinateur qui ne bugge jamais, un grand ecran, une lumiere tamisee comme au cinema et l'acces a de nombreux jeux video habituellement très chers. Et ce n'est pas fini : tu peux aussi commander de quoi grignoter. Pour quelques heures, seul(e) ou avec des amis, c'est très facilement accessible.",
       "keywords": [
         "PC방",
         "jeux video",
@@ -19492,7 +19482,7 @@
     },
     {
       "title": "실내화 - Les chaussures d'interieur a l'ecole",
-      "body": "Les lyceens coreens ont l'habitude de poser leurs chaussures avant d'entrer en classe. Ils utilisent des 실내화, des claquettes en caoutchouc. Le modele standard est noir avec des rayures blanches sur le dessus.",
+      "body": "Les lyceens coréens ont l'habitude de poser leurs chaussures avant d'entrer en classe. Ils utilisent des 실내화, des claquettes en caoutchouc. Le modele standard est noir avec des rayures blanches sur le dessus.",
       "keywords": [
         "실내화"
       ],
@@ -19501,8 +19491,8 @@
       "id": "cul_ch4_001"
     },
     {
-      "title": "Le hanok - La maison traditionnelle coreenne",
-      "body": "Les photos montrent les differentes pieces d'une maison traditionnelle coreenne appelee hanok: 거실 (salon), 주방 (cuisine), 현관 (entree - ou on enleve ses chaussures), 욕실 (salle de bain), 방 (chambre), 정원 (jardin).",
+      "title": "Le hanok - La maison traditionnelle coréenne",
+      "body": "Les photos montrent les differentes pieces d'une maison traditionnelle coréenne appelee hanok: 거실 (salon), 주방 (cuisine), 현관 (entree - ou on enleve ses chaussures), 욕실 (salle de bain), 방 (chambre), 정원 (jardin).",
       "keywords": [
         "한옥",
         "거실",
@@ -19546,7 +19536,7 @@
     },
     {
       "title": "북촌한옥마을 - Bukchon Hanok Village",
-      "body": "Avis aux historiens en herbe: filez d'abord au Bukchon Hanok Village! Entre palais royaux et hanok (maisons traditionnelles coreennes), c'est une promenade dans l'Histoire.",
+      "body": "Avis aux historiens en herbe: filez d'abord au Bukchon Hanok Village! Entre palais royaux et hanok (maisons traditionnelles coréennes), c'est une promenade dans l'Histoire.",
       "keywords": [
         "북촌한옥마을"
       ],
@@ -19569,7 +19559,7 @@
     },
     {
       "title": "홍대 - Hongdae",
-      "body": "Hongdae est surnomme le quartier de la musique. Si on y trouve de nombreuses salles de concert, le spectacle commence dans la rue: musique et danse a ciel ouvert. Tres frequente par les jeunes, c'est le quartier qui ne dort jamais!",
+      "body": "Hongdae est surnomme le quartier de la musique. Si on y trouve de nombreuses salles de concert, le spectacle commence dans la rue: musique et danse a ciel ouvert. Très fréquente par les jeunes, c'est le quartier qui ne dort jamais!",
       "keywords": [
         "홍대"
       ],
@@ -19579,7 +19569,7 @@
     },
     {
       "title": "한강 - Hangang (fleuve Han)",
-      "body": "Les rives du fleuve Han (Hangang) offrent un grand espace pour faire du velo, prendre un bateau afin d'admirer la ville ou encore pique-niquer. On trouve sur place plusieurs superettes ouvertes 24h/24 et de petits fast-foods. On peut meme commander a emporter et se faire livrer au bord du fleuve!",
+      "body": "Les rives du fleuve Han (Hangang) offrent un grand espace pour faire du velo, prendre un bateau afin d'admirer la ville ou encore pique-niquer. On trouve sur place plusieurs superettes ouvertes 24h/24 et de petits fast-foods. On peut même commander a emporter et se faire livrer au bord du fleuve!",
       "keywords": [
         "한강"
       ],
@@ -19589,7 +19579,7 @@
     },
     {
       "title": "서래마을 - Seorae Village",
-      "body": "Pres du quartier des affaires de Gangnam se trouve le Seorae Village, la petite France de Seoul. Plus de 40% des Francais residant en Coree vivent ici. On y trouve des boulangeries, des fromageries et des restaurants francais. On peut meme y visiter le 몽마르뜨 공원 (parc Montmartre).",
+      "body": "Pres du quartier des affaires de Gangnam se trouve le Seorae Village, la petite France de Seoul. Plus de 40% des Français residant en Corée vivent ici. On y trouve des boulangeries, des fromageries et des restaurants français. On peut même y visiter le 몽마르뜨 공원 (parc Montmartre).",
       "keywords": [
         "서래마을",
         "몽마르뜨 공원"
@@ -19599,8 +19589,8 @@
       "id": "cul_ch4_009"
     },
     {
-      "title": "Le dejeuner a la cantine coreenne (급식실)",
-      "body": "Le repas coreen typique est generalement compose de riz (밥), d'une soupe (국) ou d'un ragout (찌개) et de plusieurs accompagnements (반찬) dont le kimchi (김치). En Coree, le riz se mange avec la cuillere et non avec les baguettes. Les baguettes sont utilisees pour les accompagnements. En general, les enfants commencent a manger avec des baguettes entre 2 et 3 ans.",
+      "title": "Le dejeuner a la cantine coréenne (급식실)",
+      "body": "Le repas coréen typique est generalement compose de riz (밥), d'une soupe (국) ou d'un ragout (찌개) et de plusieurs accompagnements (반찬) dont le kimchi (김치). En Corée, le riz se mange avec la cuillere et non avec les baguettes. Les baguettes sont utilisees pour les accompagnements. En general, les enfants commencent a manger avec des baguettes entre 2 et 3 ans.",
       "keywords": [
         "급식실",
         "밥",
@@ -19617,7 +19607,7 @@
     },
     {
       "title": "Differentes facons de dire Bon appetit",
-      "body": "En coreen, il existe differentes facons de souhaiter un 'Bon appetit'. Les hotes (ceux qui offrent le repas) disent: 맛있게 드세요 (poli) ou 맛있게 먹어 (informel). Les invites (ceux qui recoivent) repondent: 잘 먹겠습니다 (poli/formel) ou 잘 먹을게 (informel).",
+      "body": "En coréen, il existe differentes facons de souhaiter un 'Bon appetit'. Les hotes (ceux qui offrent le repas) disent: 맛있게 드세요 (poli) ou 맛있게 먹어 (informel). Les invites (ceux qui recoivent) repondent: 잘 먹겠습니다 (poli/formel) ou 잘 먹을게 (informel).",
       "keywords": [
         "맛있게 드세요",
         "맛있게 먹어",
@@ -19630,7 +19620,7 @@
     },
     {
       "title": "Le menu de la cantine du lycee WAWA",
-      "body": "Exemple de menu scolaire coreen: Lundi: 토마토 스파게티, 크림수프, 마늘빵, 샐러드, 티라미수. Mardi: 밥, 계란국, 불고기, 시금치 나물, 김치, 수박. Mercredi: 비빔밥, 우동, 핫도그, 김치, 과일 푸딩. Le menu melange plats coreens et occidentaux.",
+      "body": "Exemple de menu scolaire coréen: Lundi: 토마토 스파게티, 크림수프, 마늘빵, 샐러드, 티라미수. Mardi: 밥, 계란국, 불고기, 시금치 나물, 김치, 수박. Mercredi: 비빔밥, 우동, 핫도그, 김치, 과일 푸딩. Le menu melange plats coréens et occidentaux.",
       "keywords": [
         "토마토 스파게티",
         "크림수프",
@@ -19650,8 +19640,8 @@
       "id": "cul_ch5_003"
     },
     {
-      "title": "Calendrier des fetes coreennes",
-      "body": "1월: 신정 (1월 1일, Nouvel an solaire). 2월: 설날 (calendrier lunaire 1월 1일, Nouvel an lunaire). 3월: 삼일절 (3월 1일, Mouvement d'independance). 4월: 식목일 (4월 5일, Jour des Arbres). 5월: 어린이 날 (5월 5일, Fete des enfants). 6월: 현충일 (6월 6일, Commemoration des victimes de la guerre de Coree). 7월: 제헌절 (7월 17일, Fete de la Constitution). 8월: 광복절 (8월 15일, Jour de la liberation de la Coree). 9월: 추석 (calendrier lunaire 8월 15일, Chuseok). 10월: 한글날 (10월 9일, Jour du Hangeul). 11월: 빼빼로 데이 (11월 11일, Pepero day). 12월: 성탄절/크리스마스 (12월 25일, Noel).",
+      "title": "Calendrier des fêtes coréennes",
+      "body": "1월: 신정 (1월 1일, Nouvel an solaire). 2월: 설날 (calendrier lunaire 1월 1일, Nouvel an lunaire). 3월: 삼일절 (3월 1일, Mouvement d'independance). 4월: 식목일 (4월 5일, Jour des Arbres). 5월: 어린이 날 (5월 5일, Fête des enfants). 6월: 현충일 (6월 6일, Commemoration des victimes de la guerre de Corée). 7월: 제헌절 (7월 17일, Fête de la Constitution). 8월: 광복절 (8월 15일, Jour de la liberation de la Corée). 9월: 추석 (calendrier lunaire 8월 15일, Chuseok). 10월: 한글날 (10월 9일, Jour du Hangeul). 11월: 빼빼로 데이 (11월 11일, Pepero day). 12월: 성탄절/크리스마스 (12월 25일, Noel).",
       "keywords": [
         "달력",
         "신정",
@@ -19674,7 +19664,7 @@
     },
     {
       "title": "Seollal - Nouvel an lunaire",
-      "body": "Seollal est le nouvel an lunaire coreen, correspondant au 1er janvier du calendrier lunaire. Les Coreens ont 3 jours feries consecutifs. Tous partent dans leur famille pour celebrer et rendre hommage a leurs ancetres, les morts comme les vivants. Le 1er jour, la famille se reunit et prepare les plats du Seollal. Le matin du 2e jour, on organise une ceremonie pour les ancetres appelee 차례 (Charye). Lors du 세배 (Sebae), on salue et souhaite la bonne annee aux personnes les plus agees de la famille. Les aines offrent souvent aux enfants des billets de banque neufs, appeles 세뱃돈 (Sebaetdon), l'equivalent des etrennes.",
+      "body": "Seollal est le nouvel an lunaire coréen, correspondant au 1er janvier du calendrier lunaire. Les Coréens ont 3 jours feries consecutifs. Tous partent dans leur famille pour celebrer et rendre hommage a leurs ancetres, les morts comme les vivants. Le 1er jour, la famille se reunit et prepare les plats du Seollal. Le matin du 2e jour, on organise une ceremonie pour les ancetres appelee 차례 (Charye). Lors du 세배 (Sebae), on salue et souhaite la bonne annee aux personnes les plus âgées de la famille. Les aînés offrent souvent aux enfants des billets de banque neufs, appeles 세뱃돈 (Sebaetdon), l'equivalent des etrennes.",
       "keywords": [
         "설날",
         "차례",
@@ -19686,8 +19676,8 @@
       "id": "cul_ch6_002"
     },
     {
-      "title": "L'age coreen (aboli en 2023)",
-      "body": "Jusqu'en 2023, il existait 'l'age coreen': quand un bebe naissait, on estimait qu'il avait deja 1 an. Tous les Coreens prenaient aussi 1 an de plus a Seollal, quelle que soit leur date de naissance. Donc quelqu'un ne le 31 decembre etait presque aussitot age de 2 ans, alors qu'il n'avait en fait que quelques semaines !",
+      "title": "L'âge coréen (aboli en 2023)",
+      "body": "Jusqu'en 2023, il existait 'l'âge coréen': quand un bebe naissait, on estimait qu'il avait deja 1 an. Tous les Coréens prenaient aussi 1 an de plus a Seollal, quelle que soit leur date de naissance. Donc quelqu'un ne le 31 décembre etait presque aussitot âge de 2 ans, alors qu'il n'avait en fait que quelques semaines !",
       "keywords": [
         "age coreen"
       ],
@@ -19696,8 +19686,8 @@
       "id": "cul_ch6_003"
     },
     {
-      "title": "Chuseok - Fete des recoltes",
-      "body": "Chuseok est une fete traditionnelle coreenne qui a lieu le 15 aout du calendrier lunaire (septembre du calendrier solaire). C'est la fete des recoltes. On mange des songpyeon (gateaux de riz farcis, cuits a la vapeur sur des aiguilles de pin). On visite les tombes des ancetres (성묘, Seongmyo) pour leur faire des offrandes de nourriture et aussi d'alcool. Une danse traditionnelle, le Ganggangsullae, inscrite au patrimoine de l'humanite de l'UNESCO, est pratiquee a la lumiere de la Lune pour invoquer des recoltes abondantes. Le jeu le plus populaire est le jeu de Yut (윷놀이), un jeu de plateau qui ressemble au jeu des petits chevaux, sauf que les des sont remplaces par 4 batons en bois.",
+      "title": "Chuseok - Fête des récoltes",
+      "body": "Chuseok est une fête traditionnelle coréenne qui a lieu le 15 août du calendrier lunaire (septembre du calendrier solaire). C'est la fête des récoltes. On mange des songpyeon (gateaux de riz farcis, cuits a la vapeur sur des aiguilles de pin). On visite les tombes des ancetres (성묘, Seongmyo) pour leur faire des offrandes de nourriture et aussi d'alcool. Une danse traditionnelle, le Ganggangsullae, inscrite au patrimoine de l'humanite de l'UNESCO, est pratiquee a la lumiere de la Lune pour invoquer des récoltes abondantes. Le jeu le plus populaire est le jeu de Yut (윷놀이), un jeu de plateau qui ressemble au jeu des petits chevaux, sauf que les des sont remplaces par 4 batons en bois.",
       "keywords": [
         "추석",
         "송편",
@@ -19935,7 +19925,7 @@
     },
     {
       "korean": "오후",
-      "french": "l'apres-midi",
+      "french": "l'après-midi",
       "romanization": "ohu",
       "page": 100,
       "chapter": 3,
@@ -20176,7 +20166,7 @@
     {
       "category": "time_of_day",
       "korean": "오후",
-      "french": "apres-midi (12h-18h)",
+      "french": "après-midi (12h-18h)",
       "romanization": "ohu",
       "sequence_position": 4,
       "page": 158,
@@ -20296,7 +20286,7 @@
     {
       "category": "month",
       "korean": "이월",
-      "french": "fevrier",
+      "french": "février",
       "romanization": "iwol",
       "sequence_position": 2,
       "page": 162,
@@ -20356,7 +20346,7 @@
     {
       "category": "month",
       "korean": "팔월",
-      "french": "aout",
+      "french": "août",
       "romanization": "parwol",
       "sequence_position": 8,
       "page": 162,
@@ -20396,7 +20386,7 @@
     {
       "category": "month",
       "korean": "십이월",
-      "french": "decembre",
+      "french": "décembre",
       "romanization": "sibiwol",
       "sequence_position": 12,
       "page": 162,
