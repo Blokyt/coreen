@@ -21,12 +21,18 @@ DATA_PATH = Path(__file__).parent.parent / 'data' / 'course_data.json'
 
 # Fields whose string content is French (and therefore eligible for accent fixes).
 # Anything not in this set is left untouched (korean, romanization, ids, etc.).
+# List-typed and container fields (keywords, rules, examples, lines, tags) are
+# included so the walk propagates FR-context into their nested string values.
 FR_FIELDS = {
     'french', 'title', 'title_fr', 'explanation', 'explanation_fr', 'body',
     'notes', 'description_fr', 'name_fr', 'function_fr', 'setting_fr',
     'register', 'register_formal', 'register_informal',
     'theme', 'word_type', 'verb_type', 'context', 'speaker',
     'contraction_note',
+    # nested grammar/culture/dialogue containers — propagate FR into children
+    'keywords', 'tags', 'rules', 'examples', 'lines',
+    # grammar rule-leaf fields
+    'pattern', 'pattern_informal', 'breakdown', 'condition',
 }
 
 # Fields to NEVER touch even if string-typed.

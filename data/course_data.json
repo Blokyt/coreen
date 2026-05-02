@@ -12378,12 +12378,12 @@
       "explanation": "Pour exprimer la nationalité, on ajoute 사람 (personne) après le nom du pays. Pour dire 'un(e) ami(e) de telle nationalité', on ajoute 친구 (ami) après le nom du pays.",
       "rules": [
         {
-          "condition": "Nationalite",
+          "condition": "Nationalité",
           "pattern": "pays + 사람",
           "pattern_informal": ""
         },
         {
-          "condition": "Ami(e) d'une nationalite",
+          "condition": "Ami(e) d'une nationalité",
           "pattern": "pays + 친구",
           "pattern_informal": ""
         }
@@ -12402,17 +12402,17 @@
         {
           "korean": "한국 사람",
           "french": "coréen(ne)",
-          "breakdown": "한국 (Coree) + 사람 (personne)"
+          "breakdown": "한국 (Corée) + 사람 (personne)"
         },
         {
           "korean": "한국 친구",
           "french": "un(e) ami(e) coréen(ne)",
-          "breakdown": "한국 (Coree) + 친구 (ami)"
+          "breakdown": "한국 (Corée) + 친구 (ami)"
         }
       ],
       "page": 60,
       "tags": [
-        "nationalite",
+        "nationalité",
         "pays",
         "사람",
         "친구"
@@ -12457,22 +12457,22 @@
       "explanation": "On utilise le verbe 'être' après un nom afin d'identifier un objet ou de présenter une personne. Voici la conjugaison de 이다 selon le registre que tu veux utiliser.",
       "rules": [
         {
-          "condition": "Apres une voyelle",
+          "condition": "Après une voyelle",
           "pattern": "Nom + 야 (familier)",
           "pattern_informal": "알리스야"
         },
         {
-          "condition": "Apres une consonne",
+          "condition": "Après une consonne",
           "pattern": "Nom + 이야 (familier)",
           "pattern_informal": "나영이야"
         },
         {
-          "condition": "Apres une voyelle",
+          "condition": "Après une voyelle",
           "pattern": "Nom + 예요 (poli)",
           "pattern_informal": "알리스예요"
         },
         {
-          "condition": "Apres une consonne",
+          "condition": "Après une consonne",
           "pattern": "Nom + 이에요 (poli)",
           "pattern_informal": "나영이에요"
         }
@@ -12503,7 +12503,7 @@
       "tags": [
         "copule",
         "이다",
-        "etre",
+        "être",
         "affirmative"
       ],
       "chapter": 1,
@@ -12528,22 +12528,22 @@
       "explanation": "Voici comment former des phrases avec le verbe 'être' a la forme negative.",
       "rules": [
         {
-          "condition": "Apres une voyelle",
+          "condition": "Après une voyelle",
           "pattern": "Nom + 가 아니야 (familier)",
           "pattern_informal": "엄마가 아니야"
         },
         {
-          "condition": "Apres une consonne",
+          "condition": "Après une consonne",
           "pattern": "Nom + 이 아니야 (familier)",
           "pattern_informal": "선생님이 아니야"
         },
         {
-          "condition": "Apres une voyelle",
+          "condition": "Après une voyelle",
           "pattern": "Nom + 가 아니에요 (poli)",
           "pattern_informal": "엄마가 아니에요"
         },
         {
-          "condition": "Apres une consonne",
+          "condition": "Après une consonne",
           "pattern": "Nom + 이 아니에요 (poli)",
           "pattern_informal": "선생님이 아니에요"
         }
@@ -12574,7 +12574,7 @@
       "tags": [
         "copule",
         "아니다",
-        "ne pas etre",
+        "ne pas être",
         "negative"
       ],
       "chapter": 1,
@@ -12588,12 +12588,12 @@
         {
           "korean": "김민규",
           "french": "Kim Mingyu (nom + prénom)",
-          "breakdown": "김 (nom) + 민규 (prenom)"
+          "breakdown": "김 (nom) + 민규 (prénom)"
         },
         {
           "korean": "이석민",
           "french": "Lee Seokmin (nom + prénom)",
-          "breakdown": "이 (nom) + 석민 (prenom)"
+          "breakdown": "이 (nom) + 석민 (prénom)"
         }
       ],
       "page": 63,
@@ -12610,13 +12610,13 @@
       "explanation": "Lorsqu'on interpelle une personne très proche et moins âgée, on ajoutera un suffixe a son prénom : 아 si le prénom se termine par une consonne ; 야 s'il se termine par une voyelle.",
       "rules": [
         {
-          "condition": "Prenom se termine par une consonne",
-          "pattern": "Prenom + 아",
+          "condition": "Prénom se termine par une consonne",
+          "pattern": "Prénom + 아",
           "pattern_informal": "수진아"
         },
         {
-          "condition": "Prenom se termine par une voyelle",
-          "pattern": "Prenom + 야",
+          "condition": "Prénom se termine par une voyelle",
+          "pattern": "Prénom + 야",
           "pattern_informal": "지우야"
         }
       ],
@@ -12636,7 +12636,7 @@
       "tags": [
         "appellation",
         "suffixe",
-        "prenom"
+        "prénom"
       ],
       "chapter": 1,
       "id": "grm_ch1_008"
@@ -12646,7 +12646,7 @@
       "explanation": "Pour nommer les personnes plus âgées, on utilisera 님 a la fin. Tu veux appeler ton enseignant(e) par exemple ? Ajoute 님 au mot 선생 !",
       "rules": [
         {
-          "condition": "Respect envers une personne plus agee",
+          "condition": "Respect envers une personne plus âgée",
           "pattern": "Titre + 님",
           "pattern_informal": "선생님"
         }
@@ -13232,17 +13232,17 @@
       "explanation": "Pour indiquer la direction, on ajoute 으로 après une consonne et 로 après une voyelle ou la consonne ㄹ.",
       "rules": [
         {
-          "condition": "Apres consonne",
+          "condition": "Après consonne",
           "pattern": "consonne + 으로",
           "pattern_informal": ""
         },
         {
-          "condition": "Apres voyelle",
+          "condition": "Après voyelle",
           "pattern": "voyelle + 로",
           "pattern_informal": ""
         },
         {
-          "condition": "Apres consonne ㄹ",
+          "condition": "Après consonne ㄹ",
           "pattern": "ㄹ + 로",
           "pattern_informal": ""
         }
@@ -13287,22 +13287,22 @@
         {
           "korean": "저는 서점 앞에 있어요.",
           "french": "Je suis devant la librairie.",
-          "breakdown": "저(je)는(theme) 서점(librairie) 앞(devant)에(a) 있어요(exister/etre)."
+          "breakdown": "저(je)는(theme) 서점(librairie) 앞(devant)에(a) 있어요(exister/être)."
         },
         {
           "korean": "편의점은 빵집 앞에 있어.",
           "french": "La superette est devant la boulangerie.",
-          "breakdown": "편의점(superette)은(theme) 빵집(boulangerie) 앞(devant)에(a) 있어(etre)."
+          "breakdown": "편의점(superette)은(theme) 빵집(boulangerie) 앞(devant)에(a) 있어(être)."
         },
         {
           "korean": "집 오른쪽에 있어.",
           "french": "C'est a droite de la maison.",
-          "breakdown": "집(maison) 오른쪽(droite)에(a) 있어(etre)."
+          "breakdown": "집(maison) 오른쪽(droite)에(a) 있어(être)."
         },
         {
           "korean": "집 밖에 있어요.",
           "french": "Il est a l'exterieur de la maison.",
-          "breakdown": "집(maison) 밖(exterieur)에(a) 있어요(etre)."
+          "breakdown": "집(maison) 밖(exterieur)에(a) 있어요(être)."
         }
       ],
       "page": 116,
@@ -13392,17 +13392,17 @@
       "explanation": "Pour indiquer le moyen de transport, on utilise la même particule de direction 으로/로 avec le nom du transport.",
       "rules": [
         {
-          "condition": "Apres voyelle",
+          "condition": "Après voyelle",
           "pattern": "voyelle + 로",
           "pattern_informal": ""
         },
         {
-          "condition": "Apres consonne ㄹ",
+          "condition": "Après consonne ㄹ",
           "pattern": "consonne ㄹ + 로",
           "pattern_informal": ""
         },
         {
-          "condition": "Apres consonne (sauf ㄹ)",
+          "condition": "Après consonne (sauf ㄹ)",
           "pattern": "consonne + 으로",
           "pattern_informal": ""
         }
@@ -13639,17 +13639,17 @@
       "explanation": "La particule 으로/로 suivie de 만들어요 signifie 'être fait de' ou 'c'est fait avec'. On utilise 로 après une voyelle ou la consonne ㄹ, et 으로 après une consonne.",
       "rules": [
         {
-          "condition": "apres une voyelle",
+          "condition": "après une voyelle",
           "pattern": "nom + 로 만들어요",
           "pattern_informal": "nom + 로 만들어"
         },
         {
-          "condition": "apres une consonne",
+          "condition": "après une consonne",
           "pattern": "nom + 으로 만들어요",
           "pattern_informal": "nom + 으로 만들어"
         },
         {
-          "condition": "apres la consonne ㄹ",
+          "condition": "après la consonne ㄹ",
           "pattern": "nom + 로 만들어요",
           "pattern_informal": "nom + 로 만들어"
         }
@@ -13736,7 +13736,7 @@
       "rules": [
         {
           "condition": "modele general",
-          "pattern": "NOM + nombre coreen + classificateur",
+          "pattern": "NOM + nombre coréen + classificateur",
           "pattern_informal": ""
         },
         {
@@ -13769,7 +13769,7 @@
         {
           "korean": "학생 열 명",
           "french": "dix étudiants",
-          "breakdown": "학생 (etudiant) + 열 (10) + 명 (classificateur personnes)"
+          "breakdown": "학생 (étudiant) + 열 (10) + 명 (classificateur personnes)"
         },
         {
           "korean": "샌드위치 두 개",
@@ -13933,7 +13933,7 @@
         "passe",
         "이다",
         "copule",
-        "etre"
+        "être"
       ],
       "chapter": 6,
       "id": "grm_ch6_003"
@@ -13977,12 +13977,12 @@
       "rules": [
         {
           "condition": "Heure",
-          "pattern": "nombre coreen + 시",
+          "pattern": "nombre coréen + 시",
           "pattern_informal": ""
         },
         {
           "condition": "Minute",
-          "pattern": "nombre sino-coreen + 분",
+          "pattern": "nombre sino-coréen + 분",
           "pattern_informal": ""
         },
         {
@@ -14000,7 +14000,7 @@
         {
           "korean": "1시 35분 (한시 삼십오분)",
           "french": "1 h 35",
-          "breakdown": "한시=1h (natif coreen), 삼십오분=35min (sino-coreen)"
+          "breakdown": "한시=1h (natif coréen), 삼십오분=35min (sino-coréen)"
         },
         {
           "korean": "1시 30분 = 1시 반",
@@ -14010,7 +14010,7 @@
         {
           "korean": "2시 45분 (두시 사십오분)",
           "french": "2 h 45",
-          "breakdown": "두시=2h (natif coreen), 사십오분=45min (sino-coreen)"
+          "breakdown": "두시=2h (natif coréen), 사십오분=45min (sino-coréen)"
         },
         {
           "korean": "저녁 8시",
@@ -14043,7 +14043,7 @@
         {
           "korean": "1월부터 12월까지",
           "french": "de janvier a décembre",
-          "breakdown": "1월부터=depuis janvier, 12월까지=jusqu'a decembre"
+          "breakdown": "1월부터=depuis janvier, 12월까지=jusqu'a décembre"
         },
         {
           "korean": "9시부터 6시까지",
@@ -19098,7 +19098,7 @@
       "title": "Les vêtements",
       "body": "Section 'Les vêtements' : vocabulaire des vêtements courants.",
       "keywords": [
-        "vetements",
+        "vêtements",
         "치마",
         "모자",
         "구두",
@@ -19270,7 +19270,7 @@
         "성",
         "이름",
         "nom",
-        "prenom",
+        "prénom",
         "ordre"
       ],
       "page": 63,
@@ -19283,7 +19283,7 @@
       "keywords": [
         "아",
         "야",
-        "prenom",
+        "prénom",
         "appellation"
       ],
       "page": 63,
@@ -19679,7 +19679,7 @@
       "title": "L'âge coréen (aboli en 2023)",
       "body": "Jusqu'en 2023, il existait 'l'âge coréen': quand un bebe naissait, on estimait qu'il avait deja 1 an. Tous les Coréens prenaient aussi 1 an de plus a Seollal, quelle que soit leur date de naissance. Donc quelqu'un ne le 31 décembre etait presque aussitot âge de 2 ans, alors qu'il n'avait en fait que quelques semaines !",
       "keywords": [
-        "age coreen"
+        "âge coréen"
       ],
       "page": 164,
       "chapter": 6,

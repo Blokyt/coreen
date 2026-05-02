@@ -279,9 +279,57 @@ def _is_clean_rom(s):
     return all(ord(ch) <= 0xFF for ch in s)
 
 
+# High-confidence stripped-accent French forms. Used by W004 to flag
+# regressions after the initial accent restoration. Keep this list to
+# unambiguous words only (no risk of false positive on correct French).
+import re as _re
+ACCENT_STRIPPED = _re.compile(
+    r'\b(aout|apres|coreen|coreens|coreenne|coreennes|etre|francais|francaise|'
+    r'francaises|cafe|cafes|frere|freres|mere|meres|pere|peres|fete|fetes|'
+    r'tres|decembre|fevrier|prenom|prenoms|nationalite|vetement|vetements|'
+    r'phonetique|coree|aine|aines|maniere|presenter|recoltes|ecrire)\b',
+    _re.IGNORECASE,
+)
+
+# Fields whose string content is French (eligible for W004).
+_FR_FIELDS = {
+    'french', 'title', 'title_fr', 'explanation', 'explanation_fr', 'body',
+    'notes', 'description_fr', 'name_fr', 'function_fr', 'setting_fr',
+    'register', 'register_formal', 'register_informal', 'theme',
+    'context', 'contraction_note',
+}
+_KO_FIELDS = {
+    'korean', 'korean_formal', 'korean_informal', 'korean_polite',
+    'romanization', 'romanization_formal', 'romanization_informal',
+    'id', 'infinitive', 'stem', 'particle', 'letter', 'highlighted',
+    'as_batchim', 'batchim_pronunciation', 'position_rule',
+    'korean_before_counter', 'system',
+}
+
+
+def _walk_fr(node, fr_ctx, hits):
+    """Yield (path, stripped_word, snippet) for any FR string with
+    a high-confidence stripped-accent token."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            sub = fr_ctx
+            if k in _KO_FIELDS:
+                sub = False
+            elif k in _FR_FIELDS or k.endswith('_fr'):
+                sub = True
+            _walk_fr(v, sub, hits)
+    elif isinstance(node, list):
+        for item in node:
+            _walk_fr(item, fr_ctx, hits)
+    elif isinstance(node, str) and fr_ctx:
+        for m in ACCENT_STRIPPED.finditer(node):
+            hits.append((m.group(0), node))
+
+
 def check_warnings(D, warnings):
     """W001 missing romanization on a category that expects one,
-    W002 page missing/<=0, W003 suspicious romanization (above Latin-1)."""
+    W002 page missing/<=0, W003 suspicious romanization (above Latin-1),
+    W004 accent-stripped French token detected (regression guard)."""
     for cat in FLASHABLE:
         for raw in D.get(cat, []):
             it = normalize_expression(raw) if cat == 'expressions' else raw
@@ -304,6 +352,23 @@ def check_warnings(D, warnings):
             if rom and not _is_clean_rom(rom):
                 _warn(warnings, 'W003', cat, iid,
                       f'romanisation suspecte : {rom!r}')
+
+            # W004 accent-stripped French token in any FR field
+            hits = []
+            _walk_fr(it, False, hits)
+            for word, snippet in hits:
+                _warn(warnings, 'W004', cat, iid,
+                      f'accent strippé : {word!r} (...{snippet[:60]}...)')
+
+    # W004 also applies to readable categories (grammar/culture/dialogues/...)
+    for cat in READABLE:
+        for it in D.get(cat, []):
+            iid = it.get('id') or '?'
+            hits = []
+            _walk_fr(it, True, hits)  # readable items: assume FR by default
+            for word, snippet in hits:
+                _warn(warnings, 'W004', cat, iid,
+                      f'accent strippé : {word!r} (...{snippet[:60]}...)')
 
 
 def load_data():
