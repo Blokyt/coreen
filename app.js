@@ -842,4 +842,20 @@ function showToast(msg) {
   _toastTimer = setTimeout(() => el.classList.add('hidden'), 1500);
 }
 
-init();
+// Skip auto-init in non-browser contexts (bun:test loads this file with no DOM)
+if (typeof window !== 'undefined') init();
+
+// Test exports — no-op in browser, used by bun:test
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    fuzzInterval, srsAgain, srsHard, srsGood, srsEasy,
+    previewIntervals, fmtIv, srsPriority, cardState, stateCounts, getCard,
+    refreshNewLimit,
+    INIT_EASE, MIN_EASE, GRADUATING_IV, EASY_IV, HARD_MULT, EASY_BONUS,
+    LEARN_STEPS, RELEARN_STEPS, LEECH_THRESHOLD,
+    _setP: p => { P = p; },
+    _getP: () => P,
+    _resetNewCount: () => localStorage.removeItem('blokaja4_newcount'),
+    _setSettings: s => localStorage.setItem('blokaja4_settings', JSON.stringify(s)),
+  };
+}
