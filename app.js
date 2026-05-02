@@ -48,8 +48,8 @@ const LEECH_THRESHOLD = 8;         // lapses before leech flag
 // Settings (persisted in localStorage)
 const SETTINGS_KEY = 'blokaja4_settings';
 function getSettings() {
-  try { return { newPerDay: 20, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
-  catch { return { newPerDay: 20 }; }
+  try { return { newPerDay: 20, autoSpeak: false, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
+  catch { return { newPerDay: 20, autoSpeak: false }; }
 }
 function saveSettings(s) { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); }
 
@@ -574,6 +574,17 @@ function flip() {
 
   // Leech indicator
   $('#fc-card').classList.toggle('leech', getCard(it.id).lapses >= LEECH_THRESHOLD);
+
+  // Auto-play Korean TTS if the user enabled it
+  if (getSettings().autoSpeak) {
+    const cfg = CARD[it._c];
+    const back = cfg?.bMain?.(it) || '';
+    if (_HANGUL_RE.test(back)) speakKr(back);
+    else {
+      const front = cfg?.fMain?.(it) || '';
+      if (_HANGUL_RE.test(front)) speakKr(front);
+    }
+  }
 }
 
 // grade: 1=Again, 2=Hard, 3=Good, 4=Easy
@@ -740,6 +751,13 @@ const CARD = {
   },
 };
 
+// Detect any Hangul codepoint to decide whether a TTS button is meaningful.
+const _HANGUL_RE = /[ᄀ-ᇿ㄰-㆏ꥠ-꥿가-힯]/;
+function _ttsBtn(text) {
+  if (!text || !_HANGUL_RE.test(text)) return '';
+  return `<button class="tts-btn" data-tts="${esc(text)}" aria-label="Lire à voix haute">🔈</button>`;
+}
+
 function buildFront(it) {
   const cfg = CARD[it._c];
   if (!cfg) return '';
@@ -747,7 +765,7 @@ function buildFront(it) {
   const main  = cfg.fMain?.(it) || '';
   const sub   = cfg.fSub?.(it)  || '';
   return `<div class="fc-label">${esc(label)}</div>`
-       + `<div class="fc-main">${esc(main)}</div>`
+       + `<div class="fc-main">${esc(main)}${_ttsBtn(main)}</div>`
        + (sub ? `<div class="fc-sub">${esc(sub)}</div>` : '');
 }
 
@@ -757,9 +775,20 @@ function buildBack(it) {
   const main  = cfg.bMain?.(it)  || '';
   const sub   = cfg.bSub?.(it)   || '';
   const extra = cfg.bExtra?.(it) || '';
-  return `<div class="fc-main">${esc(main)}</div>`
+  return `<div class="fc-main">${esc(main)}${_ttsBtn(main)}</div>`
        + (sub   ? `<div class="fc-sub">${esc(sub)}</div>`     : '')
        + (extra ? `<div class="fc-extra">${esc(extra)}</div>` : '');
+}
+
+// Korean text-to-speech via Web Speech API. Silent fallback on platforms
+// without a ko-KR voice.
+function speakKr(text) {
+  if (!text || typeof window === 'undefined' || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ko-KR';
+  u.rate = 0.9;
+  window.speechSynthesis.speak(u);
 }
 
 // ========== Search ==========
@@ -842,7 +871,11 @@ function setupEvents() {
 
   // Flashcards
   $('#btn-fc').onclick = startFc;
-  $('#fc-card').onclick = flip;
+  $('#fc-card').onclick = e => {
+    const tts = e.target.closest('.tts-btn');
+    if (tts) { e.stopPropagation(); speakKr(tts.dataset.tts); return; }
+    flip();
+  };
   $('#fc-reveal').onclick = flip;
   $('#fc-again').onclick = () => answer(1);
   $('#fc-hard').onclick  = () => answer(2);
@@ -871,6 +904,8 @@ function openSettings() {
   const overlay = $('#settings-overlay');
   const sel = $('#settings-new-per-day');
   if (sel) sel.value = String(s.newPerDay);
+  const auto = $('#settings-auto-speak');
+  if (auto) auto.checked = !!s.autoSpeak;
   overlay.classList.remove('hidden');
 }
 
@@ -882,6 +917,8 @@ function applySettings() {
   const val = $('#settings-new-per-day').value;
   const s = getSettings();
   s.newPerDay = val === '0' ? 0 : Number(val);
+  const auto = $('#settings-auto-speak');
+  if (auto) s.autoSpeak = !!auto.checked;
   saveSettings(s);
   closeSettings();
   showToast('Réglages enregistrés');
