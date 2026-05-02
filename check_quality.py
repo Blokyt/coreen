@@ -370,6 +370,21 @@ def check_warnings(D, warnings):
                 _warn(warnings, 'W004', cat, iid,
                       f'accent strippé : {word!r} (...{snippet[:60]}...)')
 
+    # W005 vocab item with both theme AND notes empty (pedagogical thinness)
+    for it in D.get('vocabulary', []):
+        iid = it.get('id') or '?'
+        if not it.get('theme') and not it.get('notes'):
+            _warn(warnings, 'W005', 'vocabulary', iid,
+                  'thème ET notes vides (item peu contextualisé)')
+
+    # W006 hangeul item with description_fr too short to be pedagogically useful
+    for it in D.get('hangeul', []):
+        iid = it.get('id') or '?'
+        desc = it.get('description_fr') or ''
+        if len(desc) < 25:
+            _warn(warnings, 'W006', 'hangeul', iid,
+                  f'description_fr courte ({len(desc)} chars) : {desc!r}')
+
 
 def load_data():
     if not DATA_PATH.exists():
