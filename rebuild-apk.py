@@ -84,6 +84,38 @@ def verify_web_dir(project_root, web_dir):
         sys.exit(1)
     return web_path
 
+def run_tests(project_root, strict=True):
+    """Run JS unit tests via bun test before any build step.
+
+    Same strict semantics as quality_check: failure aborts unless --skip-tests
+    is passed (debug only; ignored on --release).
+    """
+    log_step("1/6", "Unit tests (bun test tests/)")
+
+    success, stdout, stderr = run_cmd(
+        "bun test tests/",
+        cwd=project_root,
+        timeout=60,
+    )
+    # bun prints results to stderr. Show the relevant lines.
+    out = (stdout + stderr).strip()
+    if out:
+        # Trim to last ~15 lines so we don't drown the build log
+        for line in out.split('\n')[-15:]:
+            print(line)
+
+    if success:
+        log_success("Tests passed")
+        return
+
+    if strict:
+        log_error("Tests failed - aborting build")
+        log_warning("Use --skip-tests to bypass (debug builds only)")
+        sys.exit(1)
+
+    log_warning("Tests failed - continuing anyway (debug + skip flag)")
+
+
 def quality_check(project_root, strict=True):
     """Run check_quality.py before the build pipeline.
 
@@ -91,7 +123,7 @@ def quality_check(project_root, strict=True):
     aborts the build. The --skip-quality-check flag flips strict to False
     on debug builds only — it is forced back to True on --release.
     """
-    log_step("1/5", "Quality check (data integrity)")
+    log_step("2/6", "Quality check (data integrity)")
 
     success, stdout, stderr = run_cmd(
         "python check_quality.py",
@@ -117,7 +149,7 @@ def quality_check(project_root, strict=True):
 
 def sync_web_assets(project_root, web_dir):
     """Copy latest web files to www/"""
-    log_step("2/5", "Syncing web assets")
+    log_step("3/6", "Syncing web assets")
 
     web_path = verify_web_dir(project_root, web_dir)
 
@@ -151,7 +183,7 @@ def sync_web_assets(project_root, web_dir):
 
 def capacitor_sync(project_root):
     """Run cap sync via bunx (if bun.lock present) or npx."""
-    log_step("3/5", "Running Capacitor sync")
+    log_step("4/6", "Running Capacitor sync")
 
     runner = "bunx" if (project_root / "bun.lock").exists() else "npx"
     success, stdout, stderr = run_cmd(f"{runner} cap sync android",
@@ -190,7 +222,7 @@ def setup_android_env():
 def build_apk(project_root, app_name, release=False):
     """Build the Android APK (debug) or AAB (release)"""
     mode = "Release AAB" if release else "Debug APK"
-    log_step("4/5", f"Building {mode}")
+    log_step("5/6", f"Building {mode}")
 
     android_dir = project_root / "android"
     if not android_dir.exists():
@@ -229,7 +261,7 @@ def build_apk(project_root, app_name, release=False):
 
 def locate_and_copy_apk(project_root, app_name, release=False):
     """Find the built APK/AAB and copy it to project root"""
-    log_step("5/5", "Locating output")
+    log_step("6/6", "Locating output")
 
     if release:
         build_path = project_root / "android/app/build/outputs/bundle/release/app-release.aab"
@@ -260,13 +292,20 @@ def main():
     parser.add_argument('--skip-quality-check', action='store_true',
                         help="Skip data quality check (debug builds only; "
                              "ignored on --release)")
+    parser.add_argument('--skip-tests', action='store_true',
+                        help="Skip unit tests (debug builds only; "
+                             "ignored on --release)")
     args = parser.parse_args()
 
     release = args.release
     skip_qc = args.skip_quality_check
+    skip_tests = args.skip_tests
     if release and skip_qc:
         skip_qc = False
         log_warning("--skip-quality-check ignored on --release builds")
+    if release and skip_tests:
+        skip_tests = False
+        log_warning("--skip-tests ignored on --release builds")
     build_type = "Release AAB (Play Store)" if release else "Debug APK"
 
     print(f"\n{Colors.BOLD}{Colors.HEADER}{'='*60}{Colors.RESET}")
@@ -288,6 +327,7 @@ def main():
 
     # Execute build pipeline
     try:
+        run_tests(project_root, strict=not skip_tests)
         quality_check(project_root, strict=not skip_qc)
         sync_web_assets(project_root, web_dir)
         capacitor_sync(project_root)
