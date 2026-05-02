@@ -34,7 +34,10 @@
       </div>
       <div class="overlay-body settings-body">
         <div class="setting-row">
-          <label for="settings-new-per-day">Nouvelles cartes / jour</label>
+          <div class="setting-label-stack">
+            <label for="settings-new-per-day">Nouvelles cartes / jour</label>
+            <span id="settings-new-current" class="setting-help"></span>
+          </div>
           <select id="settings-new-per-day">
             <option value="5">5</option>
             <option value="10">10</option>
@@ -112,6 +115,7 @@
       <div class="fc-meta">
         <span id="fc-cat"></span>
         <span id="fc-page"></span>
+        <span id="fc-new-count" class="fc-new-count hidden"></span>
       </div>
       <div id="fc-card" class="fc-card">
         <div id="fc-front" class="fc-face"></div>

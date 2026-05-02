@@ -325,6 +325,31 @@ body {
 }
 .btn-apply { margin-top: 20px; width: 100%; }
 
+/* ===== Daily new-card indicator ===== */
+.gp-daily {
+  margin-top: 6px;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  color: var(--fg3);
+}
+.gp-daily.reached { color: #f59e0b; }
+
+.fc-new-count {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  color: var(--fg3);
+  margin-left: auto;
+}
+.fc-new-count.reached { color: #f59e0b; }
+.fc-new-count.hidden { display: none; }
+
+.setting-label-stack { display: flex; flex-direction: column; gap: 2px; }
+.setting-help {
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  color: var(--fg3);
+}
+
 /* ===== Leech banner ===== */
 .leech-banner {
   margin: 8px 0 12px;

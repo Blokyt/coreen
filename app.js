@@ -69,6 +69,18 @@ function incNewCount() {
   if (d.day !== today) d = { day: today, count: 0 };
   d.count++;
   localStorage.setItem(NEW_COUNT_KEY, JSON.stringify(d));
+  // Toast on the exact transition to the limit (browser only)
+  const lim = getSettings().newPerDay;
+  if (lim > 0 && d.count === lim && typeof window !== 'undefined' && typeof showToast === 'function') {
+    showToast('Limite quotidienne atteinte');
+  }
+}
+
+// Summary used by the UI to display the daily new-card budget.
+function dailyNewSummary() {
+  const limit = getSettings().newPerDay;
+  const count = getNewCount();
+  return { count, limit, isReached: limit > 0 && count >= limit };
 }
 
 // Interval fuzz to prevent card clustering (Anki-style)
@@ -390,11 +402,18 @@ function renderHome() {
   if (g.due) parts.push(`${g.due} à revoir`);
   parts.push(`${g.nw} nouveau${g.nw > 1 ? 'x' : ''}`);
 
+  const dn = dailyNewSummary();
+  const dnText = dn.limit > 0
+    ? `Nouvelles aujourd'hui : ${dn.count} / ${dn.limit}`
+    : `Nouvelles aujourd'hui : ${dn.count}`;
+  const dnCls = dn.isReached ? 'gp-daily reached' : 'gp-daily';
+
   $('#global-progress').innerHTML =
     `<div class="gp-pct">${pct}%</div>
      <div class="gp-right">
        ${segBar(g, 'gp-bar')}
        <div class="gp-label">${parts.join(' · ')}</div>
+       <div class="${dnCls}">${dnText}</div>
      </div>`;
 
   $('#chapters-grid').innerHTML = D.chapters.map((ch, i) => {
@@ -535,6 +554,19 @@ function showCard() {
   const pg = it.page ? `p.${it.page}` : '';
   const dl = dueLabel(it.id);
   $('#fc-page').textContent = pg + (dl ? ` · ${dl}` : '');
+
+  // Daily new-card chip
+  const dn = dailyNewSummary();
+  const fcDn = $('#fc-new-count');
+  if (fcDn) {
+    if (dn.limit > 0) {
+      fcDn.textContent = `${dn.count}/${dn.limit} nouv.`;
+      fcDn.classList.toggle('reached', dn.isReached);
+      fcDn.classList.remove('hidden');
+    } else {
+      fcDn.classList.add('hidden');
+    }
+  }
 
   // Session progress (reuse cached flashable list)
   const s = stateCounts(deckFlashable);
@@ -985,6 +1017,13 @@ function openSettings() {
   if (sel) sel.value = String(s.newPerDay);
   const auto = $('#settings-auto-speak');
   if (auto) auto.checked = !!s.autoSpeak;
+  const help = $('#settings-new-current');
+  if (help) {
+    const dn = dailyNewSummary();
+    help.textContent = dn.limit > 0
+      ? `Aujourd'hui : ${dn.count} / ${dn.limit} utilisées${dn.isReached ? ' (limite atteinte)' : ''}`
+      : `Aujourd'hui : ${dn.count} utilisées`;
+  }
   renderSuspendedList();
   overlay.classList.remove('hidden');
 }
