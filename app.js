@@ -936,15 +936,69 @@ function buildBack(it) {
        + (extra ? `<div class="fc-extra">${esc(extra)}</div>` : '');
 }
 
-// Korean text-to-speech via Web Speech API. Silent fallback on platforms
-// without a ko-KR voice.
+// Korean text-to-speech.
+// - On device (Capacitor): delegates to the native TextToSpeech plugin so that
+//   Android reliably has a ko-KR voice.
+// - In a browser: falls back to the Web Speech API with an async voice-ready
+//   guard (voices load lazily in many browsers).
+// Safe to call from any context; never throws.
+
+let _cachedVoices = null; // module-level cache for web fallback
+
+function _webSpeakKr(text) {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return;
+  const ss = window.speechSynthesis;
+
+  function doSpeak(voices) {
+    try {
+      ss.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'ko-KR';
+      u.rate = 0.9;
+      const koVoice = voices.find(v => /^ko/i.test(v.lang));
+      if (koVoice) u.voice = koVoice;
+      ss.speak(u);
+    } catch (_) {}
+  }
+
+  try {
+    const voices = ss.getVoices();
+    if (voices && voices.length > 0) {
+      _cachedVoices = voices;
+      doSpeak(voices);
+    } else if (_cachedVoices && _cachedVoices.length > 0) {
+      doSpeak(_cachedVoices);
+    } else {
+      // Voices not ready yet; wait for the event with a timeout fallback.
+      let resolved = false;
+      const onReady = () => {
+        if (resolved) return;
+        resolved = true;
+        try { ss.removeEventListener('voiceschanged', onReady); } catch (_) {}
+        const v = ss.getVoices() || [];
+        _cachedVoices = v;
+        doSpeak(v);
+      };
+      try { ss.addEventListener('voiceschanged', onReady); } catch (_) {}
+      setTimeout(onReady, 500); // fallback: speak even without a ko voice
+    }
+  } catch (_) {}
+}
+
 function speakKr(text) {
-  if (!text || typeof window === 'undefined' || !window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'ko-KR';
-  u.rate = 0.9;
-  window.speechSynthesis.speak(u);
+  if (!text) return;
+  try {
+    const nativeTts = typeof window !== 'undefined'
+      && window.Capacitor
+      && window.Capacitor.Plugins
+      && window.Capacitor.Plugins.TextToSpeech;
+    if (nativeTts) {
+      nativeTts.stop().catch(() => {});
+      nativeTts.speak({ text, lang: 'ko-KR', rate: 1.0 }).catch(() => {});
+      return;
+    }
+  } catch (_) {}
+  _webSpeakKr(text);
 }
 
 // ========== Search ==========
