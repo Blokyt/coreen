@@ -279,15 +279,154 @@ def _is_clean_rom(s):
     return all(ord(ch) <= 0xFF for ch in s)
 
 
-# High-confidence stripped-accent French forms. Used by W004 to flag
-# regressions after the initial accent restoration. Keep this list to
-# unambiguous words only (no risk of false positive on correct French).
+# Dictionnaire W004 : forme_sans_accent -> forme_correcte.
+# Règles de construction :
+#   - Chaque entrée doit être SANS AMBIGUÏTÉ : le mot ASCII listée ne doit JAMAIS
+#     être un mot français correct sans accent. Ex. "ou" (conjonction) est absent
+#     car c'est un mot valide ; "ou" -> "où" serait un faux positif.
+#   - Comparaison sur les mots entiers (\\b), insensible à la casse.
+#   - En cas de doute sur un mot ambigu, NE PAS l'inclure.
 import re as _re
-ACCENT_STRIPPED = _re.compile(
-    r'\b(aout|apres|coreen|coreens|coreenne|coreennes|etre|francais|francaise|'
-    r'francaises|cafe|cafes|frere|freres|mere|meres|pere|peres|fete|fetes|'
-    r'tres|decembre|fevrier|prenom|prenoms|nationalite|vetement|vetements|'
-    r'phonetique|coree|aine|aines|maniere|presenter|recoltes|ecrire)\b',
+
+_ACCENT_MAP = {
+    # ---- mots très courants dans ce corpus ----
+    'ecole':        'école',
+    'ecolier':      'écolier',
+    'ecoliere':     'écolière',
+    'geographie':   'géographie',
+    'nationalite':  'nationalité',
+    'nationalites': 'nationalités',
+    'soeur':        'sœur',        # sans œ ligature → typo fréquente
+    'ingredients':  'ingrédients',
+    # -- verbe/participe courant --
+    'utilise':      'utilisé',    # "est utilise" -> "est utilisé"
+    # ---- accent manquant dans les données repérées ----
+    'ecole':        'école',
+    # ---- mots imposés par le cahier des charges ----
+    'eleve':        'élève',
+    'eleves':       'élèves',
+    'epinard':      'épinard',
+    'epinards':     'épinards',
+    'fenetre':      'fenêtre',
+    'fenetres':     'fenêtres',
+    'foret':        'forêt',
+    'forets':       'forêts',
+    'randonnee':    'randonnée',
+    'randonnees':   'randonnées',
+    'musee':        'musée',
+    'musees':       'musées',
+    'bibliotheque': 'bibliothèque',
+    'bibliotheques':'bibliothèques',
+    'activite':     'activité',
+    'activites':    'activités',
+    'legume':       'légume',
+    'legumes':      'légumes',
+    'cinema':       'cinéma',
+    'cinemas':      'cinémas',
+    'ceremonie':    'cérémonie',
+    'ceremonies':   'cérémonies',
+    'serie':        'série',
+    'series':       'séries',
+    'dejeuner':     'déjeuner',
+    'diner':        'dîner',
+    'cuillere':     'cuillère',
+    'cuilleres':    'cuillères',
+    'mathematiques':'mathématiques',
+    'telephone':    'téléphone',
+    'telephones':   'téléphones',
+    'etudier':      'étudier',
+    'ecouter':      'écouter',
+    'ecrire':       'écrire',
+    'deleguer':     'déléguer',
+    'preferer':     'préférer',
+    'repeter':      'répéter',
+    'energie':      'énergie',
+    'energies':     'énergies',
+    'fevrier':      'février',
+    'decembre':     'décembre',
+    'numero':       'numéro',
+    'numeros':      'numéros',
+    'cafe':         'café',
+    'cafes':        'cafés',
+    'frere':        'frère',
+    'freres':       'frères',
+    'mere':         'mère',
+    'meres':        'mères',
+    'pere':         'père',
+    'peres':        'pères',
+    'hopital':      'hôpital',
+    'hopitaux':     'hôpitaux',
+    'hotel':        'hôtel',
+    'hotels':       'hôtels',
+    'theatre':      'théâtre',
+    'theatres':     'théâtres',
+    'probleme':     'problème',
+    'problemes':    'problèmes',
+    'systeme':      'système',
+    'systemes':     'systèmes',
+    'modele':       'modèle',
+    'modeles':      'modèles',
+    'regle':        'règle',
+    'regles':       'règles',
+    'piece':        'pièce',
+    'pieces':       'pièces',
+    'siecle':       'siècle',
+    'siecles':      'siècles',
+    'cheque':       'chèque',
+    'cheques':      'chèques',
+    'pres':         'près',
+    'apres':        'après',
+    'tres':         'très',
+    'etre':         'être',
+    # -- autres mots courants sans ambiguïté --
+    'aout':         'août',
+    'coreen':       'coréen',
+    'coreens':      'coréens',
+    'coreenne':     'coréenne',
+    'coreennes':    'coréennes',
+    'coree':        'Corée',
+    'francais':     'français',
+    'francaise':    'française',
+    'francaises':   'françaises',
+    'fete':         'fête',
+    'fetes':        'fêtes',
+    'prenom':       'prénom',
+    'prenoms':      'prénoms',
+    'vetement':     'vêtement',
+    'vetements':    'vêtements',
+    'phonetique':   'phonétique',
+    'aine':         'aîné',     # grande aîné -> grande aine (rare mais présent)
+    'aines':        'aînés',
+    'maniere':      'manière',
+    'manieres':     'manières',
+    'recoltes':     'récoltes',
+    'presenter':    'présenter',
+    'matiere':      'matière',
+    'matieres':     'matières',
+    'present':      'présent',   # "au present poli" -> "au présent poli"
+    'garcon':       'garçon',
+    'garcons':      'garçons',
+    'lecon':        'leçon',
+    'lecons':       'leçons',
+    'reponse':      'réponse',
+    'reponses':     'réponses',
+    'question':     None,        # None = skip (pas d'accent attendu)
+    'etudiant':     'étudiant',
+    'etudiants':    'étudiants',
+    'etudiante':    'étudiante',
+    'etudiantes':   'étudiantes',
+    'elegance':     'élégance',
+    'evenement':    'événement',
+    'evenements':   'événements',
+    'interessee':   'intéressée',
+    'interesse':    'intéressé',
+}
+# Retire les entrées "None" (marqueurs "ne pas lister")
+_ACCENT_MAP = {k: v for k, v in _ACCENT_MAP.items() if v is not None}
+
+# Compile un pattern global pour un matching efficace
+_ACCENT_PATTERN = _re.compile(
+    r'\b(' + '|'.join(_re.escape(k) for k in sorted(_ACCENT_MAP, key=len, reverse=True)) + r')\b',
     _re.IGNORECASE,
 )
 
@@ -308,8 +447,8 @@ _KO_FIELDS = {
 
 
 def _walk_fr(node, fr_ctx, hits):
-    """Yield (path, stripped_word, snippet) for any FR string with
-    a high-confidence stripped-accent token."""
+    """Accumule (mot_fautif, correction, snippet) pour chaque token FR
+    qui correspond à une forme sans accent connue."""
     if isinstance(node, dict):
         for k, v in node.items():
             sub = fr_ctx
@@ -322,14 +461,23 @@ def _walk_fr(node, fr_ctx, hits):
         for item in node:
             _walk_fr(item, fr_ctx, hits)
     elif isinstance(node, str) and fr_ctx:
-        for m in ACCENT_STRIPPED.finditer(node):
-            hits.append((m.group(0), node))
+        for m in _ACCENT_PATTERN.finditer(node):
+            token = m.group(0)
+            correction = _ACCENT_MAP.get(token.lower())
+            if correction:
+                hits.append((token, correction, node))
 
 
 def check_warnings(D, warnings):
     """W001 missing romanization on a category that expects one,
     W002 page missing/<=0, W003 suspicious romanization (above Latin-1),
-    W004 accent-stripped French token detected (regression guard)."""
+    W004 accent-stripped French token detected (regression guard),
+    W005 vocab item with no theme and no notes,
+    W006 hangeul description_fr too short,
+    W007 romanization conflict (same korean, different romanization),
+    W008 french field identical to romanization field,
+    W009 whitespace hygiene (leading/trailing/double space or tab),
+    W010 invalid hangul character (mojibake U+FFFD or isolated jamo)."""
     for cat in FLASHABLE:
         for raw in D.get(cat, []):
             it = normalize_expression(raw) if cat == 'expressions' else raw
@@ -356,9 +504,10 @@ def check_warnings(D, warnings):
             # W004 accent-stripped French token in any FR field
             hits = []
             _walk_fr(it, False, hits)
-            for word, snippet in hits:
+            for word, correction, snippet in hits:
                 _warn(warnings, 'W004', cat, iid,
-                      f'accent strippé : {word!r} (...{snippet[:60]}...)')
+                      f'accent manquant : {word!r} -> {correction!r} '
+                      f'(...{snippet[:60]}...)')
 
     # W004 also applies to readable categories (grammar/culture/dialogues/...)
     for cat in READABLE:
@@ -366,9 +515,10 @@ def check_warnings(D, warnings):
             iid = it.get('id') or '?'
             hits = []
             _walk_fr(it, True, hits)  # readable items: assume FR by default
-            for word, snippet in hits:
+            for word, correction, snippet in hits:
                 _warn(warnings, 'W004', cat, iid,
-                      f'accent strippé : {word!r} (...{snippet[:60]}...)')
+                      f'accent manquant : {word!r} -> {correction!r} '
+                      f'(...{snippet[:60]}...)')
 
     # W005 vocab item with both theme AND notes empty (pedagogical thinness)
     for it in D.get('vocabulary', []):
@@ -384,6 +534,153 @@ def check_warnings(D, warnings):
         if len(desc) < 25:
             _warn(warnings, 'W006', 'hangeul', iid,
                   f'description_fr courte ({len(desc)} chars) : {desc!r}')
+
+    # W007 romanization conflict : même coréen canonique, romanisations différentes
+    _check_w007(D, warnings)
+
+    # W008 french identique à romanization (probablement copié-collé par erreur)
+    _check_w008(D, warnings)
+
+    # W009 hygiène des espaces dans tous les champs texte
+    _check_w009(D, warnings)
+
+    # W010 validité du hangul dans les champs coréens
+    _check_w010(D, warnings)
+
+
+# ---------------------------------------------------------------------------
+# W007 : romanisation en conflit (même coréen canonique, rom différentes)
+# ---------------------------------------------------------------------------
+
+def _check_w007(D, warnings):
+    for cat in FLASHABLE:
+        seen = {}  # korean_canonical -> (romanization, id_premiere_occurrence)
+        for raw in D.get(cat, []):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id') or '?'
+            kr = get_kr(it, cat)
+            rom = get_rom(it, cat)
+            if not kr or not rom:
+                continue
+            if kr in seen:
+                first_rom, first_id = seen[kr]
+                if first_rom != rom:
+                    _warn(warnings, 'W007', cat, iid,
+                          f'romanisation en conflit : {rom!r} '
+                          f'(1re occurrence {first_id} -> {first_rom!r})')
+            else:
+                seen[kr] = (rom, iid)
+
+
+# ---------------------------------------------------------------------------
+# W008 : french == romanization (cas-insensitif) ou french purement ASCII
+#         correspondant à une translittération
+# ---------------------------------------------------------------------------
+
+def _check_w008(D, warnings):
+    for cat in FLASHABLE:
+        for raw in D.get(cat, []):
+            it = normalize_expression(raw) if cat == 'expressions' else raw
+            iid = it.get('id') or '?'
+            fr = (it.get('french') or '').strip()
+            rom = get_rom(it, cat).strip()
+            if not fr or not rom:
+                continue
+            if fr.lower() == rom.lower():
+                _warn(warnings, 'W008', cat, iid,
+                      f'french identique à romanization : {fr!r}')
+
+
+# ---------------------------------------------------------------------------
+# W009 : hygiène des chaînes (espace en début/fin, double espace, tabulation)
+# ---------------------------------------------------------------------------
+
+def _ws_issues(s):
+    """Retourne la liste des problèmes de whitespace dans la chaîne s."""
+    problems = []
+    if s != s.strip():
+        problems.append('espace en début/fin')
+    if '  ' in s:
+        problems.append('double espace')
+    if '\t' in s:
+        problems.append('tabulation')
+    return problems
+
+
+def _walk_ws(node, issues, path=''):
+    """Parcourt récursivement node et accumule les problèmes de whitespace."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            _walk_ws(v, issues, f'{path}.{k}' if path else k)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            _walk_ws(v, issues, f'{path}[{i}]')
+    elif isinstance(node, str):
+        problems = _ws_issues(node)
+        if problems:
+            issues.append((path, ', '.join(problems), node))
+
+
+def _check_w009(D, warnings):
+    for cat in FLASHABLE + READABLE:
+        for raw in D.get(cat, []):
+            iid = raw.get('id') or '?'
+            issues = []
+            _walk_ws(raw, issues)
+            for field, problem, val in issues:
+                _warn(warnings, 'W009', cat, iid,
+                      f'whitespace : {problem} dans champ {field!r} '
+                      f'({val[:40]!r})')
+
+
+# ---------------------------------------------------------------------------
+# W010 : validité du hangul dans les champs coréens
+#         - U+FFFD : caractère de remplacement (mojibake)
+#         - jamo isolés (U+1100-U+11FF, U+3130-U+318F) hors catégorie hangeul
+# ---------------------------------------------------------------------------
+
+_KO_TEXT_FIELDS = {
+    'korean', 'korean_formal', 'korean_informal', 'korean_polite',
+    'infinitive', 'letter', 'particle', 'korean_before_counter', 'highlighted',
+}
+
+
+def _hangul_issues(text, cat):
+    """Retourne la liste des caractères problématiques dans text."""
+    problems = []
+    for i, ch in enumerate(text):
+        cp = ord(ch)
+        if cp == 0xFFFD:
+            problems.append(f'U+FFFD (remplacement mojibake) pos {i}')
+        if cat != 'hangeul' and (0x1100 <= cp <= 0x11FF or 0x3130 <= cp <= 0x318F):
+            problems.append(f'jamo isolé U+{cp:04X} ({ch!r}) pos {i}')
+    return problems
+
+
+def _walk_ko(node, cat, issues):
+    """Parcourt récursivement node, inspecte les champs coréens connus."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k in _KO_TEXT_FIELDS and isinstance(v, str) and v:
+                probs = _hangul_issues(v, cat)
+                for p in probs:
+                    issues.append((k, v[:40], p))
+            else:
+                _walk_ko(v, cat, issues)
+    elif isinstance(node, list):
+        for item in node:
+            _walk_ko(item, cat, issues)
+
+
+def _check_w010(D, warnings):
+    for cat in FLASHABLE + READABLE:
+        for raw in D.get(cat, []):
+            iid = raw.get('id') or '?'
+            issues = []
+            _walk_ko(raw, cat, issues)
+            for field, snippet, problem in issues:
+                _warn(warnings, 'W010', cat, iid,
+                      f'hangul invalide : {problem} dans {field!r} ({snippet!r})')
 
 
 def load_data():
