@@ -20,6 +20,8 @@ tools/*
 # Temp files
 tmp_*
 test-*.png
+__pycache__/
+*.pyc
 .playwright-mcp/
 .env
 .env.local
