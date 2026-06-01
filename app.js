@@ -1165,6 +1165,24 @@ function setupEvents() {
 
   // Settings
   $('#btn-settings').onclick = openSettings;
+
+  // Keyboard shortcuts (flashcard screen only)
+  document.addEventListener('keydown', e => {
+    if (screen !== 'fc') return;
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
+    const done = $('#fc-done');
+    if (done && !done.classList.contains('hidden')) return;
+    if (!flipped) {
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+      return;
+    }
+    if (e.key === '1') answer(1);
+    else if (e.key === '2') answer(2);
+    else if (e.key === '3') answer(3);
+    else if (e.key === '4') answer(4);
+    else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); answer(3); }
+  });
 }
 
 // ========== Settings panel ==========
