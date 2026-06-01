@@ -49,7 +49,7 @@ const RECENT_GUARD    = 8;         // don't re-show a card within the last N sho
 // Settings (persisted in localStorage)
 const SETTINGS_KEY = 'blokaja4_settings';
 function getSettings() {
-  const defaults = { newPerDay: 20, autoSpeak: false, showRomanization: true, direction: 'kr-fr' };
+  const defaults = { newPerDay: 20, autoSpeak: false, showRomanization: true, direction: 'kr-fr', typing: false };
   try { return { ...defaults, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
   catch { return defaults; }
 }
@@ -704,6 +704,19 @@ function flip() {
     showLeechBanner(it.id);
   }
 
+  // Typing self-test feedback: show whether the typed answer matched.
+  if (getSettings().typing) {
+    const inp = $('.fc-type');
+    const typed = inp ? inp.value : '';
+    if (typed && typed.trim()) {
+      const ok = _answerMatches(typed, it);
+      const fb = document.createElement('div');
+      fb.className = 'fc-type-fb ' + (ok ? 'ok' : 'no');
+      fb.textContent = `Ta réponse : ${typed.trim()} ${ok ? '✓' : '✗'}`;
+      $('#fc-back').prepend(fb);
+    }
+  }
+
   // Auto-play Korean TTS if the user enabled it
   if (getSettings().autoSpeak) speakKr(getKr(it));
 }
@@ -953,6 +966,26 @@ function cardExamplesHtml(it) {
   }).join('');
 }
 
+// Typing self-test helpers.
+// NOTE: the web cannot force a Korean keyboard. We set lang="ko" as a hint
+// to the user's IME; the user must have a Korean keyboard installed to type
+// Hangul. As a fallback we also accept the romanization. For kr-fr direction
+// the expected answer is French (typeable on any keyboard).
+function _normAns(s) {
+  return (s || '').toLowerCase().trim()
+    .replace(/\(.*?\)/g, '')      // drop parentheticals like (familier)
+    .replace(/[.,!?;:]/g, '')
+    .replace(/\s+/g, ' ').trim();
+}
+// Returns true/false if an answer was typed, or null if blank.
+function _answerMatches(typed, it) {
+  const t = _normAns(typed).replace(/\s/g, '');
+  if (!t) return null;
+  const expected = (_curDir === 'fr-kr') ? [getKr(it), getRom(it)] : [getFr(it)];
+  const alts = expected.flatMap(e => _normAns(e).split(/[\/,]/)).map(x => x.replace(/\s/g, '')).filter(Boolean);
+  return alts.some(a => a === t || a.includes(t) || t.includes(a));
+}
+
 function buildFront(it) {
   const cfg = CARD[it._c];
   if (!cfg) return '';
@@ -970,7 +1003,10 @@ function buildFront(it) {
           + `<button type="button" class="fc-hint-btn">Indice : romanisation</button>`;
     }
   }
-  return `<div class="fc-label">${esc(label)}</div>` + body;
+  const typeInput = getSettings().typing
+    ? `<input type="text" class="fc-type" lang="ko" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Tape ta réponse...">`
+    : '';
+  return `<div class="fc-label">${esc(label)}</div>` + body + typeInput;
 }
 
 function buildBack(it) {
@@ -1132,6 +1168,7 @@ function setupEvents() {
   // Flashcards
   $('#btn-fc').onclick = startFc;
   $('#fc-card').onclick = e => {
+    if (e.target.closest('.fc-type')) return;
     const tts = e.target.closest('.tts-btn');
     if (tts) { e.stopPropagation(); speakKr(tts.dataset.tts); return; }
     const hint = e.target.closest('.fc-hint-btn');
@@ -1144,6 +1181,9 @@ function setupEvents() {
     }
     flip();
   };
+  $('#fc-card').addEventListener('keydown', e => {
+    if (e.target.classList && e.target.classList.contains('fc-type') && e.key === 'Enter') { e.preventDefault(); flip(); }
+  });
   $('#fc-reveal').onclick = flip;
   $('#fc-again').onclick = () => answer(1);
   $('#fc-hard').onclick  = () => answer(2);
@@ -1198,6 +1238,8 @@ function openSettings() {
   if (rom) rom.checked = !!s.showRomanization;
   const dir = $('#settings-direction');
   if (dir) dir.value = s.direction || 'kr-fr';
+  const tp = $('#settings-typing');
+  if (tp) tp.checked = !!s.typing;
   const help = $('#settings-new-current');
   if (help) {
     const dn = dailyNewSummary();
@@ -1223,6 +1265,8 @@ function applySettings() {
   if (rom) s.showRomanization = !!rom.checked;
   const dir = $('#settings-direction');
   if (dir) s.direction = dir.value;
+  const tp = $('#settings-typing');
+  if (tp) s.typing = !!tp.checked;
   saveSettings(s);
   closeSettings();
   showToast('Réglages enregistrés');

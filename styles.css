@@ -420,6 +420,17 @@ body {
 }
 .fc-hint-btn:active { transform: scale(0.96); color: var(--fg); }
 
+/* ===== Typing self-test input + feedback ===== */
+.fc-type {
+  display: block; width: 100%; margin-top: 16px; padding: 10px 12px;
+  background: var(--bg); color: var(--fg); border: 1.5px solid var(--border);
+  border-radius: 10px; font-family: var(--kr); font-size: 1rem; outline: none;
+}
+.fc-type:focus { border-color: var(--fg3); }
+.fc-type-fb { font-family: var(--ui); font-size: 0.85rem; margin-bottom: 12px; font-weight: 600; }
+.fc-type-fb.ok { color: var(--green); }
+.fc-type-fb.no { color: var(--red); }
+
 /* ===== Flashcard undo ===== */
 .fc-undo {
   position: absolute; top: 12px; left: 12px; z-index: 5;
