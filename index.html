@@ -33,6 +33,7 @@
         </button>
       </div>
       <div class="overlay-body settings-body">
+        <div class="setting-section-label setting-section-label--first">Apprentissage</div>
         <div class="setting-row">
           <div class="setting-label-stack">
             <label for="settings-new-per-day">Nouvelles cartes / jour</label>
@@ -47,17 +48,6 @@
           </select>
         </div>
         <div class="setting-row">
-          <label for="settings-auto-speak">Lecture audio automatique au flip</label>
-          <input type="checkbox" id="settings-auto-speak">
-        </div>
-        <div class="setting-row">
-          <div class="setting-label-stack">
-            <label for="settings-show-rom">Afficher la romanisation</label>
-            <span class="setting-help">Sinon, un bouton « Indice » la révèle à la demande</span>
-          </div>
-          <input type="checkbox" id="settings-show-rom">
-        </div>
-        <div class="setting-row">
           <div class="setting-label-stack">
             <label for="settings-direction">Sens de révision</label>
             <span class="setting-help">Ce qui s'affiche en premier (recto)</span>
@@ -68,12 +58,25 @@
             <option value="mixed">Mixte</option>
           </select>
         </div>
+        <div class="setting-section-label">Affichage et audio</div>
+        <div class="setting-row">
+          <div class="setting-label-stack">
+            <label for="settings-show-rom">Afficher la romanisation</label>
+            <span class="setting-help">Sinon, un bouton « Indice » la révèle à la demande</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="settings-show-rom"><span class="switch-slider"></span></label>
+        </div>
+        <div class="setting-row">
+          <label for="settings-auto-speak">Lecture audio automatique au flip</label>
+          <label class="switch"><input type="checkbox" id="settings-auto-speak"><span class="switch-slider"></span></label>
+        </div>
+        <div class="setting-section-label">Saisie</div>
         <div class="setting-row">
           <div class="setting-label-stack">
             <label for="settings-typing">Mode saisie</label>
             <span class="setting-help">Taper la réponse pour s'auto-tester (clavier coréen requis pour le hangeul ; la romanisation est acceptée)</span>
           </div>
-          <input type="checkbox" id="settings-typing">
+          <label class="switch"><input type="checkbox" id="settings-typing"><span class="switch-slider"></span></label>
         </div>
         <div class="setting-section-label">Cartes suspendues</div>
         <div id="settings-suspended" class="suspended-list"></div>

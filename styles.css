@@ -372,12 +372,22 @@ body {
 .leech-keep { background: var(--surface); color: var(--fg2); }
 .leech-suspend { background: rgba(239, 68, 68, 0.6); color: #fff; border-color: transparent; }
 
+/* ===== Toggle switch ===== */
+.switch { position: relative; display: inline-block; width: 44px; height: 26px; flex-shrink: 0; }
+.switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.switch-slider { position: absolute; inset: 0; cursor: pointer; background: var(--accent-soft); border: 1px solid var(--border); border-radius: 999px; transition: background .15s, border-color .15s; }
+.switch-slider::before { content: ''; position: absolute; height: 18px; width: 18px; left: 3px; top: 3px; background: var(--fg2); border-radius: 50%; transition: transform .15s, background .15s; }
+.switch input:checked + .switch-slider { background: var(--green-bg); border-color: var(--green); }
+.switch input:checked + .switch-slider::before { transform: translateX(18px); background: var(--green); }
+.switch input:focus-visible + .switch-slider { border-color: var(--fg2); }
+
 /* ===== Suspended list (in settings) ===== */
 .setting-section-label {
   margin-top: 24px; margin-bottom: 8px;
   font-family: var(--ui); font-size: 0.75rem; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg3);
 }
+.setting-section-label--first { margin-top: 8px; }
 .suspended-list { max-height: 200px; overflow-y: auto; }
 .empty-mini {
   padding: 12px 0; color: var(--fg3); font-size: 0.82rem;
