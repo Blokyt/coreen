@@ -433,6 +433,18 @@ body {
 .fc-undo:hover { color: var(--fg); opacity: 1; }
 .fc-undo.hidden { display: none; }
 
+/* ===== Daily streak (home) ===== */
+.gp-streak { margin-top: 4px; font-family: var(--ui); font-size: 0.78rem; color: var(--amber); }
+
+/* ===== End-of-session summary ===== */
+.fc-done { text-align: center; padding: 32px 16px; }
+.fc-done.hidden { display: none !important; }
+.fc-done-emoji { font-size: 2.4rem; }
+.fc-done-title { font-family: var(--ui); font-size: 1.1rem; font-weight: 700; margin-top: 10px; }
+.fc-done-stats { color: var(--fg2); font-size: 0.9rem; margin-top: 12px; line-height: 1.6; }
+.fc-done-streak { color: var(--amber); margin-top: 4px; }
+.fc-done-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+
 /* ===== Toast ===== */
 .toast {
   position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%);

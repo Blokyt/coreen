@@ -403,6 +403,21 @@ async function init() {
 
 function saveP() { localStorage.setItem('blokaja4', JSON.stringify(P)); }
 
+// ========== Daily streak ==========
+
+const STREAK_KEY = 'blokaja4_streak';
+function getStreak() { try { return JSON.parse(localStorage.getItem(STREAK_KEY) || '{}'); } catch { return {}; } }
+function bumpStreak() {
+  const today = new Date().toDateString();
+  const s = getStreak();
+  if (s.last === today) return s.count || 1;
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  s.count = (s.last === yesterday) ? (s.count || 0) + 1 : 1;
+  s.last = today;
+  localStorage.setItem(STREAK_KEY, JSON.stringify(s));
+  return s.count;
+}
+
 function chItems(ch) {
   const out = [];
   for (const cat of Object.keys(CATS)) for (const it of (D[cat] || [])) if (it.chapter === ch) out.push({...it, _c: cat});
@@ -451,6 +466,7 @@ function renderHome() {
        ${segBar(g, 'gp-bar')}
        <div class="gp-label">${parts.join(' · ')}</div>
        <div class="${dnCls}">${dnText}</div>
+       ${(() => { const st = getStreak(); return st.count ? `<div class="gp-streak">🔥 ${st.count} jour${st.count>1?'s':''} d'affilée</div>` : ''; })()}
      </div>`;
 
   $('#chapters-grid').innerHTML = D.chapters.map((ch, i) => {
@@ -559,6 +575,8 @@ function renderItem(it) {
 let deck = [], flipped = false, deckFlashable = [], _recent = [], _cur = null;
 let _undo = null; // snapshot of last graded state, or null when nothing to undo
 let _curDir = 'kr-fr'; // current card's direction: 'kr-fr' or 'fr-kr'
+let _sess = { n: 0, again: 0 };
+let _drillAhead = false;
 
 function startFc() {
   // Unique working set: flashable, has an id, not suspended.
@@ -569,6 +587,8 @@ function startFc() {
   _recent = [];
   _cur = null;
   _undo = null;
+  _sess = { n: 0, again: 0 };
+  _drillAhead = false;
   updateUndoButton();
   show('fc');
   $('#header-title').textContent = curTitle;
@@ -583,23 +603,36 @@ function updateUndoButton() {
 
 function showCard() {
   const it = pickNext(deck, _recent);
-  if (!it) { endSession(); return; }
+  if (!it) { showSessionSummary(); return; }
+  const c = P[it.id];
+  const dueNow = !c || c.st === 0 || (c.due || 0) <= Date.now();
+  if (!dueNow && !_drillAhead) { showSessionSummary(); return; }
+  _drillAhead = false;
   _cur = it;
   _recent.push(it.id);
   if (_recent.length > RECENT_GUARD * 2) _recent.shift();
   renderCurrentCard();
 }
 
-// Nothing left to show (everything suspended, or daily cap reached and nothing
-// else eligible).
-function endSession() {
-  showToast('Rien à réviser pour le moment');
-  renderHome();
+function showSessionSummary() {
+  const done = $('#fc-done');
+  if (!done) { renderHome(); return; }
+  $('#fc-card').classList.add('hidden');
+  $('#fc-actions').classList.add('hidden');
+  $('#fc-reveal').classList.add('hidden');
+  const reussies = _sess.n - _sess.again;
+  const st = getStreak();
+  $('#fc-done-stats').innerHTML =
+    `<div>${_sess.n} carte${_sess.n>1?'s':''} révisée${_sess.n>1?'s':''} · ${reussies} réussie${reussies>1?'s':''}</div>`
+    + (st.count ? `<div class="fc-done-streak">🔥 ${st.count} jour${st.count>1?'s':''} d'affilée</div>` : '');
+  done.classList.remove('hidden');
 }
 
 // Render the currently selected card (_cur) without advancing the queue. Used
 // by showCard() after a pick, and by undo to restore the previous card.
 function renderCurrentCard() {
+  $('#fc-done')?.classList.add('hidden');
+  $('#fc-card').classList.remove('hidden');
   const it = _cur;
   flipped = false;
 
@@ -688,10 +721,12 @@ function answer(grade) {
     cur_snap: it,
   };
 
-  if (grade === 1) srsAgain(it.id);
+  _sess.n++;
+  if (grade === 1) { _sess.again++; srsAgain(it.id); }
   else if (grade === 2) srsHard(it.id);
   else if (grade === 3) srsGood(it.id);
   else srsEasy(it.id);
+  bumpStreak();
   // Re-test timing comes from the card's due time + pickNext priority; no manual
   // re-insertion (that splice was the source of the runaway, looping deck).
   updateUndoButton();
@@ -728,7 +763,7 @@ function suspendCard(cardId) {
   c.suspended = true;
   saveP();
   showToast('Carte suspendue');
-  showCard(); // pickNext skips suspended cards; advances to next (or endSession)
+  showCard(); // pickNext skips suspended cards; advances to next (or session summary)
 }
 
 function unsuspendCard(cardId) {
@@ -1115,6 +1150,8 @@ function setupEvents() {
   $('#fc-good').onclick  = () => answer(3);
   $('#fc-easy').onclick  = () => answer(4);
   if ($('#fc-undo')) $('#fc-undo').onclick = e => { e.stopPropagation(); undoLastAnswer(); };
+  if ($('#fc-done-more')) $('#fc-done-more').onclick = () => { _drillAhead = true; $('#fc-done').classList.add('hidden'); showCard(); };
+  if ($('#fc-done-home')) $('#fc-done-home').onclick = () => renderHome();
 
   // Swipe (left = Again, right = Good)
   let tx = 0;
