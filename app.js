@@ -49,7 +49,7 @@ const RECENT_GUARD    = 8;         // don't re-show a card within the last N sho
 // Settings (persisted in localStorage)
 const SETTINGS_KEY = 'blokaja4_settings';
 function getSettings() {
-  const defaults = { newPerDay: 20, autoSpeak: false, showRomanization: true };
+  const defaults = { newPerDay: 20, autoSpeak: false, showRomanization: true, direction: 'kr-fr' };
   try { return { ...defaults, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
   catch { return defaults; }
 }
@@ -558,6 +558,7 @@ function renderItem(it) {
 // pickNext, so duplicates never accumulate and the queue can't starve.
 let deck = [], flipped = false, deckFlashable = [], _recent = [], _cur = null;
 let _undo = null; // snapshot of last graded state, or null when nothing to undo
+let _curDir = 'kr-fr'; // current card's direction: 'kr-fr' or 'fr-kr'
 
 function startFc() {
   // Unique working set: flashable, has an id, not suspended.
@@ -601,6 +602,11 @@ function endSession() {
 function renderCurrentCard() {
   const it = _cur;
   flipped = false;
+
+  // Resolve direction for this card before building front/back.
+  const cfg = getSettings();
+  _curDir = cfg.direction === 'mixed' ? (Math.random() < 0.5 ? 'kr-fr' : 'fr-kr') : (cfg.direction || 'kr-fr');
+
   $('#fc-cat').textContent = CATS[it._c] || '';
 
   const pg = it.page ? `p.${it.page}` : '';
@@ -666,15 +672,7 @@ function flip() {
   }
 
   // Auto-play Korean TTS if the user enabled it
-  if (getSettings().autoSpeak) {
-    const cfg = CARD[it._c];
-    const back = cfg?.bMain?.(it) || '';
-    if (_HANGUL_RE.test(back)) speakKr(back);
-    else {
-      const front = cfg?.fMain?.(it) || '';
-      if (_HANGUL_RE.test(front)) speakKr(front);
-    }
-  }
+  if (getSettings().autoSpeak) speakKr(getKr(it));
 }
 
 // grade: 1=Again, 2=Hard, 3=Good, 4=Easy
@@ -822,12 +820,8 @@ function getRom(it) {
   return it.romanization || '';
 }
 
-// ---- Category-specific back helpers ----
+// ---- Category-specific helpers ----
 
-function verbBack(it) {
-  const cj = it.conjugations || {};
-  return cj.polite_present || cj.informal_present || cj.polite_present_after_vowel || '';
-}
 function verbExtra(it) {
   const cj = it.conjugations || {};
   const p = [];
@@ -859,43 +853,21 @@ function exprRom(it) {
 
 // ========== Card config (declarative) ==========
 //
-// Each category declares what goes on the front and back of its flashcard.
-// fMain/fSub = front main/sub, bMain/bSub/bExtra = back main/sub/extra.
-// Functions receive the item and return a string.
-
-const STD = { fMain: getKr, fSub: getRom, bMain: getFr };
+// Each category only needs a label; front/back content is built by
+// buildFront/buildBack using the direction setting and the shared accessors.
 
 const CARD = {
-  vocabulary:       { label: 'Vocabulaire',      ...STD },
-  time_expressions: { label: 'Temps',            ...STD },
-  adverbs:          { label: 'Adverbes',         ...STD },
-  connectors:       { label: 'Connecteurs',      ...STD },
-  classifiers:      { label: 'Classificateurs',  ...STD },
-  verbs: {
-    label: 'Verbe', fMain: getKr, fSub: getRom,
-    bMain: verbBack, bSub: getFr, bExtra: verbExtra,
-  },
-  adjectives: {
-    label: 'Adjectif', fMain: getKr, fSub: getRom,
-    bMain: it => it.korean_polite || '', bSub: getFr,
-  },
-  hangeul: {
-    label: 'Hangeul', fMain: getKr,
-    bMain: getRom, bSub: it => it.description_fr || '',
-  },
-  numbers: {
-    label: it => it.system === 'native-korean' ? 'Nombre natif' : 'Nombre sino',
-    fMain: it => String(it.numeral ?? ''),
-    bMain: getKr, bSub: it => it.korean_before_counter ? `devant compteur : ${it.korean_before_counter}` : '',
-  },
-  particles: {
-    label: 'Particule', fMain: getKr,
-    bMain: getFr, bSub: particleSub, bExtra: particleExtra,
-  },
-  expressions: {
-    label: 'Expression', fMain: getFr,
-    bMain: getKr, bSub: exprSub, bExtra: exprRom,
-  },
+  vocabulary:       { label: 'Vocabulaire' },
+  time_expressions: { label: 'Temps' },
+  adverbs:          { label: 'Adverbes' },
+  connectors:       { label: 'Connecteurs' },
+  classifiers:      { label: 'Classificateurs' },
+  verbs:            { label: 'Verbe' },
+  adjectives:       { label: 'Adjectif' },
+  hangeul:          { label: 'Hangeul' },
+  numbers:          { label: it => it.system === 'native-korean' ? 'Nombre natif' : 'Nombre sino' },
+  particles:        { label: 'Particule' },
+  expressions:      { label: 'Expression' },
 };
 
 // Detect any Hangul codepoint to decide whether a TTS button is meaningful.
@@ -905,35 +877,64 @@ function _ttsBtn(text) {
   return `<button class="tts-btn" data-tts="${esc(text)}" aria-label="Lire à voix haute">🔈</button>`;
 }
 
+// Romanization reading-aid for the Korean side. Hangeul has none (its
+// romanization is the meaning side); expressions use the polite/informal pair.
+function koSub(it) {
+  if (it._c === 'hangeul') return '';
+  if (it._c === 'expressions') return exprRom(it);
+  return getRom(it);
+}
+
+// Answer-only extra lines, shown on the back in any direction.
+function cardDetail(it) {
+  const c = it._c, out = [];
+  if (c === 'verbs')            { const v = verbExtra(it); if (v) out.push(v); }
+  else if (c === 'adjectives')  { if (it.korean_polite) out.push(`forme polie : ${it.korean_polite}`); }
+  else if (c === 'expressions') { const s = exprSub(it); if (s) out.push(s); }
+  else if (c === 'particles')   { const s = particleSub(it), e = particleExtra(it); if (s) out.push(s); if (e) out.push(e); }
+  else if (c === 'numbers')     { if (it.korean_before_counter) out.push(`devant compteur : ${it.korean_before_counter}`); }
+  else if (c === 'hangeul')     { if (it.description_fr) out.push(it.description_fr); }
+  return out;
+}
+
+function _faceMain(text, withTts) {
+  return `<div class="fc-main">${esc(text)}${withTts ? _ttsBtn(text) : ''}</div>`;
+}
+function _detailHtml(it) {
+  const d = cardDetail(it);
+  return d.length ? `<div class="fc-extra">${d.map(esc).join('\n')}</div>` : '';
+}
+
 function buildFront(it) {
   const cfg = CARD[it._c];
   if (!cfg) return '';
   const label = typeof cfg.label === 'function' ? cfg.label(it) : cfg.label;
-  const main  = cfg.fMain?.(it) || '';
-  const sub   = cfg.fSub?.(it)  || '';
-  let subHtml = '';
-  if (sub) {
-    // fSub is the romanization "crutch". When the user hides romanization we
-    // keep it one tap away behind an Indice button (revealed without flipping).
-    subHtml = getSettings().showRomanization
-      ? `<div class="fc-sub">${esc(sub)}</div>`
-      : `<div class="fc-sub fc-hint-sub hidden">${esc(sub)}</div>`
-        + `<button type="button" class="fc-hint-btn">Indice : romanisation</button>`;
+  let body;
+  if (_curDir === 'fr-kr') {
+    body = _faceMain(getFr(it), false);              // French prompt
+  } else {
+    body = _faceMain(getKr(it), true);               // Korean prompt (+ TTS)
+    const sub = koSub(it);
+    if (sub) {
+      body += getSettings().showRomanization
+        ? `<div class="fc-sub">${esc(sub)}</div>`
+        : `<div class="fc-sub fc-hint-sub hidden">${esc(sub)}</div>`
+          + `<button type="button" class="fc-hint-btn">Indice : romanisation</button>`;
+    }
   }
-  return `<div class="fc-label">${esc(label)}</div>`
-       + `<div class="fc-main">${esc(main)}${_ttsBtn(main)}</div>`
-       + subHtml;
+  return `<div class="fc-label">${esc(label)}</div>` + body;
 }
 
 function buildBack(it) {
   const cfg = CARD[it._c];
   if (!cfg) return '';
-  const main  = cfg.bMain?.(it)  || '';
-  const sub   = cfg.bSub?.(it)   || '';
-  const extra = cfg.bExtra?.(it) || '';
-  return `<div class="fc-main">${esc(main)}${_ttsBtn(main)}</div>`
-       + (sub   ? `<div class="fc-sub">${esc(sub)}</div>`     : '')
-       + (extra ? `<div class="fc-extra">${esc(extra)}</div>` : '');
+  if (_curDir === 'fr-kr') {
+    const sub = koSub(it);                            // Korean answer (+ TTS + rom always shown)
+    return _faceMain(getKr(it), true)
+      + (sub ? `<div class="fc-sub">${esc(sub)}</div>` : '')
+      + _detailHtml(it);
+  }
+  return _faceMain(getFr(it), false) + _detailHtml(it);  // French answer + detail
 }
 
 // Korean text-to-speech.
@@ -1126,6 +1127,8 @@ function openSettings() {
   if (auto) auto.checked = !!s.autoSpeak;
   const rom = $('#settings-show-rom');
   if (rom) rom.checked = !!s.showRomanization;
+  const dir = $('#settings-direction');
+  if (dir) dir.value = s.direction || 'kr-fr';
   const help = $('#settings-new-current');
   if (help) {
     const dn = dailyNewSummary();
@@ -1149,6 +1152,8 @@ function applySettings() {
   if (auto) s.autoSpeak = !!auto.checked;
   const rom = $('#settings-show-rom');
   if (rom) s.showRomanization = !!rom.checked;
+  const dir = $('#settings-direction');
+  if (dir) s.direction = dir.value;
   saveSettings(s);
   closeSettings();
   showToast('Réglages enregistrés');
