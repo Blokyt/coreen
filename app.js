@@ -49,8 +49,9 @@ const RECENT_GUARD    = 8;         // don't re-show a card within the last N sho
 // Settings (persisted in localStorage)
 const SETTINGS_KEY = 'blokaja4_settings';
 function getSettings() {
-  try { return { newPerDay: 20, autoSpeak: false, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
-  catch { return { newPerDay: 20, autoSpeak: false }; }
+  const defaults = { newPerDay: 20, autoSpeak: false, showRomanization: true };
+  try { return { ...defaults, ...JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') }; }
+  catch { return defaults; }
 }
 function saveSettings(s) { localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); }
 
@@ -910,9 +911,18 @@ function buildFront(it) {
   const label = typeof cfg.label === 'function' ? cfg.label(it) : cfg.label;
   const main  = cfg.fMain?.(it) || '';
   const sub   = cfg.fSub?.(it)  || '';
+  let subHtml = '';
+  if (sub) {
+    // fSub is the romanization "crutch". When the user hides romanization we
+    // keep it one tap away behind an Indice button (revealed without flipping).
+    subHtml = getSettings().showRomanization
+      ? `<div class="fc-sub">${esc(sub)}</div>`
+      : `<div class="fc-sub fc-hint-sub hidden">${esc(sub)}</div>`
+        + `<button type="button" class="fc-hint-btn">Indice : romanisation</button>`;
+  }
   return `<div class="fc-label">${esc(label)}</div>`
        + `<div class="fc-main">${esc(main)}${_ttsBtn(main)}</div>`
-       + (sub ? `<div class="fc-sub">${esc(sub)}</div>` : '');
+       + subHtml;
 }
 
 function buildBack(it) {
@@ -1020,6 +1030,14 @@ function setupEvents() {
   $('#fc-card').onclick = e => {
     const tts = e.target.closest('.tts-btn');
     if (tts) { e.stopPropagation(); speakKr(tts.dataset.tts); return; }
+    const hint = e.target.closest('.fc-hint-btn');
+    if (hint) {
+      e.stopPropagation();
+      const sub = hint.parentElement.querySelector('.fc-hint-sub');
+      if (sub) sub.classList.remove('hidden');
+      hint.classList.add('hidden');
+      return;
+    }
     flip();
   };
   $('#fc-reveal').onclick = flip;
@@ -1052,6 +1070,8 @@ function openSettings() {
   if (sel) sel.value = String(s.newPerDay);
   const auto = $('#settings-auto-speak');
   if (auto) auto.checked = !!s.autoSpeak;
+  const rom = $('#settings-show-rom');
+  if (rom) rom.checked = !!s.showRomanization;
   const help = $('#settings-new-current');
   if (help) {
     const dn = dailyNewSummary();
@@ -1073,6 +1093,8 @@ function applySettings() {
   s.newPerDay = val === '0' ? 0 : Number(val);
   const auto = $('#settings-auto-speak');
   if (auto) s.autoSpeak = !!auto.checked;
+  const rom = $('#settings-show-rom');
+  if (rom) s.showRomanization = !!rom.checked;
   saveSettings(s);
   closeSettings();
   showToast('Réglages enregistrés');
