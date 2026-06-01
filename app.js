@@ -44,6 +44,7 @@ const INIT_EASE      = 2.5;
 const HARD_MULT      = 1.2;        // Hard interval multiplier
 const EASY_BONUS     = 1.3;        // Easy interval bonus multiplier
 const LEECH_THRESHOLD = 8;         // lapses before leech flag
+const RECENT_GUARD    = 8;         // don't re-show a card within the last N shows (when deck > N)
 
 // Settings (persisted in localStorage)
 const SETTINGS_KEY = 'blokaja4_settings';
@@ -282,8 +283,42 @@ function srsPriority(item) {
     return overdue > 0 ? 8000 + Math.min(overdue / 60000, 999) : overdue / 60000;
   }
 
-  // Review card not yet due: below new cards, sooner due = higher priority
-  return Math.min(4999, -(overdue / 60000));
+  // Review card not yet due: kept well below new cards; sooner due = higher
+  // priority (closer to 0). Was inverted before: far-future reviews outranked
+  // near ones because of the sign on the original Math.min(4999, ...).
+  return -Math.min(Math.abs(overdue) / 60000, 1e7);
+}
+
+// Pick the next card to show from a unique working set `items`, given the ids
+// shown recently (oldest..newest). Pure w.r.t. module state: reads P + settings
+// via srsPriority/refreshNewLimit. Returns the item to show, or null if nothing
+// is eligible.
+//
+// This replaces the old "deck array + splice duplicates + occasional re-sort"
+// mechanic, which let duplicate refs pile up (deck grew without bound), starved
+// new cards, and made the same few cards cluster/loop. See tests/repro_deck.js
+// for the reproduction and tests/scheduler.test.js for the regression coverage.
+function pickNext(items, recent) {
+  refreshNewLimit();
+  // Eligible = priority above -Infinity → drops suspended cards and, once the
+  // daily cap is hit, new cards (a real hard cap, not just a demotion).
+  const elig = items.filter(it => srsPriority(it) > -Infinity);
+  if (!elig.length) return null;
+  // Avoid re-showing a card seen in the last RECENT_GUARD shows, unless doing so
+  // would leave nothing to show (deck smaller than the guard window).
+  const guard = new Set(recent.slice(-RECENT_GUARD));
+  let pool = elig.filter(it => !guard.has(it.id));
+  if (!pool.length) pool = elig;
+  // Highest live priority wins; tie-break by earliest due. Equal priority AND
+  // equal due keeps list order (new cards have due 0, so they are introduced in
+  // chapter/page order rather than by id string).
+  let best = pool[0], bestP = srsPriority(best);
+  for (let i = 1; i < pool.length; i++) {
+    const p = srsPriority(pool[i]);
+    if (p > bestP) { best = pool[i]; bestP = p; continue; }
+    if (p === bestP && (P[pool[i].id]?.due || 0) < (P[best.id]?.due || 0)) best = pool[i];
+  }
+  return best;
 }
 
 // Display helpers
@@ -303,6 +338,7 @@ function stateCounts(items) {
   for (const it of items) {
     if (!it.id) continue;
     const c = P[it.id];
+    if (c?.suspended) continue; // suspended cards don't count toward any total
     if (!c || c.st === 0) { nw++; continue; }
     if (c.st === 1 || c.st === 3) { learn++; continue; }
     // st === 2 (review)
@@ -515,18 +551,21 @@ function renderItem(it) {
 
 // ========== Flashcard (infinite) ==========
 
-let deck = [], fi = 0, flipped = false, deckFlashable = [];
+// `deck` is the UNIQUE working set (never mutated by grading). `_cur` is the
+// card currently on screen; `_recent` is the recently-shown id history used by
+// pickNext's repeat guard. No more `fi`/splice: cards are chosen live by
+// pickNext, so duplicates never accumulate and the queue can't starve.
+let deck = [], flipped = false, deckFlashable = [], _recent = [], _cur = null;
 let _undo = null; // snapshot of last graded state, or null when nothing to undo
 
 function startFc() {
-  deckFlashable = curItems.filter(i => FLASHABLE.includes(i._c) && i.id);
+  // Unique working set: flashable, has an id, not suspended.
+  deckFlashable = curItems.filter(i => FLASHABLE.includes(i._c) && i.id && !P[i.id]?.suspended);
   if (!deckFlashable.length) return;
-  // Initialize cards that have no SRS data
-  deckFlashable.forEach(i => getCard(i.id));
-  // Sort by SRS priority
-  refreshNewLimit();
-  deck = [...deckFlashable].sort((a, b) => srsPriority(b) - srsPriority(a));
-  fi = 0;
+  deckFlashable.forEach(i => getCard(i.id)); // initialize cards with no SRS data
+  deck = deckFlashable;
+  _recent = [];
+  _cur = null;
   _undo = null;
   updateUndoButton();
   show('fc');
@@ -541,13 +580,25 @@ function updateUndoButton() {
 }
 
 function showCard() {
-  if (fi >= deck.length) {
-    // Reshuffle by priority for next loop
-    refreshNewLimit();
-    deck.sort((a, b) => srsPriority(b) - srsPriority(a));
-    fi = 0;
-  }
-  const it = deck[fi];
+  const it = pickNext(deck, _recent);
+  if (!it) { endSession(); return; }
+  _cur = it;
+  _recent.push(it.id);
+  if (_recent.length > RECENT_GUARD * 2) _recent.shift();
+  renderCurrentCard();
+}
+
+// Nothing left to show (everything suspended, or daily cap reached and nothing
+// else eligible).
+function endSession() {
+  showToast('Rien à réviser pour le moment');
+  renderHome();
+}
+
+// Render the currently selected card (_cur) without advancing the queue. Used
+// by showCard() after a pick, and by undo to restore the previous card.
+function renderCurrentCard() {
+  const it = _cur;
   flipped = false;
   $('#fc-cat').textContent = CATS[it._c] || '';
 
@@ -599,7 +650,7 @@ function flip() {
   $('#fc-actions').classList.remove('hidden');
 
   // Show predicted intervals on buttons
-  const it = deck[fi];
+  const it = _cur;
   const iv = previewIntervals(it.id);
   $('#fc-again').innerHTML = `<span class="btn-iv">${fmtIv(iv.again)}</span>Pas su`;
   $('#fc-hard').innerHTML  = `<span class="btn-iv">${fmtIv(iv.hard)}</span>Difficile`;
@@ -627,29 +678,23 @@ function flip() {
 
 // grade: 1=Again, 2=Hard, 3=Good, 4=Easy
 function answer(grade) {
-  const it = deck[fi];
-  const wasReview = (P[it.id]?.st === 2); // capture before srs* mutates state
+  const it = _cur;
 
-  // Snapshot for undo (state BEFORE the grade)
+  // Snapshot for undo (state BEFORE the grade).
   _undo = {
     cardId: it.id,
-    fi,
     P_id_snap: P[it.id] ? JSON.parse(JSON.stringify(P[it.id])) : null,
     newCount_snap: localStorage.getItem('blokaja4_newcount'),
-    reinsertedAt: null,
+    recent_snap: _recent.slice(),
+    cur_snap: it,
   };
 
   if (grade === 1) srsAgain(it.id);
   else if (grade === 2) srsHard(it.id);
   else if (grade === 3) srsGood(it.id);
   else srsEasy(it.id);
-
-  // Re-insert for re-test: Again always, Hard only for learning/relearning (not review)
-  if (grade === 1 || (grade === 2 && !wasReview)) {
-    const reinsert = Math.min(fi + 3 + (Math.random() * 3 | 0), deck.length);
-    deck.splice(reinsert, 0, it);
-    _undo.reinsertedAt = reinsert;
-  }
+  // Re-test timing comes from the card's due time + pickNext priority; no manual
+  // re-insertion (that splice was the source of the runaway, looping deck).
   updateUndoButton();
 
   const slideDir = grade >= 3 ? 'slide-right' : 'slide-left';
@@ -657,7 +702,6 @@ function answer(grade) {
   card.classList.add(slideDir);
   setTimeout(() => {
     card.classList.remove('slide-right', 'slide-left');
-    fi++;
     showCard();
   }, 200);
 }
@@ -684,14 +728,8 @@ function suspendCard(cardId) {
   const c = getCard(cardId);
   c.suspended = true;
   saveP();
-  // Drop all instances of the card from the active deck so user moves on.
-  for (let i = deck.length - 1; i >= 0; i--) {
-    if (deck[i].id === cardId) deck.splice(i, 1);
-  }
-  if (fi >= deck.length) fi = 0;
   showToast('Carte suspendue');
-  if (deck.length) showCard();
-  else show('home'), renderHome();
+  showCard(); // pickNext skips suspended cards; advances to next (or endSession)
 }
 
 function unsuspendCard(cardId) {
@@ -737,27 +775,24 @@ function renderSuspendedList() {
 
 function undoLastAnswer() {
   if (!_undo) return;
-  const { cardId, fi: prevFi, P_id_snap, newCount_snap, reinsertedAt } = _undo;
+  const { cardId, P_id_snap, newCount_snap, recent_snap, cur_snap } = _undo;
 
-  // Restore card state
+  // Restore card state.
   if (P_id_snap === null) delete P[cardId];
   else P[cardId] = P_id_snap;
   saveP();
 
-  // Restore daily new-card counter
+  // Restore daily new-card counter.
   if (newCount_snap === null) localStorage.removeItem('blokaja4_newcount');
   else localStorage.setItem('blokaja4_newcount', newCount_snap);
   refreshNewLimit();
 
-  // Remove the re-inserted instance from deck (if any)
-  if (reinsertedAt !== null && reinsertedAt < deck.length && deck[reinsertedAt]?.id === cardId) {
-    deck.splice(reinsertedAt, 1);
-  }
-
-  fi = prevFi;
+  // Restore the queue position and re-show the same card (don't pick a new one).
+  _recent = recent_snap;
+  _cur = cur_snap;
   _undo = null;
   updateUndoButton();
-  showCard();
+  renderCurrentCard();
   showToast('Annulé');
 }
 
@@ -922,7 +957,7 @@ function doSearch(q, el) {
     }
   }
 
-  if (!res.length) { el.innerHTML = '<div class="empty">Aucun resultat</div>'; return; }
+  if (!res.length) { el.innerHTML = '<div class="empty">Aucun résultat</div>'; return; }
 
   el.innerHTML = res.slice(0, 60).map(({it, cat}) => {
     const kr = getKr({...it, _c: cat});
@@ -1062,10 +1097,10 @@ if (typeof window !== 'undefined') init();
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     fuzzInterval, srsAgain, srsHard, srsGood, srsEasy,
-    previewIntervals, fmtIv, srsPriority, cardState, stateCounts, getCard,
+    previewIntervals, fmtIv, srsPriority, pickNext, cardState, stateCounts, getCard,
     refreshNewLimit,
     INIT_EASE, MIN_EASE, GRADUATING_IV, EASY_IV, HARD_MULT, EASY_BONUS,
-    LEARN_STEPS, RELEARN_STEPS, LEECH_THRESHOLD,
+    LEARN_STEPS, RELEARN_STEPS, LEECH_THRESHOLD, RECENT_GUARD,
     _setP: p => { P = p; },
     _getP: () => P,
     _resetNewCount: () => localStorage.removeItem('blokaja4_newcount'),
