@@ -894,6 +894,7 @@ function cardDetail(it) {
   else if (c === 'particles')   { const s = particleSub(it), e = particleExtra(it); if (s) out.push(s); if (e) out.push(e); }
   else if (c === 'numbers')     { if (it.korean_before_counter) out.push(`devant compteur : ${it.korean_before_counter}`); }
   else if (c === 'hangeul')     { if (it.description_fr) out.push(it.description_fr); }
+  if (typeof it.notes === 'string' && it.notes.trim()) out.push(it.notes.trim());
   return out;
 }
 
@@ -903,6 +904,18 @@ function _faceMain(text, withTts) {
 function _detailHtml(it) {
   const d = cardDetail(it);
   return d.length ? `<div class="fc-extra">${d.map(esc).join('\n')}</div>` : '';
+}
+
+// Up to 2 example sentences for the back. Particles already show examples via
+// particleExtra, so skip them here to avoid duplication.
+function cardExamplesHtml(it) {
+  if (it._c === 'particles' || !Array.isArray(it.examples) || !it.examples.length) return '';
+  return it.examples.slice(0, 2).map(ex => {
+    const kr = ex.korean || ex.written || '';
+    if (!kr) return '';
+    const fr = ex.french || '';
+    return `<span class="detail-ex">${esc(kr)}</span>` + (fr ? `<span class="detail-ex-fr">${esc(fr)}</span>` : '');
+  }).join('');
 }
 
 function buildFront(it) {
@@ -932,9 +945,10 @@ function buildBack(it) {
     const sub = koSub(it);                            // Korean answer (+ TTS + rom always shown)
     return _faceMain(getKr(it), true)
       + (sub ? `<div class="fc-sub">${esc(sub)}</div>` : '')
-      + _detailHtml(it);
+      + _detailHtml(it)
+      + cardExamplesHtml(it);
   }
-  return _faceMain(getFr(it), false) + _detailHtml(it);  // French answer + detail
+  return _faceMain(getFr(it), false) + _detailHtml(it) + cardExamplesHtml(it);  // French answer + detail
 }
 
 // Korean text-to-speech.
