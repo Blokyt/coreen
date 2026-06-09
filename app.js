@@ -1118,36 +1118,73 @@ function speakKr(text) {
 
 // ========== Search ==========
 
+// Insensible aux accents : décompose (NFD) et retire les diacritiques. Le hangeul
+// n'est pas affecté (sa décomposition jamo ne contient pas de marques U+0300-036F).
+function normalize(s) {
+  return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+const _HANGUL_TOK = /[㄰-㆏가-힣]/;
+
+function _searchFields(it) {
+  return [
+    it.korean, it.french, it.infinitive, it.title, it.title_fr,
+    it.letter, it.particle, it.romanization, it.explanation,
+    it.explanation_fr, it.body, it.name_fr, it.function_fr, it.theme,
+    it.polite?.korean, it.informal?.korean,
+    it.polite?.romanization, it.informal?.romanization,
+  ].filter(Boolean);
+}
+
+// Tous les tokens doivent matcher (multi-mots). Tokens hangeul comparés en brut
+// minuscule, tokens latins comparés sans accents.
+function _itemMatches(it, tokens) {
+  const raw = _searchFields(it);
+  const low = raw.map(s => s.toLowerCase());
+  const norm = raw.map(normalize);
+  return tokens.every(tok =>
+    _HANGUL_TOK.test(tok) ? low.some(f => f.includes(tok)) : norm.some(f => f.includes(tok))
+  );
+}
+
 function doSearch(q, el) {
-  q = q.trim().toLowerCase();
-  if (q.length < 2) { el.innerHTML = ''; return; }
+  const raw = q.trim();
+  if (raw.length < 2) { el.innerHTML = ''; return; }
+  const tokens = raw.split(/\s+/).filter(Boolean)
+    .map(t => _HANGUL_TOK.test(t) ? t.toLowerCase() : normalize(t));
 
   const res = [];
   for (const cat of Object.keys(CATS)) {
     for (const it of (D[cat] || [])) {
-      const fields = [
-        it.korean, it.french, it.infinitive, it.title, it.title_fr,
-        it.letter, it.particle, it.romanization, it.explanation,
-        it.explanation_fr, it.body, it.name_fr, it.function_fr,
-        it.polite?.korean, it.informal?.korean,
-        it.polite?.romanization, it.informal?.romanization,
-      ].filter(Boolean).map(s => s.toLowerCase());
-      if (fields.some(f => f.includes(q))) res.push({it, cat});
+      if (_itemMatches(it, tokens)) res.push({ it, cat });
     }
   }
-
   if (!res.length) { el.innerHTML = '<div class="empty">Aucun résultat</div>'; return; }
 
-  el.innerHTML = res.slice(0, 60).map(({it, cat}) => {
-    const kr = getKr({...it, _c: cat});
-    const fr = getFr({...it, _c: cat}) || it.title || (it.body || '').slice(0, 50) || '';
+  const LIMIT = 150;
+  let html = res.slice(0, LIMIT).map(({ it, cat }) => {
+    const kr = getKr({ ...it, _c: cat });
+    const fr = getFr({ ...it, _c: cat }) || it.title || (it.body || '').slice(0, 50) || '';
     const ch = it.chapter === -1 ? 'Lexique' : it.chapter >= 0 ? `Ch.${it.chapter}` : '';
-    return `<div class="sr">
+    const badge = it.source === 'added' ? ' <span class="sr-badge-added">+A1</span>' : '';
+    const attrs = it.id ? ` data-id="${esc(it.id)}" data-cat="${esc(cat)}"` : '';
+    return `<div class="sr${it.id ? ' sr-clickable' : ''}"${attrs}>
       <div class="sr-kr">${esc(kr)}</div>
-      <div class="sr-fr">${esc(fr)}</div>
+      <div class="sr-fr">${esc(fr)}${badge}</div>
       <div class="sr-meta">${esc(CATS[cat] || cat)} · ${ch} · p.${it.page || '?'}</div>
     </div>`;
   }).join('');
+  if (res.length > LIMIT) html += `<div class="empty">${res.length} résultats — affinez votre recherche</div>`;
+  el.innerHTML = html;
+}
+
+// Ouvre la fiche d'un item depuis la recherche : liste à 1 élément (flashable →
+// bouton Réviser disponible ; readable → détail complet).
+function openItemCard(id, cat) {
+  if (!D || !id) return;
+  const item = (D[cat] || []).find(it => it.id === id);
+  if (!item) return;
+  closeSearch();
+  openList(CATS[cat] || cat, [{ ...item, _c: cat }]);
 }
 
 // ========== Events ==========
@@ -1176,6 +1213,10 @@ function setupEvents() {
   $('#search-input').onfocus = () => openSearch();
   $('#search-close').onclick = closeSearch;
   $('#search-full').oninput = e => doSearch(e.target.value, $('#search-results'));
+  $('#search-results').onclick = e => {
+    const row = e.target.closest('.sr-clickable');
+    if (row) openItemCard(row.dataset.id, row.dataset.cat);
+  };
 
   // Chapters
   $('#chapters-grid').onclick = e => {
