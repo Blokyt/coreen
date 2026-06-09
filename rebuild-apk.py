@@ -158,8 +158,11 @@ def sync_web_assets(project_root, web_dir):
         ('index.html', 'index.html'),
         ('styles.css', 'styles.css'),
         ('data.js', 'data.js'),
+        ('conjugator.js', 'conjugator.js'),
         ('app.js', 'app.js'),
+        ('practice.js', 'practice.js'),
         ('data/course_data.json', 'data/course_data.json'),
+        ('data/exercises.json', 'data/exercises.json'),
     ]
     copied = []
     seen_dst = set()
