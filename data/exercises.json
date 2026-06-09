@@ -1,230 +1,2865 @@
 {
-  "meta": { "version": "1.0", "note": "Exercices de grammaire autorédigés. Accents français et hangeul obligatoires." },
+  "meta": {
+    "version": "1.0",
+    "note": "Exercices de grammaire autorédigés. Accents français et hangeul obligatoires."
+  },
   "grammar_exercises": [
     {
-      "id": "exg_ch1_001", "grammar_id": "grm_ch1_001", "chapter": 1, "mode": "mcq",
+      "id": "exg_ch0_001",
+      "grammar_id": "grm_ch0_001",
+      "chapter": 0,
+      "mode": "mcq",
+      "label": "Grammaire · Structure syllabique",
+      "prompt_fr": "Dans la syllabe 한, quelle lettre est le batchim (la consonne finale) ?",
+      "prompt_kr": "한",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "ㄴ",
+      "answer_alts": [],
+      "distractors": [
+        "ㅎ",
+        "ㅏ",
+        "ㅎㅏ"
+      ],
+      "explanation": "Une syllabe coréenne se lit consonne initiale (ㅎ) + voyelle (ㅏ) + batchim. Ici le batchim est ㄴ, la consonne écrite tout en bas du bloc.",
+      "tts_answer": "한"
+    },
+    {
+      "id": "exg_ch0_002",
+      "grammar_id": "grm_ch0_002",
+      "chapter": 0,
+      "mode": "mcq",
+      "label": "Grammaire · Les 7 sons du batchim",
+      "prompt_fr": "Quel est le son du batchim dans 부엌 (cuisine) ?",
+      "prompt_kr": "부엌",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "[k] (ㄱ)",
+      "answer_alts": [],
+      "distractors": [
+        "[t] (ㄷ)",
+        "[p] (ㅂ)",
+        "[kʰ] (ㅋ aspiré tel quel)"
+      ],
+      "explanation": "À la finale, ㅋ ne se prononce pas aspiré : il se neutralise sur le son [k], comme ㄱ. C'est l'un des 7 sons de batchim. On dit donc « bou-eok ».",
+      "tts_answer": "부엌"
+    },
+    {
+      "id": "exg_ch0_003",
+      "grammar_id": "grm_ch0_003",
+      "chapter": 0,
+      "mode": "mcq",
+      "label": "Grammaire · Les 7 sons du batchim",
+      "prompt_fr": "Les batchim ㅅ, ㅈ, ㅊ, ㅌ se prononcent tous comme quel son final ?",
+      "prompt_kr": "옷 · 낮 · 빛 · 밭",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "[t] (ㄷ)",
+      "answer_alts": [],
+      "distractors": [
+        "[s] (ㅅ)",
+        "[k] (ㄱ)",
+        "[n] (ㄴ)"
+      ],
+      "explanation": "Parmi les 7 sons de batchim, ㅅ ㅆ ㅈ ㅊ ㅌ ㅎ ainsi que ㄷ se neutralisent tous en [t]. Ainsi 옷 se dit « ot », 낮 « nat », 빛 « bit », 밭 « bat ».",
+      "tts_answer": "옷"
+    },
+    {
+      "id": "exg_ch0_004",
+      "grammar_id": "grm_ch0_004",
+      "chapter": 0,
+      "mode": "mcq",
+      "label": "Grammaire · Voyelles composées",
+      "prompt_fr": "Quelle voyelle composée combine ㅗ + ㅏ et se prononce « wa » ?",
+      "prompt_kr": "ㅗ + ㅏ = ___",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "ㅘ",
+      "answer_alts": [],
+      "distractors": [
+        "ㅝ",
+        "ㅙ",
+        "ㅚ"
+      ],
+      "explanation": "ㅗ + ㅏ donne ㅘ (wa), comme dans 사과 (pomme). À ne pas confondre avec ㅝ (ㅜ+ㅓ, « wo »), ㅙ (« wè ») ni ㅚ (« oé »).",
+      "tts_answer": "사과"
+    },
+    {
+      "id": "exg_ch0_005",
+      "grammar_id": "grm_ch0_005",
+      "chapter": 0,
+      "mode": "mcq",
+      "label": "Grammaire · Consonnes doubles (tendues)",
+      "prompt_fr": "Comment écrit-on la consonne double (tendue) correspondant à ㅈ ?",
+      "prompt_kr": "ㅈ → ___",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "ㅉ",
+      "answer_alts": [],
+      "distractors": [
+        "ㅊ",
+        "ㅈㅈ",
+        "ㅃ"
+      ],
+      "explanation": "Les 5 consonnes doubles sont ㄲ ㄸ ㅃ ㅆ ㅉ. Le double de ㅈ est ㅉ (son tendu, « jj »). ㅊ est l'aspirée, pas la tendue.",
+      "tts_answer": "찌개"
+    },
+    {
+      "id": "exg_ch0_006",
+      "grammar_id": "grm_ch0_006",
+      "chapter": 0,
+      "mode": "mcq",
+      "label": "Grammaire · L'heure (nombre natif + 시)",
+      "prompt_fr": "Comment dit-on « 3 heures » ? (nombre coréen natif + 시)",
+      "prompt_kr": "3시 = ___ 시",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "세",
+      "answer_alts": [],
+      "distractors": [
+        "삼",
+        "셋",
+        "사"
+      ],
+      "explanation": "Les heures utilisent les nombres natifs, et 셋 devient 세 devant 시 : 세 시. 삼 est le nombre sino-coréen (réservé aux minutes et aux mois).",
+      "tts_answer": "세 시"
+    },
+    {
+      "id": "exg_ch0_007",
+      "grammar_id": "grm_ch0_007",
+      "chapter": 0,
+      "mode": "free_input",
+      "label": "Grammaire · L'heure (nombre natif + 시)",
+      "prompt_fr": "Écris « 4 heures » en coréen (nombre natif + 시, avec l'espace) :",
+      "prompt_kr": "4시 = ?",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "네 시",
+      "answer_alts": [
+        "네시",
+        "ne si",
+        "ne shi"
+      ],
+      "distractors": [],
+      "explanation": "넷 (quatre, natif) devient 네 devant 시 : 네 시. Comme 한 시 (1h) et 세 시 (3h), 네 시 (4h) perd son batchim devant le compteur.",
+      "tts_answer": "네 시"
+    },
+    {
+      "id": "exg_ch0_008",
+      "grammar_id": "grm_ch0_008",
+      "chapter": 0,
+      "mode": "free_input",
+      "label": "Grammaire · Les mois (nombre sino + 월)",
+      "prompt_fr": "Écris le mois de juin en coréen (attention à l'irrégularité) :",
+      "prompt_kr": "6월 = ?",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "유월",
+      "answer_alts": [
+        "yuwol",
+        "yu wol"
+      ],
+      "distractors": [],
+      "explanation": "Les mois se forment avec les nombres sino-coréens + 월. Deux exceptions : 6월 se dit 유월 (et non 육월) et 10월 se dit 시월 (et non 십월).",
+      "tts_answer": "유월"
+    },
+    {
+      "id": "exg_ch1_001",
+      "grammar_id": "grm_ch1_001",
+      "chapter": 1,
+      "mode": "mcq",
       "label": "Grammaire · Particule de thème 은/는",
       "prompt_fr": "Quelle particule de thème ? (저 finit par une voyelle)",
-      "context_kr": "저___ 학생이에요.", "context_fr": "Je suis étudiant(e).",
-      "answer": "는", "distractors": ["은", "이", "가"],
+      "context_kr": "저___ 학생이에요.",
+      "context_fr": "Je suis étudiant(e).",
+      "answer": "는",
+      "distractors": [
+        "은",
+        "이",
+        "가"
+      ],
       "explanation": "저 finit par une voyelle → 는 (thème). Après une consonne, on utilise 은.",
       "tts_answer": "저는 학생이에요"
     },
     {
-      "id": "exg_ch1_002", "grammar_id": "grm_ch1_004", "chapter": 1, "mode": "mcq",
+      "id": "exg_ch1_002",
+      "grammar_id": "grm_ch1_004",
+      "chapter": 1,
+      "mode": "mcq",
       "label": "Grammaire · Copule 이다",
       "prompt_fr": "Complète (registre poli, après une consonne) :",
-      "context_kr": "한국 사람___?", "context_fr": "Tu es coréen(ne) ?",
-      "answer": "이에요", "distractors": ["예요", "이야", "에요"],
+      "context_kr": "한국 사람___?",
+      "context_fr": "Tu es coréen(ne) ?",
+      "answer": "이에요",
+      "distractors": [
+        "예요",
+        "이야",
+        "에요"
+      ],
       "explanation": "사람 finit par une consonne → 이에요 (poli). Après une voyelle : 예요.",
       "tts_answer": "한국 사람이에요"
     },
     {
-      "id": "exg_ch1_003", "grammar_id": "grm_ch1_006", "chapter": 1, "mode": "mcq",
+      "id": "exg_ch1_003",
+      "grammar_id": "grm_ch1_006",
+      "chapter": 1,
+      "mode": "mcq",
       "label": "Grammaire · Copule négative 아니다",
       "prompt_fr": "« Je ne suis pas japonais(e) » :",
-      "context_kr": "저는 일본 사람이 ___.", "context_fr": "Je ne suis pas japonais(e).",
-      "answer": "아니에요", "distractors": ["아니예요", "아니야", "없어요"],
+      "context_kr": "저는 일본 사람이 ___.",
+      "context_fr": "Je ne suis pas japonais(e).",
+      "answer": "아니에요",
+      "distractors": [
+        "아니예요",
+        "아니야",
+        "없어요"
+      ],
       "explanation": "Copule négative : NOM + 이/가 + 아니에요 (poli) / 아니야 (familier).",
       "tts_answer": "일본 사람이 아니에요"
     },
     {
-      "id": "exg_ch1_004", "grammar_id": "grm_ch1_001", "chapter": 1, "mode": "mcq",
+      "id": "exg_ch1_004",
+      "grammar_id": "grm_ch1_001",
+      "chapter": 1,
+      "mode": "mcq",
       "label": "Grammaire · Particule de sujet 이/가",
       "prompt_fr": "Quelle particule de sujet ? (이름 finit par une consonne)",
-      "context_kr": "이름___ 뭐예요?", "context_fr": "Quel est ton nom ?",
-      "answer": "이", "distractors": ["가", "은", "를"],
+      "context_kr": "이름___ 뭐예요?",
+      "context_fr": "Quel est ton nom ?",
+      "answer": "이",
+      "distractors": [
+        "가",
+        "은",
+        "를"
+      ],
       "explanation": "이름 finit par une consonne (ㅁ) → 이. Après une voyelle : 가.",
       "tts_answer": "이름이 뭐예요"
     },
     {
-      "id": "exg_ch2_001", "grammar_id": "grm_ch2_001", "chapter": 2, "mode": "mcq",
+      "id": "exg_ch1_005",
+      "grammar_id": "copule-ida",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Copule 이다 (예요/이에요)",
+      "prompt_fr": "Le mot 의사 (médecin) finit par une voyelle. Quelle forme de la copule choisir ?",
+      "prompt_kr": null,
+      "context_kr": "저는 의사___.",
+      "context_fr": "Je suis médecin.",
+      "answer": "예요",
+      "answer_alts": [],
+      "distractors": [
+        "이에요",
+        "이다요",
+        "이예요"
+      ],
+      "explanation": "Après une voyelle (의사 finit par ㅏ), la copule 이다 devient 예요. Après une consonne, on utilise 이에요.",
+      "tts_answer": "저는 의사예요."
+    },
+    {
+      "id": "exg_ch1_006",
+      "grammar_id": "copule-ida",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Copule 이다 (예요/이에요)",
+      "prompt_fr": "Le mot 학생 (étudiant) finit par une consonne (ㅇ). Quelle forme de la copule choisir ?",
+      "prompt_kr": null,
+      "context_kr": "저는 학생___.",
+      "context_fr": "Je suis étudiant(e).",
+      "answer": "이에요",
+      "answer_alts": [],
+      "distractors": [
+        "예요",
+        "에요",
+        "이예요"
+      ],
+      "explanation": "Après une consonne finale (학생 finit par ㅇ), la copule 이다 devient 이에요. La forme 예요 ne s'emploie qu'après une voyelle.",
+      "tts_answer": "저는 학생이에요."
+    },
+    {
+      "id": "exg_ch1_007",
+      "grammar_id": "particule-eun-neun",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de thème 은/는",
+      "prompt_fr": "저 (moi) finit par une voyelle. Quelle particule de thème ajouter ?",
+      "prompt_kr": null,
+      "context_kr": "저___ 프랑스 사람이에요.",
+      "context_fr": "Moi, je suis français(e).",
+      "answer": "는",
+      "answer_alts": [],
+      "distractors": [
+        "은",
+        "이",
+        "가"
+      ],
+      "explanation": "La particule de thème est 는 après une voyelle (저 finit par ㅓ) et 은 après une consonne. 이/가 sont des particules de sujet, pas de thème.",
+      "tts_answer": "저는 프랑스 사람이에요."
+    },
+    {
+      "id": "exg_ch1_008",
+      "grammar_id": "particule-eun-neun",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de thème 은/는",
+      "prompt_fr": "선생님 (professeur) finit par une consonne (ㅁ). Quelle particule de thème ajouter ?",
+      "prompt_kr": null,
+      "context_kr": "선생님___ 한국 사람이에요.",
+      "context_fr": "Le professeur est coréen.",
+      "answer": "은",
+      "answer_alts": [],
+      "distractors": [
+        "는",
+        "이",
+        "가"
+      ],
+      "explanation": "Après une consonne finale (선생님 finit par ㅁ), la particule de thème est 은. Après une voyelle, ce serait 는.",
+      "tts_answer": "선생님은 한국 사람이에요."
+    },
+    {
+      "id": "exg_ch1_009",
+      "grammar_id": "particule-i-ga",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de sujet 이/가",
+      "prompt_fr": "선생님 (professeur) finit par une consonne. Quelle particule de sujet ajouter ?",
+      "prompt_kr": null,
+      "context_kr": "선생님___ 누구예요?",
+      "context_fr": "Qui est le professeur ?",
+      "answer": "이",
+      "answer_alts": [],
+      "distractors": [
+        "가",
+        "은",
+        "는"
+      ],
+      "explanation": "Après une consonne finale (선생님 finit par ㅁ), la particule de sujet est 이. Après une voyelle, ce serait 가.",
+      "tts_answer": "선생님이 누구예요?"
+    },
+    {
+      "id": "exg_ch1_010",
+      "grammar_id": "particule-i-ga",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de sujet 이/가",
+      "prompt_fr": "친구 (ami) finit par une voyelle (ㅜ). Quelle particule de sujet ajouter ?",
+      "prompt_kr": null,
+      "context_kr": "친구___ 한국 사람이에요.",
+      "context_fr": "Mon ami est coréen.",
+      "answer": "가",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "은",
+        "는"
+      ],
+      "explanation": "Après une voyelle finale (친구 finit par ㅜ), la particule de sujet est 가. Après une consonne, ce serait 이.",
+      "tts_answer": "친구가 한국 사람이에요."
+    },
+    {
+      "id": "exg_ch1_011",
+      "grammar_id": "copule-anida",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Copule négative 아니다",
+      "prompt_fr": "Pour dire « Je ne suis pas étudiant », 학생 finit par une consonne. Quelle particule devant 아니에요 ?",
+      "prompt_kr": null,
+      "context_kr": "저는 학생___ 아니에요.",
+      "context_fr": "Je ne suis pas étudiant(e).",
+      "answer": "이",
+      "answer_alts": [],
+      "distractors": [
+        "가",
+        "은",
+        "는"
+      ],
+      "explanation": "La copule négative se construit avec « nom + 이/가 아니에요 ». Après une consonne (학생), on prend 이 ; après une voyelle, 가.",
+      "tts_answer": "저는 학생이 아니에요."
+    },
+    {
+      "id": "exg_ch1_012",
+      "grammar_id": "copule-anida",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Copule négative 아니다",
+      "prompt_fr": "Pour dire « Ce n'est pas un médecin », 의사 finit par une voyelle. Quelle particule devant 아니에요 ?",
+      "prompt_kr": null,
+      "context_kr": "의사___ 아니에요.",
+      "context_fr": "Ce n'est pas un médecin.",
+      "answer": "가",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "는",
+        "을"
+      ],
+      "explanation": "Dans « nom + 이/가 아니에요 », après une voyelle (의사) on emploie 가. Le verbe 아니에요 reste invariable.",
+      "tts_answer": "의사가 아니에요."
+    },
+    {
+      "id": "exg_ch1_013",
+      "grammar_id": "nationalites",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Vocabulaire · Nationalités (pays + 사람)",
+      "prompt_fr": "Comment dit-on « une personne française / un(e) Français(e) » ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "un(e) Français(e)",
+      "answer": "프랑스 사람",
+      "answer_alts": [],
+      "distractors": [
+        "프랑스어 사람",
+        "프랑스 나라",
+        "사람 프랑스"
+      ],
+      "explanation": "Pour une nationalité, on dit « nom de pays + 사람 » (personne). 프랑스 (France) + 사람 = un(e) Français(e). Le suffixe 어 sert pour les langues, pas pour les personnes.",
+      "tts_answer": "프랑스 사람"
+    },
+    {
+      "id": "exg_ch1_014",
+      "grammar_id": "nationalites",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Vocabulaire · Nationalités (pays + 사람)",
+      "prompt_fr": "한국 signifie « Corée ». Comment dit-on « un(e) Coréen(ne) » ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "un(e) Coréen(ne)",
+      "answer": "한국 사람",
+      "answer_alts": [],
+      "distractors": [
+        "한국어 사람",
+        "한국인어",
+        "사람 한국"
+      ],
+      "explanation": "« pays + 사람 » forme la nationalité : 한국 (Corée) + 사람 = un(e) Coréen(ne). (한국인 existe aussi, plus formel, mais 한국 사람 est la forme A1.)",
+      "tts_answer": "한국 사람"
+    },
+    {
+      "id": "exg_ch1_015",
+      "grammar_id": "suffixe-nim",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Suffixe de respect 님",
+      "prompt_fr": "On s'adresse poliment à un professeur. Quel mot est correct ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Monsieur/Madame le professeur",
+      "answer": "선생님",
+      "answer_alts": [],
+      "distractors": [
+        "선생씨",
+        "선생님씨",
+        "선생야"
+      ],
+      "explanation": "Le suffixe honorifique 님 marque le respect : 선생 (maître) + 님 = 선생님 (professeur, avec respect). On n'ajoute pas 씨 après 님.",
+      "tts_answer": "선생님"
+    },
+    {
+      "id": "exg_ch1_016",
+      "grammar_id": "appellation-a-ya",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Appellations 아/야",
+      "prompt_fr": "On appelle 민수 (le prénom finit par une voyelle, ㅜ). Quelle particule d'appel ?",
+      "prompt_kr": null,
+      "context_kr": "민수___, 안녕!",
+      "context_fr": "Minsu, salut !",
+      "answer": "야",
+      "answer_alts": [],
+      "distractors": [
+        "아",
+        "님",
+        "씨"
+      ],
+      "explanation": "Pour appeler un proche : 야 après une voyelle, 아 après une consonne. 민수 finit par ㅜ (voyelle), donc 민수야. (씨 et 님 sont polis, pas familiers.)",
+      "tts_answer": "민수야, 안녕!"
+    },
+    {
+      "id": "exg_ch1_017",
+      "grammar_id": "appellation-a-ya",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Appellations 아/야",
+      "prompt_fr": "On appelle 지훈 (le prénom finit par une consonne, ㄴ). Quelle particule d'appel ?",
+      "prompt_kr": null,
+      "context_kr": "지훈___, 안녕!",
+      "context_fr": "Jihun, salut !",
+      "answer": "아",
+      "answer_alts": [],
+      "distractors": [
+        "야",
+        "씨",
+        "님"
+      ],
+      "explanation": "La particule d'appel familière est 아 après une consonne (지훈 finit par ㄴ) et 야 après une voyelle. On ne l'emploie qu'entre proches.",
+      "tts_answer": "지훈아, 안녕!"
+    },
+    {
+      "id": "exg_ch1_018",
+      "grammar_id": "copule-ida",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Copule 이다 (예요/이에요)",
+      "prompt_fr": "한국 사람 finit par une consonne (ㅁ). Quelle forme de la copule pour « Je suis coréen » ?",
+      "prompt_kr": null,
+      "context_kr": "저는 한국 사람___.",
+      "context_fr": "Je suis coréen(ne).",
+      "answer": "이에요",
+      "answer_alts": [],
+      "distractors": [
+        "예요",
+        "에요",
+        "이예요"
+      ],
+      "explanation": "사람 finit par la consonne ㅁ, donc la copule 이다 prend la forme 이에요. La forme 예요 est réservée aux mots finissant par une voyelle.",
+      "tts_answer": "저는 한국 사람이에요."
+    },
+    {
+      "id": "exg_ch1_019",
+      "grammar_id": "particule-eun-neun",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de thème 은/는",
+      "prompt_fr": "이름 (le nom/prénom) finit par une consonne (ㅁ). Quelle particule de thème pour « Mon nom, c'est... » ?",
+      "prompt_kr": null,
+      "context_kr": "제 이름___ 마리예요.",
+      "context_fr": "Mon nom, c'est Marie.",
+      "answer": "은",
+      "answer_alts": [],
+      "distractors": [
+        "는",
+        "이",
+        "가"
+      ],
+      "explanation": "이름 finit par la consonne ㅁ, donc la particule de thème est 은. (제 = mon/ma.) Marie finit par une voyelle, d'où 마리예요.",
+      "tts_answer": "제 이름은 마리예요."
+    },
+    {
+      "id": "exg_ch1_020",
+      "grammar_id": "suffixe-ssi",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Suffixe poli 씨",
+      "prompt_fr": "On s'adresse poliment à un adulte nommé 민수, sans lien familial. Quelle forme polie standard ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Monsieur Minsu",
+      "answer": "민수 씨",
+      "answer_alts": [],
+      "distractors": [
+        "민수야",
+        "민수님수",
+        "민수아"
+      ],
+      "explanation": "Avec le prénom d'un adulte qu'on vouvoie, on emploie 씨 (Monsieur/Madame) : 민수 씨. 아/야 sont familiers (entre proches), pas polis.",
+      "tts_answer": "민수 씨"
+    },
+    {
+      "id": "exg_ch1_021",
+      "grammar_id": "copule-ida",
+      "chapter": 1,
+      "mode": "free_input",
+      "label": "Grammaire · Copule 이다 (à produire)",
+      "prompt_fr": "Conjuguez la copule au présent poli après 가수 (chanteur, finit par une voyelle). Écrivez le mot complet « chanteur + copule ».",
+      "prompt_kr": null,
+      "context_kr": "저는 가수___.",
+      "context_fr": "Je suis chanteur/chanteuse.",
+      "answer": "가수예요",
+      "answer_alts": [
+        "가수 예요",
+        "gasuyeyo"
+      ],
+      "distractors": [],
+      "explanation": "가수 finit par la voyelle ㅜ, donc la copule 이다 devient 예요 : 가수예요. Après une consonne, ce serait 이에요.",
+      "tts_answer": "저는 가수예요."
+    },
+    {
+      "id": "exg_ch1_022",
+      "grammar_id": "copule-ida",
+      "chapter": 1,
+      "mode": "free_input",
+      "label": "Grammaire · Copule 이다 (à produire)",
+      "prompt_fr": "Conjuguez la copule au présent poli après 회사원 (employé de bureau, finit par une consonne ㄴ). Écrivez « employé + copule ».",
+      "prompt_kr": null,
+      "context_kr": "저는 회사원___.",
+      "context_fr": "Je suis employé(e) de bureau.",
+      "answer": "회사원이에요",
+      "answer_alts": [
+        "회사원 이에요",
+        "hoesawonieyo"
+      ],
+      "distractors": [],
+      "explanation": "회사원 finit par la consonne ㄴ, donc on emploie 이에요 : 회사원이에요. La forme 예요 ne s'utilise qu'après une voyelle.",
+      "tts_answer": "저는 회사원이에요."
+    },
+    {
+      "id": "exg_ch1_023",
+      "grammar_id": "copule-anida",
+      "chapter": 1,
+      "mode": "free_input",
+      "label": "Grammaire · Copule négative 아니다 (à produire)",
+      "prompt_fr": "Écrivez la négation complète « 학생 + particule + 아니에요 » pour « Je ne suis pas étudiant ».",
+      "prompt_kr": null,
+      "context_kr": "저는 ___.",
+      "context_fr": "Je ne suis pas étudiant(e).",
+      "answer": "학생이 아니에요",
+      "answer_alts": [
+        "학생이아니에요",
+        "haksaengi anieyo"
+      ],
+      "distractors": [],
+      "explanation": "La copule négative se forme avec « nom + 이/가 아니에요 ». 학생 finit par une consonne, donc 학생이 아니에요.",
+      "tts_answer": "저는 학생이 아니에요."
+    },
+    {
+      "id": "exg_ch1_024",
+      "grammar_id": "nationalites",
+      "chapter": 1,
+      "mode": "free_input",
+      "label": "Vocabulaire · Nationalités (à produire)",
+      "prompt_fr": "일본 signifie « Japon ». Écrivez en hangeul « un(e) Japonais(e) » (pays + 사람).",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "un(e) Japonais(e)",
+      "answer": "일본 사람",
+      "answer_alts": [
+        "일본사람",
+        "ilbon saram"
+      ],
+      "distractors": [],
+      "explanation": "« pays + 사람 » donne la nationalité : 일본 (Japon) + 사람 (personne) = 일본 사람, un(e) Japonais(e).",
+      "tts_answer": "일본 사람"
+    },
+    {
+      "id": "exg_ch1_025",
+      "grammar_id": "particule-eun-neun",
+      "chapter": 1,
+      "mode": "mcq",
+      "label": "Grammaire · Thème 은/는 (contraste)",
+      "prompt_fr": "On présente deux personnes en opposant les thèmes. Complétez : « Lui, c'est un Coréen ; moi, je suis Français. »",
+      "prompt_kr": null,
+      "context_kr": "이분은 한국 사람이에요. 저___ 프랑스 사람이에요.",
+      "context_fr": "Lui, c'est un Coréen ; moi, je suis Français(e).",
+      "answer": "는",
+      "answer_alts": [],
+      "distractors": [
+        "은",
+        "가",
+        "이"
+      ],
+      "explanation": "La particule de thème 은/는 sert aussi à contraster (« lui... moi... »). 저 finit par une voyelle, donc 는. C'est le thème, pas le sujet 이/가, qui exprime ce contraste.",
+      "tts_answer": "이분은 한국 사람이에요. 저는 프랑스 사람이에요."
+    },
+    {
+      "id": "exg_ch2_001",
+      "grammar_id": "grm_ch2_001",
+      "chapter": 2,
+      "mode": "mcq",
       "label": "Grammaire · 있다 (il y a)",
       "prompt_fr": "« Il y a un livre dans le sac » :",
-      "context_kr": "가방에 책이 ___.", "context_fr": "Il y a un livre dans le sac.",
-      "answer": "있어요", "distractors": ["없어요", "이에요", "해요"],
+      "context_kr": "가방에 책이 ___.",
+      "context_fr": "Il y a un livre dans le sac.",
+      "answer": "있어요",
+      "distractors": [
+        "없어요",
+        "이에요",
+        "해요"
+      ],
       "explanation": "있어요 = il y a / avoir. La négation est 없어요 (il n'y a pas).",
       "tts_answer": "가방에 책이 있어요"
     },
     {
-      "id": "exg_ch2_002", "grammar_id": "grm_ch2_009", "chapter": 2, "mode": "mcq",
+      "id": "exg_ch2_002",
+      "grammar_id": "grm_ch2_009",
+      "chapter": 2,
+      "mode": "mcq",
       "label": "Grammaire · Particule de lieu 에",
       "prompt_fr": "Quelle particule de lieu (avec 있다) ?",
-      "context_kr": "교실___ 칠판이 있어요.", "context_fr": "Il y a un tableau dans la classe.",
-      "answer": "에", "distractors": ["에서", "을", "도"],
+      "context_kr": "교실___ 칠판이 있어요.",
+      "context_fr": "Il y a un tableau dans la classe.",
+      "answer": "에",
+      "distractors": [
+        "에서",
+        "을",
+        "도"
+      ],
       "explanation": "에 indique le lieu où quelque chose se trouve (avec 있다/없다).",
       "tts_answer": "교실에 칠판이 있어요"
     },
     {
-      "id": "exg_ch2_003", "grammar_id": "grm_ch2_001", "chapter": 2, "mode": "mcq",
+      "id": "exg_ch2_003",
+      "grammar_id": "grm_ch2_001",
+      "chapter": 2,
+      "mode": "mcq",
       "label": "Grammaire · Particule 도 (aussi)",
       "prompt_fr": "« Moi aussi je suis étudiant(e) » :",
-      "context_kr": "저___ 학생이에요.", "context_fr": "Moi aussi, je suis étudiant(e).",
-      "answer": "도", "distractors": ["는", "이", "에"],
+      "context_kr": "저___ 학생이에요.",
+      "context_fr": "Moi aussi, je suis étudiant(e).",
+      "answer": "도",
+      "distractors": [
+        "는",
+        "이",
+        "에"
+      ],
       "explanation": "도 = aussi. Elle remplace 은/는 ou 이/가.",
       "tts_answer": "저도 학생이에요"
     },
     {
-      "id": "exg_ch3_001", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "mcq",
+      "id": "exg_ch2_004",
+      "grammar_id": "grm_ch2_001",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Verbe d'existence 있다",
+      "prompt_fr": "Comment dit-on « il y a » en coréen ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Verbe d'existence de base du chapitre 2.",
+      "answer": "있어요",
+      "answer_alts": [],
+      "distractors": [
+        "없어요",
+        "이에요",
+        "아니에요"
+      ],
+      "explanation": "있어요 = « il y a / il y en a » (forme polie de 있어). Son contraire est 없어요 « il n'y a pas ». 이에요 sert à dire « c'est » et 아니에요 « ce n'est pas ».",
+      "tts_answer": "있어요"
+    },
+    {
+      "id": "exg_ch2_005",
+      "grammar_id": "vrb_ch2_002",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Verbe d'existence 없다",
+      "prompt_fr": "Comment dit-on « il n'y a pas » en coréen ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "La négation de 있다 est un verbe à part entière.",
+      "answer": "없어요",
+      "answer_alts": [],
+      "distractors": [
+        "안 있어요",
+        "있지 않아요",
+        "없이에요"
+      ],
+      "explanation": "Pour dire « il n'y a pas », on emploie le verbe 없다 → 없어요. Attention : on n'utilise PAS 안 avec 있다. 없다 est un verbe séparé, pas une négation régulière.",
+      "tts_answer": "없어요"
+    },
+    {
+      "id": "exg_ch2_006",
+      "grammar_id": "grm_ch2_002",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de sujet 이/가",
+      "prompt_fr": "Complétez : 책 ___ 있어요. (Il y a un livre.) — 책 finit par une consonne (ㄱ).",
+      "prompt_kr": "책 ___ 있어요.",
+      "context_kr": "책 ___ 있어요.",
+      "context_fr": "이/가 dépend de la dernière lettre du nom.",
+      "answer": "이",
+      "answer_alts": [],
+      "distractors": [
+        "가",
+        "은",
+        "도"
+      ],
+      "explanation": "책 se termine par une consonne (le batchim ㄱ), donc on prend 이 : 책이 있어요. Après une voyelle, on prendrait 가. 은 est une particule de thème, pas la particule de sujet attendue ici.",
+      "tts_answer": "책이 있어요"
+    },
+    {
+      "id": "exg_ch2_007",
+      "grammar_id": "grm_ch2_002",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de sujet 이/가",
+      "prompt_fr": "Complétez : 열쇠 ___ 있어요. (Il y a des clés.) — 열쇠 finit par une voyelle (ㅚ).",
+      "prompt_kr": "열쇠 ___ 있어요.",
+      "context_kr": "열쇠 ___ 있어요.",
+      "context_fr": "이/가 dépend de la dernière lettre du nom.",
+      "answer": "가",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "는",
+        "도"
+      ],
+      "explanation": "열쇠 se termine par une voyelle, donc on prend 가 : 열쇠가 있어요. On réserve 이 aux noms finissant par une consonne (batchim).",
+      "tts_answer": "열쇠가 있어요"
+    },
+    {
+      "id": "exg_ch2_008",
+      "grammar_id": "ptc_ch2_001",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de lieu 에",
+      "prompt_fr": "Complétez : 가방 ___ 책이 있어요. (Dans le sac, il y a un livre.)",
+      "prompt_kr": "가방 ___ 책이 있어요.",
+      "context_kr": "가방 ___ 책이 있어요.",
+      "context_fr": "Particule indiquant le lieu avec 있다/없다.",
+      "answer": "에",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "가",
+        "도"
+      ],
+      "explanation": "Pour situer quelque chose « dans / à » un lieu avec 있다/없다, on met 에 après le lieu : 가방에 (dans le sac). 이/가 marquent le sujet (l'objet présent), pas le lieu.",
+      "tts_answer": "가방에 책이 있어요"
+    },
+    {
+      "id": "exg_ch2_009",
+      "grammar_id": "ptc_ch2_001",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de lieu 에",
+      "prompt_fr": "« 에 » change-t-elle de forme après une consonne ou une voyelle ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Comportement de la particule de lieu 에.",
+      "answer": "Non, c'est toujours 에",
+      "answer_alts": [],
+      "distractors": [
+        "에 après voyelle, 이에 après consonne",
+        "에 après consonne, 가에 après voyelle",
+        "예 après voyelle, 에 après consonne"
+      ],
+      "explanation": "La particule de lieu 에 est invariable : on écrit 학교에, 방에, 가방에, peu importe la dernière lettre. Ce sont 이/가 et 은/는 qui changent selon le batchim, pas 에.",
+      "tts_answer": "학교에"
+    },
+    {
+      "id": "exg_ch2_010",
+      "grammar_id": "ptc_ch2_003",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Particule 도 (aussi)",
+      "prompt_fr": "Complétez : 학생 식당 ___ 있어요. (Il y a aussi une cantine.)",
+      "prompt_kr": "학생 식당 ___ 있어요.",
+      "context_kr": "학생 식당 ___ 있어요.",
+      "context_fr": "Particule additive « aussi ».",
+      "answer": "도",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "가",
+        "에"
+      ],
+      "explanation": "도 signifie « aussi / également » et remplace les particules 이/가 (ou 은/는) : 학생 식당도 있어요 = « il y a aussi une cantine ». On ne cumule pas 이/가 avec 도.",
+      "tts_answer": "학생 식당도 있어요"
+    },
+    {
+      "id": "exg_ch2_011",
+      "grammar_id": "ptc_ch2_003",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Particule 도 (aussi)",
+      "prompt_fr": "Quelle particule la particule 도 remplace-t-elle dans la phrase ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Fonctionnement de 도.",
+      "answer": "Elle remplace 이/가 (ou 은/는)",
+      "answer_alts": [],
+      "distractors": [
+        "Elle remplace 에",
+        "Elle s'ajoute après 이/가",
+        "Elle remplace 하고"
+      ],
+      "explanation": "도 (« aussi ») prend la place de la particule de sujet 이/가 ou de thème 은/는. On dit 기타도 있어요, jamais « 기타가도 ». 에 (le lieu) reste, lui.",
+      "tts_answer": "기타도 있어요"
+    },
+    {
+      "id": "exg_ch2_012",
+      "grammar_id": "grm_ch2_008",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Connecteur 하고 (et)",
+      "prompt_fr": "Complétez : 책 ___ 공책이 있어요. (Il y a un livre et un cahier.)",
+      "prompt_kr": "책 ___ 공책이 있어요.",
+      "context_kr": "책 ___ 공책이 있어요.",
+      "context_fr": "Connecteur reliant deux noms.",
+      "answer": "하고",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "에",
+        "도"
+      ],
+      "explanation": "하고 signifie « et » et se place entre deux noms qu'on énumère : 책하고 공책 = « un livre et un cahier ». La particule 이/가 ne se met qu'après le dernier nom de la liste.",
+      "tts_answer": "책하고 공책이 있어요"
+    },
+    {
+      "id": "exg_ch2_013",
+      "grammar_id": "grm_ch2_008",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Connecteur 하고 (et)",
+      "prompt_fr": "Que signifie 하고 entre deux noms ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Sens du connecteur 하고.",
+      "answer": "et",
+      "answer_alts": [],
+      "distractors": [
+        "aussi",
+        "dans",
+        "mais"
+      ],
+      "explanation": "하고 = « et » : il relie deux noms (연필하고 휴대폰 = « un crayon et un téléphone »). « Aussi » se dit 도, « dans » se dit 에.",
+      "tts_answer": "연필하고 휴대폰"
+    },
+    {
+      "id": "exg_ch2_014",
+      "grammar_id": "grm_ch2_010",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Possessifs 내 vs 우리",
+      "prompt_fr": "Comment dit-on « mon sac » (un objet qui n'appartient qu'à moi) ?",
+      "prompt_kr": null,
+      "context_kr": "___ 가방",
+      "context_fr": "Choix entre 내 et 우리.",
+      "answer": "내 가방",
+      "answer_alts": [],
+      "distractors": [
+        "우리 가방",
+        "도 가방",
+        "에 가방"
+      ],
+      "explanation": "Pour une possession strictement personnelle (mon sac, ma chambre), on emploie 내 : 내 가방, 내 방. 우리 (« notre ») s'utilise pour ce qui est partagé (école, famille, ville).",
+      "tts_answer": "내 가방"
+    },
+    {
+      "id": "exg_ch2_015",
+      "grammar_id": "grm_ch2_010",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Possessifs 내 vs 우리",
+      "prompt_fr": "Comment dit-on « mon école » (un lieu partagé par tous les élèves) ?",
+      "prompt_kr": null,
+      "context_kr": "___ 학교",
+      "context_fr": "Choix entre 내 et 우리.",
+      "answer": "우리 학교",
+      "answer_alts": [],
+      "distractors": [
+        "내 학교",
+        "내 학교도",
+        "학교에"
+      ],
+      "explanation": "Pour ce qui n'appartient pas qu'à soi (école, famille, pays), les Coréens disent 우리 (« notre ») même pour traduire « mon » : 우리 학교 = « mon / notre école ». 내 est réservé aux possessions individuelles.",
+      "tts_answer": "우리 학교"
+    },
+    {
+      "id": "exg_ch2_016",
+      "grammar_id": "grm_ch2_003",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Forme polie en 요",
+      "prompt_fr": "Quelle est la forme polie de 있어 ?",
+      "prompt_kr": null,
+      "context_kr": "있어 → ___",
+      "context_fr": "Passage de l'informel au poli.",
+      "answer": "있어요",
+      "answer_alts": [],
+      "distractors": [
+        "있다요",
+        "있어시",
+        "있세요"
+      ],
+      "explanation": "Pour rendre une phrase polie, il suffit d'ajouter 요 à la fin de la forme informelle : 있어 → 있어요. De même 없어 → 없어요.",
+      "tts_answer": "있어요"
+    },
+    {
+      "id": "exg_ch2_017",
+      "grammar_id": "grm_ch2_009",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Structure lieu + 에 + 이/가 있어요",
+      "prompt_fr": "Quel est l'ordre correct pour « Dans la chambre, il y a une chaise » ?",
+      "prompt_kr": null,
+      "context_kr": null,
+      "context_fr": "Ordre des mots de la phrase d'existence.",
+      "answer": "방에 의자가 있어요",
+      "answer_alts": [],
+      "distractors": [
+        "의자가 방에 있어요",
+        "방이 의자에 있어요",
+        "방에 의자에 있어요"
+      ],
+      "explanation": "La structure est : lieu + 에 + objet + 이/가 + 있어요. Donc 방에 (dans la chambre) + 의자가 (une chaise, sujet) + 있어요. Le lieu vient en premier avec 에, l'objet présent prend 이/가.",
+      "tts_answer": "방에 의자가 있어요"
+    },
+    {
+      "id": "exg_ch2_018",
+      "grammar_id": "grm_ch2_001",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Existence à trou 있어요/없어요",
+      "prompt_fr": "Complétez : 피아노가 ___. (Il n'y a pas de piano.)",
+      "prompt_kr": "피아노가 ___.",
+      "context_kr": "피아노가 ___.",
+      "context_fr": "Choisir entre présence et absence.",
+      "answer": "없어요",
+      "answer_alts": [],
+      "distractors": [
+        "있어요",
+        "아니에요",
+        "안 있어요"
+      ],
+      "explanation": "« Il n'y a pas » se dit 없어요 (verbe 없다). On garde la particule de sujet 가 (피아노 finit par une voyelle) : 피아노가 없어요. On ne dit jamais « 안 있어요 ».",
+      "tts_answer": "피아노가 없어요"
+    },
+    {
+      "id": "exg_ch2_019",
+      "grammar_id": "grm_ch2_004",
+      "chapter": 2,
+      "mode": "mcq",
+      "label": "Grammaire · Question 뭐가 있어요?",
+      "prompt_fr": "Complétez : 가방에 ___ 있어요? (Qu'est-ce qu'il y a dans le sac ?)",
+      "prompt_kr": "가방에 ___ 있어요?",
+      "context_kr": "가방에 ___ 있어요?",
+      "context_fr": "Question sur le contenu d'un lieu.",
+      "answer": "뭐가",
+      "answer_alts": [],
+      "distractors": [
+        "뭐",
+        "뭐도",
+        "뭐에"
+      ],
+      "explanation": "Pour demander « qu'est-ce qu'il y a », on combine 뭐 (« quoi ») avec la particule de sujet 가 : 뭐가 있어요? La phrase complète : 가방에 뭐가 있어요?",
+      "tts_answer": "가방에 뭐가 있어요?"
+    },
+    {
+      "id": "exg_ch2_020",
+      "grammar_id": "grm_ch2_003",
+      "chapter": 2,
+      "mode": "free_input",
+      "label": "Grammaire · Forme polie en 요",
+      "prompt_fr": "Mettez à la forme polie (ajoutez 요) : 없어 → ?",
+      "prompt_kr": "없어 → ?",
+      "context_kr": "없어 → ___",
+      "context_fr": "Produire la forme polie en 요.",
+      "answer": "없어요",
+      "answer_alts": [
+        "eopseoyo"
+      ],
+      "distractors": [],
+      "explanation": "On forme le poli en ajoutant simplement 요 : 없어 → 없어요 (« il n'y a pas », poli).",
+      "tts_answer": "없어요"
+    },
+    {
+      "id": "exg_ch2_021",
+      "grammar_id": "grm_ch2_002",
+      "chapter": 2,
+      "mode": "free_input",
+      "label": "Grammaire · Particule de sujet 이/가",
+      "prompt_fr": "Écrivez « 게임기 » suivi de la bonne particule de sujet et de « 있어요 » (Il y a une console). 게임기 finit par une voyelle.",
+      "prompt_kr": "게임기 + (이/가) + 있어요",
+      "context_kr": "게임기 ___ 있어요.",
+      "context_fr": "Choisir 이 ou 가 selon le batchim.",
+      "answer": "게임기가 있어요",
+      "answer_alts": [
+        "geimgiga isseoyo",
+        "게임기가있어요"
+      ],
+      "distractors": [],
+      "explanation": "게임기 se termine par une voyelle, donc la particule de sujet est 가 : 게임기가 있어요. (Après une consonne, ce serait 이.)",
+      "tts_answer": "게임기가 있어요"
+    },
+    {
+      "id": "exg_ch2_022",
+      "grammar_id": "grm_ch2_008",
+      "chapter": 2,
+      "mode": "free_input",
+      "label": "Grammaire · Connecteur 하고 + existence",
+      "prompt_fr": "Traduisez en coréen poli : « Il y a un crayon et un téléphone portable. » (crayon = 연필, téléphone portable = 휴대폰)",
+      "prompt_kr": null,
+      "context_kr": "연필___휴대폰___ 있어요.",
+      "context_fr": "Relier deux noms avec 하고 puis 이/가 + 있어요.",
+      "answer": "연필하고 휴대폰이 있어요",
+      "answer_alts": [
+        "yeonpilhago hyudaeponi isseoyo",
+        "연필하고 휴대폰이 있어요.",
+        "연필하고 휴대폰이있어요"
+      ],
+      "distractors": [],
+      "explanation": "On relie les deux noms par 하고 (« et ») : 연필하고 휴대폰. 휴대폰 finit par une consonne (ㄴ), donc la particule de sujet est 이 : 연필하고 휴대폰이 있어요.",
+      "tts_answer": "연필하고 휴대폰이 있어요"
+    },
+    {
+      "id": "exg_ch2_023",
+      "grammar_id": "exp_ch2_009",
+      "chapter": 2,
+      "mode": "free_input",
+      "label": "Grammaire · Particule de lieu 에 + 도",
+      "prompt_fr": "Traduisez en coréen poli : « Dans mon école, il y a aussi une piscine. » (mon école = 우리 학교, piscine = 수영장)",
+      "prompt_kr": null,
+      "context_kr": "우리 학교___ 수영장___ 있어요.",
+      "context_fr": "Combiner le lieu (에), la possession collective (우리) et 도 (aussi).",
+      "answer": "우리 학교에 수영장도 있어요",
+      "answer_alts": [
+        "uri hakgyoe suyeongjangdo isseoyo",
+        "우리 학교에 수영장도 있어요.",
+        "우리학교에 수영장도 있어요"
+      ],
+      "distractors": [],
+      "explanation": "« Mon école » (lieu partagé) se dit 우리 학교, avec 에 pour le lieu : 우리 학교에. « Aussi » = 도, qui remplace 이/가 : 수영장도 있어요. Phrase complète : 우리 학교에 수영장도 있어요.",
+      "tts_answer": "우리 학교에 수영장도 있어요"
+    },
+    {
+      "id": "exg_ch3_001",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
       "label": "Grammaire · Présent 아요/어요",
       "prompt_fr": "Présent poli de 먹다 (manger) :",
       "prompt_kr": "먹다",
-      "answer": "먹어요", "distractors": ["먹아요", "먹여요", "머거요"],
+      "answer": "먹어요",
+      "distractors": [
+        "먹아요",
+        "먹여요",
+        "머거요"
+      ],
       "explanation": "Radical 먹 (voyelle ㅓ) → 먹 + 어요 = 먹어요.",
       "tts_answer": "먹어요"
     },
     {
-      "id": "exg_ch3_002", "grammar_id": "grm_ch3_001", "chapter": 3, "mode": "mcq",
+      "id": "exg_ch3_002",
+      "grammar_id": "grm_ch3_001",
+      "chapter": 3,
+      "mode": "mcq",
       "label": "Grammaire · Verbes en 하다",
       "prompt_fr": "Présent poli de 공부하다 (étudier) :",
       "prompt_kr": "공부하다",
-      "answer": "공부해요", "distractors": ["공부하요", "공부아요", "공부어요"],
+      "answer": "공부해요",
+      "distractors": [
+        "공부하요",
+        "공부아요",
+        "공부어요"
+      ],
       "explanation": "Les verbes en 하다 deviennent 해요 au présent poli : 공부 + 해요.",
       "tts_answer": "공부해요"
     },
     {
-      "id": "exg_ch3_003", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "free_input",
+      "id": "exg_ch3_003",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "free_input",
       "label": "Grammaire · Présent (contraction)",
       "prompt_fr": "Écris le présent poli de 가다 (aller) :",
       "prompt_kr": "가다",
-      "answer": "가요", "answer_alts": ["gayo"],
+      "answer": "가요",
+      "answer_alts": [
+        "gayo"
+      ],
       "explanation": "가 + 아요 se contracte en 가요.",
       "tts_answer": "가요"
     },
     {
-      "id": "exg_ch3_004", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "mcq",
+      "id": "exg_ch3_004",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
       "label": "Grammaire · COD 을/를",
       "prompt_fr": "Quelle particule d'objet ? (밥 finit par une consonne)",
-      "context_kr": "밥___ 먹어요.", "context_fr": "Je mange du riz.",
-      "answer": "을", "distractors": ["를", "이", "에"],
+      "context_kr": "밥___ 먹어요.",
+      "context_fr": "Je mange du riz.",
+      "answer": "을",
+      "distractors": [
+        "를",
+        "이",
+        "에"
+      ],
       "explanation": "밥 finit par une consonne → 을. Après une voyelle : 를.",
       "tts_answer": "밥을 먹어요"
     },
     {
-      "id": "exg_ch3_005", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "mcq",
+      "id": "exg_ch3_005",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
       "label": "Grammaire · Lieu d'action 에서",
       "prompt_fr": "Quelle particule (lieu d'une action) ?",
-      "context_kr": "도서관___ 공부해요.", "context_fr": "J'étudie à la bibliothèque.",
-      "answer": "에서", "distractors": ["에", "을", "으로"],
+      "context_kr": "도서관___ 공부해요.",
+      "context_fr": "J'étudie à la bibliothèque.",
+      "answer": "에서",
+      "distractors": [
+        "에",
+        "을",
+        "으로"
+      ],
       "explanation": "에서 marque le lieu où se déroule une action. 에 marque seulement la localisation.",
       "tts_answer": "도서관에서 공부해요"
     },
     {
-      "id": "exg_ch3_006", "grammar_id": "grm_ch3_003", "chapter": 3, "mode": "mcq",
+      "id": "exg_ch3_006",
+      "grammar_id": "grm_ch3_003",
+      "chapter": 3,
+      "mode": "mcq",
       "label": "Grammaire · Négation 안",
       "prompt_fr": "« Je ne bois pas d'alcool » :",
-      "context_kr": "저는 술을 ___ 마셔요.", "context_fr": "Je ne bois pas d'alcool.",
-      "answer": "안", "distractors": ["못", "없", "아니"],
+      "context_kr": "저는 술을 ___ 마셔요.",
+      "context_fr": "Je ne bois pas d'alcool.",
+      "answer": "안",
+      "distractors": [
+        "못",
+        "없",
+        "아니"
+      ],
       "explanation": "안 + verbe = négation simple. 못 + verbe = incapacité (ne pas pouvoir).",
       "tts_answer": "안 마셔요"
     },
     {
-      "id": "exg_ch4_001", "grammar_id": "grm_ch4_001", "chapter": 4, "mode": "mcq",
+      "id": "exg_ch3_007",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Présent 아요/어요",
+      "prompt_fr": "Présent poli de 받다 (recevoir) : le radical 받 a la voyelle ㅏ.",
+      "prompt_kr": "받다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "받아요",
+      "answer_alts": [],
+      "distractors": [
+        "받어요",
+        "받해요",
+        "바다요"
+      ],
+      "explanation": "Radical 받 (voyelle ㅏ) → 받 + 아요 = 받아요. Une voyelle ㅏ ou ㅗ dans le radical appelle la terminaison 아요.",
+      "tts_answer": "받아요"
+    },
+    {
+      "id": "exg_ch3_008",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Présent 아요/어요",
+      "prompt_fr": "Présent poli de 읽다 (lire) : le radical 읽 a la voyelle ㅣ.",
+      "prompt_kr": "읽다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "읽어요",
+      "answer_alts": [],
+      "distractors": [
+        "읽아요",
+        "읽해요",
+        "이러요"
+      ],
+      "explanation": "Radical 읽 (voyelle ㅣ, donc ni ㅏ ni ㅗ) → 읽 + 어요 = 읽어요.",
+      "tts_answer": "읽어요"
+    },
+    {
+      "id": "exg_ch3_009",
+      "grammar_id": "grm_ch3_001",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Verbes en 하다",
+      "prompt_fr": "Présent poli de 일하다 (travailler) :",
+      "prompt_kr": "일하다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "일해요",
+      "answer_alts": [],
+      "distractors": [
+        "일하요",
+        "일아요",
+        "일허요"
+      ],
+      "explanation": "Tous les verbes en 하다 deviennent 해요 au présent poli : 일 + 해요 = 일해요.",
+      "tts_answer": "일해요"
+    },
+    {
+      "id": "exg_ch3_010",
+      "grammar_id": "grm_ch3_001",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Verbes en 하다",
+      "prompt_fr": "Présent poli de 운동하다 (faire du sport) :",
+      "prompt_kr": "운동하다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "운동해요",
+      "answer_alts": [],
+      "distractors": [
+        "운동하요",
+        "운동아요",
+        "운동헤요"
+      ],
+      "explanation": "운동하다 → 운동 + 해요 = 운동해요. La règle 하다 → 해요 ne change jamais.",
+      "tts_answer": "운동해요"
+    },
+    {
+      "id": "exg_ch3_011",
+      "grammar_id": "grm_ch3_004",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Contraction vocalique",
+      "prompt_fr": "Présent poli de 보다 (regarder) : le radical 보 finit par ㅗ.",
+      "prompt_kr": "보다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "봐요",
+      "answer_alts": [],
+      "distractors": [
+        "보아요",
+        "보요",
+        "보워요"
+      ],
+      "explanation": "보 + 아요 = 보아요, puis contraction ㅗ + ㅏ = ㅘ → 봐요.",
+      "tts_answer": "봐요"
+    },
+    {
+      "id": "exg_ch3_012",
+      "grammar_id": "grm_ch3_004",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Contraction vocalique",
+      "prompt_fr": "Présent poli de 마시다 (boire) : le radical 마시 finit par ㅣ.",
+      "prompt_kr": "마시다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "마셔요",
+      "answer_alts": [],
+      "distractors": [
+        "마시어요",
+        "마시요",
+        "마샤요"
+      ],
+      "explanation": "마시 + 어요 = 마시어요, puis contraction ㅣ + ㅓ = ㅕ → 마셔요.",
+      "tts_answer": "마셔요"
+    },
+    {
+      "id": "exg_ch3_013",
+      "grammar_id": "grm_ch3_004",
+      "chapter": 3,
+      "mode": "free_input",
+      "label": "Grammaire · Contraction vocalique",
+      "prompt_fr": "Écris le présent poli de 자다 (dormir) :",
+      "prompt_kr": "자다",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "자요",
+      "answer_alts": [
+        "jayo"
+      ],
+      "distractors": [],
+      "explanation": "자 + 아요 = 자아요, puis contraction ㅏ + ㅏ = ㅏ → 자요.",
+      "tts_answer": "자요"
+    },
+    {
+      "id": "exg_ch3_014",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · COD 을/를",
+      "prompt_fr": "Quelle particule d'objet ? (커피 finit par une voyelle)",
+      "prompt_kr": null,
+      "context_kr": "커피___ 마셔요.",
+      "context_fr": "Je bois du café.",
+      "answer": "를",
+      "answer_alts": [],
+      "distractors": [
+        "을",
+        "가",
+        "에"
+      ],
+      "explanation": "커피 finit par une voyelle → 를 (COD). Après une consonne : 을.",
+      "tts_answer": "커피를 마셔요"
+    },
+    {
+      "id": "exg_ch3_015",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · COD 을/를",
+      "prompt_fr": "Quelle particule d'objet ? (책 finit par une consonne)",
+      "prompt_kr": null,
+      "context_kr": "책___ 읽어요.",
+      "context_fr": "Je lis un livre.",
+      "answer": "을",
+      "answer_alts": [],
+      "distractors": [
+        "를",
+        "이",
+        "에서"
+      ],
+      "explanation": "책 finit par une consonne (ㄱ) → 을 (COD). Après une voyelle : 를.",
+      "tts_answer": "책을 읽어요"
+    },
+    {
+      "id": "exg_ch3_016",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Lieu d'action 에서",
+      "prompt_fr": "Quelle particule ? (le lieu où se déroule une action)",
+      "prompt_kr": null,
+      "context_kr": "식당___ 밥을 먹어요.",
+      "context_fr": "Je mange au restaurant.",
+      "answer": "에서",
+      "answer_alts": [],
+      "distractors": [
+        "에",
+        "을",
+        "도"
+      ],
+      "explanation": "에서 marque le lieu où se déroule une action (먹다 = manger). 에 indiquerait seulement la localisation avec 있다/없다.",
+      "tts_answer": "식당에서 밥을 먹어요"
+    },
+    {
+      "id": "exg_ch3_017",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · 에서 vs 에",
+      "prompt_fr": "에 ou 에서 ? Ici, on situe une présence (있다), pas une action.",
+      "prompt_kr": null,
+      "context_kr": "친구가 집___ 있어요.",
+      "context_fr": "Mon ami est à la maison.",
+      "answer": "에",
+      "answer_alts": [],
+      "distractors": [
+        "에서",
+        "를",
+        "으로"
+      ],
+      "explanation": "Avec 있다/없다 (localisation, sans action), on emploie 에. 에서 sert quand un verbe d'action se déroule dans le lieu.",
+      "tts_answer": "친구가 집에 있어요"
+    },
+    {
+      "id": "exg_ch3_018",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Particule de temps 에",
+      "prompt_fr": "Quelle particule de temps ?",
+      "prompt_kr": null,
+      "context_kr": "오후 세 시___ 만나요.",
+      "context_fr": "On se voit à trois heures de l'après-midi.",
+      "answer": "에",
+      "answer_alts": [],
+      "distractors": [
+        "에서",
+        "을",
+        "로"
+      ],
+      "explanation": "에 marque le moment précis (l'heure, le jour). On dit 세 시에 = à trois heures.",
+      "tts_answer": "세 시에 만나요"
+    },
+    {
+      "id": "exg_ch3_019",
+      "grammar_id": "grm_ch3_003",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Négation 안",
+      "prompt_fr": "« Je ne regarde pas la télé » : que placer devant le verbe ?",
+      "prompt_kr": null,
+      "context_kr": "텔레비전을 ___ 봐요.",
+      "context_fr": "Je ne regarde pas la télé.",
+      "answer": "안",
+      "answer_alts": [],
+      "distractors": [
+        "못",
+        "아니",
+        "없"
+      ],
+      "explanation": "안 se place juste devant le verbe conjugué : 안 봐요. 못 exprimerait l'incapacité (ne pas pouvoir).",
+      "tts_answer": "안 봐요"
+    },
+    {
+      "id": "exg_ch3_020",
+      "grammar_id": "grm_ch3_003",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Négation 안 (verbes en 하다)",
+      "prompt_fr": "Négation de 운동해요. Que glisser entre 운동 et 해요 ?",
+      "prompt_kr": null,
+      "context_kr": "오늘은 운동 ___ 해요.",
+      "context_fr": "Aujourd'hui, je ne fais pas de sport.",
+      "answer": "안",
+      "answer_alts": [],
+      "distractors": [
+        "못",
+        "아니",
+        "없"
+      ],
+      "explanation": "Pour un verbe NOM + 하다, 안 se glisse entre le nom et 해요 : 운동 안 해요. On ne dit pas 안 운동해요.",
+      "tts_answer": "운동 안 해요"
+    },
+    {
+      "id": "exg_ch3_021",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · Phrase complète au présent",
+      "prompt_fr": "Complète : « J'étudie le coréen. » (radical 공부하 → ?)",
+      "prompt_kr": null,
+      "context_kr": "저는 한국어를 ___.",
+      "context_fr": "J'étudie le coréen.",
+      "answer": "공부해요",
+      "answer_alts": [],
+      "distractors": [
+        "공부하요",
+        "공부아요",
+        "공부어요"
+      ],
+      "explanation": "공부하다 est un verbe en 하다 → 공부해요. La particule 를 marque le COD 한국어.",
+      "tts_answer": "한국어를 공부해요"
+    },
+    {
+      "id": "exg_ch3_022",
+      "grammar_id": "grm_ch3_002",
+      "chapter": 3,
+      "mode": "mcq",
+      "label": "Grammaire · 에서 + COD + verbe",
+      "prompt_fr": "Quelle particule pour le COD 영화 (film, finit par une voyelle) ?",
+      "prompt_kr": null,
+      "context_kr": "극장에서 영화___ 봐요.",
+      "context_fr": "Je regarde un film au cinéma.",
+      "answer": "를",
+      "answer_alts": [],
+      "distractors": [
+        "을",
+        "에서",
+        "가"
+      ],
+      "explanation": "영화 finit par une voyelle → 를 (COD). 극장에서 indique le lieu de l'action ; 봐요 est la forme contractée de 보다.",
+      "tts_answer": "영화를 봐요"
+    },
+    {
+      "id": "exg_ch4_001",
+      "grammar_id": "grm_ch4_001",
+      "chapter": 4,
+      "mode": "mcq",
       "label": "Grammaire · Direction 으로/로",
       "prompt_fr": "Direction (학교 finit par une voyelle) :",
-      "context_kr": "학교___ 가요.", "context_fr": "Je vais vers l'école.",
-      "answer": "로", "distractors": ["으로", "에서", "까지"],
+      "context_kr": "학교___ 가요.",
+      "context_fr": "Je vais vers l'école.",
+      "answer": "로",
+      "distractors": [
+        "으로",
+        "에서",
+        "까지"
+      ],
       "explanation": "Après une voyelle (ou ㄹ) → 로. Après une consonne → 으로.",
       "tts_answer": "학교로 가요"
     },
     {
-      "id": "exg_ch4_002", "grammar_id": "grm_ch4_005", "chapter": 4, "mode": "mcq",
+      "id": "exg_ch4_002",
+      "grammar_id": "grm_ch4_005",
+      "chapter": 4,
+      "mode": "mcq",
       "label": "Grammaire · Moyen de transport (으)로",
       "prompt_fr": "Moyen de transport (버스 finit par une consonne) :",
-      "context_kr": "버스___ 가요.", "context_fr": "J'y vais en bus.",
-      "answer": "으로", "distractors": ["로", "에", "를"],
+      "context_kr": "버스___ 가요.",
+      "context_fr": "J'y vais en bus.",
+      "answer": "으로",
+      "distractors": [
+        "로",
+        "에",
+        "를"
+      ],
       "explanation": "버스 finit par une consonne (ㅅ) → 으로. 'par quel moyen' : (으)로.",
       "tts_answer": "버스으로 가요"
     },
     {
-      "id": "exg_ch4_003", "grammar_id": "grm_ch4_004", "chapter": 4, "mode": "mcq",
+      "id": "exg_ch4_003",
+      "grammar_id": "grm_ch4_004",
+      "chapter": 4,
+      "mode": "mcq",
       "label": "Grammaire · De… à… 에서…까지",
       "prompt_fr": "Point de départ (lieu) :",
-      "context_kr": "집___ 학교까지 걸어요.", "context_fr": "Je marche de la maison à l'école.",
-      "answer": "에서", "distractors": ["부터", "에", "으로"],
+      "context_kr": "집___ 학교까지 걸어요.",
+      "context_fr": "Je marche de la maison à l'école.",
+      "answer": "에서",
+      "distractors": [
+        "부터",
+        "에",
+        "으로"
+      ],
       "explanation": "Pour un LIEU : 에서 (départ) … 까지 (arrivée). Pour le TEMPS : 부터 … 까지.",
       "tts_answer": "집에서 학교까지"
     },
     {
-      "id": "exg_ch5_001", "grammar_id": "grm_ch5_001", "chapter": 5, "mode": "mcq",
+      "id": "exg_ch4_004",
+      "grammar_id": "grm_ch4_euro_ro",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Direction 으로/로",
+      "prompt_fr": "Quelle particule de direction faut-il après un mot qui se termine par une consonne (batchim) ? Ici 집 (maison) finit par la consonne ㅂ.",
+      "prompt_kr": "집___ 가요. (Je vais vers la maison.)",
+      "context_kr": "집___ 가요.",
+      "context_fr": "Je vais vers la maison.",
+      "answer": "으로",
+      "answer_alts": [],
+      "distractors": [
+        "로",
+        "에서",
+        "까지"
+      ],
+      "explanation": "Après une consonne finale (batchim), la particule de direction est 으로. 집 finit par ㅂ, donc 집으로. La forme 로 ne s'emploie qu'après une voyelle ou la consonne ㄹ.",
+      "tts_answer": "집으로 가요"
+    },
+    {
+      "id": "exg_ch4_005",
+      "grammar_id": "grm_ch4_euro_ro",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Direction 으로/로 (cas du ㄹ)",
+      "prompt_fr": "Cas particulier : 서울 (Séoul) finit par la consonne ㄹ. Quelle particule de direction ?",
+      "prompt_kr": "서울___ 가요. (Je vais vers Séoul.)",
+      "context_kr": "서울___ 가요.",
+      "context_fr": "Je vais vers Séoul.",
+      "answer": "로",
+      "answer_alts": [],
+      "distractors": [
+        "으로",
+        "이로",
+        "에"
+      ],
+      "explanation": "Exception importante : après la consonne finale ㄹ, on utilise 로 (et non 으로), exactement comme après une voyelle. 서울 finit par ㄹ, donc 서울로.",
+      "tts_answer": "서울로 가요"
+    },
+    {
+      "id": "exg_ch4_006",
+      "grammar_id": "grm_ch4_transport",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Moyen de transport (으)로",
+      "prompt_fr": "Pour dire « y aller en bus », quelle forme utiliser ? 버스 (bus) finit par une voyelle.",
+      "prompt_kr": "버스___ 가요. (J'y vais en bus.)",
+      "context_kr": "버스___ 가요.",
+      "context_fr": "J'y vais en bus.",
+      "answer": "버스로",
+      "answer_alts": [],
+      "distractors": [
+        "버스으로",
+        "버스에",
+        "버스에서"
+      ],
+      "explanation": "Le moyen de transport se marque aussi avec (으)로. 버스 finit par la voyelle ㅡ, donc 버스로 가요 = « y aller en bus ». Pas de 으 après une voyelle.",
+      "tts_answer": "버스로 가요"
+    },
+    {
+      "id": "exg_ch4_007",
+      "grammar_id": "grm_ch4_transport",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Moyen de transport (으)로",
+      "prompt_fr": "Comment dire « y aller en métro » ? 지하철 (métro) finit par la consonne ㄹ.",
+      "prompt_kr": "지하철___ 가요. (J'y vais en métro.)",
+      "context_kr": "지하철___ 가요.",
+      "context_fr": "J'y vais en métro.",
+      "answer": "지하철로",
+      "answer_alts": [],
+      "distractors": [
+        "지하철으로",
+        "지하철에",
+        "지하철까지"
+      ],
+      "explanation": "지하철 finit par ㄹ, donc on utilise 로 (et non 으로) : 지하철로 가요 = « y aller en métro ». Le ㄹ se comporte comme une voyelle pour cette particule.",
+      "tts_answer": "지하철로 가요"
+    },
+    {
+      "id": "exg_ch4_008",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 위 (sur)",
+      "prompt_fr": "« Le livre est sur la table. » Quel mot de position signifie « sur / au-dessus » ?",
+      "prompt_kr": "책이 책상 ___ 있어요.",
+      "context_kr": "책이 책상 ___ 있어요.",
+      "context_fr": "Le livre est sur la table.",
+      "answer": "위에",
+      "answer_alts": [],
+      "distractors": [
+        "아래에",
+        "안에",
+        "옆에"
+      ],
+      "explanation": "위 = le dessus. Avec la particule de lieu 에, 위에 = « sur, au-dessus de ». La structure est : lieu + mot de position + 에 + 있어요.",
+      "tts_answer": "책이 책상 위에 있어요"
+    },
+    {
+      "id": "exg_ch4_009",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 아래 (sous)",
+      "prompt_fr": "« Le chat est sous la chaise. » Quel mot signifie « sous / en dessous » ?",
+      "prompt_kr": "고양이가 의자 ___ 있어요.",
+      "context_kr": "고양이가 의자 ___ 있어요.",
+      "context_fr": "Le chat est sous la chaise.",
+      "answer": "아래에",
+      "answer_alts": [],
+      "distractors": [
+        "위에",
+        "앞에",
+        "밖에"
+      ],
+      "explanation": "아래 = le dessous. 아래에 = « sous, en dessous de ». (밑에 est un synonyme courant.) On garde toujours la particule 에 après le mot de position.",
+      "tts_answer": "고양이가 의자 아래에 있어요"
+    },
+    {
+      "id": "exg_ch4_010",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 안 (dans)",
+      "prompt_fr": "« Il y a de l'argent dans le sac. » Quel mot signifie « à l'intérieur / dans » ?",
+      "prompt_kr": "돈이 가방 ___ 있어요.",
+      "context_kr": "돈이 가방 ___ 있어요.",
+      "context_fr": "Il y a de l'argent dans le sac.",
+      "answer": "안에",
+      "answer_alts": [],
+      "distractors": [
+        "밖에",
+        "위에",
+        "뒤에"
+      ],
+      "explanation": "안 = l'intérieur. 안에 = « dans, à l'intérieur de ». Son contraire est 밖 (extérieur), 밖에 = « dehors ».",
+      "tts_answer": "돈이 가방 안에 있어요"
+    },
+    {
+      "id": "exg_ch4_011",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 앞 (devant)",
+      "prompt_fr": "« Une voiture est devant la maison. » Quel mot signifie « devant » ?",
+      "prompt_kr": "차가 집 ___ 있어요.",
+      "context_kr": "차가 집 ___ 있어요.",
+      "context_fr": "Une voiture est devant la maison.",
+      "answer": "앞에",
+      "answer_alts": [],
+      "distractors": [
+        "뒤에",
+        "옆에",
+        "안에"
+      ],
+      "explanation": "앞 = le devant, la partie avant. 앞에 = « devant ». Son contraire est 뒤 (l'arrière), 뒤에 = « derrière ».",
+      "tts_answer": "차가 집 앞에 있어요"
+    },
+    {
+      "id": "exg_ch4_012",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 뒤 (derrière)",
+      "prompt_fr": "« Le jardin est derrière l'école. » Quel mot signifie « derrière » ?",
+      "prompt_kr": "정원이 학교 ___ 있어요.",
+      "context_kr": "정원이 학교 ___ 있어요.",
+      "context_fr": "Le jardin est derrière l'école.",
+      "answer": "뒤에",
+      "answer_alts": [],
+      "distractors": [
+        "앞에",
+        "위에",
+        "옆에"
+      ],
+      "explanation": "뒤 = l'arrière. 뒤에 = « derrière, à l'arrière de ». C'est l'opposé de 앞 (devant).",
+      "tts_answer": "정원이 학교 뒤에 있어요"
+    },
+    {
+      "id": "exg_ch4_013",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 옆 (à côté)",
+      "prompt_fr": "« La banque est à côté de la pharmacie. » Quel mot signifie « à côté de » ?",
+      "prompt_kr": "은행이 약국 ___ 있어요.",
+      "context_kr": "은행이 약국 ___ 있어요.",
+      "context_fr": "La banque est à côté de la pharmacie.",
+      "answer": "옆에",
+      "answer_alts": [],
+      "distractors": [
+        "안에",
+        "밖에",
+        "아래에"
+      ],
+      "explanation": "옆 = le côté. 옆에 = « à côté de ». On l'emploie pour situer un objet ou un lieu juste à côté d'un autre.",
+      "tts_answer": "은행이 약국 옆에 있어요"
+    },
+    {
+      "id": "exg_ch4_014",
+      "grammar_id": "grm_ch4_position",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Position 밖 (dehors)",
+      "prompt_fr": "« Le chien est dehors (à l'extérieur de la maison). » Quel mot signifie « à l'extérieur » ?",
+      "prompt_kr": "개가 집 ___ 있어요.",
+      "context_kr": "개가 집 ___ 있어요.",
+      "context_fr": "Le chien est dehors, à l'extérieur de la maison.",
+      "answer": "밖에",
+      "answer_alts": [],
+      "distractors": [
+        "안에",
+        "위에",
+        "앞에"
+      ],
+      "explanation": "밖 = l'extérieur. 밖에 = « dehors, à l'extérieur de ». C'est l'opposé de 안 (intérieur).",
+      "tts_answer": "개가 집 밖에 있어요"
+    },
+    {
+      "id": "exg_ch4_015",
+      "grammar_id": "grm_ch4_lieu_e",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Déplacement lieu + 에 + verbe",
+      "prompt_fr": "Pour indiquer la destination d'un déplacement (« aller à l'école »), quelle particule met-on après le lieu ?",
+      "prompt_kr": "학교___ 가요. (Je vais à l'école.)",
+      "context_kr": "학교___ 가요.",
+      "context_fr": "Je vais à l'école.",
+      "answer": "에",
+      "answer_alts": [],
+      "distractors": [
+        "에서",
+        "로",
+        "을"
+      ],
+      "explanation": "Avec un verbe de déplacement comme 가다 (aller) ou 오다 (venir), la destination prend 에 : 학교에 가요 = « aller à l'école ». Ne pas confondre avec 에서 (lieu d'une action) ou 로 (direction « vers »).",
+      "tts_answer": "학교에 가요"
+    },
+    {
+      "id": "exg_ch4_016",
+      "grammar_id": "grm_ch4_lieu_e",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · 에 vs 에서",
+      "prompt_fr": "« J'étudie à la bibliothèque. » L'action (étudier) se déroule dans le lieu. Quelle particule ?",
+      "prompt_kr": "도서관___ 공부해요. (J'étudie à la bibliothèque.)",
+      "context_kr": "도서관___ 공부해요.",
+      "context_fr": "J'étudie à la bibliothèque.",
+      "answer": "에서",
+      "answer_alts": [],
+      "distractors": [
+        "에",
+        "로",
+        "까지"
+      ],
+      "explanation": "Quand une action (autre qu'un déplacement) a lieu DANS un endroit, on utilise 에서 : 도서관에서 공부해요. On réserve 에 à la destination d'un déplacement (가다/오다) ou à la localisation avec 있다.",
+      "tts_answer": "도서관에서 공부해요"
+    },
+    {
+      "id": "exg_ch4_017",
+      "grammar_id": "grm_ch4_eseo_kkaji",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · 에서...까지 (de...à)",
+      "prompt_fr": "« De Séoul à Busan. » Quelle particule marque le point de départ (« de ») ?",
+      "prompt_kr": "서울___ 부산까지 가요.",
+      "context_kr": "서울___ 부산까지 가요.",
+      "context_fr": "Je vais de Séoul à Busan.",
+      "answer": "에서",
+      "answer_alts": [],
+      "distractors": [
+        "까지",
+        "에",
+        "로"
+      ],
+      "explanation": "Pour un trajet « de... à... » entre deux lieux, on utilise 에서 (point de départ, « de ») couplé à 까지 (point d'arrivée, « jusqu'à »). Ici : 서울에서 부산까지.",
+      "tts_answer": "서울에서 부산까지 가요"
+    },
+    {
+      "id": "exg_ch4_018",
+      "grammar_id": "grm_ch4_eseo_kkaji",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · 에서...까지 (de...à)",
+      "prompt_fr": "« De la maison à l'école. » Quelle particule marque le point d'arrivée (« jusqu'à ») ?",
+      "prompt_kr": "집에서 학교___ 가요.",
+      "context_kr": "집에서 학교___ 가요.",
+      "context_fr": "Je vais de la maison à l'école.",
+      "answer": "까지",
+      "answer_alts": [],
+      "distractors": [
+        "에서",
+        "에",
+        "로"
+      ],
+      "explanation": "까지 marque le point d'arrivée (« jusqu'à, à »). Couplé à 에서 (« de »), il forme la structure de trajet : 집에서 학교까지 = « de la maison à l'école ».",
+      "tts_answer": "집에서 학교까지 가요"
+    },
+    {
+      "id": "exg_ch4_019",
+      "grammar_id": "grm_ch4_demonstratifs",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Démonstratif 이 (ce... ci)",
+      "prompt_fr": "« Ce livre-ci » (le livre proche de moi, celui qui parle). Quel démonstratif ?",
+      "prompt_kr": "___ 책이 좋아요. (Ce livre-ci est bien.)",
+      "context_kr": "___ 책이 좋아요.",
+      "context_fr": "Ce livre-ci est bien.",
+      "answer": "이",
+      "answer_alts": [],
+      "distractors": [
+        "그",
+        "저",
+        "여기"
+      ],
+      "explanation": "이 = « ce... ci », pour un objet proche de la personne qui parle. 이 책 = « ce livre-ci ». À distinguer de 그 (proche de l'interlocuteur) et 저 (loin des deux).",
+      "tts_answer": "이 책이 좋아요"
+    },
+    {
+      "id": "exg_ch4_020",
+      "grammar_id": "grm_ch4_demonstratifs",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Démonstratif 그 (ce...là, près de toi)",
+      "prompt_fr": "« Cette personne-là » (proche de ton interlocuteur, pas de toi). Quel démonstratif ?",
+      "prompt_kr": "___ 사람이 친구예요. (Cette personne-là est mon ami.)",
+      "context_kr": "___ 사람이 친구예요.",
+      "context_fr": "Cette personne-là (près de toi) est mon ami.",
+      "answer": "그",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "저",
+        "거기"
+      ],
+      "explanation": "그 désigne ce qui est proche de l'interlocuteur (ou déjà évoqué) : « ce... là, près de toi ». 이 = près de moi, 그 = près de toi, 저 = loin de nous deux.",
+      "tts_answer": "그 사람이 친구예요"
+    },
+    {
+      "id": "exg_ch4_021",
+      "grammar_id": "grm_ch4_demonstratifs",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Démonstratif 저 (ce...là-bas)",
+      "prompt_fr": "« Cette montagne là-bas » (loin de toi et de moi). Quel démonstratif ?",
+      "prompt_kr": "___ 산이 높아요. (Cette montagne là-bas est haute.)",
+      "context_kr": "___ 산이 높아요.",
+      "context_fr": "Cette montagne là-bas est haute.",
+      "answer": "저",
+      "answer_alts": [],
+      "distractors": [
+        "이",
+        "그",
+        "저기"
+      ],
+      "explanation": "저 désigne ce qui est loin des deux interlocuteurs : « ce... là-bas ». Système à trois degrés : 이 (ici, près de moi), 그 (près de toi), 저 (là-bas, loin de nous).",
+      "tts_answer": "저 산이 높아요"
+    },
+    {
+      "id": "exg_ch4_022",
+      "grammar_id": "grm_ch4_pronoms_lieu",
+      "chapter": 4,
+      "mode": "mcq",
+      "label": "Grammaire · Pronoms de lieu 여기/거기/저기",
+      "prompt_fr": "« Le café est ici » (à l'endroit où je suis). Quel pronom de lieu ?",
+      "prompt_kr": "카페가 ___ 있어요. (Le café est ici.)",
+      "context_kr": "카페가 ___ 있어요.",
+      "context_fr": "Le café est ici.",
+      "answer": "여기",
+      "answer_alts": [],
+      "distractors": [
+        "거기",
+        "저기",
+        "어디"
+      ],
+      "explanation": "여기 = « ici » (lieu proche de moi). Les pronoms de lieu suivent la même logique que les démonstratifs : 여기 (ici), 거기 (là, près de toi), 저기 (là-bas, loin).",
+      "tts_answer": "카페가 여기 있어요"
+    },
+    {
+      "id": "exg_ch4_023",
+      "grammar_id": "grm_ch4_possession_geo",
+      "chapter": 4,
+      "mode": "free_input",
+      "label": "Grammaire · Possession avec 거",
+      "prompt_fr": "Pour dire « c'est à moi / c'est le mien », on emploie 거 (« la chose de »). Complète le trou de la phrase : 이거 제 ___ 예요.",
+      "prompt_kr": "이거 제 ___ 예요. (C'est à moi / c'est le mien.)",
+      "context_kr": "이거 제 ___ 예요.",
+      "context_fr": "C'est à moi (c'est le mien).",
+      "answer": "거",
+      "answer_alts": [
+        "geo",
+        "geu",
+        "것"
+      ],
+      "distractors": [],
+      "explanation": "거 (forme familière de 것) signifie « la chose de, celui de ». Avec le possessif 제 (= mon, forme humble), 제 거 = « le mien ». Phrase complète : 이거 제 거예요 = « ceci est à moi ».",
+      "tts_answer": "이거 제 거예요"
+    },
+    {
+      "id": "exg_ch4_024",
+      "grammar_id": "grm_ch4_euro_ro",
+      "chapter": 4,
+      "mode": "free_input",
+      "label": "Grammaire · Direction 으로/로 (à produire)",
+      "prompt_fr": "Forme la bonne particule de direction et écris-la collée au mot. Mot : 오른쪽 (la droite), qui finit par la consonne ㄱ. (« Tournez à droite. »)",
+      "prompt_kr": "오른쪽___ 가세요. (Allez vers la droite.)",
+      "context_kr": "오른쪽___ 가세요.",
+      "context_fr": "Allez vers la droite.",
+      "answer": "오른쪽으로",
+      "answer_alts": [
+        "으로",
+        "oreunjjogeuro"
+      ],
+      "distractors": [],
+      "explanation": "오른쪽 finit par la consonne ㄱ (batchim), donc on ajoute 으로 : 오른쪽으로 가세요 = « allez vers la droite ». La règle : consonne → 으로, voyelle ou ㄹ → 로.",
+      "tts_answer": "오른쪽으로 가세요"
+    },
+    {
+      "id": "exg_ch5_001",
+      "grammar_id": "grm_ch5_001",
+      "chapter": 5,
+      "mode": "mcq",
       "label": "Grammaire · -고 싶다 (vouloir)",
       "prompt_fr": "« Je veux boire de l'eau » :",
-      "context_kr": "물을 마시___ 싶어요.", "context_fr": "Je veux boire de l'eau.",
-      "answer": "고", "distractors": ["어", "아", "게"],
+      "context_kr": "물을 마시___ 싶어요.",
+      "context_fr": "Je veux boire de l'eau.",
+      "answer": "고",
+      "distractors": [
+        "어",
+        "아",
+        "게"
+      ],
       "explanation": "radical + -고 싶다 = avoir envie de / vouloir. 마시 + 고 싶어요.",
       "tts_answer": "마시고 싶어요"
     },
     {
-      "id": "exg_ch5_002", "grammar_id": "grm_ch5_003", "chapter": 5, "mode": "mcq",
+      "id": "exg_ch5_002",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
       "label": "Grammaire · Classificateur (personnes)",
       "prompt_fr": "Classificateur pour compter des personnes :",
-      "context_kr": "학생 세 ___", "context_fr": "trois élèves",
-      "answer": "명", "distractors": ["개", "마리", "그릇"],
+      "context_kr": "학생 세 ___",
+      "context_fr": "trois élèves",
+      "answer": "명",
+      "distractors": [
+        "개",
+        "마리",
+        "그릇"
+      ],
       "explanation": "명 compte les personnes, avec les nombres natifs : 세 명 = trois personnes.",
       "tts_answer": "세 명"
     },
     {
-      "id": "exg_ch5_003", "grammar_id": "grm_ch5_003", "chapter": 5, "mode": "mcq",
+      "id": "exg_ch5_003",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
       "label": "Grammaire · Classificateur (objets)",
       "prompt_fr": "Classificateur pour compter des objets :",
-      "context_kr": "사과 두 ___", "context_fr": "deux pommes",
-      "answer": "개", "distractors": ["명", "권", "마리"],
+      "context_kr": "사과 두 ___",
+      "context_fr": "deux pommes",
+      "answer": "개",
+      "distractors": [
+        "명",
+        "권",
+        "마리"
+      ],
       "explanation": "개 compte les objets, avec les nombres natifs : 두 개 = deux (objets).",
       "tts_answer": "두 개"
     },
     {
-      "id": "exg_ch5_004", "grammar_id": "grm_ch5_002", "chapter": 5, "mode": "mcq",
+      "id": "exg_ch5_004",
+      "grammar_id": "grm_ch5_002",
+      "chapter": 5,
+      "mode": "mcq",
       "label": "Grammaire · 으로/로 만들다 (être fait de)",
       "prompt_fr": "« On le fait avec du chou » (배추 finit par une voyelle) :",
-      "context_kr": "김치는 배추___ 만들어요.", "context_fr": "Le kimchi est fait avec du chou.",
-      "answer": "로", "distractors": ["으로", "를", "에"],
+      "context_kr": "김치는 배추___ 만들어요.",
+      "context_fr": "Le kimchi est fait avec du chou.",
+      "answer": "로",
+      "distractors": [
+        "으로",
+        "를",
+        "에"
+      ],
       "explanation": "matière + (으)로 만들다. Après une voyelle → 로.",
       "tts_answer": "배추로 만들어요"
     },
     {
-      "id": "exg_ch6_001", "grammar_id": "grm_ch6_002", "chapter": 6, "mode": "mcq",
+      "id": "exg_ch5_005",
+      "grammar_id": "grm_ch5_001",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · -고 싶다 (vouloir)",
+      "prompt_fr": "« J'ai envie de manger un burger » :",
+      "prompt_kr": "햄버거를 먹___ 싶어요.",
+      "context_kr": "햄버거를 먹___ 싶어요.",
+      "context_fr": "J'ai envie de manger un burger.",
+      "answer": "고",
+      "answer_alts": [],
+      "distractors": [
+        "어",
+        "아",
+        "지"
+      ],
+      "explanation": "On exprime l'envie avec radical + -고 싶다. Ici 먹 (manger) + 고 싶어요. La terminaison -고 ne change jamais selon le radical.",
+      "tts_answer": "햄버거를 먹고 싶어요"
+    },
+    {
+      "id": "exg_ch5_006",
+      "grammar_id": "grm_ch5_001",
+      "chapter": 5,
+      "mode": "free_input",
+      "label": "Grammaire · -고 싶다 (vouloir)",
+      "prompt_fr": "Écris « J'ai envie de boire » au présent poli, à partir de 마시다 (boire) :",
+      "prompt_kr": "마시다 → ?",
+      "context_kr": null,
+      "context_fr": "J'ai envie de boire. (poli)",
+      "answer": "마시고 싶어요",
+      "answer_alts": [
+        "masigo sipeoyo",
+        "마시고 싶어요."
+      ],
+      "distractors": [],
+      "explanation": "Radical 마시 + 고 싶어요. Avec -고 싶다, on garde toujours le radical tel quel : pas de contraction comme au présent simple (마셔요).",
+      "tts_answer": "마시고 싶어요"
+    },
+    {
+      "id": "exg_ch5_007",
+      "grammar_id": "grm_ch5_001",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · -고 싶다 (question)",
+      "prompt_fr": "« Qu'est-ce que tu veux manger ? » :",
+      "prompt_kr": "뭐 ___?",
+      "context_kr": "뭐 ___?",
+      "context_fr": "Qu'est-ce que tu veux manger ?",
+      "answer": "먹고 싶어요",
+      "answer_alts": [],
+      "distractors": [
+        "먹어요 싶어요",
+        "먹고 싶어요를",
+        "먹고 있어요"
+      ],
+      "explanation": "Question d'envie : 뭐 (quoi) + 먹고 싶어요 ? Attention à ne pas confondre 싶어요 (avoir envie) avec 있어요 (il y a / être en train de).",
+      "tts_answer": "뭐 먹고 싶어요"
+    },
+    {
+      "id": "exg_ch5_008",
+      "grammar_id": "grm_ch5_002",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · 으로/로 만들다 (être fait de)",
+      "prompt_fr": "« C'est fait de citron » (레몬 finit par une consonne) :",
+      "prompt_kr": "레몬___ 만들어요.",
+      "context_kr": "레몬___ 만들어요.",
+      "context_fr": "C'est fait de citron.",
+      "answer": "으로",
+      "answer_alts": [],
+      "distractors": [
+        "로",
+        "을",
+        "에서"
+      ],
+      "explanation": "Matière + (으)로 만들다. 레몬 finit par une consonne (ㄴ) → 으로. Après une voyelle, on utiliserait 로.",
+      "tts_answer": "레몬으로 만들어요"
+    },
+    {
+      "id": "exg_ch5_009",
+      "grammar_id": "grm_ch5_002",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · 으로/로 만들다 (consonne ㄹ)",
+      "prompt_fr": "« C'est fait de riz » (쌀 finit par la consonne ㄹ) :",
+      "prompt_kr": "쌀___ 만들어요.",
+      "context_kr": "쌀___ 만들어요.",
+      "context_fr": "C'est fait de riz.",
+      "answer": "로",
+      "answer_alts": [],
+      "distractors": [
+        "으로",
+        "를",
+        "하고"
+      ],
+      "explanation": "Cas particulier : après la consonne finale ㄹ, on utilise 로 (et non 으로), comme après une voyelle : 쌀 + 로 만들어요.",
+      "tts_answer": "쌀로 만들어요"
+    },
+    {
+      "id": "exg_ch5_010",
+      "grammar_id": "grm_ch5_002",
+      "chapter": 5,
+      "mode": "free_input",
+      "label": "Grammaire · 으로/로 만들다 (être fait de)",
+      "prompt_fr": "Complète « De quoi c'est fait ? ». Écris la particule + le verbe après 뭐 :",
+      "prompt_kr": "뭐 ___?",
+      "context_kr": "뭐 ___?",
+      "context_fr": "De quoi c'est fait ?",
+      "answer": "로 만들어요",
+      "answer_alts": [
+        "ro mandeureoyo",
+        "로 만들어요?"
+      ],
+      "distractors": [],
+      "explanation": "뭐 (quoi) finit par une voyelle → 로. Question type : 뭐로 만들어요 ? = De quoi est-ce fait ?",
+      "tts_answer": "뭐로 만들어요"
+    },
+    {
+      "id": "exg_ch5_011",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Classificateur (bols)",
+      "prompt_fr": "Classificateur pour compter des bols (de riz, de soupe) :",
+      "prompt_kr": "밥 두 ___",
+      "context_kr": "밥 두 ___",
+      "context_fr": "deux bols de riz",
+      "answer": "그릇",
+      "answer_alts": [],
+      "distractors": [
+        "개",
+        "병",
+        "마리"
+      ],
+      "explanation": "그릇 (bol) compte les portions servies dans un bol : 밥 두 그릇 = deux bols de riz. 개 sert aux objets, 마리 aux animaux.",
+      "tts_answer": "밥 두 그릇"
+    },
+    {
+      "id": "exg_ch5_012",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Classificateur (animaux)",
+      "prompt_fr": "Classificateur pour compter des animaux :",
+      "prompt_kr": "고양이 세 ___",
+      "context_kr": "고양이 세 ___",
+      "context_fr": "trois chats",
+      "answer": "마리",
+      "answer_alts": [],
+      "distractors": [
+        "명",
+        "개",
+        "그릇"
+      ],
+      "explanation": "마리 compte les animaux : 고양이 세 마리 = trois chats. On n'utilise jamais 명 (réservé aux personnes) pour les animaux.",
+      "tts_answer": "고양이 세 마리"
+    },
+    {
+      "id": "exg_ch5_013",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Classificateur (bouteilles)",
+      "prompt_fr": "Classificateur pour compter des bouteilles :",
+      "prompt_kr": "물 한 ___",
+      "context_kr": "물 한 ___",
+      "context_fr": "une bouteille d'eau",
+      "answer": "병",
+      "answer_alts": [],
+      "distractors": [
+        "그릇",
+        "개",
+        "마리"
+      ],
+      "explanation": "병 (bouteille) compte les boissons en bouteille : 물 한 병 = une bouteille d'eau. 그릇 sert aux bols, pas aux bouteilles.",
+      "tts_answer": "물 한 병"
+    },
+    {
+      "id": "exg_ch5_014",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Nombre natif contracté (1)",
+      "prompt_fr": "Quelle forme de « 1 » devant un classificateur ?",
+      "prompt_kr": "사과 ___ 개",
+      "context_kr": "사과 ___ 개",
+      "context_fr": "une pomme",
+      "answer": "한",
+      "answer_alts": [],
+      "distractors": [
+        "하나",
+        "일",
+        "한개"
+      ],
+      "explanation": "하나 (1) devient 한 devant un classificateur : 사과 한 개 = une pomme. 일 est le nombre sino-coréen, non utilisé ici.",
+      "tts_answer": "사과 한 개"
+    },
+    {
+      "id": "exg_ch5_015",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Nombre natif contracté (4)",
+      "prompt_fr": "Quelle forme de « 4 » devant un classificateur ?",
+      "prompt_kr": "강아지 ___ 마리",
+      "context_kr": "강아지 ___ 마리",
+      "context_fr": "quatre chiots",
+      "answer": "네",
+      "answer_alts": [],
+      "distractors": [
+        "넷",
+        "사",
+        "네개"
+      ],
+      "explanation": "넷 (4) devient 네 devant un classificateur : 강아지 네 마리 = quatre chiots. Les nombres 1 à 4 se contractent (하나→한, 둘→두, 셋→세, 넷→네).",
+      "tts_answer": "강아지 네 마리"
+    },
+    {
+      "id": "exg_ch5_016",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "free_input",
+      "label": "Grammaire · Nombre + classificateur",
+      "prompt_fr": "Écris « deux personnes » en coréen (nombre natif contracté + classificateur) :",
+      "prompt_kr": "사람 ? (×2)",
+      "context_kr": null,
+      "context_fr": "deux personnes",
+      "answer": "두 명",
+      "answer_alts": [
+        "du myeong",
+        "두명"
+      ],
+      "distractors": [],
+      "explanation": "둘 (2) devient 두 devant un classificateur, et 명 compte les personnes : 두 명 = deux personnes.",
+      "tts_answer": "두 명"
+    },
+    {
+      "id": "exg_ch5_017",
+      "grammar_id": "grm_ch5_003",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Ordre NOM + nombre + classificateur",
+      "prompt_fr": "Quel est le bon ordre pour « trois œufs » ?",
+      "prompt_kr": "?",
+      "context_kr": null,
+      "context_fr": "trois œufs",
+      "answer": "계란 세 개",
+      "answer_alts": [],
+      "distractors": [
+        "세 계란 개",
+        "개 세 계란",
+        "계란 개 세"
+      ],
+      "explanation": "L'ordre est toujours NOM + nombre coréen + classificateur : 계란 (œuf) + 세 (3) + 개 = 계란 세 개. On ne colle jamais le nombre directement au nom.",
+      "tts_answer": "계란 세 개"
+    },
+    {
+      "id": "exg_ch5_018",
+      "grammar_id": "adj_ch5_002",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Adjectif de saveur 맵다 (épicé)",
+      "prompt_fr": "Forme polie de 맵다 (être épicé) ? (irrégulier ㅂ)",
+      "prompt_kr": "이 김치는 ___.",
+      "context_kr": "이 김치는 ___.",
+      "context_fr": "Ce kimchi est épicé.",
+      "answer": "매워요",
+      "answer_alts": [],
+      "distractors": [
+        "맵어요",
+        "매요",
+        "맵아요"
+      ],
+      "explanation": "맵다 est un irrégulier en ㅂ : le ㅂ se transforme en 우, ce qui donne 매워요. La forme régulière 맵어요 est fausse.",
+      "tts_answer": "이 김치는 매워요"
+    },
+    {
+      "id": "exg_ch5_019",
+      "grammar_id": "adj_ch5_001",
+      "chapter": 5,
+      "mode": "mcq",
+      "label": "Grammaire · Adjectif de saveur 달다 (sucré)",
+      "prompt_fr": "Quel adjectif signifie « être sucré » ?",
+      "prompt_kr": "이 케이크는 ___.",
+      "context_kr": "이 케이크는 ___.",
+      "context_fr": "Ce gâteau est sucré.",
+      "answer": "달아요",
+      "answer_alts": [],
+      "distractors": [
+        "짜요",
+        "매워요",
+        "셔요"
+      ],
+      "explanation": "달다 = être sucré → 달아요 (le radical 달 garde sa consonne finale ㄹ devant 아요). À distinguer de 짜다 (salé → 짜요), 맵다 (épicé → 매워요) et 시다 (acide → 셔요).",
+      "tts_answer": "이 케이크는 달아요"
+    },
+    {
+      "id": "exg_ch5_020",
+      "grammar_id": "adj_ch5_003",
+      "chapter": 5,
+      "mode": "free_input",
+      "label": "Grammaire · Adjectif de saveur 짜다 (salé)",
+      "prompt_fr": "Écris la forme polie de 짜다 (être salé) :",
+      "prompt_kr": "짜다 → ?",
+      "context_kr": null,
+      "context_fr": "C'est salé. (poli)",
+      "answer": "짜요",
+      "answer_alts": [
+        "jjayo",
+        "짜요."
+      ],
+      "distractors": [],
+      "explanation": "짜다 est régulier : radical 짜 (voyelle ㅏ) + 아요 se contracte en 짜요 = c'est salé.",
+      "tts_answer": "짜요"
+    },
+    {
+      "id": "exg_ch6_001",
+      "grammar_id": "grm_ch6_002",
+      "chapter": 6,
+      "mode": "mcq",
       "label": "Grammaire · Passé 았/었어요",
       "prompt_fr": "« Hier, je suis allé(e) à l'école » :",
-      "context_kr": "어제 학교에 ___.", "context_fr": "Hier, je suis allé(e) à l'école.",
-      "answer": "갔어요", "distractors": ["가요", "갈 거예요", "가았어요"],
+      "context_kr": "어제 학교에 ___.",
+      "context_fr": "Hier, je suis allé(e) à l'école.",
+      "answer": "갔어요",
+      "distractors": [
+        "가요",
+        "갈 거예요",
+        "가았어요"
+      ],
       "explanation": "Passé : 가 + 았어요 → 갔어요 (contraction).",
       "tts_answer": "갔어요"
     },
     {
-      "id": "exg_ch6_002", "grammar_id": "grm_ch6_002", "chapter": 6, "mode": "free_input",
+      "id": "exg_ch6_002",
+      "grammar_id": "grm_ch6_002",
+      "chapter": 6,
+      "mode": "free_input",
       "label": "Grammaire · Passé 하다",
       "prompt_fr": "Écris le passé poli de 공부하다 (étudier) :",
       "prompt_kr": "공부하다",
-      "answer": "공부했어요", "answer_alts": [],
+      "answer": "공부했어요",
+      "answer_alts": [],
       "explanation": "하다 → 했어요 au passé : 공부 + 했어요.",
       "tts_answer": "공부했어요"
     },
     {
-      "id": "exg_ch6_003", "grammar_id": "grm_ch6_004", "chapter": 6, "mode": "mcq",
+      "id": "exg_ch6_003",
+      "grammar_id": "grm_ch6_004",
+      "chapter": 6,
+      "mode": "mcq",
       "label": "Grammaire · La date (exception)",
       "prompt_fr": "Comment dit-on « juin » (6월) ?",
       "prompt_kr": "6월",
-      "answer": "유월", "distractors": ["육월", "유얼", "여월"],
+      "answer": "유월",
+      "distractors": [
+        "육월",
+        "유얼",
+        "여월"
+      ],
       "explanation": "Exceptions de prononciation : 6월 = 유월, 10월 = 시월.",
       "tts_answer": "유월"
     },
     {
-      "id": "exg_ch6_004", "grammar_id": "grm_ch6_005", "chapter": 6, "mode": "mcq",
+      "id": "exg_ch6_004",
+      "grammar_id": "grm_ch6_005",
+      "chapter": 6,
+      "mode": "mcq",
       "label": "Grammaire · L'heure (nombres natifs)",
       "prompt_fr": "« 7 heures » : 7 시 = ___ 시",
       "prompt_kr": "7시",
-      "answer": "일곱", "distractors": ["칠", "여섯", "일급"],
+      "answer": "일곱",
+      "distractors": [
+        "칠",
+        "여섯",
+        "일급"
+      ],
       "explanation": "Les HEURES utilisent les nombres natifs : 7 = 일곱. (Les minutes utilisent les sino-coréens.)",
       "tts_answer": "일곱 시"
     },
     {
-      "id": "exg_ch6_005", "grammar_id": "grm_ch6_006", "chapter": 6, "mode": "mcq",
+      "id": "exg_ch6_005",
+      "grammar_id": "grm_ch6_006",
+      "chapter": 6,
+      "mode": "mcq",
       "label": "Grammaire · De… à… (temps) 부터",
       "prompt_fr": "« À partir de 9h » (point de départ dans le temps) :",
-      "context_kr": "9시___ 시작해요.", "context_fr": "Ça commence à partir de 9h.",
-      "answer": "부터", "distractors": ["까지", "에서", "도"],
+      "context_kr": "9시___ 시작해요.",
+      "context_fr": "Ça commence à partir de 9h.",
+      "answer": "부터",
+      "distractors": [
+        "까지",
+        "에서",
+        "도"
+      ],
       "explanation": "Pour le TEMPS : 부터 (à partir de) … 까지 (jusqu'à).",
       "tts_answer": "9시부터 시작해요"
+    },
+    {
+      "id": "exg_ch6_006",
+      "grammar_id": "past_tense",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · Passé 았/었어요",
+      "prompt_fr": "Conjuguez 가다 (aller) au passé poli.",
+      "prompt_kr": "가다 →",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "갔어요",
+      "answer_alts": [],
+      "distractors": [
+        "가았어요",
+        "갔었어요",
+        "가었어요"
+      ],
+      "explanation": "Le radical 가- a la voyelle 아, donc on ajoute -았어요. La fusion 가 + 았 donne 갔어요 (jamais 가았어요).",
+      "tts_answer": "갔어요"
+    },
+    {
+      "id": "exg_ch6_007",
+      "grammar_id": "past_tense",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · Passé 았/었어요",
+      "prompt_fr": "Conjuguez 먹다 (manger) au passé poli.",
+      "prompt_kr": "먹다 →",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "먹었어요",
+      "answer_alts": [],
+      "distractors": [
+        "먹았어요",
+        "먹였어요",
+        "먹어요"
+      ],
+      "explanation": "Le radical 먹- a la voyelle 어 (ni 아 ni 오), donc on prend -었어요 : 먹었어요. La forme 먹았어요 serait une erreur d'harmonie vocalique.",
+      "tts_answer": "먹었어요"
+    },
+    {
+      "id": "exg_ch6_008",
+      "grammar_id": "past_tense",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · Passé de 하다",
+      "prompt_fr": "Conjuguez 하다 (faire) au passé poli.",
+      "prompt_kr": "하다 →",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "했어요",
+      "answer_alts": [],
+      "distractors": [
+        "하았어요",
+        "하었어요",
+        "하였어요"
+      ],
+      "explanation": "하다 est irrégulier : 하 + 였 se contracte en 했, d'où 했어요. C'est la forme à retenir par cœur.",
+      "tts_answer": "했어요"
+    },
+    {
+      "id": "exg_ch6_009",
+      "grammar_id": "past_tense",
+      "chapter": 6,
+      "mode": "free_input",
+      "label": "Grammaire · Passé 았/었어요",
+      "prompt_fr": "Mettez 마시다 (boire) au passé poli (forme à produire).",
+      "prompt_kr": "마시다 →",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "마셨어요",
+      "answer_alts": [
+        "masyeosseoyo"
+      ],
+      "distractors": [],
+      "explanation": "Le radical 마시- finit par 이 ; 시 + 었 se contracte en 셨, ce qui donne 마셨어요.",
+      "tts_answer": "마셨어요"
+    },
+    {
+      "id": "exg_ch6_010",
+      "grammar_id": "past_tense",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · Passé 았/었어요",
+      "prompt_fr": "Complétez : « J'ai vu un film. » 영화를 ___",
+      "prompt_kr": "영화를 ___",
+      "context_kr": "영화를 ___",
+      "context_fr": null,
+      "answer": "봤어요",
+      "answer_alts": [],
+      "distractors": [
+        "보았어요",
+        "봐요",
+        "봤었어요"
+      ],
+      "explanation": "보다 + 았어요 : 보 + 았 se contracte en 봤, donc 봤어요. La forme non contractée 보았어요 existe mais reste rare, et 봐요 est du présent.",
+      "tts_answer": "영화를 봤어요"
+    },
+    {
+      "id": "exg_ch6_011",
+      "grammar_id": "past_copula",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · Passé de 이다",
+      "prompt_fr": "Complétez : « J'étais étudiant. » 저는 학생___",
+      "prompt_kr": "저는 학생___",
+      "context_kr": "저는 학생___",
+      "context_fr": null,
+      "answer": "이었어요",
+      "answer_alts": [],
+      "distractors": [
+        "였어요",
+        "이었었어요",
+        "이여어요"
+      ],
+      "explanation": "이다 au passé : après un mot terminé par une consonne (학생), on emploie 이었어요. Après une voyelle on aurait 였어요.",
+      "tts_answer": "저는 학생이었어요"
+    },
+    {
+      "id": "exg_ch6_012",
+      "grammar_id": "past_copula",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · Passé de 이다",
+      "prompt_fr": "Complétez : « Il/Elle était médecin. » 의사___",
+      "prompt_kr": "의사___",
+      "context_kr": "의사___",
+      "context_fr": null,
+      "answer": "였어요",
+      "answer_alts": [],
+      "distractors": [
+        "이었어요",
+        "이였어요",
+        "이어요"
+      ],
+      "explanation": "의사 finit par une voyelle (ㅏ), donc 이다 au passé se contracte en 였어요. On réserve 이었어요 aux mots finissant par une consonne.",
+      "tts_answer": "의사였어요"
+    },
+    {
+      "id": "exg_ch6_013",
+      "grammar_id": "past_copula",
+      "chapter": 6,
+      "mode": "free_input",
+      "label": "Grammaire · Passé de 이다",
+      "prompt_fr": "« C'était mon ami. » Complétez le trou avec la forme passée de 이다 : 제 친구___",
+      "prompt_kr": "제 친구___",
+      "context_kr": "제 친구___",
+      "context_fr": null,
+      "answer": "였어요",
+      "answer_alts": [
+        "yeosseoyo"
+      ],
+      "distractors": [],
+      "explanation": "친구 se termine par la voyelle ㅜ, donc 이다 au passé donne 였어요 : 친구였어요.",
+      "tts_answer": "친구였어요"
+    },
+    {
+      "id": "exg_ch6_014",
+      "grammar_id": "date_month",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Date · Mois (sino + 월)",
+      "prompt_fr": "Comment dit-on « mars » (3월) en coréen ?",
+      "prompt_kr": "3월 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "삼월",
+      "answer_alts": [],
+      "distractors": [
+        "세월",
+        "삼개월",
+        "셋월"
+      ],
+      "explanation": "Les mois utilisent les nombres sino-coréens + 월. 3 = 삼, donc 3월 se lit 삼월. (세 est un nombre natif, à ne pas employer ici.)",
+      "tts_answer": "삼월"
+    },
+    {
+      "id": "exg_ch6_015",
+      "grammar_id": "date_month",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Date · Exception 유월",
+      "prompt_fr": "Comment se lit « juin » (6월) ?",
+      "prompt_kr": "6월 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "유월",
+      "answer_alts": [],
+      "distractors": [
+        "육월",
+        "유개월",
+        "여섯월"
+      ],
+      "explanation": "6 = 육, mais devant 월 le ㄱ tombe : 6월 se lit 유월 (et non 육월). C'est une des deux exceptions à mémoriser.",
+      "tts_answer": "유월"
+    },
+    {
+      "id": "exg_ch6_016",
+      "grammar_id": "date_month",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Date · Exception 시월",
+      "prompt_fr": "Comment se lit « octobre » (10월) ?",
+      "prompt_kr": "10월 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "시월",
+      "answer_alts": [],
+      "distractors": [
+        "십월",
+        "열월",
+        "시십월"
+      ],
+      "explanation": "10 = 십, mais devant 월 le ㅂ tombe : 10월 se lit 시월 (et non 십월). C'est la deuxième exception, avec 유월.",
+      "tts_answer": "시월"
+    },
+    {
+      "id": "exg_ch6_017",
+      "grammar_id": "date_day",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Date · Jour (sino + 일)",
+      "prompt_fr": "Comment dit-on « le 15 » (15일) ?",
+      "prompt_kr": "15일 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "십오일",
+      "answer_alts": [],
+      "distractors": [
+        "열다섯일",
+        "십오날",
+        "십오시"
+      ],
+      "explanation": "Le quantième du mois utilise les nombres sino-coréens + 일. 15 = 십오, donc 15일 = 십오일. (열다섯 est natif ; 시 sert pour l'heure.)",
+      "tts_answer": "십오일"
+    },
+    {
+      "id": "exg_ch6_018",
+      "grammar_id": "date_full",
+      "chapter": 6,
+      "mode": "free_input",
+      "label": "Date · Mois + jour",
+      "prompt_fr": "Écrivez en hangeul la date « 6월 15일 » (lecture complète).",
+      "prompt_kr": "6월 15일 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "유월 십오일",
+      "answer_alts": [
+        "yuwol sibo-il",
+        "yuwol siboil"
+      ],
+      "distractors": [],
+      "explanation": "On combine le mois et le jour : 6월 = 유월 (exception) et 15일 = 십오일. La date complète se lit donc 유월 십오일.",
+      "tts_answer": "유월 십오일"
+    },
+    {
+      "id": "exg_ch6_019",
+      "grammar_id": "date_full",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Date · Chuseok",
+      "prompt_fr": "« Chuseok est le 15 août lunaire. » Choisissez la bonne lecture de 8월 15일.",
+      "prompt_kr": "8월 15일 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "팔월 십오일",
+      "answer_alts": [],
+      "distractors": [
+        "여덟월 십오일",
+        "팔월 열다섯일",
+        "팔월 십오날"
+      ],
+      "explanation": "8월 = 팔월 (régulier, pas d'exception) et 15일 = 십오일. Mois et jour utilisent les nombres sino-coréens.",
+      "tts_answer": "팔월 십오일"
+    },
+    {
+      "id": "exg_ch6_020",
+      "grammar_id": "time_hour",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Heure · Heure native + 시",
+      "prompt_fr": "Comment dit-on « 3 heures » (3시) ?",
+      "prompt_kr": "3시 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "세 시",
+      "answer_alts": [],
+      "distractors": [
+        "삼 시",
+        "셋 시",
+        "세 분"
+      ],
+      "explanation": "L'heure utilise les nombres natifs + 시. 3 = 세 devant 시 (et non 셋 ni le sino 삼). Donc 3시 = 세 시.",
+      "tts_answer": "세 시"
+    },
+    {
+      "id": "exg_ch6_021",
+      "grammar_id": "time_hour",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Heure · Heure native + 시",
+      "prompt_fr": "Comment dit-on « 1 heure » (1시) ?",
+      "prompt_kr": "1시 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "한 시",
+      "answer_alts": [],
+      "distractors": [
+        "일 시",
+        "하나 시",
+        "한 분"
+      ],
+      "explanation": "Pour l'heure on utilise le nombre natif : 1 = 한 devant 시 (et non 하나 ni le sino 일). Donc 1시 = 한 시.",
+      "tts_answer": "한 시"
+    },
+    {
+      "id": "exg_ch6_022",
+      "grammar_id": "time_minute",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Heure · Minute sino + 분",
+      "prompt_fr": "Comment dit-on « 30 minutes » (30분) ?",
+      "prompt_kr": "30분 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "삼십 분",
+      "answer_alts": [],
+      "distractors": [
+        "서른 분",
+        "삼십 시",
+        "삼 분"
+      ],
+      "explanation": "Les minutes utilisent les nombres sino-coréens + 분. 30 = 삼십, donc 30분 = 삼십 분. (서른 est natif, à éviter ici.)",
+      "tts_answer": "삼십 분"
+    },
+    {
+      "id": "exg_ch6_023",
+      "grammar_id": "time_minute",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Heure · 반 (et demie)",
+      "prompt_fr": "« Il est 2h30. » Complétez : 두 시 ___",
+      "prompt_kr": "두 시 ___",
+      "context_kr": "두 시 ___",
+      "context_fr": null,
+      "answer": "반이에요",
+      "answer_alts": [],
+      "distractors": [
+        "삼십이에요",
+        "반분이에요",
+        "절반이에요"
+      ],
+      "explanation": "30 minutes pile se dit 반 (la demie). On peut dire 삼십 분 ou, plus naturellement, 반. Avec la copule : 두 시 반이에요.",
+      "tts_answer": "두 시 반이에요"
+    },
+    {
+      "id": "exg_ch6_024",
+      "grammar_id": "time_full",
+      "chapter": 6,
+      "mode": "free_input",
+      "label": "Heure · Heure + minute",
+      "prompt_fr": "Écrivez en hangeul « 7h15 » (lecture complète, heure + minutes).",
+      "prompt_kr": "7:15 =",
+      "context_kr": null,
+      "context_fr": null,
+      "answer": "일곱 시 십오 분",
+      "answer_alts": [
+        "ilgop si sibo bun",
+        "일곱시 십오분"
+      ],
+      "distractors": [],
+      "explanation": "L'heure est native (7 = 일곱 + 시) et les minutes sont sino (15 = 십오 + 분). Donc 7h15 = 일곱 시 십오 분.",
+      "tts_answer": "일곱 시 십오 분"
+    },
+    {
+      "id": "exg_ch6_025",
+      "grammar_id": "buteo_kkaji",
+      "chapter": 6,
+      "mode": "mcq",
+      "label": "Grammaire · 부터…까지 (de…à…)",
+      "prompt_fr": "« De 9h à 6h, je travaille. » Complétez : 아홉 시___ 여섯 시___ 일해요.",
+      "prompt_kr": "아홉 시___ 여섯 시___ 일해요.",
+      "context_kr": "아홉 시___ 여섯 시___ 일해요.",
+      "context_fr": null,
+      "answer": "부터 / 까지",
+      "answer_alts": [],
+      "distractors": [
+        "까지 / 부터",
+        "에서 / 까지",
+        "부터 / 에서"
+      ],
+      "explanation": "Pour un intervalle de temps : 부터 marque le point de départ (« à partir de ») et 까지 le point d'arrivée (« jusqu'à »). Ordre : 9시부터 6시까지.",
+      "tts_answer": "아홉 시부터 여섯 시까지 일해요."
     }
   ]
 }
