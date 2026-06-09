@@ -168,35 +168,38 @@ def check_rendering(D, errors):
 #   'OR(a,b,...)' = at least one of these fields/paths must be truthy.
 #   'PATH(a.b)'   = nested path (dot-separated) — also valid inside OR(...).
 FLASHABLE_SCHEMA = {
-    'vocabulary': ['korean', 'french', 'romanization', 'page', 'chapter', 'id'],
-    'verbs': ['infinitive', 'french', 'romanization',
-              'OR(conjugations.polite_present,'
-              'conjugations.informal_present,'
-              'conjugations.polite_present_after_vowel,'
-              'conjugations.polite_present_after_consonant)',
-              'page', 'chapter', 'id'],
-    'hangeul': ['letter', 'romanization', 'type', 'page', 'chapter', 'id'],
+    'vocabulary': ['korean', 'french', 'romanization', 'source', 'page', 'chapter', 'id'],
+    # Les conjugaisons sont generees au runtime par conjugator.js a partir de
+    # pos + irregular ; on exige donc `pos` plutot que des formes stockees.
+    'verbs': ['infinitive', 'french', 'romanization', 'pos',
+              'source', 'page', 'chapter', 'id'],
+    'hangeul': ['letter', 'romanization', 'type', 'source', 'page', 'chapter', 'id'],
     'numbers': ['numeral', 'korean', 'system', 'romanization',
-                'page', 'chapter', 'id'],
+                'source', 'page', 'chapter', 'id'],
     'expressions': ['OR(korean_formal,korean_informal,'
                     'polite.korean,informal.korean)',
                     'french',
                     'OR(romanization_formal,romanization_informal,'
                     'polite.romanization,informal.romanization)',
-                    'page', 'chapter', 'id'],
+                    'source', 'page', 'chapter', 'id'],
     'particles': ['particle', 'OR(function_fr,name_fr)',
-                  'page', 'chapter', 'id'],
-    'time_expressions': ['korean', 'french', 'romanization',
-                         'page', 'chapter', 'id'],
-    'classifiers': ['korean', 'french', 'romanization',
-                    'page', 'chapter', 'id'],
+                  'source', 'page', 'chapter', 'id'],
+    'time_expressions': ['korean', 'french', 'romanization', 'category',
+                         'source', 'page', 'chapter', 'id'],
+    'classifiers': ['korean', 'french', 'romanization', 'number_system',
+                    'used_with_fr', 'source', 'page', 'chapter', 'id'],
     'connectors': ['korean', 'french', 'romanization',
-                   'page', 'chapter', 'id'],
+                   'source', 'page', 'chapter', 'id'],
     'adjectives': ['OR(korean,infinitive)', 'french', 'romanization',
-                   'korean_polite', 'page', 'chapter', 'id'],
+                   'korean_polite', 'pos', 'source', 'page', 'chapter', 'id'],
     'adverbs': ['korean', 'french', 'romanization',
-                'page', 'chapter', 'id'],
+                'source', 'page', 'chapter', 'id'],
 }
+
+# Ensembles valides pour les nouveaux champs (E009-E011).
+VALID_POS = {'verb', 'adj', 'copula', 'verb_exist'}
+VALID_IRREGULAR = {None, 'ㅂ', 'ㄷ', 'ㄹ', 'ㅡ', '르', 'ㅅ', 'ㅎ', '이다', '하다'}
+VALID_SOURCE = {'book', 'added', 'topik'}
 
 
 def _path_get(d, path):
@@ -227,9 +230,30 @@ def check_schema(D, errors):
         for raw in D.get(cat, []):
             it = normalize_expression(raw) if cat == 'expressions' else raw
             iid = it.get('id') or '?'
+            added = it.get('source') == 'added'
             for f in fields:
+                if f == 'page' and added:
+                    continue  # items hors-livre (source=added) : page non requise
                 if not _has_field(it, f):
                     _err(errors, 'E006', cat, iid, f'champ requis : {f}')
+
+
+def check_meta_fields(D, errors):
+    """E009 pos invalide, E010 irregular invalide, E011 source invalide."""
+    for cat in ('verbs', 'adjectives'):
+        for it in D.get(cat, []):
+            iid = it.get('id') or '?'
+            pos = it.get('pos')
+            if pos is not None and pos not in VALID_POS:
+                _err(errors, 'E009', cat, iid, f'pos invalide : {pos!r}')
+            if 'irregular' in it and it['irregular'] not in VALID_IRREGULAR:
+                _err(errors, 'E010', cat, iid, f'irregular invalide : {it["irregular"]!r}')
+    for cat in FLASHABLE:
+        for it in D.get(cat, []):
+            iid = it.get('id') or '?'
+            src = it.get('source')
+            if src is not None and src not in VALID_SOURCE:
+                _err(errors, 'E011', cat, iid, f'source invalide : {src!r}')
 
 
 def check_duplicates(D, errors):
@@ -490,9 +514,11 @@ def check_warnings(D, warnings):
                 if not get_rom(it, cat):
                     _warn(warnings, 'W001', cat, iid, 'romanisation absente')
 
-            # W002 page missing/invalid
+            # W002 page missing/invalid (sauf items hors-livre source=added)
             page = it.get('page')
-            if page is None or (isinstance(page, (int, float)) and page <= 0):
+            if it.get('source') == 'added':
+                pass  # page volontairement absente sur les ajouts hors-livre
+            elif page is None or (isinstance(page, (int, float)) and page <= 0):
                 _warn(warnings, 'W002', cat, iid, f'page invalide : {page!r}')
 
             # W003 suspicious romanization (above Latin-1 supplement)
@@ -546,6 +572,39 @@ def check_warnings(D, warnings):
 
     # W010 validité du hangul dans les champs coréens
     _check_w010(D, warnings)
+
+    # W011-W015 : champs de schéma étendu (pos/irregular/source/thèmes)
+    _check_meta_warnings(D, warnings)
+
+
+def _check_meta_warnings(D, warnings):
+    # W011 thème vocabulary avec majuscule résiduelle (garde-fou M2)
+    for it in D.get('vocabulary', []):
+        iid = it.get('id') or '?'
+        t = it.get('theme') or ''
+        if t and t[0].isupper():
+            _warn(warnings, 'W011', 'vocabulary', iid, f'thème avec majuscule : {t!r}')
+    # W012 pos absent / W013 irregular absent / W014 aucune conjugaison disponible
+    for cat in ('verbs', 'adjectives'):
+        for it in D.get(cat, []):
+            iid = it.get('id') or '?'
+            if not it.get('pos'):
+                _warn(warnings, 'W012', cat, iid, 'champ pos absent (moteur de conjugaison inactif)')
+            if 'irregular' not in it:
+                _warn(warnings, 'W013', cat, iid, 'champ irregular absent')
+            cj = it.get('conjugations') or {}
+            has_engine = bool(it.get('pos')) and ('irregular' in it)
+            has_stored = bool(cj.get('polite_present') or cj.get('informal_present')
+                              or cj.get('polite_present_after_vowel'))
+            has_override = bool(it.get('conjugations_override'))
+            if not (has_engine or has_stored or has_override):
+                _warn(warnings, 'W014', cat, iid, 'aucune conjugaison disponible')
+    # W015 source=added mais page renseignée (incohérent : devrait être source=book)
+    for cat in FLASHABLE:
+        for it in D.get(cat, []):
+            iid = it.get('id') or '?'
+            if it.get('source') == 'added' and it.get('page'):
+                _warn(warnings, 'W015', cat, iid, f'source=added mais page={it.get("page")!r}')
 
 
 # ---------------------------------------------------------------------------
@@ -708,6 +767,7 @@ def main():
     check_structural(D, errors)
     check_rendering(D, errors)
     check_schema(D, errors)
+    check_meta_fields(D, errors)
     check_duplicates(D, errors)
     check_readable(D, errors)
     check_warnings(D, warnings)

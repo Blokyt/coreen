@@ -16,6 +16,9 @@ extraction_data/
 # Tools d'extraction (plus besoin, data finale dans data/) — but track maintenance scripts
 tools/*
 !tools/fix_accents.py
+!tools/migrate_schema.py
+!tools/conj_meta.js
+!tools/reconcile_extraction.py
 
 # Temp files
 tmp_*
