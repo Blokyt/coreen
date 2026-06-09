@@ -399,6 +399,7 @@ async function init() {
   P = JSON.parse(localStorage.getItem('blokaja4') || '{}');
   renderHome();
   setupEvents();
+  if (typeof setupPracticeEvents === 'function') setupPracticeEvents();
 }
 
 function saveP() { localStorage.setItem('blokaja4', JSON.stringify(P)); }
@@ -1206,6 +1207,8 @@ function setupEvents() {
   // Back
   $('#btn-back').onclick = () => {
     if (screen === 'fc') { openList(curTitle, curItems); return; }
+    if (screen === 'exercise') { if (typeof openPracticeHub === 'function') openPracticeHub(); return; }
+    if (screen === 'practice') { renderHome(); return; }
     renderHome();
   };
 

@@ -484,3 +484,73 @@ body {
   opacity: 1; transition: opacity 200ms ease;
 }
 .toast.hidden { opacity: 0; }
+
+/* ===== Practice (entrainement) ===== */
+.btn-practice-home {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 14px 16px; margin-bottom: 18px; border-radius: var(--radius);
+  background: var(--accent); color: var(--bg); border: none; cursor: pointer;
+  text-align: left; font-family: var(--ui);
+}
+.btn-practice-home:active { transform: scale(0.99); }
+.bph-kr { font-family: var(--kr); font-weight: 700; font-size: 1.05rem; opacity: 0.85; }
+.bph-text { display: flex; flex-direction: column; flex: 1; line-height: 1.3; }
+.bph-text strong { font-size: 0.95rem; }
+.bph-text span { font-size: 0.72rem; opacity: 0.7; }
+.bph-arrow { font-size: 1.4rem; opacity: 0.6; }
+
+.list-head-btns { display: flex; gap: 8px; }
+.btn-go--outline { background: transparent; color: var(--fg); border: 1.5px solid var(--border); }
+.btn-go--outline:active { background: var(--accent-soft); }
+
+.prc-select {
+  width: 100%; padding: 11px 12px; border-radius: var(--radius); margin-bottom: 8px;
+  background: var(--surface); border: 1px solid var(--border); color: var(--fg);
+  font-family: var(--ui); font-size: 0.9rem;
+}
+.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card-mode {
+  display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center;
+  padding: 22px 12px; border-radius: var(--radius); cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.card-mode:active { transform: scale(0.98); border-color: var(--accent); background: var(--accent-soft); }
+.card-mode-icon { font-family: var(--kr); font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+.card-mode-label { font-size: 0.9rem; font-weight: 600; }
+.card-mode-count { font-size: 0.68rem; color: var(--fg3); }
+
+/* Exercise screen */
+.ex-progress-bar { height: 4px; border-radius: 2px; background: var(--accent-soft); overflow: hidden; margin-bottom: 6px; }
+.ex-progress-fill { height: 100%; background: var(--accent); transition: width 0.3s ease; }
+.ex-count { font-size: 0.72rem; color: var(--fg3); text-align: right; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.ex-label { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg3); margin-bottom: 8px; }
+.ex-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px 18px; margin-bottom: 16px; text-align: center;
+}
+.ex-prompt-fr { font-size: 0.92rem; color: var(--fg2); }
+.ex-prompt-kr { font-family: var(--kr); font-size: 1.8rem; font-weight: 500; margin-top: 10px; }
+.ex-context { font-family: var(--kr); font-size: 1.3rem; margin-top: 12px; letter-spacing: 0.02em; }
+.ex-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ex-choice {
+  padding: 16px 10px; border-radius: var(--radius); cursor: pointer;
+  background: var(--surface); border: 1.5px solid var(--border); color: var(--fg);
+  font-family: var(--kr); font-size: 1.05rem;
+}
+.ex-choice:active { transform: scale(0.97); }
+.ex-choice.correct { border-color: var(--green); background: var(--green-bg); color: var(--green); }
+.ex-choice.wrong { border-color: var(--red); background: var(--red-bg); color: var(--red); }
+.ex-choice.disabled { pointer-events: none; }
+#ex-input { margin-bottom: 10px; }
+#ex-feedback { margin-top: 14px; }
+.ex-fb { padding: 14px; border-radius: var(--radius); margin-bottom: 12px; }
+.ex-fb.ok { background: var(--green-bg); border: 1px solid var(--green); }
+.ex-fb.no { background: var(--red-bg); border: 1px solid var(--red); }
+.ex-fb-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+.ex-fb.ok .ex-fb-title { color: var(--green); }
+.ex-fb.no .ex-fb-title { color: var(--red); }
+.ex-fb-exp { font-size: 0.82rem; color: var(--fg2); line-height: 1.6; font-family: var(--kr); }
+.ex-summary { text-align: center; padding: 50px 20px; }
+.ex-summary-emoji { font-size: 3rem; }
+.ex-summary-title { font-size: 1.15rem; font-weight: 600; margin: 12px 0 24px; }
+.ex-summary-actions { display: flex; flex-direction: column; gap: 10px; }

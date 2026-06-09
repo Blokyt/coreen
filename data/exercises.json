@@ -1,0 +1,230 @@
+{
+  "meta": { "version": "1.0", "note": "Exercices de grammaire autorédigés. Accents français et hangeul obligatoires." },
+  "grammar_exercises": [
+    {
+      "id": "exg_ch1_001", "grammar_id": "grm_ch1_001", "chapter": 1, "mode": "mcq",
+      "label": "Grammaire · Particule de thème 은/는",
+      "prompt_fr": "Quelle particule de thème ? (저 finit par une voyelle)",
+      "context_kr": "저___ 학생이에요.", "context_fr": "Je suis étudiant(e).",
+      "answer": "는", "distractors": ["은", "이", "가"],
+      "explanation": "저 finit par une voyelle → 는 (thème). Après une consonne, on utilise 은.",
+      "tts_answer": "저는 학생이에요"
+    },
+    {
+      "id": "exg_ch1_002", "grammar_id": "grm_ch1_004", "chapter": 1, "mode": "mcq",
+      "label": "Grammaire · Copule 이다",
+      "prompt_fr": "Complète (registre poli, après une consonne) :",
+      "context_kr": "한국 사람___?", "context_fr": "Tu es coréen(ne) ?",
+      "answer": "이에요", "distractors": ["예요", "이야", "에요"],
+      "explanation": "사람 finit par une consonne → 이에요 (poli). Après une voyelle : 예요.",
+      "tts_answer": "한국 사람이에요"
+    },
+    {
+      "id": "exg_ch1_003", "grammar_id": "grm_ch1_006", "chapter": 1, "mode": "mcq",
+      "label": "Grammaire · Copule négative 아니다",
+      "prompt_fr": "« Je ne suis pas japonais(e) » :",
+      "context_kr": "저는 일본 사람이 ___.", "context_fr": "Je ne suis pas japonais(e).",
+      "answer": "아니에요", "distractors": ["아니예요", "아니야", "없어요"],
+      "explanation": "Copule négative : NOM + 이/가 + 아니에요 (poli) / 아니야 (familier).",
+      "tts_answer": "일본 사람이 아니에요"
+    },
+    {
+      "id": "exg_ch1_004", "grammar_id": "grm_ch1_001", "chapter": 1, "mode": "mcq",
+      "label": "Grammaire · Particule de sujet 이/가",
+      "prompt_fr": "Quelle particule de sujet ? (이름 finit par une consonne)",
+      "context_kr": "이름___ 뭐예요?", "context_fr": "Quel est ton nom ?",
+      "answer": "이", "distractors": ["가", "은", "를"],
+      "explanation": "이름 finit par une consonne (ㅁ) → 이. Après une voyelle : 가.",
+      "tts_answer": "이름이 뭐예요"
+    },
+    {
+      "id": "exg_ch2_001", "grammar_id": "grm_ch2_001", "chapter": 2, "mode": "mcq",
+      "label": "Grammaire · 있다 (il y a)",
+      "prompt_fr": "« Il y a un livre dans le sac » :",
+      "context_kr": "가방에 책이 ___.", "context_fr": "Il y a un livre dans le sac.",
+      "answer": "있어요", "distractors": ["없어요", "이에요", "해요"],
+      "explanation": "있어요 = il y a / avoir. La négation est 없어요 (il n'y a pas).",
+      "tts_answer": "가방에 책이 있어요"
+    },
+    {
+      "id": "exg_ch2_002", "grammar_id": "grm_ch2_009", "chapter": 2, "mode": "mcq",
+      "label": "Grammaire · Particule de lieu 에",
+      "prompt_fr": "Quelle particule de lieu (avec 있다) ?",
+      "context_kr": "교실___ 칠판이 있어요.", "context_fr": "Il y a un tableau dans la classe.",
+      "answer": "에", "distractors": ["에서", "을", "도"],
+      "explanation": "에 indique le lieu où quelque chose se trouve (avec 있다/없다).",
+      "tts_answer": "교실에 칠판이 있어요"
+    },
+    {
+      "id": "exg_ch2_003", "grammar_id": "grm_ch2_001", "chapter": 2, "mode": "mcq",
+      "label": "Grammaire · Particule 도 (aussi)",
+      "prompt_fr": "« Moi aussi je suis étudiant(e) » :",
+      "context_kr": "저___ 학생이에요.", "context_fr": "Moi aussi, je suis étudiant(e).",
+      "answer": "도", "distractors": ["는", "이", "에"],
+      "explanation": "도 = aussi. Elle remplace 은/는 ou 이/가.",
+      "tts_answer": "저도 학생이에요"
+    },
+    {
+      "id": "exg_ch3_001", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "mcq",
+      "label": "Grammaire · Présent 아요/어요",
+      "prompt_fr": "Présent poli de 먹다 (manger) :",
+      "prompt_kr": "먹다",
+      "answer": "먹어요", "distractors": ["먹아요", "먹여요", "머거요"],
+      "explanation": "Radical 먹 (voyelle ㅓ) → 먹 + 어요 = 먹어요.",
+      "tts_answer": "먹어요"
+    },
+    {
+      "id": "exg_ch3_002", "grammar_id": "grm_ch3_001", "chapter": 3, "mode": "mcq",
+      "label": "Grammaire · Verbes en 하다",
+      "prompt_fr": "Présent poli de 공부하다 (étudier) :",
+      "prompt_kr": "공부하다",
+      "answer": "공부해요", "distractors": ["공부하요", "공부아요", "공부어요"],
+      "explanation": "Les verbes en 하다 deviennent 해요 au présent poli : 공부 + 해요.",
+      "tts_answer": "공부해요"
+    },
+    {
+      "id": "exg_ch3_003", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "free_input",
+      "label": "Grammaire · Présent (contraction)",
+      "prompt_fr": "Écris le présent poli de 가다 (aller) :",
+      "prompt_kr": "가다",
+      "answer": "가요", "answer_alts": ["gayo"],
+      "explanation": "가 + 아요 se contracte en 가요.",
+      "tts_answer": "가요"
+    },
+    {
+      "id": "exg_ch3_004", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "mcq",
+      "label": "Grammaire · COD 을/를",
+      "prompt_fr": "Quelle particule d'objet ? (밥 finit par une consonne)",
+      "context_kr": "밥___ 먹어요.", "context_fr": "Je mange du riz.",
+      "answer": "을", "distractors": ["를", "이", "에"],
+      "explanation": "밥 finit par une consonne → 을. Après une voyelle : 를.",
+      "tts_answer": "밥을 먹어요"
+    },
+    {
+      "id": "exg_ch3_005", "grammar_id": "grm_ch3_002", "chapter": 3, "mode": "mcq",
+      "label": "Grammaire · Lieu d'action 에서",
+      "prompt_fr": "Quelle particule (lieu d'une action) ?",
+      "context_kr": "도서관___ 공부해요.", "context_fr": "J'étudie à la bibliothèque.",
+      "answer": "에서", "distractors": ["에", "을", "으로"],
+      "explanation": "에서 marque le lieu où se déroule une action. 에 marque seulement la localisation.",
+      "tts_answer": "도서관에서 공부해요"
+    },
+    {
+      "id": "exg_ch3_006", "grammar_id": "grm_ch3_003", "chapter": 3, "mode": "mcq",
+      "label": "Grammaire · Négation 안",
+      "prompt_fr": "« Je ne bois pas d'alcool » :",
+      "context_kr": "저는 술을 ___ 마셔요.", "context_fr": "Je ne bois pas d'alcool.",
+      "answer": "안", "distractors": ["못", "없", "아니"],
+      "explanation": "안 + verbe = négation simple. 못 + verbe = incapacité (ne pas pouvoir).",
+      "tts_answer": "안 마셔요"
+    },
+    {
+      "id": "exg_ch4_001", "grammar_id": "grm_ch4_001", "chapter": 4, "mode": "mcq",
+      "label": "Grammaire · Direction 으로/로",
+      "prompt_fr": "Direction (학교 finit par une voyelle) :",
+      "context_kr": "학교___ 가요.", "context_fr": "Je vais vers l'école.",
+      "answer": "로", "distractors": ["으로", "에서", "까지"],
+      "explanation": "Après une voyelle (ou ㄹ) → 로. Après une consonne → 으로.",
+      "tts_answer": "학교로 가요"
+    },
+    {
+      "id": "exg_ch4_002", "grammar_id": "grm_ch4_005", "chapter": 4, "mode": "mcq",
+      "label": "Grammaire · Moyen de transport (으)로",
+      "prompt_fr": "Moyen de transport (버스 finit par une consonne) :",
+      "context_kr": "버스___ 가요.", "context_fr": "J'y vais en bus.",
+      "answer": "으로", "distractors": ["로", "에", "를"],
+      "explanation": "버스 finit par une consonne (ㅅ) → 으로. 'par quel moyen' : (으)로.",
+      "tts_answer": "버스으로 가요"
+    },
+    {
+      "id": "exg_ch4_003", "grammar_id": "grm_ch4_004", "chapter": 4, "mode": "mcq",
+      "label": "Grammaire · De… à… 에서…까지",
+      "prompt_fr": "Point de départ (lieu) :",
+      "context_kr": "집___ 학교까지 걸어요.", "context_fr": "Je marche de la maison à l'école.",
+      "answer": "에서", "distractors": ["부터", "에", "으로"],
+      "explanation": "Pour un LIEU : 에서 (départ) … 까지 (arrivée). Pour le TEMPS : 부터 … 까지.",
+      "tts_answer": "집에서 학교까지"
+    },
+    {
+      "id": "exg_ch5_001", "grammar_id": "grm_ch5_001", "chapter": 5, "mode": "mcq",
+      "label": "Grammaire · -고 싶다 (vouloir)",
+      "prompt_fr": "« Je veux boire de l'eau » :",
+      "context_kr": "물을 마시___ 싶어요.", "context_fr": "Je veux boire de l'eau.",
+      "answer": "고", "distractors": ["어", "아", "게"],
+      "explanation": "radical + -고 싶다 = avoir envie de / vouloir. 마시 + 고 싶어요.",
+      "tts_answer": "마시고 싶어요"
+    },
+    {
+      "id": "exg_ch5_002", "grammar_id": "grm_ch5_003", "chapter": 5, "mode": "mcq",
+      "label": "Grammaire · Classificateur (personnes)",
+      "prompt_fr": "Classificateur pour compter des personnes :",
+      "context_kr": "학생 세 ___", "context_fr": "trois élèves",
+      "answer": "명", "distractors": ["개", "마리", "그릇"],
+      "explanation": "명 compte les personnes, avec les nombres natifs : 세 명 = trois personnes.",
+      "tts_answer": "세 명"
+    },
+    {
+      "id": "exg_ch5_003", "grammar_id": "grm_ch5_003", "chapter": 5, "mode": "mcq",
+      "label": "Grammaire · Classificateur (objets)",
+      "prompt_fr": "Classificateur pour compter des objets :",
+      "context_kr": "사과 두 ___", "context_fr": "deux pommes",
+      "answer": "개", "distractors": ["명", "권", "마리"],
+      "explanation": "개 compte les objets, avec les nombres natifs : 두 개 = deux (objets).",
+      "tts_answer": "두 개"
+    },
+    {
+      "id": "exg_ch5_004", "grammar_id": "grm_ch5_002", "chapter": 5, "mode": "mcq",
+      "label": "Grammaire · 으로/로 만들다 (être fait de)",
+      "prompt_fr": "« On le fait avec du chou » (배추 finit par une voyelle) :",
+      "context_kr": "김치는 배추___ 만들어요.", "context_fr": "Le kimchi est fait avec du chou.",
+      "answer": "로", "distractors": ["으로", "를", "에"],
+      "explanation": "matière + (으)로 만들다. Après une voyelle → 로.",
+      "tts_answer": "배추로 만들어요"
+    },
+    {
+      "id": "exg_ch6_001", "grammar_id": "grm_ch6_002", "chapter": 6, "mode": "mcq",
+      "label": "Grammaire · Passé 았/었어요",
+      "prompt_fr": "« Hier, je suis allé(e) à l'école » :",
+      "context_kr": "어제 학교에 ___.", "context_fr": "Hier, je suis allé(e) à l'école.",
+      "answer": "갔어요", "distractors": ["가요", "갈 거예요", "가았어요"],
+      "explanation": "Passé : 가 + 았어요 → 갔어요 (contraction).",
+      "tts_answer": "갔어요"
+    },
+    {
+      "id": "exg_ch6_002", "grammar_id": "grm_ch6_002", "chapter": 6, "mode": "free_input",
+      "label": "Grammaire · Passé 하다",
+      "prompt_fr": "Écris le passé poli de 공부하다 (étudier) :",
+      "prompt_kr": "공부하다",
+      "answer": "공부했어요", "answer_alts": [],
+      "explanation": "하다 → 했어요 au passé : 공부 + 했어요.",
+      "tts_answer": "공부했어요"
+    },
+    {
+      "id": "exg_ch6_003", "grammar_id": "grm_ch6_004", "chapter": 6, "mode": "mcq",
+      "label": "Grammaire · La date (exception)",
+      "prompt_fr": "Comment dit-on « juin » (6월) ?",
+      "prompt_kr": "6월",
+      "answer": "유월", "distractors": ["육월", "유얼", "여월"],
+      "explanation": "Exceptions de prononciation : 6월 = 유월, 10월 = 시월.",
+      "tts_answer": "유월"
+    },
+    {
+      "id": "exg_ch6_004", "grammar_id": "grm_ch6_005", "chapter": 6, "mode": "mcq",
+      "label": "Grammaire · L'heure (nombres natifs)",
+      "prompt_fr": "« 7 heures » : 7 시 = ___ 시",
+      "prompt_kr": "7시",
+      "answer": "일곱", "distractors": ["칠", "여섯", "일급"],
+      "explanation": "Les HEURES utilisent les nombres natifs : 7 = 일곱. (Les minutes utilisent les sino-coréens.)",
+      "tts_answer": "일곱 시"
+    },
+    {
+      "id": "exg_ch6_005", "grammar_id": "grm_ch6_006", "chapter": 6, "mode": "mcq",
+      "label": "Grammaire · De… à… (temps) 부터",
+      "prompt_fr": "« À partir de 9h » (point de départ dans le temps) :",
+      "context_kr": "9시___ 시작해요.", "context_fr": "Ça commence à partir de 9h.",
+      "answer": "부터", "distractors": ["까지", "에서", "도"],
+      "explanation": "Pour le TEMPS : 부터 (à partir de) … 까지 (jusqu'à).",
+      "tts_answer": "9시부터 시작해요"
+    }
+  ]
+}

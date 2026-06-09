@@ -91,6 +91,11 @@
         <input type="text" id="search-input" placeholder="Chercher un mot..." autocomplete="off">
       </div>
       <div id="global-progress"></div>
+      <button id="btn-practice-home" class="btn-practice-home">
+        <span class="bph-kr">활용</span>
+        <span class="bph-text"><strong>S'entraîner</strong><span>Conjugaison · grammaire · QCM · nombres</span></span>
+        <span class="bph-arrow">›</span>
+      </button>
       <div class="section-label">Chapitres</div>
       <div id="chapters-grid"></div>
       <div class="section-label">Catégories</div>
@@ -118,7 +123,10 @@
           <h2 id="list-title"></h2>
           <span id="list-stats" class="list-stats"></span>
         </div>
-        <button id="btn-fc" class="btn-go">Réviser</button>
+        <div class="list-head-btns">
+          <button id="btn-practice" class="btn-go btn-go--outline">S'entraîner</button>
+          <button id="btn-fc" class="btn-go">Réviser</button>
+        </div>
       </div>
       <div id="list-bar-wrap"></div>
       <div id="items"></div>
@@ -166,9 +174,19 @@
         </div>
       </div>
     </section>
+    <!-- Practice hub -->
+    <section id="screen-practice" class="screen">
+      <div id="practice-body"></div>
+    </section>
+
+    <!-- Exercise -->
+    <section id="screen-exercise" class="screen">
+      <div id="exercise-body"></div>
+    </section>
   </div>
   <div id="toast" class="toast hidden"></div>
   <script src="conjugator.js"></script>
   <script src="app.js"></script>
+  <script src="practice.js"></script>
 </body>
 </html>
