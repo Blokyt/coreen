@@ -11,6 +11,8 @@ const CASES = [
   ['읽다', undefined, 'pastPolite',      '읽었어요'],
   ['앉다', undefined, 'presentPolite',   '앉아요'],
   ['좋다', undefined, 'presentPolite',   '좋아요'],   // ㅎ final mais régulier
+  ['놓다', undefined, 'presentPolite',   '놓아요'],   // verbe en ㅎ : régulier
+  ['넣다', undefined, 'presentPolite',   '넣어요'],   // verbe en ㅎ : régulier
   // ── Réguliers ouverts : contractions ──
   ['가다', undefined, 'presentPolite',   '가요'],
   ['서다', undefined, 'presentPolite',   '서요'],
@@ -102,6 +104,7 @@ describe('détection automatique', () => {
     ['쓰다', 'ㅡ'], ['모르다', '르'], ['듣다', 'ㄷ'], ['받다', null],
     ['맵다', 'ㅂ'], ['잡다', null], ['낫다', 'ㅅ'], ['웃다', null],
     ['놀다', 'ㄹ'], ['좋다', null], ['그렇다', 'ㅎ'], ['이다', '이다'],
+    ['놓다', null], ['넣다', null], ['빨갛다', 'ㅎ'], ['어떻다', 'ㅎ'],
   ];
   for (const [dict, exp] of D) {
     test(`detectIrregular(${dict}) = ${exp}`, () => {

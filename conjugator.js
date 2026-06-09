@@ -199,6 +199,9 @@ const CONJUGATION_OVERRIDES = {
 // Listes blanches (les seules qui priment sur l'heuristique de la finale).
 const IRREG_D_WHITELIST = new Set(['듣다','걷다','묻다','싣다','깨닫다','긷다']);
 const IRREG_S_WHITELIST = new Set(['낫다','짓다','붓다','잇다','긋다','젓다']);
+// ㅎ irrégulier : seulement des adjectifs (couleurs / manière). Les verbes en ㅎ
+// (놓다, 넣다, 낳다, 좋다…) sont RÉGULIERS.
+const IRREG_H_WHITELIST = new Set(['그렇다','이렇다','저렇다','어떻다','빨갛다','노랗다','파랗다','하얗다','까맣다','동그랗다','조그맣다','커다랗다','어떻다']);
 const REG_B_WHITELIST   = new Set(['잡다','뽑다','씹다','입다','접다','좁다','넓다','업다','굽다','곱씹다']);
 const COPULA = new Set(['이다','아니다']);
 
@@ -215,7 +218,7 @@ function detectIrregular(dictForm) {
   if (jong === J.D) return IRREG_D_WHITELIST.has(dictForm) ? 'ㄷ' : null;
   if (jong === J.S) return IRREG_S_WHITELIST.has(dictForm) ? 'ㅅ' : null;
   if (jong === J.L) return 'ㄹ';
-  if (jong === J.H && dictForm !== '좋다') return 'ㅎ'; // 좋다 est régulier
+  if (jong === J.H) return IRREG_H_WHITELIST.has(dictForm) ? 'ㅎ' : null; // verbes en ㅎ = réguliers
   return null;
 }
 
