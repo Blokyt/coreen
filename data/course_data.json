@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "source": "Kaja Hanguk - Belin A1",
     "extracted": "2026-03-31",
-    "total_items": 1682,
+    "total_items": 1686,
     "stats": {
       "hangeul": 40,
-      "vocabulary": 1015,
+      "vocabulary": 1017,
       "verbs": 114,
       "grammar": 47,
       "particles": 20,
@@ -14,7 +14,7 @@
       "expressions": 162,
       "dialogues": 16,
       "numbers": 41,
-      "adjectives": 31,
+      "adjectives": 33,
       "adverbs": 30,
       "classifiers": 17,
       "pronunciation_rules": 13,
@@ -13277,6 +13277,30 @@
           "french": "Prenez votre monnaie."
         }
       ]
+    },
+    {
+      "korean": "성탄절",
+      "french": "Noël",
+      "romanization": "seongtanjeol",
+      "theme": "fêtes",
+      "word_type": "noun",
+      "page": 157,
+      "chapter": 6,
+      "source": "book",
+      "notes": "",
+      "id": "voc_ch6_065"
+    },
+    {
+      "korean": "크리스마스",
+      "french": "Noël (mot anglais)",
+      "romanization": "keuriseumaseu",
+      "theme": "fêtes",
+      "word_type": "noun",
+      "page": 157,
+      "chapter": 6,
+      "source": "book",
+      "notes": "",
+      "id": "voc_ch6_066"
     }
   ],
   "verbs": [
@@ -23028,6 +23052,32 @@
           "french": "Le train est rapide."
         }
       ]
+    },
+    {
+      "infinitive": "맛있다",
+      "korean": "맛있다",
+      "french": "être bon, délicieux",
+      "romanization": "masitda",
+      "korean_polite": "맛있어요",
+      "pos": "adj",
+      "irregular": null,
+      "page": 136,
+      "chapter": 5,
+      "source": "book",
+      "id": "adj_ch5_006"
+    },
+    {
+      "infinitive": "맛없다",
+      "korean": "맛없다",
+      "french": "ne pas être bon",
+      "romanization": "madeopda",
+      "korean_polite": "맛없어요",
+      "pos": "adj",
+      "irregular": null,
+      "page": 140,
+      "chapter": 5,
+      "source": "book",
+      "id": "adj_ch5_007"
     }
   ],
   "adverbs": [
