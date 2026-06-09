@@ -3,20 +3,20 @@
     "version": "1.0.0",
     "source": "Kaja Hanguk - Belin A1",
     "extracted": "2026-03-31",
-    "total_items": 1471,
+    "total_items": 1682,
     "stats": {
       "hangeul": 40,
-      "vocabulary": 933,
-      "verbs": 64,
+      "vocabulary": 1015,
+      "verbs": 114,
       "grammar": 47,
       "particles": 20,
-      "connectors": 8,
-      "expressions": 132,
+      "connectors": 13,
+      "expressions": 162,
       "dialogues": 16,
       "numbers": 41,
-      "adjectives": 9,
-      "adverbs": 14,
-      "classifiers": 11,
+      "adjectives": 31,
+      "adverbs": 30,
+      "classifiers": 17,
       "pronunciation_rules": 13,
       "culture": 51,
       "time_expressions": 72
@@ -11927,6 +11927,1356 @@
       "chapter": 6,
       "id": "voc_ch6_064",
       "source": "book"
+    },
+    {
+      "korean": "병원",
+      "french": "hôpital",
+      "romanization": "byeongwon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_001",
+      "examples": [
+        {
+          "korean": "병원이 어디예요?",
+          "french": "Où est l'hôpital ?"
+        }
+      ]
+    },
+    {
+      "korean": "의사",
+      "french": "médecin",
+      "romanization": "uisa",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_002",
+      "examples": [
+        {
+          "korean": "의사가 진찰해요.",
+          "french": "Le médecin examine."
+        }
+      ]
+    },
+    {
+      "korean": "간호사",
+      "french": "infirmier",
+      "romanization": "ganhosa",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_003",
+      "examples": [
+        {
+          "korean": "간호사가 친절해요.",
+          "french": "L'infirmier est gentil."
+        }
+      ]
+    },
+    {
+      "korean": "경찰",
+      "french": "police",
+      "romanization": "gyeongchal",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "urgences",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_004",
+      "examples": [
+        {
+          "korean": "경찰을 불러 주세요.",
+          "french": "Appelez la police, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "응급실",
+      "french": "urgences",
+      "romanization": "eunggeupsil",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "urgences",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_005",
+      "examples": [
+        {
+          "korean": "응급실로 가요.",
+          "french": "On va aux urgences."
+        }
+      ]
+    },
+    {
+      "korean": "구급차",
+      "french": "ambulance",
+      "romanization": "gugeupcha",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "urgences",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_006",
+      "examples": [
+        {
+          "korean": "구급차를 불러 주세요.",
+          "french": "Appelez une ambulance, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "도움",
+      "french": "aide",
+      "romanization": "doum",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "urgences",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_007",
+      "examples": [
+        {
+          "korean": "도움이 필요해요.",
+          "french": "J'ai besoin d'aide."
+        }
+      ]
+    },
+    {
+      "korean": "위험",
+      "french": "danger",
+      "romanization": "wiheom",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "urgences",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_008",
+      "examples": [
+        {
+          "korean": "위험해요, 조심하세요.",
+          "french": "C'est dangereux, faites attention."
+        }
+      ]
+    },
+    {
+      "korean": "사고",
+      "french": "accident",
+      "romanization": "sago",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "urgences",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_009",
+      "examples": [
+        {
+          "korean": "교통사고가 났어요.",
+          "french": "Il y a eu un accident de la route."
+        }
+      ]
+    },
+    {
+      "korean": "비자",
+      "french": "visa",
+      "romanization": "bija",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "administratif",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_010",
+      "examples": [
+        {
+          "korean": "비자가 필요해요?",
+          "french": "Un visa est-il nécessaire ?"
+        }
+      ]
+    },
+    {
+      "korean": "대사관",
+      "french": "ambassade",
+      "romanization": "daesagwan",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "administratif",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_011",
+      "examples": [
+        {
+          "korean": "프랑스 대사관이 어디예요?",
+          "french": "Où est l'ambassade de France ?"
+        }
+      ]
+    },
+    {
+      "korean": "분실",
+      "french": "perte",
+      "romanization": "bunsil",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "administratif",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_012",
+      "examples": [
+        {
+          "korean": "분실 신고를 했어요.",
+          "french": "J'ai fait une déclaration de perte."
+        }
+      ]
+    },
+    {
+      "korean": "감기",
+      "french": "rhume",
+      "romanization": "gamgi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_013",
+      "examples": [
+        {
+          "korean": "감기에 걸렸어요.",
+          "french": "J'ai attrapé un rhume."
+        }
+      ]
+    },
+    {
+      "korean": "열",
+      "french": "fièvre",
+      "romanization": "yeol",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_014",
+      "examples": [
+        {
+          "korean": "열이 나요.",
+          "french": "J'ai de la fièvre."
+        }
+      ]
+    },
+    {
+      "korean": "두통",
+      "french": "mal de tête",
+      "romanization": "dutong",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_015",
+      "examples": [
+        {
+          "korean": "두통이 심해요.",
+          "french": "J'ai un fort mal de tête."
+        }
+      ]
+    },
+    {
+      "korean": "배탈",
+      "french": "mal de ventre",
+      "romanization": "baetal",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_016",
+      "examples": [
+        {
+          "korean": "배탈이 났어요.",
+          "french": "J'ai mal au ventre."
+        }
+      ]
+    },
+    {
+      "korean": "알레르기",
+      "french": "allergie",
+      "romanization": "allereugi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "santé",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_017",
+      "examples": [
+        {
+          "korean": "땅콩 알레르기가 있어요.",
+          "french": "J'ai une allergie aux cacahuètes."
+        }
+      ]
+    },
+    {
+      "korean": "보험",
+      "french": "assurance",
+      "romanization": "boheom",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "administratif",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_018",
+      "examples": [
+        {
+          "korean": "여행 보험이 있어요.",
+          "french": "J'ai une assurance voyage."
+        }
+      ]
+    },
+    {
+      "korean": "신분증",
+      "french": "pièce d'identité",
+      "romanization": "sinbunjeung",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "administratif",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_019",
+      "examples": [
+        {
+          "korean": "신분증을 가지고 다니세요.",
+          "french": "Gardez votre pièce d'identité sur vous."
+        }
+      ]
+    },
+    {
+      "korean": "계산서",
+      "french": "addition",
+      "romanization": "gyesanseo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_020",
+      "examples": [
+        {
+          "korean": "계산서 주세요.",
+          "french": "L'addition, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "영수증",
+      "french": "reçu",
+      "romanization": "yeongsujeung",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_021",
+      "examples": [
+        {
+          "korean": "영수증 필요해요.",
+          "french": "J'ai besoin du reçu."
+        }
+      ]
+    },
+    {
+      "korean": "포장",
+      "french": "à emporter",
+      "romanization": "pojang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_022",
+      "examples": [
+        {
+          "korean": "포장해 주세요.",
+          "french": "À emporter, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "주문",
+      "french": "commande",
+      "romanization": "jumun",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_023",
+      "examples": [
+        {
+          "korean": "주문할게요.",
+          "french": "Je vais commander."
+        }
+      ]
+    },
+    {
+      "korean": "추천",
+      "french": "recommandation",
+      "romanization": "chucheon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_024",
+      "examples": [
+        {
+          "korean": "추천 메뉴가 뭐예요?",
+          "french": "Quel est le plat recommandé ?"
+        }
+      ]
+    },
+    {
+      "korean": "종업원",
+      "french": "serveur",
+      "romanization": "jongeobwon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_025",
+      "examples": [
+        {
+          "korean": "종업원을 불렀어요.",
+          "french": "J'ai appelé le serveur."
+        }
+      ]
+    },
+    {
+      "korean": "얼음",
+      "french": "glaçon",
+      "romanization": "eoreum",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_026",
+      "examples": [
+        {
+          "korean": "얼음 넣어 주세요.",
+          "french": "Mettez des glaçons, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "컵",
+      "french": "verre",
+      "romanization": "keop",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_027",
+      "examples": [
+        {
+          "korean": "컵 하나 더 주세요.",
+          "french": "Un verre de plus, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "접시",
+      "french": "assiette",
+      "romanization": "jeopsi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_028",
+      "examples": [
+        {
+          "korean": "접시가 깨졌어요.",
+          "french": "L'assiette s'est cassée."
+        }
+      ]
+    },
+    {
+      "korean": "냅킨",
+      "french": "serviette",
+      "romanization": "naepkin",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_029",
+      "examples": [
+        {
+          "korean": "냅킨 좀 주세요.",
+          "french": "Une serviette, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "메인",
+      "french": "plat principal",
+      "romanization": "mein",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_030",
+      "examples": [
+        {
+          "korean": "메인 요리는 뭐예요?",
+          "french": "Quel est le plat principal ?"
+        }
+      ]
+    },
+    {
+      "korean": "후식",
+      "french": "dessert",
+      "romanization": "husik",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_031",
+      "examples": [
+        {
+          "korean": "후식으로 케이크를 먹어요.",
+          "french": "Je mange un gâteau comme dessert."
+        }
+      ]
+    },
+    {
+      "korean": "간식",
+      "french": "en-cas",
+      "romanization": "gansik",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_032",
+      "examples": [
+        {
+          "korean": "간식을 먹고 싶어요.",
+          "french": "Je veux manger un en-cas."
+        }
+      ]
+    },
+    {
+      "korean": "맥주",
+      "french": "bière",
+      "romanization": "maekju",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_033",
+      "examples": [
+        {
+          "korean": "맥주 한 병 주세요.",
+          "french": "Une bouteille de bière, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "소주",
+      "french": "soju",
+      "romanization": "soju",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_034",
+      "examples": [
+        {
+          "korean": "소주를 마셔요.",
+          "french": "Je bois du soju."
+        }
+      ]
+    },
+    {
+      "korean": "채식",
+      "french": "régime végétarien",
+      "romanization": "chaesik",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_035",
+      "examples": [
+        {
+          "korean": "저는 채식을 해요.",
+          "french": "Je suis végétarien."
+        }
+      ]
+    },
+    {
+      "korean": "매운 음식",
+      "french": "plat épicé",
+      "romanization": "maeun eumsik",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_036",
+      "examples": [
+        {
+          "korean": "매운 음식을 좋아해요.",
+          "french": "J'aime les plats épicés."
+        }
+      ]
+    },
+    {
+      "korean": "양",
+      "french": "quantité",
+      "romanization": "yang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "nourriture",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_037",
+      "examples": [
+        {
+          "korean": "양이 많아요.",
+          "french": "La quantité est grande."
+        }
+      ]
+    },
+    {
+      "korean": "맛집",
+      "french": "bon restaurant",
+      "romanization": "matjip",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_038",
+      "examples": [
+        {
+          "korean": "여기는 맛집이에요.",
+          "french": "Ici, c'est un bon restaurant."
+        }
+      ]
+    },
+    {
+      "korean": "예약",
+      "french": "réservation",
+      "romanization": "yeyak",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "restaurant",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_039",
+      "examples": [
+        {
+          "korean": "예약을 했어요.",
+          "french": "J'ai fait une réservation."
+        }
+      ]
+    },
+    {
+      "korean": "버스 정류장",
+      "french": "arrêt de bus",
+      "romanization": "beoseu jeongnyujang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_040"
+    },
+    {
+      "korean": "지하철역",
+      "french": "station de métro",
+      "romanization": "jihacheollyeok",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_041"
+    },
+    {
+      "korean": "공항",
+      "french": "aéroport",
+      "romanization": "gonghang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_042"
+    },
+    {
+      "korean": "기차역",
+      "french": "gare",
+      "romanization": "gichayeok",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_043"
+    },
+    {
+      "korean": "표",
+      "french": "billet",
+      "romanization": "pyo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_044"
+    },
+    {
+      "korean": "교통카드",
+      "french": "carte de transport",
+      "romanization": "gyotongkadeu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_045"
+    },
+    {
+      "korean": "환승",
+      "french": "correspondance",
+      "romanization": "hwanseung",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_046"
+    },
+    {
+      "korean": "노선",
+      "french": "ligne",
+      "romanization": "noseon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_047"
+    },
+    {
+      "korean": "출구",
+      "french": "sortie",
+      "romanization": "chulgu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_048"
+    },
+    {
+      "korean": "입구",
+      "french": "entrée",
+      "romanization": "ipgu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_049"
+    },
+    {
+      "korean": "방향",
+      "french": "direction",
+      "romanization": "banghyang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_050"
+    },
+    {
+      "korean": "주소",
+      "french": "adresse",
+      "romanization": "juso",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_051"
+    },
+    {
+      "korean": "지도",
+      "french": "carte (plan)",
+      "romanization": "jido",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_052"
+    },
+    {
+      "korean": "신호등",
+      "french": "feu de circulation",
+      "romanization": "sinhodeung",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_053"
+    },
+    {
+      "korean": "횡단보도",
+      "french": "passage piéton",
+      "romanization": "hoengdanbodo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_054"
+    },
+    {
+      "korean": "모퉁이",
+      "french": "coin (de rue)",
+      "romanization": "motungi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_055"
+    },
+    {
+      "korean": "사거리",
+      "french": "carrefour",
+      "romanization": "sageori",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_056"
+    },
+    {
+      "korean": "거리",
+      "french": "rue",
+      "romanization": "geori",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_057"
+    },
+    {
+      "korean": "정류장",
+      "french": "arrêt",
+      "romanization": "jeongnyujang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_058"
+    },
+    {
+      "korean": "택시 승강장",
+      "french": "station de taxi",
+      "romanization": "taeksi seunggangjang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "transport",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_059"
+    },
+    {
+      "korean": "근처",
+      "french": "à proximité",
+      "romanization": "geuncheo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "lieux",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_060"
+    },
+    {
+      "korean": "가격",
+      "french": "prix",
+      "romanization": "gagyeok",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_061",
+      "examples": [
+        {
+          "korean": "이 가격은 너무 비싸요.",
+          "french": "Ce prix est trop cher."
+        }
+      ]
+    },
+    {
+      "korean": "할인",
+      "french": "réduction",
+      "romanization": "harin",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_062",
+      "examples": [
+        {
+          "korean": "오늘 할인이 있어요?",
+          "french": "Y a-t-il une réduction aujourd'hui ?"
+        }
+      ]
+    },
+    {
+      "korean": "세일",
+      "french": "soldes",
+      "romanization": "seil",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_063",
+      "examples": [
+        {
+          "korean": "지금 세일 기간이에요.",
+          "french": "C'est la période des soldes en ce moment."
+        }
+      ]
+    },
+    {
+      "korean": "카드",
+      "french": "carte bancaire",
+      "romanization": "kadeu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "argent",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_064",
+      "examples": [
+        {
+          "korean": "카드로 계산할게요.",
+          "french": "Je vais payer par carte."
+        }
+      ]
+    },
+    {
+      "korean": "현금",
+      "french": "espèces",
+      "romanization": "hyeongeum",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "argent",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_065",
+      "examples": [
+        {
+          "korean": "현금으로 낼게요.",
+          "french": "Je vais payer en espèces."
+        }
+      ]
+    },
+    {
+      "korean": "봉투",
+      "french": "sac (en papier ou plastique)",
+      "romanization": "bongtu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_066",
+      "examples": [
+        {
+          "korean": "봉투 하나 주세요.",
+          "french": "Donnez-moi un sac, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "사이즈",
+      "french": "taille",
+      "romanization": "saijeu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_067",
+      "examples": [
+        {
+          "korean": "사이즈가 어떻게 되세요?",
+          "french": "Quelle est votre taille ?"
+        }
+      ]
+    },
+    {
+      "korean": "교환",
+      "french": "échange",
+      "romanization": "gyohwan",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_068",
+      "examples": [
+        {
+          "korean": "교환이 가능해요?",
+          "french": "Est-ce que l'échange est possible ?"
+        }
+      ]
+    },
+    {
+      "korean": "환불",
+      "french": "remboursement",
+      "romanization": "hwanbul",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_069",
+      "examples": [
+        {
+          "korean": "환불해 주세요.",
+          "french": "Remboursez-moi, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "계산대",
+      "french": "caisse",
+      "romanization": "gyesandae",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_070",
+      "examples": [
+        {
+          "korean": "계산대가 어디예요?",
+          "french": "Où est la caisse ?"
+        }
+      ]
+    },
+    {
+      "korean": "손님",
+      "french": "client",
+      "romanization": "sonnim",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_071",
+      "examples": [
+        {
+          "korean": "손님이 많아요.",
+          "french": "Il y a beaucoup de clients."
+        }
+      ]
+    },
+    {
+      "korean": "점원",
+      "french": "vendeur",
+      "romanization": "jeomwon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_072",
+      "examples": [
+        {
+          "korean": "점원이 친절해요.",
+          "french": "Le vendeur est gentil."
+        }
+      ]
+    },
+    {
+      "korean": "와이파이",
+      "french": "wifi",
+      "romanization": "waipai",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "technologie",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_073",
+      "examples": [
+        {
+          "korean": "여기 와이파이가 있어요?",
+          "french": "Y a-t-il du wifi ici ?"
+        }
+      ]
+    },
+    {
+      "korean": "비밀번호",
+      "french": "mot de passe",
+      "romanization": "bimilbeonho",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "technologie",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_074",
+      "examples": [
+        {
+          "korean": "비밀번호가 뭐예요?",
+          "french": "Quel est le mot de passe ?"
+        }
+      ]
+    },
+    {
+      "korean": "충전기",
+      "french": "chargeur",
+      "romanization": "chungjeongi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "technologie",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_075",
+      "examples": [
+        {
+          "korean": "충전기를 빌릴 수 있어요?",
+          "french": "Puis-je emprunter un chargeur ?"
+        }
+      ]
+    },
+    {
+      "korean": "배터리",
+      "french": "batterie",
+      "romanization": "baeteori",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "technologie",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_076",
+      "examples": [
+        {
+          "korean": "배터리가 없어요.",
+          "french": "La batterie est vide."
+        }
+      ]
+    },
+    {
+      "korean": "인터넷",
+      "french": "internet",
+      "romanization": "inteonet",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "technologie",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_077",
+      "examples": [
+        {
+          "korean": "인터넷이 느려요.",
+          "french": "Internet est lent."
+        }
+      ]
+    },
+    {
+      "korean": "충전",
+      "french": "recharge",
+      "romanization": "chungjeon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "technologie",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_078",
+      "examples": [
+        {
+          "korean": "충전 좀 해야 해요.",
+          "french": "Je dois recharger."
+        }
+      ]
+    },
+    {
+      "korean": "영업시간",
+      "french": "heures d'ouverture",
+      "romanization": "yeongeopsigan",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "achats",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_079",
+      "examples": [
+        {
+          "korean": "영업시간이 어떻게 되세요?",
+          "french": "Quelles sont les heures d'ouverture ?"
+        }
+      ]
+    },
+    {
+      "korean": "무료",
+      "french": "gratuit",
+      "romanization": "muryo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "argent",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_080",
+      "examples": [
+        {
+          "korean": "입장이 무료예요.",
+          "french": "L'entrée est gratuite."
+        }
+      ]
+    },
+    {
+      "korean": "유료",
+      "french": "payant",
+      "romanization": "yuryo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "argent",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_081",
+      "examples": [
+        {
+          "korean": "주차는 유료예요.",
+          "french": "Le parking est payant."
+        }
+      ]
+    },
+    {
+      "korean": "거스름돈",
+      "french": "monnaie (rendue)",
+      "romanization": "geoseureumdon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "theme": "argent",
+      "word_type": "noun",
+      "notes": "",
+      "id": "voc_add_082",
+      "examples": [
+        {
+          "korean": "거스름돈을 받으세요.",
+          "french": "Prenez votre monnaie."
+        }
+      ]
     }
   ],
   "verbs": [
@@ -13389,6 +14739,856 @@
       "source": "book",
       "pos": "verb",
       "irregular": "ㄹ"
+    },
+    {
+      "infinitive": "전화하다",
+      "french": "téléphoner",
+      "romanization": "jeonhwahada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_001",
+      "examples": [
+        {
+          "korean": "친구에게 전화해요.",
+          "french": "Je téléphone à un ami."
+        }
+      ]
+    },
+    {
+      "infinitive": "말하다",
+      "french": "parler, dire",
+      "romanization": "malhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_002",
+      "examples": [
+        {
+          "korean": "천천히 말해 주세요.",
+          "french": "Parlez lentement, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "infinitive": "묻다",
+      "french": "demander (poser une question)",
+      "romanization": "mutda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㄷ",
+      "id": "vrb_add_003",
+      "examples": [
+        {
+          "korean": "길을 물어요.",
+          "french": "Je demande le chemin."
+        }
+      ]
+    },
+    {
+      "infinitive": "대답하다",
+      "french": "répondre",
+      "romanization": "daedapada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_004",
+      "examples": [
+        {
+          "korean": "질문에 대답해요.",
+          "french": "Je réponds à la question."
+        }
+      ]
+    },
+    {
+      "infinitive": "사다",
+      "french": "acheter",
+      "romanization": "sada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_005",
+      "examples": [
+        {
+          "korean": "빵을 사요.",
+          "french": "J'achète du pain."
+        }
+      ]
+    },
+    {
+      "infinitive": "팔다",
+      "french": "vendre",
+      "romanization": "palda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㄹ",
+      "id": "vrb_add_006",
+      "examples": [
+        {
+          "korean": "가게에서 과일을 팔아요.",
+          "french": "On vend des fruits au magasin."
+        }
+      ]
+    },
+    {
+      "infinitive": "찾다",
+      "french": "chercher, trouver",
+      "romanization": "chatda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_007",
+      "examples": [
+        {
+          "korean": "열쇠를 찾아요.",
+          "french": "Je cherche mes clés."
+        }
+      ]
+    },
+    {
+      "infinitive": "빌리다",
+      "french": "emprunter",
+      "romanization": "billida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_008",
+      "examples": [
+        {
+          "korean": "책을 빌려요.",
+          "french": "J'emprunte un livre."
+        }
+      ]
+    },
+    {
+      "infinitive": "기다리다",
+      "french": "attendre",
+      "romanization": "gidarida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_009",
+      "examples": [
+        {
+          "korean": "버스를 기다려요.",
+          "french": "J'attends le bus."
+        }
+      ]
+    },
+    {
+      "infinitive": "시작하다",
+      "french": "commencer",
+      "romanization": "sijakada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_010",
+      "examples": [
+        {
+          "korean": "수업이 시작해요.",
+          "french": "Le cours commence."
+        }
+      ]
+    },
+    {
+      "infinitive": "끝나다",
+      "french": "finir, se terminer",
+      "romanization": "kkeunnada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_011",
+      "examples": [
+        {
+          "korean": "일이 끝나요.",
+          "french": "Le travail se termine."
+        }
+      ]
+    },
+    {
+      "infinitive": "열다",
+      "french": "ouvrir",
+      "romanization": "yeolda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㄹ",
+      "id": "vrb_add_012",
+      "examples": [
+        {
+          "korean": "창문을 열어요.",
+          "french": "J'ouvre la fenêtre."
+        }
+      ]
+    },
+    {
+      "infinitive": "닫다",
+      "french": "fermer",
+      "romanization": "datda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_013",
+      "examples": [
+        {
+          "korean": "문을 닫아요.",
+          "french": "Je ferme la porte."
+        }
+      ]
+    },
+    {
+      "infinitive": "켜다",
+      "french": "allumer",
+      "romanization": "kyeoda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_014",
+      "examples": [
+        {
+          "korean": "불을 켜요.",
+          "french": "J'allume la lumière."
+        }
+      ]
+    },
+    {
+      "infinitive": "끄다",
+      "french": "éteindre",
+      "romanization": "kkeuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㅡ",
+      "id": "vrb_add_015",
+      "examples": [
+        {
+          "korean": "텔레비전을 꺼요.",
+          "french": "J'éteins la télévision."
+        }
+      ]
+    },
+    {
+      "infinitive": "씻다",
+      "french": "se laver, laver",
+      "romanization": "ssitda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_016",
+      "examples": [
+        {
+          "korean": "손을 씻어요.",
+          "french": "Je me lave les mains."
+        }
+      ]
+    },
+    {
+      "infinitive": "입다",
+      "french": "mettre, porter (un vêtement)",
+      "romanization": "ipda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_017",
+      "examples": [
+        {
+          "korean": "코트를 입어요.",
+          "french": "Je mets un manteau."
+        }
+      ]
+    },
+    {
+      "infinitive": "벗다",
+      "french": "enlever, ôter (un vêtement)",
+      "romanization": "beotda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_018",
+      "examples": [
+        {
+          "korean": "신발을 벗어요.",
+          "french": "J'enlève mes chaussures."
+        }
+      ]
+    },
+    {
+      "infinitive": "쉬다",
+      "french": "se reposer",
+      "romanization": "swida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_019",
+      "examples": [
+        {
+          "korean": "집에서 쉬어요.",
+          "french": "Je me repose à la maison."
+        }
+      ]
+    },
+    {
+      "infinitive": "도와주다",
+      "french": "aider",
+      "romanization": "dowajuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_020",
+      "examples": [
+        {
+          "korean": "친구를 도와줘요.",
+          "french": "J'aide un ami."
+        }
+      ]
+    },
+    {
+      "infinitive": "좋아하다",
+      "french": "aimer, apprécier",
+      "romanization": "joahada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_021",
+      "examples": [
+        {
+          "korean": "커피를 좋아해요.",
+          "french": "J'aime le café."
+        }
+      ]
+    },
+    {
+      "infinitive": "받다",
+      "french": "recevoir",
+      "romanization": "batda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_022",
+      "examples": [
+        {
+          "korean": "선물을 받아요.",
+          "french": "Je reçois un cadeau."
+        }
+      ]
+    },
+    {
+      "infinitive": "주문하다",
+      "french": "commander",
+      "romanization": "jumunhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_023",
+      "examples": [
+        {
+          "korean": "비빔밥을 주문해요.",
+          "french": "Je commande un bibimbap."
+        }
+      ]
+    },
+    {
+      "infinitive": "예약하다",
+      "french": "réserver",
+      "romanization": "yeyakhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_024",
+      "examples": [
+        {
+          "korean": "식당을 예약했어요.",
+          "french": "J'ai réservé le restaurant."
+        }
+      ]
+    },
+    {
+      "infinitive": "계산하다",
+      "french": "payer (régler l'addition)",
+      "romanization": "gyesanhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_025",
+      "examples": [
+        {
+          "korean": "제가 계산할게요.",
+          "french": "Je vais payer."
+        }
+      ]
+    },
+    {
+      "infinitive": "추천하다",
+      "french": "recommander",
+      "romanization": "chucheonhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_026",
+      "examples": [
+        {
+          "korean": "좋은 식당을 추천해 주세요.",
+          "french": "Recommandez-moi un bon restaurant, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "infinitive": "내리다",
+      "french": "descendre",
+      "romanization": "naerida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_027",
+      "examples": [
+        {
+          "korean": "다음 역에서 내려요.",
+          "french": "Je descends à la prochaine station."
+        }
+      ]
+    },
+    {
+      "infinitive": "도착하다",
+      "french": "arriver",
+      "romanization": "dochakhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_028",
+      "examples": [
+        {
+          "korean": "공항에 도착했어요.",
+          "french": "Je suis arrivé à l'aéroport."
+        }
+      ]
+    },
+    {
+      "infinitive": "출발하다",
+      "french": "partir (démarrer un trajet)",
+      "romanization": "chulbalhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_029",
+      "examples": [
+        {
+          "korean": "기차가 곧 출발해요.",
+          "french": "Le train part bientôt."
+        }
+      ]
+    },
+    {
+      "infinitive": "떠나다",
+      "french": "quitter (un lieu)",
+      "romanization": "tteonada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_030",
+      "examples": [
+        {
+          "korean": "내일 서울을 떠나요.",
+          "french": "Je quitte Séoul demain."
+        }
+      ]
+    },
+    {
+      "infinitive": "걷다",
+      "french": "marcher",
+      "romanization": "geotda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㄷ",
+      "id": "vrb_add_031",
+      "examples": [
+        {
+          "korean": "공원을 걸어요.",
+          "french": "Je marche dans le parc."
+        }
+      ]
+    },
+    {
+      "infinitive": "운전하다",
+      "french": "conduire",
+      "romanization": "unjeonhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_032",
+      "examples": [
+        {
+          "korean": "제가 운전해요.",
+          "french": "C'est moi qui conduis."
+        }
+      ]
+    },
+    {
+      "infinitive": "잃다",
+      "french": "perdre (égarer)",
+      "romanization": "ilta",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_033",
+      "examples": [
+        {
+          "korean": "길을 잃었어요.",
+          "french": "Je me suis perdu (j'ai perdu mon chemin)."
+        }
+      ]
+    },
+    {
+      "infinitive": "안내하다",
+      "french": "guider",
+      "romanization": "annaehada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_034",
+      "examples": [
+        {
+          "korean": "제가 안내할게요.",
+          "french": "Je vais vous guider."
+        }
+      ]
+    },
+    {
+      "infinitive": "멈추다",
+      "french": "s'arrêter",
+      "romanization": "meomchuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_035",
+      "examples": [
+        {
+          "korean": "차가 멈췄어요.",
+          "french": "La voiture s'est arrêtée."
+        }
+      ]
+    },
+    {
+      "infinitive": "들어가다",
+      "french": "entrer",
+      "romanization": "deureogada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_036",
+      "examples": [
+        {
+          "korean": "방에 들어가요.",
+          "french": "J'entre dans la chambre."
+        }
+      ]
+    },
+    {
+      "infinitive": "나가다",
+      "french": "sortir",
+      "romanization": "nagada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_037",
+      "examples": [
+        {
+          "korean": "밖으로 나가요.",
+          "french": "Je sors dehors."
+        }
+      ]
+    },
+    {
+      "infinitive": "모르다",
+      "french": "ne pas savoir, ignorer",
+      "romanization": "moreuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "르",
+      "id": "vrb_add_038",
+      "examples": [
+        {
+          "korean": "저는 답을 몰라요.",
+          "french": "Je ne connais pas la réponse."
+        }
+      ]
+    },
+    {
+      "infinitive": "원하다",
+      "french": "vouloir, désirer",
+      "romanization": "wonhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_039",
+      "examples": [
+        {
+          "korean": "저는 물을 원해요.",
+          "french": "Je veux de l'eau."
+        }
+      ]
+    },
+    {
+      "infinitive": "필요하다",
+      "french": "avoir besoin, être nécessaire",
+      "romanization": "piryohada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_040",
+      "examples": [
+        {
+          "korean": "돈이 필요해요.",
+          "french": "J'ai besoin d'argent."
+        }
+      ]
+    },
+    {
+      "infinitive": "아프다",
+      "french": "avoir mal, être malade",
+      "romanization": "apeuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㅡ",
+      "id": "vrb_add_041",
+      "examples": [
+        {
+          "korean": "머리가 아파요.",
+          "french": "J'ai mal à la tête."
+        }
+      ]
+    },
+    {
+      "infinitive": "울다",
+      "french": "pleurer",
+      "romanization": "ulda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "ㄹ",
+      "id": "vrb_add_042",
+      "examples": [
+        {
+          "korean": "아기가 울어요.",
+          "french": "Le bébé pleure."
+        }
+      ]
+    },
+    {
+      "infinitive": "웃다",
+      "french": "rire, sourire",
+      "romanization": "utda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_043",
+      "examples": [
+        {
+          "korean": "친구가 웃어요.",
+          "french": "Mon ami rit."
+        }
+      ]
+    },
+    {
+      "infinitive": "부르다",
+      "french": "appeler, chanter",
+      "romanization": "bureuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "르",
+      "id": "vrb_add_044",
+      "examples": [
+        {
+          "korean": "선생님이 제 이름을 불러요.",
+          "french": "Le professeur appelle mon nom."
+        }
+      ]
+    },
+    {
+      "infinitive": "걸리다",
+      "french": "prendre (du temps), durer",
+      "romanization": "geollida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_045",
+      "examples": [
+        {
+          "korean": "한 시간이 걸려요.",
+          "french": "Cela prend une heure."
+        }
+      ]
+    },
+    {
+      "infinitive": "잃어버리다",
+      "french": "perdre (un objet)",
+      "romanization": "ireobeorida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_046",
+      "examples": [
+        {
+          "korean": "지갑을 잃어버렸어요.",
+          "french": "J'ai perdu mon portefeuille."
+        }
+      ]
+    },
+    {
+      "infinitive": "기억하다",
+      "french": "se souvenir, se rappeler",
+      "romanization": "gieokhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_047",
+      "examples": [
+        {
+          "korean": "그 이름을 기억해요.",
+          "french": "Je me souviens de ce nom."
+        }
+      ]
+    },
+    {
+      "infinitive": "잊다",
+      "french": "oublier",
+      "romanization": "itda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_048",
+      "examples": [
+        {
+          "korean": "약속을 잊었어요.",
+          "french": "J'ai oublié le rendez-vous."
+        }
+      ]
+    },
+    {
+      "infinitive": "느끼다",
+      "french": "ressentir, sentir",
+      "romanization": "neukkida",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": null,
+      "id": "vrb_add_049",
+      "examples": [
+        {
+          "korean": "행복을 느껴요.",
+          "french": "Je ressens du bonheur."
+        }
+      ]
+    },
+    {
+      "infinitive": "사용하다",
+      "french": "utiliser, employer",
+      "romanization": "sayonghada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "verb",
+      "irregular": "하다",
+      "id": "vrb_add_050",
+      "examples": [
+        {
+          "korean": "젓가락을 사용해요.",
+          "french": "J'utilise des baguettes."
+        }
+      ]
     }
   ],
   "grammar": [
@@ -16108,6 +18308,81 @@
       "chapter": 6,
       "id": "con_ch6_001",
       "source": "book"
+    },
+    {
+      "korean": "그래서",
+      "french": "donc, c'est pourquoi",
+      "romanization": "geuraeseo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "con_add_001",
+      "examples": [
+        {
+          "korean": "비가 와요. 그래서 집에 있어요.",
+          "french": "Il pleut. Donc je reste à la maison."
+        }
+      ]
+    },
+    {
+      "korean": "그런데",
+      "french": "mais, au fait",
+      "romanization": "geureonde",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "con_add_002",
+      "examples": [
+        {
+          "korean": "한국어를 배워요. 그런데 어려워요.",
+          "french": "J'apprends le coréen. Mais c'est difficile."
+        }
+      ]
+    },
+    {
+      "korean": "하지만",
+      "french": "cependant, pourtant",
+      "romanization": "hajiman",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "con_add_003",
+      "examples": [
+        {
+          "korean": "피곤해요. 하지만 일해요.",
+          "french": "Je suis fatigué. Cependant je travaille."
+        }
+      ]
+    },
+    {
+      "korean": "또",
+      "french": "aussi, de nouveau",
+      "romanization": "tto",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "con_add_004",
+      "examples": [
+        {
+          "korean": "내일 또 만나요.",
+          "french": "On se revoit de nouveau demain."
+        }
+      ]
+    },
+    {
+      "korean": "그러니까",
+      "french": "donc, je veux dire",
+      "romanization": "geureonikka",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "con_add_005",
+      "examples": [
+        {
+          "korean": "오늘 바빠요. 그러니까 내일 봐요.",
+          "french": "Je suis occupé aujourd'hui, donc on se voit demain."
+        }
+      ]
     }
   ],
   "expressions": [
@@ -18183,6 +20458,546 @@
       "chapter": 6,
       "id": "exp_ch6_020",
       "source": "book"
+    },
+    {
+      "polite": {
+        "korean": "도와주세요",
+        "romanization": "dowajuseyo"
+      },
+      "french": "aidez-moi s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_001",
+      "examples": [
+        {
+          "korean": "도와주세요! 길을 잃었어요.",
+          "french": "Aidez-moi ! Je suis perdu."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "다시 말해 주세요",
+        "romanization": "dasi malhae juseyo"
+      },
+      "french": "répétez s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_002",
+      "examples": [
+        {
+          "korean": "죄송해요, 다시 말해 주세요.",
+          "french": "Désolé, répétez s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "천천히 말해 주세요",
+        "romanization": "cheoncheonhi malhae juseyo"
+      },
+      "french": "parlez lentement s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_003",
+      "examples": [
+        {
+          "korean": "조금 천천히 말해 주세요.",
+          "french": "Parlez un peu plus lentement s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "한국어를 잘 못해요",
+        "romanization": "hangugeoreul jal mothaeyo"
+      },
+      "french": "je ne parle pas bien coréen",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_004",
+      "examples": [
+        {
+          "korean": "미안해요, 한국어를 잘 못해요.",
+          "french": "Désolé, je ne parle pas bien coréen."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "이거 주세요",
+        "romanization": "igeo juseyo"
+      },
+      "french": "je voudrais ça (donnez-moi ça)",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_005",
+      "examples": [
+        {
+          "korean": "이거 주세요. 얼마예요?",
+          "french": "Je voudrais ça. Combien ça coûte ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "계산해 주세요",
+        "romanization": "gyesanhae juseyo"
+      },
+      "french": "l'addition s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_006",
+      "examples": [
+        {
+          "korean": "여기요, 계산해 주세요.",
+          "french": "S'il vous plaît, l'addition."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "화장실이 어디예요",
+        "romanization": "hwajangsiri eodiyeyo"
+      },
+      "french": "où sont les toilettes ?",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_007",
+      "examples": [
+        {
+          "korean": "실례합니다, 화장실이 어디예요?",
+          "french": "Excusez-moi, où sont les toilettes ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "얼마예요",
+        "romanization": "eolmayeyo"
+      },
+      "french": "combien ça coûte ?",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_008",
+      "examples": [
+        {
+          "korean": "이거 얼마예요?",
+          "french": "Combien coûte ceci ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "깎아 주세요",
+        "romanization": "kkakka juseyo"
+      },
+      "french": "faites-moi une réduction s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_009",
+      "examples": [
+        {
+          "korean": "너무 비싸요, 깎아 주세요.",
+          "french": "C'est trop cher, faites-moi une réduction."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "모르겠어요",
+        "romanization": "moreugesseoyo"
+      },
+      "french": "je ne sais pas",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_010",
+      "examples": [
+        {
+          "korean": "잘 모르겠어요.",
+          "french": "Je ne sais vraiment pas."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "알겠어요",
+        "romanization": "algesseoyo"
+      },
+      "french": "j'ai compris / d'accord",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_011",
+      "examples": [
+        {
+          "korean": "네, 알겠어요.",
+          "french": "Oui, j'ai compris."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "잠깐만요",
+        "romanization": "jamkkanmanyo"
+      },
+      "french": "un instant s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_012",
+      "examples": [
+        {
+          "korean": "잠깐만요, 곧 갈게요.",
+          "french": "Un instant, j'arrive tout de suite."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "괜찮아요",
+        "romanization": "gwaenchanayo"
+      },
+      "french": "ça va / ce n'est rien",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_013",
+      "examples": [
+        {
+          "korean": "괜찮아요, 걱정하지 마세요.",
+          "french": "Ça va, ne vous inquiétez pas."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "죄송합니다",
+        "romanization": "joesonghamnida"
+      },
+      "french": "je suis désolé",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_014",
+      "examples": [
+        {
+          "korean": "늦어서 죄송합니다.",
+          "french": "Je suis désolé d'être en retard."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "실례합니다",
+        "romanization": "sillyehamnida"
+      },
+      "french": "excusez-moi",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_015",
+      "examples": [
+        {
+          "korean": "실례합니다, 질문이 있어요.",
+          "french": "Excusez-moi, j'ai une question."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "천만에요",
+        "romanization": "cheonmaneyo"
+      },
+      "french": "de rien / je vous en prie",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_016",
+      "examples": [
+        {
+          "korean": "천만에요, 별말씀을요.",
+          "french": "De rien, il n'y a pas de quoi."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "메뉴 좀 주세요",
+        "romanization": "menyu jom juseyo"
+      },
+      "french": "le menu s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_017",
+      "examples": [
+        {
+          "korean": "여기요, 메뉴 좀 주세요.",
+          "french": "S'il vous plaît, le menu."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "사진 찍어 주세요",
+        "romanization": "sajin jjigeo juseyo"
+      },
+      "french": "prenez une photo s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_018",
+      "examples": [
+        {
+          "korean": "저기요, 사진 좀 찍어 주세요.",
+          "french": "Excusez-moi, prenez une photo s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "길을 잃었어요",
+        "romanization": "gireul ireosseoyo"
+      },
+      "french": "je suis perdu",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_019",
+      "examples": [
+        {
+          "korean": "길을 잃었어요, 도와주세요.",
+          "french": "Je suis perdu, aidez-moi."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "도와주실 수 있어요",
+        "romanization": "dowajusil su isseoyo"
+      },
+      "french": "pouvez-vous m'aider ?",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_020",
+      "examples": [
+        {
+          "korean": "저 좀 도와주실 수 있어요?",
+          "french": "Pouvez-vous m'aider s'il vous plaît ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "영어 할 수 있어요",
+        "romanization": "yeongeo hal su isseoyo"
+      },
+      "french": "parlez-vous anglais ?",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_021",
+      "examples": [
+        {
+          "korean": "혹시 영어 할 수 있어요?",
+          "french": "Parlez-vous anglais par hasard ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "경찰을 불러 주세요",
+        "romanization": "gyeongchareul bulleo juseyo"
+      },
+      "french": "appelez la police s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_022",
+      "examples": [
+        {
+          "korean": "빨리 경찰을 불러 주세요!",
+          "french": "Appelez vite la police !"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "병원이 어디예요",
+        "romanization": "byeongwoni eodiyeyo"
+      },
+      "french": "où est l'hôpital ?",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_023",
+      "examples": [
+        {
+          "korean": "가까운 병원이 어디예요?",
+          "french": "Où est l'hôpital le plus proche ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "이게 뭐예요",
+        "romanization": "ige mwoyeyo"
+      },
+      "french": "qu'est-ce que c'est ?",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_024",
+      "examples": [
+        {
+          "korean": "이게 뭐예요? 맛있어요?",
+          "french": "Qu'est-ce que c'est ? Est-ce bon ?"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "추천해 주세요",
+        "romanization": "chucheonhae juseyo"
+      },
+      "french": "recommandez-moi quelque chose s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_025",
+      "examples": [
+        {
+          "korean": "맛있는 거 추천해 주세요.",
+          "french": "Recommandez-moi quelque chose de bon."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "포장해 주세요",
+        "romanization": "pojanghae juseyo"
+      },
+      "french": "à emporter s'il vous plaît",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_026",
+      "examples": [
+        {
+          "korean": "이거 포장해 주세요.",
+          "french": "Ceci à emporter s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "여기요",
+        "romanization": "yeogiyo"
+      },
+      "french": "s'il vous plaît (pour appeler le serveur)",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_027",
+      "examples": [
+        {
+          "korean": "여기요! 주문할게요.",
+          "french": "S'il vous plaît ! Je voudrais commander."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "맛있어요",
+        "romanization": "masisseoyo"
+      },
+      "french": "c'est délicieux",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_028",
+      "examples": [
+        {
+          "korean": "와, 정말 맛있어요!",
+          "french": "Waouh, c'est vraiment délicieux !"
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "너무 비싸요",
+        "romanization": "neomu bissayo"
+      },
+      "french": "c'est trop cher",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_029",
+      "examples": [
+        {
+          "korean": "이건 너무 비싸요.",
+          "french": "Celui-ci est trop cher."
+        }
+      ]
+    },
+    {
+      "polite": {
+        "korean": "다음에 또 올게요",
+        "romanization": "daeume tto olgeyo"
+      },
+      "french": "je reviendrai (une prochaine fois)",
+      "register_formal": "poli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "exp_add_030",
+      "examples": [
+        {
+          "korean": "감사합니다, 다음에 또 올게요.",
+          "french": "Merci, je reviendrai une prochaine fois."
+        }
+      ]
     }
   ],
   "dialogues": [
@@ -19795,6 +22610,424 @@
       "source": "book",
       "pos": "adj",
       "irregular": "ㅡ"
+    },
+    {
+      "infinitive": "크다",
+      "korean": "크다",
+      "french": "être grand",
+      "korean_polite": "커요",
+      "romanization": "keuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅡ",
+      "id": "adj_add_001",
+      "examples": [
+        {
+          "korean": "집이 커요.",
+          "french": "La maison est grande."
+        }
+      ]
+    },
+    {
+      "infinitive": "작다",
+      "korean": "작다",
+      "french": "être petit",
+      "korean_polite": "작아요",
+      "romanization": "jakda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_002",
+      "examples": [
+        {
+          "korean": "방이 작아요.",
+          "french": "La chambre est petite."
+        }
+      ]
+    },
+    {
+      "infinitive": "많다",
+      "korean": "많다",
+      "french": "être nombreux, y avoir beaucoup",
+      "korean_polite": "많아요",
+      "romanization": "manta",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_003",
+      "examples": [
+        {
+          "korean": "사람이 많아요.",
+          "french": "Il y a beaucoup de monde."
+        }
+      ]
+    },
+    {
+      "infinitive": "적다",
+      "korean": "적다",
+      "french": "être peu nombreux, y avoir peu",
+      "korean_polite": "적어요",
+      "romanization": "jeokda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_004",
+      "examples": [
+        {
+          "korean": "돈이 적어요.",
+          "french": "Il y a peu d'argent."
+        }
+      ]
+    },
+    {
+      "infinitive": "좋다",
+      "korean": "좋다",
+      "french": "être bon, être bien",
+      "korean_polite": "좋아요",
+      "romanization": "jota",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_005",
+      "examples": [
+        {
+          "korean": "날씨가 좋아요.",
+          "french": "Il fait beau (le temps est bon)."
+        }
+      ]
+    },
+    {
+      "infinitive": "나쁘다",
+      "korean": "나쁘다",
+      "french": "être mauvais",
+      "korean_polite": "나빠요",
+      "romanization": "nappeuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅡ",
+      "id": "adj_add_006",
+      "examples": [
+        {
+          "korean": "기분이 나빠요.",
+          "french": "Je suis de mauvaise humeur."
+        }
+      ]
+    },
+    {
+      "infinitive": "비싸다",
+      "korean": "비싸다",
+      "french": "être cher",
+      "korean_polite": "비싸요",
+      "romanization": "bissada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_007",
+      "examples": [
+        {
+          "korean": "가방이 비싸요.",
+          "french": "Le sac est cher."
+        }
+      ]
+    },
+    {
+      "infinitive": "싸다",
+      "korean": "싸다",
+      "french": "être bon marché",
+      "korean_polite": "싸요",
+      "romanization": "ssada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_008",
+      "examples": [
+        {
+          "korean": "이 옷은 싸요.",
+          "french": "Ce vêtement est bon marché."
+        }
+      ]
+    },
+    {
+      "infinitive": "예쁘다",
+      "korean": "예쁘다",
+      "french": "être joli",
+      "korean_polite": "예뻐요",
+      "romanization": "yeppeuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅡ",
+      "id": "adj_add_009",
+      "examples": [
+        {
+          "korean": "꽃이 예뻐요.",
+          "french": "La fleur est jolie."
+        }
+      ]
+    },
+    {
+      "infinitive": "귀엽다",
+      "korean": "귀엽다",
+      "french": "être mignon",
+      "korean_polite": "귀여워요",
+      "romanization": "gwiyeopda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅂ",
+      "id": "adj_add_010",
+      "examples": [
+        {
+          "korean": "강아지가 귀여워요.",
+          "french": "Le chiot est mignon."
+        }
+      ]
+    },
+    {
+      "infinitive": "멋있다",
+      "korean": "멋있다",
+      "french": "être stylé, chic",
+      "korean_polite": "멋있어요",
+      "romanization": "meositda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": null,
+      "id": "adj_add_011",
+      "examples": [
+        {
+          "korean": "그 사람은 멋있어요.",
+          "french": "Cette personne est stylée."
+        }
+      ]
+    },
+    {
+      "infinitive": "덥다",
+      "korean": "덥다",
+      "french": "avoir chaud, faire chaud",
+      "korean_polite": "더워요",
+      "romanization": "deopda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅂ",
+      "id": "adj_add_012",
+      "examples": [
+        {
+          "korean": "여름은 더워요.",
+          "french": "L'été, il fait chaud."
+        }
+      ]
+    },
+    {
+      "infinitive": "춥다",
+      "korean": "춥다",
+      "french": "avoir froid, faire froid",
+      "korean_polite": "추워요",
+      "romanization": "chupda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅂ",
+      "id": "adj_add_013",
+      "examples": [
+        {
+          "korean": "겨울은 추워요.",
+          "french": "L'hiver, il fait froid."
+        }
+      ]
+    },
+    {
+      "infinitive": "배고프다",
+      "korean": "배고프다",
+      "french": "avoir faim",
+      "korean_polite": "배고파요",
+      "romanization": "baegopeuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅡ",
+      "id": "adj_add_014",
+      "examples": [
+        {
+          "korean": "지금 배고파요.",
+          "french": "J'ai faim maintenant."
+        }
+      ]
+    },
+    {
+      "infinitive": "목마르다",
+      "korean": "목마르다",
+      "french": "avoir soif",
+      "korean_polite": "목말라요",
+      "romanization": "mongmareuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "르",
+      "id": "adj_add_015",
+      "examples": [
+        {
+          "korean": "물 주세요, 목말라요.",
+          "french": "De l'eau s'il vous plaît, j'ai soif."
+        }
+      ]
+    },
+    {
+      "infinitive": "피곤하다",
+      "korean": "피곤하다",
+      "french": "être fatigué",
+      "korean_polite": "피곤해요",
+      "romanization": "pigonhada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "하다",
+      "id": "adj_add_016",
+      "examples": [
+        {
+          "korean": "오늘 너무 피곤해요.",
+          "french": "Aujourd'hui je suis très fatigué."
+        }
+      ]
+    },
+    {
+      "infinitive": "바쁘다",
+      "korean": "바쁘다",
+      "french": "être occupé",
+      "korean_polite": "바빠요",
+      "romanization": "bappeuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅡ",
+      "id": "adj_add_017",
+      "examples": [
+        {
+          "korean": "요즘 바빠요.",
+          "french": "Ces temps-ci je suis occupé."
+        }
+      ]
+    },
+    {
+      "infinitive": "쉽다",
+      "korean": "쉽다",
+      "french": "être facile",
+      "korean_polite": "쉬워요",
+      "romanization": "swipda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅂ",
+      "id": "adj_add_018",
+      "examples": [
+        {
+          "korean": "한국어가 쉬워요.",
+          "french": "Le coréen est facile."
+        }
+      ]
+    },
+    {
+      "infinitive": "어렵다",
+      "korean": "어렵다",
+      "french": "être difficile",
+      "korean_polite": "어려워요",
+      "romanization": "eoryeopda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅂ",
+      "id": "adj_add_019",
+      "examples": [
+        {
+          "korean": "시험이 어려워요.",
+          "french": "L'examen est difficile."
+        }
+      ]
+    },
+    {
+      "infinitive": "깨끗하다",
+      "korean": "깨끗하다",
+      "french": "être propre",
+      "korean_polite": "깨끗해요",
+      "romanization": "kkaekkeutada",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "하다",
+      "id": "adj_add_020",
+      "examples": [
+        {
+          "korean": "방이 깨끗해요.",
+          "french": "La chambre est propre."
+        }
+      ]
+    },
+    {
+      "infinitive": "더럽다",
+      "korean": "더럽다",
+      "french": "être sale",
+      "korean_polite": "더러워요",
+      "romanization": "deoreopda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "ㅂ",
+      "id": "adj_add_021",
+      "examples": [
+        {
+          "korean": "손이 더러워요.",
+          "french": "Les mains sont sales."
+        }
+      ]
+    },
+    {
+      "infinitive": "빠르다",
+      "korean": "빠르다",
+      "french": "être rapide",
+      "korean_polite": "빨라요",
+      "romanization": "ppareuda",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "pos": "adj",
+      "irregular": "르",
+      "id": "adj_add_022",
+      "examples": [
+        {
+          "korean": "기차가 빨라요.",
+          "french": "Le train est rapide."
+        }
+      ]
     }
   ],
   "adverbs": [
@@ -19925,6 +23158,246 @@
       "chapter": 6,
       "id": "adv_ch6_004",
       "source": "book"
+    },
+    {
+      "korean": "항상",
+      "french": "toujours",
+      "romanization": "hangsang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_001",
+      "examples": [
+        {
+          "korean": "저는 항상 아침을 먹어요.",
+          "french": "Je prends toujours le petit-déjeuner."
+        }
+      ]
+    },
+    {
+      "korean": "자주",
+      "french": "souvent",
+      "romanization": "jaju",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_002",
+      "examples": [
+        {
+          "korean": "친구를 자주 만나요.",
+          "french": "Je vois souvent mes amis."
+        }
+      ]
+    },
+    {
+      "korean": "가끔",
+      "french": "parfois",
+      "romanization": "gakkeum",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_003",
+      "examples": [
+        {
+          "korean": "가끔 영화를 봐요.",
+          "french": "Je regarde parfois des films."
+        }
+      ]
+    },
+    {
+      "korean": "별로",
+      "french": "pas vraiment",
+      "romanization": "byeollo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_004",
+      "examples": [
+        {
+          "korean": "오늘은 별로 안 추워요.",
+          "french": "Aujourd'hui il ne fait pas vraiment froid."
+        }
+      ]
+    },
+    {
+      "korean": "정말",
+      "french": "vraiment",
+      "romanization": "jeongmal",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_005",
+      "examples": [
+        {
+          "korean": "이 음식은 정말 맛있어요.",
+          "french": "Ce plat est vraiment délicieux."
+        }
+      ]
+    },
+    {
+      "korean": "너무",
+      "french": "trop",
+      "romanization": "neomu",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_006",
+      "examples": [
+        {
+          "korean": "커피가 너무 뜨거워요.",
+          "french": "Le café est trop chaud."
+        }
+      ]
+    },
+    {
+      "korean": "아주",
+      "french": "très",
+      "romanization": "aju",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_007",
+      "examples": [
+        {
+          "korean": "한국어가 아주 재미있어요.",
+          "french": "Le coréen est très intéressant."
+        }
+      ]
+    },
+    {
+      "korean": "조금",
+      "french": "un peu",
+      "romanization": "jogeum",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_008",
+      "examples": [
+        {
+          "korean": "조금 피곤해요.",
+          "french": "Je suis un peu fatigué."
+        }
+      ]
+    },
+    {
+      "korean": "많이",
+      "french": "beaucoup",
+      "romanization": "mani",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_009",
+      "examples": [
+        {
+          "korean": "물을 많이 마셔요.",
+          "french": "Je bois beaucoup d'eau."
+        }
+      ]
+    },
+    {
+      "korean": "빨리",
+      "french": "vite",
+      "romanization": "ppalli",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_010",
+      "examples": [
+        {
+          "korean": "빨리 오세요.",
+          "french": "Venez vite."
+        }
+      ]
+    },
+    {
+      "korean": "천천히",
+      "french": "lentement",
+      "romanization": "cheoncheonhi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_011",
+      "examples": [
+        {
+          "korean": "천천히 말해 주세요.",
+          "french": "Parlez lentement, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "먼저",
+      "french": "d'abord",
+      "romanization": "meonjeo",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_012",
+      "examples": [
+        {
+          "korean": "먼저 손을 씻어요.",
+          "french": "D'abord, je me lave les mains."
+        }
+      ]
+    },
+    {
+      "korean": "다시",
+      "french": "de nouveau",
+      "romanization": "dasi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_013",
+      "examples": [
+        {
+          "korean": "다시 한번 말해 주세요.",
+          "french": "Répétez encore une fois, s'il vous plaît."
+        }
+      ]
+    },
+    {
+      "korean": "같이",
+      "french": "ensemble",
+      "romanization": "gachi",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_014",
+      "examples": [
+        {
+          "korean": "같이 점심을 먹어요.",
+          "french": "Mangeons le déjeuner ensemble."
+        }
+      ]
+    },
+    {
+      "korean": "일찍",
+      "french": "tôt",
+      "romanization": "iljjik",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_015",
+      "examples": [
+        {
+          "korean": "오늘 일찍 일어났어요.",
+          "french": "Je me suis levé tôt aujourd'hui."
+        }
+      ]
+    },
+    {
+      "korean": "아직",
+      "french": "encore (pas encore)",
+      "romanization": "ajik",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "id": "adv_add_016",
+      "examples": [
+        {
+          "korean": "숙제를 아직 안 했어요.",
+          "french": "Je n'ai pas encore fait mes devoirs."
+        }
+      ]
     }
   ],
   "classifiers": [
@@ -20086,6 +23559,108 @@
       "source": "book",
       "number_system": "sino-korean",
       "used_with_fr": "jours (dates)"
+    },
+    {
+      "korean": "권",
+      "french": "(compteur de livres, cahiers)",
+      "romanization": "gwon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "number_system": "native-korean",
+      "used_with_fr": "les livres et les cahiers",
+      "id": "clf_add_001",
+      "examples": [
+        {
+          "korean": "책 두 권",
+          "french": "deux livres"
+        }
+      ]
+    },
+    {
+      "korean": "잔",
+      "french": "(compteur de verres, tasses de boisson)",
+      "romanization": "jan",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "number_system": "native-korean",
+      "used_with_fr": "les verres et les tasses de boisson",
+      "id": "clf_add_002",
+      "examples": [
+        {
+          "korean": "커피 한 잔",
+          "french": "une tasse de café"
+        }
+      ]
+    },
+    {
+      "korean": "장",
+      "french": "(compteur de feuilles, billets, objets plats)",
+      "romanization": "jang",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "number_system": "native-korean",
+      "used_with_fr": "les feuilles, les billets et les objets plats",
+      "id": "clf_add_003",
+      "examples": [
+        {
+          "korean": "종이 세 장",
+          "french": "trois feuilles de papier"
+        }
+      ]
+    },
+    {
+      "korean": "병",
+      "french": "(compteur de bouteilles)",
+      "romanization": "byeong",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "number_system": "native-korean",
+      "used_with_fr": "les bouteilles",
+      "id": "clf_add_004",
+      "examples": [
+        {
+          "korean": "물 한 병",
+          "french": "une bouteille d'eau"
+        }
+      ]
+    },
+    {
+      "korean": "번",
+      "french": "(compteur de fois)",
+      "romanization": "beon",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "number_system": "native-korean",
+      "used_with_fr": "le nombre de fois",
+      "id": "clf_add_005",
+      "examples": [
+        {
+          "korean": "한 번",
+          "french": "une fois"
+        }
+      ]
+    },
+    {
+      "korean": "살",
+      "french": "(compteur d'âge en années)",
+      "romanization": "sal",
+      "page": null,
+      "chapter": -1,
+      "source": "added",
+      "number_system": "native-korean",
+      "used_with_fr": "l'âge en années",
+      "id": "clf_add_006",
+      "examples": [
+        {
+          "korean": "스무 살",
+          "french": "vingt ans"
+        }
+      ]
     }
   ],
   "pronunciation_rules": [

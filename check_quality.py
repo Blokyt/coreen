@@ -65,13 +65,6 @@ def get_rom(it, c):
     return it.get('romanization') or ''
 
 
-def verb_back(it):
-    cj = it.get('conjugations') or {}
-    return cj.get('polite_present') \
-        or cj.get('informal_present') \
-        or cj.get('polite_present_after_vowel') or ''
-
-
 # ========== Declarative CARD table (mirrors app.js) ==========
 # Each entry returns the strings used at each slot.
 
@@ -95,7 +88,7 @@ def _back_main(it, c):
     if c in ('vocabulary', 'time_expressions', 'adverbs',
              'connectors', 'classifiers'):
         return get_fr(it, c)
-    if c == 'verbs':       return verb_back(it)
+    if c == 'verbs':       return get_fr(it, c)
     if c == 'adjectives':  return it.get('korean_polite') or ''
     if c == 'hangeul':     return get_rom(it, c)
     if c == 'numbers':     return get_kr(it, c)

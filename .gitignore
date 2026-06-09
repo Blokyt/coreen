@@ -19,6 +19,12 @@ tools/*
 !tools/migrate_schema.py
 !tools/conj_meta.js
 !tools/reconcile_extraction.py
+!tools/merge_added.js
+!tools/merge_exercises.js
+
+# Intermediate workflow outputs (merged into course_data.json / exercises.json)
+data/added_items.json
+data/new_exercises.json
 
 # Temp files
 tmp_*
