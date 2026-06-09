@@ -870,14 +870,39 @@ function getRom(it) {
 
 // ---- Category-specific helpers ----
 
+// Conjugaison via le moteur (conjugator.js) si disponible, sinon null.
+// Lit it.irregular / it.stem ; applique it.conjugations_override par-dessus.
+function engineConj(it) {
+  if (typeof conjugate !== 'function') return null;
+  const dict = it.infinitive || (typeof it.korean === 'string' && it.korean.endsWith('다') ? it.korean : null);
+  if (!dict || !dict.endsWith('다')) return null;
+  try {
+    const opts = {};
+    if (it.irregular !== undefined && it.irregular !== null) opts.irregular = it.irregular;
+    if (it.stem) opts.stem = it.stem;
+    const f = conjugate(dict, opts);
+    if (it.conjugations_override) Object.assign(f, it.conjugations_override);
+    return f;
+  } catch (e) { return null; }
+}
+
 function verbExtra(it) {
-  const cj = it.conjugations || {};
+  const f = engineConj(it);
   const p = [];
-  if (cj.polite_present)  p.push(`poli : ${cj.polite_present}`);
-  if (cj.informal_present) p.push(`informel : ${cj.informal_present}`);
-  if (cj.polite_past)     p.push(`passé : ${cj.polite_past}`);
-  if (cj.polite_negative) p.push(`nég : ${cj.polite_negative}`);
-  let s = p.join(' · ');
+  if (f) {
+    if (f.presentPolite)   p.push(`présent : ${f.presentPolite}`);
+    if (f.pastPolite)      p.push(`passé : ${f.pastPolite}`);
+    if (f.future)          p.push(`futur : ${f.future}`);
+    if (f.negShort)        p.push(`négation : ${f.negShort}`);
+    if (f.honorificPolite) p.push(`honorifique : ${f.honorificPolite}`);
+  } else {
+    const cj = it.conjugations || {};
+    if (cj.polite_present)   p.push(`poli : ${cj.polite_present}`);
+    if (cj.informal_present) p.push(`informel : ${cj.informal_present}`);
+    if (cj.polite_past)      p.push(`passé : ${cj.polite_past}`);
+    if (cj.polite_negative)  p.push(`nég : ${cj.polite_negative}`);
+  }
+  let s = p.join('\n');
   if (it.contraction_note) s += (s ? '\n' : '') + it.contraction_note;
   return s;
 }
@@ -937,7 +962,11 @@ function koSub(it) {
 function cardDetail(it) {
   const c = it._c, out = [];
   if (c === 'verbs')            { const v = verbExtra(it); if (v) out.push(v); }
-  else if (c === 'adjectives')  { if (it.korean_polite) out.push(`forme polie : ${it.korean_polite}`); }
+  else if (c === 'adjectives')  {
+    const f = engineConj(it);
+    if (f) { if (f.presentPolite) out.push(`présent : ${f.presentPolite}`); if (f.pastPolite) out.push(`passé : ${f.pastPolite}`); }
+    else if (it.korean_polite) out.push(`forme polie : ${it.korean_polite}`);
+  }
   else if (c === 'expressions') { const s = exprSub(it); if (s) out.push(s); }
   else if (c === 'particles')   { const s = particleSub(it), e = particleExtra(it); if (s) out.push(s); if (e) out.push(e); }
   else if (c === 'numbers')     { if (it.korean_before_counter) out.push(`devant compteur : ${it.korean_before_counter}`); }
